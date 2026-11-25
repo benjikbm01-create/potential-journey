@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:frostfir_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:frostfir_trapdoor",
+    "count": 2
+  }
+}

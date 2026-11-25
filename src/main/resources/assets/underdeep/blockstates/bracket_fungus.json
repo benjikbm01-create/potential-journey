@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/bracket_fungus"
+    },
+    "facing=east": {
+      "model": "underdeep:block/bracket_fungus",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/bracket_fungus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/bracket_fungus",
+      "y": 270
+    }
+  }
+}

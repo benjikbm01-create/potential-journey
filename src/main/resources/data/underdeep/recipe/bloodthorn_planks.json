@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "underdeep:bloodthorn_logs"
+    }
+  ],
+  "result": {
+    "id": "underdeep:bloodthorn_planks",
+    "count": 4
+  }
+}

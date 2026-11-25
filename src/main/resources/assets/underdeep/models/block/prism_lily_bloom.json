@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "underdeep:block/prism_lily_bloom"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AAA",
+    "ADA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "D": {
+      "item": "underdeep:deathbell"
+    }
+  },
+  "result": {
+    "id": "minecraft:tipped_arrow",
+    "count": 8,
+    "components": {
+      "minecraft:potion_contents": {
+        "potion": "minecraft:poison"
+      }
+    }
+  }
+}

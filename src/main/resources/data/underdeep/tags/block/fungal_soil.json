@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#underdeep:plant_soil",
+    "underdeep:rotting_log",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
+    "minecraft:soul_soil",
+    "underdeep:ember_nylium"
+  ]
+}

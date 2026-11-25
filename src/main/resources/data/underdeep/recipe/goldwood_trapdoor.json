@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:goldwood_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:goldwood_trapdoor",
+    "count": 2
+  }
+}

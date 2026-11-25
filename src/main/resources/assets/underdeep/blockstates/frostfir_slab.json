@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "underdeep:block/frostfir_slab"
+    },
+    "type=top": {
+      "model": "underdeep:block/frostfir_slab_top"
+    },
+    "type=double": {
+      "model": "underdeep:block/frostfir_planks"
+    }
+  }
+}

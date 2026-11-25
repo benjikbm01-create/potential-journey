@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "underdeep:block/glowpad"
+      },
+      {
+        "model": "underdeep:block/glowpad",
+        "y": 90
+      },
+      {
+        "model": "underdeep:block/glowpad",
+        "y": 180
+      },
+      {
+        "model": "underdeep:block/glowpad",
+        "y": 270
+      }
+    ]
+  }
+}

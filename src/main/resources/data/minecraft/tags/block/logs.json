@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#underdeep:bloodthorn_logs",
+    "underdeep:cinderbark_log",
+    "underdeep:stripped_cinderbark_log"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blooming=false": {
+      "model": "underdeep:block/voltbloom"
+    },
+    "blooming=true": {
+      "model": "underdeep:block/voltbloom_bloom"
+    }
+  }
+}

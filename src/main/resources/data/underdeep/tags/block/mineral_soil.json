@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stone",
+    "minecraft:deepslate",
+    "minecraft:cobbled_deepslate",
+    "minecraft:tuff",
+    "minecraft:calcite",
+    "minecraft:granite",
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:gravel",
+    "minecraft:dripstone_block",
+    "minecraft:amethyst_block",
+    "underdeep:luminite_block",
+    "underdeep:stormstone",
+    "underdeep:charged_stormstone",
+    "underdeep:petrified_wood",
+    "minecraft:sandstone",
+    "minecraft:terracotta",
+    "minecraft:red_terracotta",
+    "minecraft:smooth_basalt",
+    "minecraft:sculk",
+    "minecraft:cobblestone",
+    "minecraft:packed_ice",
+    "minecraft:snow_block",
+    "underdeep:starstone",
+    "#underdeep:plant_soil"
+  ]
+}

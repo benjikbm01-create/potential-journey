@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:cinderbark_log"
+    }
+  ],
+  "result": {
+    "id": "minecraft:charcoal",
+    "count": 2
+  }
+}

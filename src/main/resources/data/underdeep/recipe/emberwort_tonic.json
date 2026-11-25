@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "underdeep:emberwort_root"
+    },
+    {
+      "item": "underdeep:emberpepper"
+    }
+  ],
+  "result": {
+    "id": "underdeep:emberwort_tonic",
+    "count": 1
+  }
+}

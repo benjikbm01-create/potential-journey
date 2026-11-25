@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_wall_sign",
+    "underdeep:spirebark_wall_sign",
+    "underdeep:goldwood_wall_sign",
+    "underdeep:mirewillow_wall_sign",
+    "underdeep:frostfir_wall_sign",
+    "underdeep:bloodthorn_wall_sign",
+    "underdeep:lumenwood_wall_sign"
+  ]
+}

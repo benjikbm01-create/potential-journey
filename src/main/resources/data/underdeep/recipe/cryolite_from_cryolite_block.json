@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:cryolite_block"
+    }
+  ],
+  "result": {
+    "id": "underdeep:cryolite",
+    "count": 9
+  }
+}

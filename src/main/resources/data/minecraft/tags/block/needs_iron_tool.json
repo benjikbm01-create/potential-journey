@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:emberite_ore",
+    "underdeep:galvanite_ore",
+    "underdeep:prismatic_opal_ore",
+    "underdeep:starsilver_ore"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "underdeep:block/lumenwood_log"
+    },
+    "axis=z": {
+      "model": "underdeep:block/lumenwood_log_horizontal",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "underdeep:block/lumenwood_log_horizontal",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

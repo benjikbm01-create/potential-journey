@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:bloodthorn_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:bloodthorn_pressure_plate",
+    "count": 1
+  }
+}

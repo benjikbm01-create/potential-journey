@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "underdeep:block/mirewillow_slab"
+    },
+    "type=top": {
+      "model": "underdeep:block/mirewillow_slab_top"
+    },
+    "type=double": {
+      "model": "underdeep:block/mirewillow_planks"
+    }
+  }
+}

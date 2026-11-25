@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_pressure_plate",
+    "underdeep:spirebark_pressure_plate",
+    "underdeep:goldwood_pressure_plate",
+    "underdeep:mirewillow_pressure_plate",
+    "underdeep:frostfir_pressure_plate",
+    "underdeep:bloodthorn_pressure_plate",
+    "underdeep:lumenwood_pressure_plate"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:sunleaf_blossom"
+    },
+    {
+      "item": "underdeep:honeyfruit"
+    },
+    {
+      "item": "underdeep:amber_glob"
+    }
+  ],
+  "result": {
+    "id": "underdeep:sunleaf_salve",
+    "count": 1
+  }
+}

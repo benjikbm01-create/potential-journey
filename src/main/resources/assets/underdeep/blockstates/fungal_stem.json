@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "underdeep:block/fungal_stem"
+    },
+    "axis=z": {
+      "model": "underdeep:block/fungal_stem_horizontal",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "underdeep:block/fungal_stem_horizontal",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

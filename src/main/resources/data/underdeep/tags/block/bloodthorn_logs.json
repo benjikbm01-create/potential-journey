@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:bloodthorn_log",
+    "underdeep:bloodthorn_wood",
+    "underdeep:stripped_bloodthorn_log",
+    "underdeep:stripped_bloodthorn_wood"
+  ]
+}

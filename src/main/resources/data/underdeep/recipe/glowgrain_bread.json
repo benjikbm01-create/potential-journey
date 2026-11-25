@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:glowgrain"
+    }
+  },
+  "result": {
+    "id": "underdeep:glowgrain_bread",
+    "count": 1
+  }
+}

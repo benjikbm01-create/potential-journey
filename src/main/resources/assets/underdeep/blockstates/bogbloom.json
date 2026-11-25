@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blooming=false": {
+      "model": "underdeep:block/bogbloom"
+    },
+    "blooming=true": {
+      "model": "underdeep:block/bogbloom_bloom"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:voidroot_fiber"
+    },
+    {
+      "item": "underdeep:voidroot_fiber"
+    },
+    {
+      "item": "underdeep:voidroot_fiber"
+    }
+  ],
+  "result": {
+    "id": "minecraft:string",
+    "count": 1
+  }
+}

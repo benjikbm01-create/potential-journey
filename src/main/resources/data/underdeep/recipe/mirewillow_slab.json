@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:mirewillow_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:mirewillow_slab",
+    "count": 6
+  }
+}

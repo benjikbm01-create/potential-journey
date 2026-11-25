@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "spent=false": {
+      "model": "underdeep:block/sporepuff"
+    },
+    "spent=true": {
+      "model": "underdeep:block/sporepuff_spent"
+    }
+  }
+}

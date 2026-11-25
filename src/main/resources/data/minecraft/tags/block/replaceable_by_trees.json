@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:glowfern",
+    "underdeep:goldgrass",
+    "underdeep:ashgrass",
+    "underdeep:shardgrass",
+    "underdeep:ghostfern",
+    "underdeep:steamfern",
+    "underdeep:marsh_fern",
+    "underdeep:static_grass",
+    "underdeep:silvergrass"
+  ]
+}

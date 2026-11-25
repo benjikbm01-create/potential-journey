@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:stripped_frostfir_log"
+    }
+  },
+  "result": {
+    "id": "underdeep:stripped_frostfir_wood",
+    "count": 3
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_fence_gate",
+    "underdeep:spirebark_fence_gate",
+    "underdeep:goldwood_fence_gate",
+    "underdeep:mirewillow_fence_gate",
+    "underdeep:frostfir_fence_gate",
+    "underdeep:bloodthorn_fence_gate",
+    "underdeep:lumenwood_fence_gate"
+  ]
+}

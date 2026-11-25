@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:dirt",
+    "underdeep:glowmoss",
+    "underdeep:amber_moss",
+    "underdeep:starmoss",
+    "underdeep:sporeglow_soil"
+  ]
+}

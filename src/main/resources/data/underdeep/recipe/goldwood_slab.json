@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:goldwood_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:goldwood_slab",
+    "count": 6
+  }
+}

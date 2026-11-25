@@ -17,6 +17,18 @@ public final class UnderdeepClient implements ClientModInitializer {
                 ModBlocks.STARBLOOM, ModBlocks.EMBERBLOOM, ModBlocks.AMBERBLOOM, ModBlocks.GLOWREED, ModBlocks.LUMEN_SEAGRASS,
                 ModBlocks.STORM_CRYSTAL, ModBlocks.RIME_CRYSTAL);
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GOLDEN_LEAVES, RenderLayer.getCutoutMipped());
+        // Stage 2 content
+        dev.underdeep.registry.Reg.CUTOUT.forEach(b -> BlockRenderLayerMap.INSTANCE.putBlock(b, RenderLayer.getCutout()));
+        dev.underdeep.registry.Reg.CUTOUT_MIPPED.forEach(b -> BlockRenderLayerMap.INSTANCE.putBlock(b, RenderLayer.getCutoutMipped()));
+        dev.underdeep.registry.Reg.TRANSLUCENT.forEach(b -> BlockRenderLayerMap.INSTANCE.putBlock(b, RenderLayer.getTranslucent()));
+        for (var w : dev.underdeep.registry.WoodSet.ALL) {
+            BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), w.sapling, w.pottedSapling);
+        }
+        dev.underdeep.block.plant.ParticleGate.install(() -> {
+            var mc = net.minecraft.client.MinecraftClient.getInstance();
+            return mc.options == null || mc.options.getParticles().getValue() != net.minecraft.client.option.ParticlesMode.MINIMAL;
+        });
+        EcologyTooltips.init();
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
         ScreenshotTour.init();
         CreateWorldTest.init();

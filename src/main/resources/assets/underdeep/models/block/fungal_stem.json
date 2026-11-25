@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "underdeep:block/fungal_stem_top",
+    "side": "underdeep:block/fungal_stem"
+  }
+}

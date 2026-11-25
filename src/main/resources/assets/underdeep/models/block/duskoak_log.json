@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "underdeep:block/duskoak_log_top",
+    "side": "underdeep:block/duskoak_log"
+  }
+}

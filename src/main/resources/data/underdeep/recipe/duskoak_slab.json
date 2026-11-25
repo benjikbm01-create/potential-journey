@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:duskoak_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:duskoak_slab",
+    "count": 6
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "underdeep:puffcap"
+    },
+    {
+      "item": "underdeep:roasted_inkcap"
+    },
+    {
+      "item": "underdeep:cave_truffle"
+    },
+    {
+      "item": "underdeep:duskroot"
+    }
+  ],
+  "result": {
+    "id": "underdeep:cavern_stew",
+    "count": 1
+  }
+}

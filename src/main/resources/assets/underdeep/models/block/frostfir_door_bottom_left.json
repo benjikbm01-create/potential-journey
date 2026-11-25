@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_left",
+  "textures": {
+    "bottom": "underdeep:block/frostfir_door_bottom",
+    "top": "underdeep:block/frostfir_door_top"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_trapdoor",
+    "underdeep:spirebark_trapdoor",
+    "underdeep:goldwood_trapdoor",
+    "underdeep:mirewillow_trapdoor",
+    "underdeep:frostfir_trapdoor",
+    "underdeep:bloodthorn_trapdoor",
+    "underdeep:lumenwood_trapdoor"
+  ]
+}

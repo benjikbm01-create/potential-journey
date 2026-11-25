@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:frost_turnip"
+  },
+  "result": {
+    "id": "underdeep:baked_turnip"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

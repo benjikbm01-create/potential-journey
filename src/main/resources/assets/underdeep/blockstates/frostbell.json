@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blooming=false": {
+      "model": "underdeep:block/frostbell"
+    },
+    "blooming=true": {
+      "model": "underdeep:block/frostbell_bloom"
+    }
+  }
+}

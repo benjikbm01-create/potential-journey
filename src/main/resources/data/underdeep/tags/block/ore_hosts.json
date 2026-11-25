@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:base_stone_overworld",
+    "minecraft:basalt",
+    "minecraft:blackstone",
+    "minecraft:calcite",
+    "minecraft:packed_ice",
+    "minecraft:mud",
+    "minecraft:sandstone",
+    "minecraft:netherrack",
+    "minecraft:smooth_basalt",
+    "minecraft:clay",
+    "minecraft:prismarine",
+    "minecraft:sand",
+    "minecraft:gravel",
+    "minecraft:dripstone_block",
+    "underdeep:petrified_wood"
+  ]
+}

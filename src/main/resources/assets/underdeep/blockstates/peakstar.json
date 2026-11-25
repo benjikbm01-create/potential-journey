@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blooming=false": {
+      "model": "underdeep:block/peakstar"
+    },
+    "blooming=true": {
+      "model": "underdeep:block/peakstar_bloom"
+    }
+  }
+}

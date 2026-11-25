@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:spirebark_log"
+    }
+  },
+  "result": {
+    "id": "underdeep:spirebark_wood",
+    "count": 3
+  }
+}

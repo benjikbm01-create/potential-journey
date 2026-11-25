@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "underdeep:duskoak_planks"
+    }
+  ],
+  "result": {
+    "id": "underdeep:duskoak_button",
+    "count": 1
+  }
+}

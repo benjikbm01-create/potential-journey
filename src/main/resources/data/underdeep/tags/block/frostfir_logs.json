@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:frostfir_log",
+    "underdeep:frostfir_wood",
+    "underdeep:stripped_frostfir_log",
+    "underdeep:stripped_frostfir_wood"
+  ]
+}

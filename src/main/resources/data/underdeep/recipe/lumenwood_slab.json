@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:lumenwood_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:lumenwood_slab",
+    "count": 6
+  }
+}

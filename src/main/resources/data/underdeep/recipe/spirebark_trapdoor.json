@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:spirebark_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:spirebark_trapdoor",
+    "count": 2
+  }
+}

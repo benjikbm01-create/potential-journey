@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "underdeep:mire_rice"
+    },
+    {
+      "item": "underdeep:mire_rice"
+    },
+    {
+      "item": "underdeep:mire_rice"
+    }
+  ],
+  "result": {
+    "id": "underdeep:rice_bowl",
+    "count": 1
+  }
+}

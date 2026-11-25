@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "underdeep:block/frostfir_planks",
+    "top": "underdeep:block/frostfir_planks",
+    "side": "underdeep:block/frostfir_planks"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:inkcap"
+  },
+  "result": {
+    "id": "underdeep:roasted_inkcap"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

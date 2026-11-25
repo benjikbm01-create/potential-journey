@@ -1,0 +1,69 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "underdeep:block/bracket_fungus_side",
+    "top": "underdeep:block/bracket_fungus_top",
+    "side": "underdeep:block/bracket_fungus_side"
+  },
+  "elements": [
+    {
+      "from": [
+        2,
+        6,
+        9
+      ],
+      "to": [
+        14,
+        10,
+        16
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            2,
+            9,
+            14,
+            16
+          ],
+          "texture": "#top"
+        },
+        "down": {
+          "uv": [
+            2,
+            9,
+            14,
+            16
+          ],
+          "texture": "#top"
+        },
+        "north": {
+          "uv": [
+            2,
+            6,
+            14,
+            10
+          ],
+          "texture": "#side"
+        },
+        "east": {
+          "uv": [
+            0,
+            6,
+            7,
+            10
+          ],
+          "texture": "#side"
+        },
+        "west": {
+          "uv": [
+            9,
+            6,
+            16,
+            10
+          ],
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

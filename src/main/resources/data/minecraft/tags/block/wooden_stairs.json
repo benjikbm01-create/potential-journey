@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_stairs",
+    "underdeep:spirebark_stairs",
+    "underdeep:goldwood_stairs",
+    "underdeep:mirewillow_stairs",
+    "underdeep:frostfir_stairs",
+    "underdeep:bloodthorn_stairs",
+    "underdeep:lumenwood_stairs"
+  ]
+}

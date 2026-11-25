@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "underdeep:amber_glob"
+    }
+  ],
+  "result": {
+    "id": "minecraft:sticky_piston",
+    "count": 1
+  }
+}

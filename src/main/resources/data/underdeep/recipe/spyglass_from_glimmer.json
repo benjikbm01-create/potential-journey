@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    " C ",
+    " C "
+  ],
+  "key": {
+    "G": {
+      "item": "underdeep:glimmer_shard"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "id": "minecraft:spyglass",
+    "count": 1
+  }
+}

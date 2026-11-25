@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smoking",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:duskroot"
+  },
+  "result": {
+    "id": "underdeep:baked_duskroot"
+  },
+  "experience": 0.35,
+  "cookingtime": 100
+}

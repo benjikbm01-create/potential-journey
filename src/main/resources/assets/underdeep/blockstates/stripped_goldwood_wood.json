@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "underdeep:block/stripped_goldwood_wood"
+    },
+    "axis=z": {
+      "model": "underdeep:block/stripped_goldwood_wood",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "underdeep:block/stripped_goldwood_wood",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

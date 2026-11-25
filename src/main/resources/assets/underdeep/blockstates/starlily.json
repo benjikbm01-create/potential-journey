@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "underdeep:block/starlily"
+      },
+      {
+        "model": "underdeep:block/starlily",
+        "y": 90
+      },
+      {
+        "model": "underdeep:block/starlily",
+        "y": 180
+      },
+      {
+        "model": "underdeep:block/starlily",
+        "y": 270
+      }
+    ]
+  }
+}

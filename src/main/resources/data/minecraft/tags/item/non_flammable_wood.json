@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:bloodthorn_log",
+    "underdeep:bloodthorn_wood",
+    "underdeep:stripped_bloodthorn_log",
+    "underdeep:stripped_bloodthorn_wood",
+    "underdeep:bloodthorn_planks",
+    "underdeep:bloodthorn_stairs",
+    "underdeep:bloodthorn_slab",
+    "underdeep:bloodthorn_fence",
+    "underdeep:bloodthorn_fence_gate",
+    "underdeep:bloodthorn_door",
+    "underdeep:bloodthorn_trapdoor",
+    "underdeep:bloodthorn_button",
+    "underdeep:bloodthorn_pressure_plate",
+    "underdeep:bloodthorn_sign",
+    "underdeep:bloodthorn_hanging_sign",
+    "underdeep:cinderbark_log",
+    "underdeep:stripped_cinderbark_log"
+  ]
+}

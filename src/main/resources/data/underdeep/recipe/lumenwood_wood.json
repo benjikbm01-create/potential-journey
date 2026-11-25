@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:lumenwood_log"
+    }
+  },
+  "result": {
+    "id": "underdeep:lumenwood_wood",
+    "count": 3
+  }
+}

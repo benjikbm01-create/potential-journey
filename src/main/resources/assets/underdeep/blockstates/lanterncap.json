@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "underdeep:block/lanterncap_0"
+    },
+    "age=1": {
+      "model": "underdeep:block/lanterncap"
+    },
+    "age=2": {
+      "model": "underdeep:block/lanterncap"
+    },
+    "age=3": {
+      "model": "underdeep:block/lanterncap_fading"
+    }
+  }
+}

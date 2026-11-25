@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:sand",
+    "minecraft:red_sand",
+    "minecraft:gravel",
+    "minecraft:clay",
+    "minecraft:mud",
+    "#minecraft:dirt",
+    "minecraft:prismarine",
+    "minecraft:dark_prismarine",
+    "minecraft:stone",
+    "minecraft:deepslate",
+    "minecraft:calcite",
+    "minecraft:tuff",
+    "minecraft:sandstone",
+    "underdeep:lanterncoral",
+    "minecraft:tube_coral_block",
+    "minecraft:brain_coral_block",
+    "minecraft:bubble_coral_block",
+    "minecraft:fire_coral_block",
+    "minecraft:horn_coral_block",
+    "minecraft:dripstone_block",
+    "minecraft:andesite",
+    "minecraft:granite",
+    "minecraft:diorite",
+    "underdeep:glowmoss",
+    "underdeep:starmoss",
+    "minecraft:moss_block"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:cryolite"
+    }
+  },
+  "result": {
+    "id": "underdeep:cryolite_block",
+    "count": 1
+  }
+}

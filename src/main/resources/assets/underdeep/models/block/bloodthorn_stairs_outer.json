@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "underdeep:block/bloodthorn_planks",
+    "top": "underdeep:block/bloodthorn_planks",
+    "side": "underdeep:block/bloodthorn_planks"
+  }
+}

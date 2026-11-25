@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "open=true": {
+      "model": "underdeep:block/snapjaw"
+    },
+    "open=false": {
+      "model": "underdeep:block/snapjaw_closed"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blooming=false": {
+      "model": "underdeep:block/prism_lily"
+    },
+    "blooming=true": {
+      "model": "underdeep:block/prism_lily_bloom"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:goldwood_log",
+    "underdeep:goldwood_wood",
+    "underdeep:stripped_goldwood_log",
+    "underdeep:stripped_goldwood_wood"
+  ]
+}

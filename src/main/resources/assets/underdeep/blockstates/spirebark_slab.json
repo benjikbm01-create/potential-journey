@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "underdeep:block/spirebark_slab"
+    },
+    "type=top": {
+      "model": "underdeep:block/spirebark_slab_top"
+    },
+    "type=double": {
+      "model": "underdeep:block/spirebark_planks"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "underdeep:block/goldwood_slab"
+    },
+    "type=top": {
+      "model": "underdeep:block/goldwood_slab_top"
+    },
+    "type=double": {
+      "model": "underdeep:block/goldwood_planks"
+    }
+  }
+}

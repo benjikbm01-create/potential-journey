@@ -1,0 +1,68 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "underdeep:block/resin_knot_2",
+    "all": "underdeep:block/resin_knot_2"
+  },
+  "elements": [
+    {
+      "from": [
+        5,
+        4,
+        12
+      ],
+      "to": [
+        11,
+        12,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5,
+            4,
+            11,
+            12
+          ],
+          "texture": "#all"
+        },
+        "up": {
+          "uv": [
+            5,
+            4,
+            11,
+            12
+          ],
+          "texture": "#all"
+        },
+        "down": {
+          "uv": [
+            5,
+            4,
+            11,
+            12
+          ],
+          "texture": "#all"
+        },
+        "east": {
+          "uv": [
+            5,
+            4,
+            11,
+            12
+          ],
+          "texture": "#all"
+        },
+        "west": {
+          "uv": [
+            5,
+            4,
+            11,
+            12
+          ],
+          "texture": "#all"
+        }
+      }
+    }
+  ]
+}

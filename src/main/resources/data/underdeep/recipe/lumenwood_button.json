@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "underdeep:lumenwood_planks"
+    }
+  ],
+  "result": {
+    "id": "underdeep:lumenwood_button",
+    "count": 1
+  }
+}

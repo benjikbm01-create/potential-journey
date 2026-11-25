@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:frostfir_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:frostfir_slab",
+    "count": 6
+  }
+}

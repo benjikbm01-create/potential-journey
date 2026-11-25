@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "#underdeep:duskoak_logs",
+    "#underdeep:spirebark_logs",
+    "#underdeep:goldwood_logs",
+    "#underdeep:mirewillow_logs",
+    "#underdeep:frostfir_logs",
+    "#underdeep:lumenwood_logs"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:duskoak_log"
+    }
+  },
+  "result": {
+    "id": "underdeep:duskoak_wood",
+    "count": 3
+  }
+}

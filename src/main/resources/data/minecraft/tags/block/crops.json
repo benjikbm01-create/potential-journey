@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskroots",
+    "underdeep:glowgrain_crop",
+    "underdeep:cave_truffles",
+    "underdeep:mire_rice_crop",
+    "underdeep:lake_chestnuts",
+    "underdeep:emberpeppers",
+    "underdeep:frost_turnips",
+    "underdeep:sunbeans",
+    "underdeep:relic_sprout"
+  ]
+}

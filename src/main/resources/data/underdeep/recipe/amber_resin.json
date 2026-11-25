@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:amber_glob"
+    }
+  },
+  "result": {
+    "id": "underdeep:amber_resin",
+    "count": 1
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    {
+      "item": "underdeep:spirebark_planks"
+    }
+  ],
+  "result": {
+    "id": "underdeep:spirebark_button",
+    "count": 1
+  }
+}

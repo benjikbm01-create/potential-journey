@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_log",
+    "underdeep:duskoak_wood",
+    "underdeep:stripped_duskoak_log",
+    "underdeep:stripped_duskoak_wood"
+  ]
+}

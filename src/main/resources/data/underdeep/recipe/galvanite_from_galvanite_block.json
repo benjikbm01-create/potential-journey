@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:galvanite_block"
+    }
+  ],
+  "result": {
+    "id": "underdeep:galvanite",
+    "count": 9
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:lake_chestnut"
+  },
+  "result": {
+    "id": "underdeep:roasted_chestnut"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

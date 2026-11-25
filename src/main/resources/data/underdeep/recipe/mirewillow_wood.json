@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:mirewillow_log"
+    }
+  },
+  "result": {
+    "id": "underdeep:mirewillow_wood",
+    "count": 3
+  }
+}

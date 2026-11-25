@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:mendleaf_sprig"
+    },
+    {
+      "item": "underdeep:mendleaf_sprig"
+    },
+    {
+      "item": "underdeep:mendleaf_sprig"
+    },
+    {
+      "item": "minecraft:paper"
+    }
+  ],
+  "result": {
+    "id": "underdeep:mendleaf_poultice",
+    "count": 1
+  }
+}

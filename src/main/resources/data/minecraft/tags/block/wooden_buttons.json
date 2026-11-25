@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskoak_button",
+    "underdeep:spirebark_button",
+    "underdeep:goldwood_button",
+    "underdeep:mirewillow_button",
+    "underdeep:frostfir_button",
+    "underdeep:bloodthorn_button",
+    "underdeep:lumenwood_button"
+  ]
+}

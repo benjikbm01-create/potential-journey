@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:voidroot",
+    "underdeep:voidroot_plant",
+    "underdeep:ledgevine",
+    "underdeep:ledgevine_plant",
+    "underdeep:starstrand",
+    "underdeep:starstrand_plant"
+  ]
+}

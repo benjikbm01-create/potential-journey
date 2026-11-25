@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "underdeep:sunbean"
+    },
+    {
+      "item": "underdeep:sunbean"
+    },
+    {
+      "item": "underdeep:sunbean"
+    },
+    {
+      "item": "underdeep:duskroot"
+    }
+  ],
+  "result": {
+    "id": "underdeep:sunbean_stew",
+    "count": 1
+  }
+}

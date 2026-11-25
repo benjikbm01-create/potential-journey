@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:mud",
+    "minecraft:clay",
+    "minecraft:muddy_mangrove_roots",
+    "minecraft:packed_mud",
+    "#underdeep:plant_soil"
+  ]
+}

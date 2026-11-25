@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:basalt",
+    "minecraft:smooth_basalt",
+    "minecraft:blackstone",
+    "minecraft:magma_block",
+    "minecraft:netherrack",
+    "minecraft:soul_soil",
+    "minecraft:soul_sand",
+    "minecraft:crimson_nylium",
+    "minecraft:warped_nylium",
+    "underdeep:ember_nylium",
+    "minecraft:gilded_blackstone",
+    "minecraft:red_sand",
+    "minecraft:nether_wart_block",
+    "#underdeep:plant_soil"
+  ]
+}

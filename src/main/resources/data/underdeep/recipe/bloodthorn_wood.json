@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:bloodthorn_log"
+    }
+  },
+  "result": {
+    "id": "underdeep:bloodthorn_wood",
+    "count": 3
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:logs",
+    "underdeep:rotting_log",
+    "underdeep:fungal_stem",
+    "underdeep:petrified_wood"
+  ]
+}

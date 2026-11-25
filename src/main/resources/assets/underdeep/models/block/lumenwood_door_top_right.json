@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right",
+  "textures": {
+    "bottom": "underdeep:block/lumenwood_door_bottom",
+    "top": "underdeep:block/lumenwood_door_top"
+  }
+}

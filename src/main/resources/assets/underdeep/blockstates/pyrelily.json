@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blooming=false": {
+      "model": "underdeep:block/pyrelily"
+    },
+    "blooming=true": {
+      "model": "underdeep:block/pyrelily_bloom"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:mirewillow_planks"
+    }
+  },
+  "result": {
+    "id": "underdeep:mirewillow_trapdoor",
+    "count": 2
+  }
+}

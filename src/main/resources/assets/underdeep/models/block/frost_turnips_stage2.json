@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "underdeep:block/frost_turnips_stage2"
+  }
+}

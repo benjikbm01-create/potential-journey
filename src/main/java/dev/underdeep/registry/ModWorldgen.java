@@ -31,6 +31,16 @@ public final class ModWorldgen {
     public static final Feature<DefaultFeatureConfig> ORE_OUTCROP =
             Registry.register(Registries.FEATURE, id("ore_outcrop"), new OreOutcropFeature(DefaultFeatureConfig.CODEC));
 
+    // ---- Stage 2 ----
+    public static final Feature<dev.underdeep.world.feature.SpeciesFeatureConfig> TREE =
+            Registry.register(Registries.FEATURE, id("tree"), new dev.underdeep.world.feature.UnderdeepTreeFeature());
+    public static final Feature<dev.underdeep.world.feature.SpeciesFeatureConfig> GIANT_FUNGUS =
+            Registry.register(Registries.FEATURE, id("giant_fungus"), new dev.underdeep.world.feature.GiantFungusFeature());
+    public static final Feature<dev.underdeep.world.feature.SpeciesFeatureConfig> FALLEN_LOG =
+            Registry.register(Registries.FEATURE, id("fallen_log"), new dev.underdeep.world.feature.FallenLogFeature());
+    public static final Feature<DefaultFeatureConfig> CORAL_CLUSTER =
+            Registry.register(Registries.FEATURE, id("coral_cluster"), new dev.underdeep.world.feature.CoralClusterFeature());
+
     private ModWorldgen() {
     }
 

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:mendleaf_sprig",
+    "underdeep:sunleaf_blossom",
+    "underdeep:emberwort_root",
+    "underdeep:bogwort_leaf",
+    "underdeep:siltwort_frond",
+    "underdeep:moonpetal_petal"
+  ]
+}

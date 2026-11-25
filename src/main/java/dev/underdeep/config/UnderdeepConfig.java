@@ -41,6 +41,24 @@ public final class UnderdeepConfig {
     public double monsterSpawnChanceHigh = 0.45;
     public double monsterSpawnChanceExtreme = 1.0;
 
+    // ---- Stage 2: ecology ----
+    /** Natural spreading of plants, fungi, fungal soil and aquatic vegetation (Underdeep worlds only). */
+    public boolean naturalSpreading = true;
+    /** Multiplier for all natural spreading chances (0 disables spreading, 2 doubles it). */
+    public double spreadRateMultiplier = 1.0;
+    /** Maximum number of the same species within a spreading plant's neighbourhood before it stops spreading. */
+    public int spreadDensityLimit = 5;
+    /** Puffball spore releases (particles and new fungi nearby). */
+    public boolean sporeReleases = true;
+    /** Whether spore releases briefly weaken players standing right next to them. */
+    public boolean sporeEffects = true;
+    /** Slow regrowth of crystal buds on budding blocks. */
+    public boolean crystalRegrowth = true;
+    /** Thorny, toxic and snapping plants affect creatures that touch them. */
+    public boolean reactivePlants = true;
+    /** Ambient ecological particles (pollen, spores, falling leaves). Client-side setting. */
+    public boolean ambientParticles = true;
+
     public static UnderdeepConfig get() {
         return instance;
     }

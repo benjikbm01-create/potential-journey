@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": {
+    "item": "underdeep:raw_umbralite"
+  },
+  "result": {
+    "id": "underdeep:umbralite_ingot"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

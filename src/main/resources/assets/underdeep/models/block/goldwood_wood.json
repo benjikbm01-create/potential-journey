@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "underdeep:block/goldwood_log",
+    "side": "underdeep:block/goldwood_log"
+  }
+}

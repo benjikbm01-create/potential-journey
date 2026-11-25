@@ -44,8 +44,8 @@ public final class ModBlocks {
             .mapColor(MapColor.GOLD).luminance(s -> 13)));
     public static final Block STARMOSS = register("starmoss", new Block(AbstractBlock.Settings.copy(Blocks.MOSS_BLOCK)
             .mapColor(MapColor.LIGHT_BLUE).luminance(s -> 13)));
-    public static final Block SPOREGLOW_SOIL = register("sporeglow_soil", new Block(AbstractBlock.Settings.copy(Blocks.MYCELIUM)
-            .mapColor(MapColor.CYAN).luminance(s -> 12)));
+    public static final Block SPOREGLOW_SOIL = register("sporeglow_soil", new dev.underdeep.block.plant.FungalSoilBlock(
+            AbstractBlock.Settings.copy(Blocks.MYCELIUM).mapColor(MapColor.CYAN).luminance(s -> 12)));
     public static final Block EMBER_NYLIUM = register("ember_nylium", new Block(AbstractBlock.Settings.copy(Blocks.NETHERRACK)
             .mapColor(MapColor.DARK_RED).sounds(BlockSoundGroup.NYLIUM).luminance(s -> 9)));
     public static final Block GOLDEN_LEAVES = register("golden_leaves", new LeavesBlock(AbstractBlock.Settings.copy(Blocks.OAK_LEAVES)
@@ -63,7 +63,9 @@ public final class ModBlocks {
             .mapColor(MapColor.WHITE).strength(1.5f).requiresTool().sounds(BlockSoundGroup.CALCITE).luminance(s -> 15)));
     public static final Block STORMSTONE = register("stormstone", new Block(AbstractBlock.Settings.copy(Blocks.DEEPSLATE)
             .mapColor(MapColor.BLUE)));
-    public static final Block CHARGED_STORMSTONE = register("charged_stormstone", new Block(AbstractBlock.Settings.copy(Blocks.DEEPSLATE)
+    /** Charged stormstone slowly regrows storm crystals on its exposed faces (Stage 2). */
+    public static final Block CHARGED_STORMSTONE = register("charged_stormstone", new dev.underdeep.block.plant.CrystalGrowerBlock(
+            java.util.List.of(() -> ModBlocks.STORM_CRYSTAL), 12, AbstractBlock.Settings.copy(Blocks.DEEPSLATE)
             .mapColor(MapColor.PURPLE).luminance(s -> 8)));
     public static final Block STORM_CRYSTAL = register("storm_crystal", new AmethystClusterBlock(7.0f, 3.0f,
             AbstractBlock.Settings.create().mapColor(MapColor.PURPLE).solid().nonOpaque().sounds(BlockSoundGroup.AMETHYST_CLUSTER)

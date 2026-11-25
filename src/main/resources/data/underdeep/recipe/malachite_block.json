@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "underdeep:malachite"
+    }
+  },
+  "result": {
+    "id": "underdeep:malachite_block",
+    "count": 1
+  }
+}

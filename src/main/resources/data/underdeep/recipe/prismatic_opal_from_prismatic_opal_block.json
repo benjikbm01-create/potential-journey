@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:prismatic_opal_block"
+    }
+  ],
+  "result": {
+    "id": "underdeep:prismatic_opal",
+    "count": 9
+  }
+}

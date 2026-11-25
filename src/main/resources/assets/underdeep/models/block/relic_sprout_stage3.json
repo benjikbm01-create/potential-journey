@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "underdeep:block/relic_sprout_stage3"
+  }
+}

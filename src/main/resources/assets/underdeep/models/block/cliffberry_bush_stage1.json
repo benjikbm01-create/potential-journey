@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "underdeep:block/cliffberry_bush_stage1"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "underdeep:block/duskoak_planks",
+    "top": "underdeep:block/duskoak_planks",
+    "side": "underdeep:block/duskoak_planks"
+  }
+}

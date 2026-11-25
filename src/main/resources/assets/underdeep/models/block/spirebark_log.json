@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "underdeep:block/spirebark_log_top",
+    "side": "underdeep:block/spirebark_log"
+  }
+}

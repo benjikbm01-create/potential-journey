@@ -25,6 +25,9 @@ public final class Underdeep implements ModInitializer {
     public void onInitialize() {
         UnderdeepConfig.load();
         ModBlocks.init();
+        dev.underdeep.registry.ModWood.init();
+        dev.underdeep.registry.ModPlants.init();
+        dev.underdeep.registry.ModItems.init();
         ModWorldgen.init();
         UnderdeepCommands.init();
         SelfTest.init();
