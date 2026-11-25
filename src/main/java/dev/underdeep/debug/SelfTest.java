@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dev.underdeep.Underdeep;
 import dev.underdeep.world.UnderdeepWorlds;
+import dev.underdeep.world.noise.Hashing;
 import dev.underdeep.world.analysis.ConnectivityAnalyzer;
 import dev.underdeep.world.analysis.SiteAnalyzer;
 import dev.underdeep.world.analysis.SiteCandidate;
@@ -300,6 +301,32 @@ public final class SelfTest {
         connectivity(world, t, spawn.getX() >> 4, spawn.getZ() >> 4, 10, "spawn area");
         connectivity(world, t, 140, -90, 10, "remote area (2240,-1440)");
 
+        // ------------------------------------------------------------------ Stage 1.5 measurements
+        Stage15Checks.Reporter rep = new Stage15Checks.Reporter() {
+            @Override
+            public void check(String name, boolean pass, String detail) {
+                SelfTest.check(name, pass, detail);
+            }
+
+            @Override
+            public void info(String name, String detail) {
+                SelfTest.info(name, detail);
+            }
+
+            @Override
+            public void section(String title) {
+                SelfTest.section(title);
+            }
+        };
+        Map<RegionType, int[]> reps = Stage15Checks.distribution(t, rep);
+        Stage15Checks.accessibility(t, spawn, rep);
+        Stage15Checks.landmarks(t, rep);
+        Stage15Checks.settlementAreas(t, rep);
+        Stage15Checks.lighting(world, t, reps, rep);
+        Stage15Checks.survival(server, world, spawn, rep);
+        writeReps(reps, dir);
+        tourReps = reps;
+
         // ------------------------------------------------------------------ settlement sites
         section("Settlement site analysis near spawn (radius 1200)");
         for (SiteType st : SiteType.values()) {
@@ -367,11 +394,28 @@ public final class SelfTest {
         info("artifacts", "previews and tour.txt written to " + dir.toAbsolutePath());
 
         if (phase.equals("create")) {
+            // Re-record spawn-area hashes after the growth tests so the reload comparison sees the saved state.
+            StringBuilder finalHashes = new StringBuilder();
+            for (int i = -2; i <= 2; i++) {
+                for (int j = -2; j <= 2; j++) {
+                    Chunk c = world.getChunk((spawn.getX() >> 4) + i, (spawn.getZ() >> 4) + j, ChunkStatus.FULL, true);
+                    finalHashes.append((spawn.getX() >> 4) + i).append(',').append((spawn.getZ() >> 4) + j).append(' ')
+                            .append(Long.toHexString(GenerationBenchmark.hash(c))).append('\n');
+                }
+            }
+            Files.writeString(dir.resolve("spawn_hashes_create.txt"), finalHashes.toString());
             long saveStart = System.nanoTime();
             server.saveAll(true, true, true);
             info("save", String.format(Locale.ROOT, "saveAll took %.0f ms", (System.nanoTime() - saveStart) / 1e6));
         }
         info("average tick time (ms)", String.format(Locale.ROOT, "%.2f", server.getAverageTickTime()));
+        Runtime rt = Runtime.getRuntime();
+        long beforeGc = rt.totalMemory() - rt.freeMemory();
+        System.gc();
+        long afterGc = rt.totalMemory() - rt.freeMemory();
+        int loaded = world.getChunkManager().getLoadedChunkCount();
+        info("memory", String.format(Locale.ROOT, "heap used %d MB before GC, %d MB after GC (max %d MB), %d chunks loaded in the overworld",
+                beforeGc >> 20, afterGc >> 20, rt.maxMemory() >> 20, loaded));
         check("selftest completed", true, "all sections executed");
     }
 
@@ -607,50 +651,56 @@ public final class SelfTest {
         info(label + " inter-layer shafts (graph cells overlapping area)", String.valueOf(shafts));
     }
 
+    private static Map<RegionType, int[]> tourReps = new java.util.EnumMap<>(RegionType.class);
+
     private static void writeTour(ServerWorld world, UnderdeepTerrain t, BlockPos spawn, Map<RegionType, int[]> regionPos, Path dir)
             throws IOException {
         StringBuilder sb = new StringBuilder("# name x y z yaw pitch\n");
         sb.append(String.format(Locale.ROOT, "spawn_n %d %.1f %d 180 0\n", spawn.getX(), spawn.getY() + 1.6, spawn.getZ()));
         sb.append(String.format(Locale.ROOT, "spawn_e %d %.1f %d -90 5\n", spawn.getX(), spawn.getY() + 1.6, spawn.getZ()));
         sb.append(String.format(Locale.ROOT, "spawn_overview %d %.1f %d 30 25\n", spawn.getX() - 30, spawn.getY() + 30.0, spawn.getZ() - 30));
-        Set<RegionType> done = EnumSet.noneOf(RegionType.class);
-        for (CavernLayer layer : CavernLayer.values()) {
-            CavernGraph g = t.graph(layer);
-            Map<RegionType, CavernGraph.Node> best = new EnumMap<>(RegionType.class);
-            for (CavernGraph.Node n : g.nodesIn(-1800, -1800, 1800, 1800)) {
-                TerrainColumn c = t.column((int) n.x(), (int) n.z());
-                var rs = layer == CavernLayer.UPPER ? c.upperRegion : c.deepRegion;
-                RegionType r = rs.primary;
-                double gap = layer == CavernLayer.UPPER ? c.upperCeiling - c.upperFloor : c.deepCeiling - c.deepFloor;
-                if (gap < 30 || done.contains(r) || rs.borderDistance < 110) {
-                    continue;
-                }
-                CavernGraph.Node b = best.get(r);
-                if (b == null || n.radius() > b.radius()) {
-                    best.put(r, n);
+        for (Map.Entry<RegionType, int[]> e : tourReps.entrySet()) {
+            int[] p = e.getValue();
+            CavernLayer layer = CavernLayer.values()[p[1]];
+            boolean upper = layer == CavernLayer.UPPER;
+            // Find an open, dry spot near the region centre with room to look around.
+            int bx = p[0];
+            int bz = p[2];
+            int fx = Integer.MIN_VALUE;
+            int fz = 0;
+            search:
+            for (int rad = 0; rad <= 96; rad += 4) {
+                for (int dx = -rad; dx <= rad; dx += 4) {
+                    for (int dz = -rad; dz <= rad; dz += 4) {
+                        if (Math.max(Math.abs(dx), Math.abs(dz)) != rad) {
+                            continue;
+                        }
+                        TerrainColumn c = t.column(bx + dx, bz + dz);
+                        double gap = upper ? c.upperCeiling - c.upperFloor : c.deepCeiling - c.deepFloor;
+                        if (gap > 22 && (upper ? c.upperRegion : c.deepRegion).primary == e.getKey()) {
+                            fx = bx + dx;
+                            fz = bz + dz;
+                            break search;
+                        }
+                    }
                 }
             }
-            for (Map.Entry<RegionType, CavernGraph.Node> e : best.entrySet()) {
-                CavernGraph.Node n = e.getValue();
-                // Stand back along the chamber's long axis and look across it.
-                int cx = (int) (n.x() - n.cos() * n.radius() * 0.55);
-                int cz = (int) (n.z() - n.sin() * n.radius() * 0.55);
-                TerrainColumn c = t.column(cx, cz);
-                double f = layer == CavernLayer.UPPER ? c.upperFloor : c.deepFloor;
-                double ce = layer == CavernLayer.UPPER ? c.upperCeiling : c.deepCeiling;
-                if (ce - f < 12) {
-                    cx = (int) n.x();
-                    cz = (int) n.z();
-                    c = t.column(cx, cz);
-                    f = layer == CavernLayer.UPPER ? c.upperFloor : c.deepFloor;
-                    ce = layer == CavernLayer.UPPER ? c.upperCeiling : c.deepCeiling;
-                }
-                double fluid = layer == CavernLayer.UPPER ? UnderdeepTerrain.SEA_LEVEL : CavernLayer.DEEP.fluidLevel;
-                double y = Math.max(f, fluid) + Math.min(24, (ce - Math.max(f, fluid)) * 0.3);
-                float yaw = (float) Math.toDegrees(Math.atan2(-n.cos(), n.sin()));
-                sb.append(String.format(Locale.ROOT, "%s_%s %d %.1f %d %.0f 6\n", e.getKey().id(), layer.id, cx, y, cz, yaw));
-                done.add(e.getKey());
+            if (fx == Integer.MIN_VALUE) {
+                continue;
             }
+            TerrainColumn c = t.column(fx, fz);
+            double f = upper ? c.upperFloor : c.deepFloor;
+            double ce = upper ? c.upperCeiling : c.deepCeiling;
+            double fluid = upper ? UnderdeepTerrain.SEA_LEVEL : CavernLayer.DEEP.fluidLevel;
+            if (!Double.isNaN(c.pondLevel)) {
+                fluid = Math.max(fluid, c.pondLevel);
+            }
+            double stand = Math.max(f, fluid) + 1;
+            int yaw = (int) (Hashing.unit(Hashing.hash(t.seed(), fx, fz, 9)) * 360) - 180;
+            sb.append(String.format(Locale.ROOT, "%s_%s_air %d %.1f %d %d 12\n", e.getKey().id(), layer.id, fx,
+                    stand + Math.min(24, (ce - stand) * 0.35), fz, yaw));
+            sb.append(String.format(Locale.ROOT, "%s_%s_ground %d %.1f %d %d 0 natural\n", e.getKey().id(), layer.id, fx,
+                    stand + 1.0, fz, yaw + 90));
         }
         // A shaft near spawn, looking down.
         outer:
@@ -672,6 +722,13 @@ public final class SelfTest {
             }
         }
         Files.writeString(dir.resolve("tour.txt"), sb.toString());
+    }
+
+    /** Representative positions per ecosystem, used by the mob study and the visual tour. */
+    private static void writeReps(Map<RegionType, int[]> reps, Path dir) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        reps.forEach((k, v) -> sb.append(k.id()).append(' ').append(v[0]).append(' ').append(v[1]).append(' ').append(v[2]).append('\n'));
+        Files.writeString(dir.resolve("ecosystem_sites.txt"), sb.toString());
     }
 
     private static void writeReports(Path dir) throws IOException {

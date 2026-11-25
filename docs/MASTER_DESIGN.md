@@ -38,22 +38,33 @@ Memorable multiplayer stories should emerge from interacting systems rather than
   vertical shafts (some with spiral ledges), and winding tunnels thread through the rock.
 - Players start in a guaranteed, well-provisioned Rootwild cavern at the world origin.
 
-## 3. Ecosystems (target 12–15)
+## 3. Ecosystems (15 implemented as of Stage 1.5)
 
-Stage 1 foundations (terrain + biome + basic flora):
+Ecosystems are organised as many small, organically shaped regions (typically 60–250 blocks, some
+250–700) whose neighbours follow a believable climate geography; giant caverns routinely span several
+ecosystems. Each ecosystem has sub-regional variants (open, typical, dense/rugged, lake/wet).
 
-| Region | Character | Terrain signature |
-|---|---|---|
-| Rootwild | welcoming underground forest, moss, roots, streams | tall chambers, rolling hills, root pillars, rivers, ponds |
-| Fungal Expanse | colourful giant fungi, spores | mounded terraced floors, lower domes, nylium/mycelium |
-| Flooded Depths | lakes, islands, waterfalls | floors below the water table, island hills, many springs |
-| Ashen Hollows | basalt, blackstone, lava channels | sharp terraced cliffs, ridged mountains, lava rivers and pools |
-| Crystal Deep | crystal halls, geodes | very tall caverns, spires, bridges, crystal clusters |
-| The Abyss | dark colossal depths | huge chambers, enormous pillars, chasms to a lava sea |
+| Ecosystem | Danger | Light | Identity |
+|---|---|---|---|
+| Rootwild | low | bright | welcoming forest caverns: colossal trees, roots, rivers, meadows, lakes (start) |
+| Golden Grove | low | bright | warm golden-leaved groves, meadows, clearings — prime settlement land |
+| Emerald Wetlands | low | bright | shallow marshes, channels, mangroves, glowing reeds |
+| Fungal Expanse | low | bright | giant mushrooms with glowing undersides, spore soils, mounds |
+| Starlight Caverns | low | bright | enormous open caverns under star-studded ceilings, lakes, starbloom meadows |
+| Flooded Depths | medium | moderate | underground lakes and seas, islands, waterfalls (boats useful) |
+| Sunken Gardens | medium | moderate | submerged valleys with coral gardens and kelp forests |
+| Crystal Deep | medium | moderate | towering crystal halls, giant crystal clusters, bridges |
+| Everfrost | medium | moderate | frozen lakes, ice caverns, giant icicles, ice bridges |
+| Hollow Peaks | medium | moderate | mountain ranges, plateaus and passes inside the tallest caverns |
+| Petrified Forest | medium | moderate | stone trees, fossils, amber, ancient terraces |
+| Ashen Hollows | high | dark | volcanic mountains, lava rivers and craters, basalt |
+| Crimson Basin | high | dark | alien red basins with lava pockets and crimson growth |
+| Stormstone Caverns | high | dark | jagged blue-purple mineral caverns with charged veins |
+| The Abyss | extreme | pitch | the deep layer: colossal dark chambers, chasms to a lava sea |
 
-Planned additional ecosystems (Stage 2+, names provisional): glowworm grottos, salt flats, frozen
-caverns, sunken ruins marsh, bone fields, chasm cliffs, sulphur springs, root-choked hollows,
-mirror lakes. Each must have a distinct terrain profile, resources and habitat tags.
+Danger classes govern natural hostile spawning (peaceful ecosystems are genuinely peaceful); lighting classes
+govern natural light (bright ecosystems are comfortable to build in without torches). Stage 2 deepens each
+ecosystem with custom flora and resources; Stage 3 replaces vanilla monsters with ecosystem creatures.
 
 ## 4. Living world systems (later stages)
 

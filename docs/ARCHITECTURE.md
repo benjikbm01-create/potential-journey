@@ -78,13 +78,17 @@ y−8, lava/water level y−44). Each layer has its own region map and cavern gr
 *separation* height (upper floor − 8) splits the column into the two layers for biomes, palettes and
 fluids. Deep ceilings are softly capped 6 blocks below the separation, leaving a ≥14-block crust.
 
-### 4.2 Regions (`RegionMap`)
-Domain-warped Voronoi cells (704 blocks upper, 832 deep). A cell's `RegionType` comes from
-temperature/moisture noise sampled at the cell centre, matched to per-type climate prototypes. The
-upper cell containing the origin is forced to Rootwild, and every region type of a layer is
-guaranteed to occur within 3 cells of the origin. `RegionSample` gives the primary type, a stable
-`RegionId` (layer + cell → packed long) and blend weights; terrain profiles are blended near borders
-over ~72 blocks so terrain transitions are continuous while biome borders stay crisp.
+### 4.2 Regions (`RegionMap`, Stage 1.5)
+15 ecosystems (`RegionType`, with `Danger` and `Lighting` classes). Each layer is tiled by small Voronoi cells
+(112 blocks upper, 160 deep) domain-warped at two scales (amplitudes 75 and 18). Each cell takes the ecosystem
+whose prototype is nearest to the cell's climate (temperature, moisture, mineral — each normalised to a uniform
+[-1, 1] via the normal CDF of its measured spread, plus per-cell jitter) minus a per-ecosystem bias solved at
+construction so each ecosystem reaches a target share. Neighbouring cells usually agree, giving contiguous
+regions of varied size. Guarantees: origin cell and neighbours within 95 blocks are Rootwild; high/extreme-danger
+ecosystems are penalised within 850 blocks of the origin; every ecosystem of the layer occurs within ~2300
+blocks (a missing one is planted as a 5-cell cluster at the cell whose climate suits it best). `RegionSample`
+gives the primary type, `RegionId`, blend weights (blend radius 34 blocks) and the distance to the nearest
+border with a *different* ecosystem. `neighbourTypes(cell)` lists adjacent ecosystems.
 
 ### 4.3 Cavern graph (`CavernGraph`) — connectivity by construction
 Each layer is divided into graph cells (176 / 224 blocks). Every cell owns one chamber node (jittered,
@@ -106,10 +110,23 @@ their own tunnels at the water table); ravines (dry floors only, never below the
 abyssal pits down to the deep lava sea; perched ponds (constant level per pond, guaranteed rim,
 noise suppressed nearby); shafts; pillar and bridge parameters.
 
+### 4.4b Sub-regional variants
+`UnderdeepTerrain#variantAt` (noise, ~120-block features) assigns 0 open / 1 typical / 2 dense-rugged /
+3 lake-wet. Variants scale hills, add/enlarge ponds and filter features through `underdeep:variant`.
+
+### 4.4c Landmarks and formations (`Landmarks`, `UnderdeepTerrain#formation`)
+Landmark cells (230 upper / 320 deep); a landmark is placed only inside a chamber at least 32 blocks tall.
+Kinds by ecosystem: colossal tree, giant mushroom/fungus, crystal cluster, arch (single/crossing), fossil
+skeleton, volcano (lava crater). Built from tapered capsules, ellipsoids and tori; ~13 % titan-scale. Pillars
+(leaning, lobed), bridges and landmarks produce a `FormationHit` (density + material code + region); they only
+fill open space. `BlockPalette.formation` maps code × region to blocks.
+
 ### 4.5 Density and materials
-`density = max(min(y-floor, ceiling-y) per layer, shaft) + roughness·amp`, then winding tunnels
-(two-noise "spaghetti", only in bands that cannot connect differing fluid domains), then pillars
-(hourglass radius) and bridges/arches (thin slabs at 42–60 % of cavern height) via `min`. `> 0` is
+`openDensity = max(min(y-floor, ceiling-y) per layer, shaft) + roughness·amp`, then winding tunnels
+(two-noise "spaghetti", only in bands that cannot connect differing fluid domains). Formations
+(pillars, bridges/arches, landmarks) are evaluated separately; `Material.FORMATION` where they fill open
+space. Basins (Crimson) sink chamber floors towards their centres; Everfrost fluid surfaces become ice
+(`Material.ICE`). `> 0` is
 open. `classify` adds bedrock (floor y−64..−60, roof y315..319), sealed rock above y302 and below
 y−58, and fluids: pond fluid; upper-layer water/lava (Ashen) at or below y112; deep water/lava
 (Abyss/Ashen) at or below y−44. Fluid rules are designed so fluid never sits beside air at the same
@@ -135,6 +152,18 @@ Vanilla never gives `BiomeSource#getBiome` the seed. `UnderdeepChunkGenerator#cr
 model in a weak identity map keyed by that world's `MultiNoiseSampler`; the biome source and generator
 look it up. Terrain objects are shared per seed (immutable). No mixin is needed for this.
 
+## 5a. Natural hostile spawning (`world/spawn/SpawnRules`)
+`UnderdeepChunkGenerator#getEntitySpawnList` returns an empty monster pool for attempts that fail
+`SpawnRules.allowMonster`: always inside the starter zone (radius `starterSafeRadius`=150 around the origin,
+above y90); otherwise with probability `monsterSpawnChance{Low,Medium,High,Extreme}` (0 / 0.12 / 0.45 / 1.0,
+config). Low-danger biomes also have empty monster lists; medium+ biomes carry spawn costs (energy budget
+0.08 / 0.12 / 0.16, charge 0.7) to cap local density. Only natural spawning is affected.
+
+## 5b. Natural lighting
+Surface painter places pools of light-emitting ground cover with density by `Lighting` class (bright
+≈10–36 %, moderate 2–12 %, dark ≈1–3 % of dry floor tops, modulated by a pool noise); plus glowing plants
+(features), glowing leaves and formation materials, star-stone ceilings (Starlight).
+
 ## 5. Spawn
 `MinecraftServerMixin` replaces `setupSpawn` for Underdeep worlds: `SpawnFinder` spirals out from the
 origin over generated chunks and accepts the first position whose 3×3 footprint is solid, dry,
@@ -154,6 +183,11 @@ spawn and moves them up until free — all players spawn safely. Bonus chest is 
 | Regional simulation storage | `UnderdeepWorldState#regionData(regionId)` | one small NBT compound per region, never per block |
 | Terrain inspection | `UnderdeepTerrain#column`, `materialAt`, `regionAt` | thread-safe |
 | Connectivity validation | `ConnectivityAnalyzer` | diagnostics/tests only (heavy) |
+| Ecosystem distribution | `RegionDistribution.analyze` | region sizes, shares, counts within radii, transition frequency |
+| Survival traversal | `Accessibility.analyze` | walk/swim reachability, path vs straight distances, walkable borders |
+| Danger / lighting | `RegionType#danger()`, `#lighting()`, biome tags `underdeep:danger_*` | spawning, future ecology |
+| Neighbouring ecosystems | `RegionMap#neighbourTypes` | for migration / trade-route planning |
+| Landmarks | `UnderdeepTerrain#landmarks(layer)` | positions & kinds for future discovery/settlement logic |
 
 **Extending regions:** add a `RegionType` entry at the end with a `TerrainProfile` and environment,
 add it to a layer's region list and climate prototypes in `RegionMap`, add a biome in
@@ -174,5 +208,7 @@ entities to match on approach. `InitialPopulation` is a placeholder to be replac
 ## 8. Diagnostics
 `/underdeep info | region [pos] | locate <region> | spawncheck | cavern [pos] | sites <type> [radius] |
 perf [chunks] | render [radius] | connectivity [radiusChunks]` — permission level from config (default 2).
+Mob study (`-Dunderdeep.mobstudy=<dir>`, `scripts/mob_study.sh`) measures natural spawning with a real
+client connected to the dedicated server.
 `F3` debug screen shows layer, region and cavern heights. Self-test (`-Dunderdeep.selftest=<dir>`) and
 screenshot tour (`-Dunderdeep.tour=<file>`) are inert unless those properties are set.

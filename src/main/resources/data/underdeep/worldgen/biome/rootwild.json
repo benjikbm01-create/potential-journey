@@ -10,7 +10,6 @@
       "offset": 2.0
     },
     "fog_color": 3889722,
-    "sky_color": 3889722,
     "water_color": 4159204,
     "water_fog_color": 404026,
     "grass_color": 7319626,
@@ -19,66 +18,18 @@
       "options": {
         "type": "minecraft:spore_blossom_air"
       },
-      "probability": 0.0025
+      "probability": 0.002
     },
     "music": {
       "sound": "minecraft:music.overworld.lush_caves",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
-    }
+    },
+    "sky_color": 3889722
   },
   "spawners": {
-    "monster": [
-      {
-        "type": "minecraft:spider",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:zombie",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:skeleton",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:creeper",
-        "weight": 70,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:slime",
-        "weight": 40,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:enderman",
-        "weight": 6,
-        "minCount": 1,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:witch",
-        "weight": 4,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "minecraft:zombie_villager",
-        "weight": 4,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
+    "monster": [],
     "creature": [
       {
         "type": "minecraft:sheep",
@@ -114,9 +65,9 @@
     "ambient": [
       {
         "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 4
       }
     ],
     "axolotls": [],
@@ -140,7 +91,7 @@
     [],
     [
       "minecraft:monster_room",
-      "minecraft:monster_room_deep"
+      "underdeep:fossils"
     ],
     [],
     [],
@@ -182,6 +133,7 @@
       "underdeep:start_ore_outcrops",
       "underdeep:start_trees",
       "underdeep:rootwild_trees",
+      "underdeep:rootwild_trees_dense",
       "underdeep:hanging_roots",
       "underdeep:rooted_azalea",
       "underdeep:moss_patch",
@@ -191,7 +143,9 @@
       "underdeep:patch_taiga_grass",
       "underdeep:start_berries",
       "underdeep:patch_berry_bush",
+      "underdeep:patch_pumpkin",
       "underdeep:flower_default",
+      "underdeep:flower_meadow",
       "underdeep:start_sugar_cane",
       "underdeep:patch_sugar_cane",
       "underdeep:start_mushrooms",
@@ -203,6 +157,7 @@
       "underdeep:cave_vines",
       "underdeep:spore_blossom",
       "underdeep:seagrass",
+      "underdeep:lumen_seagrass",
       "underdeep:lily_pads"
     ],
     []

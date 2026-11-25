@@ -10,7 +10,6 @@
       "offset": 2.0
     },
     "fog_color": 789524,
-    "sky_color": 789524,
     "water_color": 4147818,
     "water_fog_color": 328976,
     "grass_color": 4872778,
@@ -19,70 +18,65 @@
       "options": {
         "type": "minecraft:ash"
       },
-      "probability": 0.01
+      "probability": 0.008
     },
     "music": {
       "sound": "minecraft:music.overworld.deep_dark",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
-    }
+    },
+    "sky_color": 789524
   },
   "spawners": {
     "monster": [
       {
         "type": "minecraft:spider",
-        "weight": 80,
-        "minCount": 4,
+        "weight": 90,
+        "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "minecraft:zombie",
-        "weight": 80,
-        "minCount": 4,
+        "weight": 90,
+        "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "minecraft:skeleton",
-        "weight": 80,
-        "minCount": 4,
+        "weight": 90,
+        "minCount": 2,
         "maxCount": 4
       },
       {
         "type": "minecraft:creeper",
-        "weight": 70,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:slime",
-        "weight": 40,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:enderman",
-        "weight": 6,
-        "minCount": 1,
-        "maxCount": 4
+        "weight": 80,
+        "minCount": 2,
+        "maxCount": 3
       },
       {
         "type": "minecraft:witch",
-        "weight": 4,
+        "weight": 6,
         "minCount": 1,
         "maxCount": 1
       },
       {
-        "type": "minecraft:zombie_villager",
-        "weight": 4,
+        "type": "minecraft:enderman",
+        "weight": 8,
         "minCount": 1,
-        "maxCount": 1
+        "maxCount": 2
       },
       {
         "type": "minecraft:cave_spider",
-        "weight": 20,
+        "weight": 40,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "minecraft:zombie_villager",
+        "weight": 8,
+        "minCount": 1,
+        "maxCount": 1
       }
     ],
     "creature": [],
@@ -100,7 +94,40 @@
     "water_ambient": [],
     "misc": []
   },
-  "spawn_costs": {},
+  "spawn_costs": {
+    "minecraft:zombie": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:skeleton": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:spider": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:creeper": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:cave_spider": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:witch": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:slime": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    },
+    "minecraft:zombie_villager": {
+      "energy_budget": 0.16,
+      "charge": 0.7
+    }
+  },
   "carvers": {},
   "features": [
     [],
@@ -108,7 +135,8 @@
     [],
     [
       "minecraft:monster_room",
-      "minecraft:monster_room_deep"
+      "minecraft:monster_room_deep",
+      "underdeep:fossils"
     ],
     [],
     [],

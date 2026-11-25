@@ -2,6 +2,13 @@
   "replace": false,
   "values": [
     "underdeep:luminite_block",
-    "underdeep:luminite_cluster"
+    "underdeep:luminite_cluster",
+    "underdeep:starstone",
+    "underdeep:stormstone",
+    "underdeep:charged_stormstone",
+    "underdeep:storm_crystal",
+    "underdeep:rime_crystal",
+    "underdeep:petrified_wood",
+    "underdeep:ember_nylium"
   ]
 }

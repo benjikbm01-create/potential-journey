@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:flooded_depths",
+    "underdeep:sunken_gardens",
+    "underdeep:crystal_deep",
+    "underdeep:everfrost",
+    "underdeep:hollow_peaks",
+    "underdeep:petrified_forest"
+  ]
+}

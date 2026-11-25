@@ -13,7 +13,10 @@ import net.minecraft.util.math.Vec3d;
 public final class UnderdeepClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.LUMINITE_CLUSTER, ModBlocks.GLOWCAP);
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.LUMINITE_CLUSTER, ModBlocks.GLOWCAP,
+                ModBlocks.STARBLOOM, ModBlocks.EMBERBLOOM, ModBlocks.AMBERBLOOM, ModBlocks.GLOWREED, ModBlocks.LUMEN_SEAGRASS,
+                ModBlocks.STORM_CRYSTAL, ModBlocks.RIME_CRYSTAL);
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GOLDEN_LEAVES, RenderLayer.getCutoutMipped());
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
         ScreenshotTour.init();
         CreateWorldTest.init();

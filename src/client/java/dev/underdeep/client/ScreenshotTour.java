@@ -26,7 +26,7 @@ import java.util.List;
  * (to show terrain shape). The game then closes. Used by docs/TESTING.md "Visual inspection".
  */
 public final class ScreenshotTour {
-    private record Shot(String name, double x, double y, double z, float yaw, float pitch) {
+    private record Shot(String name, double x, double y, double z, float yaw, float pitch, boolean naturalOnly) {
     }
 
     private static final List<Shot> SHOTS = new ArrayList<>();
@@ -50,7 +50,7 @@ public final class ScreenshotTour {
                     continue;
                 }
                 SHOTS.add(new Shot(p[0], Double.parseDouble(p[1]), Double.parseDouble(p[2]), Double.parseDouble(p[3]),
-                        Float.parseFloat(p[4]), Float.parseFloat(p[5])));
+                        Float.parseFloat(p[4]), Float.parseFloat(p[5]), p.length > 6 && p[6].equals("natural")));
             }
         } catch (IOException e) {
             Underdeep.LOGGER.error("Could not read screenshot tour {}", file, e);
@@ -95,7 +95,7 @@ public final class ScreenshotTour {
         }
         ScreenshotRecorder.saveScreenshot(client.runDirectory, "tour_" + s.name + suffix + ".png", client.getFramebuffer(),
                 msg -> Underdeep.LOGGER.info("Tour screenshot: {}", msg.getString()));
-        if (phase == 0) {
+        if (phase == 0 && !s.naturalOnly) {
             phase = 1;
             teleport(server, client, s, true);
             wait = 20;

@@ -1,0 +1,22 @@
+{
+  "feature": "underdeep:storm_crystal_up",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 10
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "floor",
+      "min_y": -60,
+      "max_y": 300,
+      "max_scan": 160
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

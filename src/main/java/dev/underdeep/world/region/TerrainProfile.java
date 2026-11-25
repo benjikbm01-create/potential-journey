@@ -46,12 +46,17 @@ public final class TerrainProfile {
     public double ravines;
     /** Amount of bottomless-looking pits (deep layer). */
     public double pits;
+    /** Depth (blocks) by which chamber floors sink towards their centre (bowl-shaped basins). */
+    public double basin;
+    /** Multiplier on perched pond / lake radius. */
+    public double pondScale = 1;
 
     public TerrainProfile() {
     }
 
     public TerrainProfile copy() {
         TerrainProfile p = new TerrainProfile();
+        p.clear();
         p.addWeighted(this, 1.0);
         return p;
     }
@@ -60,6 +65,7 @@ public final class TerrainProfile {
         floorOffset = floorAmp = hillAmp = hillFreq = ridged = terrace = 0;
         chamberRadius = chamberHeight = tunnelWidth = openField = roughness = 0;
         pillarChance = pillarRadius = bridges = spikes = rivers = ponds = shafts = ravines = pits = 0;
+        basin = pondScale = 0;
     }
 
     public void addWeighted(TerrainProfile o, double w) {
@@ -83,6 +89,15 @@ public final class TerrainProfile {
         shafts += o.shafts * w;
         ravines += o.ravines * w;
         pits += o.pits * w;
+        basin += o.basin * w;
+        pondScale += o.pondScale * w;
+    }
+
+    /** Sets Stage 1.5 extras (basin depth, pond scale). */
+    TerrainProfile extras(double basin, double pondScale) {
+        this.basin = basin;
+        this.pondScale = pondScale;
+        return this;
     }
 
     /** Fluent builder used by {@link RegionType}. */

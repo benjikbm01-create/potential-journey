@@ -4,6 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.underdeep.world.UnderdeepWorlds;
+import dev.underdeep.world.noise.Hashing;
 import dev.underdeep.world.region.RegionType;
 import dev.underdeep.world.terrain.CavernLayer;
 import dev.underdeep.world.terrain.TerrainColumn;
@@ -49,6 +50,8 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
     private static final int GRID_Y = UnderdeepTerrain.HEIGHT / GRID + 1;
 
     private final int generatorVersion;
+    /** Terrain of the world this generator instance belongs to (set once; used only for spawn rules). */
+    private volatile UnderdeepTerrain spawnTerrain;
 
     public UnderdeepChunkGenerator(BiomeSource biomeSource, int generatorVersion) {
         super(biomeSource);
@@ -70,6 +73,7 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
         // Called once when a world's chunk manager is constructed: the only place vanilla hands a
         // generator both the seed and the world's NoiseConfig.
         UnderdeepWorlds.bind(noiseConfig, seed);
+        this.spawnTerrain = UnderdeepWorlds.terrainForSeed(seed);
         return super.createStructurePlacementCalculator(structureSetRegistry, noiseConfig, seed);
     }
 
@@ -102,6 +106,7 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
     private static final BlockState BEDROCK = Blocks.BEDROCK.getDefaultState();
     private static final BlockState WATER = Blocks.WATER.getDefaultState();
     private static final BlockState LAVA = Blocks.LAVA.getDefaultState();
+    private static final BlockState ICE = Blocks.ICE.getDefaultState();
 
     /**
      * Fills one chunk. Column values are exact per block column; 3D noise is sampled on a 4-block
@@ -135,6 +140,7 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
             }
         }
         long seed = t.seed();
+        UnderdeepTerrain.FormationHit formationHit = new UnderdeepTerrain.FormationHit();
         for (int lx = 0; lx < 16; lx++) {
             int gx = lx / GRID;
             double fx = (lx % GRID) / (double) GRID;
@@ -161,8 +167,15 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
                     if (t.tunnelsAllowed(c, y)) {
                         tn = tri(tun, i00, i10, i01, i11, gy, fx, fy, fz);
                     }
-                    double d = t.density(c, y, r, tn);
-                    UnderdeepTerrain.Material m = t.classify(c, y, d);
+                    double open = t.openDensity(c, y, r, tn);
+                    UnderdeepTerrain.Material m;
+                    UnderdeepTerrain.FormationHit hit = null;
+                    if (open > 0) {
+                        hit = t.formation(c, y, formationHit);
+                        m = t.classify(c, y, open, hit.density);
+                    } else {
+                        m = t.classify(c, y, open, Double.MAX_VALUE);
+                    }
                     BlockState state;
                     switch (m) {
                         case AIR -> {
@@ -171,6 +184,9 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
                         case WATER -> state = WATER;
                         case LAVA -> state = LAVA;
                         case BEDROCK -> state = BEDROCK;
+                        case ICE -> state = ICE;
+                        case FORMATION -> state = BlockPalette.formation(hit.region, hit.code,
+                                Hashing.hash(seed, x0 + lx, y, z0 + lz), seed, y, strataOff);
                         default -> {
                             boolean deep = y < c.separation - 2 + strataOff * 0.4;
                             RegionType region = deep ? c.deepRegion.primary : c.upperRegion.primary;
@@ -215,6 +231,18 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
     }
 
     @Override
+    public net.minecraft.util.collection.Pool<net.minecraft.world.biome.SpawnSettings.SpawnEntry> getEntitySpawnList(
+            net.minecraft.registry.entry.RegistryEntry<net.minecraft.world.biome.Biome> biome, StructureAccessor accessor,
+            net.minecraft.entity.SpawnGroup group, BlockPos pos) {
+        var base = super.getEntitySpawnList(biome, accessor, group, pos);
+        if (group == net.minecraft.entity.SpawnGroup.MONSTER && !base.isEmpty()
+                && !dev.underdeep.world.spawn.SpawnRules.allowMonster(spawnTerrain, biome, pos)) {
+            return net.minecraft.util.collection.Pool.empty();
+        }
+        return base;
+    }
+
+    @Override
     public int getWorldHeight() {
         return UnderdeepTerrain.HEIGHT;
     }
@@ -253,12 +281,15 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
         double strataOff = t.strataOffset(x, z);
         BlockState[] states = new BlockState[UnderdeepTerrain.HEIGHT];
         for (int y = UnderdeepTerrain.MIN_Y; y < UnderdeepTerrain.TOP_Y; y++) {
-            double d = t.density(c, y, t.roughness(x, y, z), t.tunnelsAllowed(c, y) ? t.tunnels(x, y, z) : -100);
-            BlockState s = switch (t.classify(c, y, d)) {
+            double open = t.openDensity(c, y, t.roughness(x, y, z), t.tunnelsAllowed(c, y) ? t.tunnels(x, y, z) : -100);
+            UnderdeepTerrain.FormationHit hit = open > 0 ? t.formation(c, y, new UnderdeepTerrain.FormationHit()) : null;
+            BlockState s = switch (t.classify(c, y, open, hit != null ? hit.density : Double.MAX_VALUE)) {
                 case AIR -> Blocks.AIR.getDefaultState();
                 case WATER -> WATER;
                 case LAVA -> LAVA;
                 case BEDROCK -> BEDROCK;
+                case ICE -> ICE;
+                case FORMATION -> BlockPalette.formation(hit.region, hit.code, Hashing.hash(t.seed(), x, y, z), t.seed(), y, strataOff);
                 case STONE -> {
                     boolean deep = y < c.separation - 2 + strataOff * 0.4;
                     yield BlockPalette.rock(t.seed(), deep ? c.deepRegion.primary : c.upperRegion.primary, deep, y, strataOff);

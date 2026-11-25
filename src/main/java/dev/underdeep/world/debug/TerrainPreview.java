@@ -102,13 +102,14 @@ public final class TerrainPreview {
             int x = minX + px * scale;
             TerrainColumn c = t.column(x, z);
             for (int y = UnderdeepTerrain.MIN_Y; y < UnderdeepTerrain.TOP_Y; y++) {
-                UnderdeepTerrain.Material m = t.classify(c, y,
-                        t.density(c, y, t.roughness(x, y, z), t.tunnels(x, y, z)));
+                UnderdeepTerrain.Material m = t.materialAt(x, y, z);
                 int rgb = switch (m) {
                     case AIR -> brighten(c.regionAt(y).mapColor());
                     case WATER -> 0x2860C8;
                     case LAVA -> 0xE06010;
                     case BEDROCK -> 0x303030;
+                    case ICE -> 0xA8DCF0;
+                    case FORMATION -> 0xD0B070;
                     case STONE -> y < c.separation ? 0x3A3A44 : 0x6A6A6A;
                 };
                 img.setRGB(px, UnderdeepTerrain.TOP_Y - 1 - y, rgb);
@@ -125,13 +126,14 @@ public final class TerrainPreview {
                 int x = cx + (px - size / 2) * scale;
                 int z = cz + (pz - size / 2) * scale;
                 TerrainColumn c = t.column(x, z);
-                UnderdeepTerrain.Material m = t.classify(c, y,
-                        t.density(c, y, t.roughness(x, y, z), t.tunnels(x, y, z)));
+                UnderdeepTerrain.Material m = t.materialAt(x, y, z);
                 int rgb = switch (m) {
                     case AIR -> brighten(c.regionAt(y).mapColor());
                     case WATER -> 0x2860C8;
                     case LAVA -> 0xE06010;
                     case BEDROCK -> 0x303030;
+                    case ICE -> 0xA8DCF0;
+                    case FORMATION -> 0xD0B070;
                     case STONE -> 0x202020;
                 };
                 img.setRGB(px, pz, rgb);

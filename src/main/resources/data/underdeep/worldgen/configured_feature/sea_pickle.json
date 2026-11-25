@@ -6,7 +6,7 @@
       "state": {
         "Name": "minecraft:sea_pickle",
         "Properties": {
-          "pickles": "3",
+          "pickles": "4",
           "waterlogged": "true"
         }
       }

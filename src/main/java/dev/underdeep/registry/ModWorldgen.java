@@ -19,6 +19,8 @@ import net.minecraft.world.gen.placementmodifier.PlacementModifierType;
 public final class ModWorldgen {
     public static final PlacementModifierType<CaveSurfacePlacement> CAVE_SURFACE =
             Registry.register(Registries.PLACEMENT_MODIFIER_TYPE, id("cave_surface"), () -> CaveSurfacePlacement.CODEC);
+    public static final PlacementModifierType<dev.underdeep.world.feature.VariantPlacement> VARIANT =
+            Registry.register(Registries.PLACEMENT_MODIFIER_TYPE, id("variant"), () -> dev.underdeep.world.feature.VariantPlacement.CODEC);
     public static final PlacementModifierType<StartZonePlacement> START_ZONE =
             Registry.register(Registries.PLACEMENT_MODIFIER_TYPE, id("start_zone"), () -> StartZonePlacement.CODEC);
 

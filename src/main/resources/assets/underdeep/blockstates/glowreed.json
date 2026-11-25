@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "underdeep:block/glowreed_bottom"
+    },
+    "half=upper": {
+      "model": "underdeep:block/glowreed_top"
+    }
+  }
+}

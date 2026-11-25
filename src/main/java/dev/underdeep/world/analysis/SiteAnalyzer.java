@@ -23,6 +23,7 @@ import java.util.List;
  */
 public final class SiteAnalyzer {
     private static final int STEP = 4;
+    private static final int STEP_LARGE = 8;
 
     private SiteAnalyzer() {
     }
@@ -33,6 +34,7 @@ public final class SiteAnalyzer {
         int layerFluid = upper ? UnderdeepTerrain.SEA_LEVEL : CavernLayer.DEEP.fluidLevel;
         TerrainColumn center = t.column(x, z);
         double cFloor = upper ? center.upperFloor : center.deepFloor;
+        final int STEP = radius > 100 ? STEP_LARGE : SiteAnalyzer.STEP;
         int n = radius / STEP;
         int size = 2 * n + 1;
         double[] floors = new double[size * size];

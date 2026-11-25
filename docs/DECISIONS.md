@@ -101,3 +101,58 @@ Guarantee: terrain (rock/air/water/lava) is a pure function of seed and position
 chunk orders and JVM runs. Not guaranteed: decoration features that cross chunk borders (trees, patches,
 some ores) may differ in a small fraction of blocks depending on scheduling, as in vanilla. Systems that need
 reproducibility (settlement placement, simulation) must use the terrain model, not decorated blocks.
+
+## D-018 Stage 1.5 region system: small warped cells + calibrated 3D climate (GENERATOR_VERSION 2)
+Stage 1 regions (700–830-block Voronoi cells, 6 types) made players cross ~500 blocks of one ecosystem.
+Regions are now ~112-block (upper) / 160-block (deep) Voronoi cells, domain-warped at two scales (75 and 18
+blocks), each choosing an ecosystem from a 3-axis climate (temperature, moisture, mineral) sampled at the
+cell centre. Low-frequency climate makes neighbouring cells agree, so cells merge into regions of naturally
+varied size (measured median ≈100 blocks, p90 ≈250, max ≈700). Climate axes are normalised to a uniform
+distribution (normal CDF of the measured spread) and per-ecosystem biases are solved on a fixed sample so
+each ecosystem reaches a target share; prototype positions give believable neighbours. Dangerous ecosystems
+are penalised within 850 blocks of the origin. Trade-offs: region identity (`RegionId`) now refers to the
+small cells; worlds created with v1 must be regenerated (terrain does not match at chunk borders).
+
+## D-019 Formations and landmarks in the terrain model
+Pillars, bridges and new landmarks (colossal trees, giant mushrooms, crystal clusters, arches, fossils,
+volcanoes) are evaluated in the pure terrain model as signed-distance primitives and only fill open space.
+Reasons: they can be much larger than the vanilla 3x3-chunk feature window, stay chunk-order independent and
+are visible to analysis tools. Materials come from per-region formation palettes (wood, ice, crystal,
+petrified wood, coral, bone...). Pillars lean and have lobed cross-sections; in forest ecosystems every pillar
+is a colossal tree with a foliage ring. Cost: a few distance evaluations per open block near formations
+(early-out keeps fill time unchanged within measurement noise).
+
+## D-020 Natural light from ground cover
+Block light spreads only ~15 blocks, so ceiling lights cannot light cavern floors. Ground-level light comes from
+pools of light-emitting ground cover (glowmoss, amber moss, starmoss, sporeglow soil, ember nylium, charged
+stormstone, amber resin, luminite) painted by the surface painter with density set by the ecosystem's lighting
+class, plus glowing plants, leaves, crystals and formations. Measured with real block light in generated chunks
+(TESTING.md). Global brightness is unchanged.
+
+## D-021 Hostile spawning by ecosystem danger
+Vanilla spawns monsters wherever block light is 0 — everywhere underground. Low-danger ecosystems have no
+monster spawn entries; other ecosystems keep vanilla monsters but the chunk generator's spawn list passes only
+a configurable fraction of natural attempts (medium 12 %, high 45 %, extreme 100 %), the starter cavern
+(150 blocks, above y90) is a hard no-spawn zone, and biome spawn costs cap local density. Only natural
+spawning is affected (spawners, commands, eggs, future encounters are not). Stage 3 replaces vanilla monsters
+with ecosystem creatures using the same danger contract.
+
+## D-022 Sub-regional variants
+A separate noise field assigns each column a variant 0–3 (open, typical, dense/rugged, lake/wet) that scales
+hills, adds lakes and filters features (`underdeep:variant`), so one ecosystem contains meadows, dense forests,
+lake districts, ice-spike fields and so on without separate biome registrations.
+
+## D-023 Peaceful buffer zones
+The first mob study showed 1–3 hostiles near low-danger regions: with ~100-block regions, mobs spawned in
+neighbouring medium regions wander in. Natural hostile spawns are now also refused wherever a low-danger
+ecosystem has blend weight (≈34 blocks around peaceful regions). The generator keeps a reference to its
+world's terrain (set once in `createStructurePlacementCalculator`) for this check.
+
+## D-024 Measurement methodology (Stage 1.5)
+- Distribution is measured on explorable cavern columns of the terrain model (the generator uses the same
+  functions; terrain-level identity with generated chunks is verified separately). "Meaningful" regions are
+  contiguous areas ≥ 60 blocks across.
+- Lighting is measured as real block light in generated chunks at the standing position above ground (plants
+  and snow skipped, canopies skipped), or on the lake bed for Sunken Gardens.
+- Mob populations require a real player (vanilla spawning ignores fake players), so a real client joins the
+  dedicated server and the server-side study teleports it between sites in creative mode.

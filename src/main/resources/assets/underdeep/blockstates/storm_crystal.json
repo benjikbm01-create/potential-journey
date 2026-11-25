@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "underdeep:block/storm_crystal"
+    },
+    "facing=down": {
+      "model": "underdeep:block/storm_crystal",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "underdeep:block/storm_crystal",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/storm_crystal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=east": {
+      "model": "underdeep:block/storm_crystal",
+      "x": 90,
+      "y": 90
+    },
+    "facing=west": {
+      "model": "underdeep:block/storm_crystal",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

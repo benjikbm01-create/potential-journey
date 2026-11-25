@@ -4,6 +4,8 @@ Factual record of what exists. Test evidence: `TESTING.md`.
 
 ## Stage 1 — Foundation and underground world generation: COMPLETE (2026-11-25)
 
+(Stage 1 table kept for history; region sizes and counts were superseded by Stage 1.5.)
+
 ### Completed
 | System | State | Notes |
 |---|---|---|
@@ -38,6 +40,27 @@ Factual record of what exists. Test evidence: `TESTING.md`.
 ### Not implemented (by design, later stages)
 Wildlife simulation, civilizations/NPCs, world simulation/economy, survival/farming systems, equipment,
 structures/ruins, bosses, custom sounds/animations, underground alternatives to Nether/End resources.
+
+## Stage 1.5 — World expansion and refinement: see status below (2026-11-25/26)
+
+| System | State | Notes |
+|---|---|---|
+| 15 ecosystems registered, generated and reachable | done | all within ~2,500 blocks of spawn on every tested seed |
+| Small organic regions (median ≈100 blocks, p90 ≈250, max ≈700), climate-coherent neighbours, calibrated shares | done | `RegionMap` v2; GENERATOR_VERSION 2 |
+| Sub-regional variants (open / typical / dense / lake) driving terrain and features | done | `underdeep:variant` placement |
+| Distinct terrain per ecosystem (basins, marsh flats, mountain ranges, submerged valleys, frozen lakes, jagged fields…) | done | `RegionType` profiles |
+| Organic pillars (lean, lobes) with region materials; forest pillars are colossal trees with canopies | done | |
+| Landmarks: colossal trees, giant mushrooms/fungi, crystal clusters, arches, fossils, volcanoes; titan versions | done | terrain model |
+| 18 new blocks (glowing ground covers, leaves, flowers, reed, seagrass, starstone, stormstone family, crystals, petrified wood, amber) with textures, models, loot, tags | done | procedural placeholder-quality textures |
+| Natural lighting overhaul (ground cover pools, plants, canopies, ceilings, underwater) | done | measured per ecosystem |
+| Hostile spawning by danger class, starter no-spawn zone, density caps, config | done | measured with a real client |
+| Water: large lakes/seas (Flooded, Sunken), marshes, starlight lakes, rivers, waterfalls | done | |
+| Diagnostics: distribution, accessibility, lighting, landmarks, survival growth, mob study | done | self-test + `scripts/mob_study.sh` |
+| Settlement-compatible terrain | done (analysis) | chamber-centred usable-area report per size class (outpost/village/town/city); `SiteAnalyzer` gained ecosystem affinities; no settlements are built yet (later stages) |
+| Memory / performance measurement | done | full generation 24–26 ms/chunk; ~550 MB heap after GC with ~10 000 chunks loaded |
+
+Not done in Stage 1.5: custom creatures (Stage 3), custom sounds, ecosystem-specific resources beyond the
+foundational blocks (Stage 2), underwater air pockets in Sunken Gardens.
 
 ## Stages 2–12
 Not started.

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "underdeep:block/petrified_wood_top",
+    "side": "underdeep:block/petrified_wood"
+  }
+}

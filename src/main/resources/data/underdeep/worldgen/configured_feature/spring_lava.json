@@ -22,7 +22,11 @@
       "minecraft:blackstone",
       "minecraft:basalt",
       "minecraft:smooth_basalt",
-      "minecraft:dripstone_block"
+      "minecraft:dripstone_block",
+      "minecraft:packed_ice",
+      "minecraft:sandstone",
+      "minecraft:netherrack",
+      "underdeep:stormstone"
     ]
   }
 }

@@ -10,7 +10,6 @@
       "offset": 2.0
     },
     "fog_color": 4534366,
-    "sky_color": 4534366,
     "water_color": 5925824,
     "water_fog_color": 1708080,
     "grass_color": 9087061,
@@ -19,66 +18,18 @@
       "options": {
         "type": "minecraft:warped_spore"
       },
-      "probability": 0.006
+      "probability": 0.004
     },
     "music": {
       "sound": "minecraft:music.nether.warped_forest",
       "min_delay": 12000,
       "max_delay": 24000,
       "replace_current_music": false
-    }
+    },
+    "sky_color": 4534366
   },
   "spawners": {
-    "monster": [
-      {
-        "type": "minecraft:spider",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:zombie",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:skeleton",
-        "weight": 80,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:creeper",
-        "weight": 70,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:slime",
-        "weight": 40,
-        "minCount": 4,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:enderman",
-        "weight": 6,
-        "minCount": 1,
-        "maxCount": 4
-      },
-      {
-        "type": "minecraft:witch",
-        "weight": 4,
-        "minCount": 1,
-        "maxCount": 1
-      },
-      {
-        "type": "minecraft:zombie_villager",
-        "weight": 4,
-        "minCount": 1,
-        "maxCount": 1
-      }
-    ],
+    "monster": [],
     "creature": [
       {
         "type": "minecraft:mooshroom",
@@ -90,9 +41,9 @@
     "ambient": [
       {
         "type": "minecraft:bat",
-        "weight": 10,
-        "minCount": 8,
-        "maxCount": 8
+        "weight": 3,
+        "minCount": 2,
+        "maxCount": 3
       }
     ],
     "axolotls": [],
@@ -149,13 +100,10 @@
     [
       "underdeep:huge_mushrooms",
       "underdeep:warped_fungi",
-      "underdeep:crimson_fungi",
       "underdeep:moss_patch",
       "underdeep:warped_vegetation",
-      "underdeep:crimson_vegetation",
       "underdeep:nether_sprouts",
       "underdeep:twisting_vines",
-      "underdeep:weeping_vines",
       "underdeep:brown_mushrooms",
       "underdeep:red_mushrooms",
       "underdeep:glowcaps_many",

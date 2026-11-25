@@ -1,0 +1,22 @@
+{
+  "feature": "minecraft:patch_pumpkin",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "floor",
+      "min_y": 95,
+      "max_y": 300,
+      "max_scan": 160
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

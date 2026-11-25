@@ -63,6 +63,20 @@ public final class TerrainColumn {
     public double deepBridgeY = Double.NaN;
     public double deepBridgeThickness;
 
+    /** Pillar geometry: axis position, lean per block of height, lobe phase. */
+    public double upperPillarX, upperPillarZ, upperPillarLeanX, upperPillarLeanZ, upperPillarPhase;
+    public double deepPillarX, deepPillarZ, deepPillarLeanX, deepPillarLeanZ, deepPillarPhase;
+
+    /**
+     * Sub-regional variant 0..3 of the ecosystem at this column (0 = open/plain, 1 = typical,
+     * 2 = rugged/dense, 3 = lake/wet). Meaning per ecosystem is documented in CONTENT_REGISTRY.md.
+     */
+    public int variant;
+
+    /** Landmarks whose bounds cover this column (empty array when none). */
+    public Landmarks.Landmark[] landmarks = NO_LANDMARKS;
+    static final Landmarks.Landmark[] NO_LANDMARKS = new Landmarks.Landmark[0];
+
     /** River channel strength 0..1 (upper layer). */
     public double river;
 

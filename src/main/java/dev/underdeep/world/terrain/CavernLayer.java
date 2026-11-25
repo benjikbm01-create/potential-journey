@@ -13,11 +13,15 @@ import java.util.List;
  * new layers only at the end.
  */
 public enum CavernLayer {
-    UPPER("upper", 142, 22, 112, 298, 176, 36, 92, 44, 118, 704,
+    UPPER("upper", 142, 22, 112, 298, 176, 36, 92, 44, 118, 112,
             List.of(RegionType.ROOTWILD, RegionType.FUNGAL_EXPANSE, RegionType.FLOODED_DEPTHS,
-                    RegionType.ASHEN_HOLLOWS, RegionType.CRYSTAL_DEEP)),
-    DEEP("deep", -8, 16, -44, 118, 224, 46, 110, 40, 96, 832,
-            List.of(RegionType.THE_ABYSS, RegionType.CRYSTAL_DEEP, RegionType.ASHEN_HOLLOWS));
+                    RegionType.ASHEN_HOLLOWS, RegionType.CRYSTAL_DEEP, RegionType.EVERFROST, RegionType.GOLDEN_GROVE,
+                    RegionType.HOLLOW_PEAKS, RegionType.EMERALD_WETLANDS, RegionType.PETRIFIED_FOREST,
+                    RegionType.CRIMSON_BASIN, RegionType.SUNKEN_GARDENS, RegionType.STORMSTONE_CAVERNS,
+                    RegionType.STARLIGHT_CAVERNS)),
+    DEEP("deep", -8, 16, -44, 118, 224, 46, 110, 40, 96, 160,
+            List.of(RegionType.THE_ABYSS, RegionType.CRYSTAL_DEEP, RegionType.ASHEN_HOLLOWS,
+                    RegionType.STORMSTONE_CAVERNS));
 
     public final String id;
     /** Base floor height of the layer's caverns. */

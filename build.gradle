@@ -30,6 +30,11 @@ loom {
         server {
             runDir project.findProperty("runDir") ?: "run-server"
             vmArg "-Xmx6G"
+            if (project.hasProperty("mobstudy")) {
+                vmArg "-Dunderdeep.mobstudy=${project.property('mobstudy')}"
+                vmArg "-Dunderdeep.mobstudy.sites=${project.property('mobstudySites')}"
+                vmArg "-Dunderdeep.mobstudy.seconds=${project.findProperty('mobstudySeconds') ?: '60'}"
+            }
             if (project.hasProperty("selftest")) {
                 vmArg "-Dunderdeep.selftest=${project.property('selftest')}"
                 vmArg "-Dunderdeep.selftest.phase=${project.findProperty('selftestPhase') ?: 'create'}"
@@ -39,6 +44,9 @@ loom {
         }
         client {
             runDir project.findProperty("clientRunDir") ?: "run-client"
+            if (project.hasProperty("joinServer")) {
+                programArgs "--quickPlayMultiplayer", project.property('joinServer').toString()
+            }
             if (project.hasProperty("createWorldTest")) {
                 vmArg "-Dunderdeep.createWorldTest=${project.property('createWorldTest')}"
             }
@@ -90,6 +98,8 @@ java {
 test {
     useJUnitPlatform()
     systemProperty 'underdeep.previews', System.getProperty('underdeep.previews', 'false')
+    systemProperty 'underdeep.distribution', System.getProperty('underdeep.distribution', 'false')
+    testLogging.showStandardStreams = true
     maxHeapSize = '2G'
     testLogging {
         events "passed", "skipped", "failed"

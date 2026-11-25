@@ -11,9 +11,16 @@
     {
       "type": "underdeep:cave_surface",
       "surface": "floor",
-      "min_y": 100,
+      "min_y": 95,
       "max_y": 300,
       "max_scan": 160
+    },
+    {
+      "type": "underdeep:variant",
+      "variants": [
+        1,
+        3
+      ]
     },
     {
       "type": "minecraft:block_predicate_filter",

@@ -7,7 +7,7 @@
     {
       "type": "underdeep:cave_surface",
       "surface": "ceiling",
-      "min_y": 100,
+      "min_y": 95,
       "max_y": 300,
       "max_scan": 160
     },

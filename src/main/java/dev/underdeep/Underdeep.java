@@ -28,6 +28,7 @@ public final class Underdeep implements ModInitializer {
         ModWorldgen.init();
         UnderdeepCommands.init();
         SelfTest.init();
+        dev.underdeep.debug.MobStudy.init();
         ServerLifecycleEvents.SERVER_STARTED.register(server -> {
             ServerWorld overworld = server.getOverworld();
             if (overworld != null && UnderdeepWorlds.isUnderdeep(overworld)) {

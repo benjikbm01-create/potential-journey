@@ -1,0 +1,172 @@
+{
+  "has_precipitation": false,
+  "temperature": 1.0,
+  "downfall": 0.1,
+  "effects": {
+    "mood_sound": {
+      "sound": "minecraft:ambient.cave",
+      "tick_delay": 6000,
+      "block_search_extent": 8,
+      "offset": 2.0
+    },
+    "fog_color": 6180928,
+    "water_color": 4159204,
+    "water_fog_color": 329011,
+    "grass_color": 10525280,
+    "foliage_color": 9472592,
+    "particle": {
+      "options": {
+        "type": "minecraft:white_ash"
+      },
+      "probability": 0.004
+    },
+    "music": {
+      "sound": "minecraft:music.overworld.desert",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": false
+    },
+    "sky_color": 6180928
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "minecraft:spider",
+        "weight": 80,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:zombie",
+        "weight": 80,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:skeleton",
+        "weight": 80,
+        "minCount": 2,
+        "maxCount": 3
+      },
+      {
+        "type": "minecraft:creeper",
+        "weight": 60,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:slime",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "minecraft:enderman",
+        "weight": 4,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "creature": [],
+    "ambient": [
+      {
+        "type": "minecraft:bat",
+        "weight": 4,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {
+    "minecraft:zombie": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:skeleton": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:spider": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:creeper": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:cave_spider": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:witch": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:slime": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    },
+    "minecraft:zombie_villager": {
+      "energy_budget": 0.08,
+      "charge": 0.7
+    }
+  },
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [
+      "minecraft:monster_room",
+      "underdeep:fossils"
+    ],
+    [],
+    [],
+    [
+      "minecraft:ore_dirt",
+      "minecraft:ore_gravel",
+      "minecraft:ore_granite_upper",
+      "minecraft:ore_granite_lower",
+      "minecraft:ore_diorite_upper",
+      "minecraft:ore_diorite_lower",
+      "minecraft:ore_andesite_upper",
+      "minecraft:ore_andesite_lower",
+      "minecraft:ore_tuff",
+      "minecraft:ore_coal_upper",
+      "minecraft:ore_coal_lower",
+      "minecraft:ore_iron_upper",
+      "minecraft:ore_iron_middle",
+      "minecraft:ore_iron_small",
+      "minecraft:ore_gold",
+      "minecraft:ore_gold_lower",
+      "minecraft:ore_redstone",
+      "minecraft:ore_redstone_lower",
+      "minecraft:ore_diamond",
+      "minecraft:ore_diamond_medium",
+      "minecraft:ore_diamond_large",
+      "minecraft:ore_diamond_buried",
+      "minecraft:ore_lapis",
+      "minecraft:ore_lapis_buried",
+      "minecraft:ore_copper",
+      "underdeep:ore_copper_upper",
+      "underdeep:ore_amber"
+    ],
+    [
+      "underdeep:glow_lichen_sparse"
+    ],
+    [
+      "underdeep:spring_water"
+    ],
+    [
+      "underdeep:dead_bushes",
+      "underdeep:brown_mushrooms",
+      "underdeep:glowcaps_sparse"
+    ],
+    []
+  ]
+}

@@ -35,16 +35,39 @@ public final class UnderdeepTerrain {
     public static final int ROOF_BEDROCK = 315;
     public static final int SEA_LEVEL = CavernLayer.UPPER.fluidLevel;
     /** Bumped whenever terrain output changes incompatibly. Stored in world data. */
-    public static final int GENERATOR_VERSION = 1;
+    public static final int GENERATOR_VERSION = 2;
     public static final double SHAFT_SPIRAL_PITCH = 22.0;
 
-    public enum Material { AIR, STONE, WATER, LAVA, BEDROCK }
+    /** Persistence note: append-only. */
+    public enum Material { AIR, STONE, WATER, LAVA, BEDROCK, ICE, FORMATION }
+
+    /** Result of evaluating formations (pillars, bridges, landmarks) at a block. */
+    public static final class FormationHit {
+        /** Signed distance to the nearest formation solid (&lt;= 0 inside). */
+        public double density = Double.MAX_VALUE;
+        /** {@link Landmarks} material code of that solid. */
+        public int code;
+        /** Region whose palette the formation uses. */
+        public RegionType region;
+        boolean locked;
+
+        public FormationHit reset() {
+            density = Double.MAX_VALUE;
+            code = Landmarks.PILLAR;
+            region = null;
+            locked = false;
+            return this;
+        }
+    }
 
     private final long seed;
     private final RegionMap upperRegions;
     private final RegionMap deepRegions;
     private final CavernGraph upperGraph;
     private final CavernGraph deepGraph;
+    private final Landmarks upperLandmarks;
+    private final Landmarks deepLandmarks;
+    private final FractalNoise variantNoise;
 
     private final FractalNoise upperFloorNoise;
     private final FractalNoise deepFloorNoise;
@@ -80,6 +103,7 @@ public final class UnderdeepTerrain {
     private final ThreadLocal<CavernGraph.Openness> openScratch = ThreadLocal.withInitial(CavernGraph.Openness::new);
     private final ThreadLocal<RegionSample> pondRegionScratch = ThreadLocal.withInitial(RegionSample::new);
     private final ThreadLocal<TerrainProfile> pondProfileScratch = ThreadLocal.withInitial(TerrainProfile::new);
+    private final ThreadLocal<List<Landmarks.Landmark>> landmarkScratch = ThreadLocal.withInitial(ArrayList::new);
     private final ThreadLocal<List<CavernGraph.Shaft>> shaftScratch = ThreadLocal.withInitial(ArrayList::new);
 
     public UnderdeepTerrain(long worldSeed) {
@@ -89,6 +113,7 @@ public final class UnderdeepTerrain {
         this.upperGraph = new CavernGraph(worldSeed, CavernLayer.UPPER, upperRegions);
         this.deepGraph = new CavernGraph(worldSeed, CavernLayer.DEEP, deepRegions);
         long s = Hashing.hash(worldSeed, Hashing.salt("terrain"));
+        variantNoise = new FractalNoise(Hashing.hash(s, 40), 2, 1 / 120.0);
         upperFloorNoise = new FractalNoise(Hashing.hash(s, 1), 3, 1 / 520.0);
         deepFloorNoise = new FractalNoise(Hashing.hash(s, 2), 3, 1 / 600.0);
         upperHill = new FractalNoise(Hashing.hash(s, 3), 3, 1.0);
@@ -117,6 +142,18 @@ public final class UnderdeepTerrain {
         spagA = new FractalNoise(Hashing.hash(s, 22), 2, 1 / 90.0);
         spagB = new FractalNoise(Hashing.hash(s, 23), 2, 1 / 90.0);
         spagMask = new FractalNoise(Hashing.hash(s, 24), 1, 1 / 260.0);
+        upperLandmarks = new Landmarks(worldSeed, CavernLayer.UPPER, upperRegions, upperGraph, (x, z) -> {
+            RegionSample rs = new RegionSample();
+            TerrainProfile p = new TerrainProfile();
+            upperRegions.sample(x, z, rs).blendProfile(p);
+            return upperBaseFloor(x, z, p);
+        });
+        deepLandmarks = new Landmarks(worldSeed, CavernLayer.DEEP, deepRegions, deepGraph, (x, z) -> {
+            RegionSample rs = new RegionSample();
+            TerrainProfile p = new TerrainProfile();
+            deepRegions.sample(x, z, rs).blendProfile(p);
+            return deepBaseFloor(x, z, p);
+        });
     }
 
     public long seed() {
@@ -131,6 +168,25 @@ public final class UnderdeepTerrain {
         return layer == CavernLayer.UPPER ? upperGraph : deepGraph;
     }
 
+    public Landmarks landmarks(CavernLayer layer) {
+        return layer == CavernLayer.UPPER ? upperLandmarks : deepLandmarks;
+    }
+
+    /** Sub-regional variant (0..3) at a position; see {@link TerrainColumn#variant}. */
+    public int variantAt(double x, double z) {
+        double v = variantNoise.sample(x, z);
+        return v < -0.32 ? 0 : v < 0.05 ? 1 : v < 0.38 ? 2 : 3;
+    }
+
+    private static double variantHillScale(int variant) {
+        return switch (variant) {
+            case 0 -> 0.35;
+            case 2 -> 1.5;
+            case 3 -> 0.8;
+            default -> 1.0;
+        };
+    }
+
     // ------------------------------------------------------------------------------------------
     // Math helpers
 
@@ -141,6 +197,10 @@ public final class UnderdeepTerrain {
     static double smoothstep(double e0, double e1, double x) {
         double t = clamp((x - e0) / (e1 - e0), 0, 1);
         return t * t * (3 - 2 * t);
+    }
+
+    public static double smoothstepPublic(double e0, double e1, double x) {
+        return smoothstep(e0, e1, x);
     }
 
     /** Smooth minimum (polynomial) with blend radius k. */
@@ -308,6 +368,8 @@ public final class UnderdeepTerrain {
         c.deepLava = c.deepRegion.primary.lavaFluid();
         double[] spikes = new double[2];
         final double wl = SEA_LEVEL;
+        c.variant = variantAt(x, z);
+        double variantHills = variantHillScale(c.variant);
 
         // ---------------------------------------------------------------- upper layer
         double f0u = upperBaseFloor(x, z, up);
@@ -323,7 +385,11 @@ public final class UnderdeepTerrain {
             hu = Math.max(hu, v * gate * (24 + 30 * up.chamberHeight));
             chamberU = Math.max(chamberU, v * gate * 0.8);
         }
-        double hillU = hills(upperHill, x, z, up, hu) * smoothstep(0.02, 0.5, chamberU);
+        double hillU = hills(upperHill, x, z, up, hu) * smoothstep(0.02, 0.5, chamberU) * variantHills;
+        if (up.basin > 0.5) {
+            // Bowl-shaped basins: floors sink towards chamber centres.
+            hillU -= up.basin * Math.pow(chamberU, 0.7);
+        }
         double distOrigin = Math.sqrt((double) x * x + (double) z * z);
         if (distOrigin < 170) {
             hillU *= 0.3 + 0.7 * smoothstep(45, 170, distOrigin);
@@ -390,7 +456,7 @@ public final class UnderdeepTerrain {
             hd = Math.max(hd, v * gate * (26 + 32 * dp.chamberHeight));
             chamberD = Math.max(chamberD, v * gate * 0.8);
         }
-        double hillD = hills(deepHill, x, z, dp, hd) * smoothstep(0.02, 0.5, chamberD);
+        double hillD = hills(deepHill, x, z, dp, hd) * smoothstep(0.02, 0.5, chamberD) * variantHills;
         spikes(0x52, x, z, hd, dp.spikes, spikes);
         double fd = f0d + hillD + spikes[1];
         double cd = f0d + hd + ceilD.sample(x, z) * (3 + hd * 0.12) - spikes[0] - ceilingRelief(x + 7000, z, hd);
@@ -447,6 +513,15 @@ public final class UnderdeepTerrain {
         pillars(c, false, x, z, dp, chamberD, cd - fd);
         bridges(c, true, x, z, up, f0u, hu);
         bridges(c, false, x, z, dp, f0d, hd);
+
+        // ---------------------------------------------------------------- landmarks
+        List<Landmarks.Landmark> lm = landmarkScratch.get();
+        lm.clear();
+        upperLandmarks.covering(x, z, lm);
+        deepLandmarks.covering(x, z, lm);
+        if (!lm.isEmpty()) {
+            c.landmarks = lm.toArray(new Landmarks.Landmark[0]);
+        }
         return c;
     }
 
@@ -462,7 +537,9 @@ public final class UnderdeepTerrain {
                 CavernGraph.Node n = graph.node(bx + dx, bz + dz);
                 long h = Hashing.hash(seed, n.cellX(), n.cellZ(), Hashing.salt("pond") + layer.ordinal());
                 boolean origin = layer == CavernLayer.UPPER && n.cellX() == 0 && n.cellZ() == 0;
-                if (!origin && Hashing.unit(h) >= n.region().profile().ponds) {
+                int nodeVariant = variantAt(n.x(), n.z());
+                double pondChance = n.region().profile().ponds + (nodeVariant == 3 ? 0.35 : 0);
+                if (!origin && Hashing.unit(h) >= pondChance) {
                     continue;
                 }
                 if (n.height() < 18) {
@@ -480,7 +557,8 @@ public final class UnderdeepTerrain {
                     double dist = n.radius() * (0.2 + 0.35 * Hashing.unit(Hashing.mix(h ^ 2)));
                     px = n.x() + Math.cos(ang) * dist;
                     pz = n.z() + Math.sin(ang) * dist;
-                    pr = 5 + 8 * Hashing.unit(Hashing.mix(h ^ 3));
+                    pr = (5 + 8 * Hashing.unit(Hashing.mix(h ^ 3))) * n.region().profile().pondScale
+                            * (nodeVariant == 3 ? 1.4 : 1.0);
                 }
                 // Ponds are defined in unwarped space so their rim is a clean basin.
                 double d = Math.sqrt((x - px) * (x - px) + (z - pz) * (z - pz));
@@ -526,6 +604,8 @@ public final class UnderdeepTerrain {
         int bz = Math.floorDiv(z, sp);
         double bestDist = Double.MAX_VALUE;
         double bestR = 0;
+        double bestPX = 0, bestPZ = 0;
+        long bestH = 0;
         double gate = smoothstep(0.1, 0.45, chamber) * smoothstep(20, 40, gap);
         for (int dx = -1; dx <= 1; dx++) {
             for (int dz = -1; dz <= 1; dz++) {
@@ -537,8 +617,8 @@ public final class UnderdeepTerrain {
                 }
                 double px = (cx + 0.2 + 0.6 * Hashing.unit(Hashing.mix(h ^ 1))) * sp;
                 double pz = (cz + 0.2 + 0.6 * Hashing.unit(Hashing.mix(h ^ 2))) * sp;
-                if (Math.abs(px) < 24 && Math.abs(pz) < 24) {
-                    continue; // keep the spawn point itself clear
+                if (px * px + pz * pz < 60 * 60) {
+                    continue; // keep the starting clearing open
                 }
                 double r = (2.2 + 5.5 * Hashing.unit(Hashing.mix(h ^ 3))) * p.pillarRadius * gate;
                 if (r < 1.2) {
@@ -548,16 +628,33 @@ public final class UnderdeepTerrain {
                 if (d - r * 2.2 < bestDist - bestR * 2.2) {
                     bestDist = d;
                     bestR = r;
+                    bestPX = px;
+                    bestPZ = pz;
+                    bestH = h;
                 }
             }
         }
         if (bestR > 0) {
+            // Pillars lean and have lobed cross-sections so they read as natural columns, not cylinders.
+            double leanA = Hashing.unit(Hashing.mix(bestH ^ 5)) * Math.PI * 2;
+            double lean = Hashing.unit(Hashing.mix(bestH ^ 6)) * 0.22;
+            double phase = Hashing.unit(Hashing.mix(bestH ^ 7)) * Math.PI * 2;
             if (upper) {
                 c.upperPillarDist = bestDist;
                 c.upperPillarRadius = bestR;
+                c.upperPillarX = bestPX;
+                c.upperPillarZ = bestPZ;
+                c.upperPillarLeanX = Math.cos(leanA) * lean;
+                c.upperPillarLeanZ = Math.sin(leanA) * lean;
+                c.upperPillarPhase = phase;
             } else {
                 c.deepPillarDist = bestDist;
                 c.deepPillarRadius = bestR;
+                c.deepPillarX = bestPX;
+                c.deepPillarZ = bestPZ;
+                c.deepPillarLeanX = Math.cos(leanA) * lean;
+                c.deepPillarLeanZ = Math.sin(leanA) * lean;
+                c.deepPillarPhase = phase;
             }
         }
     }
@@ -659,10 +756,10 @@ public final class UnderdeepTerrain {
     }
 
     /**
-     * Full density at a block. {@code rough} and {@code tunnel} are the (interpolated) values of
-     * {@link #roughness} and {@link #tunnels} at that position.
+     * Density of the open cavern space at a block (before formations). {@code rough} and
+     * {@code tunnel} are the (interpolated) values of {@link #roughness} and {@link #tunnels}.
      */
-    public double density(TerrainColumn c, double y, double rough, double tunnel) {
+    public double openDensity(TerrainColumn c, double y, double rough, double tunnel) {
         boolean upper = y >= c.separation;
         TerrainProfile p = upper ? c.upperProfile : c.deepProfile;
         double amp = p.roughness;
@@ -674,18 +771,61 @@ public final class UnderdeepTerrain {
         if (tunnel > d && tunnelsAllowed(c, y)) {
             d = tunnel;
         }
+        return d;
+    }
+
+    private static boolean treePillars(RegionType r) {
+        return r == RegionType.ROOTWILD || r == RegionType.GOLDEN_GROVE || r == RegionType.EMERALD_WETLANDS;
+    }
+
+    /** Evaluates pillars, bridges and landmarks at a block. */
+    public FormationHit formation(TerrainColumn c, double y, FormationHit hit) {
+        hit.reset();
+        boolean upper = y >= c.separation;
+        RegionType region = upper ? c.upperRegion.primary : c.deepRegion.primary;
+        // Formations never fill ponds (keeps every lake intact, including the starter pond).
+        boolean inPond = c.pondGuard > 0.3 && !Double.isNaN(c.pondLevel) && y <= c.pondLevel + 2;
         // pillars
         double pr = upper ? c.upperPillarRadius : c.deepPillarRadius;
-        if (pr > 0) {
+        if (pr > 0 && !inPond) {
             double f = upper ? c.upperFloor : c.deepFloor;
             double ce = upper ? c.upperCeiling : c.deepCeiling;
             double gap = ce - f;
-            if (gap > 4) {
-                double t = clamp(2 * (y - f) / gap - 1, -1, 1);
-                double r = pr * (0.75 + 1.15 * t * t);
-                double pd = (upper ? c.upperPillarDist : c.deepPillarDist) - r;
-                if (pd < d) {
-                    d = pd;
+            double leanMax = Math.hypot(upper ? c.upperPillarLeanX : c.deepPillarLeanX,
+                    upper ? c.upperPillarLeanZ : c.deepPillarLeanZ) * Math.max(0, gap);
+            double reach = pr * 2.6 + (treePillars(region) || region == RegionType.FUNGAL_EXPANSE ? 14 + pr * 1.2 : 2);
+            if (gap > 4 && (upper ? c.upperPillarDist : c.deepPillarDist) - leanMax < reach) {
+                double t = clamp((y - f) / gap, 0, 1);
+                double tt = 2 * t - 1;
+                double px = (upper ? c.upperPillarX : c.deepPillarX) + (upper ? c.upperPillarLeanX : c.deepPillarLeanX) * (y - f);
+                double pz = (upper ? c.upperPillarZ : c.deepPillarZ) + (upper ? c.upperPillarLeanZ : c.deepPillarLeanZ) * (y - f);
+                double dx = c.x - px;
+                double dz = c.z - pz;
+                double dist = Math.sqrt(dx * dx + dz * dz);
+                double phase = upper ? c.upperPillarPhase : c.deepPillarPhase;
+                double lobe = 1 + 0.22 * Math.sin(Math.atan2(dz, dx) * 3 + phase + y * 0.045);
+                double r = pr * (0.8 + 0.8 * tt * tt) * lobe;
+                double pd = dist - r;
+                hit.density = pd;
+                hit.code = Landmarks.PILLAR;
+                hit.region = region;
+                if (treePillars(region) && t > 0.5 && t < 0.97) {
+                    // Foliage ring around the upper trunk: every wooden pillar is a colossal tree.
+                    double bump = Math.max(0, 1 - Math.abs(t - 0.78) / 0.2);
+                    double canopy = dist - (r + (5 + pr * 1.1) * bump);
+                    long hh = Hashing.hash((long) c.x, (long) Math.floor(y), (long) c.z, 0x7A11L);
+                    canopy += Hashing.signed(hh) * 1.5;
+                    if (canopy < hit.density && bump > 0.05) {
+                        hit.density = Math.min(hit.density, canopy);
+                        hit.code = pd < 0 ? Landmarks.PILLAR : ((hh & 15) == 0 ? Landmarks.LEAVES_GLOW : Landmarks.LEAVES);
+                    }
+                } else if (region == RegionType.FUNGAL_EXPANSE && t > 0.62 && t < 0.86) {
+                    // Mushroom-cap shelf on fungal stalks.
+                    double shelf = dist - (r + 9 * Math.max(0, 1 - Math.abs(t - 0.74) / 0.12));
+                    if (shelf < hit.density) {
+                        hit.density = Math.min(hit.density, shelf);
+                        hit.code = pd < 0 ? Landmarks.PILLAR : (t < 0.72 ? Landmarks.CAP_GLOW : Landmarks.CAP);
+                    }
                 }
             }
         }
@@ -693,11 +833,32 @@ public final class UnderdeepTerrain {
         double by = upper ? c.upperBridgeY : c.deepBridgeY;
         if (!Double.isNaN(by)) {
             double bd = Math.abs(y - by) - (upper ? c.upperBridgeThickness : c.deepBridgeThickness);
-            if (bd < d) {
-                d = bd;
+            if (bd < hit.density) {
+                hit.density = bd;
+                hit.code = treePillars(region) ? Landmarks.ROOTS : Landmarks.PILLAR;
+                hit.region = region;
             }
         }
-        return d;
+        if (!inPond) {
+            for (Landmarks.Landmark l : c.landmarks) {
+                l.sample(c.x + 0.5, y + 0.5, c.z + 0.5, hit);
+            }
+        }
+        if (hit.region == null) {
+            hit.region = region;
+        }
+        return hit;
+    }
+
+    private final ThreadLocal<FormationHit> hitScratch = ThreadLocal.withInitial(FormationHit::new);
+
+    /** Full density at a block (open space minus formations). &gt; 0 is open. */
+    public double density(TerrainColumn c, double y, double rough, double tunnel) {
+        double open = openDensity(c, y, rough, tunnel);
+        if (open <= 0) {
+            return open;
+        }
+        return Math.min(open, formation(c, y, hitScratch.get()).density);
     }
 
     /** Convenience: full density computing 3D noise directly (slower; for analysis tools). */
@@ -714,23 +875,41 @@ public final class UnderdeepTerrain {
         return ROOF_BEDROCK + (int) Long.remainderUnsigned(Hashing.hash(seed, x, z, 7002), 5);
     }
 
-    /** Classifies a block given its density. */
+    /** Classifies a block given its full density (formations are reported as STONE). */
     public Material classify(TerrainColumn c, int y, double density) {
+        return classify(c, y, density, Double.MAX_VALUE);
+    }
+
+    /**
+     * Classifies a block given its open-space density and formation density. Returns
+     * {@link Material#FORMATION} where a formation fills otherwise open space.
+     */
+    public Material classify(TerrainColumn c, int y, double openDensity, double formationDensity) {
         if (y <= bedrockFloorTop(seed, c.x, c.z) || y >= bedrockRoofBottom(seed, c.x, c.z)) {
             return Material.BEDROCK;
         }
         if (y > CavernLayer.UPPER.maxCeiling + 4 || y < MIN_Y + 6) {
             return Material.STONE;
         }
-        if (density <= 0) {
+        if (openDensity <= 0) {
             return Material.STONE;
         }
+        if (formationDensity <= 0) {
+            return Material.FORMATION;
+        }
+        boolean frozen = (y >= c.separation ? c.upperRegion.primary : c.deepRegion.primary) == RegionType.EVERFROST;
         if (!Double.isNaN(c.pondLevel) && y <= c.pondLevel && y > c.pondLevel - 10) {
-            return c.pondLava ? Material.LAVA : Material.WATER;
+            if (c.pondLava) {
+                return Material.LAVA;
+            }
+            return frozen && y == (int) c.pondLevel ? Material.ICE : Material.WATER;
         }
         if (y >= c.separation) {
             if (y <= SEA_LEVEL) {
-                return c.upperLava ? Material.LAVA : Material.WATER;
+                if (c.upperLava) {
+                    return Material.LAVA;
+                }
+                return frozen && y == SEA_LEVEL ? Material.ICE : Material.WATER;
             }
         } else if (y <= CavernLayer.DEEP.fluidLevel) {
             return c.deepLava ? Material.LAVA : Material.WATER;
@@ -740,7 +919,9 @@ public final class UnderdeepTerrain {
 
     public Material materialAt(int x, int y, int z) {
         TerrainColumn c = column(x, z);
-        return classify(c, y, density(c, y, roughness(x, y, z), tunnels(x, y, z)));
+        double open = openDensity(c, y, roughness(x, y, z), tunnels(x, y, z));
+        double form = open > 0 ? formation(c, y, hitScratch.get()).density : Double.MAX_VALUE;
+        return classify(c, y, open, form);
     }
 
     /** Region at a block position (upper or deep layer depending on height). */

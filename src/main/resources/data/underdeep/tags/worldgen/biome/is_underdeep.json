@@ -2,10 +2,19 @@
   "replace": false,
   "values": [
     "underdeep:rootwild",
+    "underdeep:golden_grove",
+    "underdeep:emerald_wetlands",
     "underdeep:fungal_expanse",
+    "underdeep:starlight_caverns",
     "underdeep:flooded_depths",
-    "underdeep:ashen_hollows",
+    "underdeep:sunken_gardens",
     "underdeep:crystal_deep",
+    "underdeep:everfrost",
+    "underdeep:hollow_peaks",
+    "underdeep:petrified_forest",
+    "underdeep:crimson_basin",
+    "underdeep:ashen_hollows",
+    "underdeep:stormstone_caverns",
     "underdeep:the_abyss"
   ]
 }

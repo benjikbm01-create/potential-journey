@@ -37,6 +37,10 @@ public final class InitialPopulation {
             new Herd(EntityType.RABBIT, 2, 3));
     private static final List<Herd> FUNGAL = List.of(new Herd(EntityType.MOOSHROOM, 2, 3), new Herd(EntityType.PIG, 1, 2));
     private static final List<Herd> FLOODED = List.of(new Herd(EntityType.FROG, 2, 3), new Herd(EntityType.CHICKEN, 1, 3));
+    private static final List<Herd> STARLIGHT = List.of(new Herd(EntityType.SHEEP, 2, 4), new Herd(EntityType.RABBIT, 2, 3),
+            new Herd(EntityType.COW, 2, 3));
+    private static final List<Herd> PEAKS = List.of(new Herd(EntityType.GOAT, 2, 3), new Herd(EntityType.SHEEP, 2, 3));
+    private static final List<Herd> FROST = List.of(new Herd(EntityType.FOX, 1, 2), new Herd(EntityType.RABBIT, 2, 3));
 
     public static void populate(ChunkRegion region, UnderdeepChunkGenerator generator) {
         ChunkPos cp = region.getCenterPos();
@@ -64,10 +68,15 @@ public final class InitialPopulation {
                     type = r;
                 }
             }
+            boolean green = ground.isOf(Blocks.GRASS_BLOCK) || ground.isOf(Blocks.MOSS_BLOCK)
+                    || ground.isIn(net.minecraft.registry.tag.BlockTags.ANIMALS_SPAWNABLE_ON);
             List<Herd> herds = switch (type == null ? RegionType.THE_ABYSS : type) {
-                case ROOTWILD -> ground.isOf(Blocks.GRASS_BLOCK) || ground.isOf(Blocks.MOSS_BLOCK) ? ROOTWILD : null;
+                case ROOTWILD, GOLDEN_GROVE -> green ? ROOTWILD : null;
                 case FUNGAL_EXPANSE -> ground.isOf(Blocks.MYCELIUM) ? FUNGAL : null;
-                case FLOODED_DEPTHS -> ground.isOf(Blocks.GRASS_BLOCK) || ground.isOf(Blocks.MOSS_BLOCK) ? FLOODED : null;
+                case FLOODED_DEPTHS, EMERALD_WETLANDS -> green || ground.isOf(Blocks.MUD) ? FLOODED : null;
+                case STARLIGHT_CAVERNS -> green ? STARLIGHT : null;
+                case HOLLOW_PEAKS -> PEAKS;
+                case EVERFROST -> ground.isOf(Blocks.SNOW_BLOCK) || ground.isOf(Blocks.PACKED_ICE) ? FROST : null;
                 default -> null;
             };
             if (herds == null) {

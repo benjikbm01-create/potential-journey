@@ -1,41 +1,37 @@
 # Underdeep — Next Steps
 
-## Immediate: Stage 2 — Ecosystems, vegetation and regional resources
+## Immediate: user inspection of Stage 1.5, then Stage 2
 
-Do not start until the user assigns it. When assigned:
+Do not start Stage 2 until the user assigns it. The user will first inspect the Stage 1.5 world manually.
 
 ### Prerequisites (verify first)
-1. `./gradlew build` succeeds; `./gradlew test` passes.
-2. `scripts/selftest.sh 12345 run-tests/s2check create` → report shows 0 FAIL.
-3. Read `docs/ARCHITECTURE.md` §4 (terrain), §6 (contracts) and `tools/worldgen/generate_data.py`.
+1. `./gradlew build` succeeds (unit tests included).
+2. `scripts/selftest.sh 12345 run-tests/check create` → report shows 0 FAIL.
+3. Read `docs/ARCHITECTURE.md` §4 (terrain, regions v2, landmarks), §5a/5b (spawning, lighting), §6 (contracts),
+   `tools/worldgen/generate_data.py` and `tools/assets/generate_assets.py`.
 
-### Scope suggestions
-- Region-specific resources: custom ores/minerals per region (`BlockPalette` rock bands are where
-  custom ores should be targeted; vanilla ore features only replace stone/deepslate families).
-- Vegetation depth: custom plants/fungi/trees per region (many Stage 1 regions use vanilla features).
-  Add sub-biomes where useful (lake shores, deep variants of Crystal Deep / Ashen Hollows) by mapping
-  region + local terrain in `UnderdeepBiomeSource#biomeAtBlock` (keep biomes cheap to compute).
-- Additional ecosystems toward the 12–15 target: append `RegionType` entries (see ARCHITECTURE §6
-  "Extending regions") — bump `UnderdeepTerrain.GENERATOR_VERSION` and record it in DECISIONS.
-- Use `RegionEnvironment.habitatTags/resourceTags` as the vocabulary future species will reference.
-- Replace remaining placeholder visuals (procedural 16×16 textures in `tools/assets`).
+### Stage 2 scope suggestions (Ecosystems, vegetation and regional resources)
+- Custom flora per ecosystem replacing remaining vanilla stand-ins (fungal identity, crimson identity, frost flora).
+- Region-specific resources (ores/minerals per ecosystem; stormstone, amber, crystals as materials with uses).
+- Proper art for the 21 custom blocks (current textures are procedural placeholders).
+- Sub-biome registrations only where gameplay needs them (e.g. deep variants), mapped in `UnderdeepBiomeSource`.
+- Use `RegionEnvironment` habitat/resource tags and `Danger`/`Lighting` as the vocabulary for later species.
 
-### Known issues / follow-ups from Stage 1 (see TESTING.md "Known issues")
-- Vertical connections between layers are only shafts (≈ one per 130–160k m² outside Flooded Depths, which has none). Consider
-  additional sloped descents (ramps) so the deep layer is reachable without building.
-- Rivers exist only in lowlands below y≈146; most river channels appear in Rootwild/Ashen lowlands.
-- `getColumnSample` uses exact noise while the chunk fill interpolates 3D noise; harmless now (no
-  structures use it) but structure placement in Stage 9 should sample real chunks or tolerate this.
-- Distant views end in a flat fog colour at render distance (vanilla fog); a custom fog curve could
-  improve vistas in colossal caverns (Stage 11).
-- Ambient light 0.1 is a first guess; tune with players (Stage 11).
-- Not yet tested: a second client joining the dedicated server over the network; long sessions.
-- The start-resource check's animal count can read 0 because entity sections may not be loaded yet.
+### Known issues / follow-ups from Stage 1.5 (see TESTING.md)
+- Lighting in bright ecosystems: see TESTING.md for the measured fraction of ground at block light ≥ 8; pools
+  between glowing patches remain darker by design.
+- Sunken Gardens have no underwater air pockets yet.
+- Inter-layer connections remain shafts only.
+- `getColumnSample` uses exact noise while chunk fill interpolates 3D noise (harmless until structures).
+- Decoration (not terrain) differs slightly between chunk-generation orders (vanilla-like behaviour).
+- Vanilla hostile mobs are placeholders until Stage 3 ecosystem creatures.
+- Existing Stage 1 worlds (generator v1) must be regenerated; v2 terrain does not match them.
 
 ## Code locations
-- Terrain model: `src/main/java/dev/underdeep/world/terrain/UnderdeepTerrain.java`
-- Regions: `world/region/RegionType.java`, `RegionMap.java`
+- Terrain model: `src/main/java/dev/underdeep/world/terrain/UnderdeepTerrain.java`, `Landmarks.java`, `CavernGraph.java`
+- Regions: `world/region/RegionType.java`, `RegionMap.java`, `Danger.java`, `Lighting.java`
 - Generator: `world/gen/UnderdeepChunkGenerator.java`, `SurfacePainter.java`, `BlockPalette.java`
-- Worldgen data: `tools/worldgen/generate_data.py` → `src/main/resources/data/underdeep/...`
-- Analysis contracts: `world/analysis/*`
-- Tests: `src/test/java/.../TerrainModelTest.java`, `debug/SelfTest.java`, `scripts/*.sh`
+- Spawning: `world/spawn/SpawnRules.java`, `config/UnderdeepConfig.java`
+- Worldgen data: `tools/worldgen/generate_data.py`; block assets: `tools/assets/generate_assets.py`
+- Analysis: `world/analysis/*` (RegionDistribution, Accessibility, SiteAnalyzer, ConnectivityAnalyzer)
+- Tests: `src/test/java/...`, `debug/SelfTest.java`, `debug/Stage15Checks.java`, `debug/MobStudy.java`, `scripts/*.sh`
