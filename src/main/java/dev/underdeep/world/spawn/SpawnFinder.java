@@ -133,6 +133,14 @@ public final class SpawnFinder {
                 }
             }
         }
+        // Prefer open ground with a view: no canopy or rock directly overhead.
+        for (int dy = 3; dy < 10; dy++) {
+            m.set(feet.getX(), feet.getY() + dy, feet.getZ());
+            if (!world.getBlockState(m).isAir()) {
+                problems.add("covered overhead at " + m.toShortString());
+                break;
+            }
+        }
         if (feet.getY() <= world.getBottomY() + 5 || feet.getY() >= world.getTopY() - 6) {
             problems.add("outside the safe vertical range");
         }

@@ -190,7 +190,7 @@ PLACED = {
     "spring_water_deep": ranged(6, -40, 120, f"{NS}:spring_water"),
     "spring_lava": ranged(14, -40, 290, f"{NS}:spring_lava"),
     # --- vegetation
-    "rootwild_trees": cave("floor", *U, 10, f"{NS}:rootwild_trees", scan=160, extra_after=SURV_OAK),
+    "rootwild_trees": cave("floor", *U, 5, f"{NS}:rootwild_trees", scan=160, extra_after=SURV_OAK),
     "hanging_roots": cave("ceiling", *U, 4, f"{NS}:hanging_root", scan=160),
     "cave_vines": cave("ceiling", *U, 26, "minecraft:cave_vine", scan=160),
     "cave_vines_sparse": cave("ceiling", *A, 8, "minecraft:cave_vine", scan=160),
@@ -224,8 +224,8 @@ PLACED = {
     "large_dripstone": cave("floor", *A, 2, "minecraft:large_dripstone", scan=160),
     "dripstone_cluster": cave("floor", *A, 2, "minecraft:dripstone_cluster", scan=160),
     "small_basalt_columns": cave("floor", *A, 3, "minecraft:small_basalt_columns", scan=160),
-    "large_basalt_columns": cave("floor", *A, 1, "minecraft:large_basalt_columns", scan=160),
-    "basalt_pillars": cave("ceiling", *A, 5, "minecraft:basalt_pillar", scan=160),
+    "large_basalt_columns": cave("floor", *A, {"type": "minecraft:rarity_filter", "chance": 2}, "minecraft:large_basalt_columns", scan=160),
+    "basalt_pillars": cave("ceiling", *A, {"type": "minecraft:rarity_filter", "chance": 4}, "minecraft:basalt_pillar", scan=40),
     "lava_deltas": cave("floor", *A, 2, "minecraft:delta", scan=160),
     "glowstone": cave("ceiling", *A, 4, "minecraft:glowstone_extra", scan=160),
     "luminite_clusters_floor": cave("floor", *A, 8, f"{NS}:luminite_cluster_up", scan=160),
@@ -233,7 +233,7 @@ PLACED = {
     "luminite_clusters_rare": cave("floor", *D, 1, f"{NS}:luminite_cluster_up", scan=160),
     "amethyst_clusters": cave("floor", *A, 4, f"{NS}:amethyst_cluster_up", scan=160),
     # --- starting cavern guarantees
-    "start_trees": start(9, f"{NS}:start_trees"),
+    "start_trees": start(3, f"{NS}:start_trees"),
     "start_berries": start(3, "minecraft:patch_berry_bush"),
     "start_grass": start(4, "minecraft:patch_grass"),
     "start_mushrooms": start(2, "minecraft:patch_brown_mushroom"),
@@ -400,8 +400,7 @@ BIOMES = {
         "features": {
             3: ["minecraft:monster_room", "minecraft:monster_room_deep"], 6: COMMON_ORES,
             7: [f"{NS}:glow_lichen_sparse", f"{NS}:sculk_vein"], 8: [f"{NS}:spring_lava", f"{NS}:spring_water_deep"],
-            9: [f"{NS}:large_dripstone", f"{NS}:pointed_dripstone", f"{NS}:basalt_pillars",
-                f"{NS}:luminite_clusters_rare"],
+            9: [f"{NS}:large_dripstone", f"{NS}:pointed_dripstone", f"{NS}:luminite_clusters_rare"],
         }},
 }
 
@@ -447,7 +446,7 @@ def main():
 
     write(f"{NS}/dimension_type/underdeep.json", {
         "ultrawarm": False, "natural": True, "coordinate_scale": 1.0,
-        "has_skylight": False, "has_ceiling": True, "ambient_light": 0.06,
+        "has_skylight": False, "has_ceiling": True, "ambient_light": 0.1,
         "monster_spawn_light_level": {"type": "minecraft:uniform", "min_inclusive": 0, "max_inclusive": 7},
         "monster_spawn_block_light_limit": 0,
         "piglin_safe": False, "bed_works": True, "respawn_anchor_works": False, "has_raids": True,

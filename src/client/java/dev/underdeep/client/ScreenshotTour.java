@@ -83,11 +83,16 @@ public final class ScreenshotTour {
             return;
         }
         boolean rendered = client.worldRenderer.isTerrainRenderComplete();
-        if (!rendered && wait > -400) {
+        if (!rendered && wait > -600) {
             return;
         }
         Shot s = SHOTS.get(index);
         String suffix = phase == 0 ? "_natural" : "_nightvision";
+        if (phase == 0) {
+            Underdeep.LOGGER.info("Tour '{}': integrated server average tick {} ms, {} chunks rendered, fps {}", s.name,
+                    String.format(java.util.Locale.ROOT, "%.2f", server.getAverageTickTime()),
+                    client.worldRenderer.getCompletedChunkCount(), client.getCurrentFps());
+        }
         ScreenshotRecorder.saveScreenshot(client.runDirectory, "tour_" + s.name + suffix + ".png", client.getFramebuffer(),
                 msg -> Underdeep.LOGGER.info("Tour screenshot: {}", msg.getString()));
         if (phase == 0) {
@@ -117,6 +122,6 @@ public final class ScreenshotTour {
             }
             p.teleport(p.getServerWorld(), s.x, s.y, s.z, s.yaw, s.pitch);
         });
-        wait = nightVision ? 20 : 120;
+        wait = nightVision ? 20 : 300;
     }
 }

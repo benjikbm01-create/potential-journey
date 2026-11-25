@@ -16,6 +16,7 @@ public final class UnderdeepClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(), ModBlocks.LUMINITE_CLUSTER, ModBlocks.GLOWCAP);
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
         ScreenshotTour.init();
+        CreateWorldTest.init();
     }
 
     /**

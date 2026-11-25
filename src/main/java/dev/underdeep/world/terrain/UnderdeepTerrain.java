@@ -198,7 +198,7 @@ public final class UnderdeepTerrain {
         if (amount <= 0.01 || gap < 16) {
             return;
         }
-        final int sp = 13;
+        final int sp = 15;
         int bx = Math.floorDiv((int) Math.floor(x), sp);
         int bz = Math.floorDiv((int) Math.floor(z), sp);
         double gapScale = Math.min(gap, 120);
@@ -208,14 +208,14 @@ public final class UnderdeepTerrain {
                 int cz = bz + dz;
                 long h = Hashing.hash(seed ^ salt, cx, cz, 91);
                 double u = Hashing.unit(h);
-                if (u > amount * 0.55) {
+                if (u > amount * 0.16) {
                     continue;
                 }
                 double px = (cx + 0.2 + 0.6 * Hashing.unit(Hashing.mix(h ^ 1))) * sp;
                 double pz = (cz + 0.2 + 0.6 * Hashing.unit(Hashing.mix(h ^ 2))) * sp;
                 double v = Hashing.unit(Hashing.mix(h ^ 3));
-                double len = (0.10 + 0.32 * v * v) * gapScale;
-                double rs = 1.8 + len * 0.16;
+                double len = Math.min(34, (0.07 + 0.22 * v * v) * gapScale);
+                double rs = 2.6 + len * 0.26;
                 double d = Math.sqrt((x - px) * (x - px) + (z - pz) * (z - pz));
                 if (d < rs) {
                     double k = Math.pow(1 - d / rs, 1.6) * len;

@@ -104,7 +104,7 @@ public final class SiteAnalyzer {
                 }
             }
         }
-        double slope = slopeCount > 0 ? slopeSum / slopeCount : 99;
+        double slope = slopeCount > 0 ? slopeSum / slopeCount : 0; // no dry neighbours to compare (e.g. open water)
         double[] hs = Arrays.stream(headroom).filter(h -> h > 0).sorted().toArray();
         double medianHead = hs.length > 0 ? hs[hs.length / 2] : 0;
 

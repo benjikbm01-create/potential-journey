@@ -32,6 +32,7 @@ dev.underdeep
 ├── debug/GenerationBenchmark     detached terrain-stage benchmark + chunk hashing
 ├── mixin/MinecraftServerMixin    spawn selection for Underdeep worlds
 ├── mixin/NetherPortalMixin       Nether portal toggle
+├── mixin/DimensionOptionsRegistryHolderMixin  Underdeep overworld counts as a stable (non-experimental) setup
 └── world
     ├── UnderdeepWorlds           binds seed → terrain model per world
     ├── noise/                    Hashing (SplitMix), PerlinNoise, FractalNoise — pure Java
@@ -44,7 +45,8 @@ dev.underdeep
     ├── spawn/SpawnFinder
     ├── data/UnderdeepWorldState  persistent per-world data (data/underdeep.dat)
     └── debug/TerrainPreview      PNG renders straight from the terrain model
-client: UnderdeepClient (render layers, dimension effects), ScreenshotTour (dev only)
+client: UnderdeepClient (render layers, dimension effects), ScreenshotTour and CreateWorldTest (dev only)
+tools/analysis/world_diff.py      block-level diff of two saved worlds (determinism checks)
 tools/worldgen/generate_data.py   generates biome / feature / preset JSON
 tools/assets/generate_textures.py generates Stage 1 textures and icon
 scripts/selftest.sh, scripts/visual_tour.sh
@@ -56,7 +58,7 @@ scripts/selftest.sh, scripts/visual_tour.sh
   `#minecraft:normal` so it appears in the "World Type" button. Dedicated servers use
   `level-type=underdeep:underdeep` in `server.properties`.
 - The overworld uses dimension type `underdeep:underdeep`: y −64..319 (384 high, same memory profile
-  as vanilla overworld), `has_skylight=false`, `has_ceiling=true`, `ambient_light=0.06`, beds work,
+  as vanilla overworld), `has_skylight=false`, `has_ceiling=true`, `ambient_light=0.1`, beds work,
   monsters spawn at block light 0 only. Client effects `underdeep:underdeep` (registered with Fabric
   `DimensionRenderingRegistry`): no sky, no clouds, fog colour = biome fog colour (per-region haze).
 - Nether and End dimensions are kept in the preset (vanilla generators) so they can be re-enabled.
@@ -92,7 +94,7 @@ construction. Chamber outlines are perturbed by lobe noise and coordinates are d
 graph never looks like a grid. Openness ("how much open height the skeleton requires here") is the
 max over chambers (domes), tunnels and noise-driven lobes adjacent to chambers.
 
-Vertical shafts (one per deep graph cell with region-dependent probability ≈ 30–36 %) connect a deep
+Vertical shafts (per deep graph cell, probability = 3.2 × the upper region's `shafts` value ≈ 32–38 %, 0 in Flooded Depths) connect a deep
 chamber to the nearest upper chamber via a shaft chamber and feeder tunnel; ~65 % have a walkable
 spiral ledge (pitch 22). Shafts open only where the upper floor is dry.
 

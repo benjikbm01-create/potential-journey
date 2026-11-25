@@ -34,10 +34,14 @@ loom {
                 vmArg "-Dunderdeep.selftest=${project.property('selftest')}"
                 vmArg "-Dunderdeep.selftest.phase=${project.findProperty('selftestPhase') ?: 'create'}"
                 vmArg "-Dunderdeep.selftest.order=${project.findProperty('selftestOrder') ?: 'forward'}"
+                vmArg "-Dunderdeep.selftest.expectVanilla=${project.findProperty('expectVanilla') ?: 'false'}"
             }
         }
         client {
             runDir project.findProperty("clientRunDir") ?: "run-client"
+            if (project.hasProperty("createWorldTest")) {
+                vmArg "-Dunderdeep.createWorldTest=${project.property('createWorldTest')}"
+            }
             if (project.hasProperty("tour")) {
                 vmArg "-Dunderdeep.tour=${project.property('tour')}"
                 programArgs "--quickPlaySingleplayer", project.property('tourWorld').toString()

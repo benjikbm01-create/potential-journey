@@ -39,7 +39,7 @@ public enum RegionType {
             0x1F3B55),
     ASHEN_HOLLOWS("ashen_hollows",
             TerrainProfile.of(4, 1.2, 28, 1 / 65.0, 0.8, 7, 0.95, 0.9, 0.9, 0.4, 9,
-                    0.70, 0.55, 0.35, 0.5, 0.8, 0.35, 0.12, 0.8, 0),
+                    0.40, 0.85, 0.35, 0.5, 0.8, 0.35, 0.12, 0.8, 0),
             new RegionEnvironment(0.95, 0.1, 0.55, 0.15, 0.75, 0.15,
                     Set.of("volcanic", "basalt", "lava", "ash", "hot"),
                     Set.of("basalt", "blackstone", "magma", "obsidian", "metal_ores")),

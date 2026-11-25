@@ -86,3 +86,18 @@ berries and an ore outcrop.
 Automated verification runs inside a real dedicated server (Loom `runServer`), gated by a system property,
 and writes a Markdown/JSON report. This tests the real registries, preset, spawn, chunk pipeline, saving
 and reloading — more trustworthy than mocks. Screenshot tour does the same for the client under Xvfb.
+
+## D-016 Visual tuning from real-client inspection (Stage 1)
+Screenshots from a real client (Xvfb, software GL) drove these changes: stalactites/stalagmites made
+rarer and stubbier (thin dense spikes read as a "pole forest"); rock strata bands thickened to 11 blocks
+with lower-contrast palettes (5-block bands looked like zebra stripes); Rootwild tree density halved and
+spawn selection rejects covered spots (the spawn was buried in canopy); vanilla basalt pillars removed from
+the Abyss and made rare in Ashen Hollows (floor-to-ceiling pillars in 100-block caverns); ambient light
+raised from 0.06 to 0.10 (Nether level) so unlit cavern geometry stays faintly readable. Ambient light should
+be revisited with real players and real GPUs in Stage 11.
+
+## D-017 Determinism scope
+Guarantee: terrain (rock/air/water/lava) is a pure function of seed and position — verified identical across
+chunk orders and JVM runs. Not guaranteed: decoration features that cross chunk borders (trees, patches,
+some ores) may differ in a small fraction of blocks depending on scheduling, as in vanilla. Systems that need
+reproducibility (settlement placement, simulation) must use the terrain model, not decorated blocks.

@@ -103,6 +103,31 @@ class TerrainModelTest {
     }
 
     @Test
+    void terrainContinuousAcrossRegionBorders() {
+        // Region profiles are blended near borders, so the smooth base floor must not jump where the
+        // primary region changes (biome borders are crisp, terrain is not).
+        for (long seed : SEEDS) {
+            UnderdeepTerrain t = new UnderdeepTerrain(seed);
+            int borders = 0;
+            double worst = 0;
+            for (int z = -2000; z <= 2000; z += 250) {
+                TerrainColumn prev = null;
+                for (int x = -2000; x <= 2000; x++) {
+                    TerrainColumn c = t.column(x, z);
+                    if (prev != null && prev.upperRegion.primary != c.upperRegion.primary) {
+                        borders++;
+                        worst = Math.max(worst, Math.abs(prev.upperBaseFloor - c.upperBaseFloor));
+                        worst = Math.max(worst, Math.abs(prev.deepBaseFloor - c.deepBaseFloor));
+                    }
+                    prev = c;
+                }
+            }
+            assertTrue(borders > 5, "expected region borders along the sample lines, seed " + seed);
+            assertTrue(worst < 2.0, "base floor jumps " + worst + " blocks at a region border, seed " + seed);
+        }
+    }
+
+    @Test
     void regionIdRoundTrip() {
         RegionId id = new RegionId(CavernLayer.DEEP, -12345, 6789);
         assertEquals(id, RegionId.fromLong(id.asLong()));

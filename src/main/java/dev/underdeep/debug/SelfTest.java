@@ -124,6 +124,24 @@ public final class SelfTest {
         // ------------------------------------------------------------------ preset & registries
         section("Preset and registries");
         boolean isUd = world.getChunkManager().getChunkGenerator() instanceof UnderdeepChunkGenerator;
+        if (Boolean.getBoolean("underdeep.selftest.expectVanilla")) {
+            // Regression check: with the mod installed, a default world must be plain vanilla.
+            check("default world uses the vanilla generator", !isUd, world.getChunkManager().getChunkGenerator().getClass().getName());
+            check("vanilla overworld has skylight", world.getDimension().hasSkyLight(), "hasSkyLight=" + world.getDimension().hasSkyLight());
+            BlockPos sp = world.getSpawnPos();
+            int top = world.getTopY(net.minecraft.world.Heightmap.Type.MOTION_BLOCKING, sp.getX(), sp.getZ());
+            check("vanilla spawn on the surface", Math.abs(sp.getY() - top) < 16 && world.getLightLevel(LightType.SKY, sp.up(2)) > 0,
+                    "spawn " + sp.toShortString() + ", surface " + top);
+            long t0 = System.nanoTime();
+            for (int i = 0; i < 8; i++) {
+                for (int j = 0; j < 8; j++) {
+                    world.getChunk(30 + i, 30 + j, ChunkStatus.FULL, true);
+                }
+            }
+            info("vanilla generation", String.format(Locale.ROOT, "64 chunks in %.0f ms", (System.nanoTime() - t0) / 1e6));
+            check("selftest completed", true, "vanilla regression checks executed");
+            return;
+        }
         check("underdeep world preset active", isUd, world.getChunkManager().getChunkGenerator().getClass().getName());
         if (!isUd) {
             return;
@@ -297,6 +315,45 @@ public final class SelfTest {
                             s.waterNearby(), s.lavaNearby(), s.connections()));
                 }
             }
+        }
+
+        // ------------------------------------------------------------------ diagnostic commands
+        section("Diagnostic commands (executed through the server command dispatcher)");
+        var source = server.getCommandSource().withWorld(world).withPosition(net.minecraft.util.math.Vec3d.ofBottomCenter(spawn))
+                .withOutput(new net.minecraft.server.command.CommandOutput() {
+                    @Override
+                    public void sendMessage(net.minecraft.text.Text message) {
+                        Underdeep.LOGGER.info("[selftest command output] {}", message.getString());
+                    }
+
+                    @Override
+                    public boolean shouldReceiveFeedback() {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean shouldTrackOutput() {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean shouldBroadcastConsoleToOps() {
+                        return false;
+                    }
+                });
+        for (String cmd : List.of("underdeep info", "underdeep region", "underdeep locate crystal_deep", "underdeep locate the_abyss",
+                "underdeep spawncheck", "underdeep cavern", "underdeep sites village 800", "underdeep sites floating 1500",
+                "underdeep connectivity 2", "underdeep perf 32", "underdeep render 256")) {
+            int result;
+            String error = null;
+            try {
+                var parse = server.getCommandManager().getDispatcher().parse(cmd, source);
+                result = server.getCommandManager().getDispatcher().execute(parse);
+            } catch (Exception e) {
+                result = -1;
+                error = e.getMessage();
+            }
+            check("command /" + cmd, result > 0, error == null ? "returned " + result : "error: " + error);
         }
 
         // ------------------------------------------------------------------ previews and tour
@@ -562,9 +619,10 @@ public final class SelfTest {
             Map<RegionType, CavernGraph.Node> best = new EnumMap<>(RegionType.class);
             for (CavernGraph.Node n : g.nodesIn(-1800, -1800, 1800, 1800)) {
                 TerrainColumn c = t.column((int) n.x(), (int) n.z());
-                RegionType r = layer == CavernLayer.UPPER ? c.upperRegion.primary : c.deepRegion.primary;
+                var rs = layer == CavernLayer.UPPER ? c.upperRegion : c.deepRegion;
+                RegionType r = rs.primary;
                 double gap = layer == CavernLayer.UPPER ? c.upperCeiling - c.upperFloor : c.deepCeiling - c.deepFloor;
-                if (gap < 30 || done.contains(r)) {
+                if (gap < 30 || done.contains(r) || rs.borderDistance < 110) {
                     continue;
                 }
                 CavernGraph.Node b = best.get(r);
@@ -574,13 +632,23 @@ public final class SelfTest {
             }
             for (Map.Entry<RegionType, CavernGraph.Node> e : best.entrySet()) {
                 CavernGraph.Node n = e.getValue();
-                TerrainColumn c = t.column((int) n.x(), (int) n.z());
+                // Stand back along the chamber's long axis and look across it.
+                int cx = (int) (n.x() - n.cos() * n.radius() * 0.55);
+                int cz = (int) (n.z() - n.sin() * n.radius() * 0.55);
+                TerrainColumn c = t.column(cx, cz);
                 double f = layer == CavernLayer.UPPER ? c.upperFloor : c.deepFloor;
                 double ce = layer == CavernLayer.UPPER ? c.upperCeiling : c.deepCeiling;
+                if (ce - f < 12) {
+                    cx = (int) n.x();
+                    cz = (int) n.z();
+                    c = t.column(cx, cz);
+                    f = layer == CavernLayer.UPPER ? c.upperFloor : c.deepFloor;
+                    ce = layer == CavernLayer.UPPER ? c.upperCeiling : c.deepCeiling;
+                }
                 double fluid = layer == CavernLayer.UPPER ? UnderdeepTerrain.SEA_LEVEL : CavernLayer.DEEP.fluidLevel;
-                double y = Math.max(f, fluid) + Math.min(28, (ce - Math.max(f, fluid)) * 0.35);
-                sb.append(String.format(Locale.ROOT, "%s_%s %d %.1f %d %d 8\n", e.getKey().id(), layer.id, (int) n.x(), y, (int) n.z(),
-                        (int) (Math.atan2(-1, 0.3) * 57) + (e.getKey().ordinal() * 60)));
+                double y = Math.max(f, fluid) + Math.min(24, (ce - Math.max(f, fluid)) * 0.3);
+                float yaw = (float) Math.toDegrees(Math.atan2(-n.cos(), n.sin()));
+                sb.append(String.format(Locale.ROOT, "%s_%s %d %.1f %d %.0f 6\n", e.getKey().id(), layer.id, cx, y, cz, yaw));
                 done.add(e.getKey());
             }
         }

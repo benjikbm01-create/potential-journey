@@ -49,16 +49,16 @@ public final class BlockPalette {
     static {
         BlockState stone = Blocks.STONE.getDefaultState();
         BlockState deepslate = Blocks.DEEPSLATE.getDefaultState();
-        UPPER.put(RegionType.ROOTWILD, of(stone, 0.64, Blocks.ANDESITE.getDefaultState(), 0.12,
-                Blocks.GRANITE.getDefaultState(), 0.12, Blocks.DIORITE.getDefaultState(), 0.06, Blocks.TUFF.getDefaultState(), 0.06));
-        UPPER.put(RegionType.FUNGAL_EXPANSE, of(stone, 0.58, Blocks.TUFF.getDefaultState(), 0.14,
-                Blocks.ANDESITE.getDefaultState(), 0.14, Blocks.GRANITE.getDefaultState(), 0.08, Blocks.DRIPSTONE_BLOCK.getDefaultState(), 0.06));
-        UPPER.put(RegionType.FLOODED_DEPTHS, of(stone, 0.60, Blocks.ANDESITE.getDefaultState(), 0.16,
-                Blocks.DIORITE.getDefaultState(), 0.14, Blocks.DRIPSTONE_BLOCK.getDefaultState(), 0.10));
+        UPPER.put(RegionType.ROOTWILD, of(stone, 0.72, Blocks.ANDESITE.getDefaultState(), 0.14,
+                Blocks.TUFF.getDefaultState(), 0.08, Blocks.GRANITE.getDefaultState(), 0.06));
+        UPPER.put(RegionType.FUNGAL_EXPANSE, of(stone, 0.66, Blocks.TUFF.getDefaultState(), 0.14,
+                Blocks.ANDESITE.getDefaultState(), 0.14, Blocks.DRIPSTONE_BLOCK.getDefaultState(), 0.06));
+        UPPER.put(RegionType.FLOODED_DEPTHS, of(stone, 0.68, Blocks.ANDESITE.getDefaultState(), 0.16,
+                Blocks.DIORITE.getDefaultState(), 0.06, Blocks.DRIPSTONE_BLOCK.getDefaultState(), 0.10));
         UPPER.put(RegionType.ASHEN_HOLLOWS, of(stone, 0.36, Blocks.BLACKSTONE.getDefaultState(), 0.30,
                 Blocks.BASALT.getDefaultState(), 0.20, Blocks.SMOOTH_BASALT.getDefaultState(), 0.08, Blocks.TUFF.getDefaultState(), 0.06));
-        UPPER.put(RegionType.CRYSTAL_DEEP, of(stone, 0.38, Blocks.CALCITE.getDefaultState(), 0.24,
-                Blocks.TUFF.getDefaultState(), 0.20, Blocks.SMOOTH_BASALT.getDefaultState(), 0.10, Blocks.DIORITE.getDefaultState(), 0.08));
+        UPPER.put(RegionType.CRYSTAL_DEEP, of(stone, 0.46, Blocks.CALCITE.getDefaultState(), 0.20,
+                Blocks.TUFF.getDefaultState(), 0.24, Blocks.SMOOTH_BASALT.getDefaultState(), 0.10));
         UPPER.put(RegionType.THE_ABYSS, of(deepslate, 0.7, Blocks.TUFF.getDefaultState(), 0.3));
 
         DEEP.put(RegionType.THE_ABYSS, of(deepslate, 0.66, Blocks.TUFF.getDefaultState(), 0.14,
@@ -81,7 +81,9 @@ public final class BlockPalette {
      * @param strataOffset per-column vertical offset of strata bands (tilt / warp)
      */
     public static BlockState rock(long seed, RegionType region, boolean deep, int y, double strataOffset) {
-        int band = Math.floorDiv((int) Math.floor(y + strataOffset), 5);
+        // Thick bands; consecutive bands often repeat the dominant stone so walls read as stone with
+        // occasional seams rather than stripes.
+        int band = Math.floorDiv((int) Math.floor(y + strataOffset), 11);
         double u = Hashing.unit(Hashing.hash(seed, band, region.ordinal(), deep ? 0x0DEE : 0x0A11));
         return (deep ? DEEP : UPPER).get(region).pick(u);
     }
