@@ -14,7 +14,7 @@ Status: **Stage 1 — foundation and underground world generation.** See `docs/P
 ```bash
 ./gradlew build
 ```
-The mod JAR is written to `build/libs/underdeep-0.1.0-stage1.jar` (`-sources.jar` alongside).
+The mod JAR is written to `build/libs/underdeep-0.1.0-stage1.jar` (`-sources.jar` alongside). A prebuilt copy is committed in `releases/`.
 
 ## Playing in singleplayer
 1. Install Fabric Loader for 1.21.1 and put Fabric API and the Underdeep JAR in `mods/`.
