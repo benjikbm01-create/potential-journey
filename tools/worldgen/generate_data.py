@@ -572,6 +572,265 @@ BIOMES = {
 }
 
 
+# ================================================================================================
+# Stage 2: living ecosystems. Appended to CONFIGURED / PLACED (global order = declaration order) and
+# merged into biome feature lists below via S2_ADD / S2_REMOVE.
+
+def prov_age(name, lo, hi, prop="age", **props):
+    return {"type": "minecraft:randomized_int_state_provider", "property": prop,
+            "values": {"type": "minecraft:uniform", "min_inclusive": lo, "max_inclusive": hi},
+            "source": provider(name, **props)}
+
+
+def block_with(prov):
+    return {"type": "minecraft:simple_block", "config": {"to_place": prov}}
+
+
+def u(x):
+    return f"{NS}:{x}"
+
+
+TREE_SPECIES = ["duskoak", "spirebark", "goldbough", "mirewillow", "frostfir", "bloodthorn", "lumenwood", "cragpine",
+                "cinderbark"]
+for sp in TREE_SPECIES:
+    for size in ("young", "normal", "ancient"):
+        key = f"tree/{sp}" if size == "normal" else f"tree/{sp}_{size}"
+        CONFIGURED[key] = {"type": f"{NS}:tree", "config": {"species": sp, "size": size}}
+for sp in ("sporestalk", "bellcap", "shelfcap"):
+    for size in ("normal", "ancient"):
+        CONFIGURED[f"giant/{sp}" + ("" if size == "normal" else "_ancient")] = {
+            "type": f"{NS}:giant_fungus", "config": {"species": sp, "size": size}}
+for w in ("duskoak", "goldwood", "mirewillow", "frostfir", "spirebark", "lumenwood", "bloodthorn"):
+    CONFIGURED[f"fallen/{w}"] = {"type": f"{NS}:fallen_log", "config": {"species": w}}
+
+
+def selector(default, *weighted):
+    return {"type": "minecraft:random_selector", "config": {
+        "features": [{"feature": inline(u(f)), "chance": c} for f, c in weighted], "default": inline(u(default))}}
+
+
+CONFIGURED.update({
+    "s2_rootwild_trees": selector("tree/duskoak", ("tree/duskoak_young", 0.25), ("tree/spirebark", 0.22),
+                                  ("tree/spirebark_young", 0.08)),
+    "s2_golden_trees": selector("tree/goldbough", ("tree/goldbough_young", 0.3)),
+    "s2_wetland_trees": selector("tree/mirewillow", ("tree/mirewillow_young", 0.3)),
+    "s2_frost_trees": selector("tree/frostfir", ("tree/frostfir_young", 0.35)),
+    "s2_peak_trees": selector("tree/cragpine", ("tree/cragpine_young", 0.25), ("tree/spirebark", 0.25)),
+    "s2_crimson_trees": selector("tree/bloodthorn", ("tree/bloodthorn_young", 0.35)),
+    "s2_starlight_trees": selector("tree/lumenwood", ("tree/lumenwood_young", 0.3)),
+    "s2_ashen_trees": selector("tree/cinderbark", ("tree/cinderbark_young", 0.4)),
+    "s2_giant_fungi": selector("giant/sporestalk", ("giant/bellcap", 0.4), ("giant/shelfcap", 0.25)),
+    "s2_giant_fungi_ancient": selector("giant/sporestalk_ancient", ("giant/bellcap_ancient", 0.4), ("giant/shelfcap_ancient", 0.25)),
+    "coral_cluster": {"type": f"{NS}:coral_cluster", "config": {}},
+})
+
+# land plant patches: (name, block, tries, spread, provider kind)
+LAND_PATCHES = {
+    "glowfern": ("glowfern", 32, 5, None), "mendleaf": ("mendleaf", 8, 4, "age3"), "duskberry": ("duskberry_bush", 10, 4, "age3"),
+    "honeyfruit": ("honeyfruit_bush", 8, 4, "age3"), "goldgrass": ("goldgrass", 40, 6, None), "sunleaf": ("sunleaf", 4, 3, "age3"),
+    "ashgrass": ("ashgrass", 24, 5, None), "pyrelily": ("pyrelily", 8, 4, None), "emberwort": ("emberwort", 6, 3, "age3"),
+    "shardgrass": ("shardgrass", 28, 5, None), "prism_lily": ("prism_lily", 4, 3, None), "ghostfern": ("ghostfern", 20, 5, None),
+    "umbral_bloom": ("umbral_bloom", 2, 2, None), "frostbell": ("frostbell", 16, 4, None), "snowberry": ("snowberry_bush", 8, 4, "age3"),
+    "steamfern": ("steamfern", 10, 3, None), "cliffberry": ("cliffberry_bush", 8, 4, "age3"), "peakstar": ("peakstar", 5, 3, None),
+    "bogbloom": ("bogbloom", 16, 4, None), "marsh_fern": ("marsh_fern", 40, 6, None), "bogwort": ("bogwort", 6, 3, "age3"),
+    "stoneroot": ("stoneroot", 14, 4, None), "thornbriar": ("thornbriar", 12, 4, "age3"), "plaguebloom": ("plaguebloom", 10, 4, None),
+    "snapjaw": ("snapjaw", 4, 3, None), "static_grass": ("static_grass", 28, 5, None), "voltbloom": ("voltbloom", 6, 3, None),
+    "silvergrass": ("silvergrass", 40, 6, None), "moonpetal": ("moonpetal", 4, 3, "age3"),
+    "puffcap": ("puffcap", 16, 4, None), "inkcap": ("inkcap", 10, 4, None), "deathbell": ("deathbell", 6, 3, None),
+    "lanterncap": ("lanterncap", 18, 4, "age2"), "sporepuff": ("sporepuff", 4, 3, None), "sagecap": ("sagecap", 3, 2, None),
+    "embercap": ("embercap", 6, 3, None), "rimecap": ("rimecap", 10, 4, None), "gloomcap": ("gloomcap", 8, 4, None),
+    "calcicap": ("calcicap", 12, 4, None), "bloodcap": ("bloodcap", 12, 4, None),
+    # wild crops (mature or nearly mature)
+    "wild_duskroot": ("duskroots", 8, 3, "crop"), "wild_glowgrain": ("glowgrain_crop", 10, 4, "crop"),
+    "wild_truffle": ("cave_truffles", 6, 3, "crop"), "wild_rice": ("mire_rice_crop", 12, 4, "crop"),
+    "wild_pepper": ("emberpeppers", 6, 3, "crop"), "wild_turnip": ("frost_turnips", 6, 3, "crop"),
+    "wild_sunbean": ("sunbeans", 8, 3, "crop"),
+}
+WATER_PATCHES = {
+    "lakebloom": ("lakebloom", 16, 5, None), "tidebloom": ("tidebloom", 14, 5, None), "tidecap": ("tidecap", 10, 4, None),
+    "sea_grapes": ("sea_grape_bush", 8, 4, "age3"), "siltwort": ("siltwort", 3, 3, "age3"),
+    "lanterncoral_fan": ("lanterncoral_fan", 12, 4, None), "spirecoral": ("spirecoral", 12, 4, None),
+    "wild_chestnut": ("lake_chestnuts", 8, 4, "crop"),
+}
+
+
+def plant_provider(block, kind):
+    if kind == "age3":
+        return prov_age(u(block), 1, 3)
+    if kind == "age2":
+        return prov_age(u(block), 0, 2)
+    if kind == "crop":
+        return prov_age(u(block), 5, 7)
+    return provider(u(block))
+
+
+for name, (blk, tries, xz, kind) in LAND_PATCHES.items():
+    CONFIGURED[f"p_{name}"] = patch(block_with(plant_provider(blk, kind)), tries, xz, 2)
+for name, (blk, tries, xz, kind) in WATER_PATCHES.items():
+    CONFIGURED[f"p_{name}"] = patch(block_with(plant_provider(blk, kind)), tries, xz, 2, WATER_FILTER)
+
+for name, blk in (("glowpad", "glowpad"), ("starlily", "starlily")):
+    CONFIGURED[f"p_{name}"] = patch(simple_block(u(blk)), 10, 4, 0)
+
+
+def hanging(body, tip, lo, hi):
+    return {"type": "minecraft:block_column", "config": {
+        "direction": "down", "allowed_placement": {"type": "minecraft:matching_blocks", "blocks": "minecraft:air"},
+        "prioritize_tip": True,
+        "layers": [{"height": {"type": "minecraft:uniform", "min_inclusive": lo, "max_inclusive": hi}, "provider": provider(u(body))},
+                   {"height": 1, "provider": provider(u(tip), age=25)}]}}
+
+
+def stalk(body, tip, lo, hi):
+    return {"type": "minecraft:block_column", "config": {
+        "direction": "up", "allowed_placement": {"type": "minecraft:matching_fluids", "fluids": "minecraft:water"},
+        "prioritize_tip": True,
+        "layers": [{"height": {"type": "minecraft:uniform", "min_inclusive": lo, "max_inclusive": hi}, "provider": provider(u(body))},
+                   {"height": 1, "provider": provider(u(tip), age=25)}]}}
+
+
+def multiface(block, hosts):
+    return {"type": "minecraft:multiface_growth", "config": {
+        "block": u(block), "search_range": 16, "chance_of_spreading": 0.6, "can_place_on_floor": False,
+        "can_place_on_ceiling": True, "can_place_on_wall": True, "can_be_placed_on": hosts}}
+
+
+CONFIGURED.update({
+    "voidroot": hanging("voidroot_plant", "voidroot", 1, 7),
+    "ledgevine": hanging("ledgevine_plant", "ledgevine", 2, 8),
+    "starstrand": hanging("starstrand_plant", "starstrand", 1, 6),
+    "ribbonweed": stalk("ribbonweed_plant", "ribbonweed", 1, 6),
+    "glowkelp": stalk("glowkelp_plant", "glowkelp", 3, 14),
+    "glowivy": multiface("glowivy", ["minecraft:stone", "minecraft:andesite", "minecraft:dirt", "minecraft:moss_block",
+                                     "minecraft:granite", "minecraft:tuff", "minecraft:diorite", "minecraft:rooted_dirt",
+                                     "minecraft:dripstone_block", "minecraft:calcite"]),
+    "petrolichen": multiface("petrolichen", ["underdeep:petrified_wood", "minecraft:sandstone", "minecraft:tuff",
+                                             "minecraft:terracotta", "minecraft:stone", "minecraft:andesite"]),
+    "glimmer_cluster_up": simple_block(u("glimmer_cluster"), facing="up"),
+    "glimmer_cluster_down": simple_block(u("glimmer_cluster"), facing="down"),
+})
+
+ORE_HOSTS = f"{NS}:ore_hosts"
+S2_ORES = {  # name: (block, size, count, min_y, max_y, discard)
+    "cinnabar": ("cinnabar_ore", 6, 8, -60, 300, 0.0), "sulfur": ("sulfur_ore", 8, 10, -60, 300, 0.0),
+    "niter": ("niter_ore", 7, 8, 60, 300, 0.2), "emberite": ("emberite_ore", 4, 4, -60, 140, 0.3),
+    "cryolite": ("cryolite_ore", 7, 9, 60, 300, 0.0), "malachite": ("malachite_ore", 7, 10, 100, 300, 0.0),
+    "bog_iron": ("bog_iron_ore", 8, 10, 90, 140, 0.0), "galvanite": ("galvanite_ore", 6, 8, -60, 300, 0.0),
+    "prismatic_opal": ("prismatic_opal_ore", 3, 2, -60, 300, 0.5), "jasper": ("jasper_ore", 7, 9, 60, 300, 0.0),
+    "fossil": ("fossil_ore", 5, 6, -60, 300, 0.0), "umbralite": ("umbralite_ore", 3, 3, -60, 60, 0.6),
+    "nacre": ("nacre_ore", 5, 7, 30, 120, 0.0), "starsilver": ("starsilver_ore", 4, 5, 60, 300, 0.2),
+    "budding_glimmer": ("budding_glimmer", 3, 6, -60, 300, 0.0),
+}
+for name, (blk, size, n, lo, hi, disc) in S2_ORES.items():
+    CONFIGURED[f"ore_{name}"] = ore([tag_target(ORE_HOSTS, u(blk))], size, disc)
+    PLACED.append((ORES, f"s2_ore_{name}", ranged(n, lo, hi, f"{NS}:ore_{name}")))
+
+
+def tree_place(name, feat, count, variants=None, sc=160, rarity=None):
+    c = rare(rarity) if rarity else count
+    PLACED.append((VEG, name, cave("floor", *U, c, f"{NS}:{feat}", scan=sc, variants=variants)))
+
+
+# trees (no would_survive filter needed: the tree feature checks its own soil)
+tree_place("s2_rootwild_trees", "s2_rootwild_trees", 4, [1, 3])
+tree_place("s2_rootwild_trees_dense", "s2_rootwild_trees", 10, [2])
+tree_place("s2_rootwild_ancient", "tree/duskoak_ancient", None, [1, 2], rarity=3)
+tree_place("s2_golden_trees", "s2_golden_trees", 7, [1, 2, 3])
+tree_place("s2_golden_ancient", "tree/goldbough_ancient", None, [1, 2], rarity=3)
+tree_place("s2_wetland_trees", "s2_wetland_trees", 5)
+tree_place("s2_frost_trees", "s2_frost_trees", 4, [1, 2])
+tree_place("s2_frost_ancient", "tree/frostfir_ancient", None, [2], rarity=4)
+tree_place("s2_peak_trees", "s2_peak_trees", 3, [0, 1], sc=200)
+tree_place("s2_crimson_trees", "s2_crimson_trees", 4)
+tree_place("s2_starlight_trees", "s2_starlight_trees", 3, [1, 2, 3])
+tree_place("s2_ashen_trees", "s2_ashen_trees", None, rarity=2)
+tree_place("s2_giant_fungi", "s2_giant_fungi", 6)
+tree_place("s2_giant_fungi_ancient", "s2_giant_fungi_ancient", None, rarity=3)
+for w, n in (("duskoak", 2), ("goldwood", 1), ("mirewillow", 1), ("frostfir", 1), ("lumenwood", 1), ("bloodthorn", 1)):
+    PLACED.append((VEG, f"s2_fallen_{w}", cave("floor", *U, n, f"{NS}:fallen/{w}", scan=160)))
+
+
+def veg(name, feature, count, surface="floor", band=U, sc=160, variants=None):
+    PLACED.append((VEG, name, cave(surface, *band, count, f"{NS}:{feature}", scan=sc, variants=variants)))
+
+
+# (placed name, configured, count, surface, band)
+for name, n in (("glowfern", 6), ("mendleaf", 1), ("duskberry", 2), ("honeyfruit", 2), ("goldgrass", 6), ("sunleaf", rare(3)),
+                ("ashgrass", 3), ("pyrelily", 2), ("emberwort", 1), ("shardgrass", 5), ("prism_lily", rare(2)), ("ghostfern", 3),
+                ("frostbell", 4), ("snowberry", 2), ("steamfern", 1), ("cliffberry", 2), ("peakstar", rare(2)),
+                ("bogbloom", 4), ("marsh_fern", 7), ("bogwort", 1), ("stoneroot", 3), ("thornbriar", 3),
+                ("plaguebloom", 2), ("snapjaw", 1), ("static_grass", 5), ("voltbloom", 1), ("silvergrass", 7),
+                ("moonpetal", rare(2)), ("puffcap", 4), ("inkcap", 2), ("deathbell", 1), ("lanterncap", 5),
+                ("sporepuff", 1), ("sagecap", rare(2)), ("embercap", 1), ("rimecap", 2), ("calcicap", 2), ("bloodcap", 3),
+                ("wild_duskroot", 1), ("wild_glowgrain", 1), ("wild_truffle", 1), ("wild_rice", 2), ("wild_pepper", 1),
+                ("wild_turnip", 1), ("wild_sunbean", 1)):
+    veg(f"s2_{name}", f"p_{name}", n)
+# deep-layer variants for ecosystems present in both layers (and the Abyss)
+for name, n in (("ghostfern", 3), ("gloomcap", 2), ("umbral_bloom", rare(6)), ("shardgrass", 4), ("static_grass", 4),
+                ("voltbloom", 1), ("ashgrass", 2), ("embercap", 1), ("calcicap", 1)):
+    veg(f"s2_{name}_deep", f"p_{name}", n, band=D)
+for name, n in (("lakebloom", 5), ("tidebloom", 6), ("tidecap", 4), ("sea_grapes", 2), ("siltwort", rare(2)),
+                ("lanterncoral_fan", 4), ("spirecoral", 4), ("wild_chestnut", 1)):
+    PLACED.append((VEG, f"s2_{name}", cave("water_floor", 30, 112, n, f"{NS}:p_{name}", scan=90)))
+PLACED.append((VEG, "s2_coral_clusters", cave("water_floor", 30, 112, 6, f"{NS}:coral_cluster", scan=90)))
+PLACED.append((VEG, "s2_ribbonweed", cave("water_floor", 40, 112, 8, f"{NS}:ribbonweed", scan=80)))
+PLACED.append((VEG, "s2_glowkelp", cave("water_floor", 30, 112, 14, f"{NS}:glowkelp", scan=90)))
+PLACED.append((VEG, "s2_glowpads", cave("water_surface", 113, 113, 4, f"{NS}:p_glowpad", scan=2)))
+PLACED.append((VEG, "s2_starlilies", cave("water_surface", 113, 113, 3, f"{NS}:p_starlily", scan=2)))
+veg("s2_voidroot", "voidroot", 8, surface="ceiling", band=D)
+veg("s2_ledgevine", "ledgevine", 8, surface="ceiling")
+veg("s2_starstrand", "starstrand", 10, surface="ceiling")
+veg("s2_glowivy", "glowivy", 6, surface="wall")
+veg("s2_petrolichen", "petrolichen", 10, surface="wall")
+veg("s2_petrolichen_deep", "petrolichen", 4, surface="wall", band=D)
+veg("s2_glimmer_floor", "glimmer_cluster_up", 4, band=A)
+veg("s2_glimmer_ceiling", "glimmer_cluster_down", 3, surface="ceiling", band=A)
+PLACED_NAMES = [n for _, n, _ in PLACED]
+
+S2_ADD = {
+    "rootwild": ["s2_ore_niter", "s2_rootwild_trees", "s2_rootwild_trees_dense", "s2_rootwild_ancient", "s2_fallen_duskoak",
+                 "s2_glowfern", "s2_mendleaf", "s2_duskberry", "s2_puffcap", "s2_inkcap", "s2_sagecap", "s2_wild_duskroot",
+                 "s2_wild_truffle", "s2_glowivy"],
+    "golden_grove": ["s2_golden_trees", "s2_golden_ancient", "s2_fallen_goldwood", "s2_honeyfruit", "s2_goldgrass", "s2_sunleaf",
+                     "s2_wild_glowgrain", "s2_wild_sunbean", "s2_glowivy"],
+    "emerald_wetlands": ["s2_ore_bog_iron", "s2_wetland_trees", "s2_fallen_mirewillow", "s2_bogbloom", "s2_marsh_fern",
+                         "s2_bogwort", "s2_glowfern", "s2_wild_rice", "s2_glowpads", "s2_ribbonweed"],
+    "fungal_expanse": ["s2_ore_niter", "s2_giant_fungi", "s2_giant_fungi_ancient", "s2_puffcap", "s2_inkcap", "s2_deathbell",
+                       "s2_lanterncap", "s2_sporepuff", "s2_sagecap", "s2_wild_truffle"],
+    "flooded_depths": ["s2_ore_bog_iron", "s2_ore_nacre", "s2_marsh_fern", "s2_lakebloom", "s2_siltwort", "s2_wild_chestnut",
+                       "s2_sea_grapes", "s2_ribbonweed", "s2_glowpads"],
+    "ashen_hollows": ["s2_ore_cinnabar", "s2_ore_sulfur", "s2_ore_emberite", "s2_ashen_trees", "s2_ashgrass", "s2_pyrelily",
+                      "s2_emberwort", "s2_embercap", "s2_wild_pepper", "s2_ashgrass_deep", "s2_embercap_deep"],
+    "crystal_deep": ["s2_ore_prismatic_opal", "s2_ore_budding_glimmer", "s2_shardgrass", "s2_prism_lily", "s2_ghostfern",
+                     "s2_calcicap", "s2_shardgrass_deep", "s2_calcicap_deep", "s2_glimmer_floor", "s2_glimmer_ceiling"],
+    "the_abyss": ["s2_ore_umbralite", "s2_ore_sulfur", "s2_ore_fossil", "s2_voidroot", "s2_ghostfern_deep", "s2_gloomcap_deep",
+                  "s2_umbral_bloom_deep", "s2_petrolichen_deep"],
+    "everfrost": ["s2_ore_cryolite", "s2_frost_trees", "s2_frost_ancient", "s2_fallen_frostfir", "s2_frostbell", "s2_snowberry",
+                  "s2_steamfern", "s2_rimecap", "s2_wild_turnip"],
+    "hollow_peaks": ["s2_ore_malachite", "s2_peak_trees", "s2_cliffberry", "s2_peakstar", "s2_ledgevine"],
+    "petrified_forest": ["s2_ore_jasper", "s2_ore_fossil", "s2_ore_niter", "s2_stoneroot", "s2_petrolichen", "s2_calcicap"],
+    "crimson_basin": ["s2_ore_cinnabar", "s2_ore_sulfur", "s2_crimson_trees", "s2_fallen_bloodthorn", "s2_thornbriar",
+                      "s2_plaguebloom", "s2_snapjaw", "s2_bloodcap", "s2_emberwort"],
+    "sunken_gardens": ["s2_ore_nacre", "s2_coral_clusters", "s2_glowkelp", "s2_tidebloom", "s2_tidecap", "s2_sea_grapes",
+                       "s2_lanterncoral_fan", "s2_spirecoral"],
+    "stormstone_caverns": ["s2_ore_galvanite", "s2_static_grass", "s2_voltbloom", "s2_static_grass_deep", "s2_voltbloom_deep"],
+    "starlight_caverns": ["s2_ore_starsilver", "s2_starlight_trees", "s2_fallen_lumenwood", "s2_silvergrass", "s2_moonpetal",
+                          "s2_starstrand", "s2_starlilies", "s2_wild_glowgrain"],
+}
+# vanilla stand-ins replaced (or thinned) by native species
+S2_REMOVE = {
+    "golden_grove": ["golden_trees"],
+    "everfrost": ["frost_trees"],
+    "hollow_peaks": ["peak_trees"],
+    "rootwild": ["rootwild_trees_dense"],
+    "fungal_expanse": ["warped_fungi", "warped_vegetation", "nether_sprouts", "twisting_vines"],
+    "crimson_basin": ["crimson_fungi"],
+}
+for b, adds in S2_ADD.items():
+    feats = [f for f in BIOMES[b]["features"] if f not in S2_REMOVE.get(b, [])]
+    BIOMES[b]["features"] = feats + [a for a in adds if a not in feats]
+
+
 def global_order():
     order = {}
     by_name = {n: st for st, n, _ in PLACED}

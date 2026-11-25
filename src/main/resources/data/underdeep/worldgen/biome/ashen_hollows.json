@@ -153,7 +153,10 @@
       "minecraft:ore_copper",
       "underdeep:ore_copper_upper",
       "underdeep:ore_gilded_blackstone",
-      "underdeep:ore_magma"
+      "underdeep:ore_magma",
+      "underdeep:s2_ore_cinnabar",
+      "underdeep:s2_ore_sulfur",
+      "underdeep:s2_ore_emberite"
     ],
     [],
     [
@@ -165,7 +168,15 @@
       "underdeep:basalt_pillars",
       "underdeep:lava_deltas",
       "underdeep:glowcaps_sparse",
-      "underdeep:glowstone"
+      "underdeep:glowstone",
+      "underdeep:s2_ashen_trees",
+      "underdeep:s2_ashgrass",
+      "underdeep:s2_pyrelily",
+      "underdeep:s2_emberwort",
+      "underdeep:s2_embercap",
+      "underdeep:s2_wild_pepper",
+      "underdeep:s2_ashgrass_deep",
+      "underdeep:s2_embercap_deep"
     ],
     []
   ]

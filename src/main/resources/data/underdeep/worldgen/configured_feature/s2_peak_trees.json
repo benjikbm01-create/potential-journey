@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "underdeep:tree/cragpine_young",
+          "placement": []
+        },
+        "chance": 0.25
+      },
+      {
+        "feature": {
+          "feature": "underdeep:tree/spirebark",
+          "placement": []
+        },
+        "chance": 0.25
+      }
+    ],
+    "default": {
+      "feature": "underdeep:tree/cragpine",
+      "placement": []
+    }
+  }
+}

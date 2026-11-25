@@ -1,0 +1,29 @@
+{
+  "feature": "underdeep:s2_peak_trees",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "floor",
+      "min_y": 95,
+      "max_y": 300,
+      "max_scan": 200
+    },
+    {
+      "type": "underdeep:variant",
+      "variants": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

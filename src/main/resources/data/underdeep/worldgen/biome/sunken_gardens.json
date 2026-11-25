@@ -183,7 +183,8 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_nacre"
     ],
     [
       "underdeep:glow_lichen"
@@ -198,7 +199,14 @@
       "underdeep:lumen_seagrass_many",
       "underdeep:kelp_forest",
       "underdeep:sea_pickles_many",
-      "underdeep:lily_pads"
+      "underdeep:lily_pads",
+      "underdeep:s2_tidebloom",
+      "underdeep:s2_tidecap",
+      "underdeep:s2_sea_grapes",
+      "underdeep:s2_lanterncoral_fan",
+      "underdeep:s2_spirecoral",
+      "underdeep:s2_coral_clusters",
+      "underdeep:s2_glowkelp"
     ],
     []
   ]

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "underdeep:tree/goldbough_young",
+          "placement": []
+        },
+        "chance": 0.3
+      }
+    ],
+    "default": {
+      "feature": "underdeep:tree/goldbough",
+      "placement": []
+    }
+  }
+}

@@ -161,6 +161,27 @@ final class Stage15Checks {
     }
 
     /** Ground-level block light per ecosystem, measured in generated chunks. */
+    /** Open cavern floor of the given ecosystem near a representative region centre (x, z). */
+    static int[] siteFor(UnderdeepTerrain t, RegionType type, int[] p) {
+        boolean up = CavernLayer.values()[p[1]] == CavernLayer.UPPER;
+        for (int rad = 0; rad <= 192; rad += 8) {
+            for (int dx = -rad; dx <= rad; dx += 8) {
+                for (int dz = -rad; dz <= rad; dz += 8) {
+                    if (Math.max(Math.abs(dx), Math.abs(dz)) != rad) {
+                        continue;
+                    }
+                    TerrainColumn oc = t.column(p[0] + dx, p[2] + dz);
+                    if ((up ? oc.upperCeiling - oc.upperFloor : oc.deepCeiling - oc.deepFloor) > 16
+                            && (up ? oc.upperRegion : oc.deepRegion).primary == type
+                            && (up ? oc.upperRegion : oc.deepRegion).borderDistance > 24) {
+                        return new int[]{p[0] + dx, p[2] + dz};
+                    }
+                }
+            }
+        }
+        return new int[]{p[0], p[2]};
+    }
+
     static void lighting(ServerWorld world, UnderdeepTerrain t, Map<RegionType, int[]> reps, Reporter r) {
         r.section("Ground-level natural block light per ecosystem (generated chunks, 5x5 chunks per ecosystem, inner 3x3 measured)");
         for (RegionType type : RegionType.values()) {
@@ -171,27 +192,9 @@ final class Stage15Checks {
             }
             CavernLayer layer = CavernLayer.values()[p[1]];
             boolean up = layer == CavernLayer.UPPER;
-            // Centre the measurement on actual open cavern floor of this ecosystem near the region centre.
-            int sx = p[0];
-            int sz = p[2];
-            search:
-            for (int rad = 0; rad <= 192; rad += 8) {
-                for (int dx = -rad; dx <= rad; dx += 8) {
-                    for (int dz = -rad; dz <= rad; dz += 8) {
-                        if (Math.max(Math.abs(dx), Math.abs(dz)) != rad) {
-                            continue;
-                        }
-                        TerrainColumn oc = t.column(p[0] + dx, p[2] + dz);
-                        if ((up ? oc.upperCeiling - oc.upperFloor : oc.deepCeiling - oc.deepFloor) > 16
-                                && (up ? oc.upperRegion : oc.deepRegion).primary == type
-                                && (up ? oc.upperRegion : oc.deepRegion).borderDistance > 24) {
-                            sx = p[0] + dx;
-                            sz = p[2] + dz;
-                            break search;
-                        }
-                    }
-                }
-            }
+            int[] site = siteFor(t, type, p);
+            int sx = site[0];
+            int sz = site[1];
             boolean aquaticBed = type == RegionType.SUNKEN_GARDENS;
             int ccx = sx >> 4;
             int ccz = sz >> 4;

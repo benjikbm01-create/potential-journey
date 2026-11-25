@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "underdeep:tree/cinderbark_young",
+          "placement": []
+        },
+        "chance": 0.4
+      }
+    ],
+    "default": {
+      "feature": "underdeep:tree/cinderbark",
+      "placement": []
+    }
+  }
+}

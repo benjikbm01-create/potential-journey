@@ -155,7 +155,8 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "underdeep:ore_copper_upper",
-      "underdeep:ore_charged_veins"
+      "underdeep:ore_charged_veins",
+      "underdeep:s2_ore_galvanite"
     ],
     [
       "underdeep:glow_lichen_sparse"
@@ -167,7 +168,11 @@
       "underdeep:pointed_dripstone",
       "underdeep:storm_crystals_floor",
       "underdeep:storm_crystals_ceiling",
-      "underdeep:amethyst_clusters"
+      "underdeep:amethyst_clusters",
+      "underdeep:s2_static_grass",
+      "underdeep:s2_voltbloom",
+      "underdeep:s2_static_grass_deep",
+      "underdeep:s2_voltbloom_deep"
     ],
     []
   ]

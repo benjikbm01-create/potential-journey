@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "underdeep:giant/bellcap_ancient",
+          "placement": []
+        },
+        "chance": 0.4
+      },
+      {
+        "feature": {
+          "feature": "underdeep:giant/shelfcap_ancient",
+          "placement": []
+        },
+        "chance": 0.25
+      }
+    ],
+    "default": {
+      "feature": "underdeep:giant/sporestalk_ancient",
+      "placement": []
+    }
+  }
+}

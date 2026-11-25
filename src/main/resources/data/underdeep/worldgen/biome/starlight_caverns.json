@@ -99,7 +99,8 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_starsilver"
     ],
     [],
     [
@@ -117,7 +118,14 @@
       "underdeep:seagrass",
       "underdeep:lumen_seagrass",
       "underdeep:lily_pads_many",
-      "underdeep:amethyst_clusters"
+      "underdeep:amethyst_clusters",
+      "underdeep:s2_starlight_trees",
+      "underdeep:s2_fallen_lumenwood",
+      "underdeep:s2_silvergrass",
+      "underdeep:s2_moonpetal",
+      "underdeep:s2_wild_glowgrain",
+      "underdeep:s2_starlilies",
+      "underdeep:s2_starstrand"
     ],
     []
   ]

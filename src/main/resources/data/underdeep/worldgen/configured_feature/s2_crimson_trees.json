@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "underdeep:tree/bloodthorn_young",
+          "placement": []
+        },
+        "chance": 0.35
+      }
+    ],
+    "default": {
+      "feature": "underdeep:tree/bloodthorn",
+      "placement": []
+    }
+  }
+}

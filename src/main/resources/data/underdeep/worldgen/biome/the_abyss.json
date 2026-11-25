@@ -166,7 +166,10 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_sulfur",
+      "underdeep:s2_ore_fossil",
+      "underdeep:s2_ore_umbralite"
     ],
     [
       "underdeep:glow_lichen_sparse",
@@ -179,7 +182,12 @@
     [
       "underdeep:large_dripstone",
       "underdeep:pointed_dripstone",
-      "underdeep:luminite_clusters_rare"
+      "underdeep:luminite_clusters_rare",
+      "underdeep:s2_ghostfern_deep",
+      "underdeep:s2_gloomcap_deep",
+      "underdeep:s2_umbral_bloom_deep",
+      "underdeep:s2_voidroot",
+      "underdeep:s2_petrolichen_deep"
     ],
     []
   ]

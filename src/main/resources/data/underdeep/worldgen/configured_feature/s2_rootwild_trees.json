@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "feature": "underdeep:tree/duskoak_young",
+          "placement": []
+        },
+        "chance": 0.25
+      },
+      {
+        "feature": {
+          "feature": "underdeep:tree/spirebark",
+          "placement": []
+        },
+        "chance": 0.22
+      },
+      {
+        "feature": {
+          "feature": "underdeep:tree/spirebark_young",
+          "placement": []
+        },
+        "chance": 0.08
+      }
+    ],
+    "default": {
+      "feature": "underdeep:tree/duskoak",
+      "placement": []
+    }
+  }
+}

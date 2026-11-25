@@ -26,7 +26,7 @@ public final class ModWood {
     public static final WoodSet SPIREBARK = new WoodSet("spirebark", MapColor.PALE_YELLOW, MapColor.LIGHT_GRAY, true)
             .leaves(MapColor.TEAL, 0).sapling("spirebark", ModTags.MINERAL_SOIL, sap(LightPref.ANY, Climate.ANY, Need.NONE), 7);
     public static final WoodSet GOLDWOOD = new WoodSet("goldwood", MapColor.GOLD, MapColor.TERRACOTTA_YELLOW, true)
-            .leaves(ModBlocks.GOLDEN_LEAVES).sapling("goldwood", ModTags.PLANT_SOIL, sap(LightPref.ANY, Climate.ANY, Need.NONE), 10);
+            .leaves(ModBlocks.GOLDEN_LEAVES).sapling("goldbough", ModTags.PLANT_SOIL, sap(LightPref.ANY, Climate.ANY, Need.NONE), 10);
     public static final WoodSet MIREWILLOW = new WoodSet("mirewillow", MapColor.TERRACOTTA_GREEN, MapColor.DARK_GREEN, true)
             .leaves(MapColor.GREEN, 0).sapling("mirewillow", ModTags.WET_SOIL, sap(LightPref.ANY, Climate.ANY, Need.NONE), 7);
     public static final WoodSet FROSTFIR = new WoodSet("frostfir", MapColor.WHITE_GRAY, MapColor.LIGHT_BLUE_GRAY, true)

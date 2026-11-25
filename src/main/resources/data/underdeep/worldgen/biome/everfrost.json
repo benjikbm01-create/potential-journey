@@ -165,19 +165,27 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_cryolite"
     ],
     [],
     [
       "underdeep:spring_water"
     ],
     [
-      "underdeep:frost_trees",
       "underdeep:ice_spikes",
       "underdeep:blue_ice",
       "underdeep:glowcaps_sparse",
       "underdeep:rime_crystals_floor",
-      "underdeep:rime_crystals_ceiling"
+      "underdeep:rime_crystals_ceiling",
+      "underdeep:s2_frost_trees",
+      "underdeep:s2_frost_ancient",
+      "underdeep:s2_fallen_frostfir",
+      "underdeep:s2_frostbell",
+      "underdeep:s2_snowberry",
+      "underdeep:s2_steamfern",
+      "underdeep:s2_rimecap",
+      "underdeep:s2_wild_turnip"
     ],
     []
   ]

@@ -918,6 +918,11 @@ def plants():
         loot(b, [pool([entry("starstrand")], [SHEARS_OR_SILK])])
     lang_block("starstrand_plant", "Starstrand")
     tip("starstrand", "Glowing strands hanging from starlit ceilings.")
+    for b in ("glowfern", "mendleaf", "glowivy", "goldgrass", "sunleaf", "ashgrass", "pyrelily", "emberwort", "shardgrass",
+              "prism_lily", "ghostfern", "voidroot", "umbral_bloom", "frostbell", "steamfern", "peakstar", "ledgevine",
+              "bogbloom", "marsh_fern", "bogwort", "stoneroot", "petrolichen", "plaguebloom", "snapjaw", "static_grass",
+              "voltbloom", "silvergrass", "moonpetal", "starstrand"):
+        lang_block(b)
 
 
 def harvest_loot(bid, produce, lo, hi):
@@ -1117,6 +1122,11 @@ def minerals():
         h = art.stone(HOSTS[host], 200 + i)
         k_cube(bid, art.ore(h, col, 300 + i, style, glow))
         loot_ore(bid, item, lo, hi)
+        if bid == "fossil_ore":
+            r = json.load(open(os.path.join(DATA, NS, "loot_table", "blocks", bid + ".json")))
+            r["pools"].append(pool([entry("ancient_seed")], [NO_SILK, SURVIVES,
+                                                             {"condition": "minecraft:random_chance", "chance": 0.03}]))
+            loot(bid, r["pools"])
         lang_block(bid)
         tag("minecraft/tags/block/mineable/pickaxe.json", u(bid))
         tier = ORE_TIER.get(bid)

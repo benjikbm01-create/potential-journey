@@ -145,18 +145,26 @@
       "minecraft:ore_copper",
       "underdeep:ore_copper_upper",
       "underdeep:ore_quartz_crimson",
-      "underdeep:ore_gold_crimson"
+      "underdeep:ore_gold_crimson",
+      "underdeep:s2_ore_cinnabar",
+      "underdeep:s2_ore_sulfur"
     ],
     [],
     [
       "underdeep:spring_lava_few"
     ],
     [
-      "underdeep:crimson_fungi",
       "underdeep:crimson_vegetation",
       "underdeep:weeping_vines",
       "underdeep:red_mushrooms",
-      "underdeep:emberblooms"
+      "underdeep:emberblooms",
+      "underdeep:s2_crimson_trees",
+      "underdeep:s2_fallen_bloodthorn",
+      "underdeep:s2_emberwort",
+      "underdeep:s2_thornbriar",
+      "underdeep:s2_plaguebloom",
+      "underdeep:s2_snapjaw",
+      "underdeep:s2_bloodcap"
     ],
     []
   ]

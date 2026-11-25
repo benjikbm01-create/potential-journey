@@ -89,7 +89,8 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_niter"
     ],
     [
       "underdeep:glow_lichen_sparse"
@@ -99,16 +100,21 @@
     ],
     [
       "underdeep:huge_mushrooms",
-      "underdeep:warped_fungi",
       "underdeep:moss_patch",
-      "underdeep:warped_vegetation",
-      "underdeep:nether_sprouts",
-      "underdeep:twisting_vines",
       "underdeep:brown_mushrooms",
       "underdeep:red_mushrooms",
       "underdeep:glowcaps_many",
       "underdeep:cave_vines_sparse",
-      "underdeep:seagrass"
+      "underdeep:seagrass",
+      "underdeep:s2_giant_fungi",
+      "underdeep:s2_giant_fungi_ancient",
+      "underdeep:s2_puffcap",
+      "underdeep:s2_inkcap",
+      "underdeep:s2_deathbell",
+      "underdeep:s2_lanterncap",
+      "underdeep:s2_sporepuff",
+      "underdeep:s2_sagecap",
+      "underdeep:s2_wild_truffle"
     ],
     []
   ]

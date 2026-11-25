@@ -112,7 +112,8 @@
       "minecraft:ore_lapis",
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_bog_iron"
     ],
     [],
     [
@@ -130,7 +131,16 @@
       "underdeep:spore_blossom",
       "underdeep:seagrass",
       "underdeep:lumen_seagrass",
-      "underdeep:lily_pads_many"
+      "underdeep:lily_pads_many",
+      "underdeep:s2_wetland_trees",
+      "underdeep:s2_fallen_mirewillow",
+      "underdeep:s2_glowfern",
+      "underdeep:s2_bogbloom",
+      "underdeep:s2_marsh_fern",
+      "underdeep:s2_bogwort",
+      "underdeep:s2_wild_rice",
+      "underdeep:s2_ribbonweed",
+      "underdeep:s2_glowpads"
     ],
     []
   ]

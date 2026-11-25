@@ -154,7 +154,10 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "underdeep:ore_copper_upper",
-      "underdeep:ore_amber"
+      "underdeep:ore_amber",
+      "underdeep:s2_ore_niter",
+      "underdeep:s2_ore_jasper",
+      "underdeep:s2_ore_fossil"
     ],
     [
       "underdeep:glow_lichen_sparse"
@@ -165,7 +168,10 @@
     [
       "underdeep:dead_bushes",
       "underdeep:brown_mushrooms",
-      "underdeep:glowcaps_sparse"
+      "underdeep:glowcaps_sparse",
+      "underdeep:s2_stoneroot",
+      "underdeep:s2_calcicap",
+      "underdeep:s2_petrolichen"
     ],
     []
   ]

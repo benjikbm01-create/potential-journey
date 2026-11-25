@@ -96,6 +96,25 @@ public final class SelfTest {
         }));
     }
 
+    private static Stage15Checks.Reporter reporter() {
+        return new Stage15Checks.Reporter() {
+            @Override
+            public void check(String name, boolean pass, String detail) {
+                SelfTest.check(name, pass, detail);
+            }
+
+            @Override
+            public void info(String name, String detail) {
+                SelfTest.info(name, detail);
+            }
+
+            @Override
+            public void section(String title) {
+                SelfTest.section(title);
+            }
+        };
+    }
+
     private static void check(String name, boolean pass, String detail) {
         CHECKS.add(new Check(name, pass ? "PASS" : "FAIL", detail));
         REPORT.append("- **").append(pass ? "PASS" : "FAIL").append("** ").append(name).append(": ").append(detail).append('\n');
@@ -140,6 +159,7 @@ public final class SelfTest {
                 }
             }
             info("vanilla generation", String.format(Locale.ROOT, "64 chunks in %.0f ms", (System.nanoTime() - t0) / 1e6));
+            Stage2Checks.vanilla(world, reporter());
             check("selftest completed", true, "vanilla regression checks executed");
             return;
         }
@@ -299,37 +319,39 @@ public final class SelfTest {
         // ------------------------------------------------------------------ connectivity
         section("Connectivity (ground truth flood fill of generated blocks)");
         connectivity(world, t, spawn.getX() >> 4, spawn.getZ() >> 4, 10, "spawn area");
-        connectivity(world, t, 140, -90, 10, "remote area (2240,-1440)");
+        boolean full = !"stage2".equals(System.getProperty("underdeep.selftest.suite", "full"));
+        if (full) {
+            connectivity(world, t, 140, -90, 10, "remote area (2240,-1440)");
+        }
 
         // ------------------------------------------------------------------ Stage 1.5 measurements
-        Stage15Checks.Reporter rep = new Stage15Checks.Reporter() {
-            @Override
-            public void check(String name, boolean pass, String detail) {
-                SelfTest.check(name, pass, detail);
-            }
-
-            @Override
-            public void info(String name, String detail) {
-                SelfTest.info(name, detail);
-            }
-
-            @Override
-            public void section(String title) {
-                SelfTest.section(title);
-            }
-        };
+        Stage15Checks.Reporter rep = reporter();
         Map<RegionType, int[]> reps = Stage15Checks.distribution(t, rep);
-        Stage15Checks.accessibility(t, spawn, rep);
-        Stage15Checks.landmarks(t, rep);
-        Stage15Checks.settlementAreas(t, rep);
+        if (full) {
+            Stage15Checks.accessibility(t, spawn, rep);
+            Stage15Checks.landmarks(t, rep);
+            Stage15Checks.settlementAreas(t, rep);
+        }
         Stage15Checks.lighting(world, t, reps, rep);
         Stage15Checks.survival(server, world, spawn, rep);
+
+        // ------------------------------------------------------------------ Stage 2
+        long s2 = System.nanoTime();
+        Stage2Checks.registries(server, rep);
+        Stage2Checks.recipes(world, rep);
+        Stage2Checks.census(world, t, reps, rep);
+        if (phase.equals("create")) {
+            Stage2Checks.functional(server, world, t, reps, dir, rep);
+        } else {
+            Stage2Checks.persistence(world, dir, rep);
+        }
+        info("stage 2 checks time", String.format(Locale.ROOT, "%.1f s", (System.nanoTime() - s2) / 1e9));
         writeReps(reps, dir);
         tourReps = reps;
 
         // ------------------------------------------------------------------ settlement sites
         section("Settlement site analysis near spawn (radius 1200)");
-        for (SiteType st : SiteType.values()) {
+        for (SiteType st : full ? SiteType.values() : new SiteType[0]) {
             for (CavernLayer layer : CavernLayer.values()) {
                 List<SiteCandidate> sites = SiteAnalyzer.findSites(t, st, layer, 0, 0, 1200, 1);
                 if (sites.isEmpty()) {
@@ -370,7 +392,7 @@ public final class SelfTest {
                 });
         for (String cmd : List.of("underdeep info", "underdeep region", "underdeep locate crystal_deep", "underdeep locate the_abyss",
                 "underdeep spawncheck", "underdeep cavern", "underdeep sites village 800", "underdeep sites floating 1500",
-                "underdeep connectivity 2", "underdeep perf 32", "underdeep render 256")) {
+                "underdeep connectivity 2", "underdeep perf 32", "underdeep render 256", "underdeep ecology")) {
             int result;
             String error = null;
             try {

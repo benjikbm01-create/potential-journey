@@ -1,0 +1,30 @@
+{
+  "feature": "underdeep:s2_starlight_trees",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "floor",
+      "min_y": 95,
+      "max_y": 300,
+      "max_scan": 160
+    },
+    {
+      "type": "underdeep:variant",
+      "variants": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

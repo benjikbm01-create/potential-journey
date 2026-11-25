@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Runs the Underdeep dedicated-server self-test.
-# Usage: scripts/selftest.sh <seed> <run-dir> [phase=create|reload] [order=forward|reverse]
+# Usage: [SUITE=full|stage2] scripts/selftest.sh <seed> <run-dir> [phase=create|reload] [order=forward|reverse]
+# SUITE=stage2 skips the slow Stage 1.5 terrain analyses (connectivity, accessibility, landmarks, sites).
 # Creates <run-dir> with server.properties (level-type underdeep:underdeep) on first use; the report
 # is written to <run-dir>/selftest/. The server log is <run-dir>/logs/latest.log.
 set -euo pipefail
@@ -24,6 +25,6 @@ PROPS
 fi
 cd "$ROOT"
 ./gradlew --no-daemon --offline runServer -PrunDir="$RUN_DIR" -Pselftest="$ROOT/$RUN_DIR/selftest" \
-  -PselftestPhase="$PHASE" -PselftestOrder="$ORDER" --args="nogui" 2>&1 | tail -n 5
+  -PselftestPhase="$PHASE" -PselftestOrder="$ORDER" -PselftestSuite="${SUITE:-full}" --args="nogui" 2>&1 | tail -n 5
 echo "--- report: $RUN_DIR/selftest/report.md"
 grep -E "Summary|FAIL" "$RUN_DIR/selftest/report.md" || true

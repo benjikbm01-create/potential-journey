@@ -120,7 +120,6 @@
       "underdeep:spring_water"
     ],
     [
-      "underdeep:golden_trees",
       "underdeep:moss_patch",
       "underdeep:patch_grass",
       "underdeep:start_berries",
@@ -134,7 +133,16 @@
       "underdeep:cave_vines_sparse",
       "underdeep:spore_blossom",
       "underdeep:seagrass",
-      "underdeep:lily_pads"
+      "underdeep:lily_pads",
+      "underdeep:s2_golden_trees",
+      "underdeep:s2_golden_ancient",
+      "underdeep:s2_fallen_goldwood",
+      "underdeep:s2_honeyfruit",
+      "underdeep:s2_goldgrass",
+      "underdeep:s2_sunleaf",
+      "underdeep:s2_wild_glowgrain",
+      "underdeep:s2_wild_sunbean",
+      "underdeep:s2_glowivy"
     ],
     []
   ]

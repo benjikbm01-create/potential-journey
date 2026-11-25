@@ -162,7 +162,9 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "underdeep:ore_copper_upper",
-      "underdeep:ore_calcite_veins"
+      "underdeep:ore_calcite_veins",
+      "underdeep:s2_ore_prismatic_opal",
+      "underdeep:s2_ore_budding_glimmer"
     ],
     [
       "underdeep:crystal_spires_floor",
@@ -179,7 +181,15 @@
       "underdeep:lumen_seagrass",
       "underdeep:luminite_clusters_floor",
       "underdeep:luminite_clusters_ceiling",
-      "underdeep:amethyst_clusters"
+      "underdeep:amethyst_clusters",
+      "underdeep:s2_shardgrass",
+      "underdeep:s2_prism_lily",
+      "underdeep:s2_ghostfern",
+      "underdeep:s2_calcicap",
+      "underdeep:s2_shardgrass_deep",
+      "underdeep:s2_calcicap_deep",
+      "underdeep:s2_glimmer_floor",
+      "underdeep:s2_glimmer_ceiling"
     ],
     []
   ]

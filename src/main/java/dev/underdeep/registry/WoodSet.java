@@ -134,8 +134,8 @@ public final class WoodSet {
     }
 
     public WoodSet sapling(String species, TagKey<Block> soil, GrowthRule rule, int minLight) {
-        this.sapling = sapling(species, species, soil, rule, minLight);
-        this.pottedSapling = potted(species, sapling);
+        this.sapling = sapling(name, species, soil, rule, minLight);
+        this.pottedSapling = potted(name, sapling);
         return this;
     }
 

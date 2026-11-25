@@ -67,6 +67,10 @@ public final class UnderdeepCommands {
                         .then(CommandManager.argument("region", StringArgumentType.word()).suggests(REGIONS)
                                 .executes(UnderdeepCommands::locate)))
                 .then(CommandManager.literal("spawncheck").executes(UnderdeepCommands::spawnCheck))
+                .then(CommandManager.literal("ecology")
+                        .executes(c -> ecology(c, BlockPos.ofFloored(c.getSource().getPosition())))
+                        .then(CommandManager.argument("pos", BlockPosArgumentType.blockPos())
+                                .executes(c -> ecology(c, BlockPosArgumentType.getBlockPos(c, "pos")))))
                 .then(CommandManager.literal("cavern")
                         .executes(c -> cavern(c, BlockPos.ofFloored(c.getSource().getPosition())))
                         .then(CommandManager.argument("pos", BlockPosArgumentType.blockPos())
@@ -138,6 +142,18 @@ public final class UnderdeepCommands {
             sb.append(' ').append(s.id()).append('=').append(String.format(Locale.ROOT, "%.1f", r.region().settlementAffinity(s)));
         }
         send(c, sb.toString());
+        return 1;
+    }
+
+    /** Regional ecological summary (Stage 2 contract for wildlife and settlements) plus recorded harvests. */
+    private static int ecology(CommandContext<ServerCommandSource> c, BlockPos pos) throws CommandSyntaxException {
+        UnderdeepTerrain t = requireTerrain(c);
+        RegionReport r = RegionReport.at(t, pos.getX(), pos.getY(), pos.getZ());
+        var eco = dev.underdeep.ecology.RegionEcology.of(r.region(), r.regionId().asLong());
+        send(c, eco.describe());
+        var tag = dev.underdeep.world.data.UnderdeepWorldState.get(c.getSource().getWorld())
+                .regionData(r.regionId().asLong()).getCompound(dev.underdeep.ecology.EcologyState.KEY);
+        send(c, "recorded harvests in region " + r.regionId() + ": " + (tag.isEmpty() ? "none" : tag.toString()));
         return 1;
     }
 

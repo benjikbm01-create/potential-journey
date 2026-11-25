@@ -160,7 +160,8 @@
       "minecraft:ore_lapis_buried",
       "minecraft:ore_copper",
       "minecraft:ore_emerald",
-      "underdeep:ore_copper_upper"
+      "underdeep:ore_copper_upper",
+      "underdeep:s2_ore_malachite"
     ],
     [
       "underdeep:glow_lichen"
@@ -169,12 +170,15 @@
       "underdeep:spring_water_many"
     ],
     [
-      "underdeep:peak_trees",
       "underdeep:moss_patch",
       "underdeep:patch_grass_sparse",
       "underdeep:flower_default",
       "underdeep:glowcaps",
-      "underdeep:cave_vines_sparse"
+      "underdeep:cave_vines_sparse",
+      "underdeep:s2_peak_trees",
+      "underdeep:s2_cliffberry",
+      "underdeep:s2_peakstar",
+      "underdeep:s2_ledgevine"
     ],
     []
   ]
