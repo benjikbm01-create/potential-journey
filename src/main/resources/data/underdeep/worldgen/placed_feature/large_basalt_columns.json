@@ -1,0 +1,18 @@
+{
+  "feature": "minecraft:large_basalt_columns",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "floor",
+      "min_y": -60,
+      "max_y": 300,
+      "max_scan": 160
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

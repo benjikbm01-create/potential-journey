@@ -1,0 +1,22 @@
+{
+  "feature": "underdeep:luminite_cluster_down",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 6
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "ceiling",
+      "min_y": -60,
+      "max_y": 300,
+      "max_scan": 160
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

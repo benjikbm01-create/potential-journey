@@ -1,0 +1,41 @@
+# Gradle / build
+.gradle/
+build/
+out/
+classes/
+bin/
+
+# Loom
+.loom-cache/
+remappedSrc/
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+
+# Run directories (generated worlds, logs, caches)
+run/
+run-server/
+run-client/
+run-*/
+logs/
+*.log
+crash-reports/
+
+# Local test output (generated worlds, screenshots, reports are not committed)
+test-output/
+selftest-output/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java
+*.hprof
+hs_err_pid*

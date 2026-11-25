@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:rootwild",
+    "underdeep:fungal_expanse",
+    "underdeep:flooded_depths",
+    "underdeep:ashen_hollows",
+    "underdeep:crystal_deep",
+    "underdeep:the_abyss"
+  ]
+}

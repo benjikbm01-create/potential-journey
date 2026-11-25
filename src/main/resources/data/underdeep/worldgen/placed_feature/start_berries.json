@@ -1,0 +1,26 @@
+{
+  "feature": "minecraft:patch_berry_bush",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 3
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:start_zone",
+      "radius": 72
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "floor",
+      "min_y": 100,
+      "max_y": 300,
+      "max_scan": 200
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

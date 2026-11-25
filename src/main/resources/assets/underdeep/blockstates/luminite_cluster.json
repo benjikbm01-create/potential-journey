@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "underdeep:block/luminite_cluster"
+    },
+    "facing=down": {
+      "model": "underdeep:block/luminite_cluster",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "underdeep:block/luminite_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/luminite_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=east": {
+      "model": "underdeep:block/luminite_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=west": {
+      "model": "underdeep:block/luminite_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

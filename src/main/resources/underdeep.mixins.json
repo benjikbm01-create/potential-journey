@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.underdeep.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "DimensionOptionsRegistryHolderMixin",
+    "MinecraftServerMixin",
+    "NetherPortalMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

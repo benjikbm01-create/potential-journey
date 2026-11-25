@@ -1,0 +1,22 @@
+{
+  "feature": "minecraft:cave_vine",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 26
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "underdeep:cave_surface",
+      "surface": "ceiling",
+      "min_y": 100,
+      "max_y": 300,
+      "max_scan": 160
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

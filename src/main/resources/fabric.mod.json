@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "underdeep",
+  "version": "${version}",
+  "name": "Underdeep",
+  "description": "A cooperative underground survival sandbox: an entire world of vast interconnected caverns.",
+  "authors": ["Underdeep developers"],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/underdeep/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.underdeep.Underdeep"],
+    "client": ["dev.underdeep.client.UnderdeepClient"]
+  },
+  "mixins": [
+    "underdeep.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "~${minecraft_version}",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
