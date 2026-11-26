@@ -380,6 +380,12 @@ public final class SelfTest {
             check("stage 4 checks completed without exceptions", false, e.toString());
         }
         info("stage 4 checks time", String.format(Locale.ROOT, "%.1f s", (System.nanoTime() - s4) / 1e9));
+        try {
+            Stage5Checks.run(world, rep);
+        } catch (RuntimeException e) {
+            Underdeep.LOGGER.error("Stage 5 checks crashed", e);
+            check("stage 5 checks completed without exceptions", false, e.toString());
+        }
         long s3 = System.nanoTime();
         try {
             if (!only4) Stage3Checks.run(world, t, reps, dir, rep, phase.equals("create"));

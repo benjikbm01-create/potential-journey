@@ -259,3 +259,25 @@ robe, armor, farmer, vest, coat).
 ### Commands (operators)
 `/underdeep settlements [radius]`, `/underdeep settlement` (details of the one you stand in),
 `/underdeep gallery confirm` (builds every design next to you; test worlds only).
+
+## Stage 5 — Living inhabitants (ids are append-only ordinals; see docs/NPC_MINDS.md)
+
+- **Traits (24)**: sociability, courage, patience, generosity, trustfulness, ambition, curiosity, loyalty, optimism,
+  honesty, independence, discipline, humor, competitiveness, compassion, caution, adventurousness, impulsiveness,
+  pride, forgiveness, resilience, frugality, homebody, tolerance.
+- **Emotions (15)**: happiness, contentment, excitement, curiosity, affection, concern, fear, anger, frustration,
+  sadness, loneliness, embarrassment, stress, pride, relief.
+- **Needs (10)**: hunger, rest, safety, social, recreation, comfort, purpose, belonging, health, curiosity.
+- **Activities (50)**: sleep, nap, eat_home, eat_tavern, tidy_home, morning_routine, recover, work_station,
+  tend_fields, fish, smithing, crafting, cooking, study, serve_customers, stock_shelves, patrol, watch_post,
+  heal_patients, animal_care, maintain_tools, gather_herbs, run_inn, chat, visit_friend, visit_family, share_meal,
+  attend_gathering, help_neighbor, give_gift, make_amends, greet_newcomer, teach_apprentice, stroll, sit_and_rest,
+  watch_wildlife, visit_garden, browse_market, tavern_evening, explore_nearby, favorite_spot, play_game, read,
+  flee, take_shelter, warn_others, defend, seek_guard, help_injured, see_healer.
+- **Memory types (28)**, **relationship labels (18)**, **kin (6)**, **encounter types (32)**, **knowledge kinds (7)**,
+  **goal types (13; 10 implemented)**, **request kinds (3)**, **companion modes (6) and stances (3)**.
+- **Dialogue topics (92)** in `civ/npc/Topics.java` (ids such as `greet_stranger`, `work_proud`, `news_predator`).
+- **Network payloads**: `underdeep:dialogue_open` (S2C), `underdeep:dialogue_choose` (C2S).
+- **Commands**: `/companion <cmd>` (players), `/underdeep npc …` (operators).
+- **Lang keys**: `message.underdeep.companion.incapacitated`, `message.underdeep.companion.none`,
+  `message.underdeep.people.header`, `message.underdeep.people.none`, `screen.underdeep.dialogue`.

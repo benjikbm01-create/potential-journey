@@ -53,7 +53,7 @@ public final class Memory {
     }
 
     /** Retention score: importance, repetition, and how recent the memory is (in in-game days). */
-    double weight(long now) {
+    public double weight(long now) {
         double ageDays = Math.max(0, (now - Math.max(time, lastRecalled)) / 24000.0);
         double fade = importance >= 0.7 ? 1.0 / (1 + ageDays * 0.03) : 1.0 / (1 + ageDays * 0.35);
         return (importance + Math.min(0.3, Math.log(count) * 0.08)) * fade;

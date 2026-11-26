@@ -93,7 +93,7 @@ public final class Encounters {
         add.accept(Type.GAME, know && a.trait(Trait.COMPETITIVENESS) + a.trait(Trait.HUMOR) > 110 ? 0.6 : 0);
         add.accept(Type.MERCHANT_BANTER, ra.profession.equals("merchant") && rb.profession.equals("merchant") ? 1.2 : 0);
         add.accept(Type.BOAST, a.trait(Trait.PRIDE) > 65 && know ? 0.5 : 0);
-        add.accept(Type.COMPLAIN, a.need(Need.HUNGER) < 0.3 || a.need(Need.REST) < 0.25 ? 1.0 : 0);
+        add.accept(Type.COMPLAIN, a.need(Need.HUNGER) < 0.3 || a.need(Need.REST) < 0.25 ? 0.5 : 0);
         add.accept(Type.SHARE_FOOD, b.need(Need.HUNGER) < 0.35 && food(a) != null && (friends || kin || a.trait(Trait.GENEROSITY) > 65) ? 2.0 : 0);
         add.accept(Type.GIFT, (friends || kin) && a.trait(Trait.GENEROSITY) > 60 && !a.possessions.isEmpty() && now - ab.lastGift > 24000L * 3 ? 0.4 : 0);
         add.accept(Type.COMFORT, (b.emotion(Emotion.SADNESS) > 0.35 || b.emotion(Emotion.CONCERN) > 0.4) && a.trait(Trait.COMPASSION) > 45 ? 2.5 : 0);

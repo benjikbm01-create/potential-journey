@@ -158,7 +158,7 @@ public final class Brain {
             double curU = utility(cur, m, c, ph, new int[1], new double[1]);
             boolean urgent = bestU >= 3.0 && best.emergency() || bestU >= 3.0 && !cur.emergency() && curU < 2;
             int minimum = (int) (cur.minMinutes * (1.0 - 0.4 * m.t(Trait.IMPULSIVENESS)) * (0.8 + 0.4 * m.trait(Trait.PATIENCE) / 100.0));
-            if (!urgent) {
+            if (!urgent && curU > 0) { // an activity that is no longer possible (time jump, phase change) ends at once
                 if (elapsedMin < minimum) {
                     return new Choice(cur, -2, m.reason);
                 }

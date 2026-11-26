@@ -16,3 +16,4 @@ Files:
   implement each.
 - `WILDLIFE.md` — rare/exceptional creatures, secret taming mechanics, hidden biology (Stage 3).
 - `CIVILIZATIONS.md` — full identities, histories, customs and secrets of the eight civilizations (Stage 4).
+- `INHABITANTS.md` — hidden intent behind Stage 5 dialogue and knowledge hooks.

@@ -11,21 +11,21 @@ public enum Trait {
     COURAGE,
     /** Tolerance for interruptions (repeated talking), frustration growth, minimum activity commitment. */
     PATIENCE,
-    /** Gift giving to friends, sharing food in encounters, friendlier trade prices for trusted people. */
+    /** Gift giving to friends, sharing food in encounters, giving a thank-you item after being helped. */
     GENEROSITY,
-    /** Starting trust toward strangers and newcomers; how fast trust grows. */
+    /** Starting trust toward players they have not met; how gently they turn down a companion invitation. */
     TRUSTFULNESS,
     /** Utility of extra work and skill goals; rivalry formation with competitors. */
     AMBITION,
     /** Utility of exploring, observing wildlife, asking about discoveries; interest in news. */
     CURIOSITY,
-    /** Companion willingness to stay in danger; resilience of friendships to small slights. */
+    /** Willingness to accept a companion invitation. */
     LOYALTY,
     /** Emotional baseline (contentment) and recovery speed from sadness. */
     OPTIMISM,
     /** Whether rumours are passed on as rumours or embellished (lower confidence when low). */
     HONESTY,
-    /** Willingness to travel as a companion, preference for solitary activities. */
+    /** Reluctance to ask for help (requests are phrased indirectly); content living alone. */
     INDEPENDENCE,
     /** Punctuality: schedule jitter and work commitment. */
     DISCIPLINE,
@@ -35,7 +35,7 @@ public enum Trait {
     COMPETITIVENESS,
     /** Comforting sad or injured people, helping in encounters, concern for others. */
     COMPASSION,
-    /** Avoiding places with remembered danger; warning others; refusing risky companion orders. */
+    /** Shelter preference in danger, loss of safety on hearing of predators, dislike of exploring, weight of danger memories. */
     CAUTION,
     /** Utility of exploring nearby areas; acceptance of companion invitations. */
     ADVENTUROUSNESS,
@@ -43,13 +43,13 @@ public enum Trait {
     IMPULSIVENESS,
     /** Offence at insults and refused gifts; boasting dialogue; slower reconciliation. */
     PRIDE,
-    /** Resentment decay speed; reconciliation chance. */
+    /** Reconciliation chance and the urge to make amends after an argument. */
     FORGIVENESS,
     /** Emotional decay speed after fear, sadness and stress. */
     RESILIENCE,
-    /** Saving goals; how much gifts of valuables are appreciated. */
+    /** Eating at home rather than at the inn; appreciation of valuable gifts. */
     FRUGALITY,
-    /** Attachment to home: time spent at home, refusal to leave as a companion. */
+    /** Attachment to home: eating at home, favourite-spot visits, reluctance to explore or to leave as a companion. */
     HOMEBODY,
     /** Disagreement probability with incompatible personalities; acceptance of outsiders. */
     TOLERANCE;

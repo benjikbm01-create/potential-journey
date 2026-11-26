@@ -130,5 +130,32 @@ Partially complete / limitations: see `NEXT_STEPS.md` (known issues). Terrain un
 
 Partially complete / limitations: see `NEXT_STEPS.md`.
 
-## Stages 5–12
+## Stage 5 — Living inhabitants, personalities, relationships and social simulation: IMPLEMENTED (2026-11-26)
+
+See `docs/NPC_MINDS.md` for the full description.
+
+| System | State | Notes |
+|---|---|---|
+| Minds in inhabitant records, deterministic generation, Stage 4 migration | done | schema 1; save/load round trip checked |
+| 24 personality traits with documented effects; civilization/profession tendencies | done | |
+| 15 emotions, 10 needs, mood | done | bounded, decaying, event driven |
+| 50 activities, utility decisions with commitment/interrupts, daily cycle with shifts and jitter | done | unit-tested |
+| Places from the settlement plan, shared-spot reservations | done | |
+| 28 memory categories, consolidation, bounded storage | done | unit-tested |
+| Relationships: multi-dimensional, asymmetric, sparse; 18 labels; households, families, mentors, rivals | done | |
+| 32 NPC-to-NPC encounter types (both tiers), speech bubbles | done | |
+| Information spread with source/confidence, local and bounded | done | |
+| Per-player reputation, first meetings, witnessed attacks | done | |
+| Dialogue screen (server-authoritative), 92-topic library, preference discovery | done | free-text input not implemented |
+| Gifts (validated, consume one, cooldown), requests for help from real needs | done | |
+| Personal goals (10 implemented, 3 reserved for Stage 6) | done | |
+| Companions: eligibility, 12 commands, following with safe relocation, stances, retreat, incapacitation, pack, disconnect handling, shared memories | done | `/companion` |
+| Abstract tier (bounded round-robin, near/distant intervals, 24 h catch-up) | done | |
+| Journal: people met, preferences learned, companion | done | |
+| Diagnostics `/underdeep npc …`, config options | done | |
+| Tests: MindLogicTest (unit), Stage5Checks (self-test) | see TESTING.md | in-game behaviour to be verified by the user |
+
+Limitations: see `NEXT_STEPS.md`.
+
+## Stages 6–12
 Not started.

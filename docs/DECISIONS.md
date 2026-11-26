@@ -320,3 +320,31 @@ daily. A regional currency and price dynamics belong to the Stage 6 economy.
 `SUITE=stage4` runs the Stage 4 self-test without the Stage 1.5–3 measurements, which have not changed,
 for fast iteration. Full verification still runs the `stage2` suite, which includes Stage 3 and Stage 4,
 on several seeds.
+
+## D-047 Minds live inside the inhabitant records
+Stage 5 personality, emotions, needs, memories, relationships, knowledge, goals, preferences, possessions and
+companion state are a `Mind` stored in each `InhabitantRecord` (NBT key `mind`, schema 1). There is exactly one
+authoritative copy, whichever tier advances it; Stage 4 records are migrated deterministically from their
+appearance seed. The Stage 4 `memory` compound stays unused (kept for compatibility).
+
+## D-048 One decision model for both tiers
+`Brain` (utility + commitment) drives embodied inhabitants once per second and unembodied ones in hourly steps,
+so an individual behaves the same whether or not a player is watching. Abstract catch-up is capped at the last
+24 in-game hours; earlier absence only means "they lived their routine".
+
+## D-049 Authored, composable dialogue — no language model
+Conversations come from an authored topic library with eligibility predicates (only true statements) and
+variation by personality, emotion, culture, familiarity and memories. No network service, no generated text.
+The optional free-text keyword input was not implemented (menu choices cover every topic group).
+
+## D-050 Companions are incapacitated, not killed (default)
+Defeat sends a companion home to recover (configurable `companionPermanentDeath`). Ordinary inhabitants keep the
+Stage 4 rule: deaths are permanent. Companions never target players, to keep cooperative play safe.
+
+## D-051 Speech bubbles as riding text displays
+NPC-to-NPC lines are shown by short-lived text display entities riding the speaker (tagged; cleaned up on load,
+never saved because their vehicle is never saved). Configurable (`speechBubbles`, `speechBubbleSeconds`).
+
+## D-052 Relationship growth has diminishing returns
+Trivial interactions (small talk, greetings) count fully only twice per day per bond, then 35 %, then not at all;
+significant events are never diminished. Gifts have a cooldown. Reputation cannot be ground by spamming talk.

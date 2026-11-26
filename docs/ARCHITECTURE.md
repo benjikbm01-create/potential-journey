@@ -465,3 +465,18 @@ Mob study (`-Dunderdeep.mobstudy=<dir>`, `scripts/mob_study.sh`) measures natura
 client connected to the dedicated server.
 `F3` debug screen shows layer, region and cavern heights. Self-test (`-Dunderdeep.selftest=<dir>`) and
 screenshot tour (`-Dunderdeep.tour=<file>`) are inert unless those properties are set.
+
+## 5f. Living inhabitants (Stage 5)
+
+Full description in `docs/NPC_MINDS.md`. Packages:
+- `civ/mind` — pure logic: `Mind` (state + NBT), `Trait`, `Feelings` (emotions, needs), `Memory` (+ `Book`),
+  `Bond`, `Activity` (50), `Brain` (utility decisions), `Goals` (goals and requests), `Preferences`.
+- `civ/npc` — world integration: `Society` (per-world social simulation: active thinking, abstract round-robin,
+  encounters, bubbles, events), `Places` (activity places from the plan, reservations), `Encounters` (32 types),
+  `Topics` (dialogue library), `Dialogue` (server conversations, gifts, help), `DialoguePayloads` (networking),
+  `Companions` (+ `CompanionCommand`), `PeopleJournal`, `NpcCommands` (diagnostics).
+- Client: `client/civ/DialogueScreen`.
+
+Flow per world tick (`InhabitantManager.tick`): bubbles → active thoughts (each embodied inhabitant once per
+second, staggered) → abstract step every 2nd tick (bounded) → once per second: population, departures,
+companion embodiment. Records stay the single source of truth across tiers.

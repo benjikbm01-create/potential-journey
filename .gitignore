@@ -39,3 +39,4 @@ Thumbs.db
 # Java
 *.hprof
 hs_err_pid*
+runs/

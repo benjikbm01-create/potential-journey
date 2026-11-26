@@ -75,6 +75,10 @@ independently of the players. Players are inhabitants, not chosen heroes.
   worlds created with generator v3+. Inhabitants are persistent records embodied near players and never saved
   as entities. Judge architecture with `GALLERY=true` + `scripts/visual_tour.sh`, never from compilation alone.
   Asset scripts must be deterministic (no Python `hash()`): set `PYTHONHASHSEED=0` when re-running `creatures.py`.
+- Inhabitant minds (Stage 5): personality, needs, memories, relationships, goals and companion state live in the
+  record's `Mind` (`civ/mind`, schema `Mind.SCHEMA`, append-only ordinals); the same `Brain` drives embodied and
+  abstract inhabitants. Dialogue is an authored topic library (`civ/npc/Topics`) — every topic must only state
+  things that are true for the speaker. See `docs/NPC_MINDS.md`. Operators inspect minds with `/underdeep npc …`.
 - Worldgen output changes require bumping `UnderdeepTerrain.GENERATOR_VERSION` (currently 3) and telling the
   user that existing worlds must be regenerated. Never delete or overwrite the user's worlds.
 - **Never record a test as passing unless it was actually executed.** Record commands, environment

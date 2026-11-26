@@ -24,6 +24,33 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
+## Results — Stage 5 (2026-11-26)
+
+Environment: same container as earlier stages (Java 21, Gradle 8.14.3 offline, headless dedicated server).
+Per the user's request, only short automated runs were executed; hands-on play is left to the user.
+
+### Executed
+- `./gradlew test --tests 'dev.underdeep.civ.mind.*'` — **8/8 PASS** (`MindLogicTest`): diminishing returns of
+  trivial interactions, relationship labels, memory consolidation and bounded storage, need decay and emotion
+  fading, night sleep / day work / hunger first, danger interrupts work (timid flee, guards defend), commitment
+  prevents flickering, requests only from real needs; content counts (≥ 40 activities, 20–30 traits, 8–12 needs).
+- `SUITE=stage4 scripts/selftest.sh 1234 runs/s5smoke create` (dedicated server, seed 1234) — final run
+  **84 passed, 0 failed**. Stage 5 section (record level, accelerated — social time is advanced directly):
+  80/80 inhabitants have minds; deterministic generation; minds survive NBT save/load; 80 inhabitants × 24 h
+  simulated in 25.8 ms with bounded needs/memories/knowledge; 395 encounters of 16 types with no conflict in
+  that sample; the 92-topic dialogue library answered every group for every inhabitant (542 lines, 57 distinct
+  topics, no exceptions). Stage 4 checks also exercise Stage 5 in the active tier: 24 embodied without duplicates,
+  20 at work mid-morning, 15/22 asleep in their own bed within 60 accelerated seconds at night.
+- Fixed during these runs: (1) the routine check sampled at 6000, now the midday break — moved to 3500;
+  (2) after a time jump (e.g. players sleeping) commitment kept inhabitants at activities that were no longer
+  possible (working at night) — such activities now end at once; (3) complaints were over-frequent (halved).
+
+### Not executed (to be tested by the user in play)
+- Dialogue screen, gifts, help requests, companions (following, relocation, combat, incapacitation, pack,
+  logout/rejoin), speech bubbles, journal people pages: compiled and logic-checked only; no real client run.
+- `reload` phase, multi-seed matrix, chunk-order determinism (Stage 5 does not change terrain or worldgen).
+- Multiplayer with several real clients, long sessions, TPS with 4–6 players.
+
 ## Results — Stage 4 (2026-11-26)
 
 Same hardware and toolchain. Mod version `0.5.0-stage4`. At the user's request, the final multi-seed matrix

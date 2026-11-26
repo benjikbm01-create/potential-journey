@@ -169,3 +169,9 @@ Each stage builds on the previous ones without rewriting working systems unless 
 12–15 ecosystems · 6–8 civilizations · 40–60 species · 60–100 structure designs · 100–150 items ·
 20+ professions · 10–12 bosses · 50+ dynamic event types · custom sounds, textures, animations.
 Depth and quality take precedence over numbers.
+
+## Stage 5 status (living inhabitants)
+Inhabitants are individuals with personalities, needs, emotions, memories, relationships, households, goals and
+preferences; they choose their own activities, talk to each other and to players, remember what players do, ask
+for help when they really need it, and some can become companions. The world continues the same way whether or
+not a player is watching (abstract tier). Details: `docs/NPC_MINDS.md`.

@@ -235,7 +235,7 @@ final class Stage4Checks {
         SettlementPlan.Plaza c = plan.plazas().get(0);
         fake.refreshPositionAndAngles(c.x() + 0.5, c.y() + 1, c.z() + 0.5, 0, 0);
         long day = w.getTimeOfDay();
-        w.setTimeOfDay(day - day % 24000 + 6000); // midday: work
+        w.setTimeOfDay(day - day % 24000 + 3500); // mid-morning: work (5500-6500 is the midday break)
         var cfg = dev.underdeep.config.UnderdeepConfig.get();
         m.populate(map, s, List.of(fake), cfg);
         int active = m.activeIn(s.id());
