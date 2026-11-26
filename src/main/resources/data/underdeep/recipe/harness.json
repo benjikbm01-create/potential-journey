@@ -1,0 +1,20 @@
+{
+ "type": "minecraft:crafting_shaped",
+ "category": "misc",
+ "pattern": [
+  "HHH",
+  "S S"
+ ],
+ "key": {
+  "H": {
+   "item": "underdeep:hide"
+  },
+  "S": {
+   "item": "minecraft:string"
+  }
+ },
+ "result": {
+  "id": "underdeep:harness",
+  "count": 1
+ }
+}

@@ -59,6 +59,48 @@ public final class UnderdeepConfig {
     /** Ambient ecological particles (pollen, spores, falling leaves). Client-side setting. */
     public boolean ambientParticles = true;
 
+    // ---- Stage 3: wildlife ----
+    /** Master switch for Underdeep wildlife (spawning, regional populations, simulation). */
+    public boolean wildlifeEnabled = true;
+    /** Overall wildlife density multiplier (regional carrying capacities). */
+    public double wildlifeDensity = 1.0;
+    /** Optional per-ecosystem density multipliers, e.g. {"the_abyss": 0.5}. */
+    public java.util.Map<String, Double> wildlifeDensityByEcosystem = new java.util.HashMap<>();
+    /** Predator abundance multiplier (spawning share and abstract predation pressure). */
+    public double predatorAbundance = 1.0;
+    /** Reproduction rate multiplier (natural breeding and abstract recovery); 0 disables wild breeding. */
+    public double wildlifeReproduction = 1.0;
+    /** Migration multiplier between regions (0 disables migration). */
+    public double wildlifeMigration = 1.0;
+    /** Ticks between aggregate simulation passes over unloaded regions. */
+    public int wildlifeSimInterval = 1200;
+    /** Regions advanced per simulation pass. */
+    public int wildlifeSimRegionsPerUpdate = 24;
+    /** Maximum wild creatures materialised around one player. */
+    public int maxWildlifePerPlayer = 28;
+    /** Maximum wild creatures materialised in the whole world. */
+    public int maxWildlifeTotal = 160;
+    /** Beyond this distance from every player, wildlife runs reduced AI (no searches). */
+    public int wildlifeDetailDistance = 48;
+    /** Beyond this distance from every player, wild creatures return to their regional population. */
+    public int wildlifeDespawnDistance = 96;
+    /** How much grazing actually removes vegetation (0 = animals only nibble). Crops are never eaten. */
+    public double wildlifeVegetationConsumption = 1.0;
+    /** Frequency multiplier for rare and exceptional creatures. */
+    public double rareCreatureFrequency = 1.0;
+    /** Whether wild creatures can be tamed. */
+    public boolean tamingEnabled = true;
+    /** Replace vanilla passive animals, fish and bats in Underdeep ecosystems with native wildlife. */
+    public boolean vanillaMobReplacement = true;
+    /** Share of vanilla hostile spawn attempts kept in Underdeep (natural predators fill the rest). */
+    public double vanillaMonsterShare = 0.6;
+    /** How strongly player hunting disturbs a region (temporarily lowers its capacity). */
+    public double huntingDisturbance = 1.0;
+
+    public double densityFor(String ecosystem) {
+        return wildlifeDensity * wildlifeDensityByEcosystem.getOrDefault(ecosystem, 1.0);
+    }
+
     public static UnderdeepConfig get() {
         return instance;
     }

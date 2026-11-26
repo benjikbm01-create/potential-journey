@@ -84,6 +84,10 @@ public final class SpawnRules {
             return false;
         }
         double chance = monsterChance(region.danger());
+        var cfg = dev.underdeep.config.UnderdeepConfig.get();
+        if (cfg.wildlifeEnabled && cfg.vanillaMobReplacement) {
+            chance *= cfg.vanillaMonsterShare; // Stage 3: native predators take part of the role
+        }
         return chance >= 1 || ThreadLocalRandom.current().nextDouble() < chance;
     }
 }

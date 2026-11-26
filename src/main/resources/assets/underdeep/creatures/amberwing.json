@@ -1,0 +1,262 @@
+{
+ "texture": [
+  64,
+  32
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    20.5,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -2.5
+     ],
+     "size": [
+      3,
+      3,
+      5
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    -1.5,
+    -1.5
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -3,
+      -3
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "beak",
+   "parent": "head",
+   "pivot": [
+    0,
+    -1.5,
+    -3
+   ],
+   "role": "jaw",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -2
+     ],
+     "size": [
+      1,
+      1,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      8
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wing0",
+   "parent": "body",
+   "pivot": [
+    1.5,
+    -1.0,
+    -1.25
+   ],
+   "role": "wing",
+   "boxes": [
+    {
+     "from": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      6,
+      1,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      0
+     ]
+    }
+   ],
+   "side": 0
+  },
+  {
+   "name": "wing1",
+   "parent": "body",
+   "pivot": [
+    -1.5,
+    -1.0,
+    -1.25
+   ],
+   "role": "wing",
+   "boxes": [
+    {
+     "from": [
+      -6,
+      0,
+      0
+     ],
+     "size": [
+      6,
+      1,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      8
+     ]
+    }
+   ],
+   "side": 1
+  },
+  {
+   "name": "tail0",
+   "parent": "body",
+   "pivot": [
+    0,
+    -0.5,
+    2.5
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      0
+     ],
+     "size": [
+      2,
+      0,
+      5
+     ],
+     "mirror": false,
+     "uv": [
+      20,
+      8
+     ]
+    }
+   ],
+   "rot": [
+    -0.2,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    0.75,
+    22,
+    0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      40,
+      8
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -0.75,
+    22,
+    0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      44,
+      8
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  }
+ ],
+ "glow": false,
+ "egg": [
+  15767090,
+  5258280
+ ],
+ "scale": 1.0,
+ "shadow": 0.25,
+ "gait": "biped",
+ "legLength": 2
+}

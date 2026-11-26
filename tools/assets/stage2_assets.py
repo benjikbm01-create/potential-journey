@@ -1412,6 +1412,11 @@ def main():
     items()
     recipes()
     misc_tags()
+    import creatures
+    clang, ctags = creatures.main()
+    LANG.update(clang)
+    for path, vals in ctags.items():
+        tag(path, *vals)
     merge_outputs()
     print(f"stage 2 assets: {len(LANG)} names, {len(TOOLTIPS)} hints, {len(TAGS)} tag files")
 

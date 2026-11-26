@@ -1,0 +1,167 @@
+{
+ "texture": [
+  64,
+  64
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    19.0,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -9.0,
+      -1.0,
+      -7.0
+     ],
+     "size": [
+      18.0,
+      2,
+      14
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "wing0",
+   "parent": "body",
+   "pivot": [
+    9.0,
+    0,
+    0
+   ],
+   "role": "fin",
+   "boxes": [
+    {
+     "from": [
+      0,
+      -0.5,
+      -6.0
+     ],
+     "size": [
+      9.0,
+      1,
+      12
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      31
+     ]
+    }
+   ],
+   "side": 0,
+   "phase": 0
+  },
+  {
+   "name": "wing1",
+   "parent": "body",
+   "pivot": [
+    -9.0,
+    0,
+    0
+   ],
+   "role": "fin",
+   "boxes": [
+    {
+     "from": [
+      -9.0,
+      -0.5,
+      -6.0
+     ],
+     "size": [
+      9.0,
+      1,
+      12
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      44
+     ]
+    }
+   ],
+   "side": 1,
+   "phase": 0
+  },
+  {
+   "name": "tail0",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    7.0
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -0.5,
+      0
+     ],
+     "size": [
+      1,
+      1,
+      14
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      16
+     ]
+    }
+   ],
+   "index": 0
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    -7.0
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -2,
+      -1.0,
+      -1
+     ],
+     "size": [
+      4,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      42,
+      44
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": true,
+ "egg": [
+  3292270,
+  9881855
+ ],
+ "scale": 1.0,
+ "shadow": 1.0,
+ "gait": "fish",
+ "legLength": 0
+}

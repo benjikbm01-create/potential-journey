@@ -1,0 +1,220 @@
+{
+ "texture": [
+  64,
+  64
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    20.0,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -3.0,
+      -2.0,
+      -4.5
+     ],
+     "size": [
+      6,
+      4,
+      9
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      16
+     ]
+    },
+    {
+     "from": [
+      -4.0,
+      -6.0,
+      -5.5
+     ],
+     "size": [
+      8,
+      5,
+      11
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    2.0,
+    22,
+    -3.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      44,
+      16
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -2.0,
+    22,
+    -3.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      52,
+      16
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    2.0,
+    22,
+    3.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      29
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -2.0,
+    22,
+    3.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      29
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    -5.5
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -4
+     ],
+     "size": [
+      3,
+      3,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      30,
+      16
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": false,
+ "egg": [
+  9863790,
+  7890005
+ ],
+ "scale": 1.0,
+ "shadow": 0.4,
+ "gait": "quad",
+ "legLength": 2
+}

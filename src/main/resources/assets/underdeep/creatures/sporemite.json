@@ -1,0 +1,402 @@
+{
+ "texture": [
+  64,
+  32
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    20.9,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.0,
+      -2.0
+     ],
+     "size": [
+      3,
+      2,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "abdomen",
+   "parent": "body",
+   "pivot": [
+    0,
+    -0.5,
+    2.0
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -2.0,
+      -1.5,
+      0
+     ],
+     "size": [
+      4,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      14,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    -0.15,
+    0,
+    0
+   ],
+   "index": 0
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    -0.5,
+    -2.0
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.0,
+      -2
+     ],
+     "size": [
+      3,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ant0",
+   "parent": "head",
+   "pivot": [
+    0.5,
+    -1.0,
+    -1
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      6
+     ]
+    }
+   ],
+   "rot": [
+    -0.6,
+    0,
+    0.3
+   ],
+   "index": 0
+  },
+  {
+   "name": "ant1",
+   "parent": "head",
+   "pivot": [
+    -0.5,
+    -1.0,
+    -1
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      4,
+      6
+     ]
+    }
+   ],
+   "rot": [
+    -0.6,
+    0,
+    -0.3
+   ],
+   "index": 1
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    1.5,
+    21.4,
+    -1.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      3,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      38,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.55
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -1.5,
+    21.4,
+    -1.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      3,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      42,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.55
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    1.5,
+    21.4,
+    0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      3,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      46,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.55
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -1.5,
+    21.4,
+    0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      3,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      50,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.55
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "leg4",
+   "parent": "root",
+   "pivot": [
+    1.5,
+    21.4,
+    1.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      3,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      54,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.55
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg5",
+   "parent": "root",
+   "pivot": [
+    -1.5,
+    21.4,
+    1.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      3,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      58,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.55
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 1
+  }
+ ],
+ "glow": false,
+ "egg": [
+  9861270,
+  5916250
+ ],
+ "scale": 1.0,
+ "shadow": 0.2,
+ "gait": "hexa",
+ "legLength": 3
+}

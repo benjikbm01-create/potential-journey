@@ -1,0 +1,19 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "underdeep:creature_oil"
+  },
+  {
+   "item": "minecraft:stick"
+  },
+  {
+   "item": "minecraft:stick"
+  }
+ ],
+ "result": {
+  "id": "minecraft:torch",
+  "count": 6
+ }
+}

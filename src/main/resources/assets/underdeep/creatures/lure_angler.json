@@ -1,0 +1,331 @@
+{
+ "texture": [
+  64,
+  64
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    17.0,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -5.0,
+      -4.0,
+      -6.0
+     ],
+     "size": [
+      10,
+      8,
+      12
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    3.5,
+    21,
+    -4.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      0,
+      -1.5
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      35
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -3.5,
+    21,
+    -4.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      0,
+      -1.5
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      46,
+      35
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    3.5,
+    21,
+    4.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      0,
+      -1.5
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      43
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -3.5,
+    21,
+    4.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      0,
+      -1.5
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      12,
+      43
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    -1.0,
+    -6.0
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -5.0,
+      -4.0,
+      -7
+     ],
+     "size": [
+      10,
+      8,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      20
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw",
+   "parent": "head",
+   "pivot": [
+    0,
+    3.0,
+    -1
+   ],
+   "role": "jaw",
+   "boxes": [
+    {
+     "from": [
+      -4.5,
+      0,
+      -6
+     ],
+     "size": [
+      9,
+      1.5,
+      6
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      35
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tail0",
+   "parent": "body",
+   "pivot": [
+    0,
+    -2.5,
+    6.0
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      0
+     ],
+     "size": [
+      3,
+      3,
+      6
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      20
+     ]
+    }
+   ],
+   "rot": [
+    -0.5,
+    0,
+    0
+   ],
+   "index": 0
+  },
+  {
+   "name": "lure",
+   "parent": "head",
+   "pivot": [
+    0,
+    -4,
+    -3
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -7,
+      -0.5
+     ],
+     "size": [
+      1,
+      7,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      30,
+      35
+     ]
+    }
+   ],
+   "rot": [
+    -0.8,
+    0,
+    0
+   ],
+   "index": 3
+  },
+  {
+   "name": "lurebulb",
+   "parent": "lure",
+   "pivot": [
+    0,
+    -7,
+    0
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -1,
+      -2,
+      -1
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      43
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": true,
+ "egg": [
+  1974312,
+  9240540
+ ],
+ "scale": 1.0,
+ "shadow": 0.5,
+ "gait": "quad",
+ "legLength": 3
+}

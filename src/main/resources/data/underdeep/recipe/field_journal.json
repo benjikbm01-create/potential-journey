@@ -1,0 +1,16 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "minecraft:book"
+  },
+  {
+   "item": "underdeep:plume"
+  }
+ ],
+ "result": {
+  "id": "underdeep:field_journal",
+  "count": 1
+ }
+}

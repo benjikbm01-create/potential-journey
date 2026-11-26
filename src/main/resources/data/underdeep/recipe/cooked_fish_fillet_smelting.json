@@ -1,0 +1,12 @@
+{
+ "type": "minecraft:smelting",
+ "category": "food",
+ "ingredient": {
+  "item": "underdeep:fish_fillet"
+ },
+ "result": {
+  "id": "underdeep:cooked_fish_fillet"
+ },
+ "experience": 0.35,
+ "cookingtime": 200
+}

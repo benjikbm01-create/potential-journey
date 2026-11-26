@@ -1,0 +1,12 @@
+{
+ "type": "minecraft:campfire_cooking",
+ "category": "food",
+ "ingredient": {
+  "item": "underdeep:shellmeat"
+ },
+ "result": {
+  "id": "underdeep:cooked_shellmeat"
+ },
+ "experience": 0.35,
+ "cookingtime": 600
+}

@@ -1,0 +1,12 @@
+{
+ "type": "minecraft:smelting",
+ "category": "food",
+ "ingredient": {
+  "item": "underdeep:game_meat"
+ },
+ "result": {
+  "id": "underdeep:cooked_game_meat"
+ },
+ "experience": 0.35,
+ "cookingtime": 200
+}

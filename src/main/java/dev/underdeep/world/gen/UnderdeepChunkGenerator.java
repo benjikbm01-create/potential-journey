@@ -227,7 +227,9 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
 
     @Override
     public void populateEntities(ChunkRegion region) {
-        InitialPopulation.populate(region, this);
+        if (!dev.underdeep.config.UnderdeepConfig.get().vanillaMobReplacement || !dev.underdeep.config.UnderdeepConfig.get().wildlifeEnabled) {
+            InitialPopulation.populate(region, this); // Stage 1 vanilla herds, kept only when native wildlife is off
+        }
     }
 
     @Override
@@ -237,6 +239,11 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
         var base = super.getEntitySpawnList(biome, accessor, group, pos);
         if (group == net.minecraft.entity.SpawnGroup.MONSTER && !base.isEmpty()
                 && !dev.underdeep.world.spawn.SpawnRules.allowMonster(spawnTerrain, biome, pos)) {
+            return net.minecraft.util.collection.Pool.empty();
+        }
+        if (group != net.minecraft.entity.SpawnGroup.MONSTER && group != net.minecraft.entity.SpawnGroup.MISC
+                && dev.underdeep.config.UnderdeepConfig.get().vanillaMobReplacement && dev.underdeep.config.UnderdeepConfig.get().wildlifeEnabled) {
+            // Stage 3: native wildlife (WildlifeManager) replaces vanilla animals, fish and bats in Underdeep
             return net.minecraft.util.collection.Pool.empty();
         }
         return base;

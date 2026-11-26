@@ -1,0 +1,347 @@
+{
+ "texture": [
+  128,
+  32
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    -4,
+    0
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -10,
+      -8,
+      -10
+     ],
+     "size": [
+      20,
+      8,
+      20
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ],
+   "index": 0
+  },
+  {
+   "name": "tent0",
+   "parent": "body",
+   "pivot": [
+    9.0,
+    0,
+    0.0
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      80,
+      0
+     ]
+    }
+   ],
+   "index": 1
+  },
+  {
+   "name": "tent1",
+   "parent": "body",
+   "pivot": [
+    7.281,
+    0,
+    5.29
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      84,
+      0
+     ]
+    }
+   ],
+   "index": 2
+  },
+  {
+   "name": "tent2",
+   "parent": "body",
+   "pivot": [
+    2.781,
+    0,
+    8.56
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      88,
+      0
+     ]
+    }
+   ],
+   "index": 3
+  },
+  {
+   "name": "tent3",
+   "parent": "body",
+   "pivot": [
+    -2.781,
+    0,
+    8.56
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      92,
+      0
+     ]
+    }
+   ],
+   "index": 4
+  },
+  {
+   "name": "tent4",
+   "parent": "body",
+   "pivot": [
+    -7.281,
+    0,
+    5.29
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      96,
+      0
+     ]
+    }
+   ],
+   "index": 5
+  },
+  {
+   "name": "tent5",
+   "parent": "body",
+   "pivot": [
+    -9.0,
+    0,
+    0.0
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      100,
+      0
+     ]
+    }
+   ],
+   "index": 6
+  },
+  {
+   "name": "tent6",
+   "parent": "body",
+   "pivot": [
+    -7.281,
+    0,
+    -5.29
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      104,
+      0
+     ]
+    }
+   ],
+   "index": 7
+  },
+  {
+   "name": "tent7",
+   "parent": "body",
+   "pivot": [
+    -2.781,
+    0,
+    -8.56
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      108,
+      0
+     ]
+    }
+   ],
+   "index": 8
+  },
+  {
+   "name": "tent8",
+   "parent": "body",
+   "pivot": [
+    2.781,
+    0,
+    -8.56
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      112,
+      0
+     ]
+    }
+   ],
+   "index": 9
+  },
+  {
+   "name": "tent9",
+   "parent": "body",
+   "pivot": [
+    7.281,
+    0,
+    -5.29
+   ],
+   "role": "float",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      116,
+      0
+     ]
+    }
+   ],
+   "index": 10
+  }
+ ],
+ "glow": true,
+ "egg": [
+  7900380,
+  13166335
+ ],
+ "scale": 2.0,
+ "shadow": 1.5,
+ "gait": "none",
+ "legLength": 0
+}

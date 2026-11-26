@@ -1,0 +1,42 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "underdeep:venom_gland"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  },
+  {
+   "item": "minecraft:arrow"
+  }
+ ],
+ "result": {
+  "id": "minecraft:tipped_arrow",
+  "count": 8,
+  "components": {
+   "minecraft:potion_contents": {
+    "potion": "minecraft:poison"
+   }
+  }
+ }
+}

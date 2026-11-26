@@ -1,0 +1,232 @@
+{
+ "texture": [
+  64,
+  32
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    20.0,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -3.5,
+      -2.0,
+      -3.5
+     ],
+     "size": [
+      7,
+      4,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    2.5,
+    22,
+    -2.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      18,
+      11
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -2.5,
+    22,
+    -2.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      26,
+      11
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    2.5,
+    22,
+    2.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      11
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -2.5,
+    22,
+    2.0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      42,
+      11
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    -1.0,
+    -3.5
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -3.5,
+      -2.0,
+      -4
+     ],
+     "size": [
+      7,
+      4,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw",
+   "parent": "head",
+   "pivot": [
+    0,
+    1.0,
+    -1
+   ],
+   "role": "jaw",
+   "boxes": [
+    {
+     "from": [
+      -3.0,
+      0,
+      -3
+     ],
+     "size": [
+      6,
+      1.5,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      11
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": false,
+ "egg": [
+  5273660,
+  3297320
+ ],
+ "scale": 1.0,
+ "shadow": 0.35,
+ "gait": "quad",
+ "legLength": 2
+}

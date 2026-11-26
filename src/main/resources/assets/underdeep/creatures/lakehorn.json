@@ -1,0 +1,195 @@
+{
+ "texture": [
+  64,
+  64
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    14,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -5.0,
+      -4.5,
+      -11.0
+     ],
+     "size": [
+      10,
+      9,
+      22
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    -11.0
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -4.5,
+      -4.0,
+      -2
+     ],
+     "size": [
+      9,
+      8,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      14,
+      31
+     ]
+    }
+   ]
+  },
+  {
+   "name": "tailfin",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    11.0
+   ],
+   "role": "tailfin",
+   "boxes": [
+    {
+     "from": [
+      0,
+      -5.5,
+      0
+     ],
+     "size": [
+      0,
+      11,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      31
+     ]
+    }
+   ]
+  },
+  {
+   "name": "pect0",
+   "parent": "body",
+   "pivot": [
+    5.0,
+    2.25,
+    -3.667
+   ],
+   "role": "fin",
+   "boxes": [
+    {
+     "from": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      5,
+      0,
+      6
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      49
+     ]
+    }
+   ],
+   "side": 0,
+   "phase": 0.0
+  },
+  {
+   "name": "pect1",
+   "parent": "body",
+   "pivot": [
+    -5.0,
+    2.25,
+    -3.667
+   ],
+   "role": "fin",
+   "boxes": [
+    {
+     "from": [
+      -5,
+      0,
+      0
+     ],
+     "size": [
+      5,
+      0,
+      6
+     ],
+     "mirror": false,
+     "uv": [
+      22,
+      49
+     ]
+    }
+   ],
+   "side": 1,
+   "phase": 1.5
+  },
+  {
+   "name": "horn",
+   "parent": "head",
+   "pivot": [
+    0,
+    -2,
+    -2
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -1,
+      -1,
+      -5
+     ],
+     "size": [
+      2,
+      2,
+      5
+     ],
+     "mirror": false,
+     "uv": [
+      36,
+      31
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": false,
+ "egg": [
+  6584450,
+  14471860
+ ],
+ "scale": 1.3,
+ "shadow": 1.0,
+ "gait": "fish",
+ "legLength": 0
+}

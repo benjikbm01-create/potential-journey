@@ -1,0 +1,568 @@
+{
+ "texture": [
+  64,
+  32
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    19.6,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -4.5,
+      -2.0,
+      -3.5
+     ],
+     "size": [
+      9,
+      4,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    4.0,
+    20.6,
+    -1.75
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      4,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      60,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.55
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -4.0,
+    20.6,
+    -1.75
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      4,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.55
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    4.0,
+    20.6,
+    0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      4,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      4,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.55
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -4.0,
+    20.6,
+    0
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      4,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.55
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "leg4",
+   "parent": "root",
+   "pivot": [
+    4.0,
+    20.6,
+    1.75
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      4,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      12,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.55
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg5",
+   "parent": "root",
+   "pivot": [
+    -4.0,
+    20.6,
+    1.75
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      4,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.55
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "claw0",
+   "parent": "body",
+   "pivot": [
+    3.6,
+    0,
+    -3.5
+   ],
+   "role": "arm",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -4
+     ],
+     "size": [
+      3,
+      3,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    -0.4,
+    0
+   ],
+   "phase": 0
+  },
+  {
+   "name": "claw1",
+   "parent": "body",
+   "pivot": [
+    -3.6,
+    0,
+    -3.5
+   ],
+   "role": "arm",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -4
+     ],
+     "size": [
+      3,
+      3,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      46,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0.4,
+    0
+   ],
+   "phase": 1
+  },
+  {
+   "name": "eye0",
+   "parent": "body",
+   "pivot": [
+    1.5,
+    -2.0,
+    -2.5
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      60,
+      11
+     ]
+    }
+   ],
+   "index": 0
+  },
+  {
+   "name": "eye1",
+   "parent": "body",
+   "pivot": [
+    -1.5,
+    -2.0,
+    -2.5
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      16
+     ]
+    }
+   ],
+   "index": 1
+  },
+  {
+   "name": "crystal0",
+   "parent": "body",
+   "pivot": [
+    -1.057,
+    -2,
+    0.48
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -1.81,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      3,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      20,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    0.3863,
+    0.8222,
+    0.3992
+   ]
+  },
+  {
+   "name": "crystal1",
+   "parent": "body",
+   "pivot": [
+    -1.42,
+    -2,
+    -1.202
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -1.866,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      3,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    -0.245,
+    0.0242,
+    0.1534
+   ]
+  },
+  {
+   "name": "crystal2",
+   "parent": "body",
+   "pivot": [
+    -0.806,
+    -2,
+    1.262
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -2.713,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      3,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      36,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    -0.1205,
+    0.1668,
+    -0.1219
+   ]
+  },
+  {
+   "name": "crystal3",
+   "parent": "body",
+   "pivot": [
+    -2.818,
+    -2,
+    0.593
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -2.028,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      3,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      44,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    -0.281,
+    0.8884,
+    -0.0504
+   ]
+  },
+  {
+   "name": "crystal4",
+   "parent": "body",
+   "pivot": [
+    2.676,
+    -2,
+    1.921
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -2.597,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      3,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      52,
+      11
+     ]
+    }
+   ],
+   "rot": [
+    -0.2002,
+    0.1477,
+    -0.2027
+   ]
+  }
+ ],
+ "glow": true,
+ "egg": [
+  7234680,
+  14461695
+ ],
+ "scale": 1.0,
+ "shadow": 0.5,
+ "gait": "crab",
+ "legLength": 4
+}

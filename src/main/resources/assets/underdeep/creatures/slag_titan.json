@@ -1,0 +1,424 @@
+{
+ "texture": [
+  128,
+  128
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    11.0,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -8.0,
+      -5.0,
+      -10.0
+     ],
+     "size": [
+      16,
+      10,
+      20
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      31
+     ]
+    },
+    {
+     "from": [
+      -9.0,
+      -13.0,
+      -11.0
+     ],
+     "size": [
+      18,
+      9,
+      22
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    7.0,
+    16,
+    -8.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      8,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      102,
+      31
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -7.0,
+    16,
+    -8.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      8,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      110,
+      31
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    7.0,
+    16,
+    8.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      8,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      118,
+      31
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -7.0,
+    16,
+    8.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      8,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      61
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    -11.0
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -4.0,
+      -4.0,
+      -7
+     ],
+     "size": [
+      8,
+      8,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      72,
+      31
+     ]
+    }
+   ]
+  },
+  {
+   "name": "crystal0",
+   "parent": "body",
+   "pivot": [
+    -4.104,
+    -12,
+    0.04
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -3.324,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      5,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      61
+     ]
+    }
+   ],
+   "rot": [
+    0.257,
+    0.2314,
+    0.0419
+   ]
+  },
+  {
+   "name": "crystal1",
+   "parent": "body",
+   "pivot": [
+    6.822,
+    -12,
+    -1.847
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -4.936,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      5,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      61
+     ]
+    }
+   ],
+   "rot": [
+    0.1852,
+    0.5481,
+    0.1031
+   ]
+  },
+  {
+   "name": "crystal2",
+   "parent": "body",
+   "pivot": [
+    1.377,
+    -12,
+    -2.516
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -4.993,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      5,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      61
+     ]
+    }
+   ],
+   "rot": [
+    -0.0769,
+    0.9838,
+    0.2821
+   ]
+  },
+  {
+   "name": "crystal3",
+   "parent": "body",
+   "pivot": [
+    -7.546,
+    -12,
+    -4.352
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -3.956,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      5,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      61
+     ]
+    }
+   ],
+   "rot": [
+    0.2517,
+    0.1776,
+    0.0927
+   ]
+  },
+  {
+   "name": "crystal4",
+   "parent": "body",
+   "pivot": [
+    -2.125,
+    -12,
+    5.142
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -4.853,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      5,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      40,
+      61
+     ]
+    }
+   ],
+   "rot": [
+    0.2097,
+    0.1933,
+    0.2082
+   ]
+  },
+  {
+   "name": "crystal5",
+   "parent": "body",
+   "pivot": [
+    -0.989,
+    -12,
+    6.07
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -3.94,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      5,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      48,
+      61
+     ]
+    }
+   ],
+   "rot": [
+    0.3253,
+    0.9862,
+    0.2594
+   ]
+  }
+ ],
+ "glow": true,
+ "egg": [
+  3288365,
+  16745000
+ ],
+ "scale": 2.0,
+ "shadow": 2.0,
+ "gait": "quad",
+ "legLength": 8
+}

@@ -29,6 +29,7 @@ public final class UnderdeepClient implements ClientModInitializer {
             return mc.options == null || mc.options.getParticles().getValue() != net.minecraft.client.option.ParticlesMode.MINIMAL;
         });
         EcologyTooltips.init();
+        dev.underdeep.client.creature.CreatureRenderers.init();
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
         ScreenshotTour.init();
         CreateWorldTest.init();

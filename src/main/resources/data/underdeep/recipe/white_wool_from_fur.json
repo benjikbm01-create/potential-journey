@@ -1,0 +1,22 @@
+{
+ "type": "minecraft:crafting_shapeless",
+ "category": "misc",
+ "ingredients": [
+  {
+   "item": "underdeep:fur_tuft"
+  },
+  {
+   "item": "underdeep:fur_tuft"
+  },
+  {
+   "item": "underdeep:fur_tuft"
+  },
+  {
+   "item": "underdeep:fur_tuft"
+  }
+ ],
+ "result": {
+  "id": "minecraft:white_wool",
+  "count": 1
+ }
+}

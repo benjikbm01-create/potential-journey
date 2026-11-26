@@ -28,6 +28,11 @@ public final class Underdeep implements ModInitializer {
         dev.underdeep.registry.ModWood.init();
         dev.underdeep.registry.ModPlants.init();
         dev.underdeep.registry.ModItems.init();
+        dev.underdeep.wildlife.WildlifeRegistry.init();
+        dev.underdeep.wildlife.WildlifeBlocks.init();
+        dev.underdeep.wildlife.WildlifeItems.init();
+        dev.underdeep.wildlife.population.WildlifeManager.init();
+        dev.underdeep.wildlife.WildlifeJournal.init();
         ModWorldgen.init();
         UnderdeepCommands.init();
         SelfTest.init();

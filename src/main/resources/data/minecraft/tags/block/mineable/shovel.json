@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "underdeep:sporeglow_soil"
+    "underdeep:sporeglow_soil",
+    "underdeep:burrow_mound"
   ]
 }

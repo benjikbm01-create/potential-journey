@@ -1,0 +1,213 @@
+{
+ "texture": [
+  64,
+  32
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    7.5,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -2.5,
+      -2.5,
+      -3.5
+     ],
+     "size": [
+      5,
+      5,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    2.0,
+    10,
+    0.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -2.0,
+    10,
+    0.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      0,
+      -0.5
+     ],
+     "size": [
+      1,
+      14,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      4,
+      0
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "neck",
+   "parent": "body",
+   "pivot": [
+    0,
+    -1.5,
+    -2.5
+   ],
+   "role": "neck",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -8
+     ],
+     "size": [
+      3,
+      3,
+      8
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      0
+     ]
+    }
+   ],
+   "rot": [
+    -1.2,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "head",
+   "parent": "neck",
+   "pivot": [
+    0,
+    0,
+    -7
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -7
+     ],
+     "size": [
+      3,
+      3,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      15
+     ]
+    }
+   ],
+   "rot": [
+    1.08,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "tail0",
+   "parent": "body",
+   "pivot": [
+    0,
+    -1.0,
+    3.5
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      0
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      20,
+      15
+     ]
+    }
+   ],
+   "rot": [
+    0.15,
+    0,
+    0
+   ],
+   "index": 0
+  }
+ ],
+ "glow": false,
+ "egg": [
+  13161180,
+  3950170
+ ],
+ "scale": 1.0,
+ "shadow": 0.4,
+ "gait": "biped",
+ "legLength": 14
+}

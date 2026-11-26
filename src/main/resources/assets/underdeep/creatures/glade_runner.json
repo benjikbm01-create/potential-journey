@@ -1,0 +1,242 @@
+{
+ "texture": [
+  64,
+  64
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    6.5,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -3.5,
+      -3.5,
+      -5.0
+     ],
+     "size": [
+      7,
+      7,
+      10
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    2.5,
+    10,
+    0.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      14,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      0
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -2.5,
+    10,
+    0.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      14,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      42,
+      0
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "neck",
+   "parent": "body",
+   "pivot": [
+    0,
+    -2.5,
+    -4.0
+   ],
+   "role": "neck",
+   "boxes": [
+    {
+     "from": [
+      -2.5,
+      -2.5,
+      -9
+     ],
+     "size": [
+      5,
+      5,
+      9
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      17
+     ]
+    }
+   ],
+   "rot": [
+    -1.0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "head",
+   "parent": "neck",
+   "pivot": [
+    0,
+    0,
+    -8
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      -5
+     ],
+     "size": [
+      3,
+      3,
+      5
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      17
+     ]
+    }
+   ],
+   "rot": [
+    0.9,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "tail0",
+   "parent": "body",
+   "pivot": [
+    0,
+    -2.0,
+    5.0
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -1.5,
+      -1.5,
+      0
+     ],
+     "size": [
+      3,
+      3,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      44,
+      17
+     ]
+    }
+   ],
+   "rot": [
+    0.15,
+    0,
+    0
+   ],
+   "index": 0
+  },
+  {
+   "name": "crest",
+   "parent": "head",
+   "pivot": [
+    0,
+    -1.5,
+    -1
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -3,
+      0
+     ],
+     "size": [
+      1,
+      3,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      31
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": false,
+ "egg": [
+  13148250,
+  14441020
+ ],
+ "scale": 1.0,
+ "shadow": 0.6,
+ "gait": "biped",
+ "legLength": 14
+}

@@ -1,0 +1,364 @@
+{
+ "texture": [
+  64,
+  64
+ ],
+ "parts": [
+  {
+   "name": "body",
+   "parent": "root",
+   "pivot": [
+    0,
+    14.0,
+    0
+   ],
+   "role": "body",
+   "boxes": [
+    {
+     "from": [
+      -4.0,
+      -4.0,
+      -6.0
+     ],
+     "size": [
+      8,
+      8,
+      12
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "root",
+   "pivot": [
+    3.0,
+    18,
+    -4.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      6,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      44
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg1",
+   "parent": "root",
+   "pivot": [
+    -3.0,
+    18,
+    -4.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      6,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      44
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg2",
+   "parent": "root",
+   "pivot": [
+    3.0,
+    18,
+    4.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      6,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      44
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg3",
+   "parent": "root",
+   "pivot": [
+    -3.0,
+    18,
+    4.5
+   ],
+   "role": "leg",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      0,
+      -1.0
+     ],
+     "size": [
+      2,
+      6,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      44
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 1,
+   "side": 1
+  },
+  {
+   "name": "head",
+   "parent": "body",
+   "pivot": [
+    0,
+    -2.5,
+    -6.0
+   ],
+   "role": "head",
+   "boxes": [
+    {
+     "from": [
+      -2.0,
+      -2.5,
+      -5
+     ],
+     "size": [
+      4,
+      5,
+      5
+     ],
+     "mirror": false,
+     "uv": [
+      40,
+      24
+     ]
+    }
+   ]
+  },
+  {
+   "name": "snout",
+   "parent": "head",
+   "pivot": [
+    0,
+    0,
+    -5
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      -0.75,
+      -1
+     ],
+     "size": [
+      2,
+      2.75,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      44
+     ]
+    }
+   ]
+  },
+  {
+   "name": "ear0",
+   "parent": "head",
+   "pivot": [
+    1.0,
+    -2.5,
+    -3
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -1
+     ],
+     "size": [
+      1,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      38,
+      44
+     ]
+    }
+   ],
+   "rot": [
+    -0.3,
+    0,
+    0.35
+   ]
+  },
+  {
+   "name": "ear1",
+   "parent": "head",
+   "pivot": [
+    -1.0,
+    -2.5,
+    -3
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -1
+     ],
+     "size": [
+      1,
+      2,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      44,
+      44
+     ]
+    }
+   ],
+   "rot": [
+    -0.3,
+    0,
+    -0.35
+   ]
+  },
+  {
+   "name": "tail0",
+   "parent": "body",
+   "pivot": [
+    0,
+    -2.5,
+    6.0
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      -1.0,
+      0
+     ],
+     "size": [
+      2,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      50,
+      44
+     ]
+    }
+   ],
+   "rot": [
+    -0.5,
+    0,
+    0
+   ],
+   "index": 0
+  },
+  {
+   "name": "fleece",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    0
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -5,
+      -5,
+      -7
+     ],
+     "size": [
+      10,
+      10,
+      14
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    }
+   ]
+  }
+ ],
+ "glow": false,
+ "egg": [
+  9861200,
+  7232060
+ ],
+ "scale": 1.0,
+ "shadow": 0.5,
+ "gait": "quad",
+ "legLength": 6
+}
