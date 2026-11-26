@@ -123,7 +123,21 @@ public final class SettlementRecord {
                 }
             }
         }
-        // one worker per distinct job spot type per building is enough; keep order (centre first)
+        // round-robin over buildings: every building's first job before any building's second job, so each
+        // stall, shop, farm and workshop has its keeper even in small settlements
+        java.util.Map<Integer, List<Job>> byBuilding = new java.util.LinkedHashMap<>();
+        for (Job j : jobs) {
+            byBuilding.computeIfAbsent(j.building, k -> new ArrayList<>()).add(j);
+        }
+        List<Job> ordered = new ArrayList<>();
+        for (int round = 0; ordered.size() < jobs.size(); round++) {
+            for (List<Job> l : byBuilding.values()) {
+                if (round < l.size()) {
+                    ordered.add(l.get(round));
+                }
+            }
+        }
+        jobs = ordered;
         int people = Math.min(beds.size(), rec.category.maxPeople);
         people = Math.max(Math.min(beds.size(), rec.category.minPeople), people);
         for (int i = 0; i < people; i++) {
