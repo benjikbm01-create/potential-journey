@@ -260,6 +260,19 @@ final class Stage4Checks {
         }
         r.check("daily routine: work by day, sleep in their own bed at night (60 s accelerated)", working > 0 && sleepers > 0 && inBed >= sleepers * 0.6,
                 working + " at work/patrol at midday; at night " + inBed + "/" + sleepers + " asleep in bed");
+        long tc0 = System.nanoTime();
+        for (int i = 0; i < 200; i++) {
+            for (var e : list) {
+                if (e.isAlive()) {
+                    e.age++;
+                    e.tick();
+                }
+            }
+        }
+        double us = (System.nanoTime() - tc0) / 1e3 / Math.max(1, 200.0 * list.size());
+        r.info("inhabitant tick cost", String.format(Locale.ROOT, "%.1f µs per inhabitant per tick (%d inhabitants, 200 ticks, night routine); "
+                + "a full settlement budget of %d ≈ %.2f ms per server tick", us, list.size(), cfg.maxActiveInhabitantsPerSettlement,
+                us * cfg.maxActiveInhabitantsPerSettlement / 1000));
         // trading
         dev.underdeep.civ.npc.InhabitantEntity trader = null;
         for (var e : list) {
