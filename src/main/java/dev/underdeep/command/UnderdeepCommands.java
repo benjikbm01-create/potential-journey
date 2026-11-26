@@ -67,6 +67,13 @@ public final class UnderdeepCommands {
                         .then(CommandManager.argument("region", StringArgumentType.word()).suggests(REGIONS)
                                 .executes(UnderdeepCommands::locate)))
                 .then(CommandManager.literal("spawncheck").executes(UnderdeepCommands::spawnCheck))
+                .then(CommandManager.literal("settlements")
+                        .executes(c -> settlements(c, 1000))
+                        .then(CommandManager.argument("radius", IntegerArgumentType.integer(32, 6000))
+                                .executes(c -> settlements(c, IntegerArgumentType.getInteger(c, "radius")))))
+                .then(CommandManager.literal("settlement").executes(UnderdeepCommands::settlement))
+                .then(CommandManager.literal("gallery")
+                        .then(CommandManager.literal("confirm").executes(UnderdeepCommands::gallery)))
                 .then(CommandManager.literal("ecology")
                         .executes(c -> ecology(c, BlockPos.ofFloored(c.getSource().getPosition())))
                         .then(CommandManager.argument("pos", BlockPosArgumentType.blockPos())
@@ -102,6 +109,64 @@ public final class UnderdeepCommands {
                     Text.literal("This dimension does not use the Underdeep generator.")).create();
         }
         return t;
+    }
+
+    // ------------------------------------------------------------------ Stage 4
+
+    private static int settlements(CommandContext<ServerCommandSource> c, int radius) {
+        var map = dev.underdeep.civ.settlement.Settlements.of(c.getSource().getWorld());
+        if (map == null) {
+            send(c, "No settlements in this world (created before Stage 4, or disabled in config).");
+            return 0;
+        }
+        BlockPos p = BlockPos.ofFloored(c.getSource().getPosition());
+        var list = map.sitesNear(p.getX(), p.getZ(), radius);
+        send(c, list.size() + " settlements within " + radius + " blocks:");
+        int n = 0;
+        for (var s : list) {
+            if (n++ >= 20) {
+                break;
+            }
+            var plan = map.plan(s);
+            send(c, String.format(java.util.Locale.ROOT, "  %s (%s %s) at %d %d %d, %d m, %d buildings", plan.name(), s.civ().id(),
+                    s.category().id(), s.x(), plan.plazas().get(0).y() + 1, s.z(), (int) Math.hypot(s.x() - p.getX(), s.z() - p.getZ()),
+                    plan.buildingCount()));
+        }
+        return list.size();
+    }
+
+    private static int settlement(CommandContext<ServerCommandSource> c) {
+        var w = c.getSource().getWorld();
+        var map = dev.underdeep.civ.settlement.Settlements.of(w);
+        BlockPos p = BlockPos.ofFloored(c.getSource().getPosition());
+        var s = map == null ? null : map.siteAt(p.getX(), p.getZ(), 0);
+        if (s == null) {
+            send(c, "Not inside a settlement.");
+            return 0;
+        }
+        var plan = map.plan(s);
+        var rec = dev.underdeep.civ.npc.SettlementState.get(w).getOrCreate(plan, w.getSeed(), w.getTime());
+        var m = dev.underdeep.civ.npc.InhabitantManager.get(w);
+        send(c, plan.name() + ": " + s.civ().id() + " " + s.category().id() + ", layout " + plan.layout() + ", radius " + s.radius());
+        send(c, "  " + plan.buildingCount() + " buildings, " + plan.roads().size() + " road segments, " + plan.beds() + " beds");
+        send(c, "  inhabitants: " + rec.alive() + " alive of " + rec.inhabitants.size() + " registered, " + (m == null ? 0 : m.activeIn(s.id()))
+                + " present now; discovered by " + rec.discoveredBy.size() + " player(s)");
+        return 1;
+    }
+
+    private static int gallery(CommandContext<ServerCommandSource> c) {
+        var w = c.getSource().getWorld();
+        BlockPos p = BlockPos.ofFloored(c.getSource().getPosition());
+        try {
+            var problems = dev.underdeep.debug.ArchitectureGallery.build(w, p.getX() + 16, p.getY(), p.getZ() + 30,
+                    w.getServer().getRunDirectory(), java.util.Arrays.asList(dev.underdeep.civ.Civilization.values()));
+            send(c, "Architecture gallery built east/south of you (one row per civilization, "
+                    + dev.underdeep.debug.ArchitectureGallery.ROW + " blocks apart). Design problems: " + problems.size());
+        } catch (java.io.IOException e) {
+            send(c, "Gallery failed: " + e.getMessage());
+            return 0;
+        }
+        return 1;
     }
 
     private static void send(CommandContext<ServerCommandSource> c, String msg) {

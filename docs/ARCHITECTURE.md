@@ -35,6 +35,15 @@ dev.underdeep
 │                                 EcoCrop, AquaticCrop, EcoSapling, SporePuff, Snapjaw, EphemeralFungus, ShelfFungus,
 │                                 FungalSoil, RottingLog, ResinKnot, CrystalGrower)
 ├── item/RemedyItem               simple medicines
+├── civ/                          Stage 4: Civilization (8 cultures), Names (settlement and personal names)
+├── civ/arch/                     Palette, Blueprint (rotatable block buffer + markers), Builder (drawing toolkit),
+│                                 Architect (25 building kinds, interiors), Shells (culture exteriors), Landmarks,
+│                                 BlueprintPlacer (rotation, foundations, clearing, loot), BlueprintValidator
+├── civ/settlement/               SettlementCategory, SettlementSite, SettlementMap (deterministic placement),
+│                                 SettlementPlanner → SettlementPlan, SettlementGenerator (chunk writer),
+│                                 Settlements (per-world access, v3 gating), Professions
+├── civ/npc/                      InhabitantEntity, InhabitantManager (embodiment, discovery, events),
+│                                 SettlementRecord / SettlementState (persistent records), TradeTables
 ├── wildlife/                     Stage 3: CreatureSpecies (species data), WildlifeRegistry (60 species, entity types,
 │                                 attributes), UnderdeepCreature (single TameableEntity for all species), Personality,
 │                                 Rhythms (activity cycles), Voices (pitched vanilla sounds), WildlifeItems, WildlifeBlocks
@@ -312,6 +321,93 @@ pressure via `disturbance`), call `WildlifeManager.region(id)` for any region wi
 creatures breed freely, `allowBirth`), and add villager-owned animals via `leaveWildAsTamed`. Caravans
 can use pack animals (`Mount.PACK`). Predator pressure on routes = predator counts in the regions crossed.
 
+## 5e. Civilizations and settlements (Stage 4)
+
+**Placement (D-041).**
+- `SettlementMap` (one per world, enabled for worlds created with generator v3, D-043) assigns a
+  settlement to some upper-layer cavern-graph chambers.
+- A hashed roll gives a tentative category, which is downgraded until the chamber fits.
+- A spacing rule against neighbouring chambers removes overlaps.
+- Spawn guarantees: a welcoming settlement 140–320 blocks from spawn and a town 600–1100 blocks away.
+- The civilization follows the ecosystem, with 16 % chances per neighbouring culture on shared frontiers.
+- Pure and cached: `site(cx, cz)`, `sitesIn`, `sitesNear`, `siteAt`, `byId`, `plan(site)`, `reserved(x, z)`.
+
+**Planning (D-042).** `SettlementPlanner.plan(site, terrain)`:
+1. **Layout.** One of camp, radial, linear, waterfront, cluster or terraced, by culture and terrain.
+2. **Programme.** Building counts per category; farming is optional for Forgekin and Glimmerkin.
+3. **Centre.** A central plaza with a well, campfire or landmark.
+4. **Roads.** Main roads (spokes, a main street with cross streets, or bent paths to hubs) and ring roads
+   for towns and cities. Each road has a height profile sampled from the model, with the grade limited
+   to 1:2 and cuts and fills averaged. Water becomes plank bridges with pillars and railings.
+5. **Plots.** Along both sides of every road, inner first.
+   - Each plot's district depends on distance and sector: civic/commercial core, craft sector,
+     residential ring or agricultural outskirts.
+   - The district picks the next building kind.
+   - Buildings face the road (rotation), slide outward or sideways until their footprint plus a 1-block
+     margin is free, and must fit the terrain: no lava, water only for stilted or decked designs, at most
+     5 blocks of hillside cut and 8 of fill (8/12 for terraced cultures), and enough headroom.
+   - The floor follows the building's own ground, clamped to within 1–3 blocks of the road; a driveway
+     road joins each entrance.
+6. **Extras.** Gates at main-road ends (towns and cities), docks on the shore (more for the Tide
+   Dwellers) joined to the nearest road, and lamps every 11 blocks along roads and around plazas.
+
+`SettlementPlanner.REJECTS` counts why plots were rejected (reported by the self-test).
+
+**Construction.** `SettlementGenerator` runs from `UnderdeepChunkGenerator#generateFeatures` after
+natural decoration. For each intersecting plan, in order:
+1. plazas
+2. yards (a 2-block ring levelled to the floor)
+3. roads: a surface at the profile height, half-slab ramps, foundation below, 5 blocks cleared above,
+   plank bridges with railings over water
+4. buildings (`BlueprintPlacer`, clipped to the chunk; foundations extend to solid ground, posts for
+   stilts; terrain cleared from the volume; containers get vanilla village loot tables)
+5. lamps
+6. boats at docks
+
+Natural decoration whose origin is near any plan element is suppressed, and natural hostile spawns are
+blocked within the radius plus `settlementMonsterExclusion`.
+
+**Architecture (D-040).**
+- **Blueprints.** Local frame: front = north, floor at y = 0. A blueprint is a sparse block buffer plus
+  markers (ENTRANCE, BED, WORKSTATION with profession tag, STORAGE, MERCHANT, SEAT, LIGHT, GUARD, FARM,
+  DOCK, GATHER) used by inhabitants and validation.
+- **Builder.** Primitives: walls, rings, discs, gable, hip, dome and cone roofs, stairs, slabs, doors,
+  beds, lanterns, furniture.
+- **Shells.** Each culture's shell defines storey height, a deck (Tide), rounded walls (Spore), the wall
+  rhythm (frames, bands, quoins, ribs), windows (sills, shutters, flower boxes, arches), entrance
+  lintels, facade articulation in the margin (flared plinths, buttresses, pilasters, cornices,
+  colonnades), roofs (leaf thatch, crenellated flat roofs with chimneys, hip, mushroom cap domes,
+  crystal-spired pyramids, deep-eaved gables, brick gables, domes with drums) and tower caps.
+
+**Inhabitants (D-044).**
+- **Records.** A `SettlementRecord` is created from the plan when a settlement first becomes relevant.
+  - There is one inhabitant per bed, up to the category maximum.
+  - Professions come from the plan's job markers; workers without a workplace take everyday roles.
+  - Appearance and names are derived from the seed.
+  - Stored in `data/underdeep_settlements.dat`; keys append-only.
+- **Embodiment.** Every 20 ticks, settlements within `inhabitantActivationDistance` of a player get
+  their records nearest to players embodied, within the budgets, at the spot their routine puts them
+  (asleep in bed at night). Settlements no player is near return all their inhabitants.
+- **Entity.** `InhabitantEntity` (a `MerchantEntity`):
+  - Schedule: work 1000–11500, gather 11500–12800, sleep 12800–23500, wander otherwise; guards patrol in
+    two shifts.
+  - Navigation through doors.
+  - Non-guards flee hostile mobs; guards fight them and defend residents who are hurt.
+  - Work effects by profession (sounds, swings; farmers harvest and replant their own fields).
+  - Trading from `TradeTables` (culture and profession goods for emeralds, daily restock recorded).
+  - A death sets the record dead permanently.
+  - On first entry, a player gets a discovery title (name, culture, category), recorded per player.
+- **Client.** `InhabitantRenderer`: a player model with a culture skin, a tinted outfit layer by
+  profession group, held items, and per-culture proportions.
+
+**Interfaces for Stages 5–6.**
+- `SettlementRecord.InhabitantRecord.memory` for relationships and conversations.
+- `InhabitantManager.onTalk` for dialogue.
+- `SettlementRecord` population, deaths and trade counts for economies.
+- `SettlementPlan` building lists, districts and storehouses for resource stocks.
+- Gates and docks as caravan endpoints; `SettlementMap.sitesNear` and the cavern graph for trade routes.
+- The `civ` affinity and frontier mixing for faction territories.
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |
@@ -335,6 +431,8 @@ can use pack animals (`Mount.PACK`). Predator pressure on routes = predator coun
 | Habitat search | `Habitats.speciesOf`, `findNearest`, `role` | bounded block scans |
 | Wildlife species | `WildlifeRegistry` (`all`, `byId`, `of(type)`, `type(id)`), `CreatureSpecies` | append-only ids (stored in NBT) |
 | Regional wildlife | `WildlifeManager.get(world).region(regionId)` → `RegionWildlife` (counts, disturbance) | NBT `wildlife` per region; no chunk loads |
+| Settlements | `Settlements.of(world)` → `SettlementMap` (`sitesNear`, `siteAt`, `byId`, `plan`) | pure; ids append-only |
+| Settlement records | `SettlementState.get(world).get(id)` → `SettlementRecord` (inhabitants, deaths, discoveries) | NBT append-only |
 | Ownership | `UnderdeepCreature.isWild()`, `ownedBy(player)`, `leaveWildAsTamed(owner)` | wild ⇒ region-owned, never saved as entity |
 
 **Extending regions:** add a `RegionType` entry at the end with a `TerrainProfile` and environment,
@@ -353,7 +451,8 @@ add it to a layer's region list and climate prototypes in `RegionMap`, add a bio
 
 ## 8. Diagnostics
 `/underdeep info | region [pos] | locate <region> | spawncheck | cavern [pos] | sites <type> [radius] |
-perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]` — permission level from config (default 2).
+perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos] | settlements [radius] | settlement |
+gallery confirm` — permission level from config (default 2).
 Self-test suite `SUITE=stage2 scripts/selftest.sh …` (property `underdeep.selftest.suite=stage2`) skips the slow
 Stage 1.5 terrain analyses and runs `Stage2Checks` (resources, recipes, generation census, growth,
 harvest, spreading bounds, protection, persistence); `scripts/stage2_matrix.sh` runs it across seeds.

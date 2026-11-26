@@ -14,6 +14,7 @@ import math
 import os
 import random
 import sys
+import zlib
 
 sys.path.insert(0, os.path.dirname(__file__))
 import art  # noqa: E402
@@ -411,7 +412,7 @@ def build_assets(sid, m, glows, egg):
     tw, th = pack(m.parts)
     img = art.new(tw, th)
     glow = art.new(tw, th)
-    paint(img, glow, m, hash(sid) & 0xFFFF)
+    paint(img, glow, m, zlib.crc32(sid.encode()) & 0xFFFF)
     tex_dir = os.path.join(ASSETS, "textures", "entity", "creature")
     os.makedirs(tex_dir, exist_ok=True)
     img.save(os.path.join(tex_dir, sid + ".png"))

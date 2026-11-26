@@ -15,3 +15,4 @@ Files:
 - `HIDDEN_DISCOVERIES.md` — planned secret locations and unique encounters, with the stage that should
   implement each.
 - `WILDLIFE.md` — rare/exceptional creatures, secret taming mechanics, hidden biology (Stage 3).
+- `CIVILIZATIONS.md` — full identities, histories, customs and secrets of the eight civilizations (Stage 4).

@@ -89,7 +89,7 @@ def main():
                         else:
                             kinds[f"{n1} <-> {n2}"] += 1
     print(f"blocks compared: {total}, differing: {diff} ({diff * 100.0 / max(1, total):.4f}%)")
-    for k, n in kinds.most_common(15):
+    for k, n in kinds.most_common(int(os.environ.get("TOP", "15"))):
         print(f"  {n:7d}  {k}")
     td = sum(terrain_kinds.values())
     print(f"terrain-level comparison (rock/air/water/lava where both sides are terrain blocks): "

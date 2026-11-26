@@ -39,6 +39,11 @@ public final class SettlementGenerator {
             for (SettlementPlan.Plaza p : plan.plazas()) {
                 plaza(world, p, pal, clip);
             }
+            for (SettlementPlan.Building b : plan.buildings()) {
+                if (b.box().intersectsXZ(x0 - 3, z0 - 3, x1 + 3, z1 + 3) && b.kind() != BuildingKind.DOCK) {
+                    yard(world, b, clip, pal);
+                }
+            }
             roads(world, plan, pal, clip);
             for (SettlementPlan.Building b : plan.buildings()) {
                 if (b.box().intersectsXZ(x0, z0, x1, z1)) {
@@ -131,7 +136,7 @@ public final class SettlementGenerator {
             for (int yy = y - 1, n = 0; n < 14; yy--, n++) {
                 m.set(x, yy, z);
                 BlockState s = w.getBlockState(m);
-                if (!s.isAir() && s.getFluidState().isEmpty() && s.isSolidBlock(w, m)) {
+                if (ground(s, w, m)) {
                     break;
                 }
                 w.setBlockState(m, (water ? pal.log : pal.foundation).getDefaultState(), FLAGS);
@@ -147,6 +152,76 @@ public final class SettlementGenerator {
         return water;
     }
 
+    /**
+     * Levels a two-block yard around a building to its floor level: higher ground is cut back (keeping the
+     * natural top block), small hollows are filled; deeper drops are left as they are (the building's
+     * foundation shows there).
+     */
+    private static void yard(StructureWorldAccess w, SettlementPlan.Building b, BlockBox clip, Palette pal) {
+        BlockPos o = b.origin();
+        int rw = b.blueprint().rotatedWidth(b.rotation()), rd = b.blueprint().rotatedDepth(b.rotation());
+        int y0 = o.getY();
+        BlockPos.Mutable m = new BlockPos.Mutable();
+        for (int x = o.getX() - 3; x <= o.getX() + rw + 2; x++) {
+            for (int z = o.getZ() - 3; z <= o.getZ() + rd + 2; z++) {
+                if (x < clip.getMinX() || x > clip.getMaxX() || z < clip.getMinZ() || z > clip.getMaxZ()) {
+                    continue;
+                }
+                boolean inside = x >= o.getX() && x < o.getX() + rw && z >= o.getZ() && z < o.getZ() + rd;
+                if (inside) {
+                    continue;
+                }
+                int ring = Math.max(Math.max(o.getX() - x, x - (o.getX() + rw - 1)), Math.max(o.getZ() - z, z - (o.getZ() + rd - 1)));
+                int top = y0 + (ring >= 3 ? 1 : 0);
+                // find the current ground in this column near the floor level
+                int g = Integer.MIN_VALUE;
+                for (int y = y0 + 8; y >= y0 - 6; y--) {
+                    m.set(x, y, z);
+                    BlockState st = w.getBlockState(m);
+                    if (ground(st, w, m)) {
+                        g = y;
+                        break;
+                    }
+                    if (!st.getFluidState().isEmpty()) {
+                        break;
+                    }
+                }
+                if (g == Integer.MIN_VALUE) {
+                    continue;
+                }
+                m.set(x, g, z);
+                BlockState surface = w.getBlockState(m);
+                if (g > top) {
+                    for (int y = top + 1; y <= g + 2; y++) {
+                        m.set(x, y, z);
+                        BlockState st = w.getBlockState(m);
+                        if (st.getFluidState().isEmpty()) {
+                            w.setBlockState(m, Blocks.AIR.getDefaultState(), FLAGS);
+                        }
+                    }
+                    m.set(x, top, z);
+                    w.setBlockState(m, surface, FLAGS);
+                } else if (g < top && top - g <= 3) {
+                    for (int y = g + 1; y < top; y++) {
+                        m.set(x, y, z);
+                        w.setBlockState(m, Blocks.DIRT.getDefaultState(), FLAGS);
+                    }
+                    m.set(x, top, z);
+                    w.setBlockState(m, surface.isOf(Blocks.STONE) || surface.isOf(Blocks.DEEPSLATE) ? pal.pathEdge.getDefaultState() : surface, FLAGS);
+                }
+            }
+        }
+    }
+
+    /** Natural ground (not vegetation, logs or giant-fungus blocks, which vary with generation order). */
+    private static boolean ground(BlockState st, StructureWorldAccess w, BlockPos p) {
+        if (st.isAir() || !st.getFluidState().isEmpty() || !st.isSolidBlock(w, p)) {
+            return false;
+        }
+        return !st.isIn(net.minecraft.registry.tag.BlockTags.LEAVES) && !st.isIn(net.minecraft.registry.tag.BlockTags.LOGS)
+                && !(st.getBlock() instanceof net.minecraft.block.MushroomBlock) && !st.isIn(net.minecraft.registry.tag.BlockTags.WART_BLOCKS);
+    }
+
     // ------------------------------------------------------------------ lamps and boats
 
     private static void lamp(StructureWorldAccess w, BlockPos base, Palette pal) {
@@ -156,7 +231,7 @@ public final class SettlementGenerator {
         for (int yy = base.getY(), n = 0; n < 8; yy--, n++) {
             m.set(base.getX(), yy, base.getZ());
             BlockState s = w.getBlockState(m);
-            if (!s.isAir() && s.getFluidState().isEmpty() && s.isSolidBlock(w, m)) {
+            if (ground(s, w, m)) {
                 break;
             }
             w.setBlockState(m, pal.foundation.getDefaultState(), FLAGS);

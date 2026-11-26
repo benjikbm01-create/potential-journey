@@ -110,5 +110,25 @@ Stage 1.5 remains alongside the new species in some ecosystems.
 
 Partially complete / limitations: see `NEXT_STEPS.md` (known issues). Terrain unchanged (D-038).
 
-## Stages 4–12
+## Stage 4 — Civilizations, settlements and architecture: COMPLETE (2026-11-26)
+
+| System | State | Notes |
+|---|---|---|
+| 8 civilizations (public identity; full lore private) | done | home and secondary ecosystems, palettes, names, trades |
+| Architectural styles: 8 culture shells + palettes | done | recognizable silhouettes; inspected in real-client screenshots |
+| Building library: 25 kinds × 8 cultures (200 designs, 8 unique landmarks), 4 variants each, furnished interiors | done | validator: entrances, reachable beds/workstations/storage |
+| Settlement categories: encampment, outpost, village, town, city | done | sizes per brief; cities in mega chambers |
+| Deterministic placement and spawn-access guarantees | done | unit-tested on 3 seeds; chunk-order determinism checked |
+| Settlement planner: layouts, districts, roads (grade-limited), plots, terrain fit, yards, driveways, docks, gates, lamps, bridges | done | rejection diagnostics in the self-test |
+| Chunk-by-chunk construction, decoration suppression, hostile exclusion, v3 gating for new worlds only | done | D-042/D-043 |
+| Inhabitants: records (names, homes, professions, deaths, trade uses), embodiment budgets, daily routines, guards | done | accelerated routine test; never saved as entities |
+| 30 professions; culture/profession trade tables (emeralds, daily restock) | done | |
+| Discovery titles and per-player discovery records | done | |
+| NPC appearance: 6 skins per culture, 6 tinted outfit groups, culture proportions | done | procedural pixel art |
+| Commands: settlements, settlement, gallery | done | operators |
+| Tests: SettlementMapTest, Stage4Checks, gallery and settlement tours | done | TESTING.md |
+
+Partially complete / limitations: see `NEXT_STEPS.md`.
+
+## Stages 5–12
 Not started.

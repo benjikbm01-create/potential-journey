@@ -70,7 +70,12 @@ independently of the players. Players are inhabitants, not chosen heroes.
 - Wildlife (Stage 3): wild animals are owned by their region's abstract population (`RegionWildlife`), never
   by chunks; keep the invariant "active entities ≤ regional count" and never save wild entities. Behaviour
   tests in `debug/Stage3Checks` tick entities directly (accelerated) — say so when reporting them.
-- Worldgen output changes require bumping `UnderdeepTerrain.GENERATOR_VERSION` (currently 2) and telling the
+- Civilizations (Stage 4): settlement placement and plans are pure functions of the seed and terrain model
+  (`SettlementMap`, `SettlementPlanner`); chunks only write their share of a plan. Settlements generate only in
+  worlds created with generator v3+. Inhabitants are persistent records embodied near players and never saved
+  as entities. Judge architecture with `GALLERY=true` + `scripts/visual_tour.sh`, never from compilation alone.
+  Asset scripts must be deterministic (no Python `hash()`): set `PYTHONHASHSEED=0` when re-running `creatures.py`.
+- Worldgen output changes require bumping `UnderdeepTerrain.GENERATOR_VERSION` (currently 3) and telling the
   user that existing worlds must be regenerated. Never delete or overwrite the user's worlds.
 - **Never record a test as passing unless it was actually executed.** Record commands, environment
   and results in `docs/TESTING.md`, including failures and things not tested.

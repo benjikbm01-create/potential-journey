@@ -4,13 +4,16 @@ A cooperative underground survival sandbox mod for **Minecraft Java Edition 1.21
 The whole world is underground: vast interconnected caverns, underground forests, fungal expanses,
 flooded depths, volcanic hollows, crystal halls and abysmal depths.
 
-Status: **Stage 3 — wildlife and living ecological simulation** (on top of Stage 2 living ecosystems). See `docs/PROGRESS.md`.
+Status: **Stage 4 — civilizations, settlements and architecture** (on top of Stages 1–3). See `docs/PROGRESS.md`.
 
 **Worlds created with Stage 1 (terrain generator v1) must be recreated** — the terrain changed completely.
 Stage 1.5 worlds load with Stage 2 (terrain is identical) but already explored chunks contain no Stage 2
 plants, trees or minerals; **a fresh world is recommended**. Stage 2 worlds load with Stage 3 unchanged (same
 blocks); native wildlife appears around players everywhere, but vanilla animals already saved in explored
-chunks stay. The mod never deletes or modifies existing worlds.
+chunks stay. **Settlements (Stage 4) only generate in worlds created with Stage 4 (terrain generator v3):
+create a new world to meet the civilizations.** Older worlds keep generating without settlements unless a
+server sets `settlementsInExistingWorlds` (they would then appear only in unexplored chunks). The mod never
+deletes or modifies existing worlds.
 
 ## Requirements
 - Java 21
@@ -20,7 +23,7 @@ chunks stay. The mod never deletes or modifies existing worlds.
 ```bash
 ./gradlew build
 ```
-The mod JAR is written to `build/libs/underdeep-0.4.0-stage3.jar` (`-sources.jar` alongside). Prebuilt copies are committed in `releases/`.
+The mod JAR is written to `build/libs/underdeep-0.5.0-stage4.jar` (`-sources.jar` alongside). Prebuilt copies are committed in `releases/`.
 
 ## Playing in singleplayer
 1. Install Fabric Loader for 1.21.1 and put Fabric API and the Underdeep JAR in `mods/`.
@@ -52,10 +55,14 @@ The mod JAR is written to `build/libs/underdeep-0.4.0-stage3.jar` (`-sources.jar
      `maxWildlifeTotal` (160), `wildlifeDetailDistance` (48), `wildlifeDespawnDistance` (96),
      `wildlifeVegetationConsumption` (1.0), `rareCreatureFrequency` (1.0), `tamingEnabled` (true),
      `vanillaMobReplacement` (true), `vanillaMonsterShare` (0.6), `huntingDisturbance` (1.0)
+   - Stage 4 civilizations: `settlementsEnabled` (true), `settlementsInExistingWorlds` (false),
+     `maxActiveInhabitantsPerSettlement` (24), `maxActiveInhabitantsTotal` (96), `inhabitantActivationDistance` (64),
+     `settlementMonsterExclusion` (24)
 
 ## Diagnostics (operators)
 `/underdeep info | region [pos] | locate <region> | spawncheck | cavern [pos] | sites <type> [radius] |
-perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]`
+perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos] | settlements [radius] | settlement |
+gallery confirm` (the gallery builds every building design next to you — use a test world)
 
 ## Development
 - `./gradlew test` — fast unit tests of the pure terrain model (`-Dunderdeep.previews=true` writes PNGs to `build/previews/`).
@@ -66,7 +73,9 @@ perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]`
 - `SUITE=stage2 scripts/selftest.sh …` / `scripts/stage2_matrix.sh` — targeted Stage 2+3 tests (ecology, growth, recipes,
   wildlife behaviour, taming, populations, persistence). `ZOO=true` also builds a close-up exhibit of every creature
   for `scripts/visual_tour.sh`.
+- `SUITE=stage4 scripts/selftest.sh …` — quick settlement/inhabitant suite; `GALLERY=true` also builds the architecture
+  gallery (tour in `<dir>/selftest/tour_gallery.txt`, settlement views in `tour_settlements.txt`).
 - `python3 tools/assets/stage2_assets.py` — regenerate all block/item/creature assets, loot, recipes, tags and names
-  (creatures come from `tools/assets/creatures.py`).
+  (creatures come from `tools/assets/creatures.py`, inhabitant skins from `tools/assets/inhabitants.py`).
 - `python3 tools/worldgen/generate_data.py` — regenerate biome/feature JSON after editing the tables.
 - Read `CLAUDE.md` and `docs/` before contributing.

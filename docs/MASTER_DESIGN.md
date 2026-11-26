@@ -77,6 +77,26 @@ shortages, establish trade routes and react to regional events. Settlement place
 Stage 1 site-analysis contract (villages, cities, markets, industrial, floating aquatic, hanging,
 farms, outposts, roads and bridges along cavern-graph tunnels).
 
+Stage 4 (implemented) populated the underground with eight civilizations, each recognizable from its
+architecture alone:
+- **Rootfolk:** forest timber and leaf thatch.
+- **Forgekin:** industrial blackstone and copper.
+- **Tide Dwellers:** stilted waterfront decks.
+- **Sporefolk:** grown mushroom houses.
+- **Glimmerkin:** crystalline spires.
+- **Stoneborn:** heavy mountain stone.
+- **Amberfolk:** warm merchant half-timbering.
+- **Astrals:** luminous colonnades and domes.
+
+Settlements come in five sizes (encampment, outpost, village, town, city). They sit in open cavern
+chambers along the tunnel network, are planned with plazas, districts, roads, bridges, docks, gates and
+lamps, and adapt to the terrain. Every settlement is inhabited from the start by named residents with
+homes, professions and a daily routine. Residents trade in their culture's goods. Players discover
+settlements as they explore; a welcoming one is always within a short walk of the starting cavern.
+
+Stage 5 adds individual minds (memory, relationships, conversations). Stage 6 adds economies, caravans,
+growth and factions. Histories and cultural secrets are private design material.
+
 ### Ecology (Stages 2–3)
 Stage 2 (implemented) made every ecosystem biologically distinct: nine tree species (seven full wood
 sets), ~35 land plants, 16 fungi, 10 aquatic species, 9 crops, 15 regional minerals, simple foods and
@@ -131,7 +151,7 @@ from connected systems, not scripted.
 1. Foundation and underground world generation — done (plus Stage 1.5 world expansion)
 2. Ecosystems, vegetation and regional resources — **done (Stage 2)**
 3. Wildlife and ecological simulation — **done (Stage 3)**
-4. Civilizations and settlement architecture
+4. Civilizations and settlement architecture — **done (Stage 4)**
 5. Individual NPC intelligence, routines and relationships
 6. World simulation, economies, trade and faction development
 7. Survival, farming and resource acquisition

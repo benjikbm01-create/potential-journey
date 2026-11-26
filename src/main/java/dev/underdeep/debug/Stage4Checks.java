@@ -94,9 +94,33 @@ final class Stage4Checks {
         for (SettlementSite s : town == null ? List.of(starter) : List.of(starter, town)) {
             SettlementPlan p = map.plan(s);
             int rad = s.radius() + 24;
-            for (int cx = (s.x() - rad) >> 4; cx <= (s.x() + rad) >> 4; cx++) {
-                for (int cz = (s.z() - rad) >> 4; cz <= (s.z() + rad) >> 4; cz++) {
+            boolean reverse = "reverse".equals(System.getProperty("underdeep.selftest.order", "forward"));
+            int a0 = (s.x() - rad) >> 4, a1 = (s.x() + rad) >> 4, b0 = (s.z() - rad) >> 4, b1 = (s.z() + rad) >> 4;
+            for (int i = 0; i <= a1 - a0; i++) {
+                for (int j = 0; j <= b1 - b0; j++) {
+                    // reverse order: generate from the opposite corner, columns first (determinism check)
+                    int cx = reverse ? a1 - j % (a1 - a0 + 1) : a0 + i, cz = reverse ? b1 - i % (b1 - b0 + 1) : b0 + j;
                     w.getChunk(cx, cz, ChunkStatus.FULL, true);
+                }
+            }
+            for (int cx = a0; cx <= a1; cx++) {
+                for (int cz = b0; cz <= b1; cz++) {
+                    w.getChunk(cx, cz, ChunkStatus.FULL, true);
+                }
+            }
+            if (s == starter) {
+                StringBuilder hashes = new StringBuilder();
+                for (int cx = (s.x() - rad) >> 4; cx <= (s.x() + rad) >> 4; cx++) {
+                    for (int cz = (s.z() - rad) >> 4; cz <= (s.z() + rad) >> 4; cz++) {
+                        hashes.append(cx).append(',').append(cz).append(' ')
+                                .append(Long.toHexString(GenerationBenchmark.hash(w.getChunk(cx, cz)))).append('\n');
+                    }
+                }
+                try {
+                    Files.writeString(dir.resolve("settlement_hashes_" + System.getProperty("underdeep.selftest.order", "forward") + ".txt"),
+                            hashes.toString());
+                } catch (Exception ex) {
+                    r.info("settlement hashes", ex.toString());
                 }
             }
             int matched = 0, total = 0, entrances = 0, entrancesOk = 0;

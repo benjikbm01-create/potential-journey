@@ -62,27 +62,27 @@ public final class SettlementMap {
     // ------------------------------------------------------------------ queries
 
     /**
-     * Whether natural decoration must not start at this column: within 12 blocks of a planned building,
-     * road or plaza (features reach at most one chunk from their origin).
+     * Whether natural decoration must not start at this column: within 16 blocks of a planned building,
+     * road or plaza (features reach at most about one chunk from their origin).
      */
     public boolean reserved(int x, int z) {
-        SettlementSite s = siteAt(x, z, 30);
+        SettlementSite s = siteAt(x, z, 34);
         if (s == null) {
             return false;
         }
         SettlementPlan plan = plan(s);
         for (SettlementPlan.Plaza p : plan.plazas()) {
-            if (Math.hypot(x - p.x(), z - p.z()) <= p.radius() + 12) {
+            if (Math.hypot(x - p.x(), z - p.z()) <= p.radius() + 16) {
                 return true;
             }
         }
         for (SettlementPlan.Building b : plan.buildings()) {
-            if (x >= b.box().getMinX() - 12 && x <= b.box().getMaxX() + 12 && z >= b.box().getMinZ() - 12 && z <= b.box().getMaxZ() + 12) {
+            if (x >= b.box().getMinX() - 18 && x <= b.box().getMaxX() + 18 && z >= b.box().getMinZ() - 18 && z <= b.box().getMaxZ() + 18) {
                 return true;
             }
         }
         for (SettlementPlan.Road r : plan.roads()) {
-            double lim = r.width() / 2 + 10;
+            double lim = r.width() / 2 + 14;
             if (r.project(x, z)[1] <= lim * lim) {
                 return true;
             }

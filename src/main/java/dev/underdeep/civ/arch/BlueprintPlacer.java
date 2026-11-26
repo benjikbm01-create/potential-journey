@@ -101,7 +101,7 @@ public final class BlueprintPlacer {
                 for (int y = origin.getY() + low - 1, n = 0; n < MAX_FOUNDATION; y--, n++) {
                     m.set(wx, y, wz);
                     BlockState cur = world.getBlockState(m);
-                    boolean solid = !cur.isAir() && cur.getFluidState().isEmpty() && cur.isSolidBlock(world, m);
+                    boolean solid = isGround(world, m, cur);
                     if (solid) {
                         break;
                     }
@@ -109,6 +109,13 @@ public final class BlueprintPlacer {
                 }
             }
         }
+    }
+
+    /** Natural ground: solid, not fluid, not vegetation, logs or giant-fungus blocks (those vary with generation order). */
+    public static boolean isGround(WorldAccess world, BlockPos p, BlockState st) {
+        return !st.isAir() && st.getFluidState().isEmpty() && st.isSolidBlock(world, p) && !st.isIn(BlockTags.LEAVES)
+                && !st.isIn(BlockTags.LOGS) && !(st.getBlock() instanceof net.minecraft.block.MushroomBlock)
+                && !st.isIn(BlockTags.WART_BLOCKS);
     }
 
     /** Vanilla loot table that suits a building kind (containers start with fitting supplies). */

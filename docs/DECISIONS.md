@@ -256,3 +256,67 @@ entities with their real goals directly on the server thread (world clock advanc
 `UnderdeepCreature.testObserver` standing in for a nearby player. Population dynamics are verified by
 calling the real aggregate model for simulated days. These are accelerated tests, not long-running
 multiplayer sessions; TESTING.md labels them as such.
+
+## D-040 Hybrid procedural architecture
+Buildings are generated from code, not from hand-authored structure files. Each design combines:
+- a shared massing and furnished interior per building kind (`civ/arch/Architect`)
+- a culture's shell (`Shells`): plinth, wall rhythm, windows, entrance, roof and facade articulation
+- a palette of the culture's materials (`Palette`)
+- one hand-designed landmark per culture (`Landmarks`)
+
+Designs are cached per (culture, kind, variant, profession) and validated offline (`BlueprintValidator`:
+entrance present, beds/workstations/storage/merchant spots reachable on foot). This keeps around 25 kinds
+× 4 variants × 8 cultures maintainable and guarantees complete interiors. Authored templates can replace
+individual designs later without changing the planner.
+
+## D-041 Settlements at cavern chambers
+`SettlementMap` places settlements only at cavern-graph chamber centres. Chambers are open and
+tunnel-connected by construction, so every settlement is reachable through the cave network. Each
+chamber's decision is a pure function of the seed:
+1. A hashed roll gives a tentative size category.
+2. A terrain fit check downgrades the category until it fits the chamber (dry share, headroom, relief;
+   water is acceptable for the Tide Dwellers).
+3. A local spacing rule against neighbouring chambers' tentative results removes overlaps.
+
+Two guarantees are added near spawn: a welcoming settlement 140–320 blocks away and a town 600–1100
+blocks away. The starting cavern stays wild. The decision is independent of chunk generation order.
+
+## D-042 Pure plans, chunk-by-chunk construction
+`SettlementPlanner` turns a site into a complete `SettlementPlan`. The plan contains the layout type,
+plazas, roads with smoothed height profiles, plots with buildings, rotations and floor levels,
+driveways, docks, gates and lamps. It uses only the terrain model, and is cached.
+
+The chunk generator writes each chunk's share of every intersecting plan after natural decoration. The
+order is plazas, yards, roads, buildings, lamps, boats. Every step reads only the plan and that chunk's
+own terrain blocks.
+
+Natural decoration whose origin lies within 12 blocks of a planned building, road or plaza is
+suppressed (`CaveSurfacePlacement`). Features of neighbouring chunks therefore cannot grow into
+buildings, whatever order the chunks generate in.
+
+## D-043 Generator v3: settlements only in new worlds
+Stage 4 bumps `UnderdeepTerrain.GENERATOR_VERSION` to 3; terrain blocks are unchanged, but settlements
+add blocks. Settlements generate only in worlds created with v3 or later. The world state records the
+version a world was created with, so Stage 1–3 worlds keep generating exactly as before and never get
+half-built settlements cut off at the borders of explored chunks. Servers can opt in with
+`settlementsInExistingWorlds`.
+
+## D-044 Inhabitants are records first, entities second
+Every registered inhabitant is a persistent record (`SettlementState`). A record holds name, profession,
+bed, workplace, appearance, alive flag, trade uses and a memory compound reserved for Stage 5.
+- **Embodiment.** `InhabitantManager` embodies the records nearest to players as entities, up to 24 per
+  settlement and 96 per world.
+- **Never saved.** The entities are never written to chunks; when players leave they return to their
+  records. This gives stable identities, permanent deaths, no duplicates and no chunk-load exploits.
+- **Stage 6 hook.** Abstract simulation of the unembodied majority starts in Stage 6.
+- **Daily routine.** Work by day, gather in the evening, sleep in their own bed at night; guards patrol
+  in shifts.
+
+## D-045 Emeralds as the Stage 4 trade currency
+Basic trading uses vanilla merchant offers priced in emeralds, with per-inhabitant offers that restock
+daily. A regional currency and price dynamics belong to the Stage 6 economy.
+
+## D-046 Quick settlement suite
+`SUITE=stage4` runs the Stage 4 self-test without the Stage 1.5–3 measurements, which have not changed,
+for fast iteration. Full verification still runs the `stage2` suite, which includes Stage 3 and Stage 4,
+on several seeds.

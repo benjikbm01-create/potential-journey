@@ -209,3 +209,53 @@ players (horn, plume, scale, shell fragment, glow gland, crystal husk, venom gla
 ### Entity tags
 `minecraft:can_breathe_under_water`, `minecraft:aquatic`, `minecraft:fall_damage_immune`,
 `minecraft:arthropod`, `minecraft:freeze_immune_entity_types` (Underdeep species added).
+
+## Stage 4 — Civilizations and settlements
+
+Ids are persistence contracts (append-only): civilization ids (`civ/Civilization`), settlement categories
+(`civ/settlement/SettlementCategory`), profession ids (`civ/settlement/Professions`), building kind ids
+(`civ/arch/BuildingKind`). Histories, customs and secrets are private design material.
+
+### Civilizations (public identity)
+| Id | Name | Home ecosystems (also) | Building style | Trades |
+|---|---|---|---|---|
+| `rootfolk` | Rootfolk | Rootwild (Wetlands, Golden Grove, Fungal fringe) | duskoak timber on mossy plinths, leaf-thatched roofs, trunk houses, Elder Tree | wood, herbs, remedies, brewing, tailoring |
+| `forgekin` | Forgekin | Ashen Hollows (Crimson, Stormstone, Petrified) | blackstone halls, basalt buttresses, copper cornices, smoking chimneys, Great Furnace | tools, armour, metals, engineering |
+| `tide_dwellers` | Tide Dwellers | Flooded Depths, Sunken Gardens (Wetlands) | decked stilt houses, prismarine hip roofs, piers and boats, Lighthouse | fish, boats, maps, pearls |
+| `sporefolk` | Sporefolk | Fungal Expanse (Wetlands, Rootwild) | round stem houses with glowing caps, Great Cap | remedies, fungi, alchemy |
+| `glimmerkin` | Glimmerkin | Crystal Deep (Stormstone, Starlight) | calcite with deepslate ribs, pointed roofs, crystal spires, Crystal Spire | gems, crystal, lights, books |
+| `stoneborn` | Stoneborn | Hollow Peaks (Everfrost, Petrified) | heavy stone, shutters, deep eaves, terraced on slopes, Hall of Steps | building stone, tools, hides |
+| `amberfolk` | Amberfolk | Golden Grove (Rootwild, Wetlands) | goldwood half-timbering, brick roofs, awnings, Fountain Court | food, textiles, commerce |
+| `astrals` | Astrals | Starlight Caverns (Crystal Deep) | calcite and quartz colonnades, domes with spires, Observatory | maps, books, starsilver, lights |
+
+### Settlement categories
+| Id | Planned radius | Buildings | Inhabitants | Centre |
+|---|---|---|---|---|
+| `encampment` | 9–16 | 2–5 tents/stalls | 2–6 | campfire |
+| `outpost` | 16–32 | 4–10 | 5–15 | well |
+| `village` | 32–55 | 10–25 | 12–35 | well, hall, inn |
+| `town` | 52–100 | 25–55 | 35–80 | landmark, gates |
+| `city` | 90–175 | 50–100 | 80–200 | landmark, districts, gates |
+
+### Building kinds (25, each designed per culture in 4 variants)
+Residential: `tent`, `house_small`, `house`, `house_large`, `shared_house`. Commercial: `stall`, `shop`,
+`inn`, `trade_hall`. Production: `workshop` (per profession), `kitchen`, `storehouse`. Agricultural: `farm`,
+`barn`, `pen`. Civic: `hall`, `library`, `tower`, `guard_post`, `clinic`, `landmark`, `campfire`.
+Infrastructure: `well` (or fountain), `gate`, `dock`. Roads, plazas, bridges, lamps and boats come from the
+planner. 8 cultures × 25 kinds give 200 culture-specific designs, 8 of which are unique landmarks. Each
+comes in 4 variants (size, storeys, roof or extension), and workshops are fitted per profession. The designs
+are generated from a shared grammar (D-040), so variants of one kind share their interior layout.
+
+### Professions (30)
+farmer, herbalist, forester, carpenter, cook, baker, brewer, blacksmith, miner, smelter, engineer, fisher,
+boatwright, navigator, alchemist, mycologist, healer, gemcutter, scholar, cartographer, stonemason, hunter,
+guard, merchant, tailor, innkeeper, rancher, artisan, astronomer, lampwright.
+
+### Entity
+`underdeep:inhabitant`: a record-backed NPC. Six skin variants per culture
+(`textures/entity/inhabitant/<civ>_<n>.png`) plus six tinted outfit layers (`outfit/<group>.png`: apron,
+robe, armor, farmer, vest, coat).
+
+### Commands (operators)
+`/underdeep settlements [radius]`, `/underdeep settlement` (details of the one you stand in),
+`/underdeep gallery confirm` (builds every design next to you; test worlds only).

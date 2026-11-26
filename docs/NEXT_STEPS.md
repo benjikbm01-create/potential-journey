@@ -1,45 +1,49 @@
 # Underdeep — Next Steps
 
-## Immediate: user inspection of Stage 3, then Stage 4
+## Immediate: user inspection of Stage 4, then Stage 5
 
-Do not start Stage 4 until the user assigns it. The user will first play/inspect Stage 3.
+Do not start Stage 5 until the user assigns it. The user will first play/inspect Stage 4 in a **new world**
+(settlements generate only in worlds created with terrain generator v3).
 
 ### Prerequisites (verify first)
 1. `./gradlew build` succeeds (unit tests included).
-2. `SUITE=stage2 scripts/selftest.sh 42 run-tests/check create` → report shows 0 FAIL (Stage 2 + Stage 3 sections).
-3. Read `docs/ARCHITECTURE.md` §5c (ecosystems), §5d (wildlife), §6 (contracts); `wildlife/*`,
-   `wildlife/population/*`, `tools/assets/creatures.py`.
+2. `SUITE=stage4 scripts/selftest.sh 42 run-tests/check create` → 0 FAIL (quick); `SUITE=stage2 …` for everything.
+3. Read `docs/ARCHITECTURE.md` §5e (civilizations), §6 (contracts); `civ/*`; private `docs/private/CIVILIZATIONS.md`
+   (spoilers — never quote publicly).
 
-### Stage 4 hooks prepared by Stage 3 (Civilizations and settlement architecture)
-- Settlement placement can weigh game availability: `WildlifeManager.get(world).region(id)` → counts
-  and `disturbance` per region, without loading chunks.
-- Livestock: villagers can own animals through `UnderdeepCreature.leaveWildAsTamed(owner)` (non-wild
-  animals breed freely and are saved). Pack animals (`Mount.PACK`) suit caravans (Stage 6).
-- Hunting by NPCs should go through the normal death path so `RegionWildlife` counts and disturbance
-  stay correct.
-- Replace the remaining vanilla monsters (still at `vanillaMonsterShare` = 0.6 of the Stage 1.5 rate)
-  with ecosystem dangers or civilisation threats.
+### Stage 5 hooks prepared by Stage 4 (individual NPC intelligence)
+- `SettlementRecord.InhabitantRecord.memory` (NBT compound per inhabitant) for relationships and memories.
+- `InhabitantManager.onTalk` for conversations (currently a greeting line).
+- Routine scaffold in `InhabitantEntity.ScheduleGoal` / `activity()` to replace with personal schedules.
+- Inhabitant identities (name, appearance, home, workplace) are stable across sessions.
 
-### Known issues / follow-ups from Stage 3
-- Ridden-mount movement and the mount controls were not exercised by a real player (server-side tests
-  cover harness, ownership and control assignment; movement is client-side like vanilla horses).
-- Creature animations were inspected only as static poses in screenshots (frozen exhibits); motion was
-  not visually inspected.
-- Sounds are pitched vanilla sounds (`wildlife/Voices`); custom sounds belong to Stage 11.
-- Loaded herds do not perform long seasonal migrations; migration happens in the aggregate model and by
-  animals settling in a neighbouring region (home-region transfer).
-- Rare/exceptional creatures have their distinct size, stats and resources but no unique set-piece
-  behaviour yet (see private design material for the planned follow-ups).
-- Vanilla animals already saved in Stage 2 worlds' explored chunks remain.
-- Stage 2 known issues still apply (procedural art, vanilla stand-in vegetation, Stage 1.5 terrain notes).
+### Stage 6 hooks (world simulation)
+- Unembodied inhabitants are pure records: abstract production/consumption can run on them.
+- Settlement records count deaths by players (reputation), trades per inhabitant (demand).
+- Plans expose districts, storehouses, gates and docks (caravan endpoints); cavern-graph tunnels are routes.
+
+### Known issues / follow-ups from Stage 4
+- Architecture is a procedural grammar (D-040): recognizable per culture and furnished, but simpler than
+  hand-authored builds by expert builders; several kinds share layouts across cultures. Worth an authored pass
+  on landmarks and the most common houses.
+- Roads are straight segments with grade-limited height profiles; very rough caverns still produce steep
+  cuttings and some long foundations. Cities on extremely uneven floors end up smaller than planned
+  (plot rejections are reported by the self-test).
+- Buildings are axis-aligned; along diagonal roads frontages are stepped.
+- Inhabitants walk to their spots with vanilla navigation; complex terrain can leave individuals stuck (they
+  quietly reposition when no player is within 24 blocks). Only the 24 nearest per settlement are embodied.
+- Basic trading uses emeralds (D-045); regional prices and currencies are Stage 6.
+- Boats at docks are only spawned when the mooring cell is water.
+- Creature textures were regenerated once when the Stage 3 asset script was made deterministic (same
+  palettes and models, different noise patterns).
+- Stage 3 known issues still apply (ridden movement untested by a real player, etc.).
 
 ## Code locations
-- Wildlife: `src/main/java/dev/underdeep/wildlife/` (species, entity, goals in `ai/`, populations in `population/`)
-- Client creature rendering: `src/client/java/dev/underdeep/client/creature/`
-- Ecology data: `src/main/java/dev/underdeep/ecology/`
-- Plant framework: `block/plant/`; registrations: `registry/ModWood`, `WoodSet`, `ModPlants`, `ModItems`, `ModTags`
-- Trees & big organisms: `world/feature/UnderdeepTreeFeature`, `GiantFungusFeature`, `FallenLogFeature`, `CoralClusterFeature`, `PlantBuilder`
+- Civilizations: `src/main/java/dev/underdeep/civ/` (`arch/` designs, `settlement/` placement and planning, `npc/` inhabitants)
+- Client inhabitants: `src/client/java/dev/underdeep/client/civ/`
+- Wildlife: `src/main/java/dev/underdeep/wildlife/`
+- Ecology data: `src/main/java/dev/underdeep/ecology/`; plants `block/plant/`; registrations `registry/*`
 - Terrain model: `world/terrain/*`; regions `world/region/*`; generator `world/gen/*`
-- Assets: `tools/assets/stage2_assets.py` + `art.py` + `creatures.py` (runs `generate_assets.py` first); worldgen data `tools/worldgen/generate_data.py`
-- Tests: `src/test/java/...`, `debug/SelfTest`, `Stage15Checks`, `Stage2Checks`, `Stage3Checks`, `WildlifeZoo`, `MobStudy`,
-  `scripts/stage2_matrix.sh`, `scripts/test_matrix.sh`
+- Assets: `tools/assets/stage2_assets.py` (+ `art.py`, `creatures.py`, `inhabitants.py`); worldgen data `tools/worldgen/generate_data.py`
+- Tests: `src/test/java/...`, `debug/SelfTest`, `Stage15Checks`, `Stage2Checks`, `Stage3Checks`, `Stage4Checks`,
+  `ArchitectureGallery`, `WildlifeZoo`, `MobStudy`, `scripts/stage3_matrix.sh`, `scripts/test_matrix.sh`
