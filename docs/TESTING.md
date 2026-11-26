@@ -21,7 +21,106 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Block-level world diff | `python3 tools/analysis/world_diff.py <worldA> <worldB> cx0 cz0 cx1 cz1` (needs `pip install nbtlib`) |
 | Mob population study | `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server; uses `<run-dir>/selftest/ecosystem_sites.txt` from a self-test) → `<run-dir>/mobstudy/mobstudy.md` |
 | Stage 1.5 matrix | `scripts/test_matrix.sh` (also runs the Stage 1.5 checks; production JAR on the official Fabric server launcher) |
+| Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
+
+## Results — Stage 3 (2026-11-26)
+
+Same hardware and toolchain as Stage 1. Mod version `0.4.0-stage3`. Per the brief, no multi-hour runs.
+
+**Accelerated vs real-time.** Behaviour checks (`Stage3Checks`, "sealed test plots") run real entities
+with their real goals, but tick them directly on the server thread inside small sealed enclosures, with
+the world clock advanced per tick and `UnderdeepCreature.testObserver` standing in for a nearby player
+(D-039). Population checks call the real aggregate model for simulated days. These are **accelerated
+tests**, not observation of natural play. The only real-time test with a real player is the
+real-client wildlife study below (one player, about 40 s per ecosystem). **No multi-player session with
+several real clients was run.**
+
+### Build and unit tests — PASS
+`./gradlew build --offline`: BUILD SUCCESSFUL; 18 unit tests, 0 failures (new: `WildlifeModelTest`, 5 tests:
+species roles/coverage, deterministic habitat-bound capacity, populations bounded over 200 simulated
+days in all 15 ecosystems, recovery and predation, NBT round trip).
+
+### Final matrix (`scripts/stage3_matrix.sh`) — all PASS
+| Run | Seed | Result |
+|---|---|---|
+| create | 12345 | 194 passed, 0 failed |
+| reload (server restart on the saved world) | 12345 | 131 passed, 0 failed (spawn + benchmark chunk hashes identical; tamed and named creatures persisted; wild entity not saved, regional count unchanged 12 → 12) |
+| create | −987654321 | 194 passed, 0 failed |
+| create | 42 | 194 passed, 0 failed |
+| vanilla world with the mod installed | 12345 | 8 passed, 0 failed (no wildlife manager, vanilla spawn lists unchanged, no Underdeep creatures) |
+| production JAR (`build/libs/underdeep-0.4.0-stage3.jar` + Fabric API on the official Fabric server launcher) | 2024 | 193 passed, 0 failed (mount-control check not exercised: it needs development mappings) |
+Log scan of all five runs: 0 unexpected errors/exceptions.
+
+Earlier iterations in this session (before the fixes below) also ran seeds 42, 12345, 987654 create and
+42 reload; they found the defects listed under "Defects found and fixed".
+
+### Stage 3 checks (values from the three create runs: 12345 / −987654321 / 42)
+| Check | Kind | Result |
+|---|---|---|
+| 60 species registered with entity type, loot table, model JSON and texture; wildlife in 15/15 ecosystems | registry | PASS |
+| Native wildlife materialises in every ecosystem via the real spawner (Fabric fake player at each ecosystem site); every creature's home region is one of its species' ecosystems | spawner | PASS 15/15 on all seeds |
+| Per-player cap (28 + one last group) | spawner | PASS (max 33 / 31 / 30) |
+| Starving herbivore finds and eats vegetation | accelerated | PASS (hunger 0.95 → 0.42) |
+| Wildlife never eats planted crops (ripe crop beside a starving grazer for 20 more s) | accelerated | PASS |
+| Prey notices a hunting predator and flees; predator kills prey; satiated predator stops hunting | accelerated | PASS (1 of 3 prey killed; hunt cooldown 2454–3022 ticks) |
+| Herd regroups around its leader | accelerated | PASS (mean distance 11.1 → 2.4 / 2.2 / 1.2) |
+| Territorial animal warns before charging | accelerated | PASS (warned; no charge at that distance) |
+| Wild pair breeds; newborn joins the regional population; juvenile grows up | accelerated | PASS |
+| Births stop at regional carrying capacity | logic | PASS |
+| Nest built on natural support; egg laid and hatches into a juvenile | accelerated | PASS |
+| Aquatic creatures swim and stay in water; flier flies inside its cavern | accelerated | PASS |
+| Taming: feeding, rescue (refused while healthy), patience (only after waiting); tamed animal leaves the wild population | interaction (fake player) | PASS |
+| Owner commands (sit), owner cannot hurt companion by accident | interaction | PASS |
+| Harness; only the owner controls a ridden mount (stranger blocked) | interaction (rider attached by reflection; Fabric fake players cannot mount) | PASS |
+| Shearing and milking without killing | interaction | PASS |
+| Field journal records facts per player, no coordinates in its text | logic | PASS |
+| Wild creatures never saved as entities, companions are | logic | PASS |
+| 5 load/unload cycles: regional population unchanged, materialised never above the abstract count | spawner + ledger | PASS (59 → 59, 47 → 47, 41 → 41) |
+| Killed animal removed from the population, disturbance recorded | logic | PASS |
+| Depleted region recovers within capacity over 30 simulated days | accelerated aggregate | PASS |
+| Predators reduce prey in the aggregate model | accelerated aggregate | PASS (4–5 vs 9–10 after 6 days) |
+| Overcrowding causes emigration to neighbouring regions | accelerated aggregate | PASS |
+| Hunting pressure lowers capacity temporarily; it recovers | accelerated aggregate | PASS |
+| Terrain/vegetation preservation: all Stage 2 checks still pass; spawn and benchmark chunk hashes identical after restart | regression | PASS |
+
+### Performance (this hardware)
+- Wildlife tick cost: 17.9–19.6 µs per creature per tick (40 mixed creatures, full AI, 200 ticks) ≈
+  0.72–0.79 ms per server tick for 40 creatures (the per-player cap is 28; global cap 160).
+- Average server tick during the self-test 0.36 ms; heap after GC ≈ 594 MB.
+- Aggregate simulation: not measurable in the self-test because the world is not left running for the
+  1200-tick interval; the model itself is exercised by the accelerated checks and unit tests.
+
+### Graphical inspection — executed (static poses only)
+`ZOO=true` self-test (seed 42) built a lit exhibit per species; `scripts/visual_tour.sh` took 60 close-up
+screenshots in the real client (Xvfb, software OpenGL). All 60 species render with their own model and
+texture; aquatic species in water; glowing parts visible. The exhibits are frozen (NoAI), so **animations
+were not inspected in motion**, and juvenile models were not photographed.
+
+### Defects found and fixed during Stage 3 testing
+- Starving animals kept sleeping (rest outranked hunger) → hunger now overrides rest.
+- Predators never landed attacks: the hunt goal held movement control so the attack goal could not start,
+  and prey always detected predators at 10 blocks and outran them → hunt hands over to the attack,
+  stalkers/ambushers are noticed only close up until they charge, predators sprint when charging, fleeing
+  prey tire after a burst, kills satiate the predator.
+- Different species could breed with each other (vanilla same-class rule) → same-species only.
+- Ownership checks used the loaded owner entity → UUID-based ownership (works with the owner offline).
+- Endless chases were possible → wild animals give up after ~12 s without closing in.
+- The "returned to pool" counter never counted → fixed.
+- Grazers occasionally stood idle when their chosen plant was unreachable (intermittent; seen on 2
+  of 7 earlier create runs) → reachability check, size-aware eating distance, graze underfoot when stuck.
+- Test harness issues: entities were ticked with a frozen world clock (vanilla goals use world time);
+  the start delay let fluids flow before hashing → world frozen during the delay.
+
+### Not tested in Stage 3
+- Ridden movement and controls with a real player; mounting with a real client.
+- Real multiplayer with several clients; disconnect/reconnect of an owner while companions are loaded
+  (ownership is UUID-based and the companion persisted across a restart with the owner offline).
+- Natural (non-accelerated) predation, breeding, nesting and migration over in-game days.
+- Patience taming driven by a real sneaking player (the patience counter was set directly; the
+  sneaking/holding-food accumulation path ran only in code review).
+- Offering taming (lumen kit) and companion helper behaviours.
+- Animations in motion; juvenile appearance; sounds (no audio device).
 
 ## Results — Stage 2 (2026-11-26)
 
