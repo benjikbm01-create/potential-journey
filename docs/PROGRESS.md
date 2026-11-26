@@ -157,5 +157,32 @@ See `docs/NPC_MINDS.md` for the full description.
 
 Limitations: see `NEXT_STEPS.md`.
 
-## Stages 6–12
+## Stage 6 — Economies, trade, autonomous civilizations and living world simulation: IMPLEMENTED (2026-11-26)
+
+See `docs/ECONOMY.md`.
+
+| System | State | Notes |
+|---|---|---|
+| Goods (156 real items, 22 categories), emerald currency, ledgers with ownership rules | done | data-generated |
+| Production registry (102 recipes: 27 gathering, 75 processing; 28 producing professions + merchants, guards) | done | conserving, unit/self-tested |
+| Gathering from regional species yields, sustainability pools, hunting/fishing remove real wildlife (40 % floor) | done | |
+| Households (food, fuel, fibre, medicine, luxuries), food security → minds, wages, support, levy | done | |
+| Monetary stabilisation (issuance/upkeep), world money audit | done | audit exact in self-test |
+| Dynamic bounded prices, merchant shelves (wholesale), real stock offers, relationship discounts, no loops | done | |
+| Skills (18 kinds) growing with work, apprentices, job changes | done | |
+| Prosperity (11 components) driving decisions | done | |
+| Trade network (cavern-graph routes), imports/exports, agreements, shipments with escrow, exactly-once delivery | done | self-tested end to end |
+| Disruptions (delays, attacks, blocked routes), news carried by traders | done | |
+| Physical caravans (trader, guards, pack animals) near players | implemented | not observed in a real client |
+| Water transport | abstract only | documented |
+| Leadership (8 cultural styles), 18 decision categories | done | |
+| Construction (20 kinds), plots, materials, labour, physical bottom-up placement, repairs, protection | done | placement verified in the self-test world |
+| Population: vacancies, migration (same identity), newcomers, partnerships, children, new homes, growth | done | |
+| Diplomacy (28 civ pairs, disputes, reconciliation), local reputation | done | |
+| ~40 causal event types + variations, celebrations | done | |
+| Contracts (supply, construction materials, escort; escrowed), property (buy/rent, permissions), player shops with NPC customers, hiring | done | courier contracts not posted |
+| Dialogue: stock, noticeboard, contracts, property, shop, hiring, economy topics; journal trade notes | done | |
+| Diagnostics `/underdeep econ …`, config | done | |
+
+## Stages 7–12
 Not started.

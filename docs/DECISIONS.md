@@ -348,3 +348,37 @@ never saved because their vehicle is never saved). Configurable (`speechBubbles`
 ## D-052 Relationship growth has diminishing returns
 Trivial interactions (small talk, greetings) count fully only twice per day per bond, then 35 %, then not at all;
 significant events are never diminished. Gifts have a cooldown. Reputation cannot be ground by spamming talk.
+
+## D-053 One economy record per settlement, one file for the world economy
+Ledgers, treasuries, households, merchants, workplaces, pools, projects and events of every settlement live in
+`EconomyState` (`data/underdeep_economy.dat`) together with shipments, contracts, property and businesses, so a
+shipment's cargo and the ledgers it left/enters are saved atomically. Tiers differ only in step cadence.
+
+## D-054 Settlement stores are abstract
+The settlement ledger has no physical chests mirroring it (no double ownership); players reach goods through
+merchants' shelves (owned by the seller) and contracts. Stage 4 building loot is independent of the economy.
+
+## D-055 Emeralds and a stabilised community money supply
+Emeralds stay the currency. Wages come from the settlement treasury (community workplaces); money supply per
+inhabitant is kept within 60–160 % of `moneyPerCapita` by explicit, counted issuance and upkeep; a world money
+audit identity is checked by the self-test. Private profit exists for merchants (tills) and player shops.
+
+## D-056 Production follows minds; gathering follows ecology
+Workers produce only while their Stage 5 activity is work. Gathering yields come from the region's actual species
+and are limited by sustainability pools; hunting and fishing also remove animals from Stage 3 populations above a
+40 % safeguard. NPCs never extract blocks; physical crop harvesting is cosmetic (no double counting).
+
+## D-057 Caravans are embodied shipments
+A shipment is the only authority; caravan entities are a temporary body near players (never saved) and write
+their progress back. Water routes are abstract (no autonomous boat navigation). Killing a trader loses the
+shipment exactly once and spills half its cargo.
+
+## D-058 Construction never overwrites player work
+Plots avoid plan buildings, roads, plazas, projects and player property; any non-natural block in a loaded plot
+rejects it, and a block built later stops the project (refunding unused materials). Placement happens only in
+loaded chunks, bounded per tick; repairs only fill air.
+
+## D-059 Migration moves people, not copies
+A migrant's record (with the same mind object) is appended to the destination; the old record becomes a pointer
+(`movedTo`), never embodied or simulated. Old relationships are kept as `elsewhere` bonds keyed by settlement and
+index. Mind schema 2 adds food security, skills, journey, employer and elsewhere bonds (defaults on load).

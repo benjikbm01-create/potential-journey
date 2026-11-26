@@ -480,3 +480,18 @@ Full description in `docs/NPC_MINDS.md`. Packages:
 Flow per world tick (`InhabitantManager.tick`): bubbles → active thoughts (each embodied inhabitant once per
 second, staggered) → abstract step every 2nd tick (bounded) → once per second: population, departures,
 companion embodiment. Records stay the single source of truth across tiers.
+
+## 5g. Economies and autonomous settlements (Stage 6)
+
+Full description in `docs/ECONOMY.md`. Package `civ/econ`: `Goods`, `Recipes` (data registries), `Economy`
+(per-settlement state), `EconomyState` (world persistent state: economies, connections/agreements, shipments,
+relations, property, businesses, contracts, observations), `Tx` (accounts, transfers, audit ring), `Pricing`,
+`Market`, `EconomySim` (hourly step), `Daily` (leadership, decisions, events), `Trade` (network, imports/exports,
+shipments, diplomacy), `Caravans` (physical embodiment), `Construction`, `Population`, `Participation`
+(contracts, property, shops, hiring, protection, `/property`, `/business`), `EconDialogue`, `EconHooks`
+(trade screens), `TradeJournal`, `EconCommands`, `EconomyManager` (tick driver).
+
+Tick: `EconomyManager` (END_WORLD_TICK) — every 40 ticks bring one settlement near players into the economy;
+every 20 ticks move shipments; caravans and construction placement; round-robin economy steps within budget;
+daily diplomacy. Hooks: `Society.EXTRAS` adds constructed buildings, sites and celebrations to `Places`;
+`InhabitantEntity.fillRecipes/afterUsing` → `EconHooks`; `Dialogue` → `EconDialogue`.

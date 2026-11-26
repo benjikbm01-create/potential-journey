@@ -281,3 +281,20 @@ robe, armor, farmer, vest, coat).
 - **Commands**: `/companion <cmd>` (players), `/underdeep npc …` (operators).
 - **Lang keys**: `message.underdeep.companion.incapacitated`, `message.underdeep.companion.none`,
   `message.underdeep.people.header`, `message.underdeep.people.none`, `screen.underdeep.dialogue`.
+
+## Stage 6 — Economy (ids are data/strings; see docs/ECONOMY.md)
+- Goods: 156 (`data/underdeep/economy/goods.json`), categories (22): grain, produce, meat, fish, prepared_food,
+  timber, lumber, stone, building, ore, metal, fuel, fiber, animal_product, herb, medicine, gem, decorative,
+  specialty, tools, equipment, luxury.
+- Production recipes: 102 (`production.json`; ids such as `smelt_iron`, `fell_trees`, `bake_glowgrain_bread`).
+- Skills (append-only ordinals in `Mind.skills`): agriculture, forestry, mining, smithing, carpentry, fishing,
+  cooking, trading, construction, animal_care, medicine, transport, research, guarding, hunting, masonry,
+  tailoring, crafting.
+- Sustainability pools: crops, forage, fungi, herbs, wood, fish, game, ranch, minerals, ore, stone.
+- Project kinds (20): house, large_house, small_house, shared_house, workshop, farm, pen, storehouse, stall, shop,
+  inn, kitchen, guard_post, dock, hall, library, clinic, well, tower, barn, repair.
+- Shipment methods: porter, pack_train, boat. Contract types: supply, courier (reserved), escort, build.
+- Activities appended: construct, travel, celebrate. Knowledge kinds appended: econ, person_moved.
+- Commands: `/property`, `/business` (players); `/underdeep econ …` (operators).
+- Lang keys: `message.underdeep.property.*`, `message.underdeep.business.*`, `message.underdeep.contract.paid`,
+  `message.underdeep.journal.trade`.

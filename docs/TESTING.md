@@ -24,6 +24,48 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
+## Results — Stage 6 (2026-11-26)
+
+Environment: same container (Java 21, Gradle 8.14.3 offline, headless dedicated server). Short targeted runs only,
+as agreed with the user; hands-on play is left to the user.
+
+### Executed
+- `./gradlew test --tests 'dev.underdeep.civ.econ.*'` — **7/7 PASS** (`EconomyLogicTest`): prices respond to stock and
+  stay bounded (food ≤ 2×), local cheaper than imported, gradual price movement, **no buy-sell loop at any price
+  0.01–20 and any discount**, ledger never negative and respects reservations, storage bound, transactions need
+  funds and conserve money, shipment route positions (incl. returning), prosperity bounded. (One failure in the
+  first run was an arithmetic mistake in the test itself; fixed.)
+- `SUITE=stage4 scripts/selftest.sh 1234 runs/s6smoke create` — final run **106 passed, 0 failed**. Stage 6 section
+  (record level, accelerated; some states set up explicitly, all logic through the live code paths): 156 goods /
+  22 categories / 102 recipes load; 8 settlements near spawn joined the economy with 9 connections in 47 ms;
+  smelting 4 batches consumed exactly 4 raw iron and 0.5 fuel and made 4 ingots; missing inputs stop production; a
+  6 h step feeds households and keeps money inside the settlement; bounded prices; no instant loop; a removed-food
+  disruption produced a FOOD_SHORTAGE event known to the leaders and an import decision; the shipment's cargo left
+  the origin and its payment was escrowed; it arrived exactly once (+60 units, seller paid, escrow 0), a second tick
+  changed nothing, the caravan returned and its crew were freed; over two more simulated days the settlement kept
+  importing (5 shipments) until fed; the whole economy state round-tripped through NBT; a HOUSE project found a
+  plot, moved materials to its site, was placed block by block in the world (2,252 steps; Sporefolk blueprint) and
+  registered 3 new beds, and was not built again; cancelling a project returned its site stock; a supply contract
+  escrowed its reward, refused an empty hand-in, paid once and refused a second hand-in; a newly built vacant house
+  was listed and bought (insufficient emeralds refused first); a player shop sold bread to NPC households for
+  their own money; **world money audit exact** (actual = expected to the cent); one hourly step of all 8
+  economies 6–10 ms (in the reloaded world: 40 economies in 21 ms).
+- Same world, `reload` phase (real server restart; economy file loaded): after making the checks robust to a reused
+  world (they had assumed fresh storage and picked an older shipment) — **100 passed, 0 failed**. The reload runs
+  also showed that plot search ran out of space after several test buildings; the search was widened (more radii
+  and angles), which real growing settlements need too.
+- Fixed during these runs: merchants stocked shelves before household demand was known (households went hungry
+  next to full shelves; inhabitants then ate instead of sleeping) — desired levels are now computed first and
+  households also buy from shelves; construction materials were underestimated for regional blocks; a tiny
+  settlement's leader can now carry its goods; money leaks (shop sales/wages miscounted, newcomer capital) found by
+  the audit design were fixed before the runs.
+
+### Not executed (user testing)
+- Physical caravans near a real player, caravan combat, player trading screens, noticeboard/contracts/property/shop
+  dialogue in a real client, hiring, `/property` and `/business` in play, construction viewed by a player, long
+  multi-day sessions, multiplayer with several clients, TPS with 4–6 players. Migration was exercised only where a
+  bed was free (the test pair had none, reported as info).
+
 ## Results — Stage 5 (2026-11-26)
 
 Environment: same container as earlier stages (Java 21, Gradle 8.14.3 offline, headless dedicated server).

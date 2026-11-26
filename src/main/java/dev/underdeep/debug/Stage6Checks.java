@@ -68,7 +68,10 @@ final class Stage6Checks {
         }
         // ---------------- production conserves its recipe
         Recipes.Recipe smelt = Recipes.get("smelt_iron");
+        a.storageCapacity = Math.max(a.storageCapacity, a.totalUnits() + 2000); // test setup: room in the stores
+        b.storageCapacity = Math.max(b.storageCapacity, b.totalUnits() + 2000);
         a.stock("minecraft:raw_iron").qty = 10;
+        a.stock("minecraft:iron_ingot").qty = 0; // (a reused world may already hold plenty: the settlement then stops smelting)
         a.stock("minecraft:coal").qty = 5;
         double iron0 = a.free("minecraft:iron_ingot"), fuel0 = a.freeIn(Goods.Category.FUEL);
         double ran = EconomySim.runForTest(ca, smelt, 4, 4);
@@ -104,11 +107,13 @@ final class Stage6Checks {
         b.treasuryBalance += 50;
         b.issued += 50; // explicit test funds, counted
         b.lastImport.clear();
+        java.util.Set<Long> before = new java.util.HashSet<>(st.shipments.keySet());
         Daily.run(m, cb);
         boolean shortageEvent = b.recent("FOOD_SHORTAGE", w.getTime());
         Shipment s = null;
         for (Shipment x : st.shipments.values()) {
-            if (x.dest == b.id && x.status == Shipment.Status.TRAVELLING) {
+            if (x.dest == b.id && x.status == Shipment.Status.TRAVELLING && !before.contains(x.id) && x.cargo.keySet().stream()
+                    .anyMatch(g -> Goods.get(g) != null && Goods.get(g).food())) {
                 s = x;
             }
         }
@@ -116,13 +121,16 @@ final class Stage6Checks {
             // the buyer decides on its own: try the import decision directly (still the settlement's own logic)
             Trade.requestImport(m, cb, Goods.Category.PREPARED_FOOD, 60);
             for (Shipment x : st.shipments.values()) {
-                if (x.dest == b.id && x.status == Shipment.Status.TRAVELLING) {
+                if (x.dest == b.id && x.status == Shipment.Status.TRAVELLING && !before.contains(x.id)) {
                     s = x;
                 }
             }
         }
         boolean knows = false;
         for (int li : b.leaders) {
+            if (li < 0 || li >= cb.rec.inhabitants.size()) {
+                continue;
+            }
             SettlementRecord.InhabitantRecord ir = cb.rec.inhabitants.get(li);
             knows |= ir.mind != null && ir.mind.knowledge.stream().anyMatch(i -> i.type == Mind.InfoType.ECON);
         }
@@ -131,21 +139,26 @@ final class Stage6Checks {
         r.check("the settlement imports food from a partner with a surplus (cargo leaves the origin, payment escrowed)", s != null && s.escrow > 0,
                 s == null ? "no shipment" : "shipment #" + s.id + " " + s.cargo + " via " + s.method + ", escrow " + f(s.escrow) + ", leader " + s.leader + " (origin crew: " + Trade.crewReport(m.ctx(st.economies.get(s.origin)).rec) + ")");
         if (s != null) {
-            double bFood = foodUnits(b), aTreasury = a.treasuryBalance;
+            Economy origin = st.economies.get(s.origin);
+            EconomySim.Ctx co = m.ctx(origin);
+            String good = s.cargo.keySet().iterator().next();
+            double bFood = b.free(good), aTreasury = origin.treasuryBalance;
             double units = s.units();
             s.progress = s.length + 1;
             Trade.tickShipments(m, st, 20);
-            double gained = foodUnits(b) - bFood;
+            double gained = b.free(good) - bFood;
             r.check("the shipment arrives exactly once: destination stock rises by the cargo, the seller is paid", s.status == Shipment.Status.RETURNING
-                            && Math.abs(gained - units) < 1e-6 && a.treasuryBalance > aTreasury && s.escrow < 1e-6,
-                    "cargo " + f(units) + ", destination +" + f(gained) + ", seller treasury +" + f(a.treasuryBalance - aTreasury) + ", status " + s.status);
-            double again = foodUnits(b);
+                            && Math.abs(gained - units) < 1e-6 && origin.treasuryBalance > aTreasury && s.escrow < 1e-6,
+                    "cargo " + f(units) + " " + good + ", destination +" + f(gained) + ", seller treasury +" + f(origin.treasuryBalance - aTreasury)
+                            + ", status " + s.status);
+            double again = b.free(good);
             Trade.tickShipments(m, st, 20);
-            r.check("a repeated tick does not deliver twice", Math.abs(foodUnits(b) - again) < 1e-6, "no change after a second tick");
+            r.check("a repeated tick does not deliver twice", Math.abs(b.free(good) - again) < 1e-6, "no change after a second tick");
             s.progress = s.length + 1;
             Trade.tickShipments(m, st, 20);
             boolean home = s.status == Shipment.Status.DONE;
-            boolean crewFree = s.leader < 0 || ca.rec.inhabitants.get(s.leader).mind == null || ca.rec.inhabitants.get(s.leader).mind.journey == 0;
+            boolean crewFree = s.leader < 0 || co == null || s.leader >= co.rec.inhabitants.size() || co.rec.inhabitants.get(s.leader).mind == null
+                    || co.rec.inhabitants.get(s.leader).mind.journey == 0;
             r.check("the caravan returns home and its crew resume ordinary life", home && crewFree, "status " + s.status + ", crew free " + crewFree);
             // two more days of the full system: steps, the settlement's own decisions, shipments travelling
             double sec0 = foodSecurity(b);
@@ -181,6 +194,11 @@ final class Stage6Checks {
                 Goods.Category.FIBER, Goods.Category.METAL}) {
             Goods.Good g = Goods.in(cat).get(0);
             a.stock(g.id()).qty += 400;
+        }
+        for (Project old : new java.util.ArrayList<>(a.projects)) {
+            if (old.active()) {
+                Construction.cancelForTest(ca, old, "test setup"); // a reused world: clear the settlement's own project first
+            }
         }
         int extras0 = a.extras.size(), beds0 = EconomySim.beds(ca);
         boolean proposed = Construction.propose(m, ca, Project.Kind.HOUSE, "test: homes are full", "");

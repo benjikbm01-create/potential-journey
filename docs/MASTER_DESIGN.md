@@ -175,3 +175,11 @@ Inhabitants are individuals with personalities, needs, emotions, memories, relat
 preferences; they choose their own activities, talk to each other and to players, remember what players do, ask
 for help when they really need it, and some can become companions. The world continues the same way whether or
 not a player is watching (abstract tier). Details: `docs/NPC_MINDS.md`.
+
+## Stage 6 status (living world)
+Settlements now run economies: workers produce from real regional resources, households eat and spend, prices
+move with supply, merchants sell what they actually have, caravans carry shipments between settlements along
+cavern routes (visible near players), settlements decide on and construct buildings, people migrate, families
+grow slowly, civilizations cooperate and quarrel, and events come from actual conditions. Players can trade
+between regions, take contracts, buy or rent property, open shops and hire inhabitants — or ignore all of it.
+Details: `docs/ECONOMY.md`.

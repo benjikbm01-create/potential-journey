@@ -193,9 +193,9 @@ public final class Construction {
     @Nullable
     static Object[] findPlot(EconomySim.Ctx c, Blueprint bp, boolean water) {
         int sx = c.site.x(), sz = c.site.z();
-        for (double r = c.site.radius() * 0.45; r <= c.site.radius() + 24; r += 6) {
-            for (int i = 0; i < 24; i++) {
-                double ang = (i + c.e.projects.size() * 7 + c.e.extras.size() * 3) * Math.PI * 2 / 24;
+        for (double r = c.site.radius() * 0.4; r <= c.site.radius() + 48; r += 5) {
+            for (int i = 0; i < 36; i++) {
+                double ang = (i + c.e.projects.size() * 7 + c.e.extras.size() * 3) * Math.PI * 2 / 36;
                 double cx = sx + Math.cos(ang) * r, cz = sz + Math.sin(ang) * r;
                 // face the centre
                 double ax = sx - cx, az = sz - cz;
