@@ -127,14 +127,14 @@ public final class InhabitantManager {
             return;
         }
         UnderdeepConfig cfg = UnderdeepConfig.get();
-        List<ServerPlayerEntity> players = world.getPlayers(p -> !p.isSpectator());
+        List<ServerPlayerEntity> players = world.getPlayers(p -> true); // spectators observe too (no discovery)
         Set<Long> wanted = new HashSet<>();
         for (ServerPlayerEntity p : players) {
             for (SettlementSite s : map.sitesNear(p.getBlockX(), p.getBlockZ(), 175 + cfg.inhabitantActivationDistance)) {
                 if (s.contains(p.getBlockX(), p.getBlockZ(), cfg.inhabitantActivationDistance)) {
                     wanted.add(s.id());
                 }
-                if (s.contains(p.getBlockX(), p.getBlockZ(), 0)) {
+                if (!p.isSpectator() && s.contains(p.getBlockX(), p.getBlockZ(), 0)) {
                     discover(p, map, s);
                 }
             }
