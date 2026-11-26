@@ -407,7 +407,11 @@ public final class Population {
         if (old != null) {
             old.workers.remove((Integer) ir.index);
         }
-        from.e.merchants.remove(ir.index);
+        Economy.Merchant oldShop = from.e.merchants.remove(ir.index);
+        if (oldShop != null) {
+            from.e.treasuryBalance += oldShop.till; // the stall's working capital stays in town (shelf goods return to the stores)
+            oldShop.shelf.forEach((g, units) -> from.e.put(g, units));
+        }
         to.rec.inhabitants.add(n);
         if (job != null) {
             assign(to, n, job, "a new start");
@@ -428,6 +432,10 @@ public final class Population {
         Daily.event(from, "RESIDENT_LEFT", "i:" + ir.index, Daily.first(from, ir.index) + " left " + from.e.name + " for " + to.e.name + ", " + why,
                 24000L * 3);
         SettlementState.get(from.world).markDirty();
+    }
+
+    public static void moveForTest(EconomyManager mgr, EconomySim.Ctx from, SettlementRecord.InhabitantRecord ir, EconomySim.Ctx to) {
+        move(mgr, from, ir, to, null, "test", 1000);
     }
 
     /** Fills openings: a real person from a partner settlement if someone there wants to move, else a newcomer from afar. */
@@ -489,8 +497,9 @@ public final class Population {
         if (Market.sells(n.profession)) {
             Economy.Merchant m = new Economy.Merchant();
             m.index = n.index;
-            m.till = 8;
-            c.e.treasuryBalance -= Math.min(8, c.e.treasuryBalance); // the settlement lends a new trader working capital
+            double capital = Math.min(8, c.e.treasuryBalance); // the settlement lends a new trader working capital
+            c.e.treasuryBalance -= capital;
+            m.till = capital;
             c.e.merchants.put(n.index, m);
             Daily.event(c, "NEW_MERCHANT", "i:" + n.index, "a new " + n.profession + " is opening up in " + c.e.name, 24000L * 3);
         }

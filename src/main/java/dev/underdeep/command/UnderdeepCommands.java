@@ -73,6 +73,7 @@ public final class UnderdeepCommands {
                                 .executes(c -> settlements(c, IntegerArgumentType.getInteger(c, "radius")))))
                 .then(CommandManager.literal("settlement").executes(UnderdeepCommands::settlement))
                 .then(dev.underdeep.civ.npc.NpcCommands.node())
+                .then(dev.underdeep.civ.econ.EconCommands.node())
                 .then(CommandManager.literal("gallery")
                         .then(CommandManager.literal("confirm").executes(UnderdeepCommands::gallery)))
                 .then(CommandManager.literal("ecology")

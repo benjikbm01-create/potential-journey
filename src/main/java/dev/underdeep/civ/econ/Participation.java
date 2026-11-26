@@ -336,6 +336,28 @@ public final class Participation {
                 used.add(p.building);
             }
         }
+        for (Economy.Extra x : c.e.extras) {
+            int idx = Economy.EXTRA_BASE + x.id;
+            if (used.contains(idx) || x.beds.isEmpty() && !x.kind.equals("STALL") && !x.kind.equals("SHOP")) {
+                continue;
+            }
+            EconomyState.Property p = new EconomyState.Property();
+            p.id = c.state.newId();
+            p.settlement = c.e.id;
+            p.building = idx;
+            p.type = x.beds.isEmpty() ? "shop" : "home";
+            p.x0 = x.x0;
+            p.z0 = x.z0;
+            p.x1 = x.x1;
+            p.z1 = x.z1;
+            p.y0 = x.origin.getY() - 2;
+            p.y1 = x.origin.getY() + 14;
+            p.price = Math.round((x.beds.size() >= 3 ? 70 : 45) * (0.8 + c.e.score * 0.5));
+            c.state.properties.put(p.id, p);
+            Daily.event(c, "PROPERTY_FOR_SALE", "pr:" + p.id, "the new " + x.kind.toLowerCase(Locale.ROOT).replace('_', ' ') + " in " + c.e.name
+                    + " is for sale", 24000L * 3);
+            return;
+        }
         for (SettlementPlan.Building b : c.plan.buildings()) {
             if (used.contains(b.index())) {
                 continue;
@@ -551,7 +573,6 @@ public final class Participation {
                     s.decrement(units);
                     b.sales += units;
                     b.revenue += pay;
-                    c.e.playerIn += pay;
                     if (g.food()) {
                         h.foodSecurity = Math.min(1, h.foodSecurity + units * g.nutrition() / 40.0);
                     }
@@ -563,6 +584,10 @@ public final class Participation {
                 break;
             }
         }
+    }
+
+    public static void customersForTest(EconomySim.Ctx c, EconomyState.Business b) {
+        customers(c, b);
     }
 
     static void payEmployee(EconomySim.Ctx c, EconomyState.Business b) {
@@ -577,7 +602,6 @@ public final class Participation {
         Economy.Household h = c.e.households.get(ir.home);
         if (h != null && Tx.pay(b, h, b.wage, c.now, "shop wage")) {
             b.unpaidDays = 0;
-            c.e.playerOut -= b.wage; // stays inside the settlement economy
         } else if (++b.unpaidDays >= 2) {
             ir.mind.employer = null;
             ir.mind.memories.remember(Memory.Type.TRUST_BROKEN, "p:" + b.owner, "unpaid", c.now, c.cfg.inhabitantMemoryLimit, 1.2);

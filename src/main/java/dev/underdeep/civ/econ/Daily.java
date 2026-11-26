@@ -439,6 +439,10 @@ public final class Daily {
         }
     }
 
+    public static double foodDaysForTest(EconomySim.Ctx c) {
+        return foodDays(c);
+    }
+
     /** True when a player owns or rents the building (settlements then leave it alone). */
     public static boolean ownedByPlayer(EconomySim.Ctx c, int building) {
         for (EconomyState.Property p : c.state.properties.values()) {

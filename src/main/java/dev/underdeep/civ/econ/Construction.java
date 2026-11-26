@@ -158,8 +158,12 @@ public final class Construction {
             return null;
         }
         String id = Registries.BLOCK.getId(s.getBlock()).getPath();
-        if (s.isIn(BlockTags.LOGS)) {
+        if (s.isIn(BlockTags.LOGS) || id.endsWith("_log") || id.endsWith("_wood") || id.endsWith("_stem")) {
             return "timber";
+        }
+        if (s.isIn(BlockTags.LEAVES) || s.isIn(BlockTags.FLOWERS) || s.isIn(BlockTags.CROPS) || s.isIn(BlockTags.SAPLINGS) || id.contains("dirt")
+                || id.contains("grass") || id.contains("moss") || id.contains("farmland") || id.contains("water") || id.contains("vine")) {
+            return null;
         }
         if (id.contains("planks") || s.isIn(BlockTags.WOODEN_STAIRS) || s.isIn(BlockTags.WOODEN_SLABS) || s.isIn(BlockTags.WOODEN_FENCES)
                 || s.isIn(BlockTags.WOODEN_DOORS) || s.isIn(BlockTags.WOODEN_TRAPDOORS) || id.contains("ladder")) {
@@ -179,7 +183,8 @@ public final class Construction {
                 || id.contains("sandstone") || id.contains("jasper") || id.contains("malachite") || id.contains("cryolite") || id.contains("galvanite")) {
             return "stone";
         }
-        return null;
+        // any other solid building block (regional stones, crystal, amber, shell...) counts as stone work
+        return s.isSolid() && !s.hasBlockEntity() ? "stone" : s.hasBlockEntity() ? "lumber" : null;
     }
 
     // ================================================================== plots
@@ -427,6 +432,31 @@ public final class Construction {
         p.finished = c.now;
         c.e.decide(c.now, "cancelled the " + label(p.kind) + ": " + why);
         refreshPlaces(c);
+    }
+
+    /** Test access: places the site's blocks as the per-tick loop would (bounded number of iterations). */
+    public static int placeForTest(EconomyManager mgr, int ticks) {
+        for (int i = 0; i < ticks; i++) {
+            tickPhysical(mgr, mgr.state());
+        }
+        return ticks;
+    }
+
+    /** Test access: how many of the blueprint's blocks are present in the world at the project's site. */
+    public static int countPlacedForTest(ServerWorld w, Economy e, Project p) {
+        Blueprint bp = blueprint(e, p);
+        int[] n = {0};
+        bp.forEach((lp, state) -> {
+            BlockPos o = bp.transform(lp.getX(), lp.getY(), lp.getZ(), p.rotation);
+            if (!state.isAir() && w.getBlockState(p.origin.add(o)).getBlock() == state.getBlock()) {
+                n[0]++;
+            }
+        });
+        return n[0];
+    }
+
+    public static void cancelForTest(EconomySim.Ctx c, Project p, String why) {
+        cancel(c, p, why);
     }
 
     /** Builders' hours (called by the hourly economy step): progress and their pay from the project budget. */

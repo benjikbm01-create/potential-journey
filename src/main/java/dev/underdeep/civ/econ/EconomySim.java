@@ -191,10 +191,12 @@ public final class EconomySim {
                 }
             }
         }
+        c.population = pop;
+        c.nutritionNeedPerDay = pop * 13.0;
+        updatePrices(c, 24); // desired levels first: shelves never take the households' share
         for (Economy.Merchant m : e.merchants.values()) {
             Market.restock(c, m, 24);
         }
-        updatePrices(c, 24);
         prosperity(c);
         return e;
     }
@@ -721,6 +723,28 @@ public final class EconomySim {
             e.stock(g.id()).consumed += t;
             left -= t * eff;
         }
+        // then from the sellers' shelves (whole items, paid into their tills)
+        for (Economy.Merchant m : e.merchants.values()) {
+            for (var en : new ArrayList<>(m.shelf.entrySet())) {
+                if (left <= 1e-6) {
+                    return nutrition - left;
+                }
+                Goods.Good g = Goods.get(en.getKey());
+                if (g == null || !g.food() || en.getValue() <= 0) {
+                    continue;
+                }
+                double eff = g.nutrition() * (g.category() == Goods.Category.PREPARED_FOOD ? 1.0 : 0.75);
+                int units = (int) Math.min(en.getValue(), Math.ceil(left / eff));
+                double price = e.stock(g.id()).price * 1.05;
+                units = (int) Math.min(units, Math.floor(h.purse / Math.max(1e-6, price)));
+                if (units <= 0 || !Tx.pay(h, m, units * price, c.now, "food")) {
+                    continue;
+                }
+                m.shelf.put(en.getKey(), en.getValue() - units);
+                e.stock(g.id()).consumed += units;
+                left -= units * eff;
+            }
+        }
         return nutrition - left;
     }
 
@@ -938,6 +962,11 @@ public final class EconomySim {
             }
         }
         return null;
+    }
+
+    /** Test access: runs a recipe directly (same code path as production). */
+    public static double runForTest(Ctx c, Recipes.Recipe r, double wanted, double cap) {
+        return run(c, r, wanted, cap);
     }
 
     /** Memories for inhabitants: helper used by daily processes. */

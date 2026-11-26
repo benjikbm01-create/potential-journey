@@ -588,6 +588,11 @@ public final class EconomyState extends PersistentState {
         return s;
     }
 
+    /** Test access: a copy loaded from saved NBT (as after a restart). */
+    public static EconomyState loadForTest(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
+        return fromNbt(nbt, lookup);
+    }
+
     @Override
     public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
         nbt.putInt("schema", SCHEMA);
@@ -656,6 +661,20 @@ public final class EconomyState extends PersistentState {
         for (Business b : businesses.values()) {
             t += b.till;
         }
+        for (Economy e : economies.values()) {
+            for (Project p : e.projects) {
+                t += p.budget;
+            }
+        }
         return t;
+    }
+
+    /** World money audit: [actual, expected from explicit sources and sinks]. Trade flows cancel between settlements. */
+    public double[] audit() {
+        double expected = 0;
+        for (Economy e : economies.values()) {
+            expected += e.initialMoney + e.issued - e.sunk + e.playerIn - e.playerOut;
+        }
+        return new double[]{totalMoney(), expected};
     }
 }

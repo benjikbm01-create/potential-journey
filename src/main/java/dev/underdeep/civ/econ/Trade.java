@@ -396,6 +396,22 @@ public final class Trade {
                 }
             }
         }
+        if (s.leader < 0) {
+            // no trader free: any free adult who is not a leader carries the goods
+            Economy e = mgr.state().economies.get(from.id);
+            for (SettlementRecord.InhabitantRecord ir : rec.inhabitants) {
+                if (s.leader < 0 && ir.present() && ir.mind != null && free(ir) && (e == null || !e.leaders.contains(ir.index))) {
+                    s.leader = ir.index;
+                    ir.mind.journey = s.id;
+                }
+            }
+        }
+        for (SettlementRecord.InhabitantRecord ir : rec.inhabitants) {
+            if (s.leader < 0 && ir.present() && ir.mind != null && free(ir)) {
+                s.leader = ir.index; // in the smallest places even a leader goes on the road
+                ir.mind.journey = s.id;
+            }
+        }
         int wanted = danger > 0.5 ? 2 : danger > 0.2 ? 1 : 0;
         for (SettlementRecord.InhabitantRecord ir : rec.inhabitants) {
             if (s.guards.size() >= wanted) {
@@ -406,6 +422,29 @@ public final class Trade {
                 ir.mind.journey = s.id;
             }
         }
+    }
+
+    /** Diagnostics: why people of a settlement can or cannot travel (free / not adult / busy / unwell / away). */
+    public static String crewReport(SettlementRecord rec) {
+        int free = 0, young = 0, busy = 0, unwell = 0, away = 0;
+        for (SettlementRecord.InhabitantRecord ir : rec.inhabitants) {
+            if (!ir.present() || ir.mind == null) {
+                continue;
+            }
+            Mind m = ir.mind;
+            if (m.age != Mind.Age.ADULT) {
+                young++;
+            } else if (m.journey != 0 || m.companionOf != null || m.employer != null) {
+                busy++;
+            } else if (m.health <= 0.6f) {
+                unwell++;
+            } else if (m.status != Mind.Status.ACTIVE) {
+                away++;
+            } else {
+                free++;
+            }
+        }
+        return free + " free, " + young + " not adult, " + busy + " busy, " + unwell + " unwell, " + away + " away";
     }
 
     static boolean free(SettlementRecord.InhabitantRecord ir) {

@@ -274,6 +274,10 @@ final class Stage4Checks {
                 }
             }
         }
+        java.util.Map<String, Integer> nightActs = new java.util.TreeMap<>();
+        for (var e : list) {
+            nightActs.merge(e.current().id(), 1, Integer::sum);
+        }
         for (var e : list) {
             if (e.current() == dev.underdeep.civ.mind.Activity.SLEEP) {
                 sleepers++;
@@ -281,7 +285,7 @@ final class Stage4Checks {
             }
         }
         r.check("daily routine: work by day, sleep in their own bed at night (60 s accelerated)", working > 0 && sleepers > 0 && inBed >= sleepers * 0.6,
-                working + " at work/patrol at midday; at night " + inBed + "/" + sleepers + " asleep in bed");
+                working + " at work/patrol at midday; at night " + inBed + "/" + sleepers + " asleep in bed; night activities " + nightActs);
         long tc0 = System.nanoTime();
         for (int i = 0; i < 200; i++) {
             for (var e : list) {

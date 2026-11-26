@@ -161,6 +161,17 @@ public final class Topics {
             return rec.civ.id().replace('_', ' ');
         }
 
+        /** Stage 6: this settlement's economy (null when the economy is off). */
+        @Nullable
+        public dev.underdeep.civ.econ.Economy econ() {
+            return dev.underdeep.civ.econ.EconomyManager.economy(rec.id);
+        }
+
+        public String settlementName(long id) {
+            dev.underdeep.civ.econ.Economy e = dev.underdeep.civ.econ.EconomyManager.economy(id);
+            return e == null ? "far away" : e.name;
+        }
+
         public boolean plaza() {
             return !places.plazas.isEmpty();
         }
@@ -448,6 +459,80 @@ public final class Topics {
                 t -> "Travelling with you was something. I think about it often.");
         add("player_rescued", Group.FEELING, t -> t.aboutPlayer(Memory.Type.DEFENDED_BY) != null || t.aboutPlayer(Memory.Type.RESCUED) != null, t -> 2,
                 t -> "You stood between me and danger. I won't forget that.");
+    }
+
+    static {
+        // ------------------------------------------------------------------ Stage 6: economy and community (facts from the ledger and events)
+        add("news_econ", Group.NEWS, t -> t.news(Mind.InfoType.ECON) != null, t -> 2.2, t -> {
+            Mind.Info i = t.news(Mind.InfoType.ECON);
+            return (i.source == Mind.Source.WITNESSED ? t.pick("You know, ", "Well, ", "") : t.pick("Someone told me ", "I heard that ", "Word is "))
+                    + i.detail + ".";
+        });
+        add("news_moved", Group.PEOPLE, t -> t.news(Mind.InfoType.PERSON_MOVED) != null, t -> 2, t -> t.news(Mind.InfoType.PERSON_MOVED).detail + ". "
+                + t.pick("I hope they're happy there.", "It's quieter without them.", "Good for them, I suppose."));
+        add("town_prosperity", Group.TOWN, t -> t.econ() != null, t -> 1.2, t -> {
+            double sc = t.econ().score;
+            return sc > 0.7 ? t.pick("Times are good in " + t.rec.name + ". Plenty of work, plenty to eat.", "We're doing well. People keep moving here.")
+                    : sc < 0.35 ? t.pick("Things are hard here lately.", "We've seen better days, honestly.")
+                    : t.pick("We get by. Some weeks better than others.", "Not rich, not poor. It's a fair place to live.");
+        });
+        add("town_building", Group.TOWN, t -> t.econ() != null && t.econ().projects.stream().anyMatch(p -> p.active()
+                && p.kind != dev.underdeep.civ.econ.Project.Kind.REPAIR), t -> 2.2, t -> {
+            dev.underdeep.civ.econ.Project p = t.econ().projects.stream().filter(q -> q.active()
+                    && q.kind != dev.underdeep.civ.econ.Project.Kind.REPAIR).findFirst().get();
+            String what = p.kind.name().toLowerCase(Locale.ROOT).replace('_', ' ');
+            return switch (p.status) {
+                case BUILDING -> "They're building a new " + what + " out by the edge of town. Come and see.";
+                case MATERIALS -> "There's going to be a new " + what + ", once they've gathered the materials.";
+                default -> "The council is talking about a new " + what + ". " + cap(p.reason) + ".";
+            };
+        });
+        add("town_imports", Group.TOWN, t -> t.econ() != null && topImport(t) != null, t -> 1.2, t -> {
+            dev.underdeep.civ.econ.Goods.Good g = dev.underdeep.civ.econ.Goods.get(topImport(t));
+            return "Most of our " + g.name() + " comes in by caravan. We can't make enough of it ourselves.";
+        });
+        add("work_idle", Group.CHAT, t -> t.econ() != null && t.econ().workplaces.containsKey(t.r.workplace)
+                && t.econ().workplaces.get(t.r.workplace).status == dev.underdeep.civ.econ.Economy.WorkStatus.IDLE
+                && !t.econ().workplaces.get(t.r.workplace).missing.isEmpty(), t -> 2.5, t -> {
+            String miss = t.econ().workplaces.get(t.r.workplace).missing;
+            dev.underdeep.civ.econ.Goods.Good g = miss.startsWith("@") ? null : dev.underdeep.civ.econ.Goods.get(miss);
+            String what = g != null ? g.name() : miss.equals("@FUEL") ? "fuel" : miss.substring(1).toLowerCase(Locale.ROOT);
+            return t.pick("We've run out of " + what + ". I can't work without it.", "No " + what + " anywhere. The workshop's been idle.");
+        });
+        add("work_busy", Group.CHAT, t -> t.econ() != null && t.econ().workplaces.containsKey(t.r.workplace)
+                && t.econ().workplaces.get(t.r.workplace).output > 1, t -> 1, t -> t.pick("We've been busy. Everything we make sells.",
+                "Orders keep coming in. Good for business, hard on my back."));
+        add("caravan_trip", Group.CHAT, t -> t.m.journey != 0, t -> 5, t -> t.pick("We're on the road with a load of goods. Long way yet.",
+                "Caravan work. Keep your eyes open, the tunnels aren't always friendly.", "Mind the pack beasts, they bite."));
+        add("celebration_now", Group.FEELING, t -> t.econ() != null && t.econ().gatheringUntil > t.now, t -> 3, t -> "We're celebrating — "
+                + t.econ().gatheringReason + "! Come to the square.");
+        add("hard_times", Group.FEELING, t -> t.econ() != null && t.econ().score < 0.35, t -> 2, t -> "Times are hard. Food's dear and there's not much work.");
+        add("leader_role", Group.ABOUT, t -> t.econ() != null && t.econ().leaders.contains(t.r.index), t -> 2.5, t -> "I'm one of "
+                + t.econ().leadership + ". Someone has to keep the stores counted and the roofs fixed.");
+        add("moved_here", Group.ABOUT, t -> !t.r.cameFrom.isEmpty(), t -> 2, t -> t.r.cameFrom.equals("afar") ? "I came here from far away, looking for work."
+                : "I moved here from " + t.settlementName(Long.parseLong(t.r.cameFrom.substring(0, t.r.cameFrom.indexOf(':')))) + ". New start.");
+        add("friends_elsewhere", Group.PEOPLE, t -> t.m.elsewhere.values().stream().anyMatch(b -> b.affection > 30), t -> 1.5, t -> {
+            String key = t.m.elsewhere.entrySet().stream().filter(en -> en.getValue().affection > 30).findFirst().get().getKey();
+            return "I still miss my friends back in " + t.settlementName(Long.parseLong(key.substring(0, key.indexOf(':')))) + ".";
+        });
+    }
+
+    @Nullable
+    static String topImport(Talk t) {
+        dev.underdeep.civ.econ.Economy e = t.econ();
+        String best = null;
+        double bi = 0.3;
+        for (var en : e.stock.entrySet()) {
+            if (en.getValue().rI > bi && en.getValue().rI > en.getValue().rP && dev.underdeep.civ.econ.Goods.get(en.getKey()) != null) {
+                bi = en.getValue().rI;
+                best = en.getKey();
+            }
+        }
+        return best;
+    }
+
+    static String cap(String s) {
+        return s.isEmpty() ? s : Character.toUpperCase(s.charAt(0)) + s.substring(1);
     }
 
     /** Picks a topic of a group for this conversation (never the one just used, if there is any alternative). */

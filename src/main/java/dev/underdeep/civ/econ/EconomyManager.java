@@ -207,6 +207,38 @@ public final class EconomyManager {
         state().markDirty();
     }
 
+    /** Test/diagnostic helper: brings up to {@code n} settlements near a point into the economy now. */
+    public int ensureNear(int x, int z, int radius, int n) {
+        SettlementMap map = Settlements.of(world);
+        if (map == null) {
+            return 0;
+        }
+        EconomyState st = state();
+        SettlementState ss = SettlementState.get(world);
+        int made = 0;
+        for (SettlementSite s : map.sitesNear(x, z, radius)) {
+            if (made >= n) {
+                break;
+            }
+            if (st.economies.containsKey(s.id())) {
+                continue;
+            }
+            SettlementRecord rec = ss.getOrCreate(map.plan(s), world.getSeed(), world.getTime());
+            EconomySim.Ctx ctx = ctx(null, rec, map.plan(s), s);
+            Economy e = EconomySim.create(ctx);
+            st.economies.put(e.id, e);
+            Daily.leadership(ctx);
+            made++;
+        }
+        for (Economy e : st.economies.values()) {
+            if (st.connectionsOf(e.id).isEmpty()) {
+                Trade.connect(this, st, e);
+            }
+        }
+        st.markDirty();
+        return made;
+    }
+
     /** Settlements within the economy radius of players (and spawn) get records and economies (a few per call). */
     private void ensureSettlements(UnderdeepConfig cfg, EconomyState st) {
         SettlementMap map = Settlements.of(world);

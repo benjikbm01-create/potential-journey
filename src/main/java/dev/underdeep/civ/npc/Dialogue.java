@@ -37,11 +37,13 @@ public final class Dialogue {
     private Dialogue() {
     }
 
-    static final class Session {
+    public static final class Session {
         int entityId;
         long settlement;
         int index;
         String lastTopic = "";
+        /** Sub-menu (Stage 6 noticeboard) or empty. */
+        public String menu = "";
         long lastChoice;
         int talks;
     }
@@ -63,6 +65,7 @@ public final class Dialogue {
         SESSIONS.put(p.getUuid(), s);
         Topics.Talk t = talk(p, e, rec, r);
         long now = t.now;
+        dev.underdeep.civ.econ.EconDialogue.opened(p, rec, r);
         boolean first = t.bond.familiarity == 0 && !r.mind.memories.has(Memory.Type.FIRST_MEETING, "p:" + p.getUuid());
         Topics.Topic greet = Topics.choose(Topics.Group.GREETING, t, null);
         String text = greet == null ? "Hello." : Topics.voice(t, greet.line().apply(t));
@@ -102,6 +105,14 @@ public final class Dialogue {
     static void send(ServerPlayerEntity p, InhabitantEntity e, Topics.Talk t, String text) {
         List<String> ids = new ArrayList<>(), labels = new ArrayList<>();
         boolean hostile = t.bond.trust <= -50 || t.bond.resentment >= 70;
+        Session ses = SESSIONS.get(p.getUuid());
+        if (ses != null && !ses.menu.isEmpty()) {
+            dev.underdeep.civ.econ.EconDialogue.menu(p, e, t, ses.menu, ids, labels);
+            opt(ids, labels, "back", "Back");
+            opt(ids, labels, "bye", "Goodbye");
+            sendRaw(p, e, t, text, ids, labels);
+            return;
+        }
         if (!hostile) {
             opt(ids, labels, "chat", "Chat");
             opt(ids, labels, "about", "Tell me about yourself");
@@ -124,8 +135,15 @@ public final class Dialogue {
                 opt(ids, labels, "give_help", "Hand over " + held.getName().getString());
             }
         }
+        if (!hostile) {
+            dev.underdeep.civ.econ.EconDialogue.options(p, e, t, ids, labels);
+        }
         Companions.options(p, e, t, ids, labels);
         opt(ids, labels, "bye", "Goodbye");
+        sendRaw(p, e, t, text, ids, labels);
+    }
+
+    static void sendRaw(ServerPlayerEntity p, InhabitantEntity e, Topics.Talk t, String text, List<String> ids, List<String> labels) {
         String subtitle = cap(t.prof()) + " · " + cap(t.civName()) + " · " + t.bond.playerWord()
                 + (t.m.age == Mind.Age.YOUNG ? " · young" : t.m.age == Mind.Age.ELDER ? " · elder" : "");
         String name = t.r.name;
@@ -137,7 +155,7 @@ public final class Dialogue {
         }
     }
 
-    private static void opt(List<String> ids, List<String> labels, String id, String label) {
+    public static void opt(List<String> ids, List<String> labels, String id, String label) {
         if (ids.size() < 15) {
             ids.add(id);
             labels.add(label);
@@ -196,7 +214,20 @@ public final class Dialogue {
             case "gift" -> text = gift(p, e, t);
             case "ask_help" -> text = describeRequest(t);
             case "give_help" -> text = help(p, e, t);
+            case "back" -> {
+                s.menu = "";
+                text = "Anything else?";
+            }
             default -> {
+                String econ = dev.underdeep.civ.econ.EconDialogue.choose(p, e, t, s, option);
+                if (econ != null) {
+                    if (econ.isEmpty()) {
+                        SESSIONS.remove(p.getUuid());
+                        return;
+                    }
+                    send(p, e, t, econ);
+                    return;
+                }
                 String c = Companions.choose(p, e, t, option);
                 if (c == null) {
                     return;

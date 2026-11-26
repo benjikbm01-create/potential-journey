@@ -65,12 +65,14 @@ public final class Goods {
     private static final Map<String, Good> BY_ID = new LinkedHashMap<>();
     private static final Map<Item, Good> BY_ITEM = new java.util.HashMap<>();
     private static final Map<Category, List<Good>> BY_CAT = new EnumMap<>(Category.class);
-    public static Item currency = Items.EMERALD;
+    /** The currency item (emerald), set when the registry loads. */
+    public static Item currency;
 
     public static synchronized void load() {
         if (!BY_ID.isEmpty()) {
             return;
         }
+        currency = Items.EMERALD;
         for (Category c : Category.values()) {
             BY_CAT.put(c, new ArrayList<>());
         }
