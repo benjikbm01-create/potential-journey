@@ -225,7 +225,8 @@ final class Stage3Checks {
             tick(List.of(buck), 20);
             ate = buck.hunger < 0.6f;
         }
-        r.check("herbivore seeks and eats vegetation", ate, String.format(Locale.ROOT, "hunger 0.95 -> %.2f", buck.hunger));
+        r.check("herbivore seeks and eats vegetation", ate, String.format(Locale.ROOT, "hunger 0.95 -> %.2f", buck.hunger)
+                + (ate ? "" : "; " + buck.debugSummary() + " plot " + fo.toShortString()));
         for (int i = 0; i < 20; i++) {
             buck.hunger = 0.95f; // keep it hungry next to a ripe crop for another 20 s
             tick(List.of(buck), 20);

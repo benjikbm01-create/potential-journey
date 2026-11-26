@@ -319,6 +319,16 @@ public class UnderdeepCreature extends TameableEntity {
         return isTamed() && player.getUuid().equals(getOwnerUuid());
     }
 
+    /** Diagnostics: running goals, state and position (used by the self-test). */
+    public String debugSummary() {
+        StringBuilder b = new StringBuilder("state=").append(state()).append(" goals=[");
+        goalSelector.getGoals().stream().filter(g -> g.isRunning()).forEach(g -> b.append(g.getGoal().getClass().getSimpleName()).append(' '));
+        return b.append("] target=").append(getTarget() == null ? "-" : getTarget().getType().getUntranslatedName())
+                .append(String.format(java.util.Locale.ROOT, " pos=%.1f,%.1f,%.1f ground=%s water=%s tired=%.2f hurt=%d nav=%s",
+                        getX(), getY(), getZ(), isOnGround(), isTouchingWater(), tiredness, hurtTime,
+                        getNavigation().isIdle() ? "idle" : "moving")).toString();
+    }
+
     /** No endless chases: a wild animal that cannot close in on its target within ~12 s gives up. */
     private void limitChase() {
         LivingEntity t = getTarget();
