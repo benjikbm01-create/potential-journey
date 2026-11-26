@@ -24,6 +24,51 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
+## Results — Stage 4 (2026-11-26)
+
+Same hardware and toolchain. Mod version `0.5.0-stage4`. At the user's request, the final multi-seed matrix
+(`scripts/stage4_matrix.sh`) was **not run**; the user is testing in play. Only tests actually executed are
+listed.
+
+### Executed
+- `./gradlew build --offline`: BUILD SUCCESSFUL. 20 unit tests, 0 failures. `SettlementMapTest` is new:
+  determinism across query order, no overlaps, and on 3 seeds a welcoming settlement ≤ 340 blocks from
+  spawn, a town ≤ 1250, ≥ 3 settlements within 500 and all 8 civilizations within 3000. Measured:
+  - welcoming settlement at 171–269 blocks
+  - nearest town at 415–622 blocks
+  - 187–191 settlements within 3000 blocks.
+- `SUITE=stage4` self-test, seed 42 (fake player; routine checks tick entities directly = accelerated):
+  - Create phase: 78 passed, 0 failed (latest runs before the final job-assignment change). It covers:
+    - placement and spawn access; plan sizes (41 of 48 plans within 1500 blocks reach a sensible size)
+    - generated buildings as designed (97.9–100 % of blueprint blocks); entrances walkable (19/19, 46/46)
+    - 79 registered inhabitants with beds and names in the nearest town; embodiment within the budget of
+      24, with no duplicates; entities never saved
+    - the routine at midday and night: 23 of 24 asleep in their own bed after 60 s (accelerated)
+    - trading with recorded uses; permanent deaths; discovery; no hostile spawns inside settlements
+    - inhabitant tick cost 8.3 µs per inhabitant per tick (≈ 0.2 ms for a full settlement)
+    - all gallery designs pass the validator (entrances, reachable beds, workstations, storage)
+  - Restart phase: 70 passed, 0 failed (same 79 inhabitants, a dead one stays dead, discovery kept, plan
+    identical).
+- Generation order (seed 42, forward vs reverse, settlement area 121 chunks, block-level diff with
+  `tools/analysis/world_diff.py`):
+  - 0 differences in settlement blocks (buildings, roads, furniture, lamps).
+  - 0.40 % of all blocks differ, all natural decoration (ores, stone variants, giant fungi, grass), as
+    documented in D-017.
+  - 103 terrain-level rock/air differences from natural decoration.
+- Real client (Xvfb, software GL), screenshots taken and viewed:
+  - every culture's buildings in the gallery
+  - generated settlements (Sporefolk village, Tide Dwellers town)
+  - inhabitant line-ups of all 8 cultures (distinct skins, outfits, proportions)
+  - inhabitants were embodied during tours (log: 24 of 26, 24 of 27 and 13 of 78 present).
+
+### Not tested / known
+- The round-robin job assignment (the last change, so that every market stall and shop has a keeper) was
+  built and unit-tested but not verified in a self-test or screenshot; earlier tours showed empty stalls.
+- No multi-seed Stage 4 matrix and no production-JAR server run for Stage 4. No real multiplayer session.
+- Trading through the real merchant screen with a real player was not exercised (server-side trade path
+  only).
+- Cities were planned (counts in the self-test) but not visually inspected.
+
 ## Results — Stage 3 (2026-11-26)
 
 Same hardware and toolchain as Stage 1. Mod version `0.4.0-stage3`. Per the brief, no multi-hour runs.
