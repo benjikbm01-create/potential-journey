@@ -111,8 +111,8 @@ public final class MobStudy {
         OUT.append(String.format(Locale.ROOT, "- %d seconds per site, counts within 64 blocks horizontally / 40 vertically of the player\n", perSiteTicks / 20));
         OUT.append("- doMobSpawning=").append(world.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING))
                 .append(", difficulty=").append(world.getDifficulty()).append("\n\n");
-        OUT.append("| site | ecosystem | danger | starter zone | hostile samples (every 10 s) | max hostile | passive at end |\n");
-        OUT.append("|---|---|---|---|---|---|---|\n");
+        OUT.append("| site | ecosystem | danger | starter zone | hostile samples (every 10 s) | max hostile | passive at end | wildlife at end (species: count) | all native | avg tick ms |\n");
+        OUT.append("|---|---|---|---|---|---|---|---|---|---|\n");
     }
 
     private static void tick(MinecraftServer server) {
@@ -143,9 +143,19 @@ public final class MobStudy {
         }
         if (ticks >= perSiteTicks) {
             int passive = count(p, false);
-            OUT.append(String.format(Locale.ROOT, "| %d %d %d | %s | %s | %s | %s | %d | %d |\n", site.x, site.y, site.z,
+            java.util.Map<String, Integer> wild = new java.util.TreeMap<>();
+            boolean native_ = true;
+            var wm = dev.underdeep.wildlife.population.WildlifeManager.get(p.getServerWorld());
+            for (var c : p.getServerWorld().getEntitiesByClass(dev.underdeep.wildlife.UnderdeepCreature.class,
+                    p.getBoundingBox().expand(64, 40, 64), e -> true)) {
+                wild.merge(c.species().id, 1, Integer::sum);
+                if (wm != null && c.isWild()) {
+                    native_ &= c.species().regions().contains(wm.typeOf(c.homeRegion));
+                }
+            }
+            OUT.append(String.format(Locale.ROOT, "| %d %d %d | %s | %s | %s | %s | %d | %d | %s | %s | %.2f |\n", site.x, site.y, site.z,
                     site.region.id(), site.region.danger().id(), SpawnRules.inStarterZone(new BlockPos(site.x, site.y, site.z)),
-                    samples, maxHostile, passive));
+                    samples, maxHostile, passive, wild, native_, server.getAverageNanosPerTick() / 1e6));
             Underdeep.LOGGER.info("Mob study {}: hostile samples {} (max {}), passive {}", site.name, samples, maxHostile, passive);
             index++;
             if (index >= SITES.size()) {

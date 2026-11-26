@@ -14,3 +14,4 @@ Files:
 - `LORE.md` — deep history of the underground world and its secrets.
 - `HIDDEN_DISCOVERIES.md` — planned secret locations and unique encounters, with the stage that should
   implement each.
+- `WILDLIFE.md` — rare/exceptional creatures, secret taming mechanics, hidden biology (Stage 3).

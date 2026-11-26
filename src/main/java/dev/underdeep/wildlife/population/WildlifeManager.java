@@ -191,8 +191,8 @@ public final class WildlifeManager {
     private void onUnload(UnderdeepCreature c) {
         if (loaded.remove(c)) {
             activeAdd(c.homeRegion, c.species().id, -1);
-            if (c.isAlive()) {
-                returned++;
+            if (c.getRemovalReason() != net.minecraft.entity.Entity.RemovalReason.KILLED) {
+                returned++; // unloaded or despawned: back in the regional pool
             }
             List<UnderdeepCreature> h = herds.get(c.herdId);
             if (h != null) {
@@ -543,7 +543,7 @@ public final class WildlifeManager {
     }
 
     /** Materialises wild creatures from the regional pool near a player (bounded, staggered). */
-    private void spawnNear(ServerPlayerEntity player) {
+    public void spawnNear(ServerPlayerEntity player) {
         UnderdeepConfig cfg = UnderdeepConfig.get();
         if (loaded.size() >= cfg.maxWildlifeTotal) {
             return;

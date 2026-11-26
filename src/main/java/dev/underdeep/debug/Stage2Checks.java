@@ -393,7 +393,7 @@ final class Stage2Checks {
     private static final Set<Long> USED_PLOTS = new HashSet<>();
 
     /** A free plot location well inside the given ecosystem near its representative site (offset only seeds the order). */
-    private static BlockPos plotOrigin(UnderdeepTerrain t, RegionType type, Map<RegionType, int[]> reps, int offset) {
+    static BlockPos plotOrigin(UnderdeepTerrain t, RegionType type, Map<RegionType, int[]> reps, int offset) {
         int[] p = reps.get(type);
         int[] site = Stage15Checks.siteFor(t, type, p);
         boolean up = CavernLayer.values()[p[1]] == CavernLayer.UPPER;
@@ -421,7 +421,7 @@ final class Stage2Checks {
     }
 
     /** Sealed plot: shell of stone, floor of the given block, air inside; optional light ring and heat. */
-    private static BlockPos plot(ServerWorld w, BlockPos o, int half, int height, BlockState floor, boolean light, boolean heat) {
+    static BlockPos plot(ServerWorld w, BlockPos o, int half, int height, BlockState floor, boolean light, boolean heat) {
         for (int cx = (o.getX() - half - 1) >> 4; cx <= (o.getX() + half + 1) >> 4; cx++) {
             for (int cz = (o.getZ() - half - 1) >> 4; cz <= (o.getZ() + half + 1) >> 4; cz++) {
                 w.getChunk(cx, cz, ChunkStatus.FULL, true);

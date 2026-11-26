@@ -88,7 +88,7 @@ public final class CreatureGoals {
             goals.add(2, new TerritoryGoal(c));
         }
         if (s.attack() > 1) {
-            goals.add(3, new MeleeAttackGoal(c, 1.35, true));
+            goals.add(3, new MeleeAttackGoal(c, s.isPredator() ? 1.7 : 1.35, true)); // predators sprint when they charge
         }
         if (s.isPredator()) {
             goals.add(3, new HuntGoal(c));
@@ -97,7 +97,7 @@ public final class CreatureGoals {
             goals.add(3, new AmbushPlayerGoal(c));
         }
         if (s.tamable()) {
-            goals.add(4, new FollowOwnerGoal(c, 1.1, 8.0f, 3.0f));
+            goals.add(4, new FollowOwnerAnyGoal(c));
         }
         goals.add(4, new AnimalMateGoal(c, 1.0));
         goals.add(5, new FollowParentGoal(c, 1.15));
@@ -381,6 +381,9 @@ public final class CreatureGoals {
                 return false;
             }
             cooldown = 40;
+            if (c.hunger > 0.8f && c.tiredness < 0.95f) {
+                return false; // hunger overrides rest: starving animals go looking for food
+            }
             boolean active = Rhythms.isActive(c.species().activity(), c.getWorld().getTimeOfDay(), c.getId());
             if (!(c.tiredness > 0.75f || !active && c.tiredness > 0.35f)) {
                 return false;
@@ -414,7 +417,8 @@ public final class CreatureGoals {
 
         @Override
         public boolean shouldContinue() {
-            return c.tiredness > 0.08f && c.getTarget() == null && c.state() != UnderdeepCreature.ALERT && c.getAttacker() == null;
+            return c.tiredness > 0.08f && c.hunger < 0.9f && c.getTarget() == null && c.state() != UnderdeepCreature.ALERT
+                    && c.getAttacker() == null;
         }
 
         @Override
@@ -478,7 +482,12 @@ public final class CreatureGoals {
             Temperament t = c.species().temperament();
             for (LivingEntity e : near) {
                 if (e instanceof UnderdeepCreature o && o.species().preyIds().contains(c.species().id) && !o.isTamed()) {
-                    return e;
+                    // stalkers and ambushers are only noticed close up until they charge
+                    boolean stealthy = (o.species().huntStyle() == HuntStyle.STALK || o.species().huntStyle() == HuntStyle.AMBUSH)
+                            && o.getTarget() == null;
+                    if (!stealthy || c.squaredDistanceTo(o) < 16 * ff * ff) {
+                        return e;
+                    }
                 }
                 if (e instanceof PlayerEntity p && !p.isCreative() && !p.isSpectator() && !c.isTamed()) {
                     double d = c.squaredDistanceTo(p);
@@ -509,7 +518,7 @@ public final class CreatureGoals {
                     ? c.getPos().add(c.getPos().subtract(threat.getPos()).normalize().multiply(10))
                     : NoPenaltyTargeting.findFrom(c, 16, 6, threat.getPos());
             if (away != null) {
-                c.getNavigation().startMovingTo(away.x, away.y, away.z, 1.5);
+                c.getNavigation().startMovingTo(away.x, away.y, away.z, fleeTicks < 60 ? 1.5 : 1.2); // a burst, then they tire
             }
         }
 
@@ -579,7 +588,8 @@ public final class CreatureGoals {
 
         @Override
         public boolean shouldContinue() {
-            return prey != null && prey.isAlive() && ticks < 300 && c.squaredDistanceTo(prey) < 26 * 26 && !busy(c);
+            // once the predator commits (target set) the melee goal takes over the attack
+            return prey != null && prey.isAlive() && c.getTarget() != prey && ticks < 300 && c.squaredDistanceTo(prey) < 26 * 26 && !busy(c);
         }
 
         @Override
@@ -608,15 +618,12 @@ public final class CreatureGoals {
 
         @Override
         public void stop() {
-            if (prey != null && !prey.isAlive()) {
-                c.hunger = 0.05f;
-                c.tiredness = Math.min(1, c.tiredness + 0.45f);
-                c.huntCooldown = 2400 + c.getRandom().nextInt(1200);
+            if (prey != null && prey.isAlive() && c.getTarget() == prey) {
+                c.huntCooldown = 200; // handed over to the attack; UnderdeepCreature limits the chase and feeds on a kill
+            } else if (prey != null && !prey.isAlive()) {
+                c.huntCooldown = Math.max(c.huntCooldown, 400);
             } else {
                 c.huntCooldown = 400;
-            }
-            if (c.getTarget() == prey) {
-                c.setTarget(null);
             }
             prey = null;
         }
@@ -991,6 +998,48 @@ public final class CreatureGoals {
                 WildlifeManager.maintainNest(sw, c);
             }
             return false;
+        }
+    }
+
+    /** Follow-owner that works with every navigation type (land, climbing, swimming, flying). */
+    static final class FollowOwnerAnyGoal extends Goal {
+        private final UnderdeepCreature c;
+        private int recalc;
+
+        FollowOwnerAnyGoal(UnderdeepCreature c) {
+            this.c = c;
+            setControls(EnumSet.of(Control.MOVE, Control.LOOK));
+        }
+
+        @Override
+        public boolean canStart() {
+            LivingEntity o = c.getOwner();
+            return c.isTamed() && !c.isSitting() && !c.hasPassengers() && o != null && !o.isSpectator() && c.squaredDistanceTo(o) > 49;
+        }
+
+        @Override
+        public boolean shouldContinue() {
+            LivingEntity o = c.getOwner();
+            return o != null && !c.isSitting() && c.squaredDistanceTo(o) > 9;
+        }
+
+        @Override
+        public void tick() {
+            LivingEntity o = c.getOwner();
+            c.getLookControl().lookAt(o, 10, c.getMaxLookPitchChange());
+            if (--recalc <= 0) {
+                recalc = 10;
+                if (c.squaredDistanceTo(o) > 400) {
+                    c.tryTeleportToOwner();
+                } else {
+                    c.getNavigation().startMovingTo(o, 1.15);
+                }
+            }
+        }
+
+        @Override
+        public void stop() {
+            c.getNavigation().stop();
         }
     }
 

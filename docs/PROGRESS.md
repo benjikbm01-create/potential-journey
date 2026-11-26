@@ -87,5 +87,28 @@ art); no custom sounds (Stage 11) or custom particles (vanilla particle types ar
 effects are not simulated in unloaded chunks (by design, D-028); vanilla stand-in vegetation from
 Stage 1.5 remains alongside the new species in some ecosystems.
 
-## Stages 3–12
+## Stage 3 — Wildlife and living ecological simulation: COMPLETE (2026-11-26)
+
+| System | State | Notes |
+|---|---|---|
+| Species framework (`CreatureSpecies`, one `UnderdeepCreature` entity class, D-033) | done | locomotion, diet, social, temperament, hunting, activity, taming, mount, nest, products |
+| 60 original species across all 15 ecosystems | done | 12 tamable, 5 rideable, 11 aquatic/amphibious, 11 flying/gliding/hovering; 5 rare/exceptional (private) |
+| Behaviour library (> 25 behaviours) | done | forage, graze, drink, hunt (5 styles), flee + herd alarm, rest/sleep, territory with warning, herding, packs, schools/swarms, following, socialising, nesting, reproduction, scavenging, climbing, swimming, flying/gliding, curiosity, play, protective companions, avoiding hazards, seeking shelter, migration |
+| Needs and individuality | done | hunger, tiredness, loneliness, reproductive readiness, territory; per-individual personality |
+| Food chains on Stage 2 vegetation | done | bounded consumption, harvestables regrow, never crops or built areas |
+| Reproduction, juveniles, nests, eggs | done | bounded by regional carrying capacity |
+| Regional populations, tiers, reconciliation (D-034, D-035) | done | wild animals owned by regions; no duplication through chunk loading |
+| Aggregate simulation (predation, growth, decline, migration, hunting disturbance) | done | accelerated tests only |
+| Taming (4 methods), ownership, companions, riding (harness), pack inventory | done | ridden movement not tested by a real player |
+| Animal resources (14 items, renewable products, recipes to vanilla materials) | done | |
+| Vanilla passive mob replacement in Underdeep worlds (D-036) | done | vanilla worlds unaffected (tested) |
+| Data-driven models, textures, procedural animation, spawn eggs | done | static poses inspected in the real client for all 60 species |
+| Sounds | partial | pitched vanilla sounds; custom sounds are Stage 11 |
+| Wildlife field journal (per player, no locations) | done | |
+| Configuration (18 options) | done | README |
+| Tests (`Stage3Checks`, `WildlifeModelTest`, zoo tour, real-client wildlife study) | done | TESTING.md |
+
+Partially complete / limitations: see `NEXT_STEPS.md` (known issues). Terrain unchanged (D-038).
+
+## Stages 4–12
 Not started.

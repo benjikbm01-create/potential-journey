@@ -93,6 +93,9 @@ public class UnderdeepCreature extends TameableEntity {
     public int patienceTicks;
     public int lastOfferingAge = -100000;
     public boolean lowDetail;
+    private int chaseTicks;
+    /** Self-test only (set by the property-gated dev self-test): behave as if a player were adjacent. */
+    public static boolean testObserver;
     private double nearestPlayerSq = Double.MAX_VALUE;
     private final SimpleInventory pack;
     private final Personality personality;
@@ -162,6 +165,10 @@ public class UnderdeepCreature extends TameableEntity {
 
     public int variant() {
         return dataTracker.get(VARIANT);
+    }
+
+    public void setHarnessed(boolean harnessed) {
+        dataTracker.set(HARNESSED, harnessed);
     }
 
     public boolean isHarnessed() {
@@ -307,6 +314,45 @@ public class UnderdeepCreature extends TameableEntity {
         }
     }
 
+    /** Ownership by UUID: works while the owner entity lookup is unavailable (other dimension, fake players). */
+    public boolean ownedBy(PlayerEntity player) {
+        return isTamed() && player.getUuid().equals(getOwnerUuid());
+    }
+
+    /** No endless chases: a wild animal that cannot close in on its target within ~12 s gives up. */
+    private void limitChase() {
+        LivingEntity t = getTarget();
+        if (t == null || isTamed()) {
+            chaseTicks = 0;
+            return;
+        }
+        if (squaredDistanceTo(t) < 6.25) {
+            chaseTicks = 0;
+        } else if (++chaseTicks > 240) {
+            chaseTicks = 0;
+            setTarget(null);
+            huntCooldown = Math.max(huntCooldown, 600);
+            if (state() == ATTACK || state() == WARN) {
+                setState(IDLE);
+            }
+        }
+    }
+
+    @Override
+    public boolean onKilledOther(ServerWorld world, LivingEntity other) {
+        if (other instanceof UnderdeepCreature prey && species.preyIds().contains(prey.species().id)) {
+            hunger = 0.05f; // a successful hunt satiates the predator, which then rests
+            tiredness = Math.min(1, tiredness + 0.45f);
+            huntCooldown = 2400 + random.nextInt(1200);
+        }
+        return super.onKilledOther(world, other);
+    }
+
+    @Override
+    public boolean canBreedWith(AnimalEntity other) {
+        return other instanceof UnderdeepCreature o && o.species == species && super.canBreedWith(other);
+    }
+
     // ------------------------------------------------------------------ ticking
 
     @Override
@@ -316,6 +362,7 @@ public class UnderdeepCreature extends TameableEntity {
         if (huntCooldown > 0) {
             huntCooldown--;
         }
+        limitChase();
         if ((age + getId()) % 20 == 0 && getWorld() instanceof ServerWorld sw) {
             updateNeeds(sw);
         }
@@ -324,7 +371,7 @@ public class UnderdeepCreature extends TameableEntity {
     private void updateNeeds(ServerWorld world) {
         UnderdeepConfig c = UnderdeepConfig.get();
         PlayerEntity p = world.getClosestPlayer(this, 160);
-        nearestPlayerSq = p == null ? Double.MAX_VALUE : squaredDistanceTo(p);
+        nearestPlayerSq = testObserver ? 0 : p == null ? Double.MAX_VALUE : squaredDistanceTo(p);
         lowDetail = nearestPlayerSq > (double) c.wildlifeDetailDistance * c.wildlifeDetailDistance;
         if (isWild() && nearestPlayerSq > (double) c.wildlifeDespawnDistance * c.wildlifeDespawnDistance && !hasPassengers()) {
             discard(); // returns to the regional population (WildlifeManager counts it on unload)
@@ -413,7 +460,7 @@ public class UnderdeepCreature extends TameableEntity {
             return ActionResult.success(w.isClient);
         }
         // harness for mounts
-        if (species.mountType() != Mount.NONE && isTamed() && isOwner(player) && !isBaby() && !isHarnessed()
+        if (species.mountType() != Mount.NONE && isTamed() && ownedBy(player) && !isBaby() && !isHarnessed()
                 && stack.isOf(Registries.ITEM.get(Identifier.of("underdeep", "harness")))) {
             if (!w.isClient) {
                 dataTracker.set(HARNESSED, true);
@@ -422,7 +469,7 @@ public class UnderdeepCreature extends TameableEntity {
             }
             return ActionResult.success(w.isClient);
         }
-        if (isTamed() && isOwner(player)) {
+        if (isTamed() && ownedBy(player)) {
             if (player.isSneaking() && species.mountType() == Mount.PACK && pack.size() > 0) {
                 if (!w.isClient) {
                     player.openHandledScreen(new SimpleNamedScreenHandlerFactory(
@@ -457,7 +504,7 @@ public class UnderdeepCreature extends TameableEntity {
     @Nullable
     @Override
     public LivingEntity getControllingPassenger() {
-        if (isHarnessed() && getFirstPassenger() instanceof PlayerEntity p && isOwner(p)) {
+        if (isHarnessed() && getFirstPassenger() instanceof PlayerEntity p && ownedBy(p)) {
             return p;
         }
         return null;
@@ -511,7 +558,7 @@ public class UnderdeepCreature extends TameableEntity {
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        if (isTamed() && source.getAttacker() instanceof PlayerEntity p && isOwner(p) && !p.isSneaking()) {
+        if (isTamed() && source.getAttacker() instanceof PlayerEntity p && ownedBy(p) && !p.isSneaking()) {
             return false; // accidental friendly fire from the owner
         }
         if (hasPassengers() && source.getAttacker() == getFirstPassenger()) {

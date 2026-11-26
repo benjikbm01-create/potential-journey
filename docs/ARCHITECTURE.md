@@ -35,6 +35,13 @@ dev.underdeep
 │                                 EcoCrop, AquaticCrop, EcoSapling, SporePuff, Snapjaw, EphemeralFungus, ShelfFungus,
 │                                 FungalSoil, RottingLog, ResinKnot, CrystalGrower)
 ├── item/RemedyItem               simple medicines
+├── wildlife/                     Stage 3: CreatureSpecies (species data), WildlifeRegistry (60 species, entity types,
+│                                 attributes), UnderdeepCreature (single TameableEntity for all species), Personality,
+│                                 Rhythms (activity cycles), Voices (pitched vanilla sounds), WildlifeItems, WildlifeBlocks
+│                                 (nests, burrows, eggs), WildlifeJournal (per-player field journal)
+├── wildlife/ai/CreatureGoals     shared goal library composed per species (forage, hunt, flee, herd, territory, ...)
+├── wildlife/population/          RegionWildlife (pure abstract population + aggregate model), WildlifeManager
+│                                 (per-world ledger, spawner, tiers, reconciliation, taming, herds), Companions
 ├── registry/ModWorldgen          chunk generator, biome source, features, placement modifiers
 ├── block/GlowcapBlock
 ├── command/UnderdeepCommands     /underdeep diagnostics (permission-gated)
@@ -57,12 +64,14 @@ dev.underdeep
     ├── spawn/SpawnFinder
     ├── data/UnderdeepWorldState  persistent per-world data (data/underdeep.dat)
     └── debug/TerrainPreview      PNG renders straight from the terrain model
-client: UnderdeepClient (render layers, dimension effects), ScreenshotTour and CreateWorldTest (dev only)
+client: UnderdeepClient (render layers, dimension effects), ScreenshotTour and CreateWorldTest (dev only),
+        creature/CreatureModel (JSON-built model + role-based procedural animation), CreatureRenderers
 tools/analysis/world_diff.py      block-level diff of two saved worlds (determinism checks)
 tools/worldgen/generate_data.py   generates biome / feature / preset JSON
 tools/assets/generate_textures.py generates Stage 1 textures and icon
 tools/assets/generate_assets.py   Stage 1.5 block assets
 tools/assets/stage2_assets.py     Stage 2 textures (art.py), models, blockstates, loot, recipes, tags, names, hints
+tools/assets/creatures.py         Stage 3 creature models (JSON), entity textures, loot, items, recipes, tags, names
 scripts/selftest.sh, scripts/visual_tour.sh
 ```
 
@@ -233,6 +242,76 @@ supported wildlife guilds, minerals) computed from data — never stored per blo
 5. Settlements (Stage 6) use the same summary for agricultural productivity and regional trade goods
    (`minerals()`, renewable yields).
 
+## 5d. Wildlife and ecological simulation (Stage 3)
+
+**Species.** `CreatureSpecies` holds everything that differs between species: ecosystems, size, stats,
+locomotion (land, climber, aquatic, amphibious, flyer, glider, hover), diet (mapped to Stage 2
+`Species.Role` food roles), social structure (solitary … herd, pack, school, swarm, colony), temperament,
+hunting style (pursuit, stalk, ambush, pack, aquatic, swoop) and prey list, activity cycle, taming method
+and food, mount type, nest type, density, rarity and renewable product. `WildlifeRegistry` defines 60
+species and registers one `EntityType<UnderdeepCreature>` per species (D-033).
+
+**Entity.** `UnderdeepCreature extends TameableEntity`. Navigation and move control follow the locomotion
+(swim/amphibious/bird/spider/ground navigation; aquatic and flight move controls). Needs (hunger, tiredness,
+loneliness) update every 20 ticks; a deterministic `Personality` from the UUID (curiosity, timidity,
+aggression, sociability, playfulness, boldness, loyalty) modulates flee distance, play, curiosity and
+taming speed. Tracked state (idle, eat, sleep, warn, attack, play, drink, alert) drives client animation.
+NBT keys `UdHunger`, `UdTired`, `UdHomeRegion`, `UdHome`, `UdHarness`, `UdSheared`, `UdVariant`, `UdPack`
+(append-only).
+
+**Behaviour.** `CreatureGoals.install` composes goals by species: swim, sit, flee (predators of the species,
+players by temperament, herd alarms; stalkers/ambushers noticed only close up), escape danger, territory
+(warning posture and call first; a short charge only if the intruder presses closer; never far from home),
+melee attack (predators sprint), hunt (style-specific approach, hands over to the attack; kills satiate and
+start a long cooldown), ambush players in dangerous ecosystems (never in Peaceful), follow owner, mate,
+follow parent, tempt, forage (Stage 2 food plants by diet; harvestables reset to an earlier age so they
+regrow, nectar feeders pollinate, grass/ferns rarely removed; never crops, never inside protected/built
+areas), rest/sleep (shelter, home; hunger overrides rest), herd cohesion around a leader, socialising,
+nesting, scavenging dropped meat (not equipment), curiosity toward players, play, drinking, and
+locomotion-specific wandering. Chases end after ~12 s without closing in (`limitChase`).
+
+**Populations and tiers (D-034, D-035).** `RegionWildlife` (NBT key `wildlife` in `regionData`) stores
+species → count, disturbance, last update and counters. `capacity()` is deterministic per region
+(density × food availability from `RegionEcology` × disturbance, ±25 % regional variation; rare species
+0 or 1). `WildlifeManager` (one per Underdeep world) keeps the ledger of active wild entities per region
+and species. Invariant: active ≤ count. The spawner (every 20 ticks, round-robin over players) materialises
+groups near players from their current region's pool while under the per-player and global caps; wild
+entities are not saved and return to the pool when unloaded or > 96 blocks from every player; deaths,
+births, taming and naming adjust counts. Regions without active entities are stepped by the aggregate
+model (predation, logistic growth, decline, emigration to compatible neighbouring regions with exact
+conservation). Loaded animals that settle in another region transfer their home region (migration on foot).
+
+**Taming and riding.** Four methods (feeding, patience, rescue, offering; details private). Taming
+removes the animal from the wild pool. Ownership is by UUID (`ownedBy`), so it survives the owner being
+offline, in another dimension or dead. Owner-only commands (sit/follow), owner friendly-fire immunity
+unless sneaking, rider immunity, companions follow their owner (teleporting when > 20 blocks behind, like vanilla pets) unless told to stay. Mounts need a harness; only
+the owner controls a ridden mount (movement is client-side as for vanilla horses). Pack animals carry an
+18-slot inventory (saved, dropped on death). Companions have small helper behaviours (`Companions`).
+
+**Resources.** Loot tables (looting-aware, cooked when on fire), renewable products (milk, shearing, shed
+items dropped near players), eggs that hatch into juveniles (egg block entity remembers species, home
+region, wildness and owner). Nests/burrows are placed only on natural support outside protected areas.
+
+**Client.** Models are JSON (`assets/underdeep/creatures/<id>.json`, D-037) built into `TexturedModelData`
+at startup; `CreatureModel` animates by part role (gaits for quadruped/hexapod/crab/biped, wings, fins,
+tails, sleep and warning poses, juvenile scale) and emissive parts use a glow layer.
+
+**Vanilla mobs (D-036).** In Underdeep worlds vanilla passive/water creatures no longer spawn and
+`InitialPopulation` is disabled while `vanillaMobReplacement` is on; vanilla monsters spawn at
+`vanillaMonsterShare` of their previous rate. Vanilla worlds are untouched.
+
+**Configuration** (`config/underdeep.json`): `wildlifeEnabled`, `wildlifeDensity`,
+`wildlifeDensityByEcosystem`, `predatorAbundance`, `wildlifeReproduction`, `wildlifeMigration`,
+`wildlifeSimInterval`, `wildlifeSimRegionsPerUpdate`, `maxWildlifePerPlayer`, `maxWildlifeTotal`,
+`wildlifeDetailDistance`, `wildlifeDespawnDistance`, `wildlifeVegetationConsumption`,
+`rareCreatureFrequency`, `tamingEnabled`, `vanillaMobReplacement`, `vanillaMonsterShare`, `huntingDisturbance`.
+
+**Interfaces for Stages 4–6.** Settlements can read `RegionWildlife` counts (game availability, hunting
+pressure via `disturbance`), call `WildlifeManager.region(id)` for any region without loading chunks, use
+`CreatureSpecies` diet/temperament for herding/livestock, treat tamed creatures as livestock (non-wild
+creatures breed freely, `allowBirth`), and add villager-owned animals via `leaveWildAsTamed`. Caravans
+can use pack animals (`Mount.PACK`). Predator pressure on routes = predator counts in the regions crossed.
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |
@@ -254,15 +333,16 @@ supported wildlife guilds, minerals) computed from data — never stored per blo
 | Regional ecology | `RegionEcology.of(type, regionId)` | deterministic, no storage |
 | Harvest pressure | `EcologyState.recordHarvest / harvests` | NBT `ecology` per region |
 | Habitat search | `Habitats.speciesOf`, `findNearest`, `role` | bounded block scans |
+| Wildlife species | `WildlifeRegistry` (`all`, `byId`, `of(type)`, `type(id)`), `CreatureSpecies` | append-only ids (stored in NBT) |
+| Regional wildlife | `WildlifeManager.get(world).region(regionId)` → `RegionWildlife` (counts, disturbance) | NBT `wildlife` per region; no chunk loads |
+| Ownership | `UnderdeepCreature.isWild()`, `ownedBy(player)`, `leaveWildAsTamed(owner)` | wild ⇒ region-owned, never saved as entity |
 
 **Extending regions:** add a `RegionType` entry at the end with a `TerrainProfile` and environment,
 add it to a layer's region list and climate prototypes in `RegionMap`, add a biome in
 `tools/worldgen/generate_data.py`, palettes in `BlockPalette`/`SurfacePainter`, regenerate data, bump
 `GENERATOR_VERSION` (existing worlds will show seams at newly generated chunk borders).
 
-**Wildlife population contract (Stage 3 plan):** per `RegionId`, store species → abstract population
-(count, health, last-update game time) in `regionData`; advance abstractly when unloaded; spawn/despawn
-entities to match on approach. `InitialPopulation` is a placeholder to be replaced.
+**Wildlife population contract:** implemented in Stage 3, see §5d.
 
 ## 7. Performance design
 - Column values are computed once per block column; 3D noise on a 4-block grid; roughness evaluated
@@ -277,6 +357,11 @@ perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]` �
 Self-test suite `SUITE=stage2 scripts/selftest.sh …` (property `underdeep.selftest.suite=stage2`) skips the slow
 Stage 1.5 terrain analyses and runs `Stage2Checks` (resources, recipes, generation census, growth,
 harvest, spreading bounds, protection, persistence); `scripts/stage2_matrix.sh` runs it across seeds.
+`Stage3Checks` adds wildlife registration, distribution, behaviour (sealed test plots, entities ticked
+directly = accelerated), taming, products, population integrity, aggregate simulation and persistence
+checks; `-Dunderdeep.zoo=true` (env `ZOO=true`) builds a close-up exhibit of every species for the
+screenshot tour. `UnderdeepCreature.testObserver` (self-test only) makes creatures behave as if a player
+were adjacent.
 Mob study (`-Dunderdeep.mobstudy=<dir>`, `scripts/mob_study.sh`) measures natural spawning with a real
 client connected to the dedicated server.
 `F3` debug screen shows layer, region and cavern heights. Self-test (`-Dunderdeep.selftest=<dir>`) and

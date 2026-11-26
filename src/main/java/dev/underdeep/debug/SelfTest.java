@@ -1,5 +1,7 @@
 package dev.underdeep.debug;
 
+import dev.underdeep.wildlife.WildlifeRegistry;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dev.underdeep.Underdeep;
@@ -75,7 +77,21 @@ public final class SelfTest {
             return;
         }
         Underdeep.LOGGER.info("Underdeep self-test enabled, output: {}", out);
-        ServerLifecycleEvents.SERVER_STARTED.register(server -> server.execute(() -> {
+        // Start a few seconds after the server started so spawn-chunk entities are loaded (persistence checks).
+        int[] wait = {-1};
+        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
+            // wait for spawn-chunk entities to load with the world frozen (no block, fluid or entity ticks),
+            // so the spawn-chunk hashes of the create and reload phases stay comparable
+            server.getTickManager().setFrozen(true);
+            wait[0] = 80;
+        });
+        net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents.END_SERVER_TICK.register(server -> {
+            if (wait[0] < 0 || --wait[0] != 0) {
+                return;
+            }
+            wait[0] = -1;
+            server.getTickManager().setFrozen(false);
+            server.execute(() -> {
             Path dir = Path.of(out);
             try {
                 Files.createDirectories(dir);
@@ -93,7 +109,8 @@ public final class SelfTest {
                         CHECKS.stream().filter(c -> c.status.equals("FAIL")).count());
                 server.stop(false);
             }
-        }));
+        });
+        });
     }
 
     private static Stage15Checks.Reporter reporter() {
@@ -160,6 +177,7 @@ public final class SelfTest {
             }
             info("vanilla generation", String.format(Locale.ROOT, "64 chunks in %.0f ms", (System.nanoTime() - t0) / 1e6));
             Stage2Checks.vanilla(world, reporter());
+            Stage3Checks.vanilla(world, reporter());
             check("selftest completed", true, "vanilla regression checks executed");
             return;
         }
@@ -345,6 +363,18 @@ public final class SelfTest {
             Stage2Checks.tickCost(world, rep);
         } else {
             Stage2Checks.persistence(world, dir, rep);
+        }
+        long s3 = System.nanoTime();
+        try {
+            Stage3Checks.run(world, t, reps, dir, rep, phase.equals("create"));
+        } catch (RuntimeException e) {
+            Underdeep.LOGGER.error("Stage 3 checks crashed", e);
+            check("stage 3 checks completed without exceptions", false, e.toString());
+        }
+        info("stage 3 checks time", String.format(Locale.ROOT, "%.1f s", (System.nanoTime() - s3) / 1e9));
+        if (Boolean.getBoolean("underdeep.zoo") && phase.equals("create")) {
+            WildlifeZoo.build(world, dir);
+            info("wildlife zoo", "built " + WildlifeRegistry.all().size() + " species exhibits; tour in tour_zoo.txt");
         }
         info("stage 2 checks time", String.format(Locale.ROOT, "%.1f s", (System.nanoTime() - s2) / 1e9));
         writeReps(reps, dir);

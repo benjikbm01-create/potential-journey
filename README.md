@@ -4,11 +4,13 @@ A cooperative underground survival sandbox mod for **Minecraft Java Edition 1.21
 The whole world is underground: vast interconnected caverns, underground forests, fungal expanses,
 flooded depths, volcanic hollows, crystal halls and abysmal depths.
 
-Status: **Stage 2 — living ecosystems: trees, wood sets, plants, fungi, aquatic life, crops, foods, medicines, minerals.** See `docs/PROGRESS.md`.
+Status: **Stage 3 — wildlife and living ecological simulation** (on top of Stage 2 living ecosystems). See `docs/PROGRESS.md`.
 
 **Worlds created with Stage 1 (terrain generator v1) must be recreated** — the terrain changed completely.
 Stage 1.5 worlds load with Stage 2 (terrain is identical) but already explored chunks contain no Stage 2
-plants, trees or minerals; **a fresh world is recommended**. The mod never deletes or modifies existing worlds.
+plants, trees or minerals; **a fresh world is recommended**. Stage 2 worlds load with Stage 3 unchanged (same
+blocks); native wildlife appears around players everywhere, but vanilla animals already saved in explored
+chunks stay. The mod never deletes or modifies existing worlds.
 
 ## Requirements
 - Java 21
@@ -18,7 +20,7 @@ plants, trees or minerals; **a fresh world is recommended**. The mod never delet
 ```bash
 ./gradlew build
 ```
-The mod JAR is written to `build/libs/underdeep-0.3.0-stage2.jar` (`-sources.jar` alongside). Prebuilt copies are committed in `releases/`.
+The mod JAR is written to `build/libs/underdeep-0.4.0-stage3.jar` (`-sources.jar` alongside). Prebuilt copies are committed in `releases/`.
 
 ## Playing in singleplayer
 1. Install Fabric Loader for 1.21.1 and put Fabric API and the Underdeep JAR in `mods/`.
@@ -44,6 +46,12 @@ The mod JAR is written to `build/libs/underdeep-0.3.0-stage2.jar` (`-sources.jar
    - Stage 2 ecology: `naturalSpreading` (true), `spreadRateMultiplier` (1.0; 0 disables), `spreadDensityLimit` (5),
      `sporeReleases` (true), `sporeEffects` (true), `crystalRegrowth` (true), `reactivePlants` (true),
      `ambientParticles` (true; client side, also respects Particles: Minimal)
+   - Stage 3 wildlife: `wildlifeEnabled` (true), `wildlifeDensity` (1.0), `wildlifeDensityByEcosystem` (per-ecosystem
+     multipliers), `predatorAbundance` (1.0), `wildlifeReproduction` (1.0), `wildlifeMigration` (true),
+     `wildlifeSimInterval` (1200 ticks), `wildlifeSimRegionsPerUpdate` (24), `maxWildlifePerPlayer` (28),
+     `maxWildlifeTotal` (160), `wildlifeDetailDistance` (48), `wildlifeDespawnDistance` (96),
+     `wildlifeVegetationConsumption` (1.0), `rareCreatureFrequency` (1.0), `tamingEnabled` (true),
+     `vanillaMobReplacement` (true), `vanillaMonsterShare` (0.6), `huntingDisturbance` (1.0)
 
 ## Diagnostics (operators)
 `/underdeep info | region [pos] | locate <region> | spawncheck | cavern [pos] | sites <type> [radius] |
@@ -55,7 +63,10 @@ perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]`
 - `scripts/visual_tour.sh <world-dir> <tour.txt>` — real client under Xvfb, saves screenshots.
 - `scripts/mob_study.sh <run-dir>` — real client joins the dedicated server; measures natural mob populations.
 - `scripts/test_matrix.sh` — full verification matrix (seeds, reload, determinism, vanilla, production JAR).
-- `SUITE=stage2 scripts/selftest.sh …` / `scripts/stage2_matrix.sh` — targeted Stage 2 tests (ecology, growth, recipes).
-- `python3 tools/assets/stage2_assets.py` — regenerate all block/item assets, loot, recipes, tags and names.
+- `SUITE=stage2 scripts/selftest.sh …` / `scripts/stage2_matrix.sh` — targeted Stage 2+3 tests (ecology, growth, recipes,
+  wildlife behaviour, taming, populations, persistence). `ZOO=true` also builds a close-up exhibit of every creature
+  for `scripts/visual_tour.sh`.
+- `python3 tools/assets/stage2_assets.py` — regenerate all block/item/creature assets, loot, recipes, tags and names
+  (creatures come from `tools/assets/creatures.py`).
 - `python3 tools/worldgen/generate_data.py` — regenerate biome/feature JSON after editing the tables.
 - Read `CLAUDE.md` and `docs/` before contributing.

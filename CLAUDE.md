@@ -64,8 +64,12 @@ independently of the players. Players are inhabitants, not chosen heroes.
 - Stage 2+ targeted suite: `SUITE=stage2 scripts/selftest.sh …` and `scripts/stage2_matrix.sh` (skips the slow
   terrain analyses; use the full matrix when terrain output changes). Keep individual runs time-limited.
 - Assets: `python3 tools/assets/stage2_assets.py` regenerates all block/item assets (it runs
-  `generate_assets.py` first); content ids must match `registry/Mod*`. Ecology metadata lives in
-  `ecology/EcologyRegistry` (append-only species ids).
+  `generate_assets.py` first and includes `creatures.py`); content ids must match `registry/Mod*` and
+  `wildlife/WildlifeRegistry`. Ecology metadata lives in `ecology/EcologyRegistry`, wildlife species in
+  `wildlife/WildlifeRegistry` (both append-only ids).
+- Wildlife (Stage 3): wild animals are owned by their region's abstract population (`RegionWildlife`), never
+  by chunks; keep the invariant "active entities ≤ regional count" and never save wild entities. Behaviour
+  tests in `debug/Stage3Checks` tick entities directly (accelerated) — say so when reporting them.
 - Worldgen output changes require bumping `UnderdeepTerrain.GENERATOR_VERSION` (currently 2) and telling the
   user that existing worlds must be regenerated. Never delete or overwrite the user's worlds.
 - **Never record a test as passing unless it was actually executed.** Record commands, environment

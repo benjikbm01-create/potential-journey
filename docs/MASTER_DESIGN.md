@@ -64,7 +64,8 @@ ecosystems. Each ecosystem has sub-regional variants (open, typical, dense/rugge
 
 Danger classes govern natural hostile spawning (peaceful ecosystems are genuinely peaceful); lighting classes
 govern natural light (bright ecosystems are comfortable to build in without torches). Stage 2 deepens each
-ecosystem with custom flora and resources; Stage 3 replaces vanilla monsters with ecosystem creatures.
+ecosystem with custom flora and resources; Stage 3 adds native wildlife (incl. ecosystem predators) and reduces
+vanilla monster spawning; later stages replace the remaining vanilla monsters.
 
 ## 4. Living world systems (later stages)
 
@@ -85,9 +86,19 @@ water, heat) and never overrun builds. Discoveries are tiered common → uncommo
 exceptional ones are documented only in `docs/private/`. Every species carries ecological metadata
 (food-web roles, shelter, nesting, habitat) that Stage 3 wildlife uses; see ARCHITECTURE §5c.
 
-40–60 species with ecological roles: predation, territory, nesting, reproduction, migration,
-competition, domestication, environmental preferences. Populations change gradually from natural
-events and meaningful player activity, simulated abstractly per region when unloaded.
+Stage 3 (implemented) populated every ecosystem with wildlife: 60 original species (land, climbing,
+aquatic, amphibious, flying, gliding, hovering), each with a diet tied to Stage 2 vegetation, a social
+structure, a temperament, an activity cycle and a personality per individual. Predators hunt in
+recognisable styles, prey flee and alarm their herds, territorial animals warn before charging and never
+chase endlessly. Animals eat, drink, rest, sleep, nest, breed (bounded by regional carrying capacity),
+play, explore, scavenge and migrate. A dozen species can be befriended in different ways, several can be
+ridden or carry loads, and animals give renewable resources. A small number of rare, very large creatures
+exist; they are documented only in `docs/private/`.
+
+Wild animals belong to their region, not to chunks: each region keeps an abstract population that is
+materialised near players and simulated in aggregate (growth, predation, decline, migration) when nobody
+is there. Hunting pressure lowers a region's wildlife temporarily; populations recover. Vanilla farm
+animals are replaced in Underdeep worlds by native species that supply the same basic resources.
 
 ### World simulation (Stage 6)
 Regional economies, inter-settlement trade, caravans with persistent route progress, explorers,
@@ -119,7 +130,7 @@ from connected systems, not scripted.
 
 1. Foundation and underground world generation — done (plus Stage 1.5 world expansion)
 2. Ecosystems, vegetation and regional resources — **done (Stage 2)**
-3. Wildlife and ecological simulation
+3. Wildlife and ecological simulation — **done (Stage 3)**
 4. Civilizations and settlement architecture
 5. Individual NPC intelligence, routines and relationships
 6. World simulation, economies, trade and faction development
