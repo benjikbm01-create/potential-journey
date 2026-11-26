@@ -905,6 +905,9 @@ def plants():
              "voltbloom_bloom")
     loot_self("voltbloom")
     tip("voltbloom", "A mineral flower that blazes when energy flows nearby.")
+    k_multiface("storm_lichen", P.leaves((90, 70, 170), 48, "round", hole=0.55, glow=(150, 210, 255)))
+    loot_shears("storm_lichen")
+    tip("storm_lichen", "A crackling lichen that feeds on charged stone.")
     # ---- Starlight
     k_cross("silvergrass", P.grass((150, 170, 200), 44, tip=(230, 240, 255)))
     loot_shears("silvergrass", otherwise=entry("glowgrain_seeds", [{"condition": "minecraft:random_chance", "chance": 0.1}]))
@@ -921,7 +924,7 @@ def plants():
     for b in ("glowfern", "mendleaf", "glowivy", "goldgrass", "sunleaf", "ashgrass", "pyrelily", "emberwort", "shardgrass",
               "prism_lily", "ghostfern", "voidroot", "umbral_bloom", "frostbell", "steamfern", "peakstar", "ledgevine",
               "bogbloom", "marsh_fern", "bogwort", "stoneroot", "petrolichen", "plaguebloom", "snapjaw", "static_grass",
-              "voltbloom", "silvergrass", "moonpetal", "starstrand"):
+              "voltbloom", "silvergrass", "moonpetal", "starstrand", "storm_lichen"):
         lang_block(b)
 
 
@@ -1370,7 +1373,7 @@ def misc_tags():
         tag("minecraft/tags/block/replaceable_by_trees.json", u(p))
     for p in ("pyrelily", "prism_lily", "frostbell", "peakstar", "bogbloom", "voltbloom", "plaguebloom", "moonpetal", "sunleaf"):
         tag("minecraft/tags/block/flowers.json", u(p))
-    for p in ("glowivy", "petrolichen"):
+    for p in ("glowivy", "petrolichen", "storm_lichen"):
         tag("minecraft/tags/block/mineable/axe.json", u(p))
     for p in ("voidroot", "voidroot_plant", "ledgevine", "ledgevine_plant", "starstrand", "starstrand_plant"):
         tag("minecraft/tags/block/climbable.json", u(p))

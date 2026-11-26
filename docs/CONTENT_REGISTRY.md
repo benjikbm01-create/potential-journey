@@ -80,3 +80,83 @@ exists; ~13 % are titan-scale (≈1.8×). A colossal tree always stands near the
 ## Initial animals (placeholder until Stage 3)
 Rootwild/Golden: sheep, cows, pigs, chickens, rabbits · Fungal: mooshrooms, pigs · Flooded/Wetlands: frogs,
 chickens · Starlight: sheep, rabbits, cows · Hollow Peaks: goats, sheep · Everfrost: foxes, rabbits.
+
+## Stage 2 content (spoiler-free; exceptional discoveries are listed only in `docs/private/`)
+
+### Trees and wood
+| Species | Wood set | Ecosystem | Shape | Sapling needs |
+|---|---|---|---|---|
+| Duskoak | `duskoak_*` (full set) | Rootwild | broad branching forest tree; ancient trees with 2×2 trunks and roots | living soil, light ≥ 7 |
+| Spirebark | `spirebark_*` | Rootwild, Hollow Peaks | very tall, narrow, stacked foliage rings | soil or stone, light ≥ 7 |
+| Goldbough | `goldwood_*` (leaves: `golden_leaves`) | Golden Grove | arms under a wide golden dome, resin knots | living soil, light ≥ 10 |
+| Mirewillow | `mirewillow_*` | Emerald Wetlands, Flooded shores | buttress roots, weeping curtains | mud/clay/wet soil |
+| Frostfir | `frostfir_*` | Everfrost | tiered conical conifer | snow/ice, cold, no heat nearby |
+| Bloodthorn | `bloodthorn_*` (fireproof) | Crimson Basin | twisted wandering trunk, crooked limbs | volcanic ground, hot climate |
+| Lumenwood | `lumenwood_*` (glowing leaves, light 10) | Starlight Caverns | slender curved trunk under a flat glowing umbrella | living soil, light ≥ 7 |
+| Cragpine | spirebark logs, `cragpine_leaves` | Hollow Peaks | wind-bent, flat foliage pads | soil or stone |
+| Cinderbark | `cinderbark_log` (+stripped), `cinder_leaves` (light 6) | Ashen Hollows | short gnarled volcanic tree | volcanic ground near heat |
+
+Each full wood set: log, wood, stripped log/wood, planks, stairs, slab, fence, fence gate, door,
+trapdoor, button, pressure plate, sign, hanging sign, leaves, sapling, potted sapling (vanilla tags,
+recipes, stripping, flammability, fuel). Signs use Fabric `WoodTypeBuilder`; textures in
+`textures/entity/signs/`.
+
+### Land plants (by ecosystem)
+Rootwild: duskberry bush (fruit), glowfern (light 6, spreads), mendleaf (medicinal herb), glowivy
+(climbing, light 8), fallen duskoak logs with rotting wood. Golden Grove: honeyfruit bush, goldgrass
+(may drop glowgrain seeds), sunleaf (rare herb), resin knots. Ashen Hollows: ashgrass, pyrelily (opens
+near heat), emberwort (heat herb). Crystal Deep: shardgrass, prism lily (rare), ghostfern. Abyss:
+voidroot (hanging, fibres), ghostfern. Everfrost: frostbell (blooms in the cold), snowberry bush,
+steamfern (near heat only). Hollow Peaks: cliffberry bush, peakstar (rare), ledgevine (hanging).
+Emerald Wetlands: bogbloom, marsh fern (may drop mire rice), bogwort (herb). Petrified Forest:
+stoneroot, petrolichen. Crimson Basin: thornbriar (thorny fruit bush), plaguebloom (toxic), snapjaw
+(snaps; drops fangs). Stormstone: static grass, voltbloom (reacts to energy), storm lichen. Starlight:
+silvergrass, moonpetal (rare herb), starstrand (hanging, light 12).
+
+### Fungi
+puffcap (edible), inkcap (toxic raw, edible roasted), deathbell (poisonous), lanterncap (temporary
+glowing blooms), sporepuff (spore releases), sagecap (rare, medicinal), bracket fungus (on logs),
+embercap (volcanic), rimecap (frozen), gloomcap (darkness), calcicap (mineral), bloodcap (crimson),
+tidecap (underwater); giant sporestalk, bellcap and shelfcap (`fungal_stem`, caps, `glowgill` light 13).
+
+### Aquatic
+glowpad (floating, light 9), starlily (floating, light 12), lakebloom, ribbonweed and glowkelp
+(kelp-like columns), tidebloom (light 12), lanterncoral (block + fan, light 10/7), spirecoral, sea
+grape bush (underwater fruit), siltwort (rare herb), lake chestnut (crop). Coral reefs via
+`underdeep:coral_cluster`.
+
+### Crops (seed item → crop block)
+duskroot → `duskroots` (staple), glowgrain seeds → `glowgrain_crop` (bright light), cave truffle →
+`cave_truffles` (darkness), mire rice → `mire_rice_crop` (water beside), lake chestnut →
+`lake_chestnuts` (underwater), emberpepper → `emberpeppers` (faster near heat), frost turnip →
+`frost_turnips` (cold, slow), sunbean → `sunbeans` (bright light). Wild patches grow in their
+ecosystems; all grow on farmland at home when their conditions are met. One further exceptional crop
+is documented privately.
+
+### Foods and medicines
+Fruits/berries: duskberries, honeyfruit, snowberries, cliffberries, briar fruit, sea grapes. Cooked:
+baked duskroot, roasted truffle, roasted chestnut, baked turnip, roasted inkcap, glowgrain bread, rice
+bowl, sunbean stew, cavern stew. Remedies: mendleaf poultice (regeneration), emberwort tonic (fire
+resistance), antidote tincture (cures harmful effects), moonpetal draught (night vision), sunleaf salve
+(absorption + regeneration).
+
+### Minerals (ore → item)
+cinnabar (Ashen, Crimson → red dye), sulfur (Ashen, Crimson, Abyss → gunpowder with niter), niter
+(Fungal, Rootwild, Petrified), emberite (Ashen; long-burning fuel, blaze powder), cryolite (Everfrost;
+freezes water into ice), malachite (Hollow Peaks; smelts to copper, green dye), bog iron (Wetlands,
+Flooded; raw iron), galvanite (Stormstone; redstone), prismatic opal (Crystal Deep, rare), jasper
+(Petrified), fossil (Petrified, Abyss; bone meal), umbralite (Abyss, rare deep metal), nacre (Sunken,
+Flooded; pearls), starsilver (Starlight metal), glimmer quartz (Crystal Deep; renewable via budding
+glimmer). Storage blocks for opal, jasper, malachite, cryolite, galvanite, starsilver, umbralite.
+Vanilla coal, iron, copper, gold, redstone, lapis, diamond (and emerald in Hollow Peaks) still generate
+in every ecosystem (`COMMON_ORES`).
+
+### Stage 2 tags
+`underdeep:plant_soil`, `fungal_soil`, `volcanic_soil`, `frozen_soil`, `mineral_soil`, `wet_soil`,
+`aquatic_bed`, `fungal_convertible`, `shelf_fungus_hosts`, `growth_blockers`, `ore_hosts`,
+`<wood>_logs`; item tag `underdeep:herbs`.
+
+### Stage 2 world-generation features
+`underdeep:tree` (`species`, `size` young/normal/ancient), `underdeep:giant_fungus`,
+`underdeep:fallen_log`, `underdeep:coral_cluster`; configured features `underdeep:tree/<species>`
+(saplings), `p_<plant>` patches, `ore_<mineral>`.

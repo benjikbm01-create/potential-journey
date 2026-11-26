@@ -305,11 +305,16 @@ public final class UnderdeepTreeFeature extends Feature<SpeciesFeatureConfig> {
             top = p;
             prevOff = off;
         }
+        // flat, wide foliage pads streaming downwind (wide enough that young trees do not read as a "+")
         BlockPos pad = top.up().offset(wind, 1);
-        b.blob(pad, 3.0 * Math.sqrt(s), 1.1, 2.2 * Math.sqrt(s), 0.65, k.leaves(), r);
+        double wide = 3.4 * Math.sqrt(s) + 0.8;
+        double deep = 2.4 * Math.sqrt(s) + 0.6;
+        boolean alongX = wind.getAxis() == net.minecraft.util.math.Direction.Axis.X;
+        b.blob(pad, alongX ? wide : deep, 1.0, alongX ? deep : wide, 0.8, k.leaves(), r);
+        b.disc(pad.up(), Math.min(wide, deep) * 0.6, 0.7, k.leaves(), r);
         BlockPos low = o.up((int) (h * 0.6)).offset(wind, 2);
         b.wood(low.offset(wind.getOpposite()), k.log().with(net.minecraft.block.PillarBlock.AXIS, wind.getAxis()));
-        b.blob(low, 2.0, 0.9, 1.6, 0.6, k.leaves(), r);
+        b.blob(low, alongX ? 2.6 : 1.9, 0.9, alongX ? 1.9 : 2.6, 0.75, k.leaves(), r);
     }
 
     private static void cinderbark(PlantBuilder b, BlockPos o, Kit k, double s, Random r) {

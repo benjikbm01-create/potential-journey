@@ -21,6 +21,149 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Block-level world diff | `python3 tools/analysis/world_diff.py <worldA> <worldB> cx0 cz0 cx1 cz1` (needs `pip install nbtlib`) |
 | Mob population study | `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server; uses `<run-dir>/selftest/ecosystem_sites.txt` from a self-test) → `<run-dir>/mobstudy/mobstudy.md` |
 | Stage 1.5 matrix | `scripts/test_matrix.sh` (also runs the Stage 1.5 checks; production JAR on the official Fabric server launcher) |
+| Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
+
+## Results — Stage 2 (2026-11-26)
+
+Same hardware/toolchain as before (4 vCPU container, OpenJDK 21, `-Xmx6G` dev server, Xvfb + software
+OpenGL client). Targeted suite per the Stage 2 brief (D-032): `SUITE=stage2` self-tests and
+`scripts/stage2_matrix.sh`; the slow Stage 1.5 terrain analyses were **not** re-run because terrain
+output is unchanged (terrain-stage checksum for seed 12345 `f6fb2cde5f4f2a93`, identical to Stage 1.5).
+
+### Build and unit tests — PASS
+`./gradlew build` succeeds; JAR `build/libs/underdeep-0.3.0-stage2.jar`. JUnit 13 tests PASSED: the 9
+Stage 1.5 terrain tests plus `EcologyRegistryTest` (every ecosystem has ≥ 3 biological species and a
+regional mineral (Golden Grove: renewable resin instead); species/block ids unique; content counts in
+the target ranges; `RegionEcology` deterministic and bounded; Rootwild more productive than the Abyss).
+
+### Dedicated-server self-tests (stage 2 suite) — final runs
+| Run | Seed | Result |
+|---|---|---|
+| create (`run-tests/s2m_12345`) | 12345 | 161 passed, 0 failed |
+| reload (server restart on the saved world) | 12345 | PASS, 0 failed (spawn + benchmark chunk hashes identical; Stage 2 plots persisted) |
+| create (`s2f_-987654321`, re-run after moving the reactive-plant test plot into the spawn chunks) | −987654321 | 161 passed, 0 failed |
+| create (`s2f_42`, same re-run) | 42 | 161 passed, 0 failed |
+| **production JAR** on the official Fabric server launcher (loader 0.17.3, Fabric API 0.116.18) | 2024 | 161 passed, 0 failed |
+| vanilla world type with the mod installed | 12345 | 5 passed, 0 failed (incl. "Underdeep spreading is inactive in vanilla worlds") |
+Log scan of all matrix runs: 0 unexpected error/exception lines (only the offline-mode authentication
+messages). Failures found and fixed during development (recorded honestly): wrong configured-feature
+reference format for tree selectors (registry load failure), missing names for 29 plants, the golden
+sapling pointing at a non-existent tree feature (`tree/goldwood`), test plots without computed light,
+test assertions on dropped items/creatures in chunks without entity tracking (moved to spawn chunks),
+a dark-blooming flower that could flicker because of its own light (fixed + new check), and the
+glowpad spreading bound (first threshold 12 was arbitrary; a run produced 15 on a 49-cell pool, the
+check now uses 20 — the actual guarantee is the per-neighbourhood density cap).
+
+### Registries, resources and recipes (every run)
+- 272 Underdeep blocks, 286 items registered; every block has a blockstate and a loot table, every item
+  a model, every referenced texture exists (781 models checked), every block/item has an English name.
+- 95 species in `EcologyRegistry`, all mapped to registered blocks; all 15 ecosystems have species.
+- 154 Underdeep recipes loaded; verified through the real recipe manager: planks from all 7 logs,
+  vanilla tag recipes (crafting table, sticks) from Underdeep planks, door, sign, gunpowder (sulfur +
+  niter + charcoal), glowgrain bread, emberwort tonic, galvanite → redstone; smelting duskroot, inkcap,
+  raw starsilver, malachite → copper. All 25 foods have food components.
+
+### Natural generation — native Stage 2 species per ecosystem
+Distinct native species found in 5×5 generated chunks around an open cavern floor of each ecosystem
+(that cavern layer only); check requires ≥ 3:
+| Ecosystem | 12345 | −987654321 | 42 | 2024 (prod) |
+|---|---|---|---|---|
+| Rootwild | 12 | 12 | 13 | 13 |
+| Fungal Expanse | 11 | 11 | 10 | 10 |
+| Flooded Depths | 4 | 7 | 8 | 5 |
+| Ashen Hollows | 9 | 9 | 9 | 9 |
+| Crystal Deep | 6 | 6 | 6 | 5 |
+| The Abyss | 7 | 7 | 7 | 6 |
+| Everfrost | 7 | 5 | 7 | 6 |
+| Golden Grove | 7 | 8 | 8 | 8 |
+| Hollow Peaks | 6 | 6 | 6 | 6 |
+| Emerald Wetlands | 9 | 9 | 8 | 10 |
+| Petrified Forest | 6 | 6 | 6 | 6 |
+| Crimson Basin | 8 | 8 | 8 | 8 |
+| Sunken Gardens | 7 | 7 | 7 | 7 |
+| Stormstone Caverns | 5 | 5 | 5 | 5 |
+| Starlight Caverns | 6 | 5 | 6 | 5 |
+(Per-species block counts are in each `report.md`; e.g. seed 12345 Crimson Basin: bloodthorn 1562
+blocks, thornbriar, plaguebloom, snapjaw, bloodcap, emberwort, cinnabar, sulfur.)
+
+### Functional tests (sealed test plots in the target ecosystem, real block code, every create run)
+- All 9 saplings grow into their tree on block light only (light 10, sky light 0) on their own soil;
+  frostfir stays dormant next to heat (1500 random ticks).
+- A growing duskoak surrounded by a plank roof and chests: 30/30 player blocks intact.
+- Crops on farmland with water beside: duskroots, glowgrain, cave truffles (in darkness, light 0),
+  mire rice, emberpeppers (with heat), frost turnips (Everfrost), sunbeans mature in 25–72 random ticks
+  and drop their produce; lake chestnuts mature underwater; breaking a submerged plant leaves water.
+- Fake-player harvest of a mature duskberry bush drops fruit, resets to age 1 and regrows; the harvest
+  is recorded in the regional ecology state; a full resin knot yields amber.
+- Foods/medicines: raw inkcap causes nausea, antidote cures it, emberwort tonic → fire resistance (bottle
+  returned), moonpetal draught → night vision, baked duskroot restores 5 hunger.
+- All 14 ores are mineable with a pickaxe and drop their mineral; a mature herb drops itself + leaves.
+- Snapjaw damages a creature (10 → 7 health) and closes; a spore puff bursts on contact and weakens it.
+- Pyrelily opens (light 12) beside magma and stays closed 5+ blocks away; voltbloom opens on a
+  redstone-powered block; a prism lily opens in darkness and does not flicker afterwards (0 changes).
+- Bounded spreading: one puffcap on a 15×15 fungal floor → 31 after 4000 rounds of random ticks on
+  every cap (a forced, accelerated rate; real growth is far slower); fungal soil converted 6 dirt blocks, farmland intact; no fungi within
+  2 blocks of a crafting table; glowpads on a 7×7 pool 6–15.
+- Budding glimmer grows 6 buds/clusters in 3000 random ticks in darkness.
+- Persistence (reload): 9/9 grown trees, 7/7 mature crops, regrown crystals and the ecology harvest
+  record survived save + restart.
+
+### Natural lighting after Stage 2 (% of ground with block light ≥ 8, mean)
+| Ecosystem | 12345 | −987654321 | 42 | 2024 (prod) |
+|---|---|---|---|---|
+| Rootwild (bright) | 95 % (10.5) | 89 % (9.9) | 88 % (10.2) | 79 % (9.1) |
+| Fungal Expanse (bright) | 93 % (10.0) | 84 % (9.1) | 90 % (9.7) | 87 % (9.5) |
+| Golden Grove (bright) | 74 % (8.9) | 99 % (11.2) | 95 % (10.7) | 99 % (11.3) |
+| Emerald Wetlands (bright) | 78 % (8.6) | 90 % (9.6) | 93 % (10.3) | 95 % (10.9) |
+| Starlight Caverns (bright) | 100 % (11.4) | 99 % (11.3) | 99 % (11.3) | 65 % (8.5) |
+| Flooded Depths | 79 % (9.1) | 68 % (8.4) | 62 % (7.7) | 73 % (8.5) |
+| Crystal Deep | 75 % (8.6) | 60 % (7.8) | 71 % (8.4) | 64 % (8.1) |
+| Everfrost | 64 % (8.0) | 58 % (7.4) | 55 % (7.1) | 65 % (8.1) |
+| Hollow Peaks | 64 % (8.0) | 75 % (8.7) | 69 % (8.3) | 51 % (7.3) |
+| Petrified Forest | 19 % (5.4) | 21 % (5.5) | 27 % (5.8) | 29 % (6.4) |
+| Sunken Gardens (lake bed) | 94 % (11.0) | 95 % (10.8) | 97 % (11.4) | 93 % (10.9) |
+| Ashen Hollows (dark) | 6 % (1.9) | 17 % (3.4) | 22 % (4.1) | 17 % (3.3) |
+| Crimson Basin (dark) | 33 % (5.9) | 33 % (5.9) | 38 % (6.3) | 45 % (6.6) |
+| Stormstone Caverns (dark) | 9 % (4.2) | 8 % (4.4) | 6 % (3.6) | 8 % (4.2) |
+| The Abyss (pitch) | 1 % (0.8) | 0 % (1.3) | 1 % (1.6) | 0 % (1.0) |
+The welcoming/moderate/dark/pitch distinction is preserved. Compared with Stage 1.5 (same sites),
+values moved within a few points except Ashen Hollows on seed 12345 (24 % → 6 %): new features shift
+vanilla decoration random sequences, so that sample window received fewer glowstone/lava features.
+The Abyss stays dark (gloomcaps light 4, voidroot 2).
+
+### Performance (this hardware)
+| Measurement | Stage 2 | Stage 1.5 |
+|---|---|---|
+| Terrain fill + surface, single thread | 11.8–12.6 ms/chunk | 11.1–12.6 |
+| Full generation incl. decoration, 144 chunks sequential | 22.6–25.8 ms/chunk | 24.2–26.1 |
+| Stage 2 random tick (mixed plants, fungi, bush, sapling, crop incl. spreading checks) | 0.79–0.80 µs per call | — |
+| Spreading test: 4000 rounds over a 15×15 plot | 243 ms | — |
+| Heap after GC with ~8 900 chunks loaded (`-Xmx6G`) | 344–500 MB | 551 MB |
+For scale: vanilla performs 3 random ticks per 16³ section per game tick; even if every random tick hit
+a Stage 2 plant, ~20 000 random ticks per player per tick (simulation distance 8) would cost ~16 ms —
+in practice only a small fraction of random ticks land on plants. Not measured: TPS with 4–6 real
+players over a long session.
+
+### Graphical inspection — executed (real client, software OpenGL, seed 42)
+Ground-level tours of the census sites of all 15 ecosystems (`tour_stage2.txt`, 23–27 views). Checked:
+goldbough domes and goldgrass meadows, mirewillow curtains and marsh ferns in the wetlands, giant
+bellcaps/sporestalks/shelfcaps in the Fungal Expanse, glowpads covering a Flooded Depths lake, frostfir
+tiers on Everfrost ice, duskoak/spirebark forest in Rootwild, cinderbark and ashgrass by lava, bloodthorn
+in the Crimson Basin, ghostferns/gloomcaps in the dark Abyss. No missing textures/models in the client
+log. Defects found and fixed: test plots obstructing views (moved away), young cragpines reading as a
+"+" shape (wider pads; re-checked in a short re-shoot of Hollow Peaks/Rootwild/Golden Grove on a fresh seed 42
+world, `run-tests/s2z_42`: cragpines now show flat layered pads). The final code passed the stage 2
+self-test once more in that run (seed 42: 161 passed, 0 failed). Samples: `docs/images/s2_*.jpg`. Not inspected: every plant close-up, item icons in the
+inventory screen (item textures were reviewed as an image sheet), shaders (Iris/Sodium not installed here).
+
+### GUI world creation
+Not re-run in Stage 2 (world preset unchanged; Stage 1.5 result stands).
+
+### Not tested in Stage 2
+Hands-on survival play, multiplayer with real clients, long sessions/TPS under load, shaders
+(Sodium/Iris), chunk-order determinism of decoration (terrain unchanged; decoration is known to vary
+slightly with generation order, D-017), the exceptional crop's full growth cycle (code path shared with
+the tested crops).
 
 ## Results — Stage 1.5 final runs (2026-11-25)
 

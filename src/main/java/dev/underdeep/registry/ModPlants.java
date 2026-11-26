@@ -200,6 +200,9 @@ public final class ModPlants {
             plant(MapColor.PURPLE, s -> BloomingPlantBlock.light(s, 4, 13)).sounds(BlockSoundGroup.AMETHYST_CLUSTER))
             .spreads(0.03f, 3, 3).shape(10, 13).particles(ParticleTypes.ELECTRIC_SPARK, 0f)));
 
+    public static final Block STORM_LICHEN = plantItem("storm_lichen", new GlowLichenBlock(AbstractBlock.Settings.copy(Blocks.GLOW_LICHEN)
+            .mapColor(MapColor.PURPLE).luminance(GlowLichenBlock.getLuminanceSupplier(5))));
+
     // ================= STARLIGHT =================
     public static final Block SILVERGRASS = plantItem("silvergrass", new EcoPlantBlock(PLANT_SOIL, grass(MapColor.LIGHT_BLUE_GRAY, 5))
             .spreads(0.1f, 2, 6).shape(12, 12));

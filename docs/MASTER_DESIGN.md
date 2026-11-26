@@ -77,6 +77,14 @@ Stage 1 site-analysis contract (villages, cities, markets, industrial, floating 
 farms, outposts, roads and bridges along cavern-graph tunnels).
 
 ### Ecology (Stages 2–3)
+Stage 2 (implemented) made every ecosystem biologically distinct: nine tree species (seven full wood
+sets), ~35 land plants, 16 fungi, 10 aquatic species, 9 crops, 15 regional minerals, simple foods and
+medicines, and bounded natural processes (spreading, blooming, spore releases, decay, regrowth,
+crystal growth). Plants grow and spread on their own under understandable conditions (light, climate,
+water, heat) and never overrun builds. Discoveries are tiered common → uncommon → rare → exceptional;
+exceptional ones are documented only in `docs/private/`. Every species carries ecological metadata
+(food-web roles, shelter, nesting, habitat) that Stage 3 wildlife uses; see ARCHITECTURE §5c.
+
 40–60 species with ecological roles: predation, territory, nesting, reproduction, migration,
 competition, domestication, environmental preferences. Populations change gradually from natural
 events and meaningful player activity, simulated abstractly per region when unloaded.
@@ -109,8 +117,8 @@ from connected systems, not scripted.
 
 ## 6. Roadmap
 
-1. Foundation and underground world generation — **this stage**
-2. Ecosystems, vegetation and regional resources
+1. Foundation and underground world generation — done (plus Stage 1.5 world expansion)
+2. Ecosystems, vegetation and regional resources — **done (Stage 2)**
 3. Wildlife and ecological simulation
 4. Civilizations and settlement architecture
 5. Individual NPC intelligence, routines and relationships

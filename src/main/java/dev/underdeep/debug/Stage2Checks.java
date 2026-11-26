@@ -275,10 +275,11 @@ final class Stage2Checks {
 
     // ================================================================== natural generation census
 
-    static void census(ServerWorld world, UnderdeepTerrain t, Map<RegionType, int[]> reps, Stage15Checks.Reporter r) {
-        r.section("Stage 2 natural generation per ecosystem (5x5 generated chunks around an open cavern floor)");
+    static void census(ServerWorld world, UnderdeepTerrain t, Map<RegionType, int[]> reps, Path dir, Stage15Checks.Reporter r) {
+        r.section("Stage 2 natural generation per ecosystem (5x5 generated chunks around an open cavern floor, that cavern layer only)");
         long t0 = System.nanoTime();
         int chunks = 0;
+        StringBuilder tour = new StringBuilder("# name x y z yaw pitch [natural]\n");
         for (RegionType type : RegionType.values()) {
             int[] p = reps.get(type);
             if (p == null) {
@@ -287,6 +288,9 @@ final class Stage2Checks {
             }
             int[] site = Stage15Checks.siteFor(t, type, p);
             Map<String, Integer> counts = new TreeMap<>();
+            Map<String, BlockPos> nearest = new HashMap<>();
+            boolean upper = CavernLayer.values()[p[1]] == CavernLayer.UPPER;
+            int yMin = -60, yMax = 312;
             int ccx = site[0] >> 4, ccz = site[1] >> 4;
             BlockPos.Mutable m = new BlockPos.Mutable();
             for (int dx = -2; dx <= 2; dx++) {
@@ -295,7 +299,12 @@ final class Stage2Checks {
                     chunks++;
                     for (int x = 0; x < 16; x++) {
                         for (int z = 0; z < 16; z++) {
-                            for (int y = -60; y < 312; y++) {
+                            TerrainColumn col = t.column(c.getPos().getStartX() + x, c.getPos().getStartZ() + z);
+                            CavernLayer want = CavernLayer.values()[p[1]];
+                            for (int y = yMin; y < yMax; y++) {
+                                if (col.layerAt(y) != want) {
+                                    continue;
+                                }
                                 m.set(c.getPos().getStartX() + x, y, c.getPos().getStartZ() + z);
                                 BlockState s = c.getBlockState(m);
                                 if (s.isAir() || s.isOf(Blocks.STONE) || s.isOf(Blocks.WATER)) {
@@ -304,6 +313,11 @@ final class Stage2Checks {
                                 Species sp = Habitats.speciesOf(s);
                                 if (sp != null) {
                                     counts.merge(sp.id(), 1, Integer::sum);
+                                    BlockPos prev = nearest.get(sp.id());
+                                    if (sp.isBiological() && sp.habitats().contains(type) && world.getBlockState(m.up()).isAir()
+                                            && (prev == null || prev.getSquaredDistance(site[0], prev.getY(), site[1]) > m.getSquaredDistance(site[0], m.getY(), site[1]))) {
+                                        nearest.put(sp.id(), m.toImmutable());
+                                    }
                                 }
                             }
                         }
@@ -314,20 +328,96 @@ final class Stage2Checks {
             long trees = counts.keySet().stream().filter(id -> EcologyRegistry.byId(id).kind() == Species.Kind.TREE).count();
             r.check("stage 2 content in " + type.id(), natives >= 3, String.format(Locale.ROOT,
                     "near %d,%d: %d native species (%d tree species), counts %s", site[0], site[1], natives, trees, counts));
+            // ground-level camera views of the most visible native organisms (for the screenshot tour)
+            List<String> picks = nearest.keySet().stream().sorted((a, b) -> {
+                int ka = EcologyRegistry.byId(a).kind() == Species.Kind.TREE || EcologyRegistry.byId(a).kind() == Species.Kind.GIANT_FUNGUS ? 0 : 1;
+                int kb = EcologyRegistry.byId(b).kind() == Species.Kind.TREE || EcologyRegistry.byId(b).kind() == Species.Kind.GIANT_FUNGUS ? 0 : 1;
+                return ka != kb ? ka - kb : Integer.compare(counts.get(b), counts.get(a));
+            }).limit(2).toList();
+            for (String id : picks) {
+                BlockPos target = nearest.get(id);
+                for (int[] d : new int[][]{{6, 6}, {-6, 6}, {6, -6}, {-6, -6}, {8, 0}, {0, 8}, {-8, 0}, {0, -8}}) {
+                    BlockPos cam = target.add(d[0], 2, d[1]);
+                    if (world.getBlockState(cam).isAir() && world.getBlockState(cam.up()).isAir()) {
+                        double dx = target.getX() - cam.getX(), dz = target.getZ() - cam.getZ(), dy = target.getY() + 1 - cam.getY();
+                        float yaw = (float) Math.toDegrees(Math.atan2(-dx, dz));
+                        float pitch = (float) -Math.toDegrees(Math.atan2(dy, Math.sqrt(dx * dx + dz * dz)));
+                        tour.append(String.format(Locale.ROOT, "s2_%s_%s %.1f %.1f %.1f %.0f %.0f natural\n", type.id(), id,
+                                cam.getX() + 0.5, (double) cam.getY(), cam.getZ() + 0.5, yaw, pitch));
+                        break;
+                    }
+                }
+            }
         }
         r.info("census cost", String.format(Locale.ROOT, "%d chunk scans in %.1f s", chunks, (System.nanoTime() - t0) / 1e9));
+        try {
+            Files.writeString(dir.resolve("tour_stage2.txt"), tour.toString());
+        } catch (Exception e) {
+            Underdeep.LOGGER.warn("could not write stage 2 tour", e);
+        }
+    }
+
+    /** Server cost of Stage 2 random ticks: time per randomTick call on representative ticking organisms. */
+    static void tickCost(ServerWorld w, Stage15Checks.Reporter r) {
+        BlockPos o = w.getSpawnPos().add(18, 24, 18);
+        plot(w, o, 4, 5, Blocks.DIRT.getDefaultState(), true, false);
+        Block[] blocks = {ModPlants.GLOWFERN, ModPlants.PUFFCAP, ModPlants.MENDLEAF, ModPlants.DUSKBERRY_BUSH, ModPlants.SPOREPUFF,
+                ModPlants.LANTERNCAP, ModWood.DUSKOAK.sapling, ModPlants.DUSKROOTS};
+        List<BlockPos> ps = new ArrayList<>();
+        for (int i = 0; i < blocks.length; i++) {
+            BlockPos p = o.add(-3 + (i % 4) * 2, 0, -2 + (i / 4) * 4);
+            w.setBlockState(p, blocks[i].getDefaultState(), Block.NOTIFY_ALL);
+            ps.add(p);
+        }
+        int calls = 0;
+        long t0 = System.nanoTime();
+        for (int k = 0; k < 4000; k++) {
+            for (BlockPos p : ps) {
+                BlockState s = w.getBlockState(p);
+                if (s.hasRandomTicks()) {
+                    s.randomTick(w, p, w.random);
+                    calls++;
+                }
+            }
+        }
+        double us = (System.nanoTime() - t0) / 1e3 / Math.max(1, calls);
+        r.info("stage 2 random tick cost", String.format(Locale.ROOT,
+                "%.2f µs per random tick over %d calls (mixed plants, fungi, bush, sapling, crop incl. spreading)", us, calls));
+        for (BlockPos p : BlockPos.iterate(o.add(-5, -1, -5), o.add(5, 5, 5))) {
+            w.setBlockState(p, Blocks.AIR.getDefaultState(), Block.NOTIFY_LISTENERS);
+        }
     }
 
     // ================================================================== functional tests
 
+    private static final Set<Long> USED_PLOTS = new HashSet<>();
+
+    /** A free plot location well inside the given ecosystem near its representative site (offset only seeds the order). */
     private static BlockPos plotOrigin(UnderdeepTerrain t, RegionType type, Map<RegionType, int[]> reps, int offset) {
         int[] p = reps.get(type);
         int[] site = Stage15Checks.siteFor(t, type, p);
-        int x = site[0] + offset, z = site[1] + 20;
-        TerrainColumn c = t.column(x, z);
         boolean up = CavernLayer.values()[p[1]] == CavernLayer.UPPER;
-        int floor = (int) Math.round(up ? c.upperFloor : c.deepFloor);
-        return new BlockPos(x, floor + 4, z);
+        for (int rad = 60; rad <= 300; rad += 20) {
+            for (int dx = -rad; dx <= rad; dx += 20) {
+                for (int dz = -rad; dz <= rad; dz += 20) {
+                    if (Math.max(Math.abs(dx), Math.abs(dz)) != rad) {
+                        continue;
+                    }
+                    int x = site[0] + dx, z = site[1] + dz;
+                    long key = ((long) (x >> 4) << 32) ^ (z >> 4);
+                    TerrainColumn c = t.column(x, z);
+                    var reg = up ? c.upperRegion : c.deepRegion;
+                    // keep test plots out of the starter area so they never alter the world spawn
+                    if (reg.primary == type && reg.borderDistance > 18 && !USED_PLOTS.contains(key) && Math.hypot(x, z) > 72) {
+                        USED_PLOTS.add(key);
+                        int floor = (int) Math.round(up ? c.upperFloor : c.deepFloor);
+                        return new BlockPos(x, floor + 4, z);
+                    }
+                }
+            }
+        }
+        TerrainColumn c = t.column(site[0] + offset, site[1]);
+        return new BlockPos(site[0] + offset, (int) Math.round(up ? c.upperFloor : c.deepFloor) + 4, site[1]);
     }
 
     /** Sealed plot: shell of stone, floor of the given block, air inside; optional light ring and heat. */
@@ -524,7 +614,8 @@ final class Stage2Checks {
         w.setBlockState(ao.up(3), ModPlants.GLOWPAD.getDefaultState(), Block.NOTIFY_ALL);
         // glowpads need still water below them; the pool surface is at ao.up(2)
         int pads = spreadRounds(w, ao, 3, 6, ModPlants.GLOWPAD, 2500);
-        r.check("glowpads spread across still water, bounded", pads >= 1 && pads <= 12, pads + " glowpads on a 7x7 pool after 2500 rounds");
+        r.check("glowpads spread across still water, bounded", pads > 1 && pads <= 20,
+                pads + " glowpads on a 7x7 pool (49 cells) after 2500 rounds; bound: density cap per 7x7 neighbourhood");
 
         // ---- harvesting with a fake player, regrowth and ecology records
         FakePlayer fake = FakePlayer.get(w);
@@ -594,7 +685,8 @@ final class Stage2Checks {
                 && herb.stream().anyMatch(s -> s.isOf(ModItems.MENDLEAF_SPRIG)), herb.toString());
 
         // ---- reactive plants
-        BlockPos co = plot(w, plotOrigin(t, RegionType.CRIMSON_BASIN, reps, -170), 3, 5, Blocks.NETHERRACK.getDefaultState(), true, false);
+        // spawn chunks: entities there are tracked, so area effects on creatures are observable
+        BlockPos co = plot(w, w.getSpawnPos().add(18, 24, -18), 3, 5, Blocks.NETHERRACK.getDefaultState(), true, false);
         w.setBlockState(co, ModPlants.SNAPJAW.getDefaultState(), Block.NOTIFY_ALL);
         PigEntity pig = EntityType.PIG.create(w);
         pig.refreshPositionAndAngles(co.getX() + 0.5, co.getY(), co.getZ() + 0.5, 0, 0);
@@ -611,15 +703,18 @@ final class Stage2Checks {
         pig.discard();
 
         // ---- blooming responds to environment
-        BlockPos bo = plot(w, plotOrigin(t, RegionType.ASHEN_HOLLOWS, reps, -190), 6, 5, Blocks.BASALT.getDefaultState(), false, true);
+        BlockPos bo = plot(w, plotOrigin(t, RegionType.ASHEN_HOLLOWS, reps, -190), 9, 5, Blocks.BASALT.getDefaultState(), false, true);
         BlockPos nearHeat = bo.add(1, 0, 1);
-        BlockPos farHeat = bo.add(-5, 0, -5);
+        BlockPos farHeat = bo.add(-4, 0, -4);
         w.setBlockState(nearHeat, ModPlants.PYRELILY.getDefaultState(), Block.NOTIFY_ALL);
         w.setBlockState(farHeat, ModPlants.PYRELILY.getDefaultState(), Block.NOTIFY_ALL);
         boolean bloomed = tickUntil(w, nearHeat, 300, s -> s.get(BloomingPlantBlock.BLOOMING));
         tickUntil(w, farHeat, 300, s -> s.get(BloomingPlantBlock.BLOOMING));
+        flushLight(w);
         r.check("pyrelily blooms near heat and stays closed away from it", bloomed && !w.getBlockState(farHeat).get(BloomingPlantBlock.BLOOMING),
-                String.format(Locale.ROOT, "light near heat %d, away %d", w.getLightLevel(nearHeat), w.getLightLevel(farHeat)));
+                String.format(Locale.ROOT, "light near heat %d, away %d; heat detected %s; states %s / %s; magma %s", w.getLightLevel(nearHeat),
+                        w.getLightLevel(farHeat), Env.nearHeat(w, nearHeat, 3), w.getBlockState(nearHeat), w.getBlockState(farHeat),
+                        w.getBlockState(bo.add(1, -1, 2))));
         BlockPos vo = plot(w, plotOrigin(t, RegionType.STORMSTONE_CAVERNS, reps, -210), 3, 5, Blocks.STONE.getDefaultState(), false, false);
         w.setBlockState(vo, ModPlants.VOLTBLOOM.getDefaultState(), Block.NOTIFY_ALL);
         w.setBlockState(vo.add(1, -1, 0), Blocks.REDSTONE_BLOCK.getDefaultState(), Block.NOTIFY_ALL);
@@ -663,6 +758,27 @@ final class Stage2Checks {
         int glimmer = countAround(w, go.up(), 1, 1, s -> s.isOf(ModPlants.GLIMMER_BUD) || s.isOf(ModPlants.GLIMMER_CLUSTER));
         r.check("budding glimmer regrows crystals", glimmer > 0, glimmer + " buds/clusters after 3000 random ticks");
         PLOTS.put("glimmer", go.up());
+        // a dark-blooming flower must not be closed by its own light (no flicker)
+        BlockPos lily = go.add(-2, 0, -2);
+        w.setBlockState(go.add(-2, -1, -2), Blocks.STONE.getDefaultState(), Block.NOTIFY_ALL);
+        w.setBlockState(lily, ModPlants.PRISM_LILY.getDefaultState(), Block.NOTIFY_ALL);
+        flushLight(w);
+        boolean opened = tickUntil(w, lily, 300, s -> s.get(BloomingPlantBlock.BLOOMING));
+        int flips = 0;
+        boolean prev = w.getBlockState(lily).get(BloomingPlantBlock.BLOOMING);
+        for (int i = 0; i < 300; i++) {
+            if (i % 10 == 0) {
+                flushLight(w);
+            }
+            w.getBlockState(lily).randomTick(w, lily, w.random);
+            boolean now = w.getBlockState(lily).get(BloomingPlantBlock.BLOOMING);
+            if (now != prev) {
+                flips++;
+                prev = now;
+            }
+        }
+        r.check("dark-blooming prism lily opens in darkness and stays open", opened && flips == 0 && prev,
+                "opened=" + opened + ", state changes afterwards " + flips + ", light " + w.getLightLevel(lily));
 
         writePlots(dir);
     }

@@ -4,10 +4,11 @@ A cooperative underground survival sandbox mod for **Minecraft Java Edition 1.21
 The whole world is underground: vast interconnected caverns, underground forests, fungal expanses,
 flooded depths, volcanic hollows, crystal halls and abysmal depths.
 
-Status: **Stage 1.5 — world expansion (15 ecosystems, lighting, spawning).** See `docs/PROGRESS.md`.
+Status: **Stage 2 — living ecosystems: trees, wood sets, plants, fungi, aquatic life, crops, foods, medicines, minerals.** See `docs/PROGRESS.md`.
 
 **Worlds created with Stage 1 (terrain generator v1) must be recreated** — the terrain changed completely.
-The mod never deletes or modifies existing worlds; create a new world (or move the old `world` folder aside).
+Stage 1.5 worlds load with Stage 2 (terrain is identical) but already explored chunks contain no Stage 2
+plants, trees or minerals; **a fresh world is recommended**. The mod never deletes or modifies existing worlds.
 
 ## Requirements
 - Java 21
@@ -17,7 +18,7 @@ The mod never deletes or modifies existing worlds; create a new world (or move t
 ```bash
 ./gradlew build
 ```
-The mod JAR is written to `build/libs/underdeep-0.2.0-stage1.5.jar` (`-sources.jar` alongside). Prebuilt copies are committed in `releases/`.
+The mod JAR is written to `build/libs/underdeep-0.3.0-stage2.jar` (`-sources.jar` alongside). Prebuilt copies are committed in `releases/`.
 
 ## Playing in singleplayer
 1. Install Fabric Loader for 1.21.1 and put Fabric API and the Underdeep JAR in `mods/`.
@@ -40,10 +41,13 @@ The mod JAR is written to `build/libs/underdeep-0.2.0-stage1.5.jar` (`-sources.j
    - `starterSafeRadius` (default `150`): no natural hostile spawns around the starter cavern
    - `monsterSpawnChanceLow/Medium/High/Extreme` (default `0 / 0.12 / 0.45 / 1.0`): share of natural hostile
      spawn attempts allowed per ecosystem danger class
+   - Stage 2 ecology: `naturalSpreading` (true), `spreadRateMultiplier` (1.0; 0 disables), `spreadDensityLimit` (5),
+     `sporeReleases` (true), `sporeEffects` (true), `crystalRegrowth` (true), `reactivePlants` (true),
+     `ambientParticles` (true; client side, also respects Particles: Minimal)
 
 ## Diagnostics (operators)
 `/underdeep info | region [pos] | locate <region> | spawncheck | cavern [pos] | sites <type> [radius] |
-perf [chunks] | render [radius] | connectivity [radiusChunks]`
+perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]`
 
 ## Development
 - `./gradlew test` — fast unit tests of the pure terrain model (`-Dunderdeep.previews=true` writes PNGs to `build/previews/`).
@@ -51,5 +55,7 @@ perf [chunks] | render [radius] | connectivity [radiusChunks]`
 - `scripts/visual_tour.sh <world-dir> <tour.txt>` — real client under Xvfb, saves screenshots.
 - `scripts/mob_study.sh <run-dir>` — real client joins the dedicated server; measures natural mob populations.
 - `scripts/test_matrix.sh` — full verification matrix (seeds, reload, determinism, vanilla, production JAR).
+- `SUITE=stage2 scripts/selftest.sh …` / `scripts/stage2_matrix.sh` — targeted Stage 2 tests (ecology, growth, recipes).
+- `python3 tools/assets/stage2_assets.py` — regenerate all block/item assets, loot, recipes, tags and names.
 - `python3 tools/worldgen/generate_data.py` — regenerate biome/feature JSON after editing the tables.
 - Read `CLAUDE.md` and `docs/` before contributing.

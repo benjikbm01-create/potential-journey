@@ -61,6 +61,11 @@ independently of the players. Players are inhabitants, not chosen heroes.
 - Visual inspection: `scripts/visual_tour.sh` runs a real client under Xvfb and saves screenshots.
 - Mob populations: `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server).
 - Full matrix: `scripts/test_matrix.sh` (seeds, reload, chunk-order determinism, vanilla, production JAR).
+- Stage 2+ targeted suite: `SUITE=stage2 scripts/selftest.sh …` and `scripts/stage2_matrix.sh` (skips the slow
+  terrain analyses; use the full matrix when terrain output changes). Keep individual runs time-limited.
+- Assets: `python3 tools/assets/stage2_assets.py` regenerates all block/item assets (it runs
+  `generate_assets.py` first); content ids must match `registry/Mod*`. Ecology metadata lives in
+  `ecology/EcologyRegistry` (append-only species ids).
 - Worldgen output changes require bumping `UnderdeepTerrain.GENERATOR_VERSION` (currently 2) and telling the
   user that existing worlds must be regenerated. Never delete or overwrite the user's worlds.
 - **Never record a test as passing unless it was actually executed.** Record commands, environment

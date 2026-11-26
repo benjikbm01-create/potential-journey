@@ -25,6 +25,16 @@ dev.underdeep
 ├── Underdeep                     common entry point (config, registries, commands, self-test, world-state init)
 ├── config/UnderdeepConfig        config/underdeep.json (Gson)
 ├── registry/ModBlocks            foundational blocks (+ block items, creative tab entries)
+├── registry/ModWood, WoodSet     Stage 2 wood sets (19 blocks each) and extra tree species
+├── registry/ModPlants, ModItems  Stage 2 flora, fungi, aquatic life, crops, minerals; foods, herbs, remedies, minerals
+├── registry/ModTags, Reg         soil/habitat/protection tags; registration helpers + render-layer lists
+├── ecology/                      Species, EcologyRegistry (metadata of every species), RegionEcology (regional
+│                                 summary), EcologyState (persistent harvest pressure), Habitats (Stage 3 query API)
+├── block/plant/                  reusable plant framework: Env, GrowthRule, Spreading, ParticleGate and block
+│                                 classes (EcoPlant, Blooming, Harvestable, Submerged, Floating, Hanging*, AquaticStem,
+│                                 EcoCrop, AquaticCrop, EcoSapling, SporePuff, Snapjaw, EphemeralFungus, ShelfFungus,
+│                                 FungalSoil, RottingLog, ResinKnot, CrystalGrower)
+├── item/RemedyItem               simple medicines
 ├── registry/ModWorldgen          chunk generator, biome source, features, placement modifiers
 ├── block/GlowcapBlock
 ├── command/UnderdeepCommands     /underdeep diagnostics (permission-gated)
@@ -40,7 +50,9 @@ dev.underdeep
     ├── terrain/                  CavernLayer, CavernGraph, TerrainColumn, UnderdeepTerrain — pure Java
     ├── gen/                      UnderdeepChunkGenerator, UnderdeepBiomeSource, UnderdeepBiomes,
     │                             BlockPalette, SurfacePainter, InitialPopulation
-    ├── feature/                  CaveSurfacePlacement, StartZonePlacement, CrystalSpire, HangingRoot, OreOutcrop
+    ├── feature/                  CaveSurfacePlacement, StartZonePlacement, CrystalSpire, HangingRoot, OreOutcrop,
+    │                             Stage 2: UnderdeepTreeFeature (9 species), GiantFungusFeature, FallenLogFeature,
+    │                             CoralClusterFeature, PlantBuilder (safe commit + leaf distances), SpeciesFeatureConfig
     ├── analysis/                 RegionReport, SiteType, SiteAnalyzer, SiteCandidate, ConnectivityAnalyzer
     ├── spawn/SpawnFinder
     ├── data/UnderdeepWorldState  persistent per-world data (data/underdeep.dat)
@@ -49,6 +61,8 @@ client: UnderdeepClient (render layers, dimension effects), ScreenshotTour and C
 tools/analysis/world_diff.py      block-level diff of two saved worlds (determinism checks)
 tools/worldgen/generate_data.py   generates biome / feature / preset JSON
 tools/assets/generate_textures.py generates Stage 1 textures and icon
+tools/assets/generate_assets.py   Stage 1.5 block assets
+tools/assets/stage2_assets.py     Stage 2 textures (art.py), models, blockstates, loot, recipes, tags, names, hints
 scripts/selftest.sh, scripts/visual_tour.sh
 ```
 
@@ -171,6 +185,54 @@ lava/magma-free with 3 blocks headroom, then plants glowcaps around it so the ar
 Because the dimension has no skylight, vanilla places every (re)spawning player exactly at the world
 spawn and moves them up until free — all players spawn safely. Bonus chest is supported.
 
+## 5c. Living ecosystems (Stage 2)
+
+**Data.** `ecology/EcologyRegistry` lists every species and regional resource (95 entries) with habitats
+(`RegionType`s), rarity, edibility, light/water/climate preference, ecological roles (`FORAGE`, `FRUIT`,
+`SEEDS`, `NECTAR`, `FUNGAL_FOOD`, `AQUATIC_FORAGE`, `SHELTER`, `NEST_SITE`, `LIGHT_SOURCE`, `HAZARD`,
+`MINERAL_FOOD`), reproduction mode, renewability, typical abundance, block ids and yield. Pure Java,
+unit-tested. Species ids are persistent identifiers (append-only).
+
+**Plant framework (`block/plant`).** Behaviour is configured per block at registration:
+- `GrowthRule` = light band + climate (cold/temperate/hot from the ecosystem, or the biome temperature
+  outside Underdeep) + at most one need (water beside, heat nearby, faster near heat, no heat). `factor()`
+  returns 0 (dormant) … 1 (ideal). Tooltips describe the conditions.
+- Growth uses vanilla random ticks only; no block entities for plants. Every environmental scan is a
+  small box evaluated after the random chance roll (`Env`).
+- `Spreading.trySpread`: places only into free air/still water accepted by `canPlaceAt`, never replaces
+  blocks, stops at a per-species density cap (config `spreadDensityLimit`), never within 2 blocks of
+  `#underdeep:growth_blockers` (player-made blocks, farmland, paths, storage, redstone), only in loaded
+  chunks, radius ≤ 4. Outside its native ecosystem a species spreads at ¼ rate; spreading and
+  environmental processes run only in Underdeep worlds (`Env.spreadingEnabled`) and can be disabled or
+  scaled in `config/underdeep.json`.
+- Trees (`UnderdeepTreeFeature`) are planned in a `PlantBuilder` and committed only if the trunk core is
+  free; wood and leaves replace only air/plants/water, so a growing sapling never overwrites player
+  blocks. Leaf distances are computed like vanilla (decay works).
+
+**Processes** (all random-tick driven, bounded): fungal soil creep (Fungal Expanse only), mushroom
+colony spreading, temporary lanterncap blooms that sprout/brighten/fade, puffball spore releases,
+flowers that open/close by light/heat/water/cold/energy (state-dependent real block light), fruit and
+herb regrowth after harvest, aquatic spreading (glowpads, submerged plants), decay of fallen logs into
+fungi, heat-dependent growth, crystal regrowth on budding glimmer and charged stormstone, renewable resin.
+
+**Unloaded areas.** Nothing grows while chunks are unloaded or the server is off; there is no catch-up
+growth (no duplication). Abstract regional state lives in `EcologyState` (per `RegionId` compound
+`ecology`: harvest counts `h.<species>`, `last` game time) and the deterministic `RegionEcology`
+summary (dominant species, diversity, habitats, food/water/renewable/productivity scores, danger,
+supported wildlife guilds, minerals) computed from data — never stored per block.
+
+**Stage 3 integration (how wildlife should use this).**
+1. Choose which species a region can hold from `RegionEcology.of(type, regionId).wildlife()` (guilds)
+   and scale abstract population capacity by `productivity()` / `foodAvailability()`.
+2. Lower capacity by recorded harvest pressure (`EcologyState.harvests`) and later by predation.
+3. Creature AI finds food/shelter/nests with `Habitats.findNearest(world, pos, r, v, Habitats.role(Role.X))`
+   (bounded ≤16 blocks; call when a goal starts, not every tick) and `Habitats.speciesOf(state)`.
+4. Herbivores eat `FORAGE`/`FRUIT` species (bushes reset to age 1 like a harvest), pollinators visit
+   `NECTAR`, fungivores `FUNGAL_FOOD`, aquatic grazers `AQUATIC_FORAGE`; nesting creatures use
+   `NEST_SITE`; light-seeking creatures gather at `LIGHT_SOURCE`; `HAZARD` species should be avoided.
+5. Settlements (Stage 6) use the same summary for agricultural productivity and regional trade goods
+   (`minerals()`, renewable yields).
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |
@@ -188,6 +250,10 @@ spawn and moves them up until free — all players spawn safely. Bonus chest is 
 | Danger / lighting | `RegionType#danger()`, `#lighting()`, biome tags `underdeep:danger_*` | spawning, future ecology |
 | Neighbouring ecosystems | `RegionMap#neighbourTypes` | for migration / trade-route planning |
 | Landmarks | `UnderdeepTerrain#landmarks(layer)` | positions & kinds for future discovery/settlement logic |
+| Species metadata | `EcologyRegistry` (`byId`, `byBlock`, `inRegion`), `Species` | append-only ids |
+| Regional ecology | `RegionEcology.of(type, regionId)` | deterministic, no storage |
+| Harvest pressure | `EcologyState.recordHarvest / harvests` | NBT `ecology` per region |
+| Habitat search | `Habitats.speciesOf`, `findNearest`, `role` | bounded block scans |
 
 **Extending regions:** add a `RegionType` entry at the end with a `TerrainProfile` and environment,
 add it to a layer's region list and climate prototypes in `RegionMap`, add a biome in
@@ -207,7 +273,10 @@ entities to match on approach. `InitialPopulation` is a placeholder to be replac
 
 ## 8. Diagnostics
 `/underdeep info | region [pos] | locate <region> | spawncheck | cavern [pos] | sites <type> [radius] |
-perf [chunks] | render [radius] | connectivity [radiusChunks]` — permission level from config (default 2).
+perf [chunks] | render [radius] | connectivity [radiusChunks] | ecology [pos]` — permission level from config (default 2).
+Self-test suite `SUITE=stage2 scripts/selftest.sh …` (property `underdeep.selftest.suite=stage2`) skips the slow
+Stage 1.5 terrain analyses and runs `Stage2Checks` (resources, recipes, generation census, growth,
+harvest, spreading bounds, protection, persistence); `scripts/stage2_matrix.sh` runs it across seeds.
 Mob study (`-Dunderdeep.mobstudy=<dir>`, `scripts/mob_study.sh`) measures natural spawning with a real
 client connected to the dedicated server.
 `F3` debug screen shows layer, region and cavern heights. Self-test (`-Dunderdeep.selftest=<dir>`) and

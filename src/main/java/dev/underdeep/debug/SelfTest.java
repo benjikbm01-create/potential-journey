@@ -339,9 +339,10 @@ public final class SelfTest {
         long s2 = System.nanoTime();
         Stage2Checks.registries(server, rep);
         Stage2Checks.recipes(world, rep);
-        Stage2Checks.census(world, t, reps, rep);
+        Stage2Checks.census(world, t, reps, dir, rep);
         if (phase.equals("create")) {
             Stage2Checks.functional(server, world, t, reps, dir, rep);
+            Stage2Checks.tickCost(world, rep);
         } else {
             Stage2Checks.persistence(world, dir, rep);
         }

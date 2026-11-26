@@ -706,6 +706,8 @@ CONFIGURED.update({
                                      "minecraft:dripstone_block", "minecraft:calcite"]),
     "petrolichen": multiface("petrolichen", ["underdeep:petrified_wood", "minecraft:sandstone", "minecraft:tuff",
                                              "minecraft:terracotta", "minecraft:stone", "minecraft:andesite"]),
+    "storm_lichen": multiface("storm_lichen", ["underdeep:stormstone", "underdeep:charged_stormstone", "minecraft:deepslate",
+                                               "minecraft:tuff", "minecraft:amethyst_block", "minecraft:stone"]),
     "glimmer_cluster_up": simple_block(u("glimmer_cluster"), facing="up"),
     "glimmer_cluster_down": simple_block(u("glimmer_cluster"), facing="down"),
 })
@@ -783,6 +785,7 @@ veg("s2_starstrand", "starstrand", 10, surface="ceiling")
 veg("s2_glowivy", "glowivy", 6, surface="wall")
 veg("s2_petrolichen", "petrolichen", 10, surface="wall")
 veg("s2_petrolichen_deep", "petrolichen", 4, surface="wall", band=D)
+veg("s2_storm_lichen", "storm_lichen", 8, surface="wall", band=A)
 veg("s2_glimmer_floor", "glimmer_cluster_up", 4, band=A)
 veg("s2_glimmer_ceiling", "glimmer_cluster_down", 3, surface="ceiling", band=A)
 PLACED_NAMES = [n for _, n, _ in PLACED]
@@ -813,7 +816,7 @@ S2_ADD = {
                       "s2_plaguebloom", "s2_snapjaw", "s2_bloodcap", "s2_emberwort"],
     "sunken_gardens": ["s2_ore_nacre", "s2_coral_clusters", "s2_glowkelp", "s2_tidebloom", "s2_tidecap", "s2_sea_grapes",
                        "s2_lanterncoral_fan", "s2_spirecoral"],
-    "stormstone_caverns": ["s2_ore_galvanite", "s2_static_grass", "s2_voltbloom", "s2_static_grass_deep", "s2_voltbloom_deep"],
+    "stormstone_caverns": ["s2_ore_galvanite", "s2_storm_lichen", "s2_static_grass", "s2_voltbloom", "s2_static_grass_deep", "s2_voltbloom_deep"],
     "starlight_caverns": ["s2_ore_starsilver", "s2_starlight_trees", "s2_fallen_lumenwood", "s2_silvergrass", "s2_moonpetal",
                           "s2_starstrand", "s2_starlilies", "s2_wild_glowgrain"],
 }

@@ -62,5 +62,30 @@ structures/ruins, bosses, custom sounds/animations, underground alternatives to 
 Not done in Stage 1.5: custom creatures (Stage 3), custom sounds, ecosystem-specific resources beyond the
 foundational blocks (Stage 2), underwater air pockets in Sunken Gardens.
 
-## Stages 2–12
+## Stage 2 — Living ecosystems, vegetation and natural resources: COMPLETE (2026-11-26)
+
+| System | State | Notes |
+|---|---|---|
+| Ecological metadata (`EcologyRegistry`, 95 entries) and regional summaries (`RegionEcology`) | done | unit-tested; Stage 3 contract in ARCHITECTURE §5c |
+| Persistent regional ecology state (harvest pressure per region) | done | verified across save/restart |
+| Reusable plant framework (growth rules, bounded spreading, protection of builds, particles gate, config) | done | random ticks only, no plant block entities |
+| 9 tree species with distinct growth algorithms; young/normal/ancient sizes; renewable saplings | done | all 9 saplings verified growing on block light only |
+| 7 complete wood sets incl. signs and hanging signs | done | recipes verified (planks, door, sign; vanilla tag recipes) |
+| 35 land plants (bushes, herbs, flowers, grasses, ferns, vines) | done | |
+| 16 fungi (13 small, 3 giant forms), fungal soil creep, temporary blooms, spore releases, decaying logs | done | |
+| 10 aquatic species + coral reefs, floating, submerged, kelp-like and harvestable forms | done | |
+| 9 crops with distinct needs (8 public + 1 exceptional), wild patches | done | growth and drops verified for 8 |
+| Foods (25 edible items), 5 medicines | done | effects verified with a fake player |
+| 15 regional minerals (14 ores + renewable glimmer quartz), 7 storage blocks, uses via recipes | done | all ores verified mineable with drops |
+| Environmental processes (12) | done | see CONTENT_REGISTRY / ARCHITECTURE §5c |
+| World generation in all 15 ecosystems | done | ≥ 3 native species measured in every ecosystem on 3 seeds |
+| Textures, models, blockstates, loot, names, hints for every block/item | done | procedurally generated original pixel art (D-030); validated by the self-test |
+| Targeted test suite (`SUITE=stage2`, `scripts/stage2_matrix.sh`) | done | results in TESTING.md |
+
+Partially complete / limitations: art is procedural (coherent but simpler than hand-painted vanilla
+art); no custom sounds (Stage 11) or custom particles (vanilla particle types are used); environmental
+effects are not simulated in unloaded chunks (by design, D-028); vanilla stand-in vegetation from
+Stage 1.5 remains alongside the new species in some ecosystems.
+
+## Stages 3–12
 Not started.

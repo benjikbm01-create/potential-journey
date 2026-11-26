@@ -164,6 +164,9 @@ public final class EcologyRegistry {
                 .reproduces(Reproduction.SPREADING).abundance(0.2).blocks("static_grass");
         plant("voltbloom", Kind.FLOWER).in(STORMSTONE_CAVERNS).rarity(UNCOMMON).roles(Role.NECTAR, Role.LIGHT_SOURCE)
                 .reproduces(Reproduction.SEEDS).abundance(0.05).blocks("voltbloom");
+        plant("storm_lichen", Kind.VINE).in(STORMSTONE_CAVERNS).light(LightPref.DARK)
+                .roles(Role.MINERAL_FOOD, Role.LIGHT_SOURCE).reproduces(Reproduction.SPREADING).abundance(0.15)
+                .blocks("storm_lichen");
         plant("silvergrass", Kind.GRASS).in(STARLIGHT_CAVERNS).light(LightPref.BRIGHT)
                 .roles(Role.FORAGE, Role.SEEDS, Role.LIGHT_SOURCE).reproduces(Reproduction.SPREADING).abundance(0.45)
                 .blocks("silvergrass");

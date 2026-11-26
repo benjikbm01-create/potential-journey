@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:multiface_growth",
+  "config": {
+    "block": "underdeep:storm_lichen",
+    "search_range": 16,
+    "chance_of_spreading": 0.6,
+    "can_place_on_floor": false,
+    "can_place_on_ceiling": true,
+    "can_place_on_wall": true,
+    "can_be_placed_on": [
+      "underdeep:stormstone",
+      "underdeep:charged_stormstone",
+      "minecraft:deepslate",
+      "minecraft:tuff",
+      "minecraft:amethyst_block",
+      "minecraft:stone"
+    ]
+  }
+}

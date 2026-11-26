@@ -164,17 +164,19 @@ final class Stage15Checks {
     /** Open cavern floor of the given ecosystem near a representative region centre (x, z). */
     static int[] siteFor(UnderdeepTerrain t, RegionType type, int[] p) {
         boolean up = CavernLayer.values()[p[1]] == CavernLayer.UPPER;
-        for (int rad = 0; rad <= 192; rad += 8) {
-            for (int dx = -rad; dx <= rad; dx += 8) {
-                for (int dz = -rad; dz <= rad; dz += 8) {
-                    if (Math.max(Math.abs(dx), Math.abs(dz)) != rad) {
-                        continue;
-                    }
-                    TerrainColumn oc = t.column(p[0] + dx, p[2] + dz);
-                    if ((up ? oc.upperCeiling - oc.upperFloor : oc.deepCeiling - oc.deepFloor) > 16
-                            && (up ? oc.upperRegion : oc.deepRegion).primary == type
-                            && (up ? oc.upperRegion : oc.deepRegion).borderDistance > 24) {
-                        return new int[]{p[0] + dx, p[2] + dz};
+        for (int border : new int[]{24, 8}) {
+            for (int rad = 0; rad <= (border == 24 ? 192 : 480); rad += 8) {
+                for (int dx = -rad; dx <= rad; dx += 8) {
+                    for (int dz = -rad; dz <= rad; dz += 8) {
+                        if (Math.max(Math.abs(dx), Math.abs(dz)) != rad) {
+                            continue;
+                        }
+                        TerrainColumn oc = t.column(p[0] + dx, p[2] + dz);
+                        if ((up ? oc.upperCeiling - oc.upperFloor : oc.deepCeiling - oc.deepFloor) > 16
+                                && (up ? oc.upperRegion : oc.deepRegion).primary == type
+                                && (up ? oc.upperRegion : oc.deepRegion).borderDistance > border) {
+                            return new int[]{p[0] + dx, p[2] + dz};
+                        }
                     }
                 }
             }

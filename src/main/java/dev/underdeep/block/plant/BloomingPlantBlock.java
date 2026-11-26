@@ -48,9 +48,27 @@ public class BloomingPlantBlock extends EcoPlantBlock {
     }
 
     public boolean conditionMet(World world, BlockPos pos) {
+        return conditionMet(world, pos, world.getBlockState(pos));
+    }
+
+    /**
+     * For the DARK trigger an open flower must not be closed by its own glow: while open it judges
+     * darkness from the light 4 blocks away, where its own contribution is (open light - 4).
+     */
+    public boolean conditionMet(World world, BlockPos pos, BlockState state) {
         return switch (trigger) {
             case BRIGHT -> Env.light(world, pos) >= 10;
-            case DARK -> Env.light(world, pos) <= 5;
+            case DARK -> {
+                if (state.isOf(this) && state.get(BLOOMING)) {
+                    int own = Math.max(0, state.getLuminance() - 4);
+                    int max = 0;
+                    for (var d : net.minecraft.util.math.Direction.Type.HORIZONTAL) {
+                        max = Math.max(max, world.getLightLevel(net.minecraft.world.LightType.BLOCK, pos.offset(d, 4)));
+                    }
+                    yield max <= own + 1;
+                }
+                yield Env.light(world, pos) <= 5;
+            }
             case HEAT -> Env.nearHeat(world, pos, 3);
             case WATER -> Env.nearWater(world, pos, 2);
             case COLD -> Env.temperature(world, pos) == Env.Temp.COLD && !Env.nearHeat(world, pos, 3);
@@ -67,7 +85,7 @@ public class BloomingPlantBlock extends EcoPlantBlock {
 
     @Override
     protected void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        boolean want = conditionMet(world, pos);
+        boolean want = conditionMet(world, pos, state);
         if (want != state.get(BLOOMING) && random.nextInt(3) == 0) {
             world.setBlockState(pos, state.with(BLOOMING, want), Block.NOTIFY_LISTENERS);
             return;
