@@ -1,0 +1,2634 @@
+{
+ "recipes": [
+  {
+   "id": "farm_staple",
+   "kind": "gather",
+   "professions": [
+    "farmer"
+   ],
+   "workplace": [
+    "FARM"
+   ],
+   "inputs": {},
+   "outputs": {
+    "@CIVCROP": 4
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 4,
+   "skill": "AGRICULTURE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "crops",
+   "tool": "@TOOLS",
+   "fuel": 0.0
+  },
+  {
+   "id": "farm_glowgrain",
+   "kind": "gather",
+   "professions": [
+    "farmer"
+   ],
+   "workplace": [
+    "FARM"
+   ],
+   "inputs": {},
+   "outputs": {
+    "underdeep:glowgrain": 3
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "AGRICULTURE",
+   "habitats": [],
+   "regions": [
+    "STARLIGHT_CAVERNS",
+    "GOLDEN_GROVE",
+    "ROOTWILD"
+   ],
+   "source": [],
+   "pool": "crops",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forage_fruit",
+   "kind": "gather",
+   "professions": [
+    "farmer",
+    "herbalist",
+    "forester",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "@SPECIES": 3
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "AGRICULTURE",
+   "habitats": [],
+   "regions": [],
+   "source": [
+    "SHRUB",
+    "VINE"
+   ],
+   "pool": "forage",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forage_fungi",
+   "kind": "gather",
+   "professions": [
+    "mycologist",
+    "herbalist",
+    "cook",
+    "farmer"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:inkcap": 2,
+    "underdeep:puffcap": 1
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "AGRICULTURE",
+   "habitats": [
+    "FUNGAL_GROVE",
+    "FOREST",
+    "WETLAND",
+    "DARK_DEPTHS"
+   ],
+   "regions": [],
+   "source": [],
+   "pool": "fungi",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forage_rimecap",
+   "kind": "gather",
+   "professions": [
+    "mycologist",
+    "herbalist",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:rimecap": 2
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 2,
+   "skill": "AGRICULTURE",
+   "habitats": [],
+   "regions": [
+    "EVERFROST"
+   ],
+   "source": [],
+   "pool": "fungi",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "dig_truffles",
+   "kind": "gather",
+   "professions": [
+    "mycologist",
+    "farmer"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:cave_truffle": 1
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "AGRICULTURE",
+   "habitats": [],
+   "regions": [
+    "FUNGAL_EXPANSE",
+    "ROOTWILD"
+   ],
+   "source": [],
+   "pool": "fungi",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "gather_herbs",
+   "kind": "gather",
+   "professions": [
+    "herbalist",
+    "healer",
+    "alchemist",
+    "mycologist"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "@SPECIES": 2
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [
+    "HERB",
+    "FLOWER"
+   ],
+   "pool": "herbs",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "fell_trees",
+   "kind": "gather",
+   "professions": [
+    "forester",
+    "carpenter"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "@SPECIES": 3
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 3,
+   "skill": "FORESTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [
+    "TREE"
+   ],
+   "pool": "wood",
+   "tool": "@TOOLS",
+   "fuel": 0.0
+  },
+  {
+   "id": "tap_resin",
+   "kind": "gather",
+   "professions": [
+    "forester",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:amber_glob": 1
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "FORESTRY",
+   "habitats": [],
+   "regions": [
+    "GOLDEN_GROVE"
+   ],
+   "source": [],
+   "pool": "wood",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "fish",
+   "kind": "gather",
+   "professions": [
+    "fisher",
+    "boatwright"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:fish_fillet": 2,
+    "minecraft:cod": 1
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 4,
+   "skill": "FISHING",
+   "habitats": [
+    "OPEN_WATER",
+    "SUBMERGED",
+    "WETLAND"
+   ],
+   "regions": [],
+   "source": [],
+   "pool": "fish",
+   "tool": "minecraft:fishing_rod",
+   "fuel": 0.0
+  },
+  {
+   "id": "gather_shellfish",
+   "kind": "gather",
+   "professions": [
+    "fisher",
+    "navigator"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:shellmeat": 2,
+    "underdeep:shell_fragment": 1
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "FISHING",
+   "habitats": [
+    "SUBMERGED",
+    "OPEN_WATER"
+   ],
+   "regions": [],
+   "source": [],
+   "pool": "fish",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "dive_pearls",
+   "kind": "gather",
+   "professions": [
+    "fisher",
+    "gemcutter"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:pearl": 1
+   },
+   "byproducts": {},
+   "hours": 4,
+   "maxPerDay": 1,
+   "skill": "FISHING",
+   "habitats": [],
+   "regions": [
+    "SUNKEN_GARDENS",
+    "FLOODED_DEPTHS"
+   ],
+   "source": [],
+   "pool": "minerals",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "hunt_game",
+   "kind": "gather",
+   "professions": [
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:game_meat": 2,
+    "underdeep:hide": 1,
+    "minecraft:bone": 1
+   },
+   "byproducts": {
+    "underdeep:horn": 0.3
+   },
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "HUNTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "game",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "trap_small_game",
+   "kind": "gather",
+   "professions": [
+    "hunter",
+    "rancher"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:game_meat": 1,
+    "underdeep:fur_tuft": 1
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "HUNTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "game",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "tend_herd",
+   "kind": "gather",
+   "professions": [
+    "rancher"
+   ],
+   "workplace": [
+    "PEN",
+    "BARN"
+   ],
+   "inputs": {},
+   "outputs": {
+    "underdeep:fur_tuft": 2,
+    "underdeep:creature_egg": 1
+   },
+   "byproducts": {
+    "underdeep:plume": 0.3
+   },
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "ANIMAL_CARE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "ranch",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "render_oil",
+   "kind": "gather",
+   "professions": [
+    "hunter",
+    "rancher"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:creature_oil": 1
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 1,
+   "skill": "HUNTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "game",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "quarry_stone",
+   "kind": "gather",
+   "professions": [
+    "stonemason",
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:cobblestone": 8
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 4,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "stone",
+   "tool": "@TOOLS",
+   "fuel": 0.0
+  },
+  {
+   "id": "quarry_basalt",
+   "kind": "gather",
+   "professions": [
+    "stonemason",
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:basalt": 6
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [
+    "ASHEN_HOLLOWS",
+    "THE_ABYSS"
+   ],
+   "source": [],
+   "pool": "stone",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "dig_sand",
+   "kind": "gather",
+   "professions": [
+    "stonemason",
+    "miner",
+    "smelter"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:sand": 6
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 3,
+   "skill": "MINING",
+   "habitats": [
+    "OPEN_WATER",
+    "SUBMERGED",
+    "WETLAND"
+   ],
+   "regions": [],
+   "source": [],
+   "pool": "stone",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "mine_coal",
+   "kind": "gather",
+   "professions": [
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:coal": 3
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 3,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "ore",
+   "tool": "@TOOLS",
+   "fuel": 0.0
+  },
+  {
+   "id": "mine_iron",
+   "kind": "gather",
+   "professions": [
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:raw_iron": 2
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 3,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "ore",
+   "tool": "@TOOLS",
+   "fuel": 0.0
+  },
+  {
+   "id": "mine_copper",
+   "kind": "gather",
+   "professions": [
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:raw_copper": 3,
+    "minecraft:redstone": 1
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "ore",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "mine_gold",
+   "kind": "gather",
+   "professions": [
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "minecraft:raw_gold": 1
+   },
+   "byproducts": {},
+   "hours": 4,
+   "maxPerDay": 1,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [
+    "GOLDEN_GROVE",
+    "HOLLOW_PEAKS",
+    "ASHEN_HOLLOWS"
+   ],
+   "source": [],
+   "pool": "ore",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "mine_regional",
+   "kind": "gather",
+   "professions": [
+    "miner",
+    "gemcutter",
+    "stonemason"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "@SPECIES": 2
+   },
+   "byproducts": {},
+   "hours": 4,
+   "maxPerDay": 2,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [],
+   "source": [
+    "MINERAL"
+   ],
+   "pool": "minerals",
+   "tool": "@TOOLS",
+   "fuel": 0.0
+  },
+  {
+   "id": "harvest_crystals",
+   "kind": "gather",
+   "professions": [
+    "gemcutter",
+    "artisan",
+    "lampwright"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "@SPECIES": 2,
+    "minecraft:amethyst_shard": 1
+   },
+   "byproducts": {},
+   "hours": 4,
+   "maxPerDay": 2,
+   "skill": "MINING",
+   "habitats": [],
+   "regions": [],
+   "source": [
+    "CRYSTAL"
+   ],
+   "pool": "minerals",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "collect_silk",
+   "kind": "gather",
+   "professions": [
+    "tailor",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:silk_strand": 2
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "HUNTING",
+   "habitats": [],
+   "regions": [
+    "CRIMSON_BASIN",
+    "STORMSTONE_CAVERNS",
+    "THE_ABYSS",
+    "ROOTWILD"
+   ],
+   "source": [],
+   "pool": "game",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "gather_voidroot",
+   "kind": "gather",
+   "professions": [
+    "tailor",
+    "herbalist"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:voidroot_fiber": 2
+   },
+   "byproducts": {},
+   "hours": 3,
+   "maxPerDay": 2,
+   "skill": "AGRICULTURE",
+   "habitats": [],
+   "regions": [
+    "THE_ABYSS"
+   ],
+   "source": [],
+   "pool": "herbs",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "bake_glowgrain_bread",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:glowgrain": 3
+   },
+   "outputs": {
+    "underdeep:glowgrain_bread": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 16,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "bake_bread",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:wheat": 3
+   },
+   "outputs": {
+    "minecraft:bread": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 16,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "bake_roots",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:duskroot": 1
+   },
+   "outputs": {
+    "underdeep:baked_duskroot": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "bake_turnips",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:frost_turnip": 1
+   },
+   "outputs": {
+    "underdeep:baked_turnip": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "bake_potatoes",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:potato": 1
+   },
+   "outputs": {
+    "minecraft:baked_potato": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "roast_chestnuts",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:lake_chestnut": 1
+   },
+   "outputs": {
+    "underdeep:roasted_chestnut": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "roast_fungi",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "mycologist",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:inkcap": 1
+   },
+   "outputs": {
+    "underdeep:roasted_inkcap": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "roast_truffles",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:cave_truffle": 1
+   },
+   "outputs": {
+    "underdeep:roasted_truffle": 1
+   },
+   "byproducts": {},
+   "hours": 0.4,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cook_game",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:game_meat": 1
+   },
+   "outputs": {
+    "underdeep:cooked_game_meat": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cook_fish",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper",
+    "fisher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fish_fillet": 1
+   },
+   "outputs": {
+    "underdeep:cooked_fish_fillet": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cook_cod",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "fisher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:cod": 1
+   },
+   "outputs": {
+    "minecraft:cooked_cod": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cook_shellmeat",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shellmeat": 1
+   },
+   "outputs": {
+    "underdeep:cooked_shellmeat": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 20,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "simmer_cavern_stew",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:inkcap": 1,
+    "underdeep:duskroot": 1,
+    "underdeep:puffcap": 1
+   },
+   "outputs": {
+    "underdeep:cavern_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 12,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "simmer_sunbean_stew",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sunbean": 2,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:sunbean_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 12,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cook_rice_bowl",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 2,
+    "underdeep:fish_fillet": 1
+   },
+   "outputs": {
+    "underdeep:rice_bowl": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 12,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "bake_cake",
+   "kind": "process",
+   "professions": [
+    "baker"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:wheat": 3,
+    "underdeep:creature_egg": 1,
+    "underdeep:honeyfruit": 2
+   },
+   "outputs": {
+    "minecraft:cake": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 2,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.2
+  },
+  {
+   "id": "saw_duskoak_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:duskoak_log": 1
+   },
+   "outputs": {
+    "underdeep:duskoak_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "saw_lumenwood_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:lumenwood_log": 1
+   },
+   "outputs": {
+    "underdeep:lumenwood_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "saw_mirewillow_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:mirewillow_log": 1
+   },
+   "outputs": {
+    "underdeep:mirewillow_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "saw_frostfir_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:frostfir_log": 1
+   },
+   "outputs": {
+    "underdeep:frostfir_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "saw_goldwood_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:goldwood_log": 1
+   },
+   "outputs": {
+    "underdeep:goldwood_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "saw_spirebark_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:spirebark_log": 1
+   },
+   "outputs": {
+    "underdeep:spirebark_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "saw_bloodthorn_planks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright",
+    "forester"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "underdeep:bloodthorn_log": 1
+   },
+   "outputs": {
+    "underdeep:bloodthorn_planks": 4
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "whittle_sticks",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "boatwright"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@LUMBER": 2
+   },
+   "outputs": {
+    "minecraft:stick": 4
+   },
+   "byproducts": {},
+   "hours": 0.1,
+   "maxPerDay": 32,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "burn_charcoal",
+   "kind": "process",
+   "professions": [
+    "forester",
+    "smelter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@TIMBER": 1
+   },
+   "outputs": {
+    "minecraft:charcoal": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 12,
+   "skill": "FORESTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "make_flower_pots",
+   "kind": "process",
+   "professions": [
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:sand": 3
+   },
+   "outputs": {
+    "minecraft:flower_pot": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 6,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "smelt_stone",
+   "kind": "process",
+   "professions": [
+    "stonemason",
+    "smelter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:cobblestone": 1
+   },
+   "outputs": {
+    "minecraft:stone": 1
+   },
+   "byproducts": {},
+   "hours": 0.15,
+   "maxPerDay": 48,
+   "skill": "MASONRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cut_stone_bricks",
+   "kind": "process",
+   "professions": [
+    "stonemason"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:stone": 1
+   },
+   "outputs": {
+    "minecraft:stone_bricks": 1
+   },
+   "byproducts": {},
+   "hours": 0.1,
+   "maxPerDay": 48,
+   "skill": "MASONRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "cut_deepslate_bricks",
+   "kind": "process",
+   "professions": [
+    "stonemason"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:cobbled_deepslate": 1
+   },
+   "outputs": {
+    "minecraft:deepslate_bricks": 1
+   },
+   "byproducts": {},
+   "hours": 0.15,
+   "maxPerDay": 40,
+   "skill": "MASONRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "make_glass",
+   "kind": "process",
+   "professions": [
+    "smelter",
+    "lampwright",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:sand": 1
+   },
+   "outputs": {
+    "minecraft:glass": 1
+   },
+   "byproducts": {},
+   "hours": 0.15,
+   "maxPerDay": 40,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "cut_panes",
+   "kind": "process",
+   "professions": [
+    "lampwright",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:glass": 6
+   },
+   "outputs": {
+    "minecraft:glass_pane": 16
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 12,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "blow_bottles",
+   "kind": "process",
+   "professions": [
+    "lampwright",
+    "alchemist",
+    "brewer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:glass": 3
+   },
+   "outputs": {
+    "minecraft:glass_bottle": 3
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 12,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "make_torches",
+   "kind": "process",
+   "professions": [
+    "lampwright",
+    "miner"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@FUELSOLID": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "minecraft:torch": 4
+   },
+   "byproducts": {},
+   "hours": 0.1,
+   "maxPerDay": 24,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_lanterns",
+   "kind": "process",
+   "professions": [
+    "lampwright"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_nugget": 8,
+    "minecraft:torch": 1
+   },
+   "outputs": {
+    "minecraft:lantern": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "smelt_iron",
+   "kind": "process",
+   "professions": [
+    "smelter",
+    "blacksmith",
+    "engineer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:raw_iron": 1
+   },
+   "outputs": {
+    "minecraft:iron_ingot": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.125
+  },
+  {
+   "id": "smelt_copper",
+   "kind": "process",
+   "professions": [
+    "smelter",
+    "engineer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:raw_copper": 1
+   },
+   "outputs": {
+    "minecraft:copper_ingot": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 32,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.125
+  },
+  {
+   "id": "smelt_gold",
+   "kind": "process",
+   "professions": [
+    "smelter",
+    "gemcutter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:raw_gold": 1
+   },
+   "outputs": {
+    "minecraft:gold_ingot": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 16,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.125
+  },
+  {
+   "id": "smelt_umbralite",
+   "kind": "process",
+   "professions": [
+    "smelter",
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:raw_umbralite": 1
+   },
+   "outputs": {
+    "underdeep:umbralite_ingot": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.25
+  },
+  {
+   "id": "smelt_starsilver",
+   "kind": "process",
+   "professions": [
+    "smelter",
+    "astronomer",
+    "lampwright"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:raw_starsilver": 1
+   },
+   "outputs": {
+    "underdeep:starsilver_ingot": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.25
+  },
+  {
+   "id": "cut_nuggets",
+   "kind": "process",
+   "professions": [
+    "blacksmith",
+    "lampwright"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 1
+   },
+   "outputs": {
+    "minecraft:iron_nugget": 9
+   },
+   "byproducts": {},
+   "hours": 0.1,
+   "maxPerDay": 16,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_pickaxes",
+   "kind": "process",
+   "professions": [
+    "blacksmith",
+    "engineer"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "minecraft:iron_ingot": 3,
+    "minecraft:stick": 2
+   },
+   "outputs": {
+    "minecraft:iron_pickaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 4,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_axes",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "minecraft:iron_ingot": 3,
+    "minecraft:stick": 2
+   },
+   "outputs": {
+    "minecraft:iron_axe": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 4,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_shovels",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 1,
+    "minecraft:stick": 2
+   },
+   "outputs": {
+    "minecraft:iron_shovel": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 6,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_hoes",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 2,
+    "minecraft:stick": 2
+   },
+   "outputs": {
+    "minecraft:iron_hoe": 1
+   },
+   "byproducts": {},
+   "hours": 0.7,
+   "maxPerDay": 4,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_shears",
+   "kind": "process",
+   "professions": [
+    "blacksmith",
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 2
+   },
+   "outputs": {
+    "minecraft:shears": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 4,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_buckets",
+   "kind": "process",
+   "professions": [
+    "blacksmith",
+    "engineer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 3
+   },
+   "outputs": {
+    "minecraft:bucket": 1
+   },
+   "byproducts": {},
+   "hours": 0.6,
+   "maxPerDay": 4,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_swords",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [
+    "WORKSHOP"
+   ],
+   "inputs": {
+    "minecraft:iron_ingot": 2,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "minecraft:iron_sword": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_helmets",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 5
+   },
+   "outputs": {
+    "minecraft:iron_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.5,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "forge_chestplates",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 8
+   },
+   "outputs": {
+    "minecraft:iron_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 1,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "build_shields",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@LUMBER": 6,
+    "minecraft:iron_ingot": 1
+   },
+   "outputs": {
+    "minecraft:shield": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "craft_bows",
+   "kind": "process",
+   "professions": [
+    "carpenter",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:stick": 3,
+    "minecraft:string": 3
+   },
+   "outputs": {
+    "minecraft:bow": 1
+   },
+   "byproducts": {},
+   "hours": 0.7,
+   "maxPerDay": 4,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "craft_fishing_rods",
+   "kind": "process",
+   "professions": [
+    "boatwright",
+    "fisher",
+    "carpenter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:stick": 3,
+    "minecraft:string": 2
+   },
+   "outputs": {
+    "minecraft:fishing_rod": 1
+   },
+   "byproducts": {},
+   "hours": 0.4,
+   "maxPerDay": 6,
+   "skill": "CARPENTRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "craft_leads",
+   "kind": "process",
+   "professions": [
+    "tailor",
+    "rancher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:string": 4
+   },
+   "outputs": {
+    "minecraft:lead": 2
+   },
+   "byproducts": {},
+   "hours": 0.4,
+   "maxPerDay": 6,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "knap_stone_picks",
+   "kind": "process",
+   "professions": [
+    "miner",
+    "stonemason"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:cobblestone": 3,
+    "minecraft:stick": 2
+   },
+   "outputs": {
+    "minecraft:stone_pickaxe": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 6,
+   "skill": "MASONRY",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "tan_hides",
+   "kind": "process",
+   "professions": [
+    "tailor",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:hide": 1
+   },
+   "outputs": {
+    "minecraft:leather": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 12,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "spin_wool",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:string": 4
+   },
+   "outputs": {
+    "minecraft:white_wool": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 16,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "spin_silk",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:silk_strand": 2
+   },
+   "outputs": {
+    "minecraft:string": 3
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 16,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "felt_fur",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fur_tuft": 3
+   },
+   "outputs": {
+    "minecraft:white_wool": 1
+   },
+   "byproducts": {},
+   "hours": 0.4,
+   "maxPerDay": 12,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "twist_voidroot",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:voidroot_fiber": 2
+   },
+   "outputs": {
+    "minecraft:string": 3
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 16,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "sew_leather_coats",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:leather": 8
+   },
+   "outputs": {
+    "minecraft:leather_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.5,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "stitch_harnesses",
+   "kind": "process",
+   "professions": [
+    "tailor",
+    "rancher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:leather": 4,
+    "minecraft:iron_ingot": 1
+   },
+   "outputs": {
+    "underdeep:harness": 1
+   },
+   "byproducts": {},
+   "hours": 1.5,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "bind_books",
+   "kind": "process",
+   "professions": [
+    "scholar",
+    "cartographer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:leather": 1,
+    "underdeep:voidroot_fiber": 3
+   },
+   "outputs": {
+    "minecraft:book": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "RESEARCH",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "make_poultices",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mendleaf_sprig": 2
+   },
+   "outputs": {
+    "underdeep:mendleaf_poultice": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "make_salves",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sunleaf_blossom": 2,
+    "underdeep:creature_oil": 1
+   },
+   "outputs": {
+    "underdeep:sunleaf_salve": 1
+   },
+   "byproducts": {},
+   "hours": 0.6,
+   "maxPerDay": 6,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "brew_draughts",
+   "kind": "process",
+   "professions": [
+    "alchemist",
+    "healer",
+    "brewer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:moonpetal_petal": 2,
+    "minecraft:glass_bottle": 1
+   },
+   "outputs": {
+    "underdeep:moonpetal_draught": 1
+   },
+   "byproducts": {},
+   "hours": 0.8,
+   "maxPerDay": 4,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "brew_tonics",
+   "kind": "process",
+   "professions": [
+    "alchemist",
+    "brewer",
+    "healer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberwort_root": 2,
+    "minecraft:glass_bottle": 1
+   },
+   "outputs": {
+    "underdeep:emberwort_tonic": 1
+   },
+   "byproducts": {},
+   "hours": 0.8,
+   "maxPerDay": 4,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "distil_antidotes",
+   "kind": "process",
+   "professions": [
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:venom_gland": 1,
+    "underdeep:bogwort_leaf": 2,
+    "minecraft:glass_bottle": 1
+   },
+   "outputs": {
+    "underdeep:antidote_tincture": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "cut_jasper",
+   "kind": "process",
+   "professions": [
+    "gemcutter",
+    "stonemason",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:jasper": 9
+   },
+   "outputs": {
+    "underdeep:jasper_block": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "cut_malachite",
+   "kind": "process",
+   "professions": [
+    "gemcutter",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:malachite": 9
+   },
+   "outputs": {
+    "underdeep:malachite_block": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "cut_cryolite",
+   "kind": "process",
+   "professions": [
+    "gemcutter",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:cryolite": 9
+   },
+   "outputs": {
+    "underdeep:cryolite_block": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "cut_galvanite",
+   "kind": "process",
+   "professions": [
+    "gemcutter",
+    "engineer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:galvanite": 9
+   },
+   "outputs": {
+    "underdeep:galvanite_block": 1
+   },
+   "byproducts": {},
+   "hours": 1,
+   "maxPerDay": 3,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "grind_spyglasses",
+   "kind": "process",
+   "professions": [
+    "astronomer",
+    "lampwright",
+    "engineer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 2,
+    "minecraft:amethyst_shard": 1
+   },
+   "outputs": {
+    "minecraft:spyglass": 1
+   },
+   "byproducts": {},
+   "hours": 1.5,
+   "maxPerDay": 2,
+   "skill": "RESEARCH",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "assemble_compasses",
+   "kind": "process",
+   "professions": [
+    "cartographer",
+    "navigator",
+    "engineer"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 4,
+    "minecraft:redstone": 1
+   },
+   "outputs": {
+    "minecraft:compass": 1
+   },
+   "byproducts": {},
+   "hours": 1.5,
+   "maxPerDay": 2,
+   "skill": "RESEARCH",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "assemble_clocks",
+   "kind": "process",
+   "professions": [
+    "astronomer",
+    "engineer",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:gold_ingot": 4,
+    "minecraft:redstone": 1
+   },
+   "outputs": {
+    "minecraft:clock": 1
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 1,
+   "skill": "RESEARCH",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "gild_apples",
+   "kind": "process",
+   "professions": [
+    "alchemist",
+    "artisan"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:honeyfruit": 1,
+    "minecraft:gold_ingot": 8
+   },
+   "outputs": {
+    "minecraft:golden_apple": 1
+   },
+   "byproducts": {},
+   "hours": 2,
+   "maxPerDay": 1,
+   "skill": "CRAFTING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  }
+ ]
+}

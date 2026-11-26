@@ -1,0 +1,785 @@
+{
+ "currency": "minecraft:emerald",
+ "goods": [
+  {
+   "item": "underdeep:glowgrain",
+   "category": "GRAIN",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:mire_rice",
+   "category": "GRAIN",
+   "value": 0.08
+  },
+  {
+   "item": "minecraft:wheat",
+   "category": "GRAIN",
+   "value": 0.07
+  },
+  {
+   "item": "underdeep:sunbean",
+   "category": "PRODUCE",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:duskroot",
+   "category": "PRODUCE",
+   "value": 0.07
+  },
+  {
+   "item": "underdeep:frost_turnip",
+   "category": "PRODUCE",
+   "value": 0.07
+  },
+  {
+   "item": "underdeep:lake_chestnut",
+   "category": "PRODUCE",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:emberpepper",
+   "category": "PRODUCE",
+   "value": 0.1
+  },
+  {
+   "item": "minecraft:potato",
+   "category": "PRODUCE",
+   "value": 0.05
+  },
+  {
+   "item": "minecraft:carrot",
+   "category": "PRODUCE",
+   "value": 0.05
+  },
+  {
+   "item": "underdeep:duskberries",
+   "category": "PRODUCE",
+   "value": 0.06
+  },
+  {
+   "item": "underdeep:cliffberries",
+   "category": "PRODUCE",
+   "value": 0.06
+  },
+  {
+   "item": "underdeep:snowberries",
+   "category": "PRODUCE",
+   "value": 0.06
+  },
+  {
+   "item": "underdeep:honeyfruit",
+   "category": "PRODUCE",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:sea_grapes",
+   "category": "PRODUCE",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:briar_fruit",
+   "category": "PRODUCE",
+   "value": 0.07
+  },
+  {
+   "item": "underdeep:inkcap",
+   "category": "PRODUCE",
+   "value": 0.06
+  },
+  {
+   "item": "underdeep:puffcap",
+   "category": "PRODUCE",
+   "value": 0.06
+  },
+  {
+   "item": "underdeep:rimecap",
+   "category": "PRODUCE",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:cave_truffle",
+   "category": "PRODUCE",
+   "value": 0.25
+  },
+  {
+   "item": "minecraft:brown_mushroom",
+   "category": "PRODUCE",
+   "value": 0.05
+  },
+  {
+   "item": "minecraft:red_mushroom",
+   "category": "PRODUCE",
+   "value": 0.05
+  },
+  {
+   "item": "underdeep:game_meat",
+   "category": "MEAT",
+   "value": 0.15
+  },
+  {
+   "item": "underdeep:shellmeat",
+   "category": "MEAT",
+   "value": 0.14
+  },
+  {
+   "item": "underdeep:fish_fillet",
+   "category": "FISH",
+   "value": 0.12
+  },
+  {
+   "item": "minecraft:cod",
+   "category": "FISH",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:glowgrain_bread",
+   "category": "PREPARED_FOOD",
+   "value": 0.3
+  },
+  {
+   "item": "minecraft:bread",
+   "category": "PREPARED_FOOD",
+   "value": 0.25
+  },
+  {
+   "item": "underdeep:baked_duskroot",
+   "category": "PREPARED_FOOD",
+   "value": 0.18
+  },
+  {
+   "item": "underdeep:baked_turnip",
+   "category": "PREPARED_FOOD",
+   "value": 0.18
+  },
+  {
+   "item": "underdeep:roasted_chestnut",
+   "category": "PREPARED_FOOD",
+   "value": 0.18
+  },
+  {
+   "item": "underdeep:roasted_inkcap",
+   "category": "PREPARED_FOOD",
+   "value": 0.15
+  },
+  {
+   "item": "underdeep:roasted_truffle",
+   "category": "PREPARED_FOOD",
+   "value": 0.5
+  },
+  {
+   "item": "underdeep:cooked_game_meat",
+   "category": "PREPARED_FOOD",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:cooked_fish_fillet",
+   "category": "PREPARED_FOOD",
+   "value": 0.28
+  },
+  {
+   "item": "underdeep:cooked_shellmeat",
+   "category": "PREPARED_FOOD",
+   "value": 0.28
+  },
+  {
+   "item": "underdeep:cavern_stew",
+   "category": "PREPARED_FOOD",
+   "value": 0.6
+  },
+  {
+   "item": "underdeep:sunbean_stew",
+   "category": "PREPARED_FOOD",
+   "value": 0.6
+  },
+  {
+   "item": "underdeep:rice_bowl",
+   "category": "PREPARED_FOOD",
+   "value": 0.5
+  },
+  {
+   "item": "minecraft:baked_potato",
+   "category": "PREPARED_FOOD",
+   "value": 0.15
+  },
+  {
+   "item": "minecraft:cooked_cod",
+   "category": "PREPARED_FOOD",
+   "value": 0.22
+  },
+  {
+   "item": "underdeep:duskoak_log",
+   "category": "TIMBER",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:lumenwood_log",
+   "category": "TIMBER",
+   "value": 0.14
+  },
+  {
+   "item": "underdeep:mirewillow_log",
+   "category": "TIMBER",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:frostfir_log",
+   "category": "TIMBER",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:goldwood_log",
+   "category": "TIMBER",
+   "value": 0.18
+  },
+  {
+   "item": "underdeep:spirebark_log",
+   "category": "TIMBER",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:bloodthorn_log",
+   "category": "TIMBER",
+   "value": 0.14
+  },
+  {
+   "item": "underdeep:cinderbark_log",
+   "category": "TIMBER",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:duskoak_planks",
+   "category": "LUMBER",
+   "value": 0.04
+  },
+  {
+   "item": "underdeep:lumenwood_planks",
+   "category": "LUMBER",
+   "value": 0.045
+  },
+  {
+   "item": "underdeep:mirewillow_planks",
+   "category": "LUMBER",
+   "value": 0.04
+  },
+  {
+   "item": "underdeep:frostfir_planks",
+   "category": "LUMBER",
+   "value": 0.04
+  },
+  {
+   "item": "underdeep:goldwood_planks",
+   "category": "LUMBER",
+   "value": 0.055
+  },
+  {
+   "item": "underdeep:spirebark_planks",
+   "category": "LUMBER",
+   "value": 0.04
+  },
+  {
+   "item": "underdeep:bloodthorn_planks",
+   "category": "LUMBER",
+   "value": 0.045
+  },
+  {
+   "item": "minecraft:stick",
+   "category": "LUMBER",
+   "value": 0.012
+  },
+  {
+   "item": "minecraft:cobblestone",
+   "category": "STONE",
+   "value": 0.02
+  },
+  {
+   "item": "minecraft:cobbled_deepslate",
+   "category": "STONE",
+   "value": 0.02
+  },
+  {
+   "item": "minecraft:basalt",
+   "category": "STONE",
+   "value": 0.025
+  },
+  {
+   "item": "minecraft:stone",
+   "category": "STONE",
+   "value": 0.03
+  },
+  {
+   "item": "minecraft:sand",
+   "category": "STONE",
+   "value": 0.02
+  },
+  {
+   "item": "minecraft:stone_bricks",
+   "category": "BUILDING",
+   "value": 0.05
+  },
+  {
+   "item": "minecraft:deepslate_bricks",
+   "category": "BUILDING",
+   "value": 0.055
+  },
+  {
+   "item": "minecraft:glass",
+   "category": "BUILDING",
+   "value": 0.06
+  },
+  {
+   "item": "minecraft:glass_pane",
+   "category": "BUILDING",
+   "value": 0.025
+  },
+  {
+   "item": "minecraft:torch",
+   "category": "BUILDING",
+   "value": 0.03
+  },
+  {
+   "item": "minecraft:lantern",
+   "category": "BUILDING",
+   "value": 0.45
+  },
+  {
+   "item": "minecraft:glass_bottle",
+   "category": "BUILDING",
+   "value": 0.03
+  },
+  {
+   "item": "minecraft:raw_iron",
+   "category": "ORE",
+   "value": 0.25
+  },
+  {
+   "item": "minecraft:raw_copper",
+   "category": "ORE",
+   "value": 0.1
+  },
+  {
+   "item": "minecraft:raw_gold",
+   "category": "ORE",
+   "value": 0.5
+  },
+  {
+   "item": "underdeep:raw_umbralite",
+   "category": "ORE",
+   "value": 0.7
+  },
+  {
+   "item": "underdeep:raw_starsilver",
+   "category": "ORE",
+   "value": 1.0
+  },
+  {
+   "item": "minecraft:redstone",
+   "category": "ORE",
+   "value": 0.08
+  },
+  {
+   "item": "minecraft:iron_ingot",
+   "category": "METAL",
+   "value": 0.4
+  },
+  {
+   "item": "minecraft:copper_ingot",
+   "category": "METAL",
+   "value": 0.15
+  },
+  {
+   "item": "minecraft:gold_ingot",
+   "category": "METAL",
+   "value": 0.8
+  },
+  {
+   "item": "underdeep:umbralite_ingot",
+   "category": "METAL",
+   "value": 1.2
+  },
+  {
+   "item": "underdeep:starsilver_ingot",
+   "category": "METAL",
+   "value": 1.6
+  },
+  {
+   "item": "minecraft:iron_nugget",
+   "category": "METAL",
+   "value": 0.045
+  },
+  {
+   "item": "minecraft:coal",
+   "category": "FUEL",
+   "value": 0.1
+  },
+  {
+   "item": "minecraft:charcoal",
+   "category": "FUEL",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:creature_oil",
+   "category": "FUEL",
+   "value": 0.15
+  },
+  {
+   "item": "underdeep:sulfur",
+   "category": "FUEL",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:niter",
+   "category": "FUEL",
+   "value": 0.08
+  },
+  {
+   "item": "minecraft:string",
+   "category": "FIBER",
+   "value": 0.05
+  },
+  {
+   "item": "underdeep:silk_strand",
+   "category": "FIBER",
+   "value": 0.15
+  },
+  {
+   "item": "underdeep:voidroot_fiber",
+   "category": "FIBER",
+   "value": 0.12
+  },
+  {
+   "item": "minecraft:white_wool",
+   "category": "FIBER",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:fur_tuft",
+   "category": "FIBER",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:hide",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.2
+  },
+  {
+   "item": "minecraft:leather",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:horn",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:scale",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.25
+  },
+  {
+   "item": "underdeep:plume",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:shell_fragment",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.1
+  },
+  {
+   "item": "minecraft:bone",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.03
+  },
+  {
+   "item": "underdeep:glow_gland",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.4
+  },
+  {
+   "item": "underdeep:venom_gland",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.5
+  },
+  {
+   "item": "underdeep:snapjaw_fang",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:creature_egg",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:mendleaf_sprig",
+   "category": "HERB",
+   "value": 0.15
+  },
+  {
+   "item": "underdeep:sunleaf_blossom",
+   "category": "HERB",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:moonpetal_petal",
+   "category": "HERB",
+   "value": 0.25
+  },
+  {
+   "item": "underdeep:emberwort_root",
+   "category": "HERB",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:bogwort_leaf",
+   "category": "HERB",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:siltwort_frond",
+   "category": "HERB",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:umbral_petal",
+   "category": "HERB",
+   "value": 0.35
+  },
+  {
+   "item": "underdeep:mendleaf_poultice",
+   "category": "MEDICINE",
+   "value": 0.6
+  },
+  {
+   "item": "underdeep:sunleaf_salve",
+   "category": "MEDICINE",
+   "value": 0.8
+  },
+  {
+   "item": "underdeep:moonpetal_draught",
+   "category": "MEDICINE",
+   "value": 1.0
+  },
+  {
+   "item": "underdeep:emberwort_tonic",
+   "category": "MEDICINE",
+   "value": 0.9
+  },
+  {
+   "item": "underdeep:antidote_tincture",
+   "category": "MEDICINE",
+   "value": 1.2
+  },
+  {
+   "item": "underdeep:jasper",
+   "category": "GEM",
+   "value": 0.4
+  },
+  {
+   "item": "underdeep:malachite",
+   "category": "GEM",
+   "value": 0.5
+  },
+  {
+   "item": "underdeep:cinnabar",
+   "category": "GEM",
+   "value": 0.4
+  },
+  {
+   "item": "underdeep:galvanite",
+   "category": "GEM",
+   "value": 0.6
+  },
+  {
+   "item": "underdeep:cryolite",
+   "category": "GEM",
+   "value": 0.5
+  },
+  {
+   "item": "underdeep:prismatic_opal",
+   "category": "GEM",
+   "value": 2.0
+  },
+  {
+   "item": "underdeep:glimmer_shard",
+   "category": "GEM",
+   "value": 0.6
+  },
+  {
+   "item": "minecraft:amethyst_shard",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:pearl",
+   "category": "GEM",
+   "value": 1.0
+  },
+  {
+   "item": "minecraft:lapis_lazuli",
+   "category": "GEM",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:jasper_block",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:malachite_block",
+   "category": "DECORATIVE",
+   "value": 5.0
+  },
+  {
+   "item": "underdeep:cryolite_block",
+   "category": "DECORATIVE",
+   "value": 5.0
+  },
+  {
+   "item": "underdeep:galvanite_block",
+   "category": "DECORATIVE",
+   "value": 6.0
+  },
+  {
+   "item": "underdeep:fossil_fragment",
+   "category": "DECORATIVE",
+   "value": 0.5
+  },
+  {
+   "item": "minecraft:flower_pot",
+   "category": "DECORATIVE",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:amber_glob",
+   "category": "SPECIALTY",
+   "value": 0.35
+  },
+  {
+   "item": "underdeep:starlily",
+   "category": "SPECIALTY",
+   "value": 0.8
+  },
+  {
+   "item": "underdeep:emberite",
+   "category": "SPECIALTY",
+   "value": 0.35
+  },
+  {
+   "item": "underdeep:crystal_husk",
+   "category": "SPECIALTY",
+   "value": 0.4
+  },
+  {
+   "item": "minecraft:iron_pickaxe",
+   "category": "TOOLS",
+   "value": 2.0
+  },
+  {
+   "item": "minecraft:iron_axe",
+   "category": "TOOLS",
+   "value": 2.0
+  },
+  {
+   "item": "minecraft:iron_shovel",
+   "category": "TOOLS",
+   "value": 0.9
+  },
+  {
+   "item": "minecraft:iron_hoe",
+   "category": "TOOLS",
+   "value": 1.2
+  },
+  {
+   "item": "minecraft:shears",
+   "category": "TOOLS",
+   "value": 1.0
+  },
+  {
+   "item": "minecraft:fishing_rod",
+   "category": "TOOLS",
+   "value": 0.5
+  },
+  {
+   "item": "minecraft:bucket",
+   "category": "TOOLS",
+   "value": 1.4
+  },
+  {
+   "item": "minecraft:stone_pickaxe",
+   "category": "TOOLS",
+   "value": 0.2
+  },
+  {
+   "item": "minecraft:iron_sword",
+   "category": "EQUIPMENT",
+   "value": 2.0
+  },
+  {
+   "item": "minecraft:shield",
+   "category": "EQUIPMENT",
+   "value": 1.2
+  },
+  {
+   "item": "minecraft:bow",
+   "category": "EQUIPMENT",
+   "value": 1.0
+  },
+  {
+   "item": "minecraft:iron_helmet",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "minecraft:iron_chestplate",
+   "category": "EQUIPMENT",
+   "value": 3.5
+  },
+  {
+   "item": "minecraft:leather_chestplate",
+   "category": "EQUIPMENT",
+   "value": 1.5
+  },
+  {
+   "item": "minecraft:lead",
+   "category": "EQUIPMENT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:harness",
+   "category": "EQUIPMENT",
+   "value": 2.0
+  },
+  {
+   "item": "minecraft:spyglass",
+   "category": "LUXURY",
+   "value": 2.0
+  },
+  {
+   "item": "minecraft:compass",
+   "category": "LUXURY",
+   "value": 1.6
+  },
+  {
+   "item": "minecraft:clock",
+   "category": "LUXURY",
+   "value": 2.6
+  },
+  {
+   "item": "minecraft:book",
+   "category": "LUXURY",
+   "value": 0.6
+  },
+  {
+   "item": "minecraft:cake",
+   "category": "LUXURY",
+   "value": 1.0
+  },
+  {
+   "item": "minecraft:golden_apple",
+   "category": "LUXURY",
+   "value": 6.0
+  }
+ ]
+}
