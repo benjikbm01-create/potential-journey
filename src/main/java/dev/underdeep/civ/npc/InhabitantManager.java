@@ -54,9 +54,34 @@ public final class InhabitantManager {
     final Map<Long, Map<Integer, InhabitantEntity>> active = new HashMap<>();
     public int spawned, returned, deaths;
 
+    public final Society society;
+
     private InhabitantManager(ServerWorld world) {
         this.world = world;
+        this.society = new Society(world, this);
     }
+
+    public boolean isActive(long settlement, int index) {
+        Map<Integer, InhabitantEntity> m = active.get(settlement);
+        return m != null && m.containsKey(index);
+    }
+
+    /** Every active inhabitant thinks now (tests and diagnostics). */
+    public void thinkAll() {
+        for (Map.Entry<Long, Map<Integer, InhabitantEntity>> en : active.entrySet()) {
+            SettlementRecord rec = SettlementState.get(world).get(en.getKey());
+            if (rec == null) {
+                continue;
+            }
+            for (InhabitantEntity e : new ArrayList<>(en.getValue().values())) {
+                if (e.isAlive() && e.recordIndex >= 0 && e.recordIndex < rec.inhabitants.size()) {
+                    society.think(e, rec, rec.inhabitants.get(e.recordIndex));
+                }
+            }
+        }
+    }
+
+    static boolean spawningBubble;
 
     public static void init() {
         INHABITANT = Registry.register(Registries.ENTITY_TYPE, Identifier.of(Underdeep.MOD_ID, "inhabitant"),
@@ -66,6 +91,12 @@ public final class InhabitantManager {
             InhabitantManager m = get(w);
             if (m != null) {
                 m.tick();
+            }
+        });
+        ServerEntityEvents.ENTITY_LOAD.register((e, w) -> {
+            // speech bubbles are transient: any left over from a crash are removed when loaded
+            if (!spawningBubble && e.getCommandTags().contains(Society.BUBBLE_TAG) && !e.hasVehicle()) {
+                e.discard();
             }
         });
         ServerEntityEvents.ENTITY_UNLOAD.register((e, w) -> {
@@ -92,6 +123,11 @@ public final class InhabitantManager {
         Map<Integer, InhabitantEntity> m = active.get(e.settlementId);
         if (m != null && m.get(e.recordIndex) == e) {
             m.remove(e.recordIndex);
+            SettlementRecord rec = SettlementState.get(world).get(e.settlementId);
+            Places pl = rec == null ? null : society.places(rec);
+            if (pl != null) {
+                pl.release(e.recordIndex);
+            }
             if (e.isAlive()) {
                 returned++;
             }
@@ -119,7 +155,30 @@ public final class InhabitantManager {
     // ================================================================== tick
 
     private void tick() {
-        if (world.getTime() % 20 != 7) {
+        society.tickBubbles();
+        // active tier: each embodied inhabitant thinks once per second, staggered over the second
+        long t = world.getTime();
+        for (Map.Entry<Long, Map<Integer, InhabitantEntity>> en : active.entrySet()) {
+            SettlementRecord rec = null;
+            for (InhabitantEntity e : new ArrayList<>(en.getValue().values())) {
+                if (!e.isAlive() || (e.getId() + t) % 20 != 0) {
+                    continue;
+                }
+                if (rec == null) {
+                    rec = SettlementState.get(world).get(en.getKey());
+                    if (rec == null) {
+                        break;
+                    }
+                }
+                if (e.recordIndex >= 0 && e.recordIndex < rec.inhabitants.size()) {
+                    society.think(e, rec, rec.inhabitants.get(e.recordIndex));
+                }
+            }
+        }
+        if (t % 2 == 0) {
+            society.abstractStep(UnderdeepConfig.get(), world.getPlayers(p -> !p.isSpectator()));
+        }
+        if (t % 20 != 7) {
             return;
         }
         SettlementMap map = Settlements.of(world);
@@ -194,15 +253,32 @@ public final class InhabitantManager {
             BlockPos gather = gathers.isEmpty() ? null : gathers.get((int) Math.floorMod(r.appearance >> 8, (long) gathers.size()));
             BlockPos doorstep = r.home >= 0 && r.home < plan.buildings().size() ? plan.buildings().get(r.home).entrance() : null;
             e.bind(rec, r, gather, doorstep);
-            BlockPos at = e.spotFor(e.activity());
+            // the mind is the authority: bring it up to date, then appear where its current activity takes place
+            Places pl = society.places(rec);
+            if (pl == null || r.mind == null) {
+                continue;
+            }
+            society.simulate(rec, r, world.getTime());
+            dev.underdeep.civ.mind.Activity act = dev.underdeep.civ.mind.Activity.byOrdinal(r.mind.activity);
+            if (act == null) {
+                act = dev.underdeep.civ.mind.Activity.STROLL;
+            }
+            BlockPos at = pl.resolve(rec, r, act, r.mind.activityTarget, world.getTime());
+            if (at == null) {
+                at = doorstep != null ? doorstep : r.bed;
+            }
             if (at == null || !world.isChunkLoaded(at.getX() >> 4, at.getZ() >> 4)) {
                 continue;
             }
+            e.goalPos = at;
+            e.goalActivity = act;
+            e.setHealth(Math.max(1f, e.getMaxHealth() * r.mind.health));
             e.refreshPositionAndAngles(at.getX() + 0.5, at.getY(), at.getZ() + 0.5, world.random.nextFloat() * 360, 0);
             if (world.spawnEntity(e)) {
                 mine.put(r.index, e);
                 spawned++;
-                if (e.activity() == InhabitantEntity.Activity.SLEEP && at.equals(r.bed)) {
+                if ((act == dev.underdeep.civ.mind.Activity.SLEEP || act == dev.underdeep.civ.mind.Activity.NAP
+                        || act == dev.underdeep.civ.mind.Activity.RECOVER) && at.equals(r.bed)) {
                     e.sleep(r.bed);
                 }
             }
@@ -302,6 +378,10 @@ public final class InhabitantManager {
         if (attacker instanceof InhabitantEntity) {
             return;
         }
+        InhabitantManager mgr = get(victim.getWorld());
+        if (mgr != null) {
+            mgr.society.attacked(victim, attacker);
+        }
         for (InhabitantEntity g : victim.getWorld().getEntitiesByClass(InhabitantEntity.class, victim.getBoundingBox().expand(24),
                 InhabitantEntity::isGuard)) {
             if (!(attacker instanceof PlayerEntity p && (p.isCreative() || p.isSpectator()))) {
@@ -319,6 +399,9 @@ public final class InhabitantManager {
         SettlementRecord.InhabitantRecord r = rec.inhabitants.get(e.recordIndex);
         r.alive = false;
         r.diedAt = w.getTime();
+        if (m != null) {
+            m.society.died(rec, e, r, source.getAttacker());
+        }
         if (source.getAttacker() instanceof PlayerEntity) {
             rec.deathsByPlayers++;
         }

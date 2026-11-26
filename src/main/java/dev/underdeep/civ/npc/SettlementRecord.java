@@ -217,6 +217,7 @@ public final class SettlementRecord {
                 r.mind = dev.underdeep.civ.mind.Mind.create(rec.civ, r.profession, r.appearance, now);
                 r.mind.household = r.home;
                 r.mind.origin = rec.name;
+                Society.startingPossessions(r.mind, r.profession, r.appearance);
                 changed = true;
             }
         }

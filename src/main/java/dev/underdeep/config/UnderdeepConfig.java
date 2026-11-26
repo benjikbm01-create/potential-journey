@@ -114,6 +114,33 @@ public final class UnderdeepConfig {
     /** Natural hostile spawns are blocked within a settlement's radius plus this margin. */
     public int settlementMonsterExclusion = 24;
 
+    // ---- Stage 5: living inhabitants ----
+    /** Memories kept per inhabitant (least important fade first). */
+    public int inhabitantMemoryLimit = 48;
+    /** Pieces of news/knowledge kept per inhabitant. */
+    public int inhabitantKnowledgeLimit = 12;
+    /** Frequency multiplier of conversations between inhabitants (0 disables them). */
+    public double npcConversationFrequency = 1.0;
+    /** Show what inhabitants say to each other as floating speech bubbles. */
+    public boolean speechBubbles = true;
+    /** How long a speech bubble stays visible, in seconds. */
+    public int speechBubbleSeconds = 4;
+    /** Inhabitant minds updated per server tick in the abstract tier (bounded work). */
+    public int mindUpdatesPerTick = 24;
+    /** Abstract update interval (ticks) for settlements near players / far from every player. */
+    public int abstractUpdateInterval = 1000;
+    public int distantUpdateInterval = 6000;
+    /** Settlements farther than this from every player use the distant interval. */
+    public int distantSimulationDistance = 512;
+    /** Companions: master switch, per-player limit, distance beyond which a companion relocates out of view. */
+    public boolean companionsEnabled = true;
+    public int maxCompanionsPerPlayer = 1;
+    public int companionRelocateDistance = 40;
+    /** When false (default) a defeated companion is incapacitated and recovers at home instead of dying. */
+    public boolean companionPermanentDeath = false;
+    /** Ticks before the same player can give the same inhabitant another gift that counts. */
+    public int giftCooldownTicks = 6000;
+
     public double densityFor(String ecosystem) {
         return wildlifeDensity * wildlifeDensityByEcosystem.getOrDefault(ecosystem, 1.0);
     }

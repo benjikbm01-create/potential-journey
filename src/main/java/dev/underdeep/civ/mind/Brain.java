@@ -57,11 +57,19 @@ public final class Brain {
         }
         // safety and health recover by themselves when nothing happens
         m.satisfy(Need.SAFETY, 0.25 * h);
-        m.satisfy(Need.HEALTH, 0.05 * h);
         Activity a = Activity.byOrdinal(m.activity);
+        double heal = a == Activity.RECOVER || a == Activity.SEE_HEALER ? 0.09 : a == Activity.SLEEP || a == Activity.NAP ? 0.05 : 0.025;
+        m.health = (float) Math.min(1, m.health + heal * h);
+        m.needs[Need.HEALTH.ordinal()] = m.health;
+        if (m.status == Mind.Status.RECOVERING && m.health >= 0.8f) {
+            m.status = Mind.Status.ACTIVE;
+        } else if (m.status == Mind.Status.ACTIVE && m.health < 0.4f) {
+            m.status = Mind.Status.RECOVERING;
+        }
         if (a != null) {
             a.apply(m, h);
         }
+        m.needs[Need.HEALTH.ordinal()] = m.health; // health is tracked by the health value itself
         double res = 0.7 + 0.6 * (m.trait(Trait.RESILIENCE) / 100.0);
         for (Emotion e : Emotion.values()) {
             double keep = Math.pow(e.hourlyRetention(), h * (e.negative() ? res : 1.0));
@@ -128,6 +136,12 @@ public final class Brain {
             if (u <= 0) {
                 continue;
             }
+            if (m.age == Mind.Age.YOUNG) {
+                // the young help out a little and play a lot
+                u = a.cat == Activity.Cat.WORK ? u * 0.5 : a == Activity.PLAY_GAME || a == Activity.STROLL || a == Activity.WATCH_WILDLIFE ? u + 0.5 : u;
+            } else if (m.age == Mind.Age.ELDER) {
+                u = a.cat == Activity.Cat.WORK ? u * 0.8 : a == Activity.SIT_AND_REST || a == Activity.READ || a == Activity.TEACH_APPRENTICE ? u + 0.35 : u;
+            }
             u *= 0.92 + rnd.nextDouble() * 0.16; // small individual variation
             if (u > bestU) {
                 bestU = u;
@@ -166,6 +180,7 @@ public final class Brain {
         }
         m.activity = ch.activity().ordinal();
         m.activitySince = now;
+        m.activityTarget = ch.target();
         m.reason = ch.reason();
     }
 

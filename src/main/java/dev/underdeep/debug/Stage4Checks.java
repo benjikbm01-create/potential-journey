@@ -254,15 +254,18 @@ final class Stage4Checks {
         // routine: at midday workers head for their workplace; at night everyone with a bed sleeps there
         var list = new java.util.ArrayList<>(m.activeEntities(s.id()));
         int working = 0;
+        m.thinkAll();
         for (var e : list) {
-            working += e.activity() == dev.underdeep.civ.npc.InhabitantEntity.Activity.WORK
-                    || e.activity() == dev.underdeep.civ.npc.InhabitantEntity.Activity.PATROL ? 1 : 0;
+            working += e.current().cat == dev.underdeep.civ.mind.Activity.Cat.WORK ? 1 : 0;
         }
         w.setTimeOfDay(day - day % 24000 + 18000);
         int sleepers = 0, inBed = 0;
         for (int i = 0; i < 1200; i++) {
             if (w.getLevelProperties() instanceof net.minecraft.world.level.ServerWorldProperties props) {
                 props.setTime(w.getTime() + 1);
+            }
+            if (i % 20 == 0) {
+                m.thinkAll();
             }
             for (var e : list) {
                 if (e.isAlive()) {
@@ -272,7 +275,7 @@ final class Stage4Checks {
             }
         }
         for (var e : list) {
-            if (e.activity() == dev.underdeep.civ.npc.InhabitantEntity.Activity.SLEEP) {
+            if (e.current() == dev.underdeep.civ.mind.Activity.SLEEP) {
                 sleepers++;
                 inBed += e.isSleeping() ? 1 : 0;
             }

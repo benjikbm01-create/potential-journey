@@ -179,6 +179,8 @@ public final class Mind {
     /** Current activity (ordinal into the activity library) and when it began; persisted for tier continuity. */
     public int activity = -1;
     public long activitySince;
+    /** Partner of the current activity (record index) or −1. */
+    public int activityTarget = -1;
     public long lastUpdate = -1;
     public long lastSocial;
     /** Companion affiliation. */
@@ -403,6 +405,7 @@ public final class Mind {
         n.putInt("skill", skill);
         n.putInt("activity", activity);
         n.putLong("activitySince", activitySince);
+        n.putInt("activityTarget", activityTarget);
         n.putLong("updated", lastUpdate);
         n.putLong("social", lastSocial);
         if (companionOf != null) {
@@ -494,6 +497,7 @@ public final class Mind {
         m.skill = n.getInt("skill");
         m.activity = n.contains("activity") ? n.getInt("activity") : -1;
         m.activitySince = n.getLong("activitySince");
+        m.activityTarget = n.contains("activityTarget") ? n.getInt("activityTarget") : -1;
         m.lastUpdate = n.getLong("updated");
         m.lastSocial = n.getLong("social");
         m.companionOf = n.containsUuid("companionOf") ? n.getUuid("companionOf") : null;

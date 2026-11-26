@@ -1,6 +1,7 @@
 package dev.underdeep.civ.npc;
 
 import dev.underdeep.civ.Civilization;
+import dev.underdeep.civ.mind.Activity;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -171,22 +172,25 @@ public class InhabitantEntity extends MerchantEntity {
     protected void initGoals() {
         goalSelector.add(0, new SwimGoal(this));
         goalSelector.add(1, new StopFollowingCustomerGoal(this));
-        goalSelector.add(1, new FleeEntityGoal<>(this, HostileEntity.class, 10, 0.6, 0.75, e -> !isGuard()));
+        goalSelector.add(1, new FleeEntityGoal<>(this, HostileEntity.class, 10, 0.6, 0.75, e -> !isGuard() && !defending));
+        goalSelector.add(1, new FleeEntityGoal<>(this, dev.underdeep.wildlife.UnderdeepCreature.class, 9, 0.6, 0.75,
+                e -> !isGuard() && !defending && e instanceof dev.underdeep.wildlife.UnderdeepCreature c && !c.isTamed()
+                        && c.species().temperament() == dev.underdeep.wildlife.CreatureSpecies.Temperament.AMBUSH));
         goalSelector.add(2, new MeleeAttackGoal(this, 0.8, true) {
             @Override
             public boolean canStart() {
-                return isGuard() && super.canStart();
+                return (isGuard() || defending) && super.canStart();
             }
         });
         goalSelector.add(2, new LookAtCustomerGoal(this));
         goalSelector.add(3, new LongDoorInteractGoal(this, true));
-        goalSelector.add(4, new ScheduleGoal(this));
+        goalSelector.add(4, new MindGoal(this));
         goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 6));
         goalSelector.add(9, new LookAroundGoal(this));
         targetSelector.add(1, new RevengeGoal(this) {
             @Override
             public boolean canStart() {
-                return isGuard() && super.canStart();
+                return (isGuard() || defending) && super.canStart();
             }
         });
         targetSelector.add(2, new ActiveTargetGoal<>(this, HostileEntity.class, 10, true, false, e -> isGuard()) {
@@ -203,13 +207,38 @@ public class InhabitantEntity extends MerchantEntity {
         return super.tryAttack(target);
     }
 
-    /** Daily routine: sleep in their bed at night, work by day, gather in the evening; guards patrol. */
-    static final class ScheduleGoal extends Goal {
+    // ---- Stage 5: state set by the society simulation each "thought" (once per second)
+    /** Where the current activity happens and what it is. */
+    @Nullable public BlockPos goalPos;
+    public Activity goalActivity = Activity.STROLL;
+    @Nullable public LivingEntity danger;
+    public boolean defending;
+    /** Conversation: face the partner and pause until this age. */
+    int talkUntil;
+    @Nullable net.minecraft.entity.Entity talkPartner;
+
+    public void talkTo(net.minecraft.entity.Entity other, int ticks) {
+        talkPartner = other;
+        talkUntil = age + ticks;
+        getNavigation().stop();
+    }
+
+    /** The current activity (from the inhabitant's mind). */
+    public Activity current() {
+        return goalActivity;
+    }
+
+    private static boolean sleeps(Activity a) {
+        return a == Activity.SLEEP || a == Activity.NAP || a == Activity.RECOVER;
+    }
+
+    /** Walks to where the mind's chosen activity happens and performs it there. */
+    static final class MindGoal extends Goal {
         private final InhabitantEntity e;
         private BlockPos target;
         private int repath, stuck, workTimer;
 
-        ScheduleGoal(InhabitantEntity e) {
+        MindGoal(InhabitantEntity e) {
             this.e = e;
             setControls(EnumSet.of(Control.MOVE, Control.LOOK));
         }
@@ -226,21 +255,26 @@ public class InhabitantEntity extends MerchantEntity {
 
         @Override
         public void stop() {
-            if (e.isSleeping() && e.activity() != Activity.SLEEP) {
+            if (e.isSleeping() && !sleeps(e.goalActivity)) {
                 e.wakeUp();
             }
         }
 
         @Override
         public void tick() {
-            Activity a = e.activity();
-            if (e.isSleeping() && a != Activity.SLEEP) {
+            Activity a = e.goalActivity;
+            if (e.isSleeping() && !sleeps(a)) {
                 e.wakeUp();
             }
             if (e.isSleeping()) {
                 return;
             }
-            BlockPos want = e.spotFor(a);
+            if (e.talkUntil > e.age && e.talkPartner != null && e.talkPartner.isAlive()) {
+                e.getNavigation().stop();
+                e.getLookControl().lookAt(e.talkPartner, 30, 30);
+                return;
+            }
+            BlockPos want = e.goalPos;
             if (want == null) {
                 return;
             }
@@ -249,11 +283,13 @@ public class InhabitantEntity extends MerchantEntity {
                 repath = 0;
                 stuck = 0;
             }
+            double speed = a.emergency() ? 0.75 : a == Activity.STROLL || a.cat == Activity.Cat.LEISURE ? 0.45 : 0.55;
             double d2 = e.squaredDistanceTo(Vec3d.ofBottomCenter(target));
-            if (d2 > 2.6 * 2.6) {
+            double near = a.place == Activity.Place.PLAZA || a.place == Activity.Place.MARKET || a.place == Activity.Place.TAVERN ? 3.5 : 2.6;
+            if (d2 > near * near) {
                 if (--repath <= 0 || e.getNavigation().isIdle()) {
                     repath = 40;
-                    boolean ok = e.getNavigation().startMovingTo(target.getX() + 0.5, target.getY(), target.getZ() + 0.5, 0.55);
+                    boolean ok = e.getNavigation().startMovingTo(target.getX() + 0.5, target.getY(), target.getZ() + 0.5, speed);
                     if (!ok) {
                         stuck += 40;
                     }
@@ -266,66 +302,43 @@ public class InhabitantEntity extends MerchantEntity {
                 return;
             }
             stuck = 0;
-            switch (a) {
-                case SLEEP -> {
-                    BlockState s = e.getWorld().getBlockState(target);
-                    if (s.getBlock() instanceof BedBlock && !s.get(BedBlock.OCCUPIED)) {
-                        e.getNavigation().stop();
-                        e.sleep(target);
-                    }
-                }
-                case WORK -> {
+            if (sleeps(a)) {
+                BlockState s = e.getWorld().getBlockState(target);
+                if (s.getBlock() instanceof BedBlock && !s.get(BedBlock.OCCUPIED)) {
                     e.getNavigation().stop();
-                    e.getLookControl().lookAt(target.getX() + 0.5, target.getY() + 0.5, target.getZ() + 0.5);
-                    if (++workTimer % 50 == 0) {
-                        e.swingHand(Hand.MAIN_HAND);
-                        e.workEffect(target);
-                    }
+                    e.sleep(target);
                 }
-                default -> {
-                    if (e.getNavigation().isIdle() && e.getRandom().nextInt(80) == 0) {
-                        BlockPos p = target.add(e.getRandom().nextInt(7) - 3, 0, e.getRandom().nextInt(7) - 3);
-                        e.getNavigation().startMovingTo(p.getX() + 0.5, p.getY(), p.getZ() + 0.5, 0.45);
-                    }
+                return;
+            }
+            if (a.cat == Activity.Cat.WORK && a != Activity.PATROL && a != Activity.GATHER_HERBS || a == Activity.TEACH_APPRENTICE) {
+                e.getNavigation().stop();
+                e.getLookControl().lookAt(target.getX() + 0.5, target.getY() + 0.5, target.getZ() + 0.5);
+                if (++workTimer % 50 == 0) {
+                    e.swingHand(Hand.MAIN_HAND);
+                    e.workEffect(target);
+                }
+                return;
+            }
+            if ((a == Activity.EAT_HOME || a == Activity.EAT_TAVERN || a == Activity.SHARE_MEAL) && ++workTimer % 60 == 0) {
+                e.playSound(SoundEvents.ENTITY_GENERIC_EAT, 0.5f, 1.0f);
+            }
+            if (a == Activity.WATCH_WILDLIFE && e.danger == null) {
+                net.minecraft.entity.Entity w = e.getWorld().getClosestEntity(dev.underdeep.wildlife.UnderdeepCreature.class,
+                        net.minecraft.entity.ai.TargetPredicate.DEFAULT, e, e.getX(), e.getY(), e.getZ(), e.getBoundingBox().expand(16));
+                if (w != null) {
+                    e.getLookControl().lookAt(w, 20, 20);
                 }
             }
-        }
-    }
-
-    public enum Activity { SLEEP, WORK, GATHER, WANDER, PATROL }
-
-    public Activity activity() {
-        long t = getWorld().getTimeOfDay() % 24000;
-        boolean nightShift = (lookSeed & 1) == 0;
-        if (isGuard()) {
-            boolean night = t >= 12800 && t < 23500;
-            return night == nightShift ? Activity.PATROL : Activity.SLEEP;
-        }
-        if (t >= 1000 && t < 11500) {
-            return Activity.WORK;
-        }
-        if (t >= 11500 && t < 12800) {
-            return Activity.GATHER;
-        }
-        if (t >= 12800 && t < 23500) {
-            return Activity.SLEEP;
-        }
-        return Activity.WANDER;
-    }
-
-    /** Where the current activity takes place. */
-    @Nullable
-    BlockPos spotFor(Activity a) {
-        return switch (a) {
-            case SLEEP -> bed;
-            case WORK -> work != null ? work : gather != null ? gather : home;
-            case GATHER -> gather != null ? gather : home;
-            case PATROL -> {
-                long slot = getWorld().getTime() / 600 + lookSeed;
-                yield (slot & 1) == 0 && work != null ? work : gather != null ? gather : home;
+            if (a == Activity.TAKE_SHELTER || a == Activity.READ || a == Activity.SIT_AND_REST || a == Activity.STUDY) {
+                e.getNavigation().stop();
+                return;
             }
-            default -> home;
-        };
+            int range = a == Activity.STROLL || a == Activity.EXPLORE_NEARBY || a == Activity.PATROL ? 8 : 3;
+            if (e.getNavigation().isIdle() && e.getRandom().nextInt(a == Activity.STROLL ? 30 : 80) == 0) {
+                BlockPos p = target.add(e.getRandom().nextInt(range * 2 + 1) - range, 0, e.getRandom().nextInt(range * 2 + 1) - range);
+                e.getNavigation().startMovingTo(p.getX() + 0.5, p.getY(), p.getZ() + 0.5, 0.45);
+            }
+        }
     }
 
     /** Visible and audible work at a station; farmers tend crops around their field marker. */
@@ -408,7 +421,7 @@ public class InhabitantEntity extends MerchantEntity {
     @Override
     public boolean damage(DamageSource source, float amount) {
         boolean hurt = super.damage(source, amount);
-        if (hurt && !getWorld().isClient && source.getAttacker() instanceof LivingEntity attacker) {
+        if (hurt && !getWorld().isClient && source.getAttacker() instanceof LivingEntity attacker && !exhibit) {
             InhabitantManager.alarm(this, attacker);
         }
         return hurt;
