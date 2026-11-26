@@ -97,11 +97,13 @@ public final class WildlifeItems {
                 if (user.isSneaking()) {
                     page++;
                 }
-                var lines = WildlifeJournal.render(sp, page);
-                if (lines.size() <= 1 && page > 0) {
+                // wildlife pages first, then the people you have met (Stage 5)
+                int wildPages = Math.max(1, (WildlifeJournal.get(sp.getServer()).count(sp.getUuid()) + 7) / 8);
+                int total = wildPages + dev.underdeep.civ.npc.PeopleJournal.pages(sp);
+                if (page >= total) {
                     page = 0;
-                    lines = WildlifeJournal.render(sp, 0);
                 }
+                var lines = page < wildPages ? WildlifeJournal.render(sp, page) : dev.underdeep.civ.npc.PeopleJournal.render(sp, page - wildPages);
                 PAGES.put(sp.getUuid(), page);
                 for (Text t : lines) {
                     sp.sendMessage(t, false);

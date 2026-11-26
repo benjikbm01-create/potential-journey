@@ -115,6 +115,11 @@ public final class Preferences {
     /** Readable item name for dialogue. */
     public static String name(String id) {
         Item i = Registries.ITEM.get(Identifier.of(id));
-        return i == Items.AIR ? id : i.getName().getString().toLowerCase(java.util.Locale.ROOT);
+        String n = i == Items.AIR ? "" : i.getName().getString();
+        if (n.isEmpty() || n.startsWith("item.") || n.startsWith("block.")) {
+            // a dedicated server has no mod translations: derive a readable name from the id
+            n = id.substring(id.indexOf(':') + 1).replace('_', ' ');
+        }
+        return n.toLowerCase(java.util.Locale.ROOT);
     }
 }

@@ -303,6 +303,11 @@ def main():
     lang["message.underdeep.settlement.subtitle"] = "%s %s"
     lang["message.underdeep.inhabitant.greet"] = "%s, %s"
     lang["message.underdeep.inhabitant.busy"] = "%s has nothing to trade right now."
+    lang["message.underdeep.companion.incapacitated"] = "%s is badly hurt and withdraws to recover at home."
+    lang["message.underdeep.companion.none"] = "You have no companion. Befriend an inhabitant and ask them to travel with you."
+    lang["message.underdeep.people.header"] = "People you have met (%s)"
+    lang["message.underdeep.people.none"] = "You have not met anyone yet."
+    lang["screen.underdeep.dialogue"] = "Conversation"
     return lang
 
 

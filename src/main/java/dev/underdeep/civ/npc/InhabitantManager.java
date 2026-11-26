@@ -93,6 +93,9 @@ public final class InhabitantManager {
                 m.tick();
             }
         });
+        DialoguePayloads.init();
+        CompanionCommand.init();
+        net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents.DISCONNECT.register((h, server) -> Dialogue.close(h.player));
         ServerEntityEvents.ENTITY_LOAD.register((e, w) -> {
             // speech bubbles are transient: any left over from a crash are removed when loaded
             if (!spawningBubble && e.getCommandTags().contains(Society.BUBBLE_TAG) && !e.hasVehicle()) {
@@ -198,15 +201,28 @@ public final class InhabitantManager {
                 }
             }
         }
-        // return inhabitants of settlements nobody is near
+        // return inhabitants of settlements nobody is near (companions travelling with a player stay with them;
+        // a companion sent home keeps walking until no player is close enough to see it go)
+        SettlementState st = SettlementState.get(world);
         for (Long id : new ArrayList<>(active.keySet())) {
             if (!wanted.contains(id)) {
-                for (InhabitantEntity e : new ArrayList<>(active.get(id).values())) {
+                SettlementRecord rec = st.get(id);
+                Map<Integer, InhabitantEntity> mine = active.get(id);
+                for (InhabitantEntity e : new ArrayList<>(mine.values())) {
+                    SettlementRecord.InhabitantRecord r = rec == null || e.recordIndex >= rec.inhabitants.size() ? null : rec.inhabitants.get(e.recordIndex);
+                    if (r != null && r.mind != null && r.mind.companionOf != null
+                            && (Companions.travelling(r.mind) || world.getClosestPlayer(e, 32) != null)) {
+                        continue;
+                    }
                     e.discard();
+                    mine.remove(e.recordIndex);
                 }
-                active.remove(id);
+                if (mine.isEmpty()) {
+                    active.remove(id);
+                }
             }
         }
+        companionTick(st);
         for (Long id : wanted) {
             SettlementSite s = map.byId(id);
             if (s != null) {
@@ -230,7 +246,7 @@ public final class InhabitantManager {
         List<BlockPos> gathers = gatherPoints(plan);
         List<Object[]> candidates = new ArrayList<>();
         for (SettlementRecord.InhabitantRecord r : rec.inhabitants) {
-            if (!r.alive || mine.containsKey(r.index) || r.bed == null) {
+            if (!r.alive || mine.containsKey(r.index) || r.bed == null || r.mind != null && Companions.travelling(r.mind)) {
                 continue;
             }
             BlockPos spot = r.work != null ? r.work : r.bed;
@@ -286,6 +302,50 @@ public final class InhabitantManager {
         if (fresh) {
             Underdeep.LOGGER.info("Settlement {} ({}): {} of {} inhabitants present ({} candidates, time {})", rec.name, rec.civ.id(),
                     mine.size() - before, rec.alive(), candidates.size(), world.getTimeOfDay() % 24000);
+        }
+    }
+
+    /** Embodies travelling companions near their owners; they wait (abstractly) while the owner is away. */
+    private void companionTick(SettlementState st) {
+        long now = world.getTime();
+        for (SettlementRecord rec : st.all().values()) {
+            for (SettlementRecord.InhabitantRecord r : rec.inhabitants) {
+                if (!r.alive || r.mind == null || r.mind.companionOf == null || !Companions.travelling(r.mind)) {
+                    continue;
+                }
+                dev.underdeep.civ.mind.Mind m = r.mind;
+                Map<Integer, InhabitantEntity> mine = active.get(rec.id);
+                InhabitantEntity e = mine == null ? null : mine.get(r.index);
+                ServerPlayerEntity o = world.getServer().getPlayerManager().getPlayer(m.companionOf);
+                boolean present = o != null && o.getWorld() == world && !o.isSpectator() && o.isAlive();
+                boolean travelling = m.status == dev.underdeep.civ.mind.Mind.Status.AWAY && now < m.recoverUntil;
+                if (!present || travelling && e != null && e.squaredDistanceTo(o) > 40 * 40) {
+                    if (e != null) {
+                        e.discard();
+                        mine.remove(r.index);
+                    }
+                    continue;
+                }
+                if (e != null || m.status == dev.underdeep.civ.mind.Mind.Status.RECOVERING || travelling) {
+                    continue;
+                }
+                if (m.status == dev.underdeep.civ.mind.Mind.Status.AWAY) {
+                    m.status = dev.underdeep.civ.mind.Mind.Status.ACTIVE;
+                }
+                BlockPos at = Companions.safeSpot(world, o, true, new java.util.Random());
+                InhabitantEntity ne = at == null ? null : INHABITANT.create(world);
+                if (ne == null) {
+                    continue;
+                }
+                ne.bind(rec, r, null, null);
+                ne.companionOwner = o;
+                ne.setHealth(Math.max(1f, ne.getMaxHealth() * m.health));
+                ne.refreshPositionAndAngles(at.getX() + 0.5, at.getY(), at.getZ() + 0.5, o.getYaw() + 180, 0);
+                if (world.spawnEntity(ne)) {
+                    active.computeIfAbsent(rec.id, k -> new HashMap<>()).put(r.index, ne);
+                    spawned++;
+                }
+            }
         }
     }
 

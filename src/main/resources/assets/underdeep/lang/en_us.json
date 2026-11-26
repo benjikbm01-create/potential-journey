@@ -630,7 +630,7 @@
   "message.underdeep.creature.tamed": "%s trusts you now",
   "message.underdeep.inhabitant.busy": "%s has nothing to trade right now.",
   "message.underdeep.inhabitant.greet": "%s, %s",
-  "message.underdeep.journal.header": "Field journal \u2014 %s of %s creatures recorded",
+  "message.underdeep.journal.header": "Field journal — %s of %s creatures recorded",
   "message.underdeep.journal.more": "Sneak and use the journal for page %s",
   "message.underdeep.journal.new": "New creature recorded: %s",
   "message.underdeep.settlement.subtitle": "%s %s",
@@ -795,5 +795,10 @@
   "tooltip.underdeep.venom_gland": "Tips arrows with poison.",
   "tooltip.underdeep.voidroot": "Black roots hanging in the deep dark. Their fibres are tough.",
   "tooltip.underdeep.voidroot_fiber": "Tough fibre. Three twist into string.",
-  "tooltip.underdeep.voltbloom": "A mineral flower that blazes when energy flows nearby."
+  "tooltip.underdeep.voltbloom": "A mineral flower that blazes when energy flows nearby.",
+  "message.underdeep.companion.incapacitated": "%s is badly hurt and withdraws to recover at home.",
+  "message.underdeep.companion.none": "You have no companion. Befriend an inhabitant and ask them to travel with you.",
+  "message.underdeep.people.header": "People you have met (%s)",
+  "message.underdeep.people.none": "You have not met anyone yet.",
+  "screen.underdeep.dialogue": "Conversation"
 }

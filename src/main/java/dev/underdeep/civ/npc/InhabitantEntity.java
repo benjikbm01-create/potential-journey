@@ -184,6 +184,7 @@ public class InhabitantEntity extends MerchantEntity {
         });
         goalSelector.add(2, new LookAtCustomerGoal(this));
         goalSelector.add(3, new LongDoorInteractGoal(this, true));
+        goalSelector.add(3, new CompanionGoal(this));
         goalSelector.add(4, new MindGoal(this));
         goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 6));
         goalSelector.add(9, new LookAroundGoal(this));
@@ -213,6 +214,9 @@ public class InhabitantEntity extends MerchantEntity {
     public Activity goalActivity = Activity.STROLL;
     @Nullable public LivingEntity danger;
     public boolean defending;
+    /** Companion state (set each thought): the owner while travelling, and where to wait. */
+    @Nullable public PlayerEntity companionOwner;
+    @Nullable public BlockPos waitPos;
     /** Conversation: face the partner and pause until this age. */
     int talkUntil;
     @Nullable net.minecraft.entity.Entity talkPartner;
@@ -232,6 +236,83 @@ public class InhabitantEntity extends MerchantEntity {
         return a == Activity.SLEEP || a == Activity.NAP || a == Activity.RECOVER;
     }
 
+    /** Companion movement: follow / stay close / keep distance / wait / rest, with recovery when stuck. */
+    static final class CompanionGoal extends Goal {
+        private final InhabitantEntity e;
+        private int repath, stuck;
+
+        CompanionGoal(InhabitantEntity e) {
+            this.e = e;
+            setControls(EnumSet.of(Control.MOVE, Control.LOOK));
+        }
+
+        private Companions.Mode mode() {
+            SettlementRecord.InhabitantRecord r = InhabitantManager.record(e);
+            return r == null || r.mind == null ? Companions.Mode.HOME : Companions.mode(r.mind);
+        }
+
+        @Override
+        public boolean canStart() {
+            return e.companionOwner != null && e.companionOwner.isAlive() && e.getTarget() == null && mode() != Companions.Mode.HOME;
+        }
+
+        @Override
+        public boolean shouldContinue() {
+            return canStart();
+        }
+
+        @Override
+        public void tick() {
+            PlayerEntity o = e.companionOwner;
+            Companions.Mode mode = mode();
+            if (e.isSleeping()) {
+                e.wakeUp();
+            }
+            if (mode == Companions.Mode.REST || mode == Companions.Mode.WAIT) {
+                e.getNavigation().stop();
+                if (mode == Companions.Mode.WAIT && e.waitPos != null && e.squaredDistanceTo(Vec3d.ofBottomCenter(e.waitPos)) > 9) {
+                    e.getNavigation().startMovingTo(e.waitPos.getX() + 0.5, e.waitPos.getY(), e.waitPos.getZ() + 0.5, 0.55);
+                }
+                if (e.squaredDistanceTo(o) < 100) {
+                    e.getLookControl().lookAt(o, 20, 20);
+                }
+                return;
+            }
+            double want = mode == Companions.Mode.CLOSE ? 2.5 : mode == Companions.Mode.DISTANCE ? 7 : 4;
+            double d = e.distanceTo(o);
+            double dy = Math.abs(e.getY() - o.getY());
+            if (d > dev.underdeep.config.UnderdeepConfig.get().companionRelocateDistance || (stuck > 60 && d > 10) || (stuck > 40 && dy > 6)) {
+                if (Companions.relocate(e, o)) {
+                    stuck = 0;
+                    return;
+                }
+            }
+            if (d > want + 1) {
+                if (--repath <= 0 || e.getNavigation().isIdle()) {
+                    repath = 10;
+                    boolean ok = e.getNavigation().startMovingTo(o, d > 12 ? 0.75 : 0.62);
+                    if (!ok) {
+                        stuck += 10;
+                    }
+                }
+                if (e.getNavigation().isIdle() || e.getVelocity().horizontalLengthSquared() < 1.0E-4) {
+                    stuck++;
+                } else {
+                    stuck = Math.max(0, stuck - 1);
+                }
+            } else {
+                stuck = 0;
+                if (d < want - 1.5 && mode == Companions.Mode.DISTANCE) {
+                    Vec3d away = e.getPos().subtract(o.getPos()).normalize().multiply(3);
+                    e.getNavigation().startMovingTo(e.getX() + away.x, e.getY(), e.getZ() + away.z, 0.5);
+                } else {
+                    e.getNavigation().stop();
+                }
+                e.getLookControl().lookAt(o, 20, 20);
+            }
+        }
+    }
+
     /** Walks to where the mind's chosen activity happens and performs it there. */
     static final class MindGoal extends Goal {
         private final InhabitantEntity e;
@@ -245,7 +326,7 @@ public class InhabitantEntity extends MerchantEntity {
 
         @Override
         public boolean canStart() {
-            return !e.exhibit && e.getCustomer() == null && e.getTarget() == null;
+            return !e.exhibit && e.getCustomer() == null && e.getTarget() == null && e.companionOwner == null;
         }
 
         @Override
@@ -377,17 +458,22 @@ public class InhabitantEntity extends MerchantEntity {
 
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
-        if (!isAlive() || hasCustomer() || isSleeping() || player.isSneaking()) {
+        if (!isAlive() || hasCustomer() || isSleeping() || exhibit) {
             return super.interactMob(player, hand);
         }
-        if (!getWorld().isClient) {
-            InhabitantManager.onTalk(this, player);
-            TradeOfferList offers = getOffers();
-            if (offers.isEmpty()) {
-                player.sendMessage(Text.translatable("message.underdeep.inhabitant.busy", getName()), true);
+        if (!getWorld().isClient && player instanceof net.minecraft.server.network.ServerPlayerEntity sp) {
+            if (player.isSneaking()) {
+                // quick trade (sneak + use) without conversation
+                InhabitantManager.onTalk(this, player);
+                TradeOfferList offers = getOffers();
+                if (offers.isEmpty()) {
+                    player.sendMessage(Text.translatable("message.underdeep.inhabitant.busy", getName()), true);
+                } else {
+                    setCustomer(player);
+                    sendOffers(player, getDisplayName(), 1);
+                }
             } else {
-                setCustomer(player);
-                sendOffers(player, getDisplayName(), 1);
+                Dialogue.open(sp, this);
             }
         }
         return ActionResult.success(getWorld().isClient);
@@ -425,6 +511,18 @@ public class InhabitantEntity extends MerchantEntity {
             InhabitantManager.alarm(this, attacker);
         }
         return hurt;
+    }
+
+    @Override
+    protected void applyDamage(DamageSource source, float amount) {
+        super.applyDamage(source, amount);
+        if (getHealth() <= 0 && !getWorld().isClient && !dev.underdeep.config.UnderdeepConfig.get().companionPermanentDeath) {
+            SettlementRecord.InhabitantRecord r = InhabitantManager.record(this);
+            if (r != null && r.mind != null && r.mind.companionOf != null) {
+                setHealth(1f); // defeated, not killed: the companion withdraws to recover
+                Companions.incapacitate(this);
+            }
+        }
     }
 
     @Override

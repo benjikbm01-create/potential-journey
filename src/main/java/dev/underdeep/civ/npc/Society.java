@@ -215,6 +215,10 @@ public final class Society {
             if (!r.alive || r.mind == null || manager.isActive(rec.id, r.index)) {
                 continue;
             }
+            if (Companions.travelling(r.mind)) {
+                r.mind.lastUpdate = now; // away with their companion; lives in the active tier when embodied
+                continue;
+            }
             long interval = nearSettlements.contains(rec.id) ? cfg.abstractUpdateInterval : cfg.distantUpdateInterval;
             if (r.mind.lastUpdate < 0) {
                 r.mind.lastUpdate = now;
@@ -432,6 +436,11 @@ public final class Society {
             return;
         }
         activeThinks++;
+        if (Companions.travelling(r.mind)) {
+            Companions.think(this, e, rec, r);
+            return;
+        }
+        e.companionOwner = null;
         Mind m = r.mind;
         long now = world.getTime();
         m.health = Math.max(0.05f, e.getHealth() / e.getMaxHealth());
