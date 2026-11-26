@@ -84,6 +84,38 @@ Earlier iterations in this session (before the fixes below) also ran seeds 42, 1
 | Hunting pressure lowers capacity temporarily; it recovers | accelerated aggregate | PASS |
 | Terrain/vegetation preservation: all Stage 2 checks still pass; spawn and benchmark chunk hashes identical after restart | regression | PASS |
 
+### Real-client wildlife study — executed (real time, one real player)
+`scripts/mob_study.sh run-tests/s3m_42 40`: a real client (Xvfb, software OpenGL) joined the dedicated
+server (seed 42 world from the matrix); the player (creative, flying) was moved through one site per
+ecosystem and stayed 40 s each, with the world ticking normally (wildlife spawner, tiers, despawn back to
+the pool all live). Counts within 64 blocks horizontally / 40 vertically at the end of each stay:
+
+| Ecosystem | Wildlife at end (species: count) | All home regions native | Avg tick ms |
+|---|---|---|---|
+| Rootwild (start) | mossbuck 15, lumenmoth 8, snufflet 5, rootglider 2, shadecat 2, + 1 | yes | 7.8 |
+| Fungal Expanse | sporemite 8, capback 5, lanternbeetle 5, snufflet 5, puffling 4, capstalker 1 | yes | 7.4 |
+| Flooded Depths | glimmerfin 20, newtling 4, rillpup 4, lakehorn 2, ribbon eel 1, stiltwader 1, + 1 | yes | 7.7 |
+| Ashen Hollows | emberskink 4, ashshell 1, scorchjaw 1 | yes | 4.9 |
+| Crystal Deep | shardfly 11, gloomwing 5, prismhorn 5, geode crab 4, + 2 species | yes | 6.6 |
+| Everfrost | frostmane 4, glacier skimmer 4, rimefox 1 | yes | 8.6 |
+| Golden Grove | thumperkit 14, goldfleece 6, bumblewisp 5, amberwing 3, glade runner 2, shadecat 1 | yes | 5.8 |
+| Hollow Peaks | cliffstrider 6, rockpip 4, ledgewing 1 | yes | 7.6 |
+| Emerald Wetlands | newtling 8, bogcroaker 6, lumenmoth 6, glassdart 5, rillpup 2, stiltwader 1 | yes | 9.0 |
+| Petrified Forest | ashshell 6, stonehide 3, dustbeak 1, + 1 | yes | 5.1 |
+| Crimson Basin | toxitoad 11, bloodhorn 8, thornstalker 3 | yes | 8.5 |
+| Sunken Gardens | reef darter 19, coral crab 7, ribbon eel 1, veilray 1 | yes | 7.2 |
+| Stormstone Caverns | shardfly 16, static beetle 9, arcback 3 | yes | 7.0 |
+| Starlight Caverns | starwisp 14, capback 4, lumen kit 4, moonhorn 3, glade runner 3, + 1 | yes | 7.3 |
+
+("+ n" = n further species not listed, each seen once.) Vanilla
+monsters still appear only in high-danger ecosystems (max 5 in Ashen Hollows, 3 in Stormstone, 2 in
+Crimson Basin; 0 elsewhere). Average tick 4.9–9.0 ms including chunk generation after each teleport
+(budget 50 ms); no "Can't keep up" warnings; 0 unexpected errors in the server log. Wildlife near the player
+stayed around the per-player cap (28 + one group; at most 33 counted, as the counting box is larger than
+the spawn area).
+Some sites show species from a neighbouring ecosystem because the 64-block count crosses a border; each
+animal's home region matched its species' ecosystems ("all native" = yes everywhere).
+
 ### Performance (this hardware)
 - Wildlife tick cost: 17.9–19.6 µs per creature per tick (40 mixed creatures, full AI, 200 ticks) ≈
   0.72–0.79 ms per server tick for 40 creatures (the per-player cap is 28; global cap 160).

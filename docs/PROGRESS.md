@@ -106,7 +106,7 @@ Stage 1.5 remains alongside the new species in some ecosystems.
 | Sounds | partial | pitched vanilla sounds; custom sounds are Stage 11 |
 | Wildlife field journal (per player, no locations) | done | |
 | Configuration (18 options) | done | README |
-| Tests (`Stage3Checks`, `WildlifeModelTest`, zoo tour, real-client wildlife study) | done | TESTING.md |
+| Tests (`Stage3Checks`, `WildlifeModelTest`, `stage3_matrix.sh`, zoo tour, real-client wildlife study) | done | all PASS; TESTING.md |
 
 Partially complete / limitations: see `NEXT_STEPS.md` (known issues). Terrain unchanged (D-038).
 
