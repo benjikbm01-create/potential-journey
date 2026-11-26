@@ -82,7 +82,11 @@ final class Stage4Checks {
         r.info("plot rejections", new java.util.TreeMap<>(dev.underdeep.civ.settlement.SettlementPlanner.REJECTS).toString());
         r.check("settlement plans reach a sensible size (≥ half the category minimum)", plansOk >= plans * 0.85,
                 plansOk + "/" + plans + " within 1500 blocks; " + detail);
-        if (!create || starter == null) {
+        if (!create) {
+            persistence(w, map, dir, r);
+            return;
+        }
+        if (starter == null) {
             return;
         }
         r.section("Stage 4 civilizations: generated settlements (real world generation)");
@@ -150,10 +154,161 @@ final class Stage4Checks {
                         e.getY() + 2, vz, yaw));
             }
         }
+        inhabitants(w, map, dir, r);
         try {
             Files.writeString(dir.resolve("tour_settlements.txt"), tour.toString());
         } catch (Exception e) {
             r.info("tour", "could not write: " + e);
+        }
+    }
+
+    // ------------------------------------------------------------------ inhabitants
+
+    private static void inhabitants(ServerWorld w, SettlementMap map, Path dir, Stage15Checks.Reporter r) {
+        r.section("Stage 4 civilizations: inhabitants, routines, trading (fake player; entities ticked directly = accelerated)");
+        dev.underdeep.civ.npc.InhabitantManager m = dev.underdeep.civ.npc.InhabitantManager.get(w);
+        if (m == null) {
+            r.check("inhabitant manager active", false, "none");
+            return;
+        }
+        SettlementSite s = town != null ? town : starter;
+        SettlementPlan plan = map.plan(s);
+        var state = dev.underdeep.civ.npc.SettlementState.get(w);
+        var rec = state.getOrCreate(plan, w.getSeed(), w.getTime());
+        java.util.Set<String> profs = new java.util.TreeSet<>();
+        java.util.Set<String> names = new java.util.HashSet<>();
+        int withBed = 0, withWork = 0;
+        for (var ir : rec.inhabitants) {
+            profs.add(ir.profession);
+            names.add(ir.name);
+            withBed += ir.bed != null ? 1 : 0;
+            withWork += ir.work != null ? 1 : 0;
+        }
+        r.check(rec.name + ": registered inhabitants with homes and identities",
+                rec.inhabitants.size() >= Math.min(plan.beds(), s.category().minPeople) && withBed == rec.inhabitants.size(),
+                rec.inhabitants.size() + " inhabitants (" + plan.beds() + " beds), " + withWork + " with a workplace, " + names.size()
+                        + " distinct names; professions " + profs);
+        net.fabricmc.fabric.api.entity.FakePlayer fake = net.fabricmc.fabric.api.entity.FakePlayer.get(w);
+        SettlementPlan.Plaza c = plan.plazas().get(0);
+        fake.refreshPositionAndAngles(c.x() + 0.5, c.y() + 1, c.z() + 0.5, 0, 0);
+        long day = w.getTimeOfDay();
+        w.setTimeOfDay(day - day % 24000 + 6000); // midday: work
+        var cfg = dev.underdeep.config.UnderdeepConfig.get();
+        m.populate(map, s, List.of(fake), cfg);
+        int active = m.activeIn(s.id());
+        m.populate(map, s, List.of(fake), cfg);
+        int again = m.activeIn(s.id());
+        java.util.Set<Integer> idx = new java.util.HashSet<>();
+        boolean dup = false;
+        for (var e : m.activeEntities(s.id())) {
+            dup |= !idx.add(e.recordIndex);
+        }
+        r.check("inhabitants appear near a player within the per-settlement budget, without duplicates", active > 0 && active <= cfg.maxActiveInhabitantsPerSettlement
+                && again == active && !dup, active + " active (budget " + cfg.maxActiveInhabitantsPerSettlement + "), repeated population added "
+                + (again - active));
+        r.check("inhabitants are never written to chunk storage", m.activeEntities(s.id()).stream().noneMatch(net.minecraft.entity.Entity::shouldSave),
+                "shouldSave=false for all");
+        // routine: at midday workers head for their workplace; at night everyone with a bed sleeps there
+        var list = new java.util.ArrayList<>(m.activeEntities(s.id()));
+        int working = 0;
+        for (var e : list) {
+            working += e.activity() == dev.underdeep.civ.npc.InhabitantEntity.Activity.WORK
+                    || e.activity() == dev.underdeep.civ.npc.InhabitantEntity.Activity.PATROL ? 1 : 0;
+        }
+        w.setTimeOfDay(day - day % 24000 + 18000);
+        int sleepers = 0, inBed = 0;
+        for (int i = 0; i < 1200; i++) {
+            if (w.getLevelProperties() instanceof net.minecraft.world.level.ServerWorldProperties props) {
+                props.setTime(w.getTime() + 1);
+            }
+            for (var e : list) {
+                if (e.isAlive()) {
+                    e.age++;
+                    e.tick();
+                }
+            }
+        }
+        for (var e : list) {
+            if (e.activity() == dev.underdeep.civ.npc.InhabitantEntity.Activity.SLEEP) {
+                sleepers++;
+                inBed += e.isSleeping() ? 1 : 0;
+            }
+        }
+        r.check("daily routine: work by day, sleep in their own bed at night (60 s accelerated)", working > 0 && sleepers > 0 && inBed >= sleepers * 0.6,
+                working + " at work/patrol at midday; at night " + inBed + "/" + sleepers + " asleep in bed");
+        // trading
+        dev.underdeep.civ.npc.InhabitantEntity trader = null;
+        for (var e : list) {
+            if (!e.getOffers().isEmpty()) {
+                trader = e;
+                break;
+            }
+        }
+        if (trader != null) {
+            var offer = trader.getOffers().get(0);
+            int before = offer.getUses();
+            offer.use();
+            trader.trade(offer);
+            var ir = rec.inhabitants.get(trader.recordIndex);
+            r.check("trading: civilization goods offered; trades recorded for daily restock", trader.getOffers().size() >= 3 && ir.tradeUses.length > 0
+                    && ir.tradeUses[0] >= 1, trader.getName().getString() + " (" + trader.profession() + ") offers " + trader.getOffers().size()
+                    + ": sells " + offer.getSellItem().getCount() + "x " + offer.getSellItem().getItem() + "; uses " + before + " -> " + offer.getUses());
+        } else {
+            r.check("trading: an inhabitant offers trades", false, "no trader among " + list.size());
+        }
+        // death is permanent; prepare a restart check
+        var victim = list.get(list.size() - 1);
+        int vIdx = victim.recordIndex;
+        victim.damage(w.getDamageSources().playerAttack(fake), 1000);
+        m.populate(map, s, List.of(fake), cfg);
+        boolean resurrected = m.activeEntities(s.id()).stream().anyMatch(e -> e.recordIndex == vIdx);
+        r.check("killed inhabitants stay dead (record updated, not re-embodied)", !rec.inhabitants.get(vIdx).alive && !resurrected,
+                "alive=" + rec.inhabitants.get(vIdx).alive + ", re-embodied=" + resurrected);
+        // discovery
+        m.discover(fake, map, s);
+        r.check("settlement discovery recorded per player", rec.discoveredBy.contains(fake.getUuid()), rec.name);
+        // hostile exclusion
+        boolean blocked = !dev.underdeep.world.spawn.SpawnRules.allowMonster(map.terrain(), w.getBiome(new BlockPos(s.x(), c.y() + 1, s.z())),
+                new BlockPos(s.x(), c.y() + 1, s.z()));
+        r.check("no natural hostile spawns inside settlements", blocked, "allowMonster at the centre = " + !blocked);
+        // inhabitants leave with the player
+        for (var e : new java.util.ArrayList<>(m.activeEntities(s.id()))) {
+            e.discard();
+        }
+        r.check("inhabitants return to their records when removed", m.activeIn(s.id()) == 0, m.activeIn(s.id()) + " left active");
+        w.setTimeOfDay(day);
+        try {
+            Files.writeString(dir.resolve("stage4_reload.txt"), s.id() + " " + vIdx + " " + fake.getUuid() + " " + rec.inhabitants.size() + "\n");
+        } catch (Exception ex) {
+            r.info("stage 4 reload data", ex.toString());
+        }
+    }
+
+    private static void persistence(ServerWorld w, SettlementMap map, Path dir, Stage15Checks.Reporter r) {
+        r.section("Stage 4 civilizations: persistence after save and restart");
+        Path f = dir.resolve("stage4_reload.txt");
+        if (!Files.exists(f)) {
+            r.info("stage 4 persistence", "no create-phase data");
+            return;
+        }
+        try {
+            String[] p = Files.readString(f).trim().split(" ");
+            long id = Long.parseLong(p[0]);
+            int victim = Integer.parseInt(p[1]);
+            java.util.UUID player = java.util.UUID.fromString(p[2]);
+            int people = Integer.parseInt(p[3]);
+            var rec = dev.underdeep.civ.npc.SettlementState.get(w).get(id);
+            r.check("settlement record persisted with the same inhabitants", rec != null && rec.inhabitants.size() == people,
+                    rec == null ? "missing" : rec.name + ": " + rec.inhabitants.size() + " inhabitants");
+            if (rec != null) {
+                r.check("dead inhabitant still dead after restart", !rec.inhabitants.get(victim).alive, rec.inhabitants.get(victim).name);
+                r.check("discovery persisted", rec.discoveredBy.contains(player), rec.discoveredBy.size() + " discoverers");
+            }
+            SettlementSite s = map.byId(id);
+            r.check("settlement plan identical after restart (pure function of the seed)", s != null && map.plan(s).name().equals(rec.name),
+                    s == null ? "missing" : map.plan(s).name());
+        } catch (Exception e) {
+            r.check("stage 4 persistence", false, e.toString());
         }
     }
 }

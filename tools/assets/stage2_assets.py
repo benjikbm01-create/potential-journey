@@ -1415,6 +1415,8 @@ def main():
     import creatures
     clang, ctags = creatures.main()
     LANG.update(clang)
+    import inhabitants
+    LANG.update(inhabitants.main())
     for path, vals in ctags.items():
         tag(path, *vals)
     merge_outputs()

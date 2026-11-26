@@ -30,6 +30,7 @@ public final class UnderdeepClient implements ClientModInitializer {
         });
         EcologyTooltips.init();
         dev.underdeep.client.creature.CreatureRenderers.init();
+        dev.underdeep.client.civ.InhabitantRenderer.init();
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
         ScreenshotTour.init();
         CreateWorldTest.init();
