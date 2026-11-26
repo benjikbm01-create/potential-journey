@@ -25,7 +25,7 @@ public final class SettlementState extends PersistentState {
         SettlementState s = new SettlementState();
         NbtCompound list = nbt.getCompound("settlements");
         for (String k : list.getKeys()) {
-            SettlementRecord r = SettlementRecord.fromNbt(list.getCompound(k));
+            SettlementRecord r = SettlementRecord.fromNbt(list.getCompound(k), lookup);
             if (r.civ != null) {
                 s.records.put(r.id, r);
             }
@@ -36,7 +36,7 @@ public final class SettlementState extends PersistentState {
     @Override
     public NbtCompound writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
         NbtCompound list = new NbtCompound();
-        records.forEach((k, v) -> list.put(Long.toString(k), v.toNbt()));
+        records.forEach((k, v) -> list.put(Long.toString(k), v.toNbt(lookup)));
         nbt.put("settlements", list);
         return nbt;
     }

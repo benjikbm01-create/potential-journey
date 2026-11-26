@@ -50,10 +50,12 @@ public final class SettlementRecord {
         public long diedAt;
         public int[] tradeUses = new int[0];
         public long restockDay = -1;
-        /** Stage 5 hook: per-player standing (unused in Stage 4 beyond trades). */
+        /** Stage 4 placeholder compound (kept for compatibility; Stage 5 state lives in {@link #mind}). */
         public NbtCompound memory = new NbtCompound();
+        /** Stage 5 individual mind (personality, needs, memories, relationships ...). Never null after load/creation. */
+        public dev.underdeep.civ.mind.Mind mind;
 
-        NbtCompound toNbt() {
+        NbtCompound toNbt(net.minecraft.registry.RegistryWrapper.WrapperLookup lookup) {
             NbtCompound n = new NbtCompound();
             n.putInt("i", index);
             n.putString("name", name);
@@ -72,10 +74,13 @@ public final class SettlementRecord {
             n.putIntArray("uses", tradeUses);
             n.putLong("restock", restockDay);
             n.put("memory", memory);
+            if (mind != null) {
+                n.put("mind", mind.toNbt(lookup));
+            }
             return n;
         }
 
-        static InhabitantRecord fromNbt(NbtCompound n) {
+        static InhabitantRecord fromNbt(NbtCompound n, net.minecraft.registry.RegistryWrapper.WrapperLookup lookup) {
             InhabitantRecord r = new InhabitantRecord();
             r.index = n.getInt("i");
             r.name = n.getString("name");
@@ -90,6 +95,9 @@ public final class SettlementRecord {
             r.tradeUses = n.getIntArray("uses");
             r.restockDay = n.getLong("restock");
             r.memory = n.getCompound("memory");
+            if (n.contains("mind")) {
+                r.mind = dev.underdeep.civ.mind.Mind.fromNbt(n.getCompound("mind"), lookup);
+            }
             return r;
         }
     }
@@ -162,7 +170,107 @@ public final class SettlementRecord {
             }
             rec.inhabitants.add(r);
         }
+        families(rec, plan, rnd);
+        ensureMinds(rec, now);
         return rec;
+    }
+
+    /**
+     * New settlements: residents of the same home form a household; in family homes the first two are partners and
+     * the others their children or siblings, sharing a family name (general-audience family content).
+     */
+    private static void families(SettlementRecord rec, SettlementPlan plan, Random rnd) {
+        java.util.Map<Integer, List<InhabitantRecord>> homes = new java.util.LinkedHashMap<>();
+        for (InhabitantRecord r : rec.inhabitants) {
+            homes.computeIfAbsent(r.home, k -> new ArrayList<>()).add(r);
+        }
+        for (List<InhabitantRecord> h : homes.values()) {
+            if (h.size() < 2 || h.get(0).home < 0 || h.get(0).home >= plan.buildings().size()) {
+                continue;
+            }
+            BuildingKind kind = plan.buildings().get(h.get(0).home).kind();
+            boolean family = kind == BuildingKind.HOUSE || kind == BuildingKind.HOUSE_SMALL || kind == BuildingKind.HOUSE_LARGE
+                    || kind == BuildingKind.TENT || kind == BuildingKind.BARN;
+            if (!family || rnd.nextInt(5) == 0) {
+                continue; // friends or workers sharing a home
+            }
+            String familyName = h.get(0).name.substring(h.get(0).name.indexOf(' ') + 1);
+            for (int i = 1; i < h.size(); i++) {
+                InhabitantRecord r = h.get(i);
+                r.name = r.name.substring(0, r.name.indexOf(' ')) + " " + familyName;
+            }
+            rec.pendingKin.add(h);
+        }
+    }
+
+    /** Family groups created this session (consumed by {@link #ensureMinds}). */
+    final transient List<List<InhabitantRecord>> pendingKin = new ArrayList<>();
+
+    /**
+     * Gives every inhabitant a mind (new records, and Stage 4 records migrated deterministically from their
+     * appearance seed), households from shared homes, coworker and mentor bonds, and family bonds for new families.
+     */
+    public static void ensureMinds(SettlementRecord rec, long now) {
+        boolean changed = false;
+        for (InhabitantRecord r : rec.inhabitants) {
+            if (r.mind == null) {
+                r.mind = dev.underdeep.civ.mind.Mind.create(rec.civ, r.profession, r.appearance, now);
+                r.mind.household = r.home;
+                r.mind.origin = rec.name;
+                changed = true;
+            }
+        }
+        if (!changed && rec.pendingKin.isEmpty()) {
+            return;
+        }
+        for (InhabitantRecord a : rec.inhabitants) {
+            for (InhabitantRecord b : rec.inhabitants) {
+                if (a == b) {
+                    continue;
+                }
+                if (a.home >= 0 && a.home == b.home) {
+                    dev.underdeep.civ.mind.Bond x = a.mind.bond(b.index);
+                    if (!x.household) {
+                        x.household = true;
+                        x.familiarity = Math.max(x.familiarity, 60);
+                        x.affection = Math.max(x.affection, 20);
+                        x.trust = Math.max(x.trust, 30);
+                    }
+                }
+                if (a.workplace >= 0 && a.workplace == b.workplace) {
+                    dev.underdeep.civ.mind.Bond x = a.mind.bond(b.index);
+                    if (!x.coworker) {
+                        x.coworker = true;
+                        x.familiarity = Math.max(x.familiarity, 40);
+                        x.respect = Math.max(x.respect, 10);
+                        if (a.mind.skill + 25 <= b.mind.skill && a.profession.equals(b.profession)) {
+                            x.mentor = true;
+                            b.mind.bond(a.index).apprentice = true;
+                        }
+                    }
+                }
+            }
+        }
+        for (List<InhabitantRecord> h : rec.pendingKin) {
+            for (int i = 0; i < h.size(); i++) {
+                for (int j = 0; j < h.size(); j++) {
+                    if (i == j) {
+                        continue;
+                    }
+                    dev.underdeep.civ.mind.Bond x = h.get(i).mind.bond(h.get(j).index);
+                    x.kin = i < 2 && j < 2 ? dev.underdeep.civ.mind.Bond.Kin.PARTNER
+                            : i < 2 ? dev.underdeep.civ.mind.Bond.Kin.CHILD : j < 2 ? dev.underdeep.civ.mind.Bond.Kin.PARENT
+                            : dev.underdeep.civ.mind.Bond.Kin.SIBLING;
+                    x.affection = Math.max(x.affection, 55);
+                    x.trust = Math.max(x.trust, 55);
+                    x.familiarity = 90;
+                }
+                if (i >= 2) {
+                    h.get(i).mind.age = dev.underdeep.civ.mind.Mind.Age.YOUNG;
+                }
+            }
+        }
+        rec.pendingKin.clear();
     }
 
     private static String professionFor(SettlementPlan.Building b, String tag, Civilization civ) {
@@ -192,7 +300,7 @@ public final class SettlementRecord {
 
     // ------------------------------------------------------------------ NBT
 
-    public NbtCompound toNbt() {
+    public NbtCompound toNbt(net.minecraft.registry.RegistryWrapper.WrapperLookup lookup) {
         NbtCompound n = new NbtCompound();
         n.putLong("id", id);
         n.putString("name", name);
@@ -201,7 +309,7 @@ public final class SettlementRecord {
         n.putLong("created", createdAt);
         NbtList list = new NbtList();
         for (InhabitantRecord r : inhabitants) {
-            list.add(r.toNbt());
+            list.add(r.toNbt(lookup));
         }
         n.put("people", list);
         NbtList disc = new NbtList();
@@ -213,7 +321,7 @@ public final class SettlementRecord {
         return n;
     }
 
-    public static SettlementRecord fromNbt(NbtCompound n) {
+    public static SettlementRecord fromNbt(NbtCompound n, net.minecraft.registry.RegistryWrapper.WrapperLookup lookup) {
         SettlementRecord r = new SettlementRecord();
         r.id = n.getLong("id");
         r.name = n.getString("name");
@@ -221,7 +329,7 @@ public final class SettlementRecord {
         r.category = SettlementCategory.values()[Math.min(n.getInt("cat"), SettlementCategory.values().length - 1)];
         r.createdAt = n.getLong("created");
         for (NbtElement e : n.getList("people", NbtElement.COMPOUND_TYPE)) {
-            r.inhabitants.add(InhabitantRecord.fromNbt((NbtCompound) e));
+            r.inhabitants.add(InhabitantRecord.fromNbt((NbtCompound) e, lookup));
         }
         for (NbtElement e : n.getList("discovered", NbtElement.STRING_TYPE)) {
             try {
@@ -231,6 +339,7 @@ public final class SettlementRecord {
             }
         }
         r.deathsByPlayers = n.getInt("deathsByPlayers");
+        ensureMinds(r, 0); // Stage 4 records gain minds deterministically on first load (migration)
         return r;
     }
 }
