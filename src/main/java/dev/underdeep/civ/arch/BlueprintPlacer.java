@@ -56,7 +56,13 @@ public final class BlueprintPlacer {
                 }
             }
         }
-        // 2. blocks
+        // 2. blocks (the whole design in world coordinates, so connecting blocks can see neighbours that lie in
+        // chunks not generated yet: fences, panes, bars and walls connect identically in any generation order)
+        java.util.Map<Long, BlockState> placed = new java.util.HashMap<>();
+        bp.forEach((lp, state) -> {
+            BlockPos o = bp.transform(lp.getX(), lp.getY(), lp.getZ(), rot);
+            placed.put(BlockPos.asLong(origin.getX() + o.getX(), origin.getY() + o.getY(), origin.getZ() + o.getZ()), state.rotate(rot));
+        });
         bp.forEach((lp, state) -> {
             BlockPos o = bp.transform(lp.getX(), lp.getY(), lp.getZ(), rot);
             int wx = origin.getX() + o.getX(), wy = origin.getY() + o.getY(), wz = origin.getZ() + o.getZ();
@@ -64,7 +70,11 @@ public final class BlueprintPlacer {
                 return;
             }
             BlockPos wp = new BlockPos(wx, wy, wz);
-            world.setBlockState(wp, state.rotate(rot), flags);
+            BlockState rotated = placed.get(wp.asLong());
+            if (connects(rotated)) {
+                rotated = connect(world, wp, rotated, placed);
+            }
+            world.setBlockState(wp, rotated, flags);
             if (lootTable != null && state.hasBlockEntity()) {
                 BlockEntity be = world.getBlockEntity(wp);
                 if (be instanceof LootableContainerBlockEntity lc) {
@@ -109,6 +119,26 @@ public final class BlueprintPlacer {
                 }
             }
         }
+    }
+
+    /** Blocks whose shape depends on their horizontal neighbours. */
+    public static boolean connects(BlockState s) {
+        return s.getBlock() instanceof net.minecraft.block.HorizontalConnectingBlock || s.getBlock() instanceof net.minecraft.block.WallBlock;
+    }
+
+    /** Resolves connections from the design's own blocks first, then the world (terrain). */
+    public static BlockState connect(WorldAccess world, BlockPos pos, BlockState state, java.util.Map<Long, BlockState> design) {
+        for (net.minecraft.util.math.Direction d : new net.minecraft.util.math.Direction[]{net.minecraft.util.math.Direction.NORTH,
+                net.minecraft.util.math.Direction.SOUTH, net.minecraft.util.math.Direction.EAST, net.minecraft.util.math.Direction.WEST,
+                net.minecraft.util.math.Direction.UP}) {
+            BlockPos n = pos.offset(d);
+            BlockState ns = design.get(n.asLong());
+            if (ns == null) {
+                ns = world.getBlockState(n);
+            }
+            state = state.getStateForNeighborUpdate(d, ns, world, pos, n);
+        }
+        return state;
     }
 
     /** Natural ground: solid, not fluid, not vegetation, logs or giant-fungus blocks (those vary with generation order). */

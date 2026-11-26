@@ -80,6 +80,7 @@ public final class SettlementGenerator {
 
     private static void roads(StructureWorldAccess w, SettlementPlan plan, Palette pal, BlockBox clip) {
         BlockPos.Mutable m = new BlockPos.Mutable();
+        java.util.List<BlockPos> railings = new java.util.ArrayList<>();
         for (int x = clip.getMinX(); x <= clip.getMaxX(); x++) {
             for (int z = clip.getMinZ(); z <= clip.getMaxZ(); z++) {
                 SettlementPlan.Road best = null;
@@ -112,7 +113,19 @@ public final class SettlementGenerator {
                 if (water && edge) {
                     m.set(x, y + 1, z);
                     w.setBlockState(m, pal.fence.getDefaultState(), FLAGS);
+                    railings.add(m.toImmutable());
                 }
+            }
+        }
+        connectAll(w, railings);
+    }
+
+    /** Connects bridge railings to each other (within the chunk). */
+    private static void connectAll(StructureWorldAccess w, java.util.List<BlockPos> list) {
+        for (BlockPos p : list) {
+            BlockState s = w.getBlockState(p);
+            if (BlueprintPlacer.connects(s)) {
+                w.setBlockState(p, BlueprintPlacer.connect(w, p, s, java.util.Map.of()), FLAGS);
             }
         }
     }

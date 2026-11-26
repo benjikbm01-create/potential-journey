@@ -62,6 +62,8 @@ listed.
   - inhabitants were embodied during tours (log: 24 of 26, 24 of 27 and 13 of 78 present).
 
 ### Not tested / known
+- Fence, pane, iron-bar and wall connections in buildings (fixed after the user's report that fences and
+  windows did not connect): resolved at placement from the design and the terrain; built, not re-inspected.
 - The round-robin job assignment (the last change, so that every market stall and shop has a keeper) was
   built and unit-tested but not verified in a self-test or screenshot; earlier tours showed empty stalls.
 - No multi-seed Stage 4 matrix and no production-JAR server run for Stage 4. No real multiplayer session.
