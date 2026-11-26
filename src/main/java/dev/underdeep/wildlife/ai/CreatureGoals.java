@@ -217,10 +217,28 @@ public final class CreatureGoals {
             return best;
         }
 
+        private boolean grazesUnderfoot() {
+            Diet d = c.species().diet();
+            return d == Diet.GRAZER || d == Diet.LITHOVORE || d == Diet.FILTER;
+        }
+
         @Override
         public void start() {
             eatTicks = 0;
-            c.getNavigation().startMovingTo(target.getX() + 0.5, target.getY(), target.getZ() + 0.5, 0.9);
+            if (!target.equals(c.getBlockPos())) {
+                net.minecraft.entity.ai.pathing.Path path = c.getNavigation().findPathTo(target, 1);
+                if (path == null || !path.reachesTarget()) {
+                    // unreachable food: grazers crop what is underfoot instead, others try again later
+                    target = grazesUnderfoot() ? c.getBlockPos() : null;
+                    return;
+                }
+                c.getNavigation().startMovingAlong(path, 0.9);
+            }
+        }
+
+        private boolean closeEnough() {
+            double reach = c.getWidth() * 0.5 + 1.3;
+            return target.equals(c.getBlockPos()) || c.squaredDistanceTo(Vec3d.ofBottomCenter(target)) <= reach * reach;
         }
 
         @Override
@@ -230,8 +248,11 @@ public final class CreatureGoals {
 
         @Override
         public void tick() {
+            if (target == null) {
+                return;
+            }
             c.getLookControl().lookAt(target.getX() + 0.5, target.getY() + 0.3, target.getZ() + 0.5);
-            if (c.getBlockPos().getSquaredDistance(target) <= 4.5 || target.equals(c.getBlockPos())) {
+            if (closeEnough()) {
                 c.getNavigation().stop();
                 c.setState(UnderdeepCreature.EAT);
                 if (++eatTicks == 40) {
@@ -239,7 +260,8 @@ public final class CreatureGoals {
                 }
             } else if (c.getNavigation().isIdle()) {
                 if (++eatTicks > 30) {
-                    target = null;
+                    target = grazesUnderfoot() ? c.getBlockPos() : null; // stuck short of the food
+                    eatTicks = 0;
                 }
             }
         }
