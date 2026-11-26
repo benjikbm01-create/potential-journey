@@ -97,6 +97,23 @@ public final class UnderdeepConfig {
     /** How strongly player hunting disturbs a region (temporarily lowers its capacity). */
     public double huntingDisturbance = 1.0;
 
+    // ---- Stage 4: civilizations ----
+    /** Master switch for settlement generation in new Underdeep worlds. */
+    public boolean settlementsEnabled = true;
+    /**
+     * Also generate settlements in worlds created before Stage 4 (terrain generator v1–v2). Settlements then
+     * appear only in newly generated chunks and are cut off at the borders of explored areas.
+     */
+    public boolean settlementsInExistingWorlds = false;
+    /** Inhabitants kept as active entities per settlement while players are near. */
+    public int maxActiveInhabitantsPerSettlement = 24;
+    /** Active inhabitants in the whole world. */
+    public int maxActiveInhabitantsTotal = 96;
+    /** Players closer than this to a settlement's edge make its inhabitants appear. */
+    public int inhabitantActivationDistance = 64;
+    /** Natural hostile spawns are blocked within a settlement's radius plus this margin. */
+    public int settlementMonsterExclusion = 24;
+
     public double densityFor(String ecosystem) {
         return wildlifeDensity * wildlifeDensityByEcosystem.getOrDefault(ecosystem, 1.0);
     }

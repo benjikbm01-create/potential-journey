@@ -25,6 +25,6 @@ PROPS
 fi
 cd "$ROOT"
 ./gradlew --no-daemon --offline runServer -PrunDir="$RUN_DIR" -Pselftest="$ROOT/$RUN_DIR/selftest" \
-  -PselftestPhase="$PHASE" -PselftestOrder="$ORDER" -PselftestSuite="${SUITE:-full}" -Pzoo="${ZOO:-false}" --args="nogui" 2>&1 | tail -n 5
+  -PselftestPhase="$PHASE" -PselftestOrder="$ORDER" -PselftestSuite="${SUITE:-full}" -Pzoo="${ZOO:-false}" -Pgallery="${GALLERY:-false}" --args="nogui" 2>&1 | tail -n 5
 echo "--- report: $RUN_DIR/selftest/report.md"
 grep -E "Summary|FAIL" "$RUN_DIR/selftest/report.md" || true

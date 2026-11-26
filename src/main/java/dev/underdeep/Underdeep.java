@@ -33,6 +33,7 @@ public final class Underdeep implements ModInitializer {
         dev.underdeep.wildlife.WildlifeItems.init();
         dev.underdeep.wildlife.population.WildlifeManager.init();
         dev.underdeep.wildlife.WildlifeJournal.init();
+        dev.underdeep.civ.settlement.Settlements.init();
         ModWorldgen.init();
         UnderdeepCommands.init();
         SelfTest.init();
@@ -44,7 +45,7 @@ public final class Underdeep implements ModInitializer {
                 state.initializeIfNew(overworld.getTime());
                 if (state.createdWithGeneratorVersion() != UnderdeepTerrain.GENERATOR_VERSION) {
                     LOGGER.warn("This world was created with Underdeep terrain generator v{} but v{} is running; "
-                                    + "newly generated chunks may not match existing ones at their borders.",
+                                    + "settlements (Stage 4) are disabled for it unless settlementsInExistingWorlds is set.",
                             state.createdWithGeneratorVersion(), UnderdeepTerrain.GENERATOR_VERSION);
                 }
                 LOGGER.info("Underdeep world loaded (seed-bound terrain ready, spawn {})", overworld.getSpawnPos().toShortString());

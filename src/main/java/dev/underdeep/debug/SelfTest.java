@@ -337,7 +337,9 @@ public final class SelfTest {
         // ------------------------------------------------------------------ connectivity
         section("Connectivity (ground truth flood fill of generated blocks)");
         connectivity(world, t, spawn.getX() >> 4, spawn.getZ() >> 4, 10, "spawn area");
-        boolean full = !"stage2".equals(System.getProperty("underdeep.selftest.suite", "full"));
+        String suite = System.getProperty("underdeep.selftest.suite", "full");
+        boolean full = !"stage2".equals(suite) && !"stage4".equals(suite);
+        boolean only4 = "stage4".equals(suite); // quick iteration on settlements: skips Stage 1.5-3 measurements
         if (full) {
             connectivity(world, t, 140, -90, 10, "remote area (2240,-1440)");
         }
@@ -350,28 +352,48 @@ public final class SelfTest {
             Stage15Checks.landmarks(t, rep);
             Stage15Checks.settlementAreas(t, rep);
         }
-        Stage15Checks.lighting(world, t, reps, rep);
-        Stage15Checks.survival(server, world, spawn, rep);
+        if (!only4) {
+            Stage15Checks.lighting(world, t, reps, rep);
+            Stage15Checks.survival(server, world, spawn, rep);
+        }
 
         // ------------------------------------------------------------------ Stage 2
         long s2 = System.nanoTime();
-        Stage2Checks.registries(server, rep);
-        Stage2Checks.recipes(world, rep);
-        Stage2Checks.census(world, t, reps, dir, rep);
-        if (phase.equals("create")) {
+        if (!only4) {
+            Stage2Checks.registries(server, rep);
+            Stage2Checks.recipes(world, rep);
+            Stage2Checks.census(world, t, reps, dir, rep);
+        }
+        if (only4) {
+            // skip Stage 2 functional checks
+        } else if (phase.equals("create")) {
             Stage2Checks.functional(server, world, t, reps, dir, rep);
             Stage2Checks.tickCost(world, rep);
         } else {
             Stage2Checks.persistence(world, dir, rep);
         }
+        long s4 = System.nanoTime();
+        try {
+            Stage4Checks.run(world, t, dir, rep, phase.equals("create"));
+        } catch (RuntimeException e) {
+            Underdeep.LOGGER.error("Stage 4 checks crashed", e);
+            check("stage 4 checks completed without exceptions", false, e.toString());
+        }
+        info("stage 4 checks time", String.format(Locale.ROOT, "%.1f s", (System.nanoTime() - s4) / 1e9));
         long s3 = System.nanoTime();
         try {
-            Stage3Checks.run(world, t, reps, dir, rep, phase.equals("create"));
+            if (!only4) Stage3Checks.run(world, t, reps, dir, rep, phase.equals("create"));
         } catch (RuntimeException e) {
             Underdeep.LOGGER.error("Stage 3 checks crashed", e);
             check("stage 3 checks completed without exceptions", false, e.toString());
         }
         info("stage 3 checks time", String.format(Locale.ROOT, "%.1f s", (System.nanoTime() - s3) / 1e9));
+        if (Boolean.getBoolean("underdeep.gallery") && phase.equals("create")) {
+            List<String> gp = ArchitectureGallery.build(world, ArchitectureGallery.BASE_X, ArchitectureGallery.BASE_Y,
+                    ArchitectureGallery.BASE_Z, dir, java.util.Arrays.asList(dev.underdeep.civ.Civilization.values()));
+            check("architecture gallery designs validate (entrances, reachable beds/workstations)", gp.isEmpty(),
+                    gp.isEmpty() ? "all designs valid" : gp.size() + " problems: " + String.join(" | ", gp));
+        }
         if (Boolean.getBoolean("underdeep.zoo") && phase.equals("create")) {
             WildlifeZoo.build(world, dir);
             info("wildlife zoo", "built " + WildlifeRegistry.all().size() + " species exhibits; tour in tour_zoo.txt");

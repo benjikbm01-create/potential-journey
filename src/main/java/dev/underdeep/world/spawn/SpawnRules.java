@@ -74,6 +74,12 @@ public final class SpawnRules {
         if (inStarterZone(pos)) {
             return false;
         }
+        // Stage 4: no natural hostile spawns inside settlements (plus a margin)
+        dev.underdeep.civ.settlement.SettlementMap settlements = dev.underdeep.civ.settlement.Settlements.of(terrain);
+        if (settlements != null && settlements.siteAt(pos.getX(), pos.getZ(),
+                dev.underdeep.config.UnderdeepConfig.get().settlementMonsterExclusion) != null) {
+            return false;
+        }
         RegionType region = regionOf(biome);
         if (region == null) {
             return true;

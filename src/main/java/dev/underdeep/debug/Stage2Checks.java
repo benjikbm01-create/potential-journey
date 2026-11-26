@@ -408,7 +408,9 @@ final class Stage2Checks {
                     TerrainColumn c = t.column(x, z);
                     var reg = up ? c.upperRegion : c.deepRegion;
                     // keep test plots out of the starter area so they never alter the world spawn
-                    if (reg.primary == type && reg.borderDistance > 18 && !USED_PLOTS.contains(key) && Math.hypot(x, z) > 72) {
+                    var settlements = dev.underdeep.civ.settlement.Settlements.of(t);
+                    boolean inSettlement = settlements != null && settlements.siteAt(x, z, 40) != null;
+                    if (reg.primary == type && reg.borderDistance > 18 && !USED_PLOTS.contains(key) && Math.hypot(x, z) > 72 && !inSettlement) {
                         USED_PLOTS.add(key);
                         int floor = (int) Math.round(up ? c.upperFloor : c.deepFloor);
                         return new BlockPos(x, floor + 4, z);

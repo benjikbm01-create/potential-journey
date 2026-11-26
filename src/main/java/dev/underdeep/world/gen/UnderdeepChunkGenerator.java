@@ -226,6 +226,20 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
     }
 
     @Override
+    public void generateFeatures(net.minecraft.world.StructureWorldAccess world, Chunk chunk, StructureAccessor structureAccessor) {
+        super.generateFeatures(world, chunk, structureAccessor);
+        // Stage 4: settlements are written after natural decoration (which is suppressed on their footprints)
+        dev.underdeep.civ.settlement.SettlementMap map = dev.underdeep.civ.settlement.Settlements.of(world);
+        if (map != null) {
+            try {
+                dev.underdeep.civ.settlement.SettlementGenerator.generate(world, chunk, map);
+            } catch (RuntimeException e) {
+                dev.underdeep.Underdeep.LOGGER.error("Settlement generation failed in chunk {}", chunk.getPos(), e);
+            }
+        }
+    }
+
+    @Override
     public void populateEntities(ChunkRegion region) {
         if (!dev.underdeep.config.UnderdeepConfig.get().vanillaMobReplacement || !dev.underdeep.config.UnderdeepConfig.get().wildlifeEnabled) {
             InitialPopulation.populate(region, this); // Stage 1 vanilla herds, kept only when native wildlife is off

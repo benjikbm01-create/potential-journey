@@ -42,6 +42,7 @@ loom {
                 vmArg "-Dunderdeep.selftest.expectVanilla=${project.findProperty('expectVanilla') ?: 'false'}"
                 vmArg "-Dunderdeep.selftest.suite=${project.findProperty('selftestSuite') ?: 'full'}"
                 vmArg "-Dunderdeep.zoo=${project.findProperty('zoo') ?: 'false'}"
+                vmArg "-Dunderdeep.gallery=${project.findProperty('gallery') ?: 'false'}"
             }
         }
         client {

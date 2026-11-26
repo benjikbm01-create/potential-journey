@@ -77,6 +77,12 @@ public final class CaveSurfacePlacement extends PlacementModifier {
 
     @Override
     public Stream<BlockPos> getPositions(FeaturePlacementContext ctx, Random random, BlockPos pos) {
+        // Stage 4: no natural decoration on settlement footprints (roads, plazas, buildings + margin), so
+        // features of neighbouring chunks can never grow into buildings regardless of generation order
+        dev.underdeep.civ.settlement.SettlementMap settlements = dev.underdeep.civ.settlement.Settlements.of(ctx.getWorld());
+        if (settlements != null && settlements.reserved(pos.getX(), pos.getZ())) {
+            return Stream.empty();
+        }
         int y = minY + random.nextInt(maxY - minY + 1);
         BlockPos.Mutable m = new BlockPos.Mutable(pos.getX(), y, pos.getZ());
         int bottom = ctx.getBottomY() + 1;
