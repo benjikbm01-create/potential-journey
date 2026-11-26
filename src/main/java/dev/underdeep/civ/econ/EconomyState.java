@@ -109,6 +109,8 @@ public final class EconomyState extends PersistentState {
         public long blockedUntil;
         public int shipments;
         public final List<double[]> route = new ArrayList<>();
+        /** Recurring trade agreements on this connection. */
+        public final List<Agreement> agreements = new ArrayList<>();
 
         public long other(long id) {
             return id == a ? b : a;
@@ -127,6 +129,11 @@ public final class EconomyState extends PersistentState {
             n.putLong("blocked", blockedUntil);
             n.putInt("count", shipments);
             n.put("route", route(route));
+            NbtList ag = new NbtList();
+            for (Agreement a : agreements) {
+                ag.add(a.toNbt());
+            }
+            n.put("agreements", ag);
             return n;
         }
 
@@ -143,7 +150,47 @@ public final class EconomyState extends PersistentState {
             c.blockedUntil = n.getLong("blocked");
             c.shipments = n.getInt("count");
             readRoute(n.getList("route", NbtElement.LIST_TYPE), c.route);
+            for (NbtElement e : n.getList("agreements", NbtElement.COMPOUND_TYPE)) {
+                c.agreements.add(Agreement.fromNbt((NbtCompound) e));
+            }
             return c;
+        }
+    }
+
+    /** A recurring delivery: {@code supplier} sends {@code units} of a good to {@code buyer} every {@code interval} days. */
+    public static final class Agreement {
+        public long supplier, buyer;
+        public String good = "";
+        public int units, interval = 2, remaining = 4, failures;
+        public long nextDay;
+        public boolean aid;
+
+        NbtCompound toNbt() {
+            NbtCompound n = new NbtCompound();
+            n.putLong("s", supplier);
+            n.putLong("b", buyer);
+            n.putString("g", good);
+            n.putInt("u", units);
+            n.putInt("i", interval);
+            n.putInt("r", remaining);
+            n.putInt("f", failures);
+            n.putLong("next", nextDay);
+            n.putBoolean("aid", aid);
+            return n;
+        }
+
+        static Agreement fromNbt(NbtCompound n) {
+            Agreement a = new Agreement();
+            a.supplier = n.getLong("s");
+            a.buyer = n.getLong("b");
+            a.good = n.getString("g");
+            a.units = n.getInt("u");
+            a.interval = Math.max(1, n.getInt("i"));
+            a.remaining = n.getInt("r");
+            a.failures = n.getInt("f");
+            a.nextDay = n.getLong("next");
+            a.aid = n.getBoolean("aid");
+            return a;
         }
     }
 

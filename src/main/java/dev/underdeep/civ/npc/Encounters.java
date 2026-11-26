@@ -373,6 +373,10 @@ public final class Encounters {
                         b.feel(Emotion.CURIOSITY, 0.2);
                         res = new Result(t, "Someone found something remarkable out in the caverns.", "Tell me everything!");
                     }
+                    case ECON -> res = new Result(t, pick(rnd, "Did you hear? ", "Word is ", "Apparently ") + news.detail + ".",
+                            pick(rnd, "Is that so?", "Huh. I wondered about that.", "Good to know.", "That explains a lot."));
+                    case PERSON_MOVED -> res = new Result(t, news.detail + ", did you know?", pick(rnd, "I'll miss them.", "Good for them.",
+                            "I hope they're happy there."));
                     default -> res = new Result(t, "Did you hear?", "Hm?");
                 }
             }

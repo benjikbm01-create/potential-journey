@@ -141,6 +141,45 @@ public final class UnderdeepConfig {
     /** Ticks before the same player can give the same inhabitant another gift that counts. */
     public int giftCooldownTicks = 6000;
 
+    // ---- Stage 6: economies, trade and autonomous settlements ----
+    /** Master switch for the settlement economy (prices, production, trade, construction, migration). */
+    public boolean economyEnabled = true;
+    /** Settlements within this distance of a player or the world spawn take part in the simulated economy. */
+    public int economyRadius = 1600;
+    /** Economy update interval (ticks) near players / far from every player; catch-up is capped in hours. */
+    public int economyStepTicks = 1000;
+    public int economyDistantStepTicks = 4000;
+    public int economyMaxCatchUpHours = 48;
+    /** Settlement economies updated per server tick (bounded work). */
+    public int economySettlementsPerTick = 2;
+    /** Pace multipliers (1 = default). */
+    public double productionRate = 1.0;
+    public double consumptionRate = 1.0;
+    public double wageRate = 1.0;
+    public double priceVariation = 1.0;
+    public double merchantMargin = 0.18;
+    public double tradeFrequency = 1.0;
+    public double transportCost = 1.0;
+    public double constructionSpeed = 1.0;
+    public double constructionBudget = 1.0;
+    public double populationGrowth = 1.0;
+    public double migrationFrequency = 1.0;
+    public double eventFrequency = 1.0;
+    /** Target money per inhabitant (emeralds) used by the issuance/upkeep stabiliser. */
+    public double moneyPerCapita = 30;
+    /** Physical caravans embodied at once, shipments in flight at once. */
+    public int maxActiveCaravans = 4;
+    public int maxShipments = 40;
+    /** Construction: projects at once per settlement, blocks placed per tick at a site. */
+    public int maxProjectsPerSettlement = 1;
+    public int constructionBlocksPerTick = 16;
+    /** Player participation limits. */
+    public int maxBusinessesPerPlayer = 2;
+    public int maxEmployeesPerBusiness = 1;
+    public int maxContractsPerPlayer = 3;
+    /** Containers and blocks inside owned property are protected from other players. */
+    public boolean propertyProtection = true;
+
     public double densityFor(String ecosystem) {
         return wildlifeDensity * wildlifeDensityByEcosystem.getOrDefault(ecosystem, 1.0);
     }

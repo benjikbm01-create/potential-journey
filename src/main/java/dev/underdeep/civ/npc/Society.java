@@ -78,6 +78,14 @@ public final class Society {
         this.manager = manager;
     }
 
+    /** Stage 6 hook: adds buildings constructed later (doors, sites, celebrations) to a settlement's places. */
+    public static java.util.function.BiConsumer<SettlementRecord, Places> EXTRAS;
+
+    /** Forgets cached places (after construction changes a settlement). */
+    public void invalidate(long settlement) {
+        places.remove(settlement);
+    }
+
     @Nullable
     public Places places(SettlementRecord rec) {
         Places p = places.get(rec.id);
@@ -88,6 +96,9 @@ public final class Society {
                 return null;
             }
             p = new Places(map.plan(site));
+            if (EXTRAS != null) {
+                EXTRAS.accept(rec, p);
+            }
             places.put(rec.id, p);
         }
         return p;
@@ -109,6 +120,7 @@ public final class Society {
         pl.fill(c, r);
         c.now = now;
         c.timeOfDay = timeOfDay;
+        c.celebration = now < pl.celebrationUntil;
         Mind m = r.mind;
         long day = now / 24000;
         double fw = -9, famw = -9;
@@ -176,7 +188,7 @@ public final class Society {
     }
 
     static boolean alive(SettlementRecord rec, int idx) {
-        return idx >= 0 && idx < rec.inhabitants.size() && rec.inhabitants.get(idx).alive && rec.inhabitants.get(idx).mind != null;
+        return idx >= 0 && idx < rec.inhabitants.size() && rec.inhabitants.get(idx).present() && rec.inhabitants.get(idx).mind != null;
     }
 
     // ================================================================== abstract tier
@@ -195,7 +207,7 @@ public final class Society {
                     }
                 }
                 for (SettlementRecord.InhabitantRecord r : rec.inhabitants) {
-                    if (r.alive && r.mind != null) {
+                    if (r.present() && r.mind != null) {
                         queue.add(new long[]{rec.id, r.index});
                     }
                 }
@@ -212,11 +224,11 @@ public final class Society {
                 continue;
             }
             SettlementRecord.InhabitantRecord r = rec.inhabitants.get((int) q[1]);
-            if (!r.alive || r.mind == null || manager.isActive(rec.id, r.index)) {
+            if (!r.present() || r.mind == null || manager.isActive(rec.id, r.index)) {
                 continue;
             }
-            if (Companions.travelling(r.mind)) {
-                r.mind.lastUpdate = now; // away with their companion; lives in the active tier when embodied
+            if (Companions.travelling(r.mind) || r.mind.journey != 0) {
+                r.mind.lastUpdate = now; // away (companion or caravan); lives in the active tier when embodied
                 continue;
             }
             long interval = nearSettlements.contains(rec.id) ? cfg.abstractUpdateInterval : cfg.distantUpdateInterval;
@@ -303,7 +315,7 @@ public final class Society {
         // someone doing something at the same kind of place, or a housemate/coworker
         for (int tries = 0; tries < 8; tries++) {
             SettlementRecord.InhabitantRecord o = rec.inhabitants.get(rnd.nextInt(rec.inhabitants.size()));
-            if (o == r || !o.alive || o.mind == null || manager.isActive(rec.id, o.index)) {
+            if (o == r || !o.present() || o.mind == null || manager.isActive(rec.id, o.index)) {
                 continue;
             }
             Activity oa = Activity.byOrdinal(o.mind.activity);

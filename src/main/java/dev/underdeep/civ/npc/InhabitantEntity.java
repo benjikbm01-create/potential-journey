@@ -185,6 +185,7 @@ public class InhabitantEntity extends MerchantEntity {
         goalSelector.add(2, new LookAtCustomerGoal(this));
         goalSelector.add(3, new LongDoorInteractGoal(this, true));
         goalSelector.add(3, new CompanionGoal(this));
+        goalSelector.add(3, new CaravanGoal(this));
         goalSelector.add(4, new MindGoal(this));
         goalSelector.add(8, new LookAtEntityGoal(this, PlayerEntity.class, 6));
         goalSelector.add(9, new LookAroundGoal(this));
@@ -214,6 +215,9 @@ public class InhabitantEntity extends MerchantEntity {
     public Activity goalActivity = Activity.STROLL;
     @Nullable public LivingEntity danger;
     public boolean defending;
+    /** Stage 6: shipment this body travels with as a caravan member (0 = none) and the current market offers. */
+    public long caravan;
+    public final java.util.List<dev.underdeep.civ.econ.Market.Line> marketLines = new java.util.ArrayList<>();
     /** Companion state (set each thought): the owner while travelling, and where to wait. */
     @Nullable public PlayerEntity companionOwner;
     @Nullable public BlockPos waitPos;
@@ -234,6 +238,44 @@ public class InhabitantEntity extends MerchantEntity {
 
     private static boolean sleeps(Activity a) {
         return a == Activity.SLEEP || a == Activity.NAP || a == Activity.RECOVER;
+    }
+
+    /** Caravan members walk the shipment's route; guards and the rest follow the trader. */
+    static final class CaravanGoal extends Goal {
+        private final InhabitantEntity e;
+        private int repath;
+
+        CaravanGoal(InhabitantEntity e) {
+            this.e = e;
+            setControls(EnumSet.of(Control.MOVE, Control.LOOK));
+        }
+
+        @Override
+        public boolean canStart() {
+            return e.caravan != 0 && e.getTarget() == null && e.getCustomer() == null;
+        }
+
+        @Override
+        public boolean shouldContinue() {
+            return canStart();
+        }
+
+        @Override
+        public void tick() {
+            if (e.talkUntil > e.age && e.talkPartner != null) {
+                e.getNavigation().stop();
+                e.getLookControl().lookAt(e.talkPartner, 30, 30);
+                return;
+            }
+            if (--repath > 0 && !e.getNavigation().isIdle()) {
+                return;
+            }
+            repath = 20;
+            BlockPos to = dev.underdeep.civ.econ.Caravans.waypoint(e);
+            if (to != null) {
+                e.getNavigation().startMovingTo(to.getX() + 0.5, to.getY(), to.getZ() + 0.5, 0.55);
+            }
+        }
     }
 
     /** Companion movement: follow / stay close / keep distance / wait / rest, with recovery when stuck. */
@@ -326,7 +368,7 @@ public class InhabitantEntity extends MerchantEntity {
 
         @Override
         public boolean canStart() {
-            return !e.exhibit && e.getCustomer() == null && e.getTarget() == null && e.companionOwner == null;
+            return !e.exhibit && e.getCustomer() == null && e.getTarget() == null && e.companionOwner == null && e.caravan == 0;
         }
 
         @Override
@@ -481,14 +523,29 @@ public class InhabitantEntity extends MerchantEntity {
 
     @Override
     protected void fillRecipes() {
+        TradeOfferList econ = getWorld().isClient ? null : dev.underdeep.civ.econ.EconHooks.offers(this, getCustomer());
+        if (econ != null) {
+            this.offers = econ; // Stage 6: real shelf stock at current prices
+            return;
+        }
         TradeOfferList list = TradeTables.offers(civ(), profession(), lookSeed);
         InhabitantManager.applyUses(this, list);
         this.offers = list;
     }
 
     @Override
+    public void setCustomer(@Nullable PlayerEntity customer) {
+        if (customer != null && !getWorld().isClient) {
+            this.offers = null; // rebuild offers for each customer from the current shelf and prices
+        }
+        super.setCustomer(customer);
+    }
+
+    @Override
     protected void afterUsing(TradeOffer offer) {
-        InhabitantManager.recordTrade(this, offer);
+        if (!dev.underdeep.civ.econ.EconHooks.traded(this, offer)) {
+            InhabitantManager.recordTrade(this, offer);
+        }
     }
 
     @Override

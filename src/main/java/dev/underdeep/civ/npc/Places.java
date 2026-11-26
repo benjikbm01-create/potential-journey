@@ -24,6 +24,10 @@ public final class Places {
             plazas = new ArrayList<>(), markets = new ArrayList<>(), guards = new ArrayList<>(), clinics = new ArrayList<>(),
             edges = new ArrayList<>(), seats = new ArrayList<>(), landmarks = new ArrayList<>();
     final Map<Integer, BlockPos> doors = new HashMap<>();
+    /** Stage 6: the settlement's active construction site (builders work here), or null. */
+    @Nullable public BlockPos constructionSite;
+    /** Stage 6: a community celebration lasts until this time (gathering at the square). */
+    public long celebrationUntil;
     /** Reserved spot → (record index, expiry). */
     private final Map<Long, long[]> reserved = new HashMap<>();
 
@@ -79,6 +83,23 @@ public final class Places {
         return dx * dx + dz * dz;
     }
 
+    /** Stage 6: a building added by construction (its door, and its kind's role). */
+    public void addBuilding(int index, dev.underdeep.civ.arch.BuildingKind kind, BlockPos entrance) {
+        doors.put(index, entrance);
+        switch (kind) {
+            case INN -> taverns.add(entrance);
+            case LIBRARY, HALL -> libraries.add(entrance);
+            case CLINIC -> clinics.add(entrance);
+            case STALL, SHOP, TRADE_HALL -> markets.add(entrance);
+            case FARM, PEN, BARN -> farms.add(entrance);
+            case DOCK -> docks.add(entrance);
+            case GUARD_POST, TOWER -> guards.add(entrance);
+            case WELL, LANDMARK -> landmarks.add(entrance);
+            default -> {
+            }
+        }
+    }
+
     /** Fills the availability part of a decision context. */
     public void fill(Brain.Context c, SettlementRecord.InhabitantRecord r) {
         c.profession = r.profession;
@@ -91,6 +112,9 @@ public final class Places {
         c.hasClinic = !clinics.isEmpty();
         c.hasEdge = !edges.isEmpty();
         c.eveningGathering = !plazas.isEmpty();
+        c.construction = constructionSite != null;
+        c.builder = r.profession.equals("carpenter") || r.profession.equals("stonemason") || r.profession.equals("engineer")
+                || r.work == null && r.mind != null && r.mind.age == dev.underdeep.civ.mind.Mind.Age.ADULT;
         c.personalSeed = r.appearance;
     }
 
@@ -175,6 +199,7 @@ public final class Places {
             case SHELTER -> r.bed != null ? r.bed : home;
             case GUARD -> pick(guards, s, home, r.index, now, false);
             case CLINIC -> pick(clinics, s, home, r.index, now, false);
+            case SITE -> constructionSite != null ? constructionSite : home;
         };
     }
 

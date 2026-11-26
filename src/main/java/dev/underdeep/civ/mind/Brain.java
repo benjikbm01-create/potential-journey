@@ -27,6 +27,8 @@ public final class Brain {
         /** Best candidates found by the caller (record indices) or −1. */
         public int friend = -1, family = -1, apprentice = -1, estranged = -1, newcomer = -1;
         public boolean eveningGathering;
+        /** Stage 6: a construction site needs builders (and this person builds); a celebration is on. */
+        public boolean construction, builder, celebration;
         public long personalSeed;
     }
 
@@ -348,6 +350,12 @@ public final class Brain {
                 return free ? 0.7 + lack(m, Need.COMFORT) * 0.6 + m.t(Trait.HOMEBODY) * 0.2 : 0;
             case PLAY_GAME:
                 return free && c.othersNear && !night ? 0.4 + m.t(Trait.HUMOR) * 0.5 + m.t(Trait.COMPETITIVENESS) * 0.4 + lack(m, Need.RECREATION) : 0;
+            case CONSTRUCT:
+                return work && c.construction && c.builder ? workU(m) + 0.35 : 0;
+            case TRAVEL:
+                return 0; // assigned by the caravan system, never chosen freely
+            case CELEBRATE:
+                return c.celebration && !night ? 1.5 + soc * 1.2 + lack(m, Need.RECREATION) * 0.5 : 0;
             case READ:
                 return free && (c.hasLibrary || m.trait(Trait.CURIOSITY) > 60) ? 0.3 + m.t(Trait.CURIOSITY) * 0.8 + lack(m, Need.CURIOSITY) * 0.8 : 0;
             default:

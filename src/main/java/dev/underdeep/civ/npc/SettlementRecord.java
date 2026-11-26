@@ -54,6 +54,16 @@ public final class SettlementRecord {
         public NbtCompound memory = new NbtCompound();
         /** Stage 5 individual mind (personality, needs, memories, relationships ...). Never null after load/creation. */
         public dev.underdeep.civ.mind.Mind mind;
+        /** Stage 6 migration: moved to another settlement (its id and record index there); 0 = lives here. */
+        public long movedTo;
+        public int movedIndex = -1;
+        /** Where this person lived before ("settlementId:index"), if they moved here. */
+        public String cameFrom = "";
+
+        /** Alive and living in this settlement (not moved away). */
+        public boolean present() {
+            return alive && movedTo == 0;
+        }
 
         NbtCompound toNbt(net.minecraft.registry.RegistryWrapper.WrapperLookup lookup) {
             NbtCompound n = new NbtCompound();
@@ -77,6 +87,9 @@ public final class SettlementRecord {
             if (mind != null) {
                 n.put("mind", mind.toNbt(lookup));
             }
+            n.putLong("movedTo", movedTo);
+            n.putInt("movedIndex", movedIndex);
+            n.putString("cameFrom", cameFrom);
             return n;
         }
 
@@ -98,6 +111,9 @@ public final class SettlementRecord {
             if (n.contains("mind")) {
                 r.mind = dev.underdeep.civ.mind.Mind.fromNbt(n.getCompound("mind"), lookup);
             }
+            r.movedTo = n.getLong("movedTo");
+            r.movedIndex = n.contains("movedIndex") ? n.getInt("movedIndex") : -1;
+            r.cameFrom = n.getString("cameFrom");
             return r;
         }
     }
@@ -213,7 +229,7 @@ public final class SettlementRecord {
     public static void ensureMinds(SettlementRecord rec, long now) {
         boolean changed = false;
         for (InhabitantRecord r : rec.inhabitants) {
-            if (r.mind == null) {
+            if (r.mind == null && r.movedTo == 0) {
                 r.mind = dev.underdeep.civ.mind.Mind.create(rec.civ, r.profession, r.appearance, now);
                 r.mind.household = r.home;
                 r.mind.origin = rec.name;
@@ -226,7 +242,7 @@ public final class SettlementRecord {
         }
         for (InhabitantRecord a : rec.inhabitants) {
             for (InhabitantRecord b : rec.inhabitants) {
-                if (a == b) {
+                if (a == b || a.mind == null || b.mind == null) {
                     continue;
                 }
                 if (a.home >= 0 && a.home == b.home) {
@@ -294,7 +310,7 @@ public final class SettlementRecord {
     public int alive() {
         int n = 0;
         for (InhabitantRecord r : inhabitants) {
-            n += r.alive ? 1 : 0;
+            n += r.present() ? 1 : 0;
         }
         return n;
     }

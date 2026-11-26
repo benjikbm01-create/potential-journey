@@ -98,6 +98,11 @@ public final class SettlementPlanner {
         return (int) Math.floor(c.upperFloor);
     }
 
+    /** Public access for Stage 6 construction plots (same rules as the planner). */
+    public static double waterLevelAt(UnderdeepTerrain t, int x, int z) {
+        return waterLevel(t, x, z);
+    }
+
     static double waterLevel(UnderdeepTerrain t, int x, int z) {
         TerrainColumn c = t.column(x, z);
         boolean sea = c.upperFloor < UnderdeepTerrain.SEA_LEVEL - 0.5;

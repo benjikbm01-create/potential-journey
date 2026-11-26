@@ -246,7 +246,8 @@ public final class InhabitantManager {
         List<BlockPos> gathers = gatherPoints(plan);
         List<Object[]> candidates = new ArrayList<>();
         for (SettlementRecord.InhabitantRecord r : rec.inhabitants) {
-            if (!r.alive || mine.containsKey(r.index) || r.bed == null || r.mind != null && Companions.travelling(r.mind)) {
+            if (!r.present() || mine.containsKey(r.index) || r.bed == null || r.mind != null && (Companions.travelling(r.mind) || r.mind.journey != 0
+                    || r.mind.status == dev.underdeep.civ.mind.Mind.Status.AWAY && r.mind.companionOf == null)) {
                 continue;
             }
             BlockPos spot = r.work != null ? r.work : r.bed;
@@ -381,7 +382,7 @@ public final class InhabitantManager {
     // ================================================================== events from entities
 
     @Nullable
-    static SettlementRecord.InhabitantRecord record(InhabitantEntity e) {
+    public static SettlementRecord.InhabitantRecord record(InhabitantEntity e) {
         if (!(e.getWorld() instanceof ServerWorld sw)) {
             return null;
         }

@@ -35,6 +35,7 @@ public final class Underdeep implements ModInitializer {
         dev.underdeep.wildlife.WildlifeJournal.init();
         dev.underdeep.civ.settlement.Settlements.init();
         dev.underdeep.civ.npc.InhabitantManager.init();
+        dev.underdeep.civ.econ.EconomyManager.init();
         ModWorldgen.init();
         UnderdeepCommands.init();
         SelfTest.init();

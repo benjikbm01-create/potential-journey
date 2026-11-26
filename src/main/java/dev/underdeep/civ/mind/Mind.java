@@ -23,14 +23,14 @@ import java.util.UUID;
  * inhabitant's settlement record (one authoritative copy, NBT key {@code mind}, schema {@link #SCHEMA}).
  */
 public final class Mind {
-    public static final int SCHEMA = 1;
+    public static final int SCHEMA = 2;
 
     public enum Age { YOUNG, ADULT, ELDER }
 
     public enum Status { ACTIVE, AWAY, RECOVERING }
 
     /** Kinds of knowledge (ordinals persisted). */
-    public enum InfoType { PREDATOR_SEEN, PERSON_INJURED, PERSON_LOST, PLAYER_HELPED, PLAYER_ATTACKED, DISCOVERY, GIFT_FROM_PLAYER }
+    public enum InfoType { PREDATOR_SEEN, PERSON_INJURED, PERSON_LOST, PLAYER_HELPED, PLAYER_ATTACKED, DISCOVERY, GIFT_FROM_PLAYER, ECON, PERSON_MOVED }
 
     /** Where knowledge came from. */
     public enum Source { WITNESSED, TOLD, CULTURE }
@@ -183,6 +183,17 @@ public final class Mind {
     public int activityTarget = -1;
     public long lastUpdate = -1;
     public long lastSocial;
+    // ---- Stage 6 (schema 2): economy integration
+    /** Household food security (0–1) set by the settlement economy; scales how much meals restore hunger. */
+    public float food = 1f;
+    /** Professional skills (0–100), indexed by {@code Recipes.Skill} ordinal (append-only). */
+    public final byte[] skills = new byte[24];
+    /** Shipment this inhabitant is travelling with (0 = none). */
+    public long journey;
+    /** Player who employs this inhabitant (shopkeeper), if any. */
+    @Nullable public UUID employer;
+    /** Relationships with people in other settlements ("settlementId:index"), kept when someone moves away. */
+    public final Map<String, Bond> elsewhere = new HashMap<>();
     /** Companion affiliation. */
     @Nullable public UUID companionOf;
     public int companionMode;
@@ -408,6 +419,15 @@ public final class Mind {
         n.putInt("activityTarget", activityTarget);
         n.putLong("updated", lastUpdate);
         n.putLong("social", lastSocial);
+        n.putFloat("food", food);
+        n.putByteArray("skills", skills);
+        n.putLong("journey", journey);
+        if (employer != null) {
+            n.putUuid("employer", employer);
+        }
+        NbtCompound el = new NbtCompound();
+        elsewhere.forEach((k, b) -> el.put(k, b.toNbt()));
+        n.put("elsewhere", el);
         if (companionOf != null) {
             n.putUuid("companionOf", companionOf);
         }
@@ -500,6 +520,15 @@ public final class Mind {
         m.activityTarget = n.contains("activityTarget") ? n.getInt("activityTarget") : -1;
         m.lastUpdate = n.getLong("updated");
         m.lastSocial = n.getLong("social");
+        m.food = n.contains("food") ? n.getFloat("food") : 1f;
+        byte[] sk = n.getByteArray("skills");
+        System.arraycopy(sk, 0, m.skills, 0, Math.min(sk.length, m.skills.length));
+        m.journey = n.getLong("journey");
+        m.employer = n.containsUuid("employer") ? n.getUuid("employer") : null;
+        NbtCompound el = n.getCompound("elsewhere");
+        for (String k : el.getKeys()) {
+            m.elsewhere.put(k, Bond.fromNbt(el.getCompound(k)));
+        }
         m.companionOf = n.containsUuid("companionOf") ? n.getUuid("companionOf") : null;
         m.companionMode = n.getInt("companionMode");
         readStacks(n.getList("pack", NbtElement.COMPOUND_TYPE), m.companionPack, lookup);

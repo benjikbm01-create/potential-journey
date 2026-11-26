@@ -471,7 +471,7 @@ public final class Companions {
         return fallback;
     }
 
-    static boolean safe(ServerWorld w, BlockPos pos) {
+    public static boolean safe(ServerWorld w, BlockPos pos) {
         BlockState below = w.getBlockState(pos.down());
         BlockState feet = w.getBlockState(pos), head = w.getBlockState(pos.up());
         return below.isSideSolidFullSquare(w, pos.down(), net.minecraft.util.math.Direction.UP) && feet.getCollisionShape(w, pos).isEmpty()

@@ -308,6 +308,13 @@ def main():
     lang["message.underdeep.people.header"] = "People you have met (%s)"
     lang["message.underdeep.people.none"] = "You have not met anyone yet."
     lang["screen.underdeep.dialogue"] = "Conversation"
+    lang["message.underdeep.property.private"] = "This belongs to someone else."
+    lang["message.underdeep.property.none"] = "You don't own or rent any property."
+    lang["message.underdeep.property.stand"] = "Stand inside your property to do that."
+    lang["message.underdeep.business.none"] = "You don't run a shop (or you are not standing in it)."
+    lang["message.underdeep.business.stand"] = "Stand inside your shop to stock it."
+    lang["message.underdeep.contract.paid"] = "You were paid %s emeralds."
+    lang["message.underdeep.journal.trade"] = "Trade notes"
     return lang
 
 

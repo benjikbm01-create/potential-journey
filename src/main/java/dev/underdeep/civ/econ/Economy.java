@@ -33,6 +33,17 @@ public final class Economy {
         public double produced, consumed, imported, exported;
         public double desired = 4;
         public double price;
+        /** Smoothed rates per in-game day (produced, consumed, imported, exported). */
+        public double rP, rC, rI, rE;
+
+        /** Folds the accumulators of the last step into the daily rates. */
+        public void roll(double k, double perDay) {
+            rP += (produced * perDay - rP) * k;
+            rC += (consumed * perDay - rC) * k;
+            rI += (imported * perDay - rI) * k;
+            rE += (exported * perDay - rE) * k;
+            produced = consumed = imported = exported = 0;
+        }
 
         public double free() {
             return Math.max(0, qty - reserved);
@@ -48,6 +59,10 @@ public final class Economy {
             n.putDouble("e", exported);
             n.putDouble("d", desired);
             n.putDouble("$", price);
+            n.putDouble("rp", rP);
+            n.putDouble("rc", rC);
+            n.putDouble("ri", rI);
+            n.putDouble("re", rE);
             return n;
         }
 
@@ -61,6 +76,10 @@ public final class Economy {
             s.exported = n.getDouble("e");
             s.desired = n.getDouble("d");
             s.price = n.getDouble("$");
+            s.rP = n.getDouble("rp");
+            s.rC = n.getDouble("rc");
+            s.rI = n.getDouble("ri");
+            s.rE = n.getDouble("re");
             return s;
         }
     }

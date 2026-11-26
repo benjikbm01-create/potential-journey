@@ -62,12 +62,16 @@ public enum Activity {
     DEFEND(Cat.EMERGENCY, Place.NEAR, 5, 30, Need.SAFETY, 0.1),
     SEEK_GUARD(Cat.EMERGENCY, Place.GUARD, 5, 20, Need.SAFETY, 0.3),
     HELP_INJURED(Cat.EMERGENCY, Place.FRIEND, 10, 40, Need.PURPOSE, 0.2),
-    SEE_HEALER(Cat.EMERGENCY, Place.CLINIC, 30, 120, Need.HEALTH, 0.3);
+    SEE_HEALER(Cat.EMERGENCY, Place.CLINIC, 30, 120, Need.HEALTH, 0.3),
+    // Stage 6 (append-only)
+    CONSTRUCT(Cat.WORK, Place.SITE, 120, 260, Need.PURPOSE, 0.22, Need.REST, -0.05),
+    TRAVEL(Cat.WORK, Place.NEAR, 60, 600, Need.PURPOSE, 0.1, Need.CURIOSITY, 0.1),
+    CELEBRATE(Cat.SOCIAL, Place.PLAZA, 60, 160, Need.SOCIAL, 0.4, Need.BELONGING, 0.3, Need.RECREATION, 0.35);
 
     public enum Cat { PERSONAL, WORK, SOCIAL, LEISURE, EMERGENCY }
 
     /** Abstract places resolved per inhabitant from the settlement plan ({@code npc.Places}). */
-    public enum Place { BED, HOME, WORK, FARM, WATER, LIBRARY, TAVERN, PLAZA, MARKET, PATROL, EDGE, FRIEND, NEAR, WANDER, FAVORITE, SHELTER, GUARD, CLINIC }
+    public enum Place { BED, HOME, WORK, FARM, WATER, LIBRARY, TAVERN, PLAZA, MARKET, PATROL, EDGE, FRIEND, NEAR, WANDER, FAVORITE, SHELTER, GUARD, CLINIC, SITE }
 
     public final Cat cat;
     public final Place place;
@@ -91,7 +95,11 @@ public enum Activity {
     /** Applies this activity's hourly effects for a number of in-game hours. */
     public void apply(Mind m, double hours) {
         for (int i = 0; i < needs.length; i++) {
-            m.satisfy(needs[i], effects[i] * hours);
+            double e = effects[i];
+            if (needs[i] == Need.HUNGER && e > 0) {
+                e *= 0.3 + 0.7 * m.food; // meals depend on the household's actual food (Stage 6 economy)
+            }
+            m.satisfy(needs[i], e * hours);
         }
     }
 

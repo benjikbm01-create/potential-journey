@@ -800,5 +800,12 @@
   "message.underdeep.companion.none": "You have no companion. Befriend an inhabitant and ask them to travel with you.",
   "message.underdeep.people.header": "People you have met (%s)",
   "message.underdeep.people.none": "You have not met anyone yet.",
-  "screen.underdeep.dialogue": "Conversation"
+  "screen.underdeep.dialogue": "Conversation",
+  "message.underdeep.property.private": "This belongs to someone else.",
+  "message.underdeep.property.none": "You don't own or rent any property.",
+  "message.underdeep.property.stand": "Stand inside your property to do that.",
+  "message.underdeep.business.none": "You don't run a shop (or you are not standing in it).",
+  "message.underdeep.business.stand": "Stand inside your shop to stock it.",
+  "message.underdeep.contract.paid": "You were paid %s emeralds.",
+  "message.underdeep.journal.trade": "Trade notes"
 }
