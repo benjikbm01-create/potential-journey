@@ -122,9 +122,42 @@ public class InhabitantEntity extends MerchantEntity {
         return profession().equals("guard");
     }
 
+    /** Development exhibits (architecture gallery line-ups) are saved; real inhabitants never are. */
+    public boolean exhibit;
+
+    /** Appearance without a settlement record (gallery exhibits). */
+    public void dress(Civilization civ, int variant, String profession, String name) {
+        dataTracker.set(LOOK, civ.ordinal() | (variant & 15) << 4);
+        dataTracker.set(PROFESSION, profession);
+        setCustomName(Text.literal(name));
+        if (profession.equals("guard")) {
+            equipStack(net.minecraft.entity.EquipmentSlot.MAINHAND, new ItemStack(Items.IRON_SWORD));
+        }
+    }
+
     @Override
     public boolean shouldSave() {
-        return false; // record-backed; see InhabitantManager
+        return exhibit && super.shouldSave(); // record-backed otherwise; see InhabitantManager
+    }
+
+    @Override
+    public void writeCustomDataToNbt(net.minecraft.nbt.NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        if (exhibit) {
+            nbt.putBoolean("UdExhibit", true);
+            nbt.putInt("UdLook", dataTracker.get(LOOK));
+            nbt.putString("UdProfession", dataTracker.get(PROFESSION));
+        }
+    }
+
+    @Override
+    public void readCustomDataFromNbt(net.minecraft.nbt.NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        exhibit = nbt.getBoolean("UdExhibit");
+        if (exhibit) {
+            dataTracker.set(LOOK, nbt.getInt("UdLook"));
+            dataTracker.set(PROFESSION, nbt.getString("UdProfession"));
+        }
     }
 
     @Override
@@ -183,7 +216,7 @@ public class InhabitantEntity extends MerchantEntity {
 
         @Override
         public boolean canStart() {
-            return e.getCustomer() == null && e.getTarget() == null;
+            return !e.exhibit && e.getCustomer() == null && e.getTarget() == null;
         }
 
         @Override

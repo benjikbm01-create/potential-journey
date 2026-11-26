@@ -163,6 +163,25 @@ final class Stage4Checks {
             // tour: an overview from above the plaza edge and street-level views toward several buildings
             SettlementPlan.Plaza c = p.plazas().get(0);
             tour.append(String.format(Locale.ROOT, "settle_%s_overview %d %d %d 0 35 natural\n", s.civ().id(), c.x(), c.y() + 22, c.z() - s.radius() / 2));
+            int stalls = 0;
+            for (SettlementPlan.Building b : p.buildings()) {
+                if (stalls >= 3 || b.kind() != BuildingKind.STALL) {
+                    continue;
+                }
+                for (Blueprint.Marker mk : b.blueprint().markers()) {
+                    if (mk.type() == Blueprint.MarkerType.MERCHANT) {
+                        BlockPos mp = b.world(mk.pos());
+                        BlockPos e = b.entrance();
+                        double dx = e.getX() - mp.getX(), dz = e.getZ() - mp.getZ();
+                        double len = Math.max(0.1, Math.hypot(dx, dz));
+                        double vx = mp.getX() + 0.5 + dx / len * 5, vz = mp.getZ() + 0.5 + dz / len * 5;
+                        float yaw = (float) Math.toDegrees(Math.atan2(-(mp.getX() + 0.5 - vx), mp.getZ() + 0.5 - vz));
+                        tour.append(String.format(Locale.ROOT, "settle_%s_merchant_%d %.1f %d %.1f %.0f 12 natural\n", s.civ().id(), stalls++, vx,
+                                mp.getY() + 1, vz, yaw));
+                        break;
+                    }
+                }
+            }
             int k = 0;
             for (SettlementPlan.Building b : p.buildings()) {
                 if (!b.kind().countsAsBuilding() || k >= 6) {

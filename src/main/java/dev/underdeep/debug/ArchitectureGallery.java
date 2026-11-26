@@ -74,6 +74,23 @@ public final class ArchitectureGallery {
                 }
                 x += bp.width + 6;
             }
+            // inhabitant line-up in front of the row (frozen, saved exhibits) and a close view of it
+            String[] profs = {"merchant", "guard", "farmer", "scholar", dev.underdeep.civ.settlement.Professions.workshopFor(civ, 0), "fisher"};
+            for (int i = 0; i < 6; i++) {
+                dev.underdeep.civ.npc.InhabitantEntity e = dev.underdeep.civ.npc.InhabitantManager.INHABITANT.create(w);
+                if (e == null) {
+                    continue;
+                }
+                e.exhibit = true;
+                e.dress(civ, i, profs[i], dev.underdeep.civ.Names.person(civ, i * 31L + civ.ordinal()));
+                e.setAiDisabled(true);
+                e.setPersistent();
+                e.refreshPositionAndAngles(baseX + 2 + i * 2 + 0.5, baseY, z0 - 8 + 0.5, 180, 0);
+                e.setHeadYaw(180);
+                e.setBodyYaw(180);
+                w.spawnEntity(e);
+            }
+            tour.append(String.format(Locale.ROOT, "gallery_%s_people %d %d %d 0 12 natural\n", civ.id(), baseX + 7, baseY + 2, z0 - 15));
             // wide views every ~40 blocks along the row, from the front and slightly above
             for (int vx = baseX + 12; vx < rowEnd; vx += 30) {
                 tour.append(String.format(Locale.ROOT, "gallery_%s_%02d %d %d %d 0 18 natural\n", civ.id(), shot++, vx, baseY + 6, z0 - 15));

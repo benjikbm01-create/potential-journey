@@ -161,7 +161,9 @@ public final class InhabitantManager {
         SettlementPlan plan = map.plan(site);
         SettlementState state = SettlementState.get(world);
         SettlementRecord rec = state.getOrCreate(plan, world.getSeed(), world.getTime());
+        boolean fresh = !active.containsKey(site.id());
         Map<Integer, InhabitantEntity> mine = active.computeIfAbsent(site.id(), k -> new HashMap<>());
+        int before = mine.size();
         int budget = Math.min(cfg.maxActiveInhabitantsPerSettlement, cfg.maxActiveInhabitantsTotal - activeCount() + mine.size());
         if (mine.size() >= budget) {
             return;
@@ -204,6 +206,10 @@ public final class InhabitantManager {
                     e.sleep(r.bed);
                 }
             }
+        }
+        if (fresh) {
+            Underdeep.LOGGER.info("Settlement {} ({}): {} of {} inhabitants present ({} candidates, time {})", rec.name, rec.civ.id(),
+                    mine.size() - before, rec.alive(), candidates.size(), world.getTimeOfDay() % 24000);
         }
     }
 
