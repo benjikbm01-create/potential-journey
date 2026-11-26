@@ -121,6 +121,9 @@ public final class ScreenshotTour {
                 p.removeStatusEffect(StatusEffects.NIGHT_VISION);
             }
             p.teleport(p.getServerWorld(), s.x, s.y, s.z, s.yaw, s.pitch);
+            if (s.name.startsWith("settle_")) {
+                p.getServerWorld().setTimeOfDay(6000); // settlement views at midday (inhabitants at work)
+            }
         });
         wait = nightVision ? 20 : 300;
     }

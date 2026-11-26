@@ -86,12 +86,12 @@ public class InhabitantEntity extends MerchantEntity {
     // ------------------------------------------------------------------ identity
 
     /** Binds this entity to its record (called by the manager before spawning). */
-    public void bind(SettlementRecord settlement, SettlementRecord.InhabitantRecord r, @Nullable BlockPos gatherPoint) {
+    public void bind(SettlementRecord settlement, SettlementRecord.InhabitantRecord r, @Nullable BlockPos gatherPoint, @Nullable BlockPos doorstep) {
         settlementId = settlement.id;
         recordIndex = r.index;
         bed = r.bed;
         work = r.work;
-        home = r.bed;
+        home = doorstep != null ? doorstep : r.bed;
         gather = gatherPoint;
         lookSeed = r.appearance;
         int variant = (int) Math.floorMod(r.appearance, 6L);

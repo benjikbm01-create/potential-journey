@@ -190,7 +190,8 @@ public final class InhabitantManager {
                 break;
             }
             BlockPos gather = gathers.isEmpty() ? null : gathers.get((int) Math.floorMod(r.appearance >> 8, (long) gathers.size()));
-            e.bind(rec, r, gather);
+            BlockPos doorstep = r.home >= 0 && r.home < plan.buildings().size() ? plan.buildings().get(r.home).entrance() : null;
+            e.bind(rec, r, gather, doorstep);
             BlockPos at = e.spotFor(e.activity());
             if (at == null || !world.isChunkLoaded(at.getX() >> 4, at.getZ() >> 4)) {
                 continue;

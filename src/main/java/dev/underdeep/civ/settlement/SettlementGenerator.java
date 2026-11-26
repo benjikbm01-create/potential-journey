@@ -172,7 +172,7 @@ public final class SettlementGenerator {
                     continue;
                 }
                 int ring = Math.max(Math.max(o.getX() - x, x - (o.getX() + rw - 1)), Math.max(o.getZ() - z, z - (o.getZ() + rd - 1)));
-                int top = y0 + (ring >= 3 ? 1 : 0);
+                int top = y0;
                 // find the current ground in this column near the floor level
                 int g = Integer.MIN_VALUE;
                 for (int y = y0 + 8; y >= y0 - 6; y--) {
