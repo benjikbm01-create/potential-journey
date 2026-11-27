@@ -23,7 +23,7 @@ attention. Everything is placed deterministically from the seed, is never re-rol
 | Artifacts and treasures | 38 + 3 valuables | accessories (3 unique per world), weapons, utility items, relic blocks |
 | Historical records | 54 | inscriptions and loose fragments, copied into the journal |
 | Rumours | 28 | told by inhabitants, point to real undiscovered places |
-| Advancements | 38 (new "Expedition" tab) | some hidden |
+| Advancements | 37 + tab root (new "Expedition" tab) | some hidden |
 | Handbook | +115 pages | exploration guides, per-place pages unlocked by discovery, journal |
 
 Layouts are authored in Java (`explore/design/Ruins`, `Landmarks`, `Dungeons`, `Secrets`) with a small vocabulary

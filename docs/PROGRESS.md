@@ -242,7 +242,7 @@ See `docs/EXPLORATION.md` (public) and private design material. Needs a new worl
 | 38 artifacts/relics + 3 valuables; 54 records; journal in the Handbook; delver's compass targets | done | journal screen not seen in a real client |
 | Inhabitant rumours, surveyor's charts, identification, findings reports (audited treasury payments) | done | self-tested |
 | 18 travel encounters, warding bell | done | encounters run in-world by the self-test; frequency not play-tested |
-| 38 advancements (Expedition tab), +115 Handbook pages, audio context hooks for Stage 11 | done | |
+| 37 advancements (new Expedition tab), +115 Handbook pages, audio context hooks for Stage 11 | done | |
 | `/underdeep explore …` operator commands, config section `exploration` | done | |
 | Combat encounters / bosses in reserved rooms | not in scope | Stage 10 |
 
