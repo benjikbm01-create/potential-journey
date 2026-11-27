@@ -126,16 +126,20 @@ final class Stage6Checks {
                 }
             }
         }
-        boolean knows = false;
+        boolean leadersKnow = false, knows = false;
+        for (SettlementRecord.InhabitantRecord ir : cb.rec.inhabitants) {
+            // leaders may be re-chosen between the event and this check: anyone who heard of it counts
+            knows |= ir.present() && ir.mind != null && ir.mind.knowledge.stream().anyMatch(i -> i.type == Mind.InfoType.ECON);
+        }
         for (int li : b.leaders) {
             if (li < 0 || li >= cb.rec.inhabitants.size()) {
                 continue;
             }
             SettlementRecord.InhabitantRecord ir = cb.rec.inhabitants.get(li);
-            knows |= ir.mind != null && ir.mind.knowledge.stream().anyMatch(i -> i.type == Mind.InfoType.ECON);
+            leadersKnow |= ir.mind != null && ir.mind.knowledge.stream().anyMatch(i -> i.type == Mind.InfoType.ECON);
         }
         r.check("a food disruption creates a shortage event that inhabitants know about", shortageEvent && knows,
-                "event " + shortageEvent + ", leaders informed " + knows + "; decisions: " + String.join(" | ", b.decisions.stream().limit(3).toList()));
+                "event " + shortageEvent + ", inhabitants informed " + knows + ", current leaders informed " + leadersKnow + "; decisions: " + String.join(" | ", b.decisions.stream().limit(3).toList()));
         r.check("the settlement imports food from a partner with a surplus (cargo leaves the origin, payment escrowed)", s != null && s.escrow > 0,
                 s == null ? "no shipment" : "shipment #" + s.id + " " + s.cargo + " via " + s.method + ", escrow " + f(s.escrow) + ", leader " + s.leader + " (origin crew: " + Trade.crewReport(m.ctx(st.economies.get(s.origin)).rec) + ")");
         if (s != null) {

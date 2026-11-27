@@ -24,6 +24,54 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
+## Results — Stage 7 (2026-11-27)
+
+Environment: same container (Java 21, Gradle 8.14.3 offline, headless dedicated server). Short targeted runs only,
+as agreed with the user; hands-on play is left to the user.
+
+### Executed
+- `./gradlew build` — **38/38 unit tests PASS**, including the new `SurvivalContentTest` (content counts within the
+  brief, unique recipe ids, every `#group` key defined, every count positive, meal buffs ≤ 10 min and amplifier ≤ I).
+- Asset pipeline `PYTHONHASHSEED=0 python3 tools/assets/stage2_assets.py` — deterministic; compared with git: no
+  existing asset, recipe or lang value changed (294 lang keys added, tags only extended).
+- `SUITE=stage4 scripts/selftest.sh 12345 run-tests/s7a create` — first run **140 passed, 3 failed**. Two were real
+  bugs, one a test bug, all fixed:
+  - Stage 7 goods were missing from the economy: the economy loaded its goods before Stage 7 registered its items
+    (init order). Content now registers before the economy; events still register after earlier stages.
+  - Compost chances were never registered: Fabric's composting registry returns 0 (not null) for unknown items.
+  - The variety check kept a reference to a status-effect instance that Minecraft upgrades in place.
+- `SUITE=stage4 scripts/selftest.sh 42 run-tests/s7b create` — **140 passed, 1 failed**. Every Stage 7 check passed.
+  The failure was a Stage 6 check on this seed: the shortage event was created and inhabitants learned of it, but the
+  check only looked at the *current* leaders, who can be re-chosen in between. The check now verifies what its name
+  says (inhabitants know) and reports the leaders separately. World money audit **exact** with the 110 new goods and
+  105 settlement recipes (actual = expected = 4954.74).
+- Stage 7 section (block entities ticked directly / accelerated; a Fabric fake player stands in for a real one):
+  content resolves with no problems (79 foods/drinks, 23 medicines, 131 station recipes; 94 cooking recipes, 19
+  drinks); meal buffs bounded; cooking pot matches regardless of slot order and makes 4 batches from a big load;
+  inputs and bowls consumed exactly once; an unrelated item or a missing bowl blocks every recipe; a pot on a lit
+  campfire cooks in its recipe time when ticked; without heat nothing progresses and nothing is lost; contents
+  survive NBT save/load; hopper sides correct; water bucket comes back as a bucket; ingredient groups (three
+  different fruits → fruit salad); the oven needs and burns fuel; the crock makes cheese in 4 minutes without heat;
+  recipe discovery (basics known, others learned once); drying rack takes only dryable items and preserves them;
+  rich soil accepts crops with a ×1.5 growth factor; right-click harvest replants; compost advances exactly one
+  stage; compost bin yields compost, crops and dishes compostable; a trough fed a hungry tamed grazer once with the
+  right feed; fishing pressure thins catches with a 25 % floor; regional fish tables; fish trap never catches more
+  than its bait; Well Fed I at 3 groups and II at 5; buff durations do not stack, warmed/cooled cancel, food
+  amplifier capped; cooling salve and bandage cure what they say; no hazards in Rootwild or Golden Grove; cold
+  builds in the Everfrost and stops with Warmed or a campfire; static only with metal and stopped by grounding;
+  geothermal heat stopped by cooling; only a heavy blow wounds; bedroll is a valid bed but does not set spawn;
+  comfort 2 → 6 with furniture, a kitchen and warmth; pantry and medicine cabinet filters; supply crate keeps its
+  contents when broken with nothing spilled.
+- `SUITE=stage4 scripts/selftest.sh 42 run-tests/s7b reload` (real restart of the same world): running when this was written; result recorded in the next commit.
+
+### Not executed (user testing)
+- Everything in a real client: station screen layout and the known-recipes panel, drying-rack item rendering,
+  block models in game, sitting on chairs/benches, sleeping in a bedroll (wake position, night skip), the comfort
+  message, fishing with a rod (regional catches, bait use), hazard warnings and particles while exploring, dialogue
+  services (cook teaching, healer, inn meal and bed), hoppers moving items in a live world, the journal's survival
+  pages, `/underdeep survival` commands, feeding troughs over a long session (breeding was not observed), fish traps
+  over real time, multiplayer and TPS with 4–6 players.
+
 ## Results — Stage 6 (2026-11-26)
 
 Environment: same container (Java 21, Gradle 8.14.3 offline, headless dedicated server). Short targeted runs only,
