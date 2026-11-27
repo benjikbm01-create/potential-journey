@@ -12,7 +12,8 @@
     "SmithingTransformRecipeAccessor",
     "AxeItemAccessor",
     "LivingEntityEquipmentMixin",
-    "BlockDropsMixin"
+    "BlockDropsMixin",
+    "MobStaggerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

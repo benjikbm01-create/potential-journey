@@ -4,17 +4,27 @@
   "version": "${version}",
   "name": "Underdeep",
   "description": "A cooperative underground survival sandbox: an entire world of vast interconnected caverns.",
-  "authors": ["Underdeep developers"],
+  "authors": [
+    "Underdeep developers"
+  ],
   "contact": {},
   "license": "All-Rights-Reserved",
   "icon": "assets/underdeep/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": ["dev.underdeep.Underdeep"],
-    "client": ["dev.underdeep.client.UnderdeepClient"]
+    "main": [
+      "dev.underdeep.Underdeep"
+    ],
+    "client": [
+      "dev.underdeep.client.UnderdeepClient"
+    ]
   },
   "mixins": [
-    "underdeep.mixins.json"
+    "underdeep.mixins.json",
+    {
+      "config": "underdeep.client.mixins.json",
+      "environment": "client"
+    }
   ],
   "depends": {
     "fabricloader": ">=${loader_version}",

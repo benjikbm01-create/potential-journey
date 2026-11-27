@@ -189,6 +189,32 @@ public final class UnderdeepConfig {
     // ---- Stage 9: exploration ----
     public Exploration exploration = new Exploration();
     public Caves caves = new Caves();
+    public Combat combat = new Combat();
+
+    /** Stage 10 player combat (all server-side). */
+    public static final class Combat {
+        /** Master switch for stamina, dodge, heavy attacks, parries, counters and stagger (vanilla combat stays). */
+        public boolean enabled = true;
+        public boolean dodge = true;
+        public boolean heavyAttacks = true;
+        /** Right-click with a melee weapon (no shield in the off hand) to parry. Shields always parry when raised in time. */
+        public boolean weaponParry = true;
+        public double dodgeStamina = 22;
+        public int dodgeInvulnerableTicks = 7;
+        /** Parry window in ticks (20 = 1 s); latency compensation adds up to 4 ticks for high ping. */
+        public int parryWindowTicks = 6;
+        public boolean latencyCompensation = true;
+        public int counterWindowTicks = 30;
+        public double staminaRegenPerSecond = 22;
+        public double shieldStaminaPerDamage = 4;
+        /** Multiplier of heavy-attack wind-up times (1 = designed). */
+        public double heavyWindupScale = 1.0;
+        /** Combat assistance: wider dodge and parry windows (and longer boss telegraphs). */
+        public boolean assist = false;
+        /** Ordinary mobs can be staggered. */
+        public boolean mobStagger = true;
+    }
+
 
     /** Stage 10 cave network (applies to worlds created with generator v5+; changing it changes future terrain). */
     public static final class Caves {

@@ -18,7 +18,7 @@ public abstract class LivingEntityEquipmentMixin {
     private float underdeep$weaponBonus(float amount, DamageSource source) {
         LivingEntity self = (LivingEntity) (Object) this;
         if (!self.getWorld().isClient && source.getAttacker() instanceof LivingEntity attacker && source.getSource() == attacker) {
-            return EquipmentEffects.bonusDamage(attacker, self, amount);
+            return dev.underdeep.combat.Combat.outgoing(attacker, self, EquipmentEffects.bonusDamage(attacker, self, amount));
         }
         return amount;
     }
