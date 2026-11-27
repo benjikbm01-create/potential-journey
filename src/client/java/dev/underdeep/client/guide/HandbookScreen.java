@@ -258,13 +258,18 @@ public class HandbookScreen extends Screen {
         }
     }
 
+    /** The world blur is drawn once at the start of {@link #render}; Screen.render must not blur again over the panel. */
+    @Override
+    public void renderBackground(DrawContext c, int mx, int my, float delta) {
+    }
+
     @Override
     public void render(DrawContext c, int mx, int my, float delta) {
         hotRects.clear();
         hotActions.clear();
         hoverStack = ItemStack.EMPTY;
         hoverText = null;
-        renderBackground(c, mx, my, delta);
+        super.renderBackground(c, mx, my, delta);
         c.fill(x0, y0, x0 + w, y0 + h, 0xF0201A16);
         c.drawBorder(x0, y0, w, h, 0xFF8B6B3C);
         int lw = 114, mw = 118;
