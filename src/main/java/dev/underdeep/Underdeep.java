@@ -41,6 +41,12 @@ public final class Underdeep implements ModInitializer {
         dev.underdeep.equipment.EquipmentItems.init();
         dev.underdeep.explore.Explorations.init();
         dev.underdeep.combat.Combat.init();
+        dev.underdeep.boss.BossBlocks.init();
+        dev.underdeep.boss.BossItems.init();
+        dev.underdeep.boss.BossProjectile.register();
+        dev.underdeep.boss.Bosses.register();
+        dev.underdeep.boss.Lairs.registerDesigns();
+        dev.underdeep.boss.Encounters.init();
         dev.underdeep.guide.Advancements.init();
         dev.underdeep.civ.econ.EconomyManager.init();
         dev.underdeep.survival.Survival.init();

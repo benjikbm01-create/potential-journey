@@ -89,6 +89,18 @@ public final class SiteLayout {
         return null;
     }
 
+    /** World positions of a Stage 10 marker kind (empty when the layout has none). */
+    public java.util.List<BlockPos> marks(String kind) {
+        java.util.List<Long> l = canvas.marks.get(kind);
+        java.util.List<BlockPos> out = new java.util.ArrayList<>();
+        if (l != null) {
+            for (long k : l) {
+                out.add(world(k));
+            }
+        }
+        return out;
+    }
+
     public BlockPos world(long local) {
         return Canvas.world(site, local);
     }

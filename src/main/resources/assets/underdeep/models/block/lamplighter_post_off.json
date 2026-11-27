@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "lamplighter_post_off",
+  "north": "lamplighter_post_off",
+  "south": "lamplighter_post_off",
+  "east": "lamplighter_post_off",
+  "west": "lamplighter_post_off",
+  "up": "lamplighter_post_off",
+  "down": "lamplighter_post_off"
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "warding_brazier_off",
+  "north": "warding_brazier_off",
+  "south": "warding_brazier_off",
+  "east": "warding_brazier_off",
+  "west": "warding_brazier_off",
+  "up": "warding_brazier_off",
+  "down": "warding_brazier_off"
+ }
+}

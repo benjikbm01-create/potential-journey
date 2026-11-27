@@ -1423,6 +1423,8 @@ def main():
     LANG.update(stage8.main(LANG))
     import stage9
     LANG.update(stage9.main(LANG))
+    import stage10
+    LANG.update(stage10.main(LANG))
     for path, vals in ctags.items():
         tag(path, *vals)
     merge_outputs()

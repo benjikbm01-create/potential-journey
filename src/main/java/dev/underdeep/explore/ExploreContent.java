@@ -27,7 +27,7 @@ public final class ExploreContent {
     private ExploreContent() {
     }
 
-    public enum Category { RUIN, LANDMARK, DUNGEON, SECRET }
+    public enum Category { RUIN, LANDMARK, DUNGEON, SECRET, LAIR }
 
     public enum Scale {
         MINOR(0), REGIONAL(1), SIGNIFICANT(2), LANDMARK(2), SMALL(1), MEDIUM(2), LARGE(3), EXCEPTIONAL(4);

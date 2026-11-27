@@ -1,0 +1,560 @@
+{
+  "texture": [
+    256,
+    128
+  ],
+  "scale": 1.0,
+  "parts": [
+    {
+      "name": "core",
+      "parent": "root",
+      "pivot": [
+        0,
+        18,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -16,
+          -16,
+          -16,
+          32,
+          32,
+          32,
+          0,
+          0
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    },
+    {
+      "name": "eye",
+      "parent": "core",
+      "pivot": [
+        0,
+        0,
+        -16
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -10,
+          -10,
+          -2,
+          20,
+          20,
+          2,
+          129,
+          0
+        ]
+      ],
+      "mat": "c",
+      "glow": true
+    },
+    {
+      "name": "pupil",
+      "parent": "core",
+      "pivot": [
+        0,
+        0,
+        -18
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -4,
+          -4,
+          -1,
+          8,
+          8,
+          1,
+          174,
+          0
+        ]
+      ],
+      "mat": "d",
+      "glow": true
+    },
+    {
+      "name": "plate0",
+      "parent": "core",
+      "pivot": [
+        18.0,
+        0.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0.0
+      ],
+      "boxes": [
+        [
+          -6,
+          -6,
+          -8,
+          12,
+          12,
+          16,
+          193,
+          0
+        ]
+      ],
+      "mat": "b",
+      "glow": false
+    },
+    {
+      "name": "plate1",
+      "parent": "core",
+      "pivot": [
+        9.000000000000002,
+        15.588457268119894,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        1.0471975511965976
+      ],
+      "boxes": [
+        [
+          -6,
+          -6,
+          -8,
+          12,
+          12,
+          16,
+          0,
+          65
+        ]
+      ],
+      "mat": "b",
+      "glow": false
+    },
+    {
+      "name": "plate2",
+      "parent": "core",
+      "pivot": [
+        -8.999999999999996,
+        15.588457268119896,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        2.0943951023931953
+      ],
+      "boxes": [
+        [
+          -6,
+          -6,
+          -8,
+          12,
+          12,
+          16,
+          57,
+          65
+        ]
+      ],
+      "mat": "b",
+      "glow": false
+    },
+    {
+      "name": "plate3",
+      "parent": "core",
+      "pivot": [
+        -18.0,
+        2.204364238465236e-15,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        3.141592653589793
+      ],
+      "boxes": [
+        [
+          -6,
+          -6,
+          -8,
+          12,
+          12,
+          16,
+          114,
+          65
+        ]
+      ],
+      "mat": "b",
+      "glow": false
+    },
+    {
+      "name": "plate4",
+      "parent": "core",
+      "pivot": [
+        -9.000000000000007,
+        -15.58845726811989,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        4.1887902047863905
+      ],
+      "boxes": [
+        [
+          -6,
+          -6,
+          -8,
+          12,
+          12,
+          16,
+          171,
+          65
+        ]
+      ],
+      "mat": "b",
+      "glow": false
+    },
+    {
+      "name": "plate5",
+      "parent": "core",
+      "pivot": [
+        9.000000000000002,
+        -15.588457268119894,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        5.235987755982989
+      ],
+      "boxes": [
+        [
+          -6,
+          -6,
+          -8,
+          12,
+          12,
+          16,
+          0,
+          94
+        ]
+      ],
+      "mat": "b",
+      "glow": false
+    },
+    {
+      "name": "tendril0",
+      "parent": "core",
+      "pivot": [
+        -12,
+        -16,
+        6
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -1.5,
+          -26,
+          -1.5,
+          3,
+          26,
+          3,
+          57,
+          94
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    },
+    {
+      "name": "tendril1",
+      "parent": "core",
+      "pivot": [
+        -6,
+        -16,
+        6
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -1.5,
+          -26,
+          -1.5,
+          3,
+          26,
+          3,
+          70,
+          94
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    },
+    {
+      "name": "tendril2",
+      "parent": "core",
+      "pivot": [
+        0,
+        -16,
+        6
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -1.5,
+          -26,
+          -1.5,
+          3,
+          26,
+          3,
+          83,
+          94
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    },
+    {
+      "name": "tendril3",
+      "parent": "core",
+      "pivot": [
+        6,
+        -16,
+        6
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -1.5,
+          -26,
+          -1.5,
+          3,
+          26,
+          3,
+          96,
+          94
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    },
+    {
+      "name": "tendril4",
+      "parent": "core",
+      "pivot": [
+        12,
+        -16,
+        6
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -1.5,
+          -26,
+          -1.5,
+          3,
+          26,
+          3,
+          109,
+          94
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    }
+  ],
+  "idle": [
+    {
+      "part": "plate0",
+      "axis": 2,
+      "amp": 0.08,
+      "speed": 0.05,
+      "phase": 0
+    },
+    {
+      "part": "plate1",
+      "axis": 2,
+      "amp": 0.08,
+      "speed": 0.05,
+      "phase": 1
+    },
+    {
+      "part": "plate2",
+      "axis": 2,
+      "amp": 0.08,
+      "speed": 0.05,
+      "phase": 2
+    },
+    {
+      "part": "plate3",
+      "axis": 2,
+      "amp": 0.08,
+      "speed": 0.05,
+      "phase": 3
+    },
+    {
+      "part": "plate4",
+      "axis": 2,
+      "amp": 0.08,
+      "speed": 0.05,
+      "phase": 4
+    },
+    {
+      "part": "plate5",
+      "axis": 2,
+      "amp": 0.08,
+      "speed": 0.05,
+      "phase": 5
+    },
+    {
+      "part": "tendril0",
+      "axis": 0,
+      "amp": 0.25,
+      "speed": 0.08,
+      "phase": 0
+    },
+    {
+      "part": "tendril1",
+      "axis": 0,
+      "amp": 0.25,
+      "speed": 0.08,
+      "phase": 1
+    },
+    {
+      "part": "tendril2",
+      "axis": 0,
+      "amp": 0.25,
+      "speed": 0.08,
+      "phase": 2
+    },
+    {
+      "part": "tendril3",
+      "axis": 0,
+      "amp": 0.25,
+      "speed": 0.08,
+      "phase": 3
+    },
+    {
+      "part": "tendril4",
+      "axis": 0,
+      "amp": 0.25,
+      "speed": 0.08,
+      "phase": 4
+    },
+    {
+      "part": "core",
+      "axis": 1,
+      "amp": 0.05,
+      "speed": 0.02,
+      "phase": 0.0
+    }
+  ],
+  "walk": [],
+  "poses": {
+    "gaze:windup": {
+      "core": [
+        0.2,
+        0,
+        0
+      ]
+    },
+    "gaze:active": {
+      "core": [
+        0.25,
+        0,
+        0
+      ]
+    },
+    "starfall:windup": {
+      "core": [
+        -0.5,
+        0,
+        0
+      ]
+    },
+    "gravity:active": {
+      "core": [
+        0,
+        0,
+        0.3
+      ]
+    },
+    "orbs:windup": {
+      "core": [
+        -0.2,
+        0,
+        0
+      ]
+    },
+    "claw:windup": {
+      "tendril2": [
+        -1.5,
+        0,
+        0
+      ]
+    },
+    "claw:active": {
+      "tendril2": [
+        0.6,
+        0,
+        0
+      ]
+    },
+    "stagger": {
+      "core": [
+        0.5,
+        0,
+        0.5
+      ]
+    },
+    "defeat": {
+      "core": [
+        1.5,
+        0,
+        0.5
+      ]
+    },
+    "intro": {
+      "core": [
+        -0.4,
+        0,
+        0
+      ]
+    }
+  }
+}

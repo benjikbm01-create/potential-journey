@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "silent_bell_off",
+  "north": "silent_bell_off",
+  "south": "silent_bell_off",
+  "east": "silent_bell_off",
+  "west": "silent_bell_off",
+  "up": "silent_bell_off",
+  "down": "silent_bell_off"
+ }
+}

@@ -43,6 +43,12 @@ public final class Canvas {
     public final Map<Long, String> inscriptions = new LinkedHashMap<>();
     public final List<SecretSpec> secrets = new ArrayList<>();
     public final List<GuardSpec> guards = new ArrayList<>();
+    /** Stage 10 named markers (boss spawn, arena devices, altar, door, arena centre), in local coordinates. */
+    public final Map<String, List<Long>> marks = new LinkedHashMap<>();
+
+    public void mark(String kind, int x, int y, int z) {
+        marks.computeIfAbsent(kind, k -> new ArrayList<>()).add(key(x, y, z));
+    }
     /** Completion zone of dungeons (reaching it with every required puzzle solved completes the expedition). */
     public int[] heart;
     /** Optional Stage 10 reservation box (kept sealed, never populated in Stage 9). */

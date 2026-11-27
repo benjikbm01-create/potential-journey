@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "engine_coil_on",
+  "north": "engine_coil_on",
+  "south": "engine_coil_on",
+  "east": "engine_coil_on",
+  "west": "engine_coil_on",
+  "up": "engine_coil_on",
+  "down": "engine_coil_on"
+ }
+}

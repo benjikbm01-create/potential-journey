@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "underdeep:block/conductor_pylon_off"
+  },
+  "lit=true": {
+   "model": "underdeep:block/conductor_pylon_on"
+  }
+ }
+}

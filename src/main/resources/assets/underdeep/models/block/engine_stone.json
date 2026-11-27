@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "engine_stone",
+  "north": "engine_stone",
+  "south": "engine_stone",
+  "east": "engine_stone",
+  "west": "engine_stone",
+  "up": "engine_stone",
+  "down": "engine_stone"
+ }
+}

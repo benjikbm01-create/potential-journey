@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "guardian_altar",
+  "north": "guardian_altar",
+  "south": "guardian_altar",
+  "east": "guardian_altar",
+  "west": "guardian_altar",
+  "up": "guardian_altar",
+  "down": "guardian_altar"
+ }
+}

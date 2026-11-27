@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "conductor_pylon_on",
+  "north": "conductor_pylon_on",
+  "south": "conductor_pylon_on",
+  "east": "conductor_pylon_on",
+  "west": "conductor_pylon_on",
+  "up": "conductor_pylon_on",
+  "down": "conductor_pylon_on"
+ }
+}

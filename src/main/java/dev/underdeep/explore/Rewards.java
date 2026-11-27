@@ -71,6 +71,11 @@ public final class Rewards {
             }
             case UNIQUE -> {
                 String art = cs.loot().startsWith("artifact:") ? cs.loot().substring(9) : cs.loot();
+                var guardian = dev.underdeep.boss.Encounters.lairBoss(c.s());
+                if (guardian != null && !dev.underdeep.boss.Encounters.defeated(w.getServer(), guardian.id())) {
+                    p.sendMessage(Text.literal("Something holds this place. Its guardian still sleeps.").formatted(Formatting.GRAY), true);
+                    return;
+                }
                 if (c.site().claims.contains(base) || c.state().uniques.contains(art)) {
                     p.sendMessage(Text.literal("The pedestal is bare.").formatted(Formatting.GRAY), true);
                     if (state.get(ExploreBlocks.FULL)) {

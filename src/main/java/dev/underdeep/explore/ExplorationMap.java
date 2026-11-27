@@ -145,9 +145,21 @@ public final class ExplorationMap {
 
     @Nullable
     private Site resolve(CavernLayer layer, int cx, int cz) {
+        long key = Site.packId(layer, cx, cz);
+        var lairs = dev.underdeep.boss.Lairs.plan(this).values();
+        for (Site l : lairs) {
+            if (l.id() == key) {
+                return l; // Stage 10: guardian lairs are guaranteed and take precedence
+            }
+        }
         Candidate mine = tentative(layer, cx, cz);
         if (mine == null) {
             return null;
+        }
+        for (Site l : lairs) {
+            if (l.layer() == layer && mine.site.dist(l.x(), l.z()) < mine.site.radius() + l.radius() + 14) {
+                return null;
+            }
         }
         for (int dx = -2; dx <= 2; dx++) {
             for (int dz = -2; dz <= 2; dz++) {
@@ -242,6 +254,12 @@ public final class ExplorationMap {
             w *= dungeonDensity;
         }
         return f.anyRegion() ? w : w * 2.2;
+    }
+
+    /** Fit check for a guardian lair (same rules as ordinary sites). */
+    @Nullable
+    public Integer fitLair(CavernLayer layer, ExploreContent.Family f, int x, int z) {
+        return fit(layer, f, x, z);
     }
 
     /** Terrain fit of a family's footprint: returns the floor level or null. */

@@ -276,7 +276,7 @@ public final class Discovery {
         return (int) Math.hypot(dx, dz) + " blocks " + compass(dx, dz) + (Math.abs(dy) < 4 ? "" : dy > 0 ? ", " + dy + " up" : ", " + -dy + " down");
     }
 
-    static String compass(double dx, double dz) {
+    public static String compass(double dx, double dz) {
         double a = Math.toDegrees(Math.atan2(dx, -dz));
         String[] names = {"north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"};
         return names[(int) Math.floorMod(Math.round(a / 45.0), 8)];

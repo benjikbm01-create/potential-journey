@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "underdeep:block/lamplighter_post_off"
+  },
+  "lit=true": {
+   "model": "underdeep:block/lamplighter_post_on"
+  }
+ }
+}

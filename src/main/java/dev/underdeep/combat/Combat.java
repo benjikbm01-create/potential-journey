@@ -107,6 +107,8 @@ public final class Combat {
     /** Boss hooks: attacks that cannot be parried (must be dodged) and extra stamina drain of heavy blocked blows. */
     public static Predicate<DamageSource> UNPARRYABLE = s -> false;
     public static ToDoubleFunction<DamageSource> BLOCK_DRAIN = s -> 1.0;
+    /** Hazard zones that a dodge does not avoid (step out instead). */
+    public static Predicate<DamageSource> UNDODGEABLE = s -> false;
     /** Bosses decide whether a parry staggers them (their own poise rules). */
     public static java.util.function.BiConsumer<LivingEntity, PlayerEntity> ON_PARRIED = (a, p) -> Poise.damage(a, 999, p, true);
 
@@ -407,7 +409,7 @@ public final class Combat {
         State s = of(p);
         long now = p.getWorld().getTime();
         ServerWorld w = p.getServerWorld();
-        if (s.dodgeUntil >= now && dodgeable(src)) {
+        if (s.dodgeUntil >= now && dodgeable(src) && !UNDODGEABLE.test(src)) {
             Entity a = src.getAttacker();
             if (a != null && a.squaredDistanceTo(p) < 64 && s.openingUntil < now) {
                 s.openingUntil = now + 20;

@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "engine_door",
+  "north": "engine_door",
+  "south": "engine_door",
+  "east": "engine_door",
+  "west": "engine_door",
+  "up": "engine_door",
+  "down": "engine_door"
+ }
+}

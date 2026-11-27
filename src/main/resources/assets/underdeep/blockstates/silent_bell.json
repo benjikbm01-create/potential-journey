@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "underdeep:block/silent_bell_off"
+  },
+  "lit=true": {
+   "model": "underdeep:block/silent_bell_on"
+  }
+ }
+}

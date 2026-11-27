@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "root_heart_off",
+  "north": "root_heart_off",
+  "south": "root_heart_off",
+  "east": "root_heart_off",
+  "west": "root_heart_off",
+  "up": "root_heart_off",
+  "down": "root_heart_off"
+ }
+}

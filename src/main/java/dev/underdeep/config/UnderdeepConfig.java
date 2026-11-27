@@ -190,6 +190,26 @@ public final class UnderdeepConfig {
     public Exploration exploration = new Exploration();
     public Caves caves = new Caves();
     public Combat combat = new Combat();
+    public Bosses bosses = new Bosses();
+
+    /** Stage 10 guardian encounters. */
+    public static final class Bosses {
+        /** Overall boss health and damage multipliers (difficulty). */
+        public double healthMultiplier = 1.0;
+        public double damageMultiplier = 1.0;
+        /** Extra health per participant beyond the first (fixed at awakening; rises only for early joiners). */
+        public double healthPerExtraPlayer = 0.55;
+        public int maxScaledPlayers = 6;
+        /** Telegraph (wind-up) length multiplier; combat assist adds 30 %. */
+        public double telegraphScale = 1.0;
+        /** A fallen participant is downed instead of killed when a teammate is in the arena (once a minute). */
+        public boolean revive = true;
+        /** No digging or building inside an arena while its guardian is awake. */
+        public boolean arenaProtection = true;
+        /** Seconds without anyone fighting in the arena before the guardian returns to sleep. */
+        public int resetAfterSeconds = 30;
+    }
+
 
     /** Stage 10 player combat (all server-side). */
     public static final class Combat {

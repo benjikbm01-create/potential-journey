@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "underdeep:block/engine_coil_off"
+  },
+  "lit=true": {
+   "model": "underdeep:block/engine_coil_on"
+  }
+ }
+}
