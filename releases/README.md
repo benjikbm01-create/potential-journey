@@ -32,7 +32,7 @@ Stage 7 (`underdeep-0.8.0-stage7.jar`) needs no new world (terrain unchanged): n
 existing worlds; hazards and regional fishing apply in Underdeep worlds. Install it on the server and every client
 (the station screen is client-side).
 
-Stage 8 (`underdeep-0.9.0-stage8.jar`) needs no new world (terrain unchanged apart from a rare-plant placement fix
+Stage 8 (`underdeep-0.9.1-stage8.jar`; 0.9.1 fixes the blurred Handbook screen) needs no new world (terrain unchanged apart from a rare-plant placement fix
 in newly generated chunks): equipment, stations, the Handbook (H key) and advancements work in existing worlds;
 players receive the Handbook and quiet credit for earlier progress on first join. Install it on the server and every
 client (Handbook, accessory and artisan screens are client-side).
