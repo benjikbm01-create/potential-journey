@@ -263,7 +263,68 @@ RECIPES = [
 ]
 
 
+def stage7():
+    """Stage 7 goods (every new food, drink, medicine and material) and settlement production for them, derived
+    from the Stage 7 content definitions so the two never disagree. Buckets of water/milk are not modelled for
+    settlements (they have wells and dairy animals); bowls and bottles are assumed reused."""
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "assets"))
+    import stage7 as s7
+    have = {g[0] for g in GOODS}
+    mat_cat = {"flour": ("GRAIN", 0.1), "dough": ("SPECIALTY", 0.12), "salt": ("SPECIALTY", 0.05), "butter": ("ANIMAL_PRODUCT", 0.15),
+               "vinegar": ("SPECIALTY", 0.12), "spice_blend": ("SPECIALTY", 0.2), "compost": ("SPECIALTY", 0.05),
+               "grain_feed": ("ANIMAL_PRODUCT", 0.08), "fungal_feed": ("ANIMAL_PRODUCT", 0.08), "fruit_mash": ("ANIMAL_PRODUCT", 0.08),
+               "meat_scraps": ("ANIMAL_PRODUCT", 0.08), "mineral_lick": ("ANIMAL_PRODUCT", 0.1), "fishing_bait": ("SPECIALTY", 0.04)}
+    for i, d in s7.F.items():
+        iid = "underdeep:" + i
+        if iid in have:
+            continue
+        cat = "FISH" if d["groups"] == "FISH" and d["nutrition"] <= 2 else "PREPARED_FOOD"
+        val = round(0.1 + 0.035 * d["nutrition"] + 0.06 * len(d["buffs"]) + (0.1 if d["kind"] == "bottle" else 0), 3)
+        GOODS.append((iid, cat, val))
+        have.add(iid)
+    for i, d in s7.M.items():
+        GOODS.append(("underdeep:" + i, "MEDICINE", round(min(2.0, 0.5 + 0.006 * d["cooldown"] + 0.1 * len(d["cures"])), 3)))
+        have.add("underdeep:" + i)
+    for i in s7.MAT:
+        c, v = mat_cat.get(i, ("SPECIALTY", 0.1))
+        GOODS.append(("underdeep:" + i, c, v))
+        have.add("underdeep:" + i)
+    groups = {"#fruit": "@PRODUCE", "#vegetable": "@PRODUCE", "#mushroom": "@PRODUCE", "#dried_fruit_src": "@PRODUCE", "#grain": "@GRAIN",
+              "#meat": "@MEAT", "#fish": "@FISH", "#herb": "@HERB", "#sweet": "underdeep:honeyfruit", "#cooked_meat": "underdeep:cooked_game_meat",
+              "#cooked_fish": "underdeep:cooked_fish_fillet", "#bread": "underdeep:glowgrain_bread", "#fiber": "minecraft:string",
+              "#egg": "underdeep:creature_egg"}
+    profs = {"pot": ["cook", "innkeeper"], "oven": ["baker", "cook"], "prep": ["cook", "baker", "innkeeper"], "kettle": ["brewer", "cook", "innkeeper"],
+             "crock": ["brewer", "cook"], "rack": ["hunter", "cook", "fisher"], "herbal": ["healer", "herbalist", "alchemist"]}
+    skip = ("propagate_", "leather_rack", "salt", "warm_milk")
+    n = 0
+    for r in s7.R:
+        if r["id"].startswith(skip) or r["id"] == "salt":
+            continue
+        ins, ok = {}, True
+        for k, c in r["ingredients"]:
+            if k in ("minecraft:water_bucket", "minecraft:milk_bucket"):
+                continue
+            key = groups.get(k, k)
+            if not key.startswith("@") and key not in have:
+                ok = False
+                break
+            ins[key] = ins.get(key, 0) + c
+        if not ok or not ins or r["result"] not in have:
+            continue
+        hours = round(min(2.0, max(0.2, r["seconds"] / 40)), 2)
+        fuel = 0.1 if r["station"] in ("pot", "oven", "kettle") else 0.0
+        skill = "MEDICINE" if r["station"] == "herbal" else "COOKING"
+        RECIPES.append(R("s7_" + r["id"], "process", profs[r["station"]], ins, {r["result"]: r["count"]}, hours, 8, skill, fuel=fuel))
+        n += 1
+    # settlements also make salt (evaporating brine) and propagate nothing
+    RECIPES.append(R("s7_boil_salt", "process", ["cook", "brewer"], {}, {"underdeep:salt": 2}, 0.5, 6, "COOKING", fuel=0.1))
+    return n
+
+
 def main():
+    n7 = stage7()
+    print("stage 7:", n7, "settlement recipes")
     os.makedirs(OUT, exist_ok=True)
     ids = [g[0] for g in GOODS]
     assert len(ids) == len(set(ids)), "duplicate goods"

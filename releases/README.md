@@ -6,7 +6,8 @@ Prebuilt development JARs, committed so they can be downloaded without building.
 |---|---|---|---|
 | `underdeep-0.5.0-stage4.jar` | 4 — civilizations, settlements and architecture (8 cultures, villages to cities, inhabitants, trading) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.6.0-stage5.jar` | 5 — living inhabitants (personalities, needs, memories, relationships, conversations, companions) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
-| `underdeep-0.7.0-stage6.jar` | 6 — economies, trade, caravans, construction, migration, diplomacy, contracts, property, shops — **current** | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
+| `underdeep-0.8.0-stage7.jar` | 7 — cooking, preserving, farming, husbandry, fishing, medicine, hazards, camping, homes — **current** | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
+| `underdeep-0.7.0-stage6.jar` | 6 — economies, trade, caravans, construction, migration, diplomacy, contracts, property, shops | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.4.0-stage3.jar` | 3 — wildlife and living ecological simulation (60 creatures, taming, riding, regional populations) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.3.0-stage2.jar` | 2 — living ecosystems (trees, wood sets, plants, fungi, aquatic life, crops, foods, medicines, minerals) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.2.0-stage1.5.jar` | 1.5 — world expansion (15 ecosystems, lighting, spawning) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
@@ -26,6 +27,10 @@ the server and every client (the dialogue screen is client-side).
 
 Stage 6 (`underdeep-0.7.0-stage6.jar`) needs no new world: settlements near players join the economy automatically.
 Install it on the server and every client.
+
+Stage 7 (`underdeep-0.8.0-stage7.jar`) needs no new world (terrain unchanged): new items, blocks and stations work in
+existing worlds; hazards and regional fishing apply in Underdeep worlds. Install it on the server and every client
+(the station screen is client-side).
 
 Install: put the JAR and Fabric API in `mods/`. See the main `README.md` for world and server setup.
 Rebuild from source with `./gradlew build` (output: `build/libs/`).

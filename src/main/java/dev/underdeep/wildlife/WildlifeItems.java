@@ -100,13 +100,15 @@ public final class WildlifeItems {
                 // wildlife pages first, then the people you have met (Stage 5)
                 int wildPages = Math.max(1, (WildlifeJournal.get(sp.getServer()).count(sp.getUuid()) + 7) / 8);
                 int peoplePages = dev.underdeep.civ.npc.PeopleJournal.pages(sp);
-                int total = wildPages + peoplePages + dev.underdeep.civ.econ.TradeJournal.pages(sp);
+                int tradePages = dev.underdeep.civ.econ.TradeJournal.pages(sp);
+                int total = wildPages + peoplePages + tradePages + dev.underdeep.survival.SurvivalJournal.pages(sp);
                 if (page >= total) {
                     page = 0;
                 }
                 var lines = page < wildPages ? WildlifeJournal.render(sp, page) : page < wildPages + peoplePages
                         ? dev.underdeep.civ.npc.PeopleJournal.render(sp, page - wildPages)
-                        : dev.underdeep.civ.econ.TradeJournal.render(sp, page - wildPages - peoplePages);
+                        : page < wildPages + peoplePages + tradePages ? dev.underdeep.civ.econ.TradeJournal.render(sp, page - wildPages - peoplePages)
+                        : dev.underdeep.survival.SurvivalJournal.render(sp, page - wildPages - peoplePages - tradePages);
                 PAGES.put(sp.getUuid(), page);
                 for (Text t : lines) {
                     sp.sendMessage(t, false);

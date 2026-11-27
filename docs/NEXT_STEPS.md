@@ -1,36 +1,38 @@
 # Underdeep — Next Steps
 
-## Immediate: user play-testing of Stage 6, then Stage 7
+## Immediate: user play-testing of Stage 7, then Stage 8
 
-Do not start Stage 7 until the user assigns it. Stage 6 needs no new world: existing settlements join the economy
-when players come within `economyRadius` (1600 blocks) of them; settlements still only exist in worlds created
-with generator v3.
+Do not start Stage 8 until the user assigns it. Stage 7 needs no new world (no terrain change; generator still v3):
+all items, blocks and stations work in existing worlds, hazards and regional fishing in Underdeep worlds.
 
 ### Prerequisites (verify first)
 1. `./gradlew build` succeeds (unit tests included).
-2. `SUITE=stage4 scripts/selftest.sh 42 runs/check create` → 0 FAIL (includes Stage 5 and 6 checks; ≈3 min).
-3. Read `docs/ECONOMY.md`, `docs/NPC_MINDS.md`, `docs/ARCHITECTURE.md` §5e–5g.
+2. `SUITE=stage4 scripts/selftest.sh 42 runs/check create` → 0 FAIL (includes the Stage 5, 6 and 7 checks).
+3. Read `docs/SURVIVAL.md`, then `docs/ECONOMY.md` §13 and `docs/ARCHITECTURE.md` §5h.
 
-### Manual test checklist (v3 world)
-- Visit a settlement: talk to sellers ("What do you have in stock?"), trade, compare prices in another settlement;
-  the journal's trade notes show what you saw and when.
-- Leaders/innkeepers: "What's on the noticeboard?" → take a contract, hand it in; buy or rent property; register a
-  shop; `/business stock`, wait a day, `/business status`; hire someone ("Would you keep my shop?").
-- `/underdeep econ`, `econ shipments`, `econ projects`, `econ events`, `econ world` to watch the simulation;
-  `econ build house` near a settlement to see a construction site; `econ shortage` to see a settlement react.
-- Explore routes between settlements to meet caravans (they appear 40–96 blocks away on their route).
+### Manual test checklist
+- Cooking: campfire + cooking pot on top; put 2 puffcaps + a vegetable + bowls in; watch the arrow, steam and the
+  known-recipes panel (click a recipe: + / − ingredients). Try the oven with fuel, the kettle, the crock (slow),
+  the preparation table (flour → dough with a water bucket; the bucket comes back), the drying rack.
+- Hoppers into/out of a station; comparator on a station.
+- Eat three food groups → Well Fed (tooltip shows groups); eat a warming dish then a cooling one (they cancel).
+- Ask a cook "Could you teach me one of your dishes?" (after talking to them a couple of times).
+- Farming: rich soil, compost bin (fill with crops), compost on a crop, right-click a mature crop, herb cuttings.
+- Feeding trough with feed next to tamed animals; fish with bait in the off hand in different regions; a fish
+  trap with bait in water.
+- Hazards: Everfrost without warm clothes, then by a campfire; Stormstone with an iron pickaxe; Ashen Hollows.
+  Journal (sneak-use for pages) → survival notes. `/underdeep survival hazards` shows exposure.
+- Bedroll at night (spawn must not move; sneak-use sets it), chairs/bench, pantry/medicine-cabinet filters,
+  supply crate keeps contents, comfort message on waking, inn meal/bed, healer treatment.
 
-### Stage 7/8 hooks
-See `docs/ECONOMY.md` §13 (consumption, nutrition, recipes data, tool wear, profession categories).
+### Stage 8 hooks
+See `docs/SURVIVAL.md` §13 (reserved materials, hazard protection contracts, data formats).
 
-### Known issues / limitations of Stage 6
-- Not hands-on tested: physical caravans, trading screens with dynamic offers, noticeboard/contract/property/shop
-  dialogue, hiring, commands (see TESTING.md).
-- Water trade is abstract (no boat entities); courier contracts are defined but not posted; establishing new
-  outposts is not implemented; caravan cargo is not visible on the animals; construction shows bare building
-  progress (no scaffolding); workers do not physically carry goods.
-- Settlement stores are abstract (no chests mirror them) by design (D-054).
-- Physical caravans follow straight route segments between cavern nodes with stuck-recovery; very rough tunnels may
-  make them hop forward when unobserved.
-- Prices are per settlement; transport difficulty uses route distance and danger only.
-- Earlier known issues of Stages 4–5 still apply.
+### Known issues / limitations of Stage 7
+- Not hands-on tested: every screen and interaction in a real client (station screen layout, drying-rack item
+  rendering, sitting, bedroll sleeping and wake position, fishing rod catches, dialogue services); see TESTING.md.
+- Spoilage is not implemented (by design, flag reserved). Station "filled" visuals are particles only.
+- Creative-mode breaking of a supply crate loses its contents (survival breaking keeps them).
+- Breeding at troughs uses vanilla love mode; it was not observed producing young in the self-test.
+- Hazard checks use the region at the player's position; region borders can switch hazards abruptly.
+- Earlier known issues of Stages 4–6 still apply.

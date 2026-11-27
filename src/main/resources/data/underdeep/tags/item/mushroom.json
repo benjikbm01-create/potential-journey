@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:puffcap",
+    "underdeep:inkcap",
+    "underdeep:rimecap",
+    "underdeep:cave_truffle",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom"
+  ]
+}

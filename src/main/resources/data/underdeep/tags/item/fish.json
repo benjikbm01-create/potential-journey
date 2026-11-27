@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:fish_fillet",
+    "minecraft:cod",
+    "minecraft:salmon",
+    "underdeep:glimmerfin",
+    "underdeep:reef_darter",
+    "underdeep:mire_eel"
+  ]
+}

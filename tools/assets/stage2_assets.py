@@ -1417,6 +1417,8 @@ def main():
     LANG.update(clang)
     import inhabitants
     LANG.update(inhabitants.main())
+    import stage7
+    LANG.update(stage7.main(LANG))
     for path, vals in ctags.items():
         tag(path, *vals)
     merge_outputs()

@@ -21,14 +21,14 @@ public final class Preferences {
     }
 
     private static final Map<Civilization, List<String>> CULTURE = Map.of(
-            Civilization.ROOTFOLK, List.of("underdeep:duskberries", "underdeep:baked_duskroot", "underdeep:mendleaf_sprig", "minecraft:honey_bottle"),
-            Civilization.FORGEKIN, List.of("underdeep:emberpepper", "underdeep:emberite", "minecraft:iron_ingot", "underdeep:cooked_game_meat"),
-            Civilization.TIDE_DWELLERS, List.of("underdeep:pearl", "underdeep:cooked_fish_fillet", "underdeep:sea_grapes", "underdeep:rice_bowl"),
-            Civilization.SPOREFOLK, List.of("underdeep:roasted_truffle", "underdeep:puffcap", "underdeep:moonpetal_petal", "underdeep:roasted_inkcap"),
-            Civilization.GLIMMERKIN, List.of("underdeep:prismatic_opal", "underdeep:glimmer_shard", "minecraft:amethyst_shard", "underdeep:jasper"),
-            Civilization.STONEBORN, List.of("underdeep:baked_turnip", "underdeep:cliffberries", "underdeep:hide", "underdeep:malachite"),
-            Civilization.AMBERFOLK, List.of("underdeep:honeyfruit", "underdeep:sunbean_stew", "underdeep:amber_glob", "minecraft:cake"),
-            Civilization.ASTRALS, List.of("underdeep:starsilver_ingot", "underdeep:moonpetal_draught", "minecraft:book", "underdeep:glow_gland"));
+            Civilization.ROOTFOLK, List.of("underdeep:duskberries", "underdeep:baked_duskroot", "underdeep:mendleaf_sprig", "minecraft:honey_bottle", "underdeep:forest_stew"),
+            Civilization.FORGEKIN, List.of("underdeep:emberpepper", "underdeep:emberite", "minecraft:iron_ingot", "underdeep:cooked_game_meat", "underdeep:forge_goulash"),
+            Civilization.TIDE_DWELLERS, List.of("underdeep:pearl", "underdeep:cooked_fish_fillet", "underdeep:sea_grapes", "underdeep:rice_bowl", "underdeep:tide_soup"),
+            Civilization.SPOREFOLK, List.of("underdeep:roasted_truffle", "underdeep:puffcap", "underdeep:moonpetal_petal", "underdeep:roasted_inkcap", "underdeep:fungal_hotpot"),
+            Civilization.GLIMMERKIN, List.of("underdeep:prismatic_opal", "underdeep:glimmer_shard", "minecraft:amethyst_shard", "underdeep:jasper", "underdeep:glimmer_broth"),
+            Civilization.STONEBORN, List.of("underdeep:baked_turnip", "underdeep:cliffberries", "underdeep:hide", "underdeep:malachite", "underdeep:marrow_broth"),
+            Civilization.AMBERFOLK, List.of("underdeep:honeyfruit", "underdeep:sunbean_stew", "underdeep:amber_glob", "minecraft:cake", "underdeep:honeyfruit_tart"),
+            Civilization.ASTRALS, List.of("underdeep:starsilver_ingot", "underdeep:moonpetal_draught", "minecraft:book", "underdeep:glow_gland", "underdeep:starlit_porridge"));
 
     private static List<String> professional(String p) {
         return switch (p) {

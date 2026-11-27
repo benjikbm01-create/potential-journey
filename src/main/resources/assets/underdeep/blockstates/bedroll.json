@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/bedroll"
+    },
+    "facing=east": {
+      "model": "underdeep:block/bedroll",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/bedroll",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/bedroll",
+      "y": 270
+    }
+  }
+}

@@ -2629,6 +2629,2790 @@
    "pool": "",
    "tool": "",
    "fuel": 0.0
+  },
+  {
+   "id": "s7_puffcap_soup",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:puffcap": 2,
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:puffcap_soup": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_root_stew",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:duskroot": 2,
+    "underdeep:frost_turnip": 1
+   },
+   "outputs": {
+    "underdeep:root_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_root_stew_carrots",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:carrot": 2,
+    "minecraft:potato": 1
+   },
+   "outputs": {
+    "underdeep:root_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_game_stew",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@MEAT": 1,
+    "@PRODUCE": 2
+   },
+   "outputs": {
+    "underdeep:game_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_fish_chowder",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@FISH": 2,
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:fish_chowder": 2
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_shellfish_broth",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shellmeat": 2,
+    "underdeep:siltwort_frond": 1
+   },
+   "outputs": {
+    "underdeep:shellfish_broth": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_ember_chili",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberpepper": 2,
+    "@MEAT": 1,
+    "underdeep:sunbean": 1
+   },
+   "outputs": {
+    "underdeep:ember_chili": 1
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_frost_turnip_soup",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:frost_turnip": 2,
+    "underdeep:butter": 1
+   },
+   "outputs": {
+    "underdeep:frost_turnip_soup": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_rice_porridge",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 2
+   },
+   "outputs": {
+    "underdeep:rice_porridge": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_truffle_risotto",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 2,
+    "underdeep:cave_truffle": 1,
+    "underdeep:butter": 1
+   },
+   "outputs": {
+    "underdeep:truffle_risotto": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_berry_compote",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 3,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:berry_compote": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_herb_broth",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mendleaf_sprig": 1,
+    "@PRODUCE": 1,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:herb_broth": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_chestnut_mash",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:lake_chestnut": 3,
+    "underdeep:butter": 1
+   },
+   "outputs": {
+    "underdeep:chestnut_mash": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_sunbean_stew_pot",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sunbean": 3,
+    "underdeep:duskroot": 1
+   },
+   "outputs": {
+    "underdeep:sunbean_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_cavern_stew_pot",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:puffcap": 1,
+    "underdeep:inkcap": 1,
+    "underdeep:cave_truffle": 1,
+    "underdeep:duskroot": 1
+   },
+   "outputs": {
+    "underdeep:cavern_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_rice_bowl_pot",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 3
+   },
+   "outputs": {
+    "underdeep:rice_bowl": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_fungal_hotpot",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:inkcap": 1,
+    "underdeep:puffcap": 1,
+    "underdeep:rimecap": 1,
+    "@MEAT": 1
+   },
+   "outputs": {
+    "underdeep:fungal_hotpot": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_tide_soup",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@FISH": 1,
+    "underdeep:sea_grapes": 1,
+    "underdeep:siltwort_frond": 1
+   },
+   "outputs": {
+    "underdeep:tide_soup": 1
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_forge_goulash",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@MEAT": 2,
+    "underdeep:emberpepper": 1,
+    "underdeep:frost_turnip": 1
+   },
+   "outputs": {
+    "underdeep:forge_goulash": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_amber_hearth_stew",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sunbean": 1,
+    "underdeep:honeyfruit": 1,
+    "underdeep:glowgrain": 1
+   },
+   "outputs": {
+    "underdeep:amber_hearth_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_marrow_broth",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:bone": 2,
+    "underdeep:frost_turnip": 1,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:marrow_broth": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_forest_stew",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:duskroot": 1,
+    "underdeep:duskberries": 1,
+    "underdeep:mendleaf_sprig": 1,
+    "@MEAT": 1
+   },
+   "outputs": {
+    "underdeep:forest_stew": 1
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_glimmer_broth",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:rimecap": 1,
+    "underdeep:glowgrain": 1,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:glimmer_broth": 1
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_starlit_porridge",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:glowgrain": 2,
+    "underdeep:moonpetal_petal": 1
+   },
+   "outputs": {
+    "underdeep:starlit_porridge": 2
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_boiled_eggs",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:creature_egg": 2
+   },
+   "outputs": {
+    "underdeep:boiled_egg": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_flatbread",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1
+   },
+   "outputs": {
+    "underdeep:flatbread": 2
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_glowgrain_bread_oven",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:glowgrain": 1
+   },
+   "outputs": {
+    "underdeep:glowgrain_bread": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_bread_oven",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 2
+   },
+   "outputs": {
+    "minecraft:bread": 3
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_rice_cake",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 2,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:rice_cake": 3
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_berry_pie",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "@PRODUCE": 2,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:berry_pie": 2
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_honeyfruit_tart",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:honeyfruit": 2
+   },
+   "outputs": {
+    "underdeep:honeyfruit_tart": 2
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_meat_pie",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "@MEAT": 1,
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:meat_pie": 2
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_fish_pie",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "@FISH": 1,
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:fish_pie": 2
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_mushroom_pastry",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:puffcap": 1,
+    "underdeep:inkcap": 1
+   },
+   "outputs": {
+    "underdeep:mushroom_pastry": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_roast_platter",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@MEAT": 2,
+    "underdeep:duskroot": 1,
+    "underdeep:emberpepper": 1
+   },
+   "outputs": {
+    "underdeep:roast_platter": 1
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_baked_shellfish",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shellmeat": 2,
+    "underdeep:butter": 1
+   },
+   "outputs": {
+    "underdeep:baked_shellfish": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_chestnut_bread",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:lake_chestnut": 2
+   },
+   "outputs": {
+    "underdeep:chestnut_bread": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_sunbean_loaf",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:sunbean": 2
+   },
+   "outputs": {
+    "underdeep:sunbean_loaf": 2
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_ember_flatbread",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:emberpepper": 1
+   },
+   "outputs": {
+    "underdeep:ember_flatbread": 2
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_sweet_roll",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:dough": 1,
+    "underdeep:honeyfruit": 1,
+    "underdeep:butter": 1
+   },
+   "outputs": {
+    "underdeep:sweet_roll": 3
+   },
+   "byproducts": {},
+   "hours": 0.3,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_duskberry_cookie",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:flour": 1,
+    "underdeep:honeyfruit": 1,
+    "underdeep:duskberries": 1
+   },
+   "outputs": {
+    "underdeep:duskberry_cookie": 6
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_hardtack",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:flour": 2,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:hardtack": 4
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_baked_potato_oven",
+   "kind": "process",
+   "professions": [
+    "baker",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:potato": 2
+   },
+   "outputs": {
+    "minecraft:baked_potato": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_flour",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:glowgrain": 2
+   },
+   "outputs": {
+    "underdeep:flour": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_flour_wheat",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:wheat": 2
+   },
+   "outputs": {
+    "underdeep:flour": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_flour_rice",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 2
+   },
+   "outputs": {
+    "underdeep:flour": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_dough",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:flour": 2
+   },
+   "outputs": {
+    "underdeep:dough": 3
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_butter",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:butter": 3
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_spice_blend",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberpepper": 1,
+    "@HERB": 1,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:spice_blend": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_fruit_salad",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 3
+   },
+   "outputs": {
+    "underdeep:fruit_salad": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_marsh_salad",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:siltwort_frond": 1,
+    "underdeep:sea_grapes": 1,
+    "underdeep:duskroot": 1
+   },
+   "outputs": {
+    "underdeep:marsh_salad": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_trail_mix",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:lake_chestnut": 1,
+    "underdeep:duskberries": 1,
+    "underdeep:cliffberries": 1
+   },
+   "outputs": {
+    "underdeep:trail_mix": 3
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_hunters_sandwich",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:glowgrain_bread": 1,
+    "underdeep:cooked_game_meat": 1,
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:hunters_sandwich": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_fish_wrap",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:flatbread": 1,
+    "underdeep:cooked_fish_fillet": 1,
+    "underdeep:sea_grapes": 1
+   },
+   "outputs": {
+    "underdeep:fish_wrap": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_tide_roll",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mire_rice": 2,
+    "@FISH": 1,
+    "underdeep:sea_grapes": 1
+   },
+   "outputs": {
+    "underdeep:tide_roll": 3
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_travel_ration",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:hardtack": 1,
+    "underdeep:jerky": 1,
+    "underdeep:dried_fruit": 1
+   },
+   "outputs": {
+    "underdeep:travel_ration": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_ember_ration",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:travel_ration": 2,
+    "underdeep:spice_blend": 1
+   },
+   "outputs": {
+    "underdeep:ember_ration": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_frost_ration",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:travel_ration": 2,
+    "underdeep:rimecap": 1
+   },
+   "outputs": {
+    "underdeep:frost_ration": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_sea_grape_juice",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sea_grapes": 3
+   },
+   "outputs": {
+    "underdeep:sea_grape_juice": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_honeyfruit_juice",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:honeyfruit": 2
+   },
+   "outputs": {
+    "underdeep:honeyfruit_juice": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_berry_juice",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 3
+   },
+   "outputs": {
+    "underdeep:berry_juice": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_grain_feed",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@GRAIN": 3
+   },
+   "outputs": {
+    "underdeep:grain_feed": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_fungal_feed",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 3
+   },
+   "outputs": {
+    "underdeep:fungal_feed": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_fruit_mash",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 3
+   },
+   "outputs": {
+    "underdeep:fruit_mash": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_meat_scraps",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@MEAT": 1,
+    "minecraft:bone": 1
+   },
+   "outputs": {
+    "underdeep:meat_scraps": 3
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_fishing_bait",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "baker",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@MEAT": 1
+   },
+   "outputs": {
+    "underdeep:fishing_bait": 4
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_mendleaf_tea",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mendleaf_sprig": 1
+   },
+   "outputs": {
+    "underdeep:mendleaf_tea": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_sunleaf_tea",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sunleaf_blossom": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:sunleaf_tea": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_moonpetal_tea",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:moonpetal_petal": 1
+   },
+   "outputs": {
+    "underdeep:moonpetal_tea": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_emberwort_tea",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberwort_root": 1
+   },
+   "outputs": {
+    "underdeep:emberwort_tea": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_marsh_tea",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:bogwort_leaf": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:marsh_tea": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_bone_broth",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:bone": 2,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:bone_broth": 3
+   },
+   "byproducts": {},
+   "hours": 0.38,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_inkcap_infusion",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:inkcap": 2
+   },
+   "outputs": {
+    "underdeep:inkcap_infusion": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_spiced_cider_berries",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 3,
+    "underdeep:spice_blend": 1
+   },
+   "outputs": {
+    "underdeep:spiced_cider": 3
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_rimecap_cooler",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:rimecap": 1,
+    "underdeep:snowberries": 1
+   },
+   "outputs": {
+    "underdeep:rimecap_cooler": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_cryolite_chill",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:cryolite": 1
+   },
+   "outputs": {
+    "underdeep:cryolite_chill": 3
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_starlily_nectar",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook",
+    "innkeeper"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:starlily": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:starlily_nectar": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
+  },
+  {
+   "id": "s7_vinegar",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 2
+   },
+   "outputs": {
+    "underdeep:vinegar": 2
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_pickled_turnips",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:frost_turnip": 3,
+    "underdeep:vinegar": 1
+   },
+   "outputs": {
+    "underdeep:pickled_turnips": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_pickled_peppers",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberpepper": 3,
+    "underdeep:vinegar": 1
+   },
+   "outputs": {
+    "underdeep:pickled_peppers": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_spore_paste",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:puffcap": 2,
+    "underdeep:inkcap": 1,
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:spore_paste": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_capback_cheese",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:salt": 1
+   },
+   "outputs": {
+    "underdeep:capback_cheese": 4
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_glowgrain_kvass",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:glowgrain_bread": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:glowgrain_kvass": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_honeyfruit_fizz",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:honeyfruit": 3
+   },
+   "outputs": {
+    "underdeep:honeyfruit_fizz": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_berry_shrub",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 2,
+    "underdeep:vinegar": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:berry_shrub": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_spore_kombucha",
+   "kind": "process",
+   "professions": [
+    "brewer",
+    "cook"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:inkcap": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:spore_kombucha": 3
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_jerky",
+   "kind": "process",
+   "professions": [
+    "hunter",
+    "cook",
+    "fisher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@MEAT": 1
+   },
+   "outputs": {
+    "underdeep:jerky": 1
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_dried_fish",
+   "kind": "process",
+   "professions": [
+    "hunter",
+    "cook",
+    "fisher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@FISH": 1
+   },
+   "outputs": {
+    "underdeep:dried_fish": 1
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_dried_fruit",
+   "kind": "process",
+   "professions": [
+    "hunter",
+    "cook",
+    "fisher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:dried_fruit": 1
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_dried_mushrooms",
+   "kind": "process",
+   "professions": [
+    "hunter",
+    "cook",
+    "fisher"
+   ],
+   "workplace": [],
+   "inputs": {
+    "@PRODUCE": 1
+   },
+   "outputs": {
+    "underdeep:dried_mushrooms": 1
+   },
+   "byproducts": {},
+   "hours": 2.0,
+   "maxPerDay": 8,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_bandage",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:string": 2,
+    "underdeep:mendleaf_sprig": 1
+   },
+   "outputs": {
+    "underdeep:bandage": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_cooling_salve",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:rimecap": 1,
+    "underdeep:creature_oil": 1,
+    "underdeep:snowberries": 1
+   },
+   "outputs": {
+    "underdeep:cooling_salve": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_cooling_salve_cryolite",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:cryolite": 1,
+    "underdeep:creature_oil": 1
+   },
+   "outputs": {
+    "underdeep:cooling_salve": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_warming_salve",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberwort_root": 1,
+    "underdeep:creature_oil": 1,
+    "underdeep:emberpepper": 1
+   },
+   "outputs": {
+    "underdeep:warming_salve": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_restorative_tonic",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:mendleaf_sprig": 1,
+    "underdeep:sunleaf_blossom": 1,
+    "underdeep:honeyfruit": 1
+   },
+   "outputs": {
+    "underdeep:restorative_tonic": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_fortifying_elixir",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:moonpetal_petal": 1,
+    "underdeep:glow_gland": 1
+   },
+   "outputs": {
+    "underdeep:fortifying_elixir": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_vigor_draught",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberpepper": 1,
+    "underdeep:sunleaf_blossom": 1
+   },
+   "outputs": {
+    "underdeep:vigor_draught": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_venom_antiserum",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:venom_gland": 1,
+    "underdeep:bogwort_leaf": 1
+   },
+   "outputs": {
+    "underdeep:venom_antiserum": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_calming_balm",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:moonpetal_petal": 1,
+    "underdeep:amber_glob": 1
+   },
+   "outputs": {
+    "underdeep:calming_balm": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_burn_salve",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sea_grapes": 1,
+    "underdeep:amber_glob": 1,
+    "underdeep:creature_oil": 1
+   },
+   "outputs": {
+    "underdeep:burn_salve": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_glow_salve",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:glow_gland": 1,
+    "underdeep:creature_oil": 1
+   },
+   "outputs": {
+    "underdeep:glow_salve": 2
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_field_medkit",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:bandage": 2,
+    "underdeep:mendleaf_poultice": 1,
+    "underdeep:antidote_tincture": 1
+   },
+   "outputs": {
+    "underdeep:field_medkit": 1
+   },
+   "byproducts": {},
+   "hours": 0.25,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_sunleaf_salve_table",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:sunleaf_blossom": 1,
+    "underdeep:honeyfruit": 1,
+    "underdeep:amber_glob": 1
+   },
+   "outputs": {
+    "underdeep:sunleaf_salve": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_emberwort_tonic_table",
+   "kind": "process",
+   "professions": [
+    "healer",
+    "herbalist",
+    "alchemist"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:emberwort_root": 1,
+    "underdeep:emberpepper": 1
+   },
+   "outputs": {
+    "underdeep:emberwort_tonic": 1
+   },
+   "byproducts": {},
+   "hours": 0.2,
+   "maxPerDay": 8,
+   "skill": "MEDICINE",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s7_boil_salt",
+   "kind": "process",
+   "professions": [
+    "cook",
+    "brewer"
+   ],
+   "workplace": [],
+   "inputs": {},
+   "outputs": {
+    "underdeep:salt": 2
+   },
+   "byproducts": {},
+   "hours": 0.5,
+   "maxPerDay": 6,
+   "skill": "COOKING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.1
   }
  ]
 }

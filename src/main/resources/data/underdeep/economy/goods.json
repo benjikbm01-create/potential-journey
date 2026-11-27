@@ -780,6 +780,556 @@
    "item": "minecraft:golden_apple",
    "category": "LUXURY",
    "value": 6.0
+  },
+  {
+   "item": "underdeep:glimmerfin",
+   "category": "FISH",
+   "value": 0.17
+  },
+  {
+   "item": "underdeep:reef_darter",
+   "category": "FISH",
+   "value": 0.17
+  },
+  {
+   "item": "underdeep:mire_eel",
+   "category": "FISH",
+   "value": 0.17
+  },
+  {
+   "item": "underdeep:roasted_sunbeans",
+   "category": "PREPARED_FOOD",
+   "value": 0.24
+  },
+  {
+   "item": "underdeep:charred_emberpepper",
+   "category": "PREPARED_FOOD",
+   "value": 0.265
+  },
+  {
+   "item": "underdeep:roasted_puffcap",
+   "category": "PREPARED_FOOD",
+   "value": 0.24
+  },
+  {
+   "item": "underdeep:toasted_rimecap",
+   "category": "PREPARED_FOOD",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:boiled_egg",
+   "category": "PREPARED_FOOD",
+   "value": 0.24
+  },
+  {
+   "item": "underdeep:puffcap_soup",
+   "category": "PREPARED_FOOD",
+   "value": 0.345
+  },
+  {
+   "item": "underdeep:root_stew",
+   "category": "PREPARED_FOOD",
+   "value": 0.38
+  },
+  {
+   "item": "underdeep:game_stew",
+   "category": "PREPARED_FOOD",
+   "value": 0.51
+  },
+  {
+   "item": "underdeep:fish_chowder",
+   "category": "PREPARED_FOOD",
+   "value": 0.475
+  },
+  {
+   "item": "underdeep:shellfish_broth",
+   "category": "PREPARED_FOOD",
+   "value": 0.405
+  },
+  {
+   "item": "underdeep:ember_chili",
+   "category": "PREPARED_FOOD",
+   "value": 0.51
+  },
+  {
+   "item": "underdeep:frost_turnip_soup",
+   "category": "PREPARED_FOOD",
+   "value": 0.44
+  },
+  {
+   "item": "underdeep:rice_porridge",
+   "category": "PREPARED_FOOD",
+   "value": 0.405
+  },
+  {
+   "item": "underdeep:truffle_risotto",
+   "category": "PREPARED_FOOD",
+   "value": 0.545
+  },
+  {
+   "item": "underdeep:berry_compote",
+   "category": "PREPARED_FOOD",
+   "value": 0.31
+  },
+  {
+   "item": "underdeep:herb_broth",
+   "category": "PREPARED_FOOD",
+   "value": 0.37
+  },
+  {
+   "item": "underdeep:chestnut_mash",
+   "category": "PREPARED_FOOD",
+   "value": 0.38
+  },
+  {
+   "item": "underdeep:fungal_hotpot",
+   "category": "PREPARED_FOOD",
+   "value": 0.58
+  },
+  {
+   "item": "underdeep:tide_soup",
+   "category": "PREPARED_FOOD",
+   "value": 0.57
+  },
+  {
+   "item": "underdeep:forge_goulash",
+   "category": "PREPARED_FOOD",
+   "value": 0.615
+  },
+  {
+   "item": "underdeep:amber_hearth_stew",
+   "category": "PREPARED_FOOD",
+   "value": 0.545
+  },
+  {
+   "item": "underdeep:marrow_broth",
+   "category": "PREPARED_FOOD",
+   "value": 0.475
+  },
+  {
+   "item": "underdeep:forest_stew",
+   "category": "PREPARED_FOOD",
+   "value": 0.545
+  },
+  {
+   "item": "underdeep:glimmer_broth",
+   "category": "PREPARED_FOOD",
+   "value": 0.405
+  },
+  {
+   "item": "underdeep:starlit_porridge",
+   "category": "PREPARED_FOOD",
+   "value": 0.535
+  },
+  {
+   "item": "underdeep:flatbread",
+   "category": "PREPARED_FOOD",
+   "value": 0.275
+  },
+  {
+   "item": "underdeep:rice_cake",
+   "category": "PREPARED_FOOD",
+   "value": 0.275
+  },
+  {
+   "item": "underdeep:berry_pie",
+   "category": "PREPARED_FOOD",
+   "value": 0.38
+  },
+  {
+   "item": "underdeep:honeyfruit_tart",
+   "category": "PREPARED_FOOD",
+   "value": 0.44
+  },
+  {
+   "item": "underdeep:meat_pie",
+   "category": "PREPARED_FOOD",
+   "value": 0.45
+  },
+  {
+   "item": "underdeep:fish_pie",
+   "category": "PREPARED_FOOD",
+   "value": 0.415
+  },
+  {
+   "item": "underdeep:mushroom_pastry",
+   "category": "PREPARED_FOOD",
+   "value": 0.38
+  },
+  {
+   "item": "underdeep:roast_platter",
+   "category": "PREPARED_FOOD",
+   "value": 0.65
+  },
+  {
+   "item": "underdeep:baked_shellfish",
+   "category": "PREPARED_FOOD",
+   "value": 0.415
+  },
+  {
+   "item": "underdeep:chestnut_bread",
+   "category": "PREPARED_FOOD",
+   "value": 0.345
+  },
+  {
+   "item": "underdeep:sunbean_loaf",
+   "category": "PREPARED_FOOD",
+   "value": 0.345
+  },
+  {
+   "item": "underdeep:ember_flatbread",
+   "category": "PREPARED_FOOD",
+   "value": 0.37
+  },
+  {
+   "item": "underdeep:sweet_roll",
+   "category": "PREPARED_FOOD",
+   "value": 0.37
+  },
+  {
+   "item": "underdeep:duskberry_cookie",
+   "category": "PREPARED_FOOD",
+   "value": 0.205
+  },
+  {
+   "item": "underdeep:hardtack",
+   "category": "PREPARED_FOOD",
+   "value": 0.275
+  },
+  {
+   "item": "underdeep:fruit_salad",
+   "category": "PREPARED_FOOD",
+   "value": 0.345
+  },
+  {
+   "item": "underdeep:marsh_salad",
+   "category": "PREPARED_FOOD",
+   "value": 0.31
+  },
+  {
+   "item": "underdeep:trail_mix",
+   "category": "PREPARED_FOOD",
+   "value": 0.24
+  },
+  {
+   "item": "underdeep:hunters_sandwich",
+   "category": "PREPARED_FOOD",
+   "value": 0.485
+  },
+  {
+   "item": "underdeep:fish_wrap",
+   "category": "PREPARED_FOOD",
+   "value": 0.45
+  },
+  {
+   "item": "underdeep:tide_roll",
+   "category": "PREPARED_FOOD",
+   "value": 0.44
+  },
+  {
+   "item": "underdeep:travel_ration",
+   "category": "PREPARED_FOOD",
+   "value": 0.415
+  },
+  {
+   "item": "underdeep:ember_ration",
+   "category": "PREPARED_FOOD",
+   "value": 0.475
+  },
+  {
+   "item": "underdeep:frost_ration",
+   "category": "PREPARED_FOOD",
+   "value": 0.475
+  },
+  {
+   "item": "underdeep:jerky",
+   "category": "PREPARED_FOOD",
+   "value": 0.31
+  },
+  {
+   "item": "underdeep:dried_fish",
+   "category": "PREPARED_FOOD",
+   "value": 0.275
+  },
+  {
+   "item": "underdeep:dried_fruit",
+   "category": "PREPARED_FOOD",
+   "value": 0.24
+  },
+  {
+   "item": "underdeep:dried_mushrooms",
+   "category": "PREPARED_FOOD",
+   "value": 0.24
+  },
+  {
+   "item": "underdeep:pickled_turnips",
+   "category": "PREPARED_FOOD",
+   "value": 0.31
+  },
+  {
+   "item": "underdeep:pickled_peppers",
+   "category": "PREPARED_FOOD",
+   "value": 0.335
+  },
+  {
+   "item": "underdeep:spore_paste",
+   "category": "PREPARED_FOOD",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:capback_cheese",
+   "category": "PREPARED_FOOD",
+   "value": 0.31
+  },
+  {
+   "item": "underdeep:mendleaf_tea",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:sunleaf_tea",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:moonpetal_tea",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:emberwort_tea",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:rimecap_cooler",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:marsh_tea",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:sea_grape_juice",
+   "category": "PREPARED_FOOD",
+   "value": 0.365
+  },
+  {
+   "item": "underdeep:honeyfruit_juice",
+   "category": "PREPARED_FOOD",
+   "value": 0.305
+  },
+  {
+   "item": "underdeep:berry_juice",
+   "category": "PREPARED_FOOD",
+   "value": 0.365
+  },
+  {
+   "item": "underdeep:warm_milk",
+   "category": "PREPARED_FOOD",
+   "value": 0.365
+  },
+  {
+   "item": "underdeep:bone_broth",
+   "category": "PREPARED_FOOD",
+   "value": 0.4
+  },
+  {
+   "item": "underdeep:inkcap_infusion",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:glowgrain_kvass",
+   "category": "PREPARED_FOOD",
+   "value": 0.365
+  },
+  {
+   "item": "underdeep:honeyfruit_fizz",
+   "category": "PREPARED_FOOD",
+   "value": 0.365
+  },
+  {
+   "item": "underdeep:berry_shrub",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:spore_kombucha",
+   "category": "PREPARED_FOOD",
+   "value": 0.33
+  },
+  {
+   "item": "underdeep:cryolite_chill",
+   "category": "PREPARED_FOOD",
+   "value": 0.295
+  },
+  {
+   "item": "underdeep:starlily_nectar",
+   "category": "PREPARED_FOOD",
+   "value": 0.365
+  },
+  {
+   "item": "underdeep:spiced_cider",
+   "category": "PREPARED_FOOD",
+   "value": 0.425
+  },
+  {
+   "item": "underdeep:bandage",
+   "category": "MEDICINE",
+   "value": 0.618
+  },
+  {
+   "item": "underdeep:cooling_salve",
+   "category": "MEDICINE",
+   "value": 0.63
+  },
+  {
+   "item": "underdeep:warming_salve",
+   "category": "MEDICINE",
+   "value": 0.63
+  },
+  {
+   "item": "underdeep:spore_ward_tincture",
+   "category": "MEDICINE",
+   "value": 0.63
+  },
+  {
+   "item": "underdeep:breathing_draught",
+   "category": "MEDICINE",
+   "value": 0.62
+  },
+  {
+   "item": "underdeep:grounding_paste",
+   "category": "MEDICINE",
+   "value": 0.63
+  },
+  {
+   "item": "underdeep:clear_air_tincture",
+   "category": "MEDICINE",
+   "value": 0.63
+  },
+  {
+   "item": "underdeep:restorative_tonic",
+   "category": "MEDICINE",
+   "value": 0.78
+  },
+  {
+   "item": "underdeep:fortifying_elixir",
+   "category": "MEDICINE",
+   "value": 1.22
+  },
+  {
+   "item": "underdeep:vigor_draught",
+   "category": "MEDICINE",
+   "value": 1.14
+  },
+  {
+   "item": "underdeep:venom_antiserum",
+   "category": "MEDICINE",
+   "value": 0.76
+  },
+  {
+   "item": "underdeep:calming_balm",
+   "category": "MEDICINE",
+   "value": 0.96
+  },
+  {
+   "item": "underdeep:burn_salve",
+   "category": "MEDICINE",
+   "value": 0.76
+  },
+  {
+   "item": "underdeep:smelling_salts",
+   "category": "MEDICINE",
+   "value": 1.02
+  },
+  {
+   "item": "underdeep:purging_draught",
+   "category": "MEDICINE",
+   "value": 2.0
+  },
+  {
+   "item": "underdeep:bloodcap_tonic",
+   "category": "MEDICINE",
+   "value": 1.58
+  },
+  {
+   "item": "underdeep:glow_salve",
+   "category": "MEDICINE",
+   "value": 0.53
+  },
+  {
+   "item": "underdeep:field_medkit",
+   "category": "MEDICINE",
+   "value": 0.79
+  },
+  {
+   "item": "underdeep:flour",
+   "category": "GRAIN",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:dough",
+   "category": "SPECIALTY",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:salt",
+   "category": "SPECIALTY",
+   "value": 0.05
+  },
+  {
+   "item": "underdeep:butter",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.15
+  },
+  {
+   "item": "underdeep:vinegar",
+   "category": "SPECIALTY",
+   "value": 0.12
+  },
+  {
+   "item": "underdeep:spice_blend",
+   "category": "SPECIALTY",
+   "value": 0.2
+  },
+  {
+   "item": "underdeep:compost",
+   "category": "SPECIALTY",
+   "value": 0.05
+  },
+  {
+   "item": "underdeep:grain_feed",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:fungal_feed",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:fruit_mash",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:meat_scraps",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.08
+  },
+  {
+   "item": "underdeep:mineral_lick",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:fishing_bait",
+   "category": "SPECIALTY",
+   "value": 0.04
   }
  ]
 }

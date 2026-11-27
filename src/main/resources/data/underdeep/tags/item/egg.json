@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:creature_egg",
+    "minecraft:egg"
+  ]
+}

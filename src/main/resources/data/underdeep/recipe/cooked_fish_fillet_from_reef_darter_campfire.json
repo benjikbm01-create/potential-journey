@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:reef_darter"
+  },
+  "result": {
+    "id": "underdeep:cooked_fish_fillet"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

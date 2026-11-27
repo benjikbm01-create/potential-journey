@@ -5,6 +5,8 @@
     "minecraft:packed_ice",
     "minecraft:blue_ice",
     "minecraft:ice",
-    "#underdeep:plant_soil"
+    "#underdeep:plant_soil",
+    "underdeep:rich_soil",
+    "underdeep:planter_box"
   ]
 }

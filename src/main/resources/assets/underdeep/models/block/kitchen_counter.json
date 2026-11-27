@@ -1,0 +1,43 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "front": "underdeep:block/kitchen_counter_front",
+    "side": "underdeep:block/kitchen_counter_side",
+    "top": "underdeep:block/counter_top",
+    "particle": "underdeep:block/kitchen_counter_side"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#front"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "down": {
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

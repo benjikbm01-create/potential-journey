@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "item": "underdeep:puffcap"
+    },
+    {
+      "item": "underdeep:compost"
+    }
+  ],
+  "result": {
+    "id": "underdeep:sporeglow_soil",
+    "count": 2
+  }
+}

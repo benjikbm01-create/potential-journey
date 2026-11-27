@@ -14,6 +14,8 @@
     "minecraft:gilded_blackstone",
     "minecraft:red_sand",
     "minecraft:nether_wart_block",
-    "#underdeep:plant_soil"
+    "#underdeep:plant_soil",
+    "underdeep:rich_soil",
+    "underdeep:planter_box"
   ]
 }

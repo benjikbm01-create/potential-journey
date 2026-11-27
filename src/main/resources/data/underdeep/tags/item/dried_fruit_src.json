@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskberries",
+    "underdeep:honeyfruit",
+    "underdeep:snowberries",
+    "underdeep:cliffberries",
+    "underdeep:briar_fruit",
+    "minecraft:apple",
+    "minecraft:sweet_berries"
+  ]
+}

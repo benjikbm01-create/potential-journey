@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:duskroot",
+    "underdeep:frost_turnip",
+    "underdeep:lake_chestnut",
+    "underdeep:emberpepper",
+    "minecraft:carrot",
+    "minecraft:potato",
+    "minecraft:beetroot"
+  ]
+}

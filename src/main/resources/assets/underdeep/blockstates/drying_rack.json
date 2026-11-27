@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/drying_rack"
+    },
+    "facing=east": {
+      "model": "underdeep:block/drying_rack",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/drying_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/drying_rack",
+      "y": 270
+    }
+  }
+}

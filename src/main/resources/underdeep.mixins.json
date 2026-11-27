@@ -6,7 +6,9 @@
   "mixins": [
     "DimensionOptionsRegistryHolderMixin",
     "MinecraftServerMixin",
-    "NetherPortalMixin"
+    "NetherPortalMixin",
+    "FishingBobberEntityMixin",
+    "PlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

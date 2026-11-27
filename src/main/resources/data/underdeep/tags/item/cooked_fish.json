@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:cooked_fish_fillet",
+    "minecraft:cooked_cod",
+    "minecraft:cooked_salmon"
+  ]
+}

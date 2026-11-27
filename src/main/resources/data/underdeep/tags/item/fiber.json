@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:string",
+    "underdeep:voidroot_fiber",
+    "underdeep:silk_strand",
+    "underdeep:fur_tuft"
+  ]
+}

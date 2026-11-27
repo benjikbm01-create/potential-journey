@@ -132,6 +132,21 @@
     "underdeep:glowivy",
     "underdeep:petrolichen",
     "underdeep:storm_lichen",
-    "underdeep:twig_nest"
+    "underdeep:twig_nest",
+    "underdeep:preparation_table",
+    "underdeep:drying_rack",
+    "underdeep:herbalist_table",
+    "underdeep:compost_bin",
+    "underdeep:fish_trap",
+    "underdeep:feeding_trough",
+    "underdeep:wooden_chair",
+    "underdeep:wooden_bench",
+    "underdeep:wooden_table",
+    "underdeep:storage_cabinet",
+    "underdeep:pantry",
+    "underdeep:medicine_cabinet",
+    "underdeep:supply_crate",
+    "underdeep:kitchen_counter",
+    "underdeep:planter_box"
   ]
 }

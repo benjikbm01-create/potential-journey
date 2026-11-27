@@ -180,6 +180,43 @@ public final class UnderdeepConfig {
     /** Containers and blocks inside owned property are protected from other players. */
     public boolean propertyProtection = true;
 
+    // ---- Stage 7: survival, farming, cooking, medicine and homesteading ----
+    public Survival survival = new Survival();
+
+    /** Stage 7 settings (a nested object in underdeep.json; missing keys keep their defaults). */
+    public static final class Survival {
+        /** Master switch for Stage 7 rules (items and blocks always exist). */
+        public boolean enabled = true;
+        /** Variety bonus (Well Fed) for eating different food groups. Never a penalty. */
+        public boolean nutritionBonus = true;
+        /** Environmental hazards in dangerous regions (never in the starting regions). */
+        public boolean hazards = true;
+        /** Multiplier for how fast hazard exposure builds (1 = default, 0.5 = half as fast). */
+        public double hazardRate = 1.0;
+        /** Hazard effects may deal small amounts of damage at full exposure. */
+        public boolean hazardDamage = true;
+        /** Lightweight injuries: a single heavy hit (7+ damage) leaves you Wounded until treated or healed. */
+        public boolean injuries = true;
+        /** Weariness after several days without rest (sleep, or sitting a while). Mild. Off by default. */
+        public boolean weariness = false;
+        /** Food spoilage. Not implemented as decay; kept for compatibility, see docs/SURVIVAL.md. Off by default. */
+        public boolean spoilage = false;
+        /** Regional fishing tables in the Underdeep. */
+        public boolean regionalFishing = true;
+        /** Bedrolls never move your respawn point unless you sneak while using one. */
+        public boolean bedrollSetsSpawnWhenSneaking = true;
+        /** Station speed multiplier (1 = default; 2 = twice as fast). */
+        public double stationSpeed = 1.0;
+        /** Crop growth bonus on rich soil (multiplier on the growth chance). */
+        public double richSoilGrowth = 1.5;
+        /** Fish trap: ticks between catches, maximum catches caught up after the area was unloaded. */
+        public int fishTrapInterval = 6000;
+        public int fishTrapMaxCatchUp = 3;
+        /** Feeding trough radius and the cap on tamed animals near a trough that may still breed. */
+        public int troughRadius = 12;
+        public int breedingCap = 24;
+    }
+
     public double densityFor(String ecosystem) {
         return wildlifeDensity * wildlifeDensityByEcosystem.getOrDefault(ecosystem, 1.0);
     }

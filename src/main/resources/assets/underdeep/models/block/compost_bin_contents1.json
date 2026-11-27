@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/composter_contents1",
+  "textures": {
+    "content": "underdeep:block/compost_bin_compost",
+    "inside": "underdeep:block/compost_bin_side"
+  }
+}

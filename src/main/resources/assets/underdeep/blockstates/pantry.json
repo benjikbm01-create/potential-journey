@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/pantry"
+    },
+    "facing=east": {
+      "model": "underdeep:block/pantry",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/pantry",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/pantry",
+      "y": 270
+    }
+  }
+}

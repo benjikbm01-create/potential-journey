@@ -39,7 +39,7 @@ public final class DialoguePayloads {
             String name = buf.readString();
             String sub = buf.readString();
             String text = buf.readString(4096);
-            int n = Math.min(16, buf.readVarInt());
+            int n = Math.min(24, buf.readVarInt());
             List<String> ids = new ArrayList<>(), labels = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 ids.add(buf.readString());

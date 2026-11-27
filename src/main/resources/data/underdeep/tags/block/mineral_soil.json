@@ -25,6 +25,8 @@
     "minecraft:packed_ice",
     "minecraft:snow_block",
     "underdeep:starstone",
-    "#underdeep:plant_soil"
+    "#underdeep:plant_soil",
+    "underdeep:rich_soil",
+    "underdeep:planter_box"
   ]
 }

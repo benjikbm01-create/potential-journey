@@ -74,6 +74,7 @@ public final class UnderdeepCommands {
                 .then(CommandManager.literal("settlement").executes(UnderdeepCommands::settlement))
                 .then(dev.underdeep.civ.npc.NpcCommands.node())
                 .then(dev.underdeep.civ.econ.EconCommands.node())
+                .then(dev.underdeep.survival.SurvivalCommands.node())
                 .then(CommandManager.literal("gallery")
                         .then(CommandManager.literal("confirm").executes(UnderdeepCommands::gallery)))
                 .then(CommandManager.literal("ecology")

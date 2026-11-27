@@ -382,3 +382,34 @@ loaded chunks, bounded per tick; repairs only fill air.
 A migrant's record (with the same mind object) is appended to the destination; the old record becomes a pointer
 (`movedTo`), never embodied or simulated. Old relationships are kept as `elsewhere` bonds keyed by settlement and
 index. Mind schema 2 adds food security, skills, journey, employer and elsewhere bonds (defaults on load).
+
+## D-060 Stage 7 content is data generated from one definition
+Foods, drinks, medicines, materials, station recipes, regional cuisine and the derived economy goods/recipes all come
+from `tools/assets/stage7.py` (assets + `data/underdeep/survival/content.json`); `generate_economy.py` imports it,
+so content, art and economy can never disagree. Java registers items from the data at init and validates every id
+once all items exist (bad recipes are disabled and reported, never crashing).
+
+## D-061 Vanilla hunger stays; variety is a bonus only
+No thirst, no nutrient meters, no penalties for a plain diet. Food groups give Well Fed I/II (less exhaustion,
+slower hazard exposure). Meal buffs are bounded (no duration stacking, amplifier ≤ I, ≤ 10 min, opposites cancel).
+
+## D-062 Stations consume inputs once at completion
+Generic `StationBlockEntity` for six stations: exact-use matching (every non-empty input must be used), most specific
+recipe wins, batches limited by station/ingredients/containers/output room, heat or fuel gates progress without
+loss, remainders returned. Recipe knowledge is informational: unknown recipes can still be cooked (discovery by
+experiment), so knowledge can never block progress.
+
+## D-063 Hazards are exposure meters with warnings, never instant
+Hazards only in dangerous regions (never the starting regions), warning at 40 %, effect only at 100 %, mild bounded
+penalties, damage optional, counterplay through effects/gear/heat/shelter. Meters are transient (not saved).
+
+## D-064 Fishing pressure is persistent per water area
+`SurvivalState` stores pressure per 64×64 area; it thins catches (floor 25 %) and recovers daily. Traps share the
+tables and pressure, catch-up after unloading is capped, catches never exceed bait.
+
+## D-065 Bedrolls never set spawn implicitly
+Sleeping uses Fabric sleep events (valid bed, facing, no spawn); sneak-use sets a forced spawn deliberately.
+
+## D-066 Services keep the money audit exact
+Healer and inn payments are physical emeralds into the treasury recorded as `playerIn`; goods used are taken from
+the ledger as consumption. Troughs and traps never interact with wild populations.

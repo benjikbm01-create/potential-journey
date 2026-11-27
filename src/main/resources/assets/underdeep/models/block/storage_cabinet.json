@@ -1,0 +1,43 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "front": "underdeep:block/storage_cabinet_front",
+    "side": "underdeep:block/storage_cabinet_side",
+    "top": "underdeep:block/storage_cabinet_side",
+    "particle": "underdeep:block/storage_cabinet_side"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#front"
+        },
+        "south": {
+          "texture": "#side"
+        },
+        "east": {
+          "texture": "#side"
+        },
+        "west": {
+          "texture": "#side"
+        },
+        "up": {
+          "texture": "#top"
+        },
+        "down": {
+          "texture": "#side"
+        }
+      }
+    }
+  ]
+}

@@ -5,6 +5,8 @@
     "minecraft:clay",
     "minecraft:muddy_mangrove_roots",
     "minecraft:packed_mud",
-    "#underdeep:plant_soil"
+    "#underdeep:plant_soil",
+    "underdeep:rich_soil",
+    "underdeep:planter_box"
   ]
 }

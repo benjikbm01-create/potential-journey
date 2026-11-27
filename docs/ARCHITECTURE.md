@@ -408,6 +408,20 @@ blocked within the radius plus `settlementMonsterExclusion`.
 - Gates and docks as caravan endpoints; `SettlementMap.sitesNear` and the cavern graph for trade routes.
 - The `civ` affinity and frontier mixing for faction territories.
 
+## 5h. Survival, cooking, medicine and homesteading (Stage 7)
+
+Full description in `docs/SURVIVAL.md`. Package `survival`: `SurvivalContent` (data registry, ingredient groups,
+lazy resolve/validation), `SurvivalItems` (MealItem, MedicineItem, CompostItem), `SurvivalEffects`, `SurvivalBlocks`
+(blocks, BE types, screen handler, seat entity), `SurvivalData` (player attachment), `SurvivalState` (world state),
+`Meals` (variety, bounded buffs, exhaustion factor), `Recipes` (knowledge + S2C sync), `Hazards`, `Comfort`,
+`Fishing`, `SurvivalDialogue` (cook/healer/inn services), `SurvivalJournal`, `SurvivalCommands`, `Survival` (init and
+events). `survival/station`: `StationBlock(Entity)`, `StationScreenHandler`, `DryingRack*`. `survival/home`:
+`ContainerBlock(Entity)` (storage, trap, trough), `SeatBlock`/`SeatEntity`, `DecorBlock`, `BedrollBlock`,
+`RichSoilBlock`, `CompostBinBlock`. Mixins: `PlayerEntityMixin` (eatFood → Meals.onEat; addExhaustion factor),
+`FishingBobberEntityMixin` (regional loot). Client: `client/survival/StationScreen`, `SurvivalClient`.
+Hooks into earlier stages: `EcoCropBlock`/`HarvestablePlantBlock` growth × rich soil; `UnderdeepCreature.troughFed`;
+`Dialogue` → `SurvivalDialogue`; journal pages; `Preferences` regional dishes; economy data.
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |

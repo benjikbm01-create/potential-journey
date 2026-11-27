@@ -70,7 +70,9 @@ public class EcoCropBlock extends CropBlock {
         }
         boolean farmland = world.getBlockState(pos.down()).isOf(Blocks.FARMLAND);
         float moisture = getAvailableMoisture(this, world, pos);
-        double chance = rule.chance() * f * (farmland ? 0.4 + 0.6 * Math.min(1.0, moisture / 6.0) : 0.3);
+        boolean rich = dev.underdeep.survival.home.RichSoilBlock.rich(world, pos);
+        double chance = rule.chance() * f * (farmland ? 0.4 + 0.6 * Math.min(1.0, moisture / 6.0) : rich ? 1.0 : 0.3)
+                * dev.underdeep.survival.home.RichSoilBlock.boost(world, pos);
         if (random.nextDouble() < chance) {
             world.setBlockState(pos, withAge(age + 1), Block.NOTIFY_LISTENERS);
         }

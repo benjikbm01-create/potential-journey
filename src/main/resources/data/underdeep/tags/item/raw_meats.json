@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:game_meat",
+    "underdeep:shellmeat",
+    "minecraft:beef",
+    "minecraft:porkchop",
+    "minecraft:chicken",
+    "minecraft:mutton",
+    "minecraft:rabbit"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/composter",
+  "textures": {
+    "top": "underdeep:block/compost_bin_top",
+    "bottom": "underdeep:block/compost_bin_side",
+    "side": "underdeep:block/compost_bin_side",
+    "particle": "underdeep:block/compost_bin_side"
+  }
+}

@@ -426,6 +426,25 @@ public class UnderdeepCreature extends TameableEntity {
         }
     }
 
+    /**
+     * Fed from a feeding trough (Stage 7, tamed animals only): satisfies hunger and keeps the animal productive.
+     * Shedding products come sooner and sheared coats regrow sooner, within the normal product bounds (never more
+     * than one product per feeding). Returns false if the animal was not hungry enough to eat.
+     */
+    public boolean troughFed() {
+        if (!isTamed() || hunger < 0.35f) {
+            return false;
+        }
+        hunger = Math.max(0, hunger - 0.6f);
+        if (species.product().startsWith("shed:")) {
+            productTimer = Math.max(1, productTimer - 600);
+        }
+        if (isSheared() && random.nextInt(4) == 0) {
+            dataTracker.set(SHEARED, false);
+        }
+        return true;
+    }
+
     public double nearestPlayerDistanceSq() {
         return nearestPlayerSq;
     }

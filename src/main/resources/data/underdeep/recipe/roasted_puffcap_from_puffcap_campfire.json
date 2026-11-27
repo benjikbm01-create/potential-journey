@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:puffcap"
+  },
+  "result": {
+    "id": "underdeep:roasted_puffcap"
+  },
+  "experience": 0.35,
+  "cookingtime": 600
+}

@@ -137,6 +137,7 @@ public final class Dialogue {
         }
         if (!hostile) {
             dev.underdeep.civ.econ.EconDialogue.options(p, e, t, ids, labels);
+            dev.underdeep.survival.SurvivalDialogue.options(p, e, t, ids, labels);
         }
         Companions.options(p, e, t, ids, labels);
         opt(ids, labels, "bye", "Goodbye");
@@ -220,6 +221,9 @@ public final class Dialogue {
             }
             default -> {
                 String econ = dev.underdeep.civ.econ.EconDialogue.choose(p, e, t, s, option);
+                if (econ == null) {
+                    econ = dev.underdeep.survival.SurvivalDialogue.choose(p, e, t, option);
+                }
                 if (econ != null) {
                     if (econ.isEmpty()) {
                         SESSIONS.remove(p.getUuid());

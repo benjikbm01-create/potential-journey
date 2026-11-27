@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "underdeep:rimecap"
+  },
+  "result": {
+    "id": "underdeep:toasted_rimecap"
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}

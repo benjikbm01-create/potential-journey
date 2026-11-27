@@ -387,6 +387,12 @@ public final class SelfTest {
             check("stage 6 checks completed without exceptions", false, e.toString());
         }
         try {
+            Stage7Checks.run(world, rep);
+        } catch (RuntimeException e) {
+            Underdeep.LOGGER.error("Stage 7 checks crashed", e);
+            check("stage 7 checks completed without exceptions", false, e.toString());
+        }
+        try {
             Stage5Checks.run(world, rep);
         } catch (RuntimeException e) {
             Underdeep.LOGGER.error("Stage 5 checks crashed", e);

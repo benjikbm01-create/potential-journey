@@ -59,7 +59,7 @@ public class HarvestablePlantBlock extends EcoPlantBlock {
         int age = state.get(AGE);
         if (age < 3) {
             double f = rule.factor(world, pos);
-            if (f > 0 && random.nextFloat() < rule.chance() * f) {
+            if (f > 0 && random.nextFloat() < rule.chance() * f * dev.underdeep.survival.home.RichSoilBlock.boost(world, pos)) {
                 world.setBlockState(pos, state.with(AGE, age + 1), Block.NOTIFY_LISTENERS);
                 world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(state));
             }

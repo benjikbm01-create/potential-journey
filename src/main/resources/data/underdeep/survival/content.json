@@ -1,0 +1,4608 @@
+{
+  "groups": {
+    "fruit": [
+      "underdeep:duskberries",
+      "underdeep:honeyfruit",
+      "underdeep:snowberries",
+      "underdeep:cliffberries",
+      "underdeep:briar_fruit",
+      "underdeep:sea_grapes",
+      "minecraft:apple",
+      "minecraft:sweet_berries",
+      "minecraft:glow_berries",
+      "minecraft:melon_slice"
+    ],
+    "vegetable": [
+      "underdeep:duskroot",
+      "underdeep:frost_turnip",
+      "underdeep:lake_chestnut",
+      "underdeep:emberpepper",
+      "minecraft:carrot",
+      "minecraft:potato",
+      "minecraft:beetroot"
+    ],
+    "grain": [
+      "underdeep:glowgrain",
+      "underdeep:mire_rice",
+      "minecraft:wheat"
+    ],
+    "mushroom": [
+      "underdeep:puffcap",
+      "underdeep:inkcap",
+      "underdeep:rimecap",
+      "underdeep:cave_truffle",
+      "minecraft:brown_mushroom",
+      "minecraft:red_mushroom"
+    ],
+    "meat": [
+      "underdeep:game_meat",
+      "underdeep:shellmeat",
+      "minecraft:beef",
+      "minecraft:porkchop",
+      "minecraft:chicken",
+      "minecraft:mutton",
+      "minecraft:rabbit"
+    ],
+    "cooked_meat": [
+      "underdeep:cooked_game_meat",
+      "underdeep:cooked_shellmeat",
+      "minecraft:cooked_beef",
+      "minecraft:cooked_porkchop",
+      "minecraft:cooked_chicken",
+      "minecraft:cooked_mutton"
+    ],
+    "fish": [
+      "underdeep:fish_fillet",
+      "minecraft:cod",
+      "minecraft:salmon",
+      "underdeep:glimmerfin",
+      "underdeep:reef_darter",
+      "underdeep:mire_eel"
+    ],
+    "cooked_fish": [
+      "underdeep:cooked_fish_fillet",
+      "minecraft:cooked_cod",
+      "minecraft:cooked_salmon"
+    ],
+    "herb": [
+      "underdeep:mendleaf_sprig",
+      "underdeep:sunleaf_blossom",
+      "underdeep:moonpetal_petal",
+      "underdeep:emberwort_root",
+      "underdeep:bogwort_leaf",
+      "underdeep:siltwort_frond"
+    ],
+    "sweet": [
+      "minecraft:sugar",
+      "minecraft:honey_bottle",
+      "underdeep:honeyfruit"
+    ],
+    "egg": [
+      "underdeep:creature_egg",
+      "minecraft:egg"
+    ],
+    "fiber": [
+      "minecraft:string",
+      "underdeep:voidroot_fiber",
+      "underdeep:silk_strand",
+      "underdeep:fur_tuft"
+    ],
+    "bread": [
+      "minecraft:bread",
+      "underdeep:glowgrain_bread",
+      "underdeep:flatbread"
+    ],
+    "dried_fruit_src": [
+      "underdeep:duskberries",
+      "underdeep:honeyfruit",
+      "underdeep:snowberries",
+      "underdeep:cliffberries",
+      "underdeep:briar_fruit",
+      "minecraft:apple",
+      "minecraft:sweet_berries"
+    ]
+  },
+  "nutrition": {
+    "underdeep:duskberries": [
+      "FRUIT"
+    ],
+    "underdeep:honeyfruit": [
+      "FRUIT",
+      "SWEET"
+    ],
+    "underdeep:snowberries": [
+      "FRUIT"
+    ],
+    "underdeep:cliffberries": [
+      "FRUIT"
+    ],
+    "underdeep:briar_fruit": [
+      "FRUIT"
+    ],
+    "underdeep:sea_grapes": [
+      "FRUIT",
+      "VEGETABLE"
+    ],
+    "underdeep:duskroot": [
+      "VEGETABLE"
+    ],
+    "underdeep:baked_duskroot": [
+      "VEGETABLE"
+    ],
+    "underdeep:glowgrain_bread": [
+      "GRAIN"
+    ],
+    "underdeep:cave_truffle": [
+      "FUNGI"
+    ],
+    "underdeep:roasted_truffle": [
+      "FUNGI"
+    ],
+    "underdeep:rice_bowl": [
+      "GRAIN"
+    ],
+    "underdeep:lake_chestnut": [
+      "VEGETABLE"
+    ],
+    "underdeep:roasted_chestnut": [
+      "VEGETABLE"
+    ],
+    "underdeep:emberpepper": [
+      "VEGETABLE"
+    ],
+    "underdeep:frost_turnip": [
+      "VEGETABLE"
+    ],
+    "underdeep:baked_turnip": [
+      "VEGETABLE"
+    ],
+    "underdeep:sunbean": [
+      "VEGETABLE"
+    ],
+    "underdeep:sunbean_stew": [
+      "VEGETABLE",
+      "GRAIN"
+    ],
+    "underdeep:puffcap": [
+      "FUNGI"
+    ],
+    "underdeep:inkcap": [
+      "FUNGI"
+    ],
+    "underdeep:roasted_inkcap": [
+      "FUNGI"
+    ],
+    "underdeep:rimecap": [
+      "FUNGI"
+    ],
+    "underdeep:cavern_stew": [
+      "FUNGI",
+      "VEGETABLE"
+    ],
+    "underdeep:game_meat": [
+      "MEAT"
+    ],
+    "underdeep:cooked_game_meat": [
+      "MEAT"
+    ],
+    "underdeep:shellmeat": [
+      "FISH"
+    ],
+    "underdeep:cooked_shellmeat": [
+      "FISH"
+    ],
+    "underdeep:fish_fillet": [
+      "FISH"
+    ],
+    "underdeep:cooked_fish_fillet": [
+      "FISH"
+    ],
+    "minecraft:bread": [
+      "GRAIN"
+    ],
+    "minecraft:apple": [
+      "FRUIT"
+    ],
+    "minecraft:carrot": [
+      "VEGETABLE"
+    ],
+    "minecraft:potato": [
+      "VEGETABLE"
+    ],
+    "minecraft:baked_potato": [
+      "VEGETABLE"
+    ],
+    "minecraft:beetroot": [
+      "VEGETABLE"
+    ],
+    "minecraft:beetroot_soup": [
+      "VEGETABLE"
+    ],
+    "minecraft:cooked_beef": [
+      "MEAT"
+    ],
+    "minecraft:cooked_porkchop": [
+      "MEAT"
+    ],
+    "minecraft:cooked_chicken": [
+      "MEAT"
+    ],
+    "minecraft:cooked_mutton": [
+      "MEAT"
+    ],
+    "minecraft:cooked_rabbit": [
+      "MEAT"
+    ],
+    "minecraft:cooked_cod": [
+      "FISH"
+    ],
+    "minecraft:cooked_salmon": [
+      "FISH"
+    ],
+    "minecraft:mushroom_stew": [
+      "FUNGI"
+    ],
+    "minecraft:sweet_berries": [
+      "FRUIT"
+    ],
+    "minecraft:glow_berries": [
+      "FRUIT"
+    ],
+    "minecraft:melon_slice": [
+      "FRUIT"
+    ],
+    "minecraft:cookie": [
+      "SWEET",
+      "GRAIN"
+    ],
+    "minecraft:pumpkin_pie": [
+      "SWEET"
+    ],
+    "minecraft:cake": [
+      "SWEET",
+      "GRAIN"
+    ],
+    "minecraft:honey_bottle": [
+      "SWEET"
+    ],
+    "minecraft:dried_kelp": [
+      "VEGETABLE"
+    ],
+    "minecraft:rabbit_stew": [
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:glimmerfin": [
+      "FISH"
+    ],
+    "underdeep:reef_darter": [
+      "FISH"
+    ],
+    "underdeep:mire_eel": [
+      "FISH"
+    ],
+    "underdeep:roasted_sunbeans": [
+      "VEGETABLE"
+    ],
+    "underdeep:charred_emberpepper": [
+      "VEGETABLE"
+    ],
+    "underdeep:roasted_puffcap": [
+      "FUNGI"
+    ],
+    "underdeep:toasted_rimecap": [
+      "FUNGI"
+    ],
+    "underdeep:boiled_egg": [
+      "MEAT"
+    ],
+    "underdeep:puffcap_soup": [
+      "FUNGI",
+      "VEGETABLE"
+    ],
+    "underdeep:root_stew": [
+      "VEGETABLE"
+    ],
+    "underdeep:game_stew": [
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:fish_chowder": [
+      "FISH",
+      "VEGETABLE"
+    ],
+    "underdeep:shellfish_broth": [
+      "FISH"
+    ],
+    "underdeep:ember_chili": [
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:frost_turnip_soup": [
+      "VEGETABLE"
+    ],
+    "underdeep:rice_porridge": [
+      "GRAIN"
+    ],
+    "underdeep:truffle_risotto": [
+      "GRAIN",
+      "FUNGI"
+    ],
+    "underdeep:berry_compote": [
+      "FRUIT",
+      "SWEET"
+    ],
+    "underdeep:herb_broth": [
+      "VEGETABLE"
+    ],
+    "underdeep:chestnut_mash": [
+      "VEGETABLE"
+    ],
+    "underdeep:fungal_hotpot": [
+      "FUNGI",
+      "MEAT"
+    ],
+    "underdeep:tide_soup": [
+      "FISH",
+      "FRUIT"
+    ],
+    "underdeep:forge_goulash": [
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:amber_hearth_stew": [
+      "VEGETABLE",
+      "GRAIN",
+      "SWEET"
+    ],
+    "underdeep:marrow_broth": [
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:forest_stew": [
+      "MEAT",
+      "VEGETABLE",
+      "FRUIT"
+    ],
+    "underdeep:glimmer_broth": [
+      "FUNGI",
+      "GRAIN"
+    ],
+    "underdeep:starlit_porridge": [
+      "GRAIN"
+    ],
+    "underdeep:flatbread": [
+      "GRAIN"
+    ],
+    "underdeep:rice_cake": [
+      "GRAIN",
+      "SWEET"
+    ],
+    "underdeep:berry_pie": [
+      "FRUIT",
+      "GRAIN",
+      "SWEET"
+    ],
+    "underdeep:honeyfruit_tart": [
+      "FRUIT",
+      "GRAIN",
+      "SWEET"
+    ],
+    "underdeep:meat_pie": [
+      "MEAT",
+      "GRAIN",
+      "VEGETABLE"
+    ],
+    "underdeep:fish_pie": [
+      "FISH",
+      "GRAIN"
+    ],
+    "underdeep:mushroom_pastry": [
+      "FUNGI",
+      "GRAIN"
+    ],
+    "underdeep:roast_platter": [
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:baked_shellfish": [
+      "FISH"
+    ],
+    "underdeep:chestnut_bread": [
+      "GRAIN",
+      "VEGETABLE"
+    ],
+    "underdeep:sunbean_loaf": [
+      "GRAIN",
+      "VEGETABLE"
+    ],
+    "underdeep:ember_flatbread": [
+      "GRAIN",
+      "VEGETABLE"
+    ],
+    "underdeep:sweet_roll": [
+      "GRAIN",
+      "SWEET"
+    ],
+    "underdeep:duskberry_cookie": [
+      "GRAIN",
+      "FRUIT",
+      "SWEET"
+    ],
+    "underdeep:hardtack": [
+      "GRAIN"
+    ],
+    "underdeep:fruit_salad": [
+      "FRUIT"
+    ],
+    "underdeep:marsh_salad": [
+      "VEGETABLE",
+      "FRUIT"
+    ],
+    "underdeep:trail_mix": [
+      "VEGETABLE",
+      "FRUIT"
+    ],
+    "underdeep:hunters_sandwich": [
+      "GRAIN",
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:fish_wrap": [
+      "GRAIN",
+      "FISH",
+      "FRUIT"
+    ],
+    "underdeep:tide_roll": [
+      "GRAIN",
+      "FISH",
+      "FRUIT"
+    ],
+    "underdeep:travel_ration": [
+      "GRAIN",
+      "MEAT",
+      "FRUIT"
+    ],
+    "underdeep:ember_ration": [
+      "GRAIN",
+      "MEAT",
+      "VEGETABLE"
+    ],
+    "underdeep:frost_ration": [
+      "GRAIN",
+      "MEAT",
+      "FUNGI"
+    ],
+    "underdeep:jerky": [
+      "MEAT"
+    ],
+    "underdeep:dried_fish": [
+      "FISH"
+    ],
+    "underdeep:dried_fruit": [
+      "FRUIT",
+      "SWEET"
+    ],
+    "underdeep:dried_mushrooms": [
+      "FUNGI"
+    ],
+    "underdeep:pickled_turnips": [
+      "VEGETABLE"
+    ],
+    "underdeep:pickled_peppers": [
+      "VEGETABLE"
+    ],
+    "underdeep:spore_paste": [
+      "FUNGI"
+    ],
+    "underdeep:capback_cheese": [
+      "MEAT"
+    ],
+    "underdeep:mendleaf_tea": [],
+    "underdeep:sunleaf_tea": [],
+    "underdeep:moonpetal_tea": [],
+    "underdeep:emberwort_tea": [],
+    "underdeep:rimecap_cooler": [],
+    "underdeep:marsh_tea": [],
+    "underdeep:sea_grape_juice": [
+      "FRUIT"
+    ],
+    "underdeep:honeyfruit_juice": [
+      "FRUIT",
+      "SWEET"
+    ],
+    "underdeep:berry_juice": [
+      "FRUIT"
+    ],
+    "underdeep:warm_milk": [],
+    "underdeep:bone_broth": [
+      "MEAT"
+    ],
+    "underdeep:inkcap_infusion": [
+      "FUNGI"
+    ],
+    "underdeep:glowgrain_kvass": [
+      "GRAIN"
+    ],
+    "underdeep:honeyfruit_fizz": [
+      "FRUIT",
+      "SWEET"
+    ],
+    "underdeep:berry_shrub": [
+      "FRUIT"
+    ],
+    "underdeep:spore_kombucha": [
+      "FUNGI"
+    ],
+    "underdeep:cryolite_chill": [],
+    "underdeep:starlily_nectar": [
+      "SWEET"
+    ],
+    "underdeep:spiced_cider": [
+      "FRUIT",
+      "SWEET"
+    ]
+  },
+  "foods": {
+    "underdeep:glimmerfin": {
+      "nutrition": 2,
+      "saturation": 0.1,
+      "groups": "FISH",
+      "kind": "plain",
+      "buffs": [],
+      "role": "A shimmering fish of the luminous waters. Cook it.",
+      "stack": null
+    },
+    "underdeep:reef_darter": {
+      "nutrition": 2,
+      "saturation": 0.1,
+      "groups": "FISH",
+      "kind": "plain",
+      "buffs": [],
+      "role": "A quick fish of the drowned gardens. Cook it.",
+      "stack": null
+    },
+    "underdeep:mire_eel": {
+      "nutrition": 2,
+      "saturation": 0.1,
+      "groups": "FISH",
+      "kind": "plain",
+      "buffs": [],
+      "role": "A slippery wetland eel. Cook it.",
+      "stack": null
+    },
+    "underdeep:roasted_sunbeans": {
+      "nutrition": 4,
+      "saturation": 0.5,
+      "groups": "VEGETABLE",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Simple roast",
+      "stack": null
+    },
+    "underdeep:charred_emberpepper": {
+      "nutrition": 3,
+      "saturation": 0.4,
+      "groups": "VEGETABLE",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          60,
+          0
+        ]
+      ],
+      "role": "Warming snack",
+      "stack": null
+    },
+    "underdeep:roasted_puffcap": {
+      "nutrition": 4,
+      "saturation": 0.5,
+      "groups": "FUNGI",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Simple roast",
+      "stack": null
+    },
+    "underdeep:toasted_rimecap": {
+      "nutrition": 4,
+      "saturation": 0.5,
+      "groups": "FUNGI",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:cooled",
+          60,
+          0
+        ]
+      ],
+      "role": "Cooling snack",
+      "stack": null
+    },
+    "underdeep:boiled_egg": {
+      "nutrition": 4,
+      "saturation": 0.6,
+      "groups": "MEAT",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Simple, portable",
+      "stack": null
+    },
+    "underdeep:puffcap_soup": {
+      "nutrition": 7,
+      "saturation": 0.7,
+      "groups": "FUNGI,VEGETABLE",
+      "kind": "bowl",
+      "buffs": [],
+      "role": "Everyday meal",
+      "stack": null
+    },
+    "underdeep:root_stew": {
+      "nutrition": 8,
+      "saturation": 0.75,
+      "groups": "VEGETABLE",
+      "kind": "bowl",
+      "buffs": [],
+      "role": "Everyday meal",
+      "stack": null
+    },
+    "underdeep:game_stew": {
+      "nutrition": 10,
+      "saturation": 0.9,
+      "groups": "MEAT,VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:regeneration",
+          8,
+          0
+        ]
+      ],
+      "role": "Recovery meal",
+      "stack": null
+    },
+    "underdeep:fish_chowder": {
+      "nutrition": 9,
+      "saturation": 0.85,
+      "groups": "FISH,VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:regeneration",
+          6,
+          0
+        ]
+      ],
+      "role": "Recovery meal",
+      "stack": null
+    },
+    "underdeep:shellfish_broth": {
+      "nutrition": 7,
+      "saturation": 0.7,
+      "groups": "FISH",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:water_breathing",
+          60,
+          0
+        ]
+      ],
+      "role": "Aquatic meal: short water breathing",
+      "stack": null
+    },
+    "underdeep:ember_chili": {
+      "nutrition": 10,
+      "saturation": 0.8,
+      "groups": "MEAT,VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          360,
+          0
+        ]
+      ],
+      "role": "Cold-region meal: keeps you warm",
+      "stack": null
+    },
+    "underdeep:frost_turnip_soup": {
+      "nutrition": 8,
+      "saturation": 0.75,
+      "groups": "VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          240,
+          0
+        ]
+      ],
+      "role": "Cold-region meal: keeps you warm",
+      "stack": null
+    },
+    "underdeep:rice_porridge": {
+      "nutrition": 7,
+      "saturation": 0.8,
+      "groups": "GRAIN",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "underdeep:rested",
+          180,
+          0
+        ]
+      ],
+      "role": "Comfort meal",
+      "stack": null
+    },
+    "underdeep:truffle_risotto": {
+      "nutrition": 11,
+      "saturation": 1.0,
+      "groups": "GRAIN,FUNGI",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "underdeep:rested",
+          300,
+          0
+        ]
+      ],
+      "role": "Comfort meal (luxury)",
+      "stack": null
+    },
+    "underdeep:berry_compote": {
+      "nutrition": 6,
+      "saturation": 0.6,
+      "groups": "FRUIT,SWEET",
+      "kind": "bowl",
+      "buffs": [],
+      "role": "Sweet dish",
+      "stack": null
+    },
+    "underdeep:herb_broth": {
+      "nutrition": 6,
+      "saturation": 0.7,
+      "groups": "VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:regeneration",
+          10,
+          0
+        ]
+      ],
+      "role": "Recovery meal",
+      "stack": null
+    },
+    "underdeep:chestnut_mash": {
+      "nutrition": 8,
+      "saturation": 0.75,
+      "groups": "VEGETABLE",
+      "kind": "bowl",
+      "buffs": [],
+      "role": "Hearty everyday meal",
+      "stack": null
+    },
+    "underdeep:fungal_hotpot": {
+      "nutrition": 12,
+      "saturation": 0.95,
+      "groups": "FUNGI,MEAT",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "underdeep:spore_ward",
+          300,
+          0
+        ]
+      ],
+      "role": "Sporefolk dish: wards off spores",
+      "stack": null
+    },
+    "underdeep:tide_soup": {
+      "nutrition": 10,
+      "saturation": 0.85,
+      "groups": "FISH,FRUIT",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:dolphins_grace",
+          60,
+          0
+        ],
+        [
+          "minecraft:water_breathing",
+          90,
+          0
+        ]
+      ],
+      "role": "Tide-dweller dish: swimming and breathing",
+      "stack": null
+    },
+    "underdeep:forge_goulash": {
+      "nutrition": 13,
+      "saturation": 1.0,
+      "groups": "MEAT,VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:haste",
+          240,
+          0
+        ]
+      ],
+      "role": "Forgekin worker meal: haste",
+      "stack": null
+    },
+    "underdeep:amber_hearth_stew": {
+      "nutrition": 11,
+      "saturation": 0.9,
+      "groups": "VEGETABLE,GRAIN,SWEET",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "underdeep:rested",
+          240,
+          0
+        ]
+      ],
+      "role": "Amberfolk comfort stew",
+      "stack": null
+    },
+    "underdeep:marrow_broth": {
+      "nutrition": 9,
+      "saturation": 0.9,
+      "groups": "MEAT,VEGETABLE",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:resistance",
+          60,
+          0
+        ]
+      ],
+      "role": "Stoneborn hardy broth: brief resistance",
+      "stack": null
+    },
+    "underdeep:forest_stew": {
+      "nutrition": 11,
+      "saturation": 0.9,
+      "groups": "MEAT,VEGETABLE,FRUIT",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:regeneration",
+          8,
+          0
+        ]
+      ],
+      "role": "Rootfolk forest stew",
+      "stack": null
+    },
+    "underdeep:glimmer_broth": {
+      "nutrition": 7,
+      "saturation": 0.75,
+      "groups": "FUNGI,GRAIN",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:night_vision",
+          180,
+          0
+        ]
+      ],
+      "role": "Glimmerkin broth: night vision",
+      "stack": null
+    },
+    "underdeep:starlit_porridge": {
+      "nutrition": 9,
+      "saturation": 0.85,
+      "groups": "GRAIN",
+      "kind": "bowl",
+      "buffs": [
+        [
+          "minecraft:night_vision",
+          120,
+          0
+        ],
+        [
+          "underdeep:rested",
+          120,
+          0
+        ]
+      ],
+      "role": "Astral porridge",
+      "stack": null
+    },
+    "underdeep:flatbread": {
+      "nutrition": 5,
+      "saturation": 0.6,
+      "groups": "GRAIN",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Basic baked bread",
+      "stack": null
+    },
+    "underdeep:rice_cake": {
+      "nutrition": 5,
+      "saturation": 0.6,
+      "groups": "GRAIN,SWEET",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Snack",
+      "stack": null
+    },
+    "underdeep:berry_pie": {
+      "nutrition": 8,
+      "saturation": 0.8,
+      "groups": "FRUIT,GRAIN,SWEET",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Shareable pie",
+      "stack": null
+    },
+    "underdeep:honeyfruit_tart": {
+      "nutrition": 8,
+      "saturation": 0.8,
+      "groups": "FRUIT,GRAIN,SWEET",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:rested",
+          120,
+          0
+        ]
+      ],
+      "role": "Amberfolk tart: comfort",
+      "stack": null
+    },
+    "underdeep:meat_pie": {
+      "nutrition": 10,
+      "saturation": 1.0,
+      "groups": "MEAT,GRAIN,VEGETABLE",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Exploration meal: filling and portable",
+      "stack": 16
+    },
+    "underdeep:fish_pie": {
+      "nutrition": 9,
+      "saturation": 0.95,
+      "groups": "FISH,GRAIN",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Exploration meal",
+      "stack": 16
+    },
+    "underdeep:mushroom_pastry": {
+      "nutrition": 8,
+      "saturation": 0.85,
+      "groups": "FUNGI,GRAIN",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Portable meal",
+      "stack": null
+    },
+    "underdeep:roast_platter": {
+      "nutrition": 14,
+      "saturation": 1.1,
+      "groups": "MEAT,VEGETABLE",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:rested",
+          240,
+          0
+        ]
+      ],
+      "role": "Feast dish: comfort",
+      "stack": 8
+    },
+    "underdeep:baked_shellfish": {
+      "nutrition": 9,
+      "saturation": 0.85,
+      "groups": "FISH",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Coastal dish",
+      "stack": null
+    },
+    "underdeep:chestnut_bread": {
+      "nutrition": 7,
+      "saturation": 0.75,
+      "groups": "GRAIN,VEGETABLE",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Hearty bread",
+      "stack": null
+    },
+    "underdeep:sunbean_loaf": {
+      "nutrition": 7,
+      "saturation": 0.75,
+      "groups": "GRAIN,VEGETABLE",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Hearty bread",
+      "stack": null
+    },
+    "underdeep:ember_flatbread": {
+      "nutrition": 6,
+      "saturation": 0.65,
+      "groups": "GRAIN,VEGETABLE",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          120,
+          0
+        ]
+      ],
+      "role": "Warming bread",
+      "stack": null
+    },
+    "underdeep:sweet_roll": {
+      "nutrition": 6,
+      "saturation": 0.7,
+      "groups": "GRAIN,SWEET",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:rested",
+          60,
+          0
+        ]
+      ],
+      "role": "Comfort snack",
+      "stack": null
+    },
+    "underdeep:duskberry_cookie": {
+      "nutrition": 3,
+      "saturation": 0.3,
+      "groups": "GRAIN,FRUIT,SWEET",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Snack",
+      "stack": null
+    },
+    "underdeep:hardtack": {
+      "nutrition": 5,
+      "saturation": 0.9,
+      "groups": "GRAIN",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Preserved travel bread: very filling for its size",
+      "stack": null
+    },
+    "underdeep:fruit_salad": {
+      "nutrition": 7,
+      "saturation": 0.6,
+      "groups": "FRUIT",
+      "kind": "bowl",
+      "buffs": [],
+      "role": "Fresh dish",
+      "stack": null
+    },
+    "underdeep:marsh_salad": {
+      "nutrition": 6,
+      "saturation": 0.6,
+      "groups": "VEGETABLE,FRUIT",
+      "kind": "bowl",
+      "buffs": [],
+      "role": "Fresh dish",
+      "stack": null
+    },
+    "underdeep:trail_mix": {
+      "nutrition": 4,
+      "saturation": 0.5,
+      "groups": "VEGETABLE,FRUIT",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Exploration snack",
+      "stack": null
+    },
+    "underdeep:hunters_sandwich": {
+      "nutrition": 11,
+      "saturation": 1.0,
+      "groups": "GRAIN,MEAT,VEGETABLE",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Exploration meal",
+      "stack": 16
+    },
+    "underdeep:fish_wrap": {
+      "nutrition": 10,
+      "saturation": 0.95,
+      "groups": "GRAIN,FISH,FRUIT",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Exploration meal",
+      "stack": 16
+    },
+    "underdeep:tide_roll": {
+      "nutrition": 8,
+      "saturation": 0.8,
+      "groups": "GRAIN,FISH,FRUIT",
+      "kind": "plain",
+      "buffs": [
+        [
+          "minecraft:water_breathing",
+          45,
+          0
+        ]
+      ],
+      "role": "Tide-dweller roll",
+      "stack": null
+    },
+    "underdeep:travel_ration": {
+      "nutrition": 9,
+      "saturation": 1.2,
+      "groups": "GRAIN,MEAT,FRUIT",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Expedition ration: compact and very filling",
+      "stack": 16
+    },
+    "underdeep:ember_ration": {
+      "nutrition": 9,
+      "saturation": 1.2,
+      "groups": "GRAIN,MEAT,VEGETABLE",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          600,
+          0
+        ]
+      ],
+      "role": "Expedition ration for cold regions",
+      "stack": 16
+    },
+    "underdeep:frost_ration": {
+      "nutrition": 9,
+      "saturation": 1.2,
+      "groups": "GRAIN,MEAT,FUNGI",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:cooled",
+          600,
+          0
+        ]
+      ],
+      "role": "Expedition ration for hot regions",
+      "stack": 16
+    },
+    "underdeep:jerky": {
+      "nutrition": 6,
+      "saturation": 0.8,
+      "groups": "MEAT",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Preserved meat",
+      "stack": null
+    },
+    "underdeep:dried_fish": {
+      "nutrition": 5,
+      "saturation": 0.8,
+      "groups": "FISH",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Preserved fish",
+      "stack": null
+    },
+    "underdeep:dried_fruit": {
+      "nutrition": 4,
+      "saturation": 0.5,
+      "groups": "FRUIT,SWEET",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Preserved fruit",
+      "stack": null
+    },
+    "underdeep:dried_mushrooms": {
+      "nutrition": 4,
+      "saturation": 0.5,
+      "groups": "FUNGI",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Preserved fungi",
+      "stack": null
+    },
+    "underdeep:pickled_turnips": {
+      "nutrition": 6,
+      "saturation": 0.7,
+      "groups": "VEGETABLE",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Pickled: keeps on long journeys",
+      "stack": null
+    },
+    "underdeep:pickled_peppers": {
+      "nutrition": 5,
+      "saturation": 0.6,
+      "groups": "VEGETABLE",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          180,
+          0
+        ]
+      ],
+      "role": "Pickled and warming",
+      "stack": null
+    },
+    "underdeep:spore_paste": {
+      "nutrition": 4,
+      "saturation": 0.6,
+      "groups": "FUNGI",
+      "kind": "plain",
+      "buffs": [
+        [
+          "underdeep:spore_ward",
+          180,
+          0
+        ]
+      ],
+      "role": "Sporefolk ferment: spore ward",
+      "stack": null
+    },
+    "underdeep:capback_cheese": {
+      "nutrition": 6,
+      "saturation": 0.9,
+      "groups": "MEAT",
+      "kind": "plain",
+      "buffs": [],
+      "role": "Aged cheese: filling",
+      "stack": null
+    },
+    "underdeep:mendleaf_tea": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:regeneration",
+          12,
+          0
+        ]
+      ],
+      "role": "Herbal tea: mild recovery",
+      "stack": null
+    },
+    "underdeep:sunleaf_tea": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:absorption",
+          60,
+          0
+        ]
+      ],
+      "role": "Herbal tea: a little protection",
+      "stack": null
+    },
+    "underdeep:moonpetal_tea": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:night_vision",
+          120,
+          0
+        ]
+      ],
+      "role": "Herbal tea: night vision",
+      "stack": null
+    },
+    "underdeep:emberwort_tea": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          300,
+          0
+        ]
+      ],
+      "role": "Warm drink: cold protection",
+      "stack": null
+    },
+    "underdeep:rimecap_cooler": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:cooled",
+          300,
+          0
+        ]
+      ],
+      "role": "Cool drink: heat protection",
+      "stack": null
+    },
+    "underdeep:marsh_tea": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:spore_ward",
+          240,
+          0
+        ]
+      ],
+      "role": "Herbal tea: spore ward",
+      "stack": null
+    },
+    "underdeep:sea_grape_juice": {
+      "nutrition": 3,
+      "saturation": 0.3,
+      "groups": "FRUIT",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:water_breathing",
+          30,
+          0
+        ]
+      ],
+      "role": "Juice",
+      "stack": null
+    },
+    "underdeep:honeyfruit_juice": {
+      "nutrition": 3,
+      "saturation": 0.4,
+      "groups": "FRUIT,SWEET",
+      "kind": "bottle",
+      "buffs": [],
+      "role": "Juice: sweet and filling",
+      "stack": null
+    },
+    "underdeep:berry_juice": {
+      "nutrition": 3,
+      "saturation": 0.3,
+      "groups": "FRUIT",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:speed",
+          30,
+          0
+        ]
+      ],
+      "role": "Juice: a quick spring in your step",
+      "stack": null
+    },
+    "underdeep:warm_milk": {
+      "nutrition": 3,
+      "saturation": 0.5,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:rested",
+          240,
+          0
+        ]
+      ],
+      "role": "Comfort drink",
+      "stack": null
+    },
+    "underdeep:bone_broth": {
+      "nutrition": 4,
+      "saturation": 0.6,
+      "groups": "MEAT",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:regeneration",
+          15,
+          0
+        ]
+      ],
+      "role": "Restorative broth",
+      "stack": null
+    },
+    "underdeep:inkcap_infusion": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "FUNGI",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:haste",
+          180,
+          0
+        ]
+      ],
+      "role": "Worker's infusion: haste",
+      "stack": null
+    },
+    "underdeep:glowgrain_kvass": {
+      "nutrition": 3,
+      "saturation": 0.4,
+      "groups": "GRAIN",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:rested",
+          120,
+          0
+        ]
+      ],
+      "role": "Fermented grain drink",
+      "stack": null
+    },
+    "underdeep:honeyfruit_fizz": {
+      "nutrition": 3,
+      "saturation": 0.4,
+      "groups": "FRUIT,SWEET",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:speed",
+          45,
+          0
+        ]
+      ],
+      "role": "Fermented fizz",
+      "stack": null
+    },
+    "underdeep:berry_shrub": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "FRUIT",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:cooled",
+          120,
+          0
+        ]
+      ],
+      "role": "Tart drink: cooling",
+      "stack": null
+    },
+    "underdeep:spore_kombucha": {
+      "nutrition": 2,
+      "saturation": 0.3,
+      "groups": "FUNGI",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:spore_ward",
+          300,
+          0
+        ]
+      ],
+      "role": "Fermented: spore ward",
+      "stack": null
+    },
+    "underdeep:cryolite_chill": {
+      "nutrition": 1,
+      "saturation": 0.1,
+      "groups": "",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:cooled",
+          480,
+          0
+        ]
+      ],
+      "role": "Mineral infusion: strong cooling",
+      "stack": null
+    },
+    "underdeep:starlily_nectar": {
+      "nutrition": 3,
+      "saturation": 0.4,
+      "groups": "SWEET",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "minecraft:night_vision",
+          240,
+          0
+        ]
+      ],
+      "role": "Luminous nectar",
+      "stack": null
+    },
+    "underdeep:spiced_cider": {
+      "nutrition": 3,
+      "saturation": 0.4,
+      "groups": "FRUIT,SWEET",
+      "kind": "bottle",
+      "buffs": [
+        [
+          "underdeep:warmed",
+          240,
+          0
+        ],
+        [
+          "underdeep:rested",
+          60,
+          0
+        ]
+      ],
+      "role": "Warm spiced drink",
+      "stack": null
+    }
+  },
+  "medicines": {
+    "underdeep:bandage": {
+      "effects": [
+        [
+          "minecraft:regeneration",
+          4,
+          1
+        ]
+      ],
+      "cures": [
+        "underdeep:wounded"
+      ],
+      "heal": 2,
+      "cooldown": 3,
+      "use": "apply",
+      "role": "Binds a wound: stops it slowing your recovery"
+    },
+    "underdeep:cooling_salve": {
+      "effects": [
+        [
+          "underdeep:cooled",
+          480,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:heat_stress"
+      ],
+      "heal": 0,
+      "cooldown": 5,
+      "use": "apply",
+      "role": "Protects from heat for 8 minutes"
+    },
+    "underdeep:warming_salve": {
+      "effects": [
+        [
+          "underdeep:warmed",
+          480,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:cold_stress"
+      ],
+      "heal": 0,
+      "cooldown": 5,
+      "use": "apply",
+      "role": "Protects from cold for 8 minutes"
+    },
+    "underdeep:spore_ward_tincture": {
+      "effects": [
+        [
+          "underdeep:spore_ward",
+          600,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:spore_irritation"
+      ],
+      "heal": 0,
+      "cooldown": 5,
+      "use": "drink",
+      "role": "Spore ward for 10 minutes"
+    },
+    "underdeep:breathing_draught": {
+      "effects": [
+        [
+          "minecraft:water_breathing",
+          180,
+          0
+        ]
+      ],
+      "cures": [],
+      "heal": 0,
+      "cooldown": 20,
+      "use": "drink",
+      "role": "Three minutes of water breathing"
+    },
+    "underdeep:grounding_paste": {
+      "effects": [
+        [
+          "underdeep:grounded",
+          600,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:static_shock"
+      ],
+      "heal": 0,
+      "cooldown": 5,
+      "use": "apply",
+      "role": "Protects from static charge for 10 minutes"
+    },
+    "underdeep:clear_air_tincture": {
+      "effects": [
+        [
+          "underdeep:clear_lungs",
+          600,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:choking_fumes"
+      ],
+      "heal": 0,
+      "cooldown": 5,
+      "use": "drink",
+      "role": "Protects from fumes for 10 minutes"
+    },
+    "underdeep:restorative_tonic": {
+      "effects": [
+        [
+          "minecraft:regeneration",
+          20,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:weary"
+      ],
+      "heal": 0,
+      "cooldown": 30,
+      "use": "drink",
+      "role": "Recovery and an end to weariness"
+    },
+    "underdeep:fortifying_elixir": {
+      "effects": [
+        [
+          "minecraft:resistance",
+          90,
+          0
+        ]
+      ],
+      "cures": [],
+      "heal": 0,
+      "cooldown": 120,
+      "use": "drink",
+      "role": "Brief resistance before a dangerous fight (long cooldown)"
+    },
+    "underdeep:vigor_draught": {
+      "effects": [
+        [
+          "minecraft:speed",
+          60,
+          0
+        ],
+        [
+          "minecraft:haste",
+          60,
+          0
+        ]
+      ],
+      "cures": [
+        "minecraft:slowness"
+      ],
+      "heal": 0,
+      "cooldown": 90,
+      "use": "drink",
+      "role": "A minute of speed and haste (long cooldown)"
+    },
+    "underdeep:venom_antiserum": {
+      "effects": [],
+      "cures": [
+        "minecraft:poison",
+        "minecraft:wither"
+      ],
+      "heal": 0,
+      "cooldown": 10,
+      "use": "drink",
+      "role": "Cures poison and withering"
+    },
+    "underdeep:calming_balm": {
+      "effects": [],
+      "cures": [
+        "minecraft:nausea",
+        "minecraft:darkness",
+        "minecraft:blindness",
+        "underdeep:spore_irritation"
+      ],
+      "heal": 0,
+      "cooldown": 10,
+      "use": "apply",
+      "role": "Soothes dizziness and clears the eyes"
+    },
+    "underdeep:burn_salve": {
+      "effects": [
+        [
+          "minecraft:regeneration",
+          6,
+          0
+        ]
+      ],
+      "cures": [
+        "underdeep:heat_stress",
+        "minecraft:fire"
+      ],
+      "heal": 2,
+      "cooldown": 10,
+      "use": "apply",
+      "role": "Treats burns"
+    },
+    "underdeep:smelling_salts": {
+      "effects": [],
+      "cures": [
+        "underdeep:weary",
+        "minecraft:blindness",
+        "minecraft:darkness",
+        "minecraft:mining_fatigue"
+      ],
+      "heal": 0,
+      "cooldown": 20,
+      "use": "apply",
+      "role": "Sharpens a weary mind"
+    },
+    "underdeep:purging_draught": {
+      "effects": [],
+      "cures": [
+        "minecraft:poison",
+        "minecraft:nausea",
+        "minecraft:weakness",
+        "minecraft:slowness",
+        "minecraft:mining_fatigue",
+        "minecraft:blindness",
+        "minecraft:darkness",
+        "minecraft:hunger",
+        "underdeep:heat_stress",
+        "underdeep:cold_stress",
+        "underdeep:spore_irritation",
+        "underdeep:choking_fumes",
+        "underdeep:static_shock",
+        "underdeep:wounded",
+        "underdeep:weary"
+      ],
+      "heal": 0,
+      "cooldown": 300,
+      "use": "drink",
+      "role": "Purges every ailment, but leaves you queasy (very long cooldown)"
+    },
+    "underdeep:bloodcap_tonic": {
+      "effects": [
+        [
+          "minecraft:health_boost",
+          180,
+          0
+        ]
+      ],
+      "cures": [],
+      "heal": 0,
+      "cooldown": 180,
+      "use": "drink",
+      "role": "Three minutes of extra health (long cooldown)"
+    },
+    "underdeep:glow_salve": {
+      "effects": [
+        [
+          "minecraft:night_vision",
+          300,
+          0
+        ]
+      ],
+      "cures": [],
+      "heal": 0,
+      "cooldown": 5,
+      "use": "apply",
+      "role": "Five minutes of night vision"
+    },
+    "underdeep:field_medkit": {
+      "effects": [
+        [
+          "minecraft:regeneration",
+          8,
+          1
+        ]
+      ],
+      "cures": [
+        "underdeep:wounded",
+        "minecraft:poison"
+      ],
+      "heal": 4,
+      "cooldown": 15,
+      "use": "apply",
+      "role": "Complete field treatment: wounds and poison"
+    }
+  },
+  "materials": [
+    "underdeep:flour",
+    "underdeep:dough",
+    "underdeep:salt",
+    "underdeep:butter",
+    "underdeep:vinegar",
+    "underdeep:spice_blend",
+    "underdeep:compost",
+    "underdeep:grain_feed",
+    "underdeep:fungal_feed",
+    "underdeep:fruit_mash",
+    "underdeep:meat_scraps",
+    "underdeep:mineral_lick",
+    "underdeep:fishing_bait"
+  ],
+  "effects": {
+    "warmed": {
+      "beneficial": true,
+      "color": 15761970
+    },
+    "cooled": {
+      "beneficial": true,
+      "color": 7260400
+    },
+    "spore_ward": {
+      "beneficial": true,
+      "color": 11195000
+    },
+    "clear_lungs": {
+      "beneficial": true,
+      "color": 13166310
+    },
+    "grounded": {
+      "beneficial": true,
+      "color": 13153370
+    },
+    "well_fed": {
+      "beneficial": true,
+      "color": 15122010
+    },
+    "rested": {
+      "beneficial": true,
+      "color": 9869030
+    },
+    "heat_stress": {
+      "beneficial": false,
+      "color": 15093800
+    },
+    "cold_stress": {
+      "beneficial": false,
+      "color": 7905510
+    },
+    "spore_irritation": {
+      "beneficial": false,
+      "color": 9873980
+    },
+    "choking_fumes": {
+      "beneficial": false,
+      "color": 12500560
+    },
+    "static_shock": {
+      "beneficial": false,
+      "color": 7900415
+    },
+    "wounded": {
+      "beneficial": false,
+      "color": 11806760
+    },
+    "weary": {
+      "beneficial": false,
+      "color": 7892580
+    }
+  },
+  "recipes": [
+    {
+      "id": "salt",
+      "station": "pot",
+      "ingredients": [
+        [
+          "minecraft:water_bucket",
+          1
+        ]
+      ],
+      "result": "underdeep:salt",
+      "count": 4,
+      "seconds": 20,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "puffcap_soup",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:puffcap",
+          2
+        ],
+        [
+          "#vegetable",
+          1
+        ]
+      ],
+      "result": "underdeep:puffcap_soup",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "root_stew",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:duskroot",
+          2
+        ],
+        [
+          "underdeep:frost_turnip",
+          1
+        ]
+      ],
+      "result": "underdeep:root_stew",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "root_stew_carrots",
+      "station": "pot",
+      "ingredients": [
+        [
+          "minecraft:carrot",
+          2
+        ],
+        [
+          "minecraft:potato",
+          1
+        ]
+      ],
+      "result": "underdeep:root_stew",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "game_stew",
+      "station": "pot",
+      "ingredients": [
+        [
+          "#meat",
+          1
+        ],
+        [
+          "#vegetable",
+          2
+        ]
+      ],
+      "result": "underdeep:game_stew",
+      "count": 1,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "fish_chowder",
+      "station": "pot",
+      "ingredients": [
+        [
+          "#fish",
+          2
+        ],
+        [
+          "minecraft:milk_bucket",
+          1
+        ],
+        [
+          "#vegetable",
+          1
+        ]
+      ],
+      "result": "underdeep:fish_chowder",
+      "count": 2,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "shellfish_broth",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:shellmeat",
+          2
+        ],
+        [
+          "underdeep:siltwort_frond",
+          1
+        ]
+      ],
+      "result": "underdeep:shellfish_broth",
+      "count": 1,
+      "seconds": 12,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "ember_chili",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:emberpepper",
+          2
+        ],
+        [
+          "#meat",
+          1
+        ],
+        [
+          "underdeep:sunbean",
+          1
+        ]
+      ],
+      "result": "underdeep:ember_chili",
+      "count": 1,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "frost_turnip_soup",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:frost_turnip",
+          2
+        ],
+        [
+          "underdeep:butter",
+          1
+        ]
+      ],
+      "result": "underdeep:frost_turnip_soup",
+      "count": 2,
+      "seconds": 12,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "rice_porridge",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:mire_rice",
+          2
+        ],
+        [
+          "minecraft:milk_bucket",
+          1
+        ]
+      ],
+      "result": "underdeep:rice_porridge",
+      "count": 2,
+      "seconds": 12,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "truffle_risotto",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:mire_rice",
+          2
+        ],
+        [
+          "underdeep:cave_truffle",
+          1
+        ],
+        [
+          "underdeep:butter",
+          1
+        ]
+      ],
+      "result": "underdeep:truffle_risotto",
+      "count": 1,
+      "seconds": 20,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "berry_compote",
+      "station": "pot",
+      "ingredients": [
+        [
+          "#fruit",
+          3
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:berry_compote",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "herb_broth",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:mendleaf_sprig",
+          1
+        ],
+        [
+          "#vegetable",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:herb_broth",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "chestnut_mash",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:lake_chestnut",
+          3
+        ],
+        [
+          "underdeep:butter",
+          1
+        ]
+      ],
+      "result": "underdeep:chestnut_mash",
+      "count": 1,
+      "seconds": 12,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "sunbean_stew_pot",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:sunbean",
+          3
+        ],
+        [
+          "underdeep:duskroot",
+          1
+        ]
+      ],
+      "result": "underdeep:sunbean_stew",
+      "count": 1,
+      "seconds": 12,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "cavern_stew_pot",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:puffcap",
+          1
+        ],
+        [
+          "underdeep:inkcap",
+          1
+        ],
+        [
+          "underdeep:cave_truffle",
+          1
+        ],
+        [
+          "underdeep:duskroot",
+          1
+        ]
+      ],
+      "result": "underdeep:cavern_stew",
+      "count": 1,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "rice_bowl_pot",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:mire_rice",
+          3
+        ]
+      ],
+      "result": "underdeep:rice_bowl",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "fungal_hotpot",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:inkcap",
+          1
+        ],
+        [
+          "underdeep:puffcap",
+          1
+        ],
+        [
+          "underdeep:rimecap",
+          1
+        ],
+        [
+          "#meat",
+          1
+        ]
+      ],
+      "result": "underdeep:fungal_hotpot",
+      "count": 1,
+      "seconds": 20,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "sporefolk"
+    },
+    {
+      "id": "tide_soup",
+      "station": "pot",
+      "ingredients": [
+        [
+          "#fish",
+          1
+        ],
+        [
+          "underdeep:sea_grapes",
+          1
+        ],
+        [
+          "underdeep:siltwort_frond",
+          1
+        ]
+      ],
+      "result": "underdeep:tide_soup",
+      "count": 1,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "tide_dwellers"
+    },
+    {
+      "id": "forge_goulash",
+      "station": "pot",
+      "ingredients": [
+        [
+          "#meat",
+          2
+        ],
+        [
+          "underdeep:emberpepper",
+          1
+        ],
+        [
+          "underdeep:frost_turnip",
+          1
+        ]
+      ],
+      "result": "underdeep:forge_goulash",
+      "count": 1,
+      "seconds": 20,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "forgekin"
+    },
+    {
+      "id": "amber_hearth_stew",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:sunbean",
+          1
+        ],
+        [
+          "underdeep:honeyfruit",
+          1
+        ],
+        [
+          "underdeep:glowgrain",
+          1
+        ]
+      ],
+      "result": "underdeep:amber_hearth_stew",
+      "count": 1,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "amberfolk"
+    },
+    {
+      "id": "marrow_broth",
+      "station": "pot",
+      "ingredients": [
+        [
+          "minecraft:bone",
+          2
+        ],
+        [
+          "underdeep:frost_turnip",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:marrow_broth",
+      "count": 1,
+      "seconds": 20,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "stoneborn"
+    },
+    {
+      "id": "forest_stew",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:duskroot",
+          1
+        ],
+        [
+          "underdeep:duskberries",
+          1
+        ],
+        [
+          "underdeep:mendleaf_sprig",
+          1
+        ],
+        [
+          "#meat",
+          1
+        ]
+      ],
+      "result": "underdeep:forest_stew",
+      "count": 1,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "rootfolk"
+    },
+    {
+      "id": "glimmer_broth",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:rimecap",
+          1
+        ],
+        [
+          "underdeep:glowgrain",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:glimmer_broth",
+      "count": 1,
+      "seconds": 12,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "glimmerkin"
+    },
+    {
+      "id": "starlit_porridge",
+      "station": "pot",
+      "ingredients": [
+        [
+          "underdeep:glowgrain",
+          2
+        ],
+        [
+          "underdeep:moonpetal_petal",
+          1
+        ],
+        [
+          "minecraft:milk_bucket",
+          1
+        ]
+      ],
+      "result": "underdeep:starlit_porridge",
+      "count": 2,
+      "seconds": 15,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": "astrals"
+    },
+    {
+      "id": "boiled_eggs",
+      "station": "pot",
+      "ingredients": [
+        [
+          "#egg",
+          2
+        ],
+        [
+          "minecraft:water_bucket",
+          1
+        ]
+      ],
+      "result": "underdeep:boiled_egg",
+      "count": 2,
+      "seconds": 8,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "warm_milk",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "minecraft:milk_bucket",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:warm_milk",
+      "count": 3,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "flatbread",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ]
+      ],
+      "result": "underdeep:flatbread",
+      "count": 2,
+      "seconds": 10,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "glowgrain_bread_oven",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "underdeep:glowgrain",
+          1
+        ]
+      ],
+      "result": "underdeep:glowgrain_bread",
+      "count": 2,
+      "seconds": 12,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "bread_oven",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          2
+        ]
+      ],
+      "result": "minecraft:bread",
+      "count": 3,
+      "seconds": 12,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "rice_cake",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:mire_rice",
+          2
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:rice_cake",
+      "count": 3,
+      "seconds": 10,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "berry_pie",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "#fruit",
+          2
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:berry_pie",
+      "count": 2,
+      "seconds": 15,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "honeyfruit_tart",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "underdeep:honeyfruit",
+          2
+        ]
+      ],
+      "result": "underdeep:honeyfruit_tart",
+      "count": 2,
+      "seconds": 15,
+      "container": "",
+      "basic": false,
+      "civ": "amberfolk"
+    },
+    {
+      "id": "meat_pie",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "#meat",
+          1
+        ],
+        [
+          "#vegetable",
+          1
+        ]
+      ],
+      "result": "underdeep:meat_pie",
+      "count": 2,
+      "seconds": 15,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "fish_pie",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "#fish",
+          1
+        ],
+        [
+          "#vegetable",
+          1
+        ]
+      ],
+      "result": "underdeep:fish_pie",
+      "count": 2,
+      "seconds": 15,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "mushroom_pastry",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "underdeep:puffcap",
+          1
+        ],
+        [
+          "underdeep:inkcap",
+          1
+        ]
+      ],
+      "result": "underdeep:mushroom_pastry",
+      "count": 2,
+      "seconds": 12,
+      "container": "",
+      "basic": false,
+      "civ": "sporefolk"
+    },
+    {
+      "id": "roast_platter",
+      "station": "oven",
+      "ingredients": [
+        [
+          "#meat",
+          2
+        ],
+        [
+          "underdeep:duskroot",
+          1
+        ],
+        [
+          "underdeep:emberpepper",
+          1
+        ]
+      ],
+      "result": "underdeep:roast_platter",
+      "count": 1,
+      "seconds": 20,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "baked_shellfish",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:shellmeat",
+          2
+        ],
+        [
+          "underdeep:butter",
+          1
+        ]
+      ],
+      "result": "underdeep:baked_shellfish",
+      "count": 2,
+      "seconds": 12,
+      "container": "",
+      "basic": false,
+      "civ": "tide_dwellers"
+    },
+    {
+      "id": "chestnut_bread",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "underdeep:lake_chestnut",
+          2
+        ]
+      ],
+      "result": "underdeep:chestnut_bread",
+      "count": 2,
+      "seconds": 12,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "sunbean_loaf",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "underdeep:sunbean",
+          2
+        ]
+      ],
+      "result": "underdeep:sunbean_loaf",
+      "count": 2,
+      "seconds": 12,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "ember_flatbread",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "underdeep:emberpepper",
+          1
+        ]
+      ],
+      "result": "underdeep:ember_flatbread",
+      "count": 2,
+      "seconds": 10,
+      "container": "",
+      "basic": false,
+      "civ": "forgekin"
+    },
+    {
+      "id": "sweet_roll",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:dough",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ],
+        [
+          "underdeep:butter",
+          1
+        ]
+      ],
+      "result": "underdeep:sweet_roll",
+      "count": 3,
+      "seconds": 12,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "duskberry_cookie",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:flour",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ],
+        [
+          "underdeep:duskberries",
+          1
+        ]
+      ],
+      "result": "underdeep:duskberry_cookie",
+      "count": 6,
+      "seconds": 8,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "hardtack",
+      "station": "oven",
+      "ingredients": [
+        [
+          "underdeep:flour",
+          2
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:hardtack",
+      "count": 4,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "baked_potato_oven",
+      "station": "oven",
+      "ingredients": [
+        [
+          "minecraft:potato",
+          2
+        ]
+      ],
+      "result": "minecraft:baked_potato",
+      "count": 2,
+      "seconds": 8,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "flour",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:glowgrain",
+          2
+        ]
+      ],
+      "result": "underdeep:flour",
+      "count": 1,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "flour_wheat",
+      "station": "prep",
+      "ingredients": [
+        [
+          "minecraft:wheat",
+          2
+        ]
+      ],
+      "result": "underdeep:flour",
+      "count": 1,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "flour_rice",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:mire_rice",
+          2
+        ]
+      ],
+      "result": "underdeep:flour",
+      "count": 1,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "dough",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:flour",
+          2
+        ],
+        [
+          "minecraft:water_bucket",
+          1
+        ]
+      ],
+      "result": "underdeep:dough",
+      "count": 3,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "sugar_from_honeyfruit",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:honeyfruit",
+          1
+        ]
+      ],
+      "result": "minecraft:sugar",
+      "count": 2,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "butter",
+      "station": "prep",
+      "ingredients": [
+        [
+          "minecraft:milk_bucket",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:butter",
+      "count": 3,
+      "seconds": 5,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "spice_blend",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:emberpepper",
+          1
+        ],
+        [
+          "#herb",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:spice_blend",
+      "count": 2,
+      "seconds": 4,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "fruit_salad",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#fruit",
+          3
+        ]
+      ],
+      "result": "underdeep:fruit_salad",
+      "count": 1,
+      "seconds": 3,
+      "container": "minecraft:bowl",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "marsh_salad",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:siltwort_frond",
+          1
+        ],
+        [
+          "underdeep:sea_grapes",
+          1
+        ],
+        [
+          "underdeep:duskroot",
+          1
+        ]
+      ],
+      "result": "underdeep:marsh_salad",
+      "count": 1,
+      "seconds": 3,
+      "container": "minecraft:bowl",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "trail_mix",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:lake_chestnut",
+          1
+        ],
+        [
+          "underdeep:duskberries",
+          1
+        ],
+        [
+          "underdeep:cliffberries",
+          1
+        ]
+      ],
+      "result": "underdeep:trail_mix",
+      "count": 3,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "hunters_sandwich",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#bread",
+          1
+        ],
+        [
+          "#cooked_meat",
+          1
+        ],
+        [
+          "#vegetable",
+          1
+        ]
+      ],
+      "result": "underdeep:hunters_sandwich",
+      "count": 2,
+      "seconds": 4,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "fish_wrap",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:flatbread",
+          1
+        ],
+        [
+          "#cooked_fish",
+          1
+        ],
+        [
+          "underdeep:sea_grapes",
+          1
+        ]
+      ],
+      "result": "underdeep:fish_wrap",
+      "count": 2,
+      "seconds": 4,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "tide_roll",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:mire_rice",
+          2
+        ],
+        [
+          "#fish",
+          1
+        ],
+        [
+          "underdeep:sea_grapes",
+          1
+        ]
+      ],
+      "result": "underdeep:tide_roll",
+      "count": 3,
+      "seconds": 4,
+      "container": "",
+      "basic": false,
+      "civ": "tide_dwellers"
+    },
+    {
+      "id": "travel_ration",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:hardtack",
+          1
+        ],
+        [
+          "underdeep:jerky",
+          1
+        ],
+        [
+          "underdeep:dried_fruit",
+          1
+        ]
+      ],
+      "result": "underdeep:travel_ration",
+      "count": 2,
+      "seconds": 5,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "ember_ration",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:travel_ration",
+          2
+        ],
+        [
+          "underdeep:spice_blend",
+          1
+        ]
+      ],
+      "result": "underdeep:ember_ration",
+      "count": 2,
+      "seconds": 5,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "frost_ration",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:travel_ration",
+          2
+        ],
+        [
+          "underdeep:rimecap",
+          1
+        ]
+      ],
+      "result": "underdeep:frost_ration",
+      "count": 2,
+      "seconds": 5,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "sea_grape_juice",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:sea_grapes",
+          3
+        ]
+      ],
+      "result": "underdeep:sea_grape_juice",
+      "count": 1,
+      "seconds": 4,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "honeyfruit_juice",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:honeyfruit",
+          2
+        ]
+      ],
+      "result": "underdeep:honeyfruit_juice",
+      "count": 1,
+      "seconds": 4,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "berry_juice",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#fruit",
+          3
+        ]
+      ],
+      "result": "underdeep:berry_juice",
+      "count": 1,
+      "seconds": 4,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "grain_feed",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#grain",
+          3
+        ]
+      ],
+      "result": "underdeep:grain_feed",
+      "count": 2,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "fungal_feed",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#mushroom",
+          3
+        ]
+      ],
+      "result": "underdeep:fungal_feed",
+      "count": 2,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "fruit_mash",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#fruit",
+          3
+        ]
+      ],
+      "result": "underdeep:fruit_mash",
+      "count": 2,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "meat_scraps",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#meat",
+          1
+        ],
+        [
+          "minecraft:bone",
+          1
+        ]
+      ],
+      "result": "underdeep:meat_scraps",
+      "count": 3,
+      "seconds": 3,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "mineral_lick",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:niter",
+          1
+        ],
+        [
+          "underdeep:calcicap",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:mineral_lick",
+      "count": 3,
+      "seconds": 3,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "fishing_bait",
+      "station": "prep",
+      "ingredients": [
+        [
+          "#meat",
+          1
+        ]
+      ],
+      "result": "underdeep:fishing_bait",
+      "count": 4,
+      "seconds": 2,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "fishing_bait_inkcap",
+      "station": "prep",
+      "ingredients": [
+        [
+          "underdeep:inkcap",
+          2
+        ],
+        [
+          "minecraft:bone_meal",
+          1
+        ]
+      ],
+      "result": "underdeep:fishing_bait",
+      "count": 4,
+      "seconds": 2,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "mendleaf_tea",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:mendleaf_sprig",
+          1
+        ]
+      ],
+      "result": "underdeep:mendleaf_tea",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "sunleaf_tea",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:sunleaf_blossom",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:sunleaf_tea",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "moonpetal_tea",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:moonpetal_petal",
+          1
+        ]
+      ],
+      "result": "underdeep:moonpetal_tea",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "emberwort_tea",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:emberwort_root",
+          1
+        ]
+      ],
+      "result": "underdeep:emberwort_tea",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "marsh_tea",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:bogwort_leaf",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:marsh_tea",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "bone_broth",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "minecraft:bone",
+          2
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:bone_broth",
+      "count": 3,
+      "seconds": 15,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "inkcap_infusion",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:inkcap",
+          2
+        ]
+      ],
+      "result": "underdeep:inkcap_infusion",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "spiced_cider",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "minecraft:apple",
+          2
+        ],
+        [
+          "underdeep:spice_blend",
+          1
+        ]
+      ],
+      "result": "underdeep:spiced_cider",
+      "count": 3,
+      "seconds": 10,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "spiced_cider_berries",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "#fruit",
+          3
+        ],
+        [
+          "underdeep:spice_blend",
+          1
+        ]
+      ],
+      "result": "underdeep:spiced_cider",
+      "count": 3,
+      "seconds": 10,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "rimecap_cooler",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:rimecap",
+          1
+        ],
+        [
+          "underdeep:snowberries",
+          1
+        ]
+      ],
+      "result": "underdeep:rimecap_cooler",
+      "count": 2,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "cryolite_chill",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:cryolite",
+          1
+        ]
+      ],
+      "result": "underdeep:cryolite_chill",
+      "count": 3,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "starlily_nectar",
+      "station": "kettle",
+      "ingredients": [
+        [
+          "underdeep:starlily",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:starlily_nectar",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": "astrals"
+    },
+    {
+      "id": "vinegar",
+      "station": "crock",
+      "ingredients": [
+        [
+          "#fruit",
+          2
+        ]
+      ],
+      "result": "underdeep:vinegar",
+      "count": 2,
+      "seconds": 150,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "pickled_turnips",
+      "station": "crock",
+      "ingredients": [
+        [
+          "underdeep:frost_turnip",
+          3
+        ],
+        [
+          "underdeep:vinegar",
+          1
+        ]
+      ],
+      "result": "underdeep:pickled_turnips",
+      "count": 3,
+      "seconds": 180,
+      "container": "",
+      "basic": false,
+      "civ": "stoneborn"
+    },
+    {
+      "id": "pickled_peppers",
+      "station": "crock",
+      "ingredients": [
+        [
+          "underdeep:emberpepper",
+          3
+        ],
+        [
+          "underdeep:vinegar",
+          1
+        ]
+      ],
+      "result": "underdeep:pickled_peppers",
+      "count": 3,
+      "seconds": 180,
+      "container": "",
+      "basic": false,
+      "civ": "forgekin"
+    },
+    {
+      "id": "spore_paste",
+      "station": "crock",
+      "ingredients": [
+        [
+          "underdeep:puffcap",
+          2
+        ],
+        [
+          "underdeep:inkcap",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:spore_paste",
+      "count": 3,
+      "seconds": 180,
+      "container": "",
+      "basic": false,
+      "civ": "sporefolk"
+    },
+    {
+      "id": "capback_cheese",
+      "station": "crock",
+      "ingredients": [
+        [
+          "minecraft:milk_bucket",
+          1
+        ],
+        [
+          "underdeep:salt",
+          1
+        ]
+      ],
+      "result": "underdeep:capback_cheese",
+      "count": 4,
+      "seconds": 240,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "glowgrain_kvass",
+      "station": "crock",
+      "ingredients": [
+        [
+          "#bread",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:glowgrain_kvass",
+      "count": 3,
+      "seconds": 180,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": "rootfolk"
+    },
+    {
+      "id": "honeyfruit_fizz",
+      "station": "crock",
+      "ingredients": [
+        [
+          "underdeep:honeyfruit",
+          2
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:honeyfruit_fizz",
+      "count": 3,
+      "seconds": 180,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": "amberfolk"
+    },
+    {
+      "id": "berry_shrub",
+      "station": "crock",
+      "ingredients": [
+        [
+          "#fruit",
+          2
+        ],
+        [
+          "underdeep:vinegar",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:berry_shrub",
+      "count": 3,
+      "seconds": 150,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "spore_kombucha",
+      "station": "crock",
+      "ingredients": [
+        [
+          "underdeep:inkcap",
+          1
+        ],
+        [
+          "#sweet",
+          1
+        ]
+      ],
+      "result": "underdeep:spore_kombucha",
+      "count": 3,
+      "seconds": 180,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": "sporefolk"
+    },
+    {
+      "id": "jerky",
+      "station": "rack",
+      "ingredients": [
+        [
+          "#meat",
+          1
+        ]
+      ],
+      "result": "underdeep:jerky",
+      "count": 1,
+      "seconds": 120,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "dried_fish",
+      "station": "rack",
+      "ingredients": [
+        [
+          "#fish",
+          1
+        ]
+      ],
+      "result": "underdeep:dried_fish",
+      "count": 1,
+      "seconds": 120,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "dried_fruit",
+      "station": "rack",
+      "ingredients": [
+        [
+          "#dried_fruit_src",
+          1
+        ]
+      ],
+      "result": "underdeep:dried_fruit",
+      "count": 1,
+      "seconds": 90,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "dried_mushrooms",
+      "station": "rack",
+      "ingredients": [
+        [
+          "#mushroom",
+          1
+        ]
+      ],
+      "result": "underdeep:dried_mushrooms",
+      "count": 1,
+      "seconds": 90,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "dried_kelp_rack",
+      "station": "rack",
+      "ingredients": [
+        [
+          "minecraft:kelp",
+          1
+        ]
+      ],
+      "result": "minecraft:dried_kelp",
+      "count": 1,
+      "seconds": 60,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "leather_rack",
+      "station": "rack",
+      "ingredients": [
+        [
+          "underdeep:hide",
+          1
+        ]
+      ],
+      "result": "minecraft:leather",
+      "count": 1,
+      "seconds": 150,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "bandage",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "#fiber",
+          2
+        ],
+        [
+          "underdeep:mendleaf_sprig",
+          1
+        ]
+      ],
+      "result": "underdeep:bandage",
+      "count": 2,
+      "seconds": 4,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "bandage_paper",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "minecraft:paper",
+          2
+        ],
+        [
+          "#herb",
+          1
+        ]
+      ],
+      "result": "underdeep:bandage",
+      "count": 2,
+      "seconds": 4,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "mendleaf_poultice_table",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:mendleaf_sprig",
+          3
+        ],
+        [
+          "minecraft:paper",
+          1
+        ]
+      ],
+      "result": "underdeep:mendleaf_poultice",
+      "count": 1,
+      "seconds": 4,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "cooling_salve",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:rimecap",
+          1
+        ],
+        [
+          "underdeep:creature_oil",
+          1
+        ],
+        [
+          "underdeep:snowberries",
+          1
+        ]
+      ],
+      "result": "underdeep:cooling_salve",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "cooling_salve_cryolite",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:cryolite",
+          1
+        ],
+        [
+          "underdeep:creature_oil",
+          1
+        ]
+      ],
+      "result": "underdeep:cooling_salve",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "warming_salve",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:emberwort_root",
+          1
+        ],
+        [
+          "underdeep:creature_oil",
+          1
+        ],
+        [
+          "underdeep:emberpepper",
+          1
+        ]
+      ],
+      "result": "underdeep:warming_salve",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "spore_ward_tincture",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:bogwort_leaf",
+          1
+        ],
+        [
+          "underdeep:sagecap",
+          1
+        ]
+      ],
+      "result": "underdeep:spore_ward_tincture",
+      "count": 2,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "breathing_draught",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:siltwort_frond",
+          2
+        ],
+        [
+          "underdeep:tidecap",
+          1
+        ]
+      ],
+      "result": "underdeep:breathing_draught",
+      "count": 2,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "breathing_draught_kelp",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:siltwort_frond",
+          1
+        ],
+        [
+          "minecraft:kelp",
+          2
+        ]
+      ],
+      "result": "underdeep:breathing_draught",
+      "count": 1,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "grounding_paste",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:galvanite",
+          1
+        ],
+        [
+          "minecraft:clay_ball",
+          1
+        ]
+      ],
+      "result": "underdeep:grounding_paste",
+      "count": 3,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "grounding_paste_storm",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:storm_lichen",
+          2
+        ],
+        [
+          "underdeep:creature_oil",
+          1
+        ]
+      ],
+      "result": "underdeep:grounding_paste",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "clear_air_tincture",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:calcicap",
+          1
+        ],
+        [
+          "underdeep:mendleaf_sprig",
+          1
+        ]
+      ],
+      "result": "underdeep:clear_air_tincture",
+      "count": 2,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "restorative_tonic",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:mendleaf_sprig",
+          1
+        ],
+        [
+          "underdeep:sunleaf_blossom",
+          1
+        ],
+        [
+          "underdeep:honeyfruit",
+          1
+        ]
+      ],
+      "result": "underdeep:restorative_tonic",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "fortifying_elixir",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:moonpetal_petal",
+          1
+        ],
+        [
+          "underdeep:glow_gland",
+          1
+        ]
+      ],
+      "result": "underdeep:fortifying_elixir",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "vigor_draught",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:emberpepper",
+          1
+        ],
+        [
+          "underdeep:sunleaf_blossom",
+          1
+        ]
+      ],
+      "result": "underdeep:vigor_draught",
+      "count": 1,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "venom_antiserum",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:venom_gland",
+          1
+        ],
+        [
+          "underdeep:bogwort_leaf",
+          1
+        ]
+      ],
+      "result": "underdeep:venom_antiserum",
+      "count": 2,
+      "seconds": 8,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "calming_balm",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:moonpetal_petal",
+          1
+        ],
+        [
+          "underdeep:amber_glob",
+          1
+        ]
+      ],
+      "result": "underdeep:calming_balm",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "burn_salve",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:sea_grapes",
+          1
+        ],
+        [
+          "underdeep:amber_glob",
+          1
+        ],
+        [
+          "underdeep:creature_oil",
+          1
+        ]
+      ],
+      "result": "underdeep:burn_salve",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "smelling_salts",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:niter",
+          1
+        ],
+        [
+          "underdeep:calcicap",
+          1
+        ]
+      ],
+      "result": "underdeep:smelling_salts",
+      "count": 2,
+      "seconds": 4,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "purging_draught",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:deathbell",
+          1
+        ],
+        [
+          "minecraft:charcoal",
+          1
+        ]
+      ],
+      "result": "underdeep:purging_draught",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "bloodcap_tonic",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:bloodcap",
+          1
+        ],
+        [
+          "underdeep:emberwort_root",
+          1
+        ]
+      ],
+      "result": "underdeep:bloodcap_tonic",
+      "count": 1,
+      "seconds": 10,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "glow_salve",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:glow_gland",
+          1
+        ],
+        [
+          "underdeep:creature_oil",
+          1
+        ]
+      ],
+      "result": "underdeep:glow_salve",
+      "count": 2,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "field_medkit",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:bandage",
+          2
+        ],
+        [
+          "underdeep:mendleaf_poultice",
+          1
+        ],
+        [
+          "underdeep:antidote_tincture",
+          1
+        ]
+      ],
+      "result": "underdeep:field_medkit",
+      "count": 1,
+      "seconds": 10,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "antidote_tincture_table",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:bogwort_leaf",
+          1
+        ],
+        [
+          "underdeep:bracket_fungus",
+          1
+        ]
+      ],
+      "result": "underdeep:antidote_tincture",
+      "count": 1,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "sunleaf_salve_table",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:sunleaf_blossom",
+          1
+        ],
+        [
+          "underdeep:honeyfruit",
+          1
+        ],
+        [
+          "underdeep:amber_glob",
+          1
+        ]
+      ],
+      "result": "underdeep:sunleaf_salve",
+      "count": 1,
+      "seconds": 6,
+      "container": "",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "emberwort_tonic_table",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:emberwort_root",
+          1
+        ],
+        [
+          "underdeep:emberpepper",
+          1
+        ]
+      ],
+      "result": "underdeep:emberwort_tonic",
+      "count": 1,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "moonpetal_draught_table",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:moonpetal_petal",
+          1
+        ],
+        [
+          "underdeep:gloomcap",
+          1
+        ]
+      ],
+      "result": "underdeep:moonpetal_draught",
+      "count": 1,
+      "seconds": 6,
+      "container": "minecraft:glass_bottle",
+      "basic": false,
+      "civ": ""
+    },
+    {
+      "id": "propagate_mendleaf",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:mendleaf_sprig",
+          3
+        ],
+        [
+          "underdeep:compost",
+          1
+        ]
+      ],
+      "result": "underdeep:mendleaf",
+      "count": 1,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "propagate_sunleaf",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:sunleaf_blossom",
+          3
+        ],
+        [
+          "underdeep:compost",
+          1
+        ]
+      ],
+      "result": "underdeep:sunleaf",
+      "count": 1,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "propagate_emberwort",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:emberwort_root",
+          3
+        ],
+        [
+          "underdeep:compost",
+          1
+        ]
+      ],
+      "result": "underdeep:emberwort",
+      "count": 1,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "propagate_bogwort",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:bogwort_leaf",
+          3
+        ],
+        [
+          "underdeep:compost",
+          1
+        ]
+      ],
+      "result": "underdeep:bogwort",
+      "count": 1,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "propagate_moonpetal",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:moonpetal_petal",
+          3
+        ],
+        [
+          "underdeep:compost",
+          1
+        ]
+      ],
+      "result": "underdeep:moonpetal",
+      "count": 1,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    },
+    {
+      "id": "propagate_siltwort",
+      "station": "herbal",
+      "ingredients": [
+        [
+          "underdeep:siltwort_frond",
+          3
+        ],
+        [
+          "underdeep:compost",
+          1
+        ]
+      ],
+      "result": "underdeep:siltwort",
+      "count": 1,
+      "seconds": 15,
+      "container": "",
+      "basic": true,
+      "civ": ""
+    }
+  ],
+  "stations": {
+    "pot": "Cooking Pot",
+    "oven": "Clay Oven",
+    "prep": "Preparation Table",
+    "kettle": "Kettle",
+    "crock": "Fermentation Crock",
+    "rack": "Drying Rack",
+    "herbal": "Herbalist's Table"
+  },
+  "compostable": {
+    "underdeep:duskberries": 0.3,
+    "underdeep:honeyfruit": 0.5,
+    "underdeep:snowberries": 0.3,
+    "underdeep:cliffberries": 0.3,
+    "underdeep:briar_fruit": 0.3,
+    "underdeep:sea_grapes": 0.3,
+    "underdeep:duskroot": 0.65,
+    "underdeep:glowgrain": 0.65,
+    "underdeep:glowgrain_seeds": 0.3,
+    "underdeep:mire_rice": 0.65,
+    "underdeep:lake_chestnut": 0.65,
+    "underdeep:emberpepper": 0.65,
+    "underdeep:frost_turnip": 0.65,
+    "underdeep:sunbean": 0.65,
+    "underdeep:puffcap": 0.65,
+    "underdeep:inkcap": 0.65,
+    "underdeep:rimecap": 0.65,
+    "underdeep:cave_truffle": 0.65,
+    "underdeep:mendleaf_sprig": 0.3,
+    "underdeep:bogwort_leaf": 0.3,
+    "underdeep:siltwort_frond": 0.3,
+    "underdeep:glowfern": 0.3,
+    "underdeep:marsh_fern": 0.3,
+    "underdeep:goldgrass": 0.3,
+    "underdeep:ashgrass": 0.3,
+    "underdeep:silvergrass": 0.3,
+    "underdeep:static_grass": 0.3,
+    "underdeep:shardgrass": 0.3,
+    "underdeep:bracket_fungus": 0.65,
+    "minecraft:rotten_flesh": 0.5,
+    "underdeep:flour": 0.3,
+    "underdeep:fruit_mash": 0.85
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "underdeep:raw_meats"
+    }
+  ],
+  "result": {
+    "id": "underdeep:fishing_bait",
+    "count": 2
+  }
+}

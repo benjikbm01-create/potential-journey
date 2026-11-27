@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MBM",
+    "PPP",
+    "L L"
+  ],
+  "key": {
+    "M": {
+      "tag": "underdeep:herb"
+    },
+    "B": {
+      "item": "minecraft:bowl"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "id": "underdeep:herbalist_table",
+    "count": 1
+  }
+}

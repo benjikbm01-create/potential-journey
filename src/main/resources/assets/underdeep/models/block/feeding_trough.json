@@ -1,0 +1,42 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "w": "underdeep:block/trough_wood",
+    "feed": "underdeep:block/trough_feed",
+    "particle": "underdeep:block/trough_wood"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        2
+      ],
+      "to": [
+        16,
+        6,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#w"
+        },
+        "south": {
+          "texture": "#w"
+        },
+        "east": {
+          "texture": "#w"
+        },
+        "west": {
+          "texture": "#w"
+        },
+        "up": {
+          "texture": "#feed"
+        },
+        "down": {
+          "texture": "#w"
+        }
+      }
+    }
+  ]
+}

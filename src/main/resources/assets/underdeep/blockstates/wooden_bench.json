@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/wooden_bench"
+    },
+    "facing=east": {
+      "model": "underdeep:block/wooden_bench",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/wooden_bench",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/wooden_bench",
+      "y": 270
+    }
+  }
+}

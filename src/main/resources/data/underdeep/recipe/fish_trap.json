@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "STS",
+    "TBT",
+    "STS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "minecraft:string"
+    },
+    "B": {
+      "item": "underdeep:fishing_bait"
+    }
+  },
+  "result": {
+    "id": "underdeep:fish_trap",
+    "count": 1
+  }
+}

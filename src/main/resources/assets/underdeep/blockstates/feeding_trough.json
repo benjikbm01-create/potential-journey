@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/feeding_trough"
+    },
+    "facing=east": {
+      "model": "underdeep:block/feeding_trough",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/feeding_trough",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/feeding_trough",
+      "y": 270
+    }
+  }
+}
