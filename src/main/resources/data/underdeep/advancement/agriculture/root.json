@@ -1,0 +1,23 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:glowgrain"
+  },
+  "title": {
+   "text": "Agriculture"
+  },
+  "description": {
+   "text": "Gardens without a sky."
+  },
+  "frame": "task",
+  "show_toast": false,
+  "announce_to_chat": false,
+  "hidden": false,
+  "background": "minecraft:textures/block/rooted_dirt.png"
+ },
+ "criteria": {
+  "arrive": {
+   "trigger": "minecraft:tick"
+  }
+ }
+}

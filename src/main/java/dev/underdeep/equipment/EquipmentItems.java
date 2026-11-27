@@ -274,6 +274,10 @@ public final class EquipmentItems {
         return null;
     }
 
+    public static EquipmentSlot slotOfPublic(String category) {
+        return slotOf(category);
+    }
+
     static EquipmentSlot slotOf(String category) {
         return switch (category) {
             case "helmet" -> EquipmentSlot.HEAD;

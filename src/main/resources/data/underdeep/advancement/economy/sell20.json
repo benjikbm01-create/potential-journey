@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:barrel"
+  },
+  "title": {
+   "text": "Supplier"
+  },
+  "description": {
+   "text": "Sell twenty times"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "sold",
+    "min": 20
+   }
+  }
+ },
+ "parent": "underdeep:economy/sell",
+ "rewards": {
+  "experience": 50
+ }
+}

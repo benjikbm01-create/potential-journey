@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:fish_trap"
+  },
+  "title": {
+   "text": "Set and Forget"
+  },
+  "description": {
+   "text": "Make a fish trap"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:fish_trap"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/fish"
+}

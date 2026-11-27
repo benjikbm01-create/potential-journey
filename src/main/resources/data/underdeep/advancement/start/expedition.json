@@ -1,0 +1,46 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:travel_ration"
+  },
+  "title": {
+   "text": "Packed and Ready"
+  },
+  "description": {
+   "text": "Carry a travel ration and a bandage"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "ration": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:travel_ration",
+       "underdeep:ember_ration",
+       "underdeep:frost_ration"
+      ]
+     }
+    ]
+   }
+  },
+  "bandage": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:bandage"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:start/settlement"
+}

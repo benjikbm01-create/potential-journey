@@ -1,0 +1,79 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:beacon"
+  },
+  "title": {
+   "text": "All Eight"
+  },
+  "description": {
+   "text": "Meet all eight peoples"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "rootfolk": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "rootfolk"
+   }
+  },
+  "forgekin": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "forgekin"
+   }
+  },
+  "tide_dwellers": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "tide_dwellers"
+   }
+  },
+  "sporefolk": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "sporefolk"
+   }
+  },
+  "glimmerkin": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "glimmerkin"
+   }
+  },
+  "stoneborn": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "stoneborn"
+   }
+  },
+  "amberfolk": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "amberfolk"
+   }
+  },
+  "astrals": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "civ_met",
+    "subject": "astrals"
+   }
+  }
+ },
+ "parent": "underdeep:civilizations/peoples3",
+ "rewards": {
+  "experience": 250
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:duskroot"
+  },
+  "title": {
+   "text": "First Harvest"
+  },
+  "description": {
+   "text": "Harvest and replant a crop (right-click it)"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "harvested"
+   }
+  }
+ },
+ "parent": "underdeep:agriculture/root"
+}

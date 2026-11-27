@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:field_journal"
+  },
+  "title": {
+   "text": "Master Naturalist"
+  },
+  "description": {
+   "text": "Record forty species"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "creature_discovered",
+    "distinct": 40
+   }
+  }
+ },
+ "parent": "underdeep:mastery/root",
+ "rewards": {
+  "experience": 250
+ }
+}

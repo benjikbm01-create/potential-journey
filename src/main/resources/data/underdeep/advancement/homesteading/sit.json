@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:wooden_chair"
+  },
+  "title": {
+   "text": "Take a Seat"
+  },
+  "description": {
+   "text": "Rest a while on a chair or bench"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "sat"
+   }
+  }
+ },
+ "parent": "underdeep:homesteading/root"
+}

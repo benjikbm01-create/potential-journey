@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:book"
+  },
+  "title": {
+   "text": "Living Encyclopedia"
+  },
+  "description": {
+   "text": "Record thirty species"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "creature_discovered",
+    "distinct": 30
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/ten",
+ "rewards": {
+  "experience": 200
+ }
+}

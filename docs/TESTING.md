@@ -22,7 +22,66 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Mob population study | `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server; uses `<run-dir>/selftest/ecosystem_sites.txt` from a self-test) → `<run-dir>/mobstudy/mobstudy.md` |
 | Stage 1.5 matrix | `scripts/test_matrix.sh` (also runs the Stage 1.5 checks; production JAR on the official Fabric server launcher) |
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
+| Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
+
+## Results — Stage 8 (2026-11-27)
+
+Environment: same container (Java 21, Gradle 8.14.3 offline, headless dedicated server). Short targeted runs only,
+as agreed with the user; hands-on play is left to the user. "Static" = data/graph checks; "in-world" = executed in a
+running dedicated server (block entities, tools and players driven directly; a Fabric fake player, or a throwaway
+non-connected server player for advancements, stands in for a real player).
+
+### Executed
+- `./gradlew build` — **43/43 unit tests PASS**, including the new `EquipmentContentTest` (content counts within the
+  brief, weapon families distinct and none strictly best, upgrades have kits/groups/valid categories and bounded
+  durability bonuses, processing recipe ids unique, no recipe consumes its own product, handbook links resolve).
+  The first run of the new test failed twice because of test bugs (JSON objects read as arrays; kit recipes use
+  Stage 7 stations); fixed in the test.
+- `SUITE=audit scripts/selftest.sh 42 run-tests/s8c create` (earlier, after the audit work) — all audit checks pass.
+- `SUITE=audit scripts/selftest.sh 42 run-tests/s8e create` (~1.5 min) — first run with the equipment checks:
+  **75 passed, 1 failed**. The failure: advancement triggers never completed for the test player. Diagnosis (by
+  reflection probes): listeners were registered and conditions matched, but `grantCriterion` returned false —
+  Fabric API deliberately refuses advancements to `FakePlayer`. The check now uses a throwaway, never-connected
+  server player. Re-run: **76 passed, 0 failed**.
+- `SUITE=stage8 scripts/selftest.sh 42 run-tests/s8f create` — **168 passed, 0 failed** (Stages 4–8 checks,
+  including the in-world census). Same world `reload` (real server restart) — **163 passed, 0 failed**; world money
+  audit exact after reload (10141.22 = 10141.22).
+- Stage 8 section results (in-world unless noted):
+  - Audit: 666/666 Underdeep items reachable; 64/64 vanilla essentials reachable; every ordinary item has a use;
+    census 320 natural blocks / 15 regions; audit cost under 1 s. 3 rare plants are only declared by worldgen (not in
+    the 7×7-chunk sample); 12 vanilla items are outside the underground premise by design (`docs/RESOURCES.md`).
+  - Content counts: 17 materials, 41 weapons + 3 bows, 13 armour sets, 26 tools + 8 utility (+4 blocks),
+    27 accessories, 34 upgrades.
+  - Weapons: steel dagger 5.0 damage / 2.4 speed, greatsword 9.0 / 0.9, spear +1 reach. Tiers: copper mines iron
+    not diamond; steel mines emberite not umbralite; embersteel mines umbralite.
+  - Upgrades: honed edge +1 damage (6.5 → 7.5); same-kind, third upgrade and wrong-category rejected with reasons;
+    recomputing twice changes nothing; upgrades + Sharpness II + damage survive NBT save/load; repair with steel
+    200 → 70 damage keeping upgrades and enchantment; salvage of a new steel greatsword (5 steel) → 2, worn → 0.
+  - Accessories: attack 1.0 → 2.5 → 1.0 and max health 20 → 18 after five refreshes (no accumulation) and removal;
+    ember ring cuts geothermal heat 2.50 → 1.63 /s; slot kinds enforced.
+  - Armour: full rimesteel cold protection 0.80; full copper static −0.60. Specials: starsilver 8.0 vs a zombie
+    (5 + 3), umbralite 5.5 vs an armoured zombie, plain steel 5.0.
+  - Stations: alloy furnace 2 iron + coal → 2 steel with inputs consumed; crusher 4 raw iron → 6 crushed; forge
+    → embersteel sword. Tools: embersteel pickaxe drops an iron ingot; hammer cleared a 3×3 face (0 of 9 left)
+    through the player's own block breaking; lumber axe felled a 4-log tree; pack/pouch filters.
+  - Economy: sampled Stage 8 goods present. Handbook: 99 pages, every category/icon/item/link/requirement valid;
+    666/666 Underdeep item pages have acquisition sources (1587 item pages of data); technical/deferred items never
+    sent; a sensitive item's key appears only after the player obtains it.
+  - Advancements: 147 loaded, 13 tabs; harvest advancement not done before, done after one harvest; "5 different
+    crops" not done after 2 kinds, done after 5; hidden discovery advancement is hidden; counters round-trip.
+- Asset/data pipeline re-run deterministically: `PYTHONHASHSEED=0 python3 tools/assets/stage2_assets.py`,
+  `python3 tools/economy/generate_economy.py` (483 goods, 265 recipes; no diff on re-run),
+  `python3 tools/handbook/handbook.py` (link validation), `python3 tools/advancements/generate.py` (all item ids valid).
+
+### Not executed (user testing)
+- Everything in a real client: the Handbook screen (layout, search, recipe grids, bookmarks), the accessory screen
+  (K), the artisan's bench screen, advancement tabs and toasts, item/armour textures and bow pull animation in game,
+  the cave glider (no wing render yet), grappling hook feel, climbing claws, prospector messages, delver's compass
+  needle, wayfinder overlay, packs' screens, combat feel and balance in real fights, NPC smith repair dialogue,
+  companions visibly wearing gear, first-join Handbook gift and quiet migration in an existing Stage 7 world,
+  multiplayer (each player's own progress) and TPS with 4–6 players. No other seeds were run for Stage 8 (no terrain
+  change besides the starlily placement).
 
 ## Results — Stage 7 (2026-11-27)
 

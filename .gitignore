@@ -40,3 +40,4 @@ Thumbs.db
 *.hprof
 hs_err_pid*
 runs/
+__pycache__/

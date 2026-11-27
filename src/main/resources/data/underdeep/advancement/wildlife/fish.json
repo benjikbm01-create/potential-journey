@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:glimmerfin"
+  },
+  "title": {
+   "text": "Local Catch"
+  },
+  "description": {
+   "text": "Catch a fish from regional waters"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "fished_regional"
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/root"
+}

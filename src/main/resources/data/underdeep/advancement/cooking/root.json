@@ -1,0 +1,23 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:cooking_pot"
+  },
+  "title": {
+   "text": "Cooking"
+  },
+  "description": {
+   "text": "Good food makes good explorers."
+  },
+  "frame": "task",
+  "show_toast": false,
+  "announce_to_chat": false,
+  "hidden": false,
+  "background": "minecraft:textures/block/smooth_stone.png"
+ },
+ "criteria": {
+  "arrive": {
+   "trigger": "minecraft:tick"
+  }
+ }
+}

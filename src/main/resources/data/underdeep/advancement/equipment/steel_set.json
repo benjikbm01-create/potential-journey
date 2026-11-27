@@ -1,0 +1,71 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_chestplate"
+  },
+  "title": {
+   "text": "Steel Clad"
+  },
+  "description": {
+   "text": "Make a full set of steel armour"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "helmet": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_helmet"
+      ]
+     }
+    ]
+   }
+  },
+  "chestplate": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_chestplate"
+      ]
+     }
+    ]
+   }
+  },
+  "leggings": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_leggings"
+      ]
+     }
+    ]
+   }
+  },
+  "boots": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_boots"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/steel",
+ "rewards": {
+  "experience": 60
+ }
+}

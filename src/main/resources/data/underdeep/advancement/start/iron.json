@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:iron_ingot"
+  },
+  "title": {
+   "text": "Iron Underground"
+  },
+  "description": {
+   "text": "Smelt an iron ingot"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "minecraft:iron_ingot"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:start/stone_tools"
+}

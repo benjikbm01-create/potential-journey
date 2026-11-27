@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:amber_hearth_stew"
+  },
+  "title": {
+   "text": "Feast of Variety"
+  },
+  "description": {
+   "text": "Become Well Fed II (five food groups)"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "well_fed_2"
+   }
+  }
+ },
+ "parent": "underdeep:cooking/well_fed"
+}

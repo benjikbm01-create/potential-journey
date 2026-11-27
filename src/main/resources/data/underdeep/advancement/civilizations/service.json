@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:potion"
+  },
+  "title": {
+   "text": "At Your Service"
+  },
+  "description": {
+   "text": "Use a settlement service (healer, inn)"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "service"
+   }
+  }
+ },
+ "parent": "underdeep:civilizations/first"
+}

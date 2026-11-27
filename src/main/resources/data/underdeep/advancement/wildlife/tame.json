@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:fungal_feed"
+  },
+  "title": {
+   "text": "New Friend"
+  },
+  "description": {
+   "text": "Tame a creature"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "tamed"
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/first"
+}

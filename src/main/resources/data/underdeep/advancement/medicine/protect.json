@@ -1,0 +1,72 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:warming_salve"
+  },
+  "title": {
+   "text": "Prepared"
+  },
+  "description": {
+   "text": "Use a protective salve or tincture"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "cooling_salve": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_used",
+    "subject": "cooling_salve"
+   }
+  },
+  "warming_salve": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_used",
+    "subject": "warming_salve"
+   }
+  },
+  "spore_ward_tincture": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_used",
+    "subject": "spore_ward_tincture"
+   }
+  },
+  "grounding_paste": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_used",
+    "subject": "grounding_paste"
+   }
+  },
+  "clear_air_tincture": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_used",
+    "subject": "clear_air_tincture"
+   }
+  },
+  "breathing_draught": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_used",
+    "subject": "breathing_draught"
+   }
+  }
+ },
+ "parent": "underdeep:medicine/used",
+ "requirements": [
+  [
+   "cooling_salve",
+   "warming_salve",
+   "spore_ward_tincture",
+   "grounding_paste",
+   "clear_air_tincture",
+   "breathing_draught"
+  ]
+ ]
+}

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:bell"
+  },
+  "title": {
+   "text": "Lights Ahead"
+  },
+  "description": {
+   "text": "Discover a settlement"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "settlement_discovered"
+   }
+  }
+ },
+ "parent": "underdeep:civilizations/root"
+}

@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:wooden_table"
+  },
+  "title": {
+   "text": "Home Sweet Home"
+  },
+  "description": {
+   "text": "Wake up in a very comfortable home (comfort 8+)"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "comfortable_rest"
+   }
+  }
+ },
+ "parent": "underdeep:homesteading/rested",
+ "rewards": {
+  "experience": 80
+ }
+}

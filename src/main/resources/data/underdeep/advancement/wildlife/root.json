@@ -1,0 +1,23 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:field_journal"
+  },
+  "title": {
+   "text": "Wildlife"
+  },
+  "description": {
+   "text": "Herds, hunters and shy things."
+  },
+  "frame": "task",
+  "show_toast": false,
+  "announce_to_chat": false,
+  "hidden": false,
+  "background": "minecraft:textures/block/moss_block.png"
+ },
+ "criteria": {
+  "arrive": {
+   "trigger": "minecraft:tick"
+  }
+ }
+}

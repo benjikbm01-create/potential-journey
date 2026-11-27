@@ -1,0 +1,37 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:mendleaf_sprig"
+  },
+  "title": {
+   "text": "Herbalist"
+  },
+  "description": {
+   "text": "Gather a medicinal herb"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:mendleaf_sprig",
+       "underdeep:sunleaf_blossom",
+       "underdeep:emberwort_root",
+       "underdeep:bogwort_leaf",
+       "underdeep:moonpetal_petal",
+       "underdeep:siltwort_frond"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:medicine/root"
+}

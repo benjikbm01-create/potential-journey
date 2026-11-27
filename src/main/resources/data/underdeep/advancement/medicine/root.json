@@ -1,0 +1,23 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:bandage"
+  },
+  "title": {
+   "text": "Medicine"
+  },
+  "description": {
+   "text": "Herbs, salves and steady hands."
+  },
+  "frame": "task",
+  "show_toast": false,
+  "announce_to_chat": false,
+  "hidden": false,
+  "background": "minecraft:textures/block/moss_block.png"
+ },
+ "criteria": {
+  "arrive": {
+   "trigger": "minecraft:tick"
+  }
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:wheat"
+  },
+  "title": {
+   "text": "Trader"
+  },
+  "description": {
+   "text": "Sell something to a merchant"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "sold"
+   }
+  }
+ },
+ "parent": "underdeep:economy/root"
+}

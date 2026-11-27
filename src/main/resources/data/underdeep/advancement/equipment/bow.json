@@ -1,0 +1,34 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:horn_recurve_bow"
+  },
+  "title": {
+   "text": "Fletcher"
+  },
+  "description": {
+   "text": "Make a shortbow, longbow or recurve bow"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:lumenwood_shortbow",
+       "underdeep:spirebark_longbow",
+       "underdeep:horn_recurve_bow"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/root"
+}

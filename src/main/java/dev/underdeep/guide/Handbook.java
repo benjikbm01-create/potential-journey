@@ -166,6 +166,14 @@ public final class Handbook {
         });
     }
 
+    public static List<ItemInfo> itemsForTest(MinecraftServer server) {
+        return items(server);
+    }
+
+    public static void watchForTest(ServerPlayerEntity p) {
+        watch(p);
+    }
+
     static List<ItemInfo> items(MinecraftServer server) {
         if (cached == null) {
             List<ItemInfo> out = new ArrayList<>();

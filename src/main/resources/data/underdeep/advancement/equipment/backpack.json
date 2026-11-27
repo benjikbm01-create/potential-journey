@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:backpack"
+  },
+  "title": {
+   "text": "Pack Mule"
+  },
+  "description": {
+   "text": "Make a backpack"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:backpack"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/root"
+}

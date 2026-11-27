@@ -1,0 +1,128 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:delvers_compass"
+  },
+  "title": {
+   "text": "Every Cavern"
+  },
+  "description": {
+   "text": "Visit all fifteen ecosystems"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "rootwild": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "rootwild"
+   }
+  },
+  "fungal_expanse": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "fungal_expanse"
+   }
+  },
+  "flooded_depths": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "flooded_depths"
+   }
+  },
+  "ashen_hollows": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "ashen_hollows"
+   }
+  },
+  "crystal_deep": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "crystal_deep"
+   }
+  },
+  "the_abyss": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "the_abyss"
+   }
+  },
+  "everfrost": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "everfrost"
+   }
+  },
+  "golden_grove": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "golden_grove"
+   }
+  },
+  "hollow_peaks": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "hollow_peaks"
+   }
+  },
+  "emerald_wetlands": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "emerald_wetlands"
+   }
+  },
+  "petrified_forest": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "petrified_forest"
+   }
+  },
+  "crimson_basin": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "crimson_basin"
+   }
+  },
+  "sunken_gardens": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "sunken_gardens"
+   }
+  },
+  "stormstone_caverns": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "stormstone_caverns"
+   }
+  },
+  "starlight_caverns": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "starlight_caverns"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/ten",
+ "rewards": {
+  "experience": 250
+ }
+}

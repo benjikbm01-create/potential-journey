@@ -422,6 +422,25 @@ events). `survival/station`: `StationBlock(Entity)`, `StationScreenHandler`, `Dr
 Hooks into earlier stages: `EcoCropBlock`/`HarvestablePlantBlock` growth × rich soil; `UnderdeepCreature.troughFed`;
 `Dialogue` → `SurvivalDialogue`; journal pages; `Preferences` regional dishes; economy data.
 
+## 5i. Equipment, Handbook and advancements (Stage 8)
+
+Full descriptions in `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md`.
+- `equipment`: `EquipmentContent` (loads `content.json`: materials, weapons, bows, arrows, tools, armour sets,
+  accessories, upgrades, components, utility), `EquipmentItems` (registration, `ToolMaterial`/`ArmorMaterial` per
+  material, station blocks registered into the Stage 7 station BE type), `Weapons` (weapon, battle-axe, bow, arrow,
+  armour items), `Upgrades` (data component, reject/apply/recompute), `Accessories` (attachment, screen, payloads,
+  temporary modifiers), `EquipmentEffects` (specials, coatings, hazard protection, lamp, wayfinder), `EquipmentTools`
+  (area/fell tools, sickle, prospector, grapple, glider, gauge, compass, packs, rope, waymarker), `Artisan` (bench:
+  upgrade, repair, salvage), `CompanionGear`. Mixins: `LivingEntityEquipmentMixin` (bonus damage, claws climbing),
+  `BlockDropsMixin` (smelting pickaxe), `AxeItemAccessor`, `SmithingTransformRecipeAccessor`.
+- `guide`: `Obtainability` (fixpoint audit), `Uses`, `Sensitivity`, `Handbook` (item, data/discovery payloads,
+  first-join gift, discovery watch), `Advancements` (counters, `underdeep:event` criterion), `Migration`, `Guide`.
+  Client: `client/guide/HandbookScreen`, `HandbookClient`, `client/equipment/EquipmentClient`.
+- Hooks into earlier stages: `Hazards` exposure × (1 − protection); `Meals` runner; `MedicineItem` healer cooldown;
+  `Fishing` angler; `HarvestablePlantBlock` forager; `EconHooks` trader discount; `SurvivalDialogue` smith repair;
+  `Companions` gear; `Advancements.event` calls in trade, dialogue, companions, stations, farming, rest, hazards,
+  taming, discovery, fishing and recipes.
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |

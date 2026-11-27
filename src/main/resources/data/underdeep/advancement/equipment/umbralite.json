@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:umbralite_ingot"
+  },
+  "title": {
+   "text": "Dark Metal"
+  },
+  "description": {
+   "text": "Smelt umbralite"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:umbralite_ingot"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/forge"
+}

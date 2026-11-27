@@ -1,0 +1,56 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:kitchen_counter"
+  },
+  "title": {
+   "text": "A Proper Kitchen"
+  },
+  "description": {
+   "text": "Make a cooking pot, an oven and a preparation table"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "pot": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:cooking_pot"
+      ]
+     }
+    ]
+   }
+  },
+  "oven": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:clay_oven"
+      ]
+     }
+    ]
+   }
+  },
+  "prep": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:preparation_table"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:homesteading/root"
+}

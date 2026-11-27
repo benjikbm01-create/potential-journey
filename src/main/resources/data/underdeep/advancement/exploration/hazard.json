@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:cooling_salve"
+  },
+  "title": {
+   "text": "Fair Warning"
+  },
+  "description": {
+   "text": "Feel an environmental hazard build"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "hazard_met"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/first_region"
+}

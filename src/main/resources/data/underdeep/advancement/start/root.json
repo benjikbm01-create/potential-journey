@@ -1,0 +1,23 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:glowcap"
+  },
+  "title": {
+   "text": "Underdeep"
+  },
+  "description": {
+   "text": "Life underground. Open the handbook with H."
+  },
+  "frame": "task",
+  "show_toast": false,
+  "announce_to_chat": false,
+  "hidden": false,
+  "background": "minecraft:textures/block/deepslate_tiles.png"
+ },
+ "criteria": {
+  "arrive": {
+   "trigger": "minecraft:tick"
+  }
+ }
+}

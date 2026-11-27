@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:barrel"
+  },
+  "title": {
+   "text": "Pillar of the Community"
+  },
+  "description": {
+   "text": "Help five times"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "helped",
+    "min": 5
+   }
+  }
+ },
+ "parent": "underdeep:relationships/help",
+ "rewards": {
+  "experience": 60
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:fungal_hotpot"
+  },
+  "title": {
+   "text": "Local Flavour"
+  },
+  "description": {
+   "text": "Cook a regional dish"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "regional_dish"
+   }
+  }
+ },
+ "parent": "underdeep:cooking/pot"
+}

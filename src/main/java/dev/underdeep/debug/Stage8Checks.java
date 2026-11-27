@@ -147,6 +147,12 @@ final class Stage8Checks {
             }
         }
         r.info("vanilla items outside the underground premise (not obtainable by design)", absent.toString());
+        try {
+            Stage8Equipment.run(server, w, r);
+        } catch (RuntimeException ex) {
+            Underdeep.LOGGER.error("Stage 8 equipment checks crashed", ex);
+            r.check("stage 8 equipment/handbook/advancement checks completed without exceptions", false, ex.toString());
+        }
     }
 
     /** Counts every block in 7x7 generated chunks around each ecosystem's representative site, full height. */

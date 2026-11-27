@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:oak_door"
+  },
+  "title": {
+   "text": "A Place of My Own"
+  },
+  "description": {
+   "text": "Buy or rent property"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "property_bought"
+   }
+  }
+ },
+ "parent": "underdeep:economy/root",
+ "rewards": {
+  "experience": 50
+ }
+}

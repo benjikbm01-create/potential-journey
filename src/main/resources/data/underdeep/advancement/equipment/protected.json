@@ -1,0 +1,55 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:rimesteel_chestplate"
+  },
+  "title": {
+   "text": "Dressed for the Weather"
+  },
+  "description": {
+   "text": "Make armour that protects from a hazard"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:embersteel_helmet",
+       "underdeep:embersteel_chestplate",
+       "underdeep:embersteel_leggings",
+       "underdeep:embersteel_boots",
+       "underdeep:rimesteel_helmet",
+       "underdeep:rimesteel_chestplate",
+       "underdeep:rimesteel_leggings",
+       "underdeep:rimesteel_boots",
+       "underdeep:galvanic_helmet",
+       "underdeep:galvanic_chestplate",
+       "underdeep:galvanic_leggings",
+       "underdeep:galvanic_boots",
+       "underdeep:fur_helmet",
+       "underdeep:fur_chestplate",
+       "underdeep:fur_leggings",
+       "underdeep:fur_boots",
+       "underdeep:shell_helmet",
+       "underdeep:shell_chestplate",
+       "underdeep:shell_leggings",
+       "underdeep:shell_boots",
+       "underdeep:nacre_helmet",
+       "underdeep:nacre_chestplate",
+       "underdeep:nacre_leggings",
+       "underdeep:nacre_boots"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/steel"
+}

@@ -1,0 +1,36 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:mendleaf_tea"
+  },
+  "title": {
+   "text": "Tea Time"
+  },
+  "description": {
+   "text": "Brew a tea in a kettle"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:mendleaf_tea",
+       "underdeep:sunleaf_tea",
+       "underdeep:moonpetal_tea",
+       "underdeep:emberwort_tea",
+       "underdeep:marsh_tea"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:cooking/pot"
+}

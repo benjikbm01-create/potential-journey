@@ -1,0 +1,92 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_warhammer"
+  },
+  "title": {
+   "text": "Weapons Master"
+  },
+  "description": {
+   "text": "Own a dagger, a spear, a greatsword and a warhammer"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "dagger": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:copper_dagger",
+       "underdeep:steel_dagger",
+       "underdeep:rimesteel_dagger",
+       "underdeep:galvanic_dagger",
+       "underdeep:starsilver_dagger",
+       "underdeep:iron_dagger",
+       "underdeep:glimmer_stiletto"
+      ]
+     }
+    ]
+   }
+  },
+  "spear": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:copper_spear",
+       "underdeep:steel_spear",
+       "underdeep:rimesteel_spear",
+       "underdeep:galvanic_spear",
+       "underdeep:iron_spear",
+       "underdeep:diamond_spear",
+       "underdeep:starsilver_glaive",
+       "underdeep:nacre_harpoon"
+      ]
+     }
+    ]
+   }
+  },
+  "greatsword": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_greatsword",
+       "underdeep:embersteel_greatsword",
+       "underdeep:umbralite_greatsword",
+       "underdeep:iron_greatsword",
+       "underdeep:diamond_greatsword"
+      ]
+     }
+    ]
+   }
+  },
+  "warhammer": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_warhammer",
+       "underdeep:embersteel_warhammer",
+       "underdeep:umbralite_warhammer",
+       "underdeep:iron_warhammer",
+       "underdeep:diamond_warhammer"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/forge",
+ "rewards": {
+  "experience": 80
+ }
+}

@@ -1,0 +1,39 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:duskoak_log"
+  },
+  "title": {
+   "text": "Roots of Industry"
+  },
+  "description": {
+   "text": "Gather wood from an underground tree"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:duskoak_log",
+       "underdeep:lumenwood_log",
+       "underdeep:mirewillow_log",
+       "underdeep:frostfir_log",
+       "underdeep:goldwood_log",
+       "underdeep:spirebark_log",
+       "underdeep:bloodthorn_log",
+       "underdeep:cinderbark_log"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:start/root"
+}

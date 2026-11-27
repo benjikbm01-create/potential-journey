@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:truffle_risotto"
+  },
+  "title": {
+   "text": "Chef of the Deep"
+  },
+  "description": {
+   "text": "Cook thirty different dishes"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "cooked",
+    "distinct": 30
+   }
+  }
+ },
+ "parent": "underdeep:cooking/dishes10",
+ "rewards": {
+  "experience": 200
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:mendleaf"
+  },
+  "title": {
+   "text": "Green Thumb"
+  },
+  "description": {
+   "text": "Take a mendleaf cutting at the herbalist's table"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_made",
+    "subject": "mendleaf"
+   }
+  }
+ },
+ "parent": "underdeep:agriculture/forage"
+}

@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:raw_umbralite"
+  },
+  "title": {
+   "text": "The Bottom of Everything"
+  },
+  "description": {
+   "text": "Reach the Abyss"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "the_abyss"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/first_region"
+}

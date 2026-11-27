@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:forge"
+  },
+  "title": {
+   "text": "Master Smith"
+  },
+  "description": {
+   "text": "Forge twenty different items"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "forged",
+    "distinct": 20
+   }
+  }
+ },
+ "parent": "underdeep:mastery/root",
+ "rewards": {
+  "experience": 200
+ }
+}

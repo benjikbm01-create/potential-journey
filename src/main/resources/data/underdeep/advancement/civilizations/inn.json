@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:red_bed"
+  },
+  "title": {
+   "text": "A Room for the Night"
+  },
+  "description": {
+   "text": "Rent a bed at an inn"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "service",
+    "subject": "inn_bed"
+   }
+  }
+ },
+ "parent": "underdeep:civilizations/service"
+}

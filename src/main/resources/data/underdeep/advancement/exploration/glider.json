@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:cave_glider"
+  },
+  "title": {
+   "text": "Wings of Silk"
+  },
+  "description": {
+   "text": "Make a cave glider"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:cave_glider"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:exploration/grapple"
+}

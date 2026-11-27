@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:starlit_porridge"
+  },
+  "title": {
+   "text": "Taste of Every People"
+  },
+  "description": {
+   "text": "Cook dishes of five peoples"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "regional_dish",
+    "distinct": 5
+   }
+  }
+ },
+ "parent": "underdeep:cooking/regional",
+ "rewards": {
+  "experience": 150
+ }
+}

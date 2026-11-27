@@ -1,0 +1,47 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:jerky"
+  },
+  "title": {
+   "text": "Keeps for Ages"
+  },
+  "description": {
+   "text": "Preserve food on a drying rack or in a crock"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "dried": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:jerky",
+       "underdeep:dried_fish",
+       "underdeep:dried_fruit",
+       "underdeep:dried_mushrooms"
+      ]
+     }
+    ]
+   }
+  },
+  "fermented": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "preserved"
+   }
+  }
+ },
+ "parent": "underdeep:cooking/pot",
+ "requirements": [
+  [
+   "dried",
+   "fermented"
+  ]
+ ]
+}

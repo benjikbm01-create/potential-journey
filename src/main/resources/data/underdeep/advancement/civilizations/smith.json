@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:anvil"
+  },
+  "title": {
+   "text": "Good as New"
+  },
+  "description": {
+   "text": "Have something repaired by a smith"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "repaired",
+    "subject": "smith"
+   }
+  }
+ },
+ "parent": "underdeep:civilizations/service"
+}

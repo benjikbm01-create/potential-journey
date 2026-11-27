@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:burn_salve"
+  },
+  "title": {
+   "text": "Bedside Manner"
+  },
+  "description": {
+   "text": "Treat someone else"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "treated_other"
+   }
+  }
+ },
+ "parent": "underdeep:medicine/used",
+ "rewards": {
+  "experience": 40
+ }
+}

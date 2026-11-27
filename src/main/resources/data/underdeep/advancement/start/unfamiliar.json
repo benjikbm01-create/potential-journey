@@ -1,0 +1,45 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:cinnabar"
+  },
+  "title": {
+   "text": "What Is This?"
+  },
+  "description": {
+   "text": "Mine a mineral found only in the Underdeep"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:cinnabar",
+       "underdeep:sulfur",
+       "underdeep:niter",
+       "underdeep:emberite",
+       "underdeep:cryolite",
+       "underdeep:malachite",
+       "underdeep:galvanite",
+       "underdeep:prismatic_opal",
+       "underdeep:jasper",
+       "underdeep:fossil_fragment",
+       "underdeep:pearl",
+       "underdeep:raw_starsilver",
+       "underdeep:raw_umbralite",
+       "underdeep:glimmer_shard"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:start/stone_tools"
+}

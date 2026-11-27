@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:lead"
+  },
+  "title": {
+   "text": "Travelling Companion"
+  },
+  "description": {
+   "text": "Ask someone to travel with you"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "companion_recruited"
+   }
+  }
+ },
+ "parent": "underdeep:relationships/friend",
+ "rewards": {
+  "experience": 50
+ }
+}

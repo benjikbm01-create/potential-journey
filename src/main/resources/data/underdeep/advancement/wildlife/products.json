@@ -1,0 +1,92 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:horn"
+  },
+  "title": {
+   "text": "Gifts of the Herd"
+  },
+  "description": {
+   "text": "Collect three different animal products"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "horn": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:horn"
+      ]
+     }
+    ]
+   }
+  },
+  "scale": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:scale"
+      ]
+     }
+    ]
+   }
+  },
+  "plume": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:plume"
+      ]
+     }
+    ]
+   }
+  },
+  "shell_fragment": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:shell_fragment"
+      ]
+     }
+    ]
+   }
+  },
+  "fur_tuft": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:fur_tuft"
+      ]
+     }
+    ]
+   }
+  },
+  "glow_gland": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:glow_gland"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/first"
+}

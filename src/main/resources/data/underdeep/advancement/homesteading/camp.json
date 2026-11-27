@@ -1,0 +1,44 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:camp_awning"
+  },
+  "title": {
+   "text": "Base Camp"
+  },
+  "description": {
+   "text": "Make a camp awning and a supply crate"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "awning": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:camp_awning"
+      ]
+     }
+    ]
+   }
+  },
+  "crate": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:supply_crate"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:homesteading/bedroll"
+}

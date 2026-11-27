@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:barrel"
+  },
+  "title": {
+   "text": "Open for Business"
+  },
+  "description": {
+   "text": "Register a shop"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "business_opened"
+   }
+  }
+ },
+ "parent": "underdeep:economy/property",
+ "rewards": {
+  "experience": 50
+ }
+}

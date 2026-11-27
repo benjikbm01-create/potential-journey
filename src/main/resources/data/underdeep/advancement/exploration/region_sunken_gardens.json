@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:sea_grapes"
+  },
+  "title": {
+   "text": "Drowned Gardens"
+  },
+  "description": {
+   "text": "Enter the Sunken Gardens"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "sunken_gardens"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/first_region"
+}

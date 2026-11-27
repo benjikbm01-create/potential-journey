@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:glimmer_shard"
+  },
+  "title": {
+   "text": "Crystal Halls"
+  },
+  "description": {
+   "text": "Enter the Crystal Deep"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "crystal_deep"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/first_region"
+}

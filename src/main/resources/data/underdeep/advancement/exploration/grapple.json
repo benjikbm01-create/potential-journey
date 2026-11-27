@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:grappling_hook"
+  },
+  "title": {
+   "text": "Get Over Here"
+  },
+  "description": {
+   "text": "Swing on a grappling hook"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "grappled"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/root"
+}

@@ -1,0 +1,59 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:reef_darter"
+  },
+  "title": {
+   "text": "Angler of the Deep"
+  },
+  "description": {
+   "text": "Catch glimmerfin, a reef darter and a mire eel"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "glimmerfin": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:glimmerfin"
+      ]
+     }
+    ]
+   }
+  },
+  "reef_darter": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:reef_darter"
+      ]
+     }
+    ]
+   }
+  },
+  "mire_eel": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:mire_eel"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/fish",
+ "rewards": {
+  "experience": 60
+ }
+}

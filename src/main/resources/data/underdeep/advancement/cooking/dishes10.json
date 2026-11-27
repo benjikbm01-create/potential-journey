@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:root_stew"
+  },
+  "title": {
+   "text": "Home Cook"
+  },
+  "description": {
+   "text": "Cook ten different dishes"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "cooked",
+    "distinct": 10
+   }
+  }
+ },
+ "parent": "underdeep:cooking/pot",
+ "rewards": {
+  "experience": 60
+ }
+}

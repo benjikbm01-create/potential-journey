@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:delvers_compass"
+  },
+  "title": {
+   "text": "Hazard-Proof"
+  },
+  "description": {
+   "text": "Meet every kind of environmental hazard of the caverns"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "hazard_met",
+    "distinct": 9
+   }
+  }
+ },
+ "parent": "underdeep:mastery/root",
+ "rewards": {
+  "experience": 250
+ }
+}

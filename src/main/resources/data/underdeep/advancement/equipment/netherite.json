@@ -1,0 +1,35 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:netherite_ingot"
+  },
+  "title": {
+   "text": "From the Deep, Not the Nether"
+  },
+  "description": {
+   "text": "Make netherite without the Nether"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "minecraft:netherite_ingot"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/umbralite",
+ "rewards": {
+  "experience": 150
+ }
+}

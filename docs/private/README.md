@@ -18,3 +18,5 @@ Files:
 - `CIVILIZATIONS.md` — full identities, histories, customs and secrets of the eight civilizations (Stage 4).
 - `INHABITANTS.md` — hidden intent behind Stage 5 dialogue and knowledge hooks.
 - `ECONOMY.md` — economy hooks reserved for hidden discoveries.
+- `SURVIVAL.md` — Stage 7 hidden intent.
+- `EQUIPMENT.md` — Stage 8 discovery-sensitive items, hidden advancements, deferred items.

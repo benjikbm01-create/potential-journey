@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:roast_platter"
+  },
+  "title": {
+   "text": "Provider"
+  },
+  "description": {
+   "text": "Cook 200 times"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "cooked",
+    "min": 200
+   }
+  }
+ },
+ "parent": "underdeep:mastery/root",
+ "rewards": {
+  "experience": 150
+ }
+}

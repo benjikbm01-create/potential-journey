@@ -1,0 +1,40 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:umbralite_greatsword"
+  },
+  "title": {
+   "text": "Heavier Than Night"
+  },
+  "description": {
+   "text": "Forge umbralite equipment"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:umbralite_sword",
+       "underdeep:umbralite_greatsword",
+       "underdeep:umbralite_battleaxe",
+       "underdeep:umbralite_warhammer",
+       "underdeep:umbralite_pickaxe",
+       "underdeep:umbralite_chestplate"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:equipment/umbralite",
+ "rewards": {
+  "experience": 150
+ }
+}

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:forge"
+  },
+  "title": {
+   "text": "Fires of Industry"
+  },
+  "description": {
+   "text": "Forge something at the forge"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "forged"
+   }
+  }
+ },
+ "parent": "underdeep:equipment/steel"
+}

@@ -39,7 +39,7 @@ public final class Advancements {
         public final Map<String, Set<String>> subjects = new HashMap<>();
         public boolean migrated;
 
-        static final Codec<Stats> CODEC = NbtCompound.CODEC.xmap(n -> {
+        public static final Codec<Stats> CODEC = NbtCompound.CODEC.xmap(n -> {
             Stats s = new Stats();
             NbtCompound c = n.getCompound("counts");
             for (String k : c.getKeys()) {

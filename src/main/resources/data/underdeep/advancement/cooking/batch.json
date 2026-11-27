@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:roast_platter"
+  },
+  "title": {
+   "text": "Feeding the Crew"
+  },
+  "description": {
+   "text": "Cook four batches at once"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "batch_cooked"
+   }
+  }
+ },
+ "parent": "underdeep:cooking/pot"
+}

@@ -1,0 +1,136 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:glowfern"
+  },
+  "title": {
+   "text": "Beyond the Roots"
+  },
+  "description": {
+   "text": "Visit an ecosystem other than the Rootwild"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "fungal_expanse": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "fungal_expanse"
+   }
+  },
+  "flooded_depths": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "flooded_depths"
+   }
+  },
+  "ashen_hollows": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "ashen_hollows"
+   }
+  },
+  "crystal_deep": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "crystal_deep"
+   }
+  },
+  "the_abyss": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "the_abyss"
+   }
+  },
+  "everfrost": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "everfrost"
+   }
+  },
+  "golden_grove": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "golden_grove"
+   }
+  },
+  "hollow_peaks": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "hollow_peaks"
+   }
+  },
+  "emerald_wetlands": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "emerald_wetlands"
+   }
+  },
+  "petrified_forest": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "petrified_forest"
+   }
+  },
+  "crimson_basin": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "crimson_basin"
+   }
+  },
+  "sunken_gardens": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "sunken_gardens"
+   }
+  },
+  "stormstone_caverns": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "stormstone_caverns"
+   }
+  },
+  "starlight_caverns": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "region_visited",
+    "subject": "starlight_caverns"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/root",
+ "requirements": [
+  [
+   "fungal_expanse",
+   "flooded_depths",
+   "ashen_hollows",
+   "crystal_deep",
+   "the_abyss",
+   "everfrost",
+   "golden_grove",
+   "hollow_peaks",
+   "emerald_wetlands",
+   "petrified_forest",
+   "crimson_basin",
+   "sunken_gardens",
+   "stormstone_caverns",
+   "starlight_caverns"
+  ]
+ ]
+}

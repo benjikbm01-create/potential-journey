@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:sunbean"
+  },
+  "title": {
+   "text": "Diverse Fields"
+  },
+  "description": {
+   "text": "Harvest five different crops"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "harvested",
+    "distinct": 5
+   }
+  }
+ },
+ "parent": "underdeep:agriculture/harvest",
+ "rewards": {
+  "experience": 60
+ }
+}

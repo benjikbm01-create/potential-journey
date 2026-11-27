@@ -183,3 +183,10 @@ cavern routes (visible near players), settlements decide on and construct buildi
 grow slowly, civilizations cooperate and quarrel, and events come from actual conditions. Players can trade
 between regions, take contracts, buy or rent property, open shops and hire inhabitants — or ignore all of it.
 Details: `docs/ECONOMY.md`.
+
+## Stage 8 status (equipment and guidance)
+Implemented: a proven-obtainable material progression across 17 families with regional alloys, weapons with real
+family differences, hazard-protective armour, specialised tools and exploration gear, accessories, bounded upgrades,
+repair and salvage, settlement equipment economies, the in-game Handbook generated from real game data, and 134
+advancements. See `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md`. Combat and danger (Stage 9) build on
+these contracts.

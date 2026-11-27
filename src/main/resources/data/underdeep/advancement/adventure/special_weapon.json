@@ -1,0 +1,40 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:embersteel_sword"
+  },
+  "title": {
+   "text": "Elemental"
+  },
+  "description": {
+   "text": "Make an embersteel, rimesteel or galvanic weapon"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:embersteel_sword",
+       "underdeep:embersteel_greatsword",
+       "underdeep:embersteel_warhammer",
+       "underdeep:rimesteel_sword",
+       "underdeep:rimesteel_spear",
+       "underdeep:rimesteel_dagger",
+       "underdeep:galvanic_sword",
+       "underdeep:galvanic_dagger",
+       "underdeep:galvanic_spear"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:adventure/hostile"
+}

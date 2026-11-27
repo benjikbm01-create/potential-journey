@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_sickle"
+  },
+  "title": {
+   "text": "Reaper"
+  },
+  "description": {
+   "text": "Make a sickle"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:steel_sickle"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:agriculture/crops5"
+}

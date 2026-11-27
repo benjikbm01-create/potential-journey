@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:writable_book"
+  },
+  "title": {
+   "text": "Naturalist"
+  },
+  "description": {
+   "text": "Record ten species"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "creature_discovered",
+    "distinct": 10
+   }
+  }
+ },
+ "parent": "underdeep:wildlife/first",
+ "rewards": {
+  "experience": 50
+ }
+}

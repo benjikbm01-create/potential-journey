@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:field_medkit"
+  },
+  "title": {
+   "text": "Healer's Craft"
+  },
+  "description": {
+   "text": "Prepare ten different preparations"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_made",
+    "distinct": 10
+   }
+  }
+ },
+ "parent": "underdeep:medicine/made",
+ "rewards": {
+  "experience": 60
+ }
+}

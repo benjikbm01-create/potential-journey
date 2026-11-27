@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:spore_ward_tincture"
+  },
+  "title": {
+   "text": "Seasoned Explorer"
+  },
+  "description": {
+   "text": "Meet six different environmental hazards"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "hazard_met",
+    "distinct": 6
+   }
+  }
+ },
+ "parent": "underdeep:exploration/hazard",
+ "rewards": {
+  "experience": 150
+ }
+}

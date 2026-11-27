@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:emerald_block"
+  },
+  "title": {
+   "text": "Merchant Prince"
+  },
+  "description": {
+   "text": "Make fifty sales in your shop"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "business_sale",
+    "min": 50
+   }
+  }
+ },
+ "parent": "underdeep:economy/sale",
+ "rewards": {
+  "experience": 200
+ }
+}

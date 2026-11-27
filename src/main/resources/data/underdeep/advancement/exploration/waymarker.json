@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:waymarker"
+  },
+  "title": {
+   "text": "I Was Here"
+  },
+  "description": {
+   "text": "Set up a waymarker"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "waymarker"
+   }
+  }
+ },
+ "parent": "underdeep:exploration/root"
+}

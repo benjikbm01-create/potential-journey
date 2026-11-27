@@ -1,0 +1,27 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_ingot"
+  },
+  "title": {
+   "text": "Tempered"
+  },
+  "description": {
+   "text": "Alloy steel in an alloy furnace"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "alloyed",
+    "subject": "steel_ingot"
+   }
+  }
+ },
+ "parent": "underdeep:equipment/root"
+}

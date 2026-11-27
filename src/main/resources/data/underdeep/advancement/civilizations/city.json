@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:lantern"
+  },
+  "title": {
+   "text": "City Under Stone"
+  },
+  "description": {
+   "text": "Discover a city"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "settlement_size_city"
+   }
+  }
+ },
+ "parent": "underdeep:civilizations/town",
+ "rewards": {
+  "experience": 100
+ }
+}

@@ -208,5 +208,25 @@ See `docs/SURVIVAL.md`.
 | Journal survival notes, `/underdeep survival …`, config section | done | |
 | Spoilage | not implemented (config reserved, off) | by design, see SURVIVAL.md §2 |
 
-## Stages 8–12
+## Stage 8 — Equipment, crafting, material progression, Handbook and advancements: IMPLEMENTED (2026-11-27)
+
+See `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md`.
+
+| System | State | Notes |
+|---|---|---|
+| Resource census (320 natural blocks over 15 regions) + obtainability/usefulness audit of every item | done | all 666 Underdeep items and 64 vanilla essentials reachable; report in each self-test |
+| Gap fixes (strip/planting/obsidian rules, starlily placement, 5 underground alternative recipes) | done | |
+| 17 material families; alloys, crushing, gem cutting, leatherworking (160 station recipes) | done | stations self-tested |
+| 41 melee weapons (7 families) + 3 bows + 4 arrows; material specials, coatings | done | attributes/specials self-tested; combat feel not hands-on |
+| 13 armour sets with hazard protection feeding the Stage 7 hazard meters | done | protection self-tested |
+| 26 tools incl. hammer, excavator, lumber axe, sickle, prospector's pick; tier rules; smelting pickaxe | done | 3×3, felling, smelting self-tested |
+| Exploration gear: grappling hook, cave glider, depth gauge, delver's compass, waymarker, rope ladder, lantern, backpack/pouch/satchel | implemented | packs' filters self-tested; the rest not hands-on |
+| 27 accessories in 4 slots (K key), no accumulation, kept on death | done | self-tested |
+| 34 upgrades (2 slots, one per group), kits, artisan's bench, repair (+NPC smith), salvage ≤ 50 % | done | self-tested incl. save/load |
+| Economy: 217 goods, 58 settlement recipes; companion gear | done | money audit exact |
+| Handbook (item + H key, 13 categories, 99 pages + generated item/species pages, search, recipes, bookmarks, discovery) | done | data self-tested; screen not seen in a real client |
+| 134 advancements in 13 tabs, custom event criterion, counters, quiet migration | done | triggers self-tested with a test player; toasts not seen |
+| Spoilage, combat AI changes, new bosses | not in scope | Stage 9+ |
+
+## Stages 9–12
 Not started.

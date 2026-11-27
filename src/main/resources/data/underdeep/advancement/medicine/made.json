@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:herbalist_table"
+  },
+  "title": {
+   "text": "Apothecary"
+  },
+  "description": {
+   "text": "Prepare medicine at a herbalist's table"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "medicine_made"
+   }
+  }
+ },
+ "parent": "underdeep:medicine/herbs"
+}

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:ore_crusher"
+  },
+  "title": {
+   "text": "Half Again"
+  },
+  "description": {
+   "text": "Crush ore in an ore crusher"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "crushed"
+   }
+  }
+ },
+ "parent": "underdeep:equipment/root"
+}

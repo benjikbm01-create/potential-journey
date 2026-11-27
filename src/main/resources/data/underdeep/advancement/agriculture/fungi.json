@@ -1,0 +1,32 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:sporeglow_soil"
+  },
+  "title": {
+   "text": "Mushroom Grower"
+  },
+  "description": {
+   "text": "Make sporeglow soil for growing fungi"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:sporeglow_soil"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:agriculture/root"
+}
