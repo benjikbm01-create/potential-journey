@@ -778,7 +778,7 @@ PLACED.append((VEG, "s2_coral_clusters", cave("water_floor", 30, 112, 6, f"{NS}:
 PLACED.append((VEG, "s2_ribbonweed", cave("water_floor", 40, 112, 8, f"{NS}:ribbonweed", scan=80)))
 PLACED.append((VEG, "s2_glowkelp", cave("water_floor", 30, 112, 14, f"{NS}:glowkelp", scan=90)))
 PLACED.append((VEG, "s2_glowpads", cave("water_surface", 113, 113, 4, f"{NS}:p_glowpad", scan=2)))
-PLACED.append((VEG, "s2_starlilies", cave("water_surface", 113, 113, 3, f"{NS}:p_starlily", scan=2)))
+PLACED.append((VEG, "s2_starlilies", cave("water_surface", -40, 200, 4, f"{NS}:p_starlily", scan=160)))
 veg("s2_voidroot", "voidroot", 8, surface="ceiling", band=D)
 veg("s2_ledgevine", "ledgevine", 8, surface="ceiling")
 veg("s2_starstrand", "starstrand", 10, surface="ceiling")

@@ -23,6 +23,11 @@ public class CrystalGrowerBlock extends Block {
     private final List<Supplier<Block>> stages;
     private final int oneIn;
 
+    /** Blocks this grower buds into (audit). */
+    public List<Block> stages() {
+        return stages.stream().map(Supplier::get).toList();
+    }
+
     public CrystalGrowerBlock(List<Supplier<Block>> stages, int oneIn, Settings settings) {
         super(settings);
         this.stages = stages;

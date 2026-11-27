@@ -8,7 +8,9 @@
     "MinecraftServerMixin",
     "NetherPortalMixin",
     "FishingBobberEntityMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "SmithingTransformRecipeAccessor",
+    "AxeItemAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

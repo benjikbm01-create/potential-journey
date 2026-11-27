@@ -1,0 +1,7 @@
+{
+  "note": "Handbook/audit visibility. sensitive: shown only after the player has discovered (obtained) it. deferred: belongs to a later stage; hidden and excluded from the survival audit (reasons are documented privately). technical: not survival content.",
+  "technical_patterns": ["_spawn_egg"],
+  "technical": ["underdeep:creature_egg_block"],
+  "sensitive": ["underdeep:ancient_seed", "underdeep:relic_sprout", "underdeep:relic_fruit", "underdeep:umbral_bloom", "underdeep:umbral_petal"],
+  "deferred": []
+}

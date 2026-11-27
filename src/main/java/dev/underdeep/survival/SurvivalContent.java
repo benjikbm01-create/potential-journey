@@ -286,6 +286,25 @@ public final class SurvivalContent {
         return Registries.ITEM.getId(s.getItem()).toString().equals(ing.key());
     }
 
+    /** Every item an ingredient accepts. */
+    public static Set<Item> alternatives(Ingredient ing) {
+        resolve();
+        if (ing.group()) {
+            return groups.getOrDefault(ing.key().substring(1), Set.of());
+        }
+        Item it = Registries.ITEM.get(Identifier.of(ing.key()));
+        return it == Items.AIR ? Set.of() : Set.of(it);
+    }
+
+    /** The block item of a station (for audits and the handbook). */
+    public static Item stationItem(Station s) {
+        return Registries.ITEM.get(Identifier.of("underdeep", STATION_ITEMS.getOrDefault(s.id, s.id)));
+    }
+
+    private static final Map<String, String> STATION_ITEMS = Map.ofEntries(Map.entry("pot", "cooking_pot"), Map.entry("oven", "clay_oven"),
+            Map.entry("prep", "preparation_table"), Map.entry("kettle", "kettle"), Map.entry("crock", "fermentation_crock"),
+            Map.entry("rack", "drying_rack"), Map.entry("herbal", "herbalist_table"));
+
     /** Display name of an ingredient key (group keys shown as "any fruit" etc). */
     public static String ingredientName(Ingredient ing) {
         if (ing.group()) {

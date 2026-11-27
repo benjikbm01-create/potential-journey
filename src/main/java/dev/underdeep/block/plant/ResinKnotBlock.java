@@ -41,6 +41,10 @@ public class ResinKnotBlock extends HorizontalFacingBlock {
     private static final VoxelShape SHAPE = Block.createCuboidShape(4, 4, 4, 12, 12, 12);
     private final Supplier<Item> resin;
 
+    public Item resin() {
+        return resin.get();
+    }
+
     public ResinKnotBlock(Supplier<Item> resin, Settings settings) {
         super(settings);
         this.resin = resin;

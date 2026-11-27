@@ -3,7 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 3
+      "count": 4
     },
     {
       "type": "minecraft:in_square"
@@ -11,9 +11,9 @@
     {
       "type": "underdeep:cave_surface",
       "surface": "water_surface",
-      "min_y": 113,
-      "max_y": 113,
-      "max_scan": 2
+      "min_y": -40,
+      "max_y": 200,
+      "max_scan": 160
     },
     {
       "type": "minecraft:biome"

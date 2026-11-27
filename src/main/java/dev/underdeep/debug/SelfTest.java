@@ -338,8 +338,8 @@ public final class SelfTest {
         section("Connectivity (ground truth flood fill of generated blocks)");
         connectivity(world, t, spawn.getX() >> 4, spawn.getZ() >> 4, 10, "spawn area");
         String suite = System.getProperty("underdeep.selftest.suite", "full");
-        boolean full = !"stage2".equals(suite) && !"stage4".equals(suite);
-        boolean only4 = "stage4".equals(suite); // quick iteration on settlements: skips Stage 1.5-3 measurements
+        boolean full = !"stage2".equals(suite) && !"stage4".equals(suite) && !"stage8".equals(suite);
+        boolean only4 = "stage4".equals(suite) || "stage8".equals(suite); // quick iteration on settlements: skips Stage 1.5-3 measurements
         if (full) {
             connectivity(world, t, 140, -90, 10, "remote area (2240,-1440)");
         }
@@ -347,6 +347,11 @@ public final class SelfTest {
         // ------------------------------------------------------------------ Stage 1.5 measurements
         Stage15Checks.Reporter rep = reporter();
         Map<RegionType, int[]> reps = Stage15Checks.distribution(t, rep);
+        if ("audit".equals(suite)) {
+            // fast iteration on the Stage 8 resource audit (no other checks)
+            Stage8Checks.run(server, world, t, reps, dir, rep, false);
+            return;
+        }
         if (full) {
             Stage15Checks.accessibility(t, spawn, rep);
             Stage15Checks.landmarks(t, rep);
@@ -385,6 +390,12 @@ public final class SelfTest {
         } catch (RuntimeException e) {
             Underdeep.LOGGER.error("Stage 6 checks crashed", e);
             check("stage 6 checks completed without exceptions", false, e.toString());
+        }
+        try {
+            Stage8Checks.run(server, world, t, reps, dir, rep, "stage8".equals(suite));
+        } catch (RuntimeException e) {
+            Underdeep.LOGGER.error("Stage 8 checks crashed", e);
+            check("stage 8 checks completed without exceptions", false, e.toString());
         }
         try {
             Stage7Checks.run(world, rep);

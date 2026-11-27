@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "underdeep:emberite"
+    },
+    {
+      "item": "underdeep:emberite"
+    },
+    {
+      "item": "underdeep:sulfur"
+    },
+    {
+      "item": "minecraft:stick"
+    }
+  ],
+  "result": {
+    "id": "minecraft:blaze_rod",
+    "count": 1
+  }
+}
