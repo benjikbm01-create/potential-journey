@@ -376,6 +376,10 @@ public final class InhabitantManager {
                     Text.translatable(rec.civ.translationKey()), Text.translatable("settlement.underdeep." + rec.category.id()))
                     .formatted(Formatting.GRAY)));
             p.networkHandler.sendPacket(new TitleS2CPacket(Text.literal(rec.name).formatted(Formatting.GOLD)));
+            dev.underdeep.guide.Advancements.event(p, "settlement_discovered", rec.civ.id() + ":" + rec.category.id());
+            dev.underdeep.guide.Advancements.event(p, "civ_met", rec.civ.id());
+            dev.underdeep.guide.Advancements.event(p, "settlement_size_" + rec.category.id(), String.valueOf(rec.id));
+            dev.underdeep.guide.Handbook.push(p, java.util.List.of("civ:" + rec.civ.id()));
         }
     }
 

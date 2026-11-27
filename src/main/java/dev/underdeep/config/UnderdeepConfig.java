@@ -180,6 +180,12 @@ public final class UnderdeepConfig {
     /** Containers and blocks inside owned property are protected from other players. */
     public boolean propertyProtection = true;
 
+    // ---- Stage 8: equipment, handbook, advancements ----
+    /** Give each new player an Underdeep Handbook on first arrival in an Underdeep world (the H key always works). */
+    public boolean handbookOnJoin = true;
+    /** Recognise accomplishments from earlier versions once (quietly) when a player first joins with Stage 8. */
+    public boolean advancementMigration = true;
+
     // ---- Stage 7: survival, farming, cooking, medicine and homesteading ----
     public Survival survival = new Survival();
 

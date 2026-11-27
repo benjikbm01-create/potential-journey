@@ -619,6 +619,11 @@ def main(extra=None):
     for st, nm in STATIONS8.items():
         LANG[f"station.{NS}.{st}"] = nm
     LANG["key.underdeep.handbook"] = "Open Underdeep Handbook"
+    A.save_item("underdeep_handbook", A.handbook_icon())
+    A.item_model("underdeep_handbook")
+    LANG["item.underdeep.underdeep_handbook"] = "Underdeep Handbook"
+    LANG["tooltip.underdeep.underdeep_handbook"] = "How everything down here works. Use it, or press H."
+    shapeless("underdeep_handbook", "underdeep_handbook", 1, ["minecraft:book", "minecraft:stick"])
     LANG["key.underdeep.accessories"] = "Open Accessories"
     LANG["key.categories.underdeep"] = "Underdeep"
     LANG["container.underdeep.accessories"] = "Accessories"

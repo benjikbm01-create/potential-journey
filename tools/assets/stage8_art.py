@@ -694,3 +694,15 @@ def block_assets(bid, kind):
         wjson(os.path.join(ASSETS, "models", "item", bid + ".json"), {"parent": f"{NS}:block/{bid}"})
     else:
         item_model(bid, tex=f"{NS}:block/rope_ladder")
+
+
+def handbook_icon():
+    img = art.new()
+    for x in range(3, 13):
+        for y in range(2, 14):
+            art.px(img, x, y, (120, 70, 40) if x > 3 else (90, 50, 30))
+    for y in range(3, 13):
+        art.px(img, 12, y, (236, 226, 200))
+    art.disc(img, 8, 8, 2.2, (250, 220, 120), (200, 160, 70))
+    art.px(img, 8, 8, (120, 200, 220))
+    return art.outline(img, (50, 30, 20))

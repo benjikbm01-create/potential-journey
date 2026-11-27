@@ -8,6 +8,7 @@ public final class Guide {
     }
 
     public static void init() {
+        Handbook.init();
         Uses.add(WildlifeItems.FIELD_JOURNAL, "journal: records your discoveries (wildlife, people, trade, survival notes)");
     }
 }

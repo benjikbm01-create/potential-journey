@@ -68,6 +68,7 @@ public final class Recipes {
         p.sendMessage(Text.literal("New recipe (" + how + "): " + r.resultItem().getName().getString() + " at the "
                 + SurvivalContent.stationName(r.station())).formatted(Formatting.YELLOW), false);
         sync(p);
+        dev.underdeep.guide.Advancements.event(p, "recipe_learned", r.id());
         return true;
     }
 

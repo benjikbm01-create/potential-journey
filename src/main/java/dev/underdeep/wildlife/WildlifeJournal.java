@@ -72,8 +72,18 @@ public final class WildlifeJournal extends PersistentState {
             if ((before & 1) == 0) {
                 p.sendMessage(Text.translatable("message.underdeep.journal.new", Text.translatable("entity.underdeep." + s.id))
                         .formatted(Formatting.GREEN), true);
+                dev.underdeep.guide.Advancements.event(p, "creature_discovered", s.id);
+                dev.underdeep.guide.Handbook.push(p, java.util.List.of("species:" + s.id));
+            }
+            if (f == Fact.TAMING) {
+                dev.underdeep.guide.Advancements.event(p, "tamed", s.id);
             }
         }
+    }
+
+    /** Whether a player has seen this species (handbook discovery). */
+    public static boolean knows(ServerPlayerEntity p, CreatureSpecies s) {
+        return get(p.getServer()).knows(p.getUuid(), s.id, Fact.SEEN);
     }
 
     public boolean knows(UUID player, String species, Fact f) {
