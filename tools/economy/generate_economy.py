@@ -322,7 +322,90 @@ def stage7():
     return n
 
 
+def stage8():
+    """Stage 8 goods (materials, components, equipment, accessories, kits, gear) and settlement production, derived from
+    the Stage 8 content definitions. Smiths make metal gear, tailors leather/cloth gear, gemcutters cut gems and
+    jewellery: a civilization's professions decide what it offers (regional specialisation)."""
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "assets"))
+    import stage8 as s8
+    have = {g[0] for g in GOODS}
+
+    def add(i, cat, v):
+        if u8(i) not in have:
+            GOODS.append((u8(i), cat, round(v, 3)))
+            have.add(u8(i))
+
+    def u8(i):
+        return i if ":" in i else "underdeep:" + i
+    ingot_val = {"steel_ingot": 0.6, "embersteel_ingot": 1.2, "rimesteel_ingot": 1.2, "galvanic_ingot": 0.5}
+    for c in s8.COMPONENTS:
+        cat = "METAL" if c.endswith("_ingot") else "ORE" if c.startswith("crushed_") else "GEM" if c.startswith(("cut_", "polished_")) or c == "glimmer_lens" \
+            else "FIBER" if c in ("fur_lining", "silk_cloth", "rope_coil", "leather_strap") else "ANIMAL_PRODUCT"
+        add(c, cat, ingot_val.get(c, 0.3))
+    mval = {m: {"copper": 0.15, "steel": 0.6, "embersteel": 1.2, "rimesteel": 1.2, "galvanic": 0.5, "starsilver": 1.6, "umbralite": 1.2, "nacre": 0.5,
+                "fossil": 0.15, "malachite": 0.3, "glimmer": 0.4, "iron": 0.4, "diamond": 3.0, "fur": 0.4, "scale": 0.4, "shell": 0.4,
+                "silk": 0.5}[m] for m in s8.MAT}
+    for w in s8.WEAPONS:
+        add(w["id"], "EQUIPMENT", 1 + mval[w["material"]] * 3)
+    for t in s8.TOOLS:
+        add(t["id"], "TOOLS", 0.8 + mval[t["material"]] * 3)
+    for st in s8.ARMOR_SETS:
+        for p, n in (("helmet", 5), ("chestplate", 8), ("leggings", 7), ("boots", 4)):
+            add(f"{st}_{p}", "EQUIPMENT", 0.5 + mval[st] * n)
+    for a in s8.ACCESSORIES:
+        add(a["id"], "LUXURY", 3.0)
+    for up in s8.UPGRADES:
+        add(up["kit"], "SPECIALTY", 1.5)
+    for b in s8.BOWS:
+        add(b["id"], "EQUIPMENT", 2.0)
+    for a in s8.ARROWS:
+        add(a["id"], "EQUIPMENT", 0.1)
+    for g in s8.UTILITY:
+        add(g, "TOOLS", 3.0)
+    profs = {"crush": ["smelter", "miner"], "alloy": ["smelter", "blacksmith"], "forge": ["blacksmith", "engineer"], "gems": ["gemcutter", "artisan"],
+             "leather": ["tailor", "hunter"], "herbal": ["alchemist", "healer"]}
+    skill = {"crush": "MINING", "alloy": "SMITHING", "forge": "SMITHING", "gems": "CRAFTING", "leather": "TAILORING", "herbal": "MEDICINE"}
+    n = 0
+    for r in s8.R:
+        ins, ok = {}, True
+        for k, c in r["ingredients"]:
+            key = {"#fiber": "minecraft:string"}.get(k, k)
+            if key not in have:
+                ok = False
+                break
+            ins[key] = ins.get(key, 0) + c
+        if not ok or r["result"] not in have:
+            continue
+        RECIPES.append(R("s8_" + r["id"], "process", profs[r["station"]], ins, {r["result"]: r["count"]}, round(min(2.0, max(0.3, r["seconds"] / 10)), 2),
+                         6, skill[r["station"]], fuel=0.15 if r["station"] in ("alloy", "forge") else 0.0))
+        n += 1
+    # crafting-table equipment made by smiths and tailors (same material counts as the crafting recipes)
+    count = {"sword": 2, "dagger": 1, "greatsword": 5, "battleaxe": 4, "spear": 1, "warhammer": 6, "mace": 3, "pickaxe": 3, "axe": 3, "shovel": 1,
+             "hoe": 2, "helmet": 5, "chestplate": 8, "leggings": 7, "boots": 4}
+    for w in s8.WEAPONS + [t for t in s8.TOOLS if t["kind"] in count]:
+        m = w["material"]
+        fam = w.get("family") or w.get("kind")
+        ingot = u8(s8.MAT[m]["ingot"])
+        if m in s8.FORGED or ingot not in have or u8(w["id"]) not in have:
+            continue
+        RECIPES.append(R("s8_make_" + w["id"], "process", ["blacksmith"] if m not in ("fossil",) else ["artisan", "hunter"], {ingot: count[fam],
+                         "minecraft:stick": 1}, {u8(w["id"]): 1}, 1.0, 2, "SMITHING"))
+        n += 1
+    for st in s8.ARMOR_SETS:
+        ingot = u8(s8.MAT[st]["ingot"])
+        if st in s8.FORGED or ingot not in have:
+            continue
+        for p in ("helmet", "chestplate", "leggings", "boots"):
+            RECIPES.append(R(f"s8_make_{st}_{p}", "process", ["tailor"] if st in ("fur", "scale", "shell", "silk") else ["blacksmith"],
+                             {ingot: count[p]}, {u8(f"{st}_{p}"): 1}, 1.2, 2, "TAILORING" if st in ("fur", "scale", "shell", "silk") else "SMITHING"))
+            n += 1
+    return n
+
+
 def main():
+    n8 = stage8()
+    print("stage 8:", n8, "settlement recipes")
     n7 = stage7()
     print("stage 7:", n7, "settlement recipes")
     os.makedirs(OUT, exist_ok=True)

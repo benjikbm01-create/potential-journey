@@ -2631,6 +2631,1430 @@
    "fuel": 0.0
   },
   {
+   "id": "s8_make_copper_sword",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 2,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_sword": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_dagger",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_dagger": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_spear",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_spear": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_sword",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 2,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_sword": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_dagger",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_dagger": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_greatsword",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 5,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_greatsword": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_battleaxe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 4,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_battleaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_spear",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_spear": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_warhammer",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 6,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_warhammer": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_mace",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_mace": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fossil_club",
+   "kind": "process",
+   "professions": [
+    "artisan",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fossil_fragment": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:fossil_club": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fossil_battleaxe",
+   "kind": "process",
+   "professions": [
+    "artisan",
+    "hunter"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fossil_fragment": 4,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:fossil_battleaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_malachite_maul",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:malachite": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:malachite_maul": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_iron_dagger",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:iron_dagger": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_iron_greatsword",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 5,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:iron_greatsword": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_iron_spear",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:iron_spear": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_iron_warhammer",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 6,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:iron_warhammer": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_iron_battleaxe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 4,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:iron_battleaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_iron_mace",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:iron_ingot": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:iron_mace": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_pickaxe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_pickaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_axe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_axe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_shovel",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_shovel": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_hoe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 2,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:copper_hoe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_pickaxe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_pickaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_axe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_axe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_shovel",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_shovel": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_hoe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 2,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:steel_hoe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_malachite_pickaxe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:malachite": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:malachite_pickaxe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_malachite_axe",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:malachite": 3,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:malachite_axe": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_malachite_shovel",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:malachite": 1,
+    "minecraft:stick": 1
+   },
+   "outputs": {
+    "underdeep:malachite_shovel": 1
+   },
+   "byproducts": {},
+   "hours": 1.0,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_helmet",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 5
+   },
+   "outputs": {
+    "underdeep:copper_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_chestplate",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 8
+   },
+   "outputs": {
+    "underdeep:copper_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_leggings",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 7
+   },
+   "outputs": {
+    "underdeep:copper_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_copper_boots",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "minecraft:copper_ingot": 4
+   },
+   "outputs": {
+    "underdeep:copper_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_helmet",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 5
+   },
+   "outputs": {
+    "underdeep:steel_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_chestplate",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 8
+   },
+   "outputs": {
+    "underdeep:steel_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_leggings",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 7
+   },
+   "outputs": {
+    "underdeep:steel_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_steel_boots",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:steel_ingot": 4
+   },
+   "outputs": {
+    "underdeep:steel_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fossil_helmet",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fossil_fragment": 5
+   },
+   "outputs": {
+    "underdeep:fossil_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fossil_chestplate",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fossil_fragment": 8
+   },
+   "outputs": {
+    "underdeep:fossil_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fossil_leggings",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fossil_fragment": 7
+   },
+   "outputs": {
+    "underdeep:fossil_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fossil_boots",
+   "kind": "process",
+   "professions": [
+    "blacksmith"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fossil_fragment": 4
+   },
+   "outputs": {
+    "underdeep:fossil_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "SMITHING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fur_helmet",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fur_lining": 5
+   },
+   "outputs": {
+    "underdeep:fur_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fur_chestplate",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fur_lining": 8
+   },
+   "outputs": {
+    "underdeep:fur_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fur_leggings",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fur_lining": 7
+   },
+   "outputs": {
+    "underdeep:fur_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_fur_boots",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:fur_lining": 4
+   },
+   "outputs": {
+    "underdeep:fur_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_scale_helmet",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:scale_plate": 5
+   },
+   "outputs": {
+    "underdeep:scale_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_scale_chestplate",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:scale_plate": 8
+   },
+   "outputs": {
+    "underdeep:scale_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_scale_leggings",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:scale_plate": 7
+   },
+   "outputs": {
+    "underdeep:scale_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_scale_boots",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:scale_plate": 4
+   },
+   "outputs": {
+    "underdeep:scale_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_shell_helmet",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shell_plate": 5
+   },
+   "outputs": {
+    "underdeep:shell_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_shell_chestplate",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shell_plate": 8
+   },
+   "outputs": {
+    "underdeep:shell_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_shell_leggings",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shell_plate": 7
+   },
+   "outputs": {
+    "underdeep:shell_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_shell_boots",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:shell_plate": 4
+   },
+   "outputs": {
+    "underdeep:shell_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_silk_helmet",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:silk_cloth": 5
+   },
+   "outputs": {
+    "underdeep:silk_helmet": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_silk_chestplate",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:silk_cloth": 8
+   },
+   "outputs": {
+    "underdeep:silk_chestplate": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_silk_leggings",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:silk_cloth": 7
+   },
+   "outputs": {
+    "underdeep:silk_leggings": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
+   "id": "s8_make_silk_boots",
+   "kind": "process",
+   "professions": [
+    "tailor"
+   ],
+   "workplace": [],
+   "inputs": {
+    "underdeep:silk_cloth": 4
+   },
+   "outputs": {
+    "underdeep:silk_boots": 1
+   },
+   "byproducts": {},
+   "hours": 1.2,
+   "maxPerDay": 2,
+   "skill": "TAILORING",
+   "habitats": [],
+   "regions": [],
+   "source": [],
+   "pool": "",
+   "tool": "",
+   "fuel": 0.0
+  },
+  {
    "id": "s7_puffcap_soup",
    "kind": "process",
    "professions": [

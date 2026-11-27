@@ -782,6 +782,1091 @@
    "value": 6.0
   },
   {
+   "item": "underdeep:steel_ingot",
+   "category": "METAL",
+   "value": 0.6
+  },
+  {
+   "item": "underdeep:embersteel_ingot",
+   "category": "METAL",
+   "value": 1.2
+  },
+  {
+   "item": "underdeep:rimesteel_ingot",
+   "category": "METAL",
+   "value": 1.2
+  },
+  {
+   "item": "underdeep:galvanic_ingot",
+   "category": "METAL",
+   "value": 0.5
+  },
+  {
+   "item": "underdeep:crushed_iron",
+   "category": "ORE",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:crushed_copper",
+   "category": "ORE",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:crushed_gold",
+   "category": "ORE",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:crushed_starsilver",
+   "category": "ORE",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:crushed_umbralite",
+   "category": "ORE",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:cut_opal",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:polished_jasper",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:polished_malachite",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:cut_cryolite",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:polished_pearl",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:glimmer_lens",
+   "category": "GEM",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:fur_lining",
+   "category": "FIBER",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:scale_plate",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:shell_plate",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:silk_cloth",
+   "category": "FIBER",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:horn_grip",
+   "category": "ANIMAL_PRODUCT",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:leather_strap",
+   "category": "FIBER",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:rope_coil",
+   "category": "FIBER",
+   "value": 0.3
+  },
+  {
+   "item": "underdeep:copper_sword",
+   "category": "EQUIPMENT",
+   "value": 1.45
+  },
+  {
+   "item": "underdeep:copper_dagger",
+   "category": "EQUIPMENT",
+   "value": 1.45
+  },
+  {
+   "item": "underdeep:copper_spear",
+   "category": "EQUIPMENT",
+   "value": 1.45
+  },
+  {
+   "item": "underdeep:steel_sword",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:steel_dagger",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:steel_greatsword",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:steel_battleaxe",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:steel_spear",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:steel_warhammer",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:steel_mace",
+   "category": "EQUIPMENT",
+   "value": 2.8
+  },
+  {
+   "item": "underdeep:embersteel_sword",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:embersteel_greatsword",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:embersteel_warhammer",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:rimesteel_sword",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:rimesteel_spear",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:rimesteel_dagger",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:galvanic_sword",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:galvanic_dagger",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:galvanic_spear",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:starsilver_sword",
+   "category": "EQUIPMENT",
+   "value": 5.8
+  },
+  {
+   "item": "underdeep:starsilver_dagger",
+   "category": "EQUIPMENT",
+   "value": 5.8
+  },
+  {
+   "item": "underdeep:starsilver_glaive",
+   "category": "EQUIPMENT",
+   "value": 5.8
+  },
+  {
+   "item": "underdeep:umbralite_sword",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:umbralite_greatsword",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:umbralite_battleaxe",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:umbralite_warhammer",
+   "category": "EQUIPMENT",
+   "value": 4.6
+  },
+  {
+   "item": "underdeep:nacre_cutlass",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:nacre_harpoon",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:fossil_club",
+   "category": "EQUIPMENT",
+   "value": 1.45
+  },
+  {
+   "item": "underdeep:fossil_battleaxe",
+   "category": "EQUIPMENT",
+   "value": 1.45
+  },
+  {
+   "item": "underdeep:malachite_maul",
+   "category": "EQUIPMENT",
+   "value": 1.9
+  },
+  {
+   "item": "underdeep:glimmer_stiletto",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:iron_dagger",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:iron_greatsword",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:iron_spear",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:iron_warhammer",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:iron_battleaxe",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:iron_mace",
+   "category": "EQUIPMENT",
+   "value": 2.2
+  },
+  {
+   "item": "underdeep:diamond_greatsword",
+   "category": "EQUIPMENT",
+   "value": 10.0
+  },
+  {
+   "item": "underdeep:diamond_spear",
+   "category": "EQUIPMENT",
+   "value": 10.0
+  },
+  {
+   "item": "underdeep:diamond_warhammer",
+   "category": "EQUIPMENT",
+   "value": 10.0
+  },
+  {
+   "item": "underdeep:copper_pickaxe",
+   "category": "TOOLS",
+   "value": 1.25
+  },
+  {
+   "item": "underdeep:copper_axe",
+   "category": "TOOLS",
+   "value": 1.25
+  },
+  {
+   "item": "underdeep:copper_shovel",
+   "category": "TOOLS",
+   "value": 1.25
+  },
+  {
+   "item": "underdeep:copper_hoe",
+   "category": "TOOLS",
+   "value": 1.25
+  },
+  {
+   "item": "underdeep:steel_pickaxe",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:steel_axe",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:steel_shovel",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:steel_hoe",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:malachite_pickaxe",
+   "category": "TOOLS",
+   "value": 1.7
+  },
+  {
+   "item": "underdeep:malachite_axe",
+   "category": "TOOLS",
+   "value": 1.7
+  },
+  {
+   "item": "underdeep:malachite_shovel",
+   "category": "TOOLS",
+   "value": 1.7
+  },
+  {
+   "item": "underdeep:starsilver_pickaxe",
+   "category": "TOOLS",
+   "value": 5.6
+  },
+  {
+   "item": "underdeep:starsilver_axe",
+   "category": "TOOLS",
+   "value": 5.6
+  },
+  {
+   "item": "underdeep:galvanic_pickaxe",
+   "category": "TOOLS",
+   "value": 2.3
+  },
+  {
+   "item": "underdeep:embersteel_pickaxe",
+   "category": "TOOLS",
+   "value": 4.4
+  },
+  {
+   "item": "underdeep:nacre_pickaxe",
+   "category": "TOOLS",
+   "value": 2.3
+  },
+  {
+   "item": "underdeep:umbralite_pickaxe",
+   "category": "TOOLS",
+   "value": 4.4
+  },
+  {
+   "item": "underdeep:umbralite_axe",
+   "category": "TOOLS",
+   "value": 4.4
+  },
+  {
+   "item": "underdeep:umbralite_shovel",
+   "category": "TOOLS",
+   "value": 4.4
+  },
+  {
+   "item": "underdeep:umbralite_hoe",
+   "category": "TOOLS",
+   "value": 4.4
+  },
+  {
+   "item": "underdeep:steel_hammer",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:umbralite_hammer",
+   "category": "TOOLS",
+   "value": 4.4
+  },
+  {
+   "item": "underdeep:steel_excavator",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:steel_lumber_axe",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:steel_sickle",
+   "category": "TOOLS",
+   "value": 2.6
+  },
+  {
+   "item": "underdeep:prospectors_pick",
+   "category": "TOOLS",
+   "value": 2.3
+  },
+  {
+   "item": "underdeep:copper_helmet",
+   "category": "EQUIPMENT",
+   "value": 1.25
+  },
+  {
+   "item": "underdeep:copper_chestplate",
+   "category": "EQUIPMENT",
+   "value": 1.7
+  },
+  {
+   "item": "underdeep:copper_leggings",
+   "category": "EQUIPMENT",
+   "value": 1.55
+  },
+  {
+   "item": "underdeep:copper_boots",
+   "category": "EQUIPMENT",
+   "value": 1.1
+  },
+  {
+   "item": "underdeep:steel_helmet",
+   "category": "EQUIPMENT",
+   "value": 3.5
+  },
+  {
+   "item": "underdeep:steel_chestplate",
+   "category": "EQUIPMENT",
+   "value": 5.3
+  },
+  {
+   "item": "underdeep:steel_leggings",
+   "category": "EQUIPMENT",
+   "value": 4.7
+  },
+  {
+   "item": "underdeep:steel_boots",
+   "category": "EQUIPMENT",
+   "value": 2.9
+  },
+  {
+   "item": "underdeep:embersteel_helmet",
+   "category": "EQUIPMENT",
+   "value": 6.5
+  },
+  {
+   "item": "underdeep:embersteel_chestplate",
+   "category": "EQUIPMENT",
+   "value": 10.1
+  },
+  {
+   "item": "underdeep:embersteel_leggings",
+   "category": "EQUIPMENT",
+   "value": 8.9
+  },
+  {
+   "item": "underdeep:embersteel_boots",
+   "category": "EQUIPMENT",
+   "value": 5.3
+  },
+  {
+   "item": "underdeep:rimesteel_helmet",
+   "category": "EQUIPMENT",
+   "value": 6.5
+  },
+  {
+   "item": "underdeep:rimesteel_chestplate",
+   "category": "EQUIPMENT",
+   "value": 10.1
+  },
+  {
+   "item": "underdeep:rimesteel_leggings",
+   "category": "EQUIPMENT",
+   "value": 8.9
+  },
+  {
+   "item": "underdeep:rimesteel_boots",
+   "category": "EQUIPMENT",
+   "value": 5.3
+  },
+  {
+   "item": "underdeep:galvanic_helmet",
+   "category": "EQUIPMENT",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:galvanic_chestplate",
+   "category": "EQUIPMENT",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:galvanic_leggings",
+   "category": "EQUIPMENT",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:galvanic_boots",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:starsilver_helmet",
+   "category": "EQUIPMENT",
+   "value": 8.5
+  },
+  {
+   "item": "underdeep:starsilver_chestplate",
+   "category": "EQUIPMENT",
+   "value": 13.3
+  },
+  {
+   "item": "underdeep:starsilver_leggings",
+   "category": "EQUIPMENT",
+   "value": 11.7
+  },
+  {
+   "item": "underdeep:starsilver_boots",
+   "category": "EQUIPMENT",
+   "value": 6.9
+  },
+  {
+   "item": "underdeep:umbralite_helmet",
+   "category": "EQUIPMENT",
+   "value": 6.5
+  },
+  {
+   "item": "underdeep:umbralite_chestplate",
+   "category": "EQUIPMENT",
+   "value": 10.1
+  },
+  {
+   "item": "underdeep:umbralite_leggings",
+   "category": "EQUIPMENT",
+   "value": 8.9
+  },
+  {
+   "item": "underdeep:umbralite_boots",
+   "category": "EQUIPMENT",
+   "value": 5.3
+  },
+  {
+   "item": "underdeep:nacre_helmet",
+   "category": "EQUIPMENT",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:nacre_chestplate",
+   "category": "EQUIPMENT",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:nacre_leggings",
+   "category": "EQUIPMENT",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:nacre_boots",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:fossil_helmet",
+   "category": "EQUIPMENT",
+   "value": 1.25
+  },
+  {
+   "item": "underdeep:fossil_chestplate",
+   "category": "EQUIPMENT",
+   "value": 1.7
+  },
+  {
+   "item": "underdeep:fossil_leggings",
+   "category": "EQUIPMENT",
+   "value": 1.55
+  },
+  {
+   "item": "underdeep:fossil_boots",
+   "category": "EQUIPMENT",
+   "value": 1.1
+  },
+  {
+   "item": "underdeep:fur_helmet",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:fur_chestplate",
+   "category": "EQUIPMENT",
+   "value": 3.7
+  },
+  {
+   "item": "underdeep:fur_leggings",
+   "category": "EQUIPMENT",
+   "value": 3.3
+  },
+  {
+   "item": "underdeep:fur_boots",
+   "category": "EQUIPMENT",
+   "value": 2.1
+  },
+  {
+   "item": "underdeep:scale_helmet",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:scale_chestplate",
+   "category": "EQUIPMENT",
+   "value": 3.7
+  },
+  {
+   "item": "underdeep:scale_leggings",
+   "category": "EQUIPMENT",
+   "value": 3.3
+  },
+  {
+   "item": "underdeep:scale_boots",
+   "category": "EQUIPMENT",
+   "value": 2.1
+  },
+  {
+   "item": "underdeep:shell_helmet",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:shell_chestplate",
+   "category": "EQUIPMENT",
+   "value": 3.7
+  },
+  {
+   "item": "underdeep:shell_leggings",
+   "category": "EQUIPMENT",
+   "value": 3.3
+  },
+  {
+   "item": "underdeep:shell_boots",
+   "category": "EQUIPMENT",
+   "value": 2.1
+  },
+  {
+   "item": "underdeep:silk_helmet",
+   "category": "EQUIPMENT",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:silk_chestplate",
+   "category": "EQUIPMENT",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:silk_leggings",
+   "category": "EQUIPMENT",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:silk_boots",
+   "category": "EQUIPMENT",
+   "value": 2.5
+  },
+  {
+   "item": "underdeep:ember_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:rime_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:galvanic_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:pearl_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:opal_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:jasper_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:malachite_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:starsilver_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:umbral_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:copper_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:horn_ring",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:spore_filter_amulet",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:heartstone_amulet",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:nacre_amulet",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:fossil_amulet",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:amber_amulet",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:warden_amulet",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:climbing_claws",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:feather_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:stride_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:miners_lamp",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:runners_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:healers_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:traders_token",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:foragers_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:wayfinders_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:anglers_charm",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:honed_edge_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:balanced_grip_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:weighted_pommel_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:long_haft_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:venom_coating_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:ember_coating_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:frost_coating_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:glimmer_coating_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:reinforced_head_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:honed_bit_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:aquatic_grip_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:malachite_bracing_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:insulated_lining_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:cooling_lining_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:spore_filter_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:grounding_mesh_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:sealed_seams_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:reinforced_plating_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:toughened_plating_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:lightened_frame_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:gripped_soles_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:lamp_mount_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:opal_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:jasper_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:malachite_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:cryolite_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:emberite_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:galvanite_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:pearl_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:starsilver_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:glimmer_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:amber_inlay_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:bow_string_silk_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:bow_limbs_horn_kit",
+   "category": "SPECIALTY",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:lumenwood_shortbow",
+   "category": "EQUIPMENT",
+   "value": 2.0
+  },
+  {
+   "item": "underdeep:spirebark_longbow",
+   "category": "EQUIPMENT",
+   "value": 2.0
+  },
+  {
+   "item": "underdeep:horn_recurve_bow",
+   "category": "EQUIPMENT",
+   "value": 2.0
+  },
+  {
+   "item": "underdeep:heavy_arrow",
+   "category": "EQUIPMENT",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:frost_arrow",
+   "category": "EQUIPMENT",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:venom_arrow",
+   "category": "EQUIPMENT",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:ember_arrow",
+   "category": "EQUIPMENT",
+   "value": 0.1
+  },
+  {
+   "item": "underdeep:grappling_hook",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:cave_glider",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:depth_gauge",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:delvers_compass",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:backpack",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:herb_pouch",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:ore_satchel",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:repair_kit",
+   "category": "TOOLS",
+   "value": 3.0
+  },
+  {
    "item": "underdeep:glimmerfin",
    "category": "FISH",
    "value": 0.17

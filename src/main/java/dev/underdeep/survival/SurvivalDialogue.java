@@ -48,6 +48,10 @@ public final class SurvivalDialogue {
         if (healer(prof)) {
             Dialogue.opt(ids, labels, "s_treat", "Could you treat my injuries? (" + TREAT_PRICE + " emeralds)");
         }
+        net.minecraft.item.ItemStack held = p.getMainHandStack();
+        if ((prof.equals("blacksmith") || prof.equals("smelter") || prof.equals("engineer")) && held.isDamageable() && held.getDamage() > 0) {
+            Dialogue.opt(ids, labels, "s_repair", "Could you repair this " + held.getName().getString() + "? (" + repairPrice(held) + " emeralds)");
+        }
         if (prof.equals("innkeeper")) {
             Dialogue.opt(ids, labels, "s_meal", "A hot meal, please (" + MEAL_PRICE + " emerald)");
             Dialogue.opt(ids, labels, "s_bed", "A bed for the night (" + BED_PRICE + " emeralds)");
@@ -104,6 +108,25 @@ public final class SurvivalDialogue {
                 Meals.apply(p, net.minecraft.entity.effect.StatusEffects.REGENERATION, 200, 0, false);
                 return "Hold still... there. Keep it clean and you'll mend.";
             }
+            case "s_repair" -> {
+                net.minecraft.item.ItemStack held = p.getMainHandStack();
+                if (!held.isDamageable() || held.getDamage() == 0) {
+                    return "That looks fine to me.";
+                }
+                String metal = e == null ? null : java.util.List.of("underdeep:steel_ingot", "minecraft:iron_ingot").stream()
+                        .filter(g -> e.free(g) >= 1).findFirst().orElse(null);
+                if (metal == null) {
+                    return "I've no metal to spare for repairs right now.";
+                }
+                int price = repairPrice(held);
+                if (!pay(p, e, price)) {
+                    return "That'll be " + price + " emeralds.";
+                }
+                use(e, metal);
+                held.setDamage(0); // only damage changes: enchantments and upgrades stay
+                dev.underdeep.guide.Advancements.event(p, "repaired", "smith");
+                return "Good as new. Look after it.";
+            }
             case "s_meal" -> {
                 Goods.Good meal = e == null ? null : Goods.in(Goods.Category.PREPARED_FOOD).stream().filter(g -> g.food() && e.free(g.id()) >= 1)
                         .max(java.util.Comparator.comparingInt(Goods.Good::nutrition)).orElse(null);
@@ -131,6 +154,10 @@ public final class SurvivalDialogue {
                 return null;
             }
         }
+    }
+
+    static int repairPrice(net.minecraft.item.ItemStack s) {
+        return 1 + (int) Math.ceil(4.0 * s.getDamage() / Math.max(1, s.getMaxDamage()));
     }
 
     /** First unknown recipe of this civilization, else any unknown non-basic recipe without a region. */

@@ -241,6 +241,7 @@ public final class Companions {
         m.companionMode = 0;
         t.bond.companion = false;
         e.companionOwner = null;
+        dev.underdeep.equipment.CompanionGear.clear(e);
         m.memories.remember(Memory.Type.GOAL_DONE, "p:" + p.getUuid(), "JOURNEY", t.now, Society.memLimit(), 0.8);
         SettlementState.get(p.getServerWorld()).markDirty();
         return t.bond.affection > 50 ? "I'll miss this. Come and find me, alright?" : "It was good travelling with you. Take care.";
@@ -359,6 +360,10 @@ public final class Companions {
         if (mode == Mode.REST && m.need(Need.REST) > 0.9) {
             set(m, Mode.FOLLOW);
             soc.say(e, "I'm rested. Let's go.", 0);
+        }
+        // Stage 8: wear and wield the best gear from the shared pack
+        if (now % 40 < 20) {
+            dev.underdeep.equipment.CompanionGear.apply(e, m);
         }
         // eat from the pack, then from their own belongings
         if (m.need(Need.HUNGER) < 0.35) {
