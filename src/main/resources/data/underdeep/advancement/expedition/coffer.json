@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:expedition_cache"
+  },
+  "title": {
+   "text": "Your Share"
+  },
+  "description": {
+   "text": "Open an expedition coffer"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "coffer_opened"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/dungeon"
+}

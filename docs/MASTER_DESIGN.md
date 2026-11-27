@@ -156,7 +156,7 @@ from connected systems, not scripted.
 6. World simulation, economies, trade and faction development
 7. Survival, farming and resource acquisition
 8. Equipment, crafting and progression
-9. Exploration, ruins and adventure content
+9. Exploration, ruins and adventure content — **implemented (Stage 9)**
 10. Combat, bosses and endgame
 11. Immersion, sounds, animations and polish
 12. Final multiplayer testing, performance optimisation and balancing
@@ -190,3 +190,15 @@ family differences, hazard-protective armour, specialised tools and exploration 
 repair and salvage, settlement equipment economies, the in-game Handbook generated from real game data, and 134
 advancements. See `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md`. Combat and danger (Stage 9) build on
 these contracts.
+
+## Stage 9 status (exploration)
+The caverns now hold the remains of older peoples: ruins along the roads, landmarks, dungeons with working
+mechanisms, traps and guards, hidden rooms, historical records that do not always agree, artifacts (a few unique
+per world), rumours and charts from inhabitants, travel encounters and an exploration journal. Rewards are fair to
+groups (personal coffers, once-per-world uniques). See `docs/EXPLORATION.md`; secrets are private.
+
+## Permanent requirement: soundtrack (Stage 11)
+Underdeep needs a continuous soundtrack, not vanilla's sparse music: about 60–80 original tracks covering every
+ecosystem, both layers, settlements of each civilization, exploration contexts (ruin, landmark, dungeon by scale,
+secret), danger and calm, with crossfades on context changes. A client option must offer vanilla-style gaps for
+players who prefer silence between tracks. Stage 9 already sends the exploration context to the client.

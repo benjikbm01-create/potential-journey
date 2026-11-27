@@ -83,6 +83,11 @@ public final class ExploreItems {
         dev.underdeep.guide.Uses.add(VAULT_KEY, "opens the lock of the vault it was found in");
         dev.underdeep.guide.Uses.add(LORE_FRAGMENT, "read it (use) to record it in your journal");
         dev.underdeep.guide.Uses.add(SURVEYORS_CHART, "use it to mark the charted place in your journal; can be shared");
+        dev.underdeep.guide.Uses.add(STAR_SHARD, "valuable: scholars and merchants buy star shards");
+        for (Item t : List.of(TUNING_FORK, BREATH_SHELL, HOMING_STONE, SOUNDING_HORN)) {
+            dev.underdeep.guide.Uses.add(t, "exploration artifact (use it)");
+        }
+        dev.underdeep.guide.Uses.add(WARDING_BELL.asItem(), "place it to keep hostile creatures from spawning nearby");
         for (Block b : RELIC_BLOCKS.values()) {
             dev.underdeep.guide.Uses.add(b.asItem(), "relic: display it, or sell it to a scholar");
         }

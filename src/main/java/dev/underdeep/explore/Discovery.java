@@ -125,6 +125,7 @@ public final class Discovery {
             Advancements.event(p, "first_discoverer", f.id());
         }
         Handbook.push(p, List.of("site:" + f.id()));
+        Explorations.sendJournal(p);
         companionRemark(w, p, s);
     }
 
@@ -139,6 +140,7 @@ public final class Discovery {
         p.playSoundToPlayer(SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.PLAYERS, 1f, 0.8f);
         Advancements.event(p, "secret_found", secretId);
         Handbook.push(p, List.of("secret:" + secretId));
+        Explorations.sendJournal(p);
         if (s.family().category() == ExploreContent.Category.SECRET && !d.sites.containsKey(s.id())) {
             d.sites.put(s.id(), w.getTime());
             ExplorationState st = ExplorationState.get(w.getServer());
@@ -169,6 +171,7 @@ public final class Discovery {
             p.sendMessage(Text.literal("Expedition complete: " + s.family().name()).formatted(Formatting.GREEN, Formatting.BOLD), false);
             p.playSoundToPlayer(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundCategory.PLAYERS, 0.7f, 1f);
             Advancements.event(p, "expedition_completed", s.family().id());
+            Explorations.sendJournal(p);
             Advancements.event(p, "expedition_" + s.family().scale().name().toLowerCase(), s.family().id());
             if (party.size() >= 2) {
                 Advancements.event(p, "expedition_together", s.family().id());
@@ -252,6 +255,7 @@ public final class Discovery {
             d.leads.put(s.id(), source);
             p.sendMessage(Text.literal("Noted in your journal: " + s.family().name()).formatted(Formatting.DARK_AQUA), true);
             Advancements.event(p, "lead_noted", source.split(":")[0]);
+            Explorations.sendJournal(p);
         }
     }
 

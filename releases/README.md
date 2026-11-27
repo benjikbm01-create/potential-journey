@@ -4,9 +4,11 @@ Prebuilt development JARs, committed so they can be downloaded without building.
 
 | File | Stage | Minecraft | Requires |
 |---|---|---|---|
+| `underdeep-0.10.0-stage9.jar` | 9 — exploration: ruins, landmarks, dungeons with puzzles and traps, secrets, artifacts, records, rumours, journal — **current** | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
+| `underdeep-0.9.1-stage8.jar` | 8 — equipment, metallurgy, accessories, upgrades, Handbook, advancements | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.5.0-stage4.jar` | 4 — civilizations, settlements and architecture (8 cultures, villages to cities, inhabitants, trading) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.6.0-stage5.jar` | 5 — living inhabitants (personalities, needs, memories, relationships, conversations, companions) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
-| `underdeep-0.8.0-stage7.jar` | 7 — cooking, preserving, farming, husbandry, fishing, medicine, hazards, camping, homes — **current** | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
+| `underdeep-0.8.0-stage7.jar` | 7 — cooking, preserving, farming, husbandry, fishing, medicine, hazards, camping, homes | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.7.0-stage6.jar` | 6 — economies, trade, caravans, construction, migration, diplomacy, contracts, property, shops | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.4.0-stage3.jar` | 3 — wildlife and living ecological simulation (60 creatures, taming, riding, regional populations) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
 | `underdeep-0.3.0-stage2.jar` | 2 — living ecosystems (trees, wood sets, plants, fungi, aquatic life, crops, foods, medicines, minerals) | 1.21.1 | Fabric Loader ≥ 0.17.3, Fabric API 0.116.18+1.21.1 |
@@ -39,3 +41,8 @@ client (Handbook, accessory and artisan screens are client-side).
 
 Install: put the JAR and Fabric API in `mods/`. See the main `README.md` for world and server setup.
 Rebuild from source with `./gradlew build` (output: `build/libs/`).
+
+Stage 9 (`underdeep-0.10.0-stage9.jar`) **needs a new world** for its ruins, landmarks and dungeons (generator v4).
+Existing worlds still open and keep everything; they just get no exploration sites (unless `exploration.inOlderWorlds`
+is enabled in `config/underdeep.json`, which adds sites to newly generated chunks only). Install on the server and
+every client.

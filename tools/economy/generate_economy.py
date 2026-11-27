@@ -403,7 +403,23 @@ def stage8():
     return n
 
 
+def stage9():
+    """Stage 9 exploration valuables: relics, ancient coins, star shards and encrusted relics are goods that merchants and
+    scholars buy (real stock; resale is always dearer than purchase, so no loops). Artifacts are not goods."""
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "assets"))
+    import stage9 as s9
+    have = {g[0] for g in GOODS}
+    for rid, _ in s9.RELICS:
+        if "underdeep:" + rid not in have:
+            GOODS.append(("underdeep:" + rid, "DECORATIVE", 4.0))
+    for i, cat, v in (("ancient_coin", "LUXURY", 0.6), ("star_shard", "GEM", 1.5), ("encrusted_relic", "SPECIALTY", 2.0)):
+        if "underdeep:" + i not in have:
+            GOODS.append(("underdeep:" + i, cat, v))
+
+
 def main():
+    stage9()
     n8 = stage8()
     print("stage 8:", n8, "settlement recipes")
     n7 = stage7()

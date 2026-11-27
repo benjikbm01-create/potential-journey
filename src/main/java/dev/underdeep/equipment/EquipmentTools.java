@@ -732,6 +732,10 @@ public final class EquipmentTools {
                 out.add(new Place("Your bed", p.getSpawnPointPosition(), dim));
             }
             out.add(new Place("World spawn", p.getServerWorld().getSpawnPos(), dim));
+            // Stage 9: the nearest places this player has discovered (never undiscovered ones)
+            for (var t : dev.underdeep.explore.Explorations.compassTargets(p)) {
+                out.add(new Place(t.getLeft(), t.getRight(), dim));
+            }
             return out;
         }
 

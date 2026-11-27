@@ -57,6 +57,111 @@ public final class Explorations {
         return SERVER;
     }
 
+    /**
+     * S2C: the player's personal journal pages (places, leads, records, collection). Each entry is
+     * "kind \u0001 id \u0001 title \u0001 icon \u0001 body", body paragraphs separated by '\n'. "{at:x,y,z}" in a body is shown by
+     * the client as the live distance and direction to that position.
+     */
+    public record Journal(java.util.List<String> entries) implements CustomPayload {
+        public static final Id<Journal> ID = new Id<>(Identifier.of(Underdeep.MOD_ID, "explore_journal"));
+        public static final PacketCodec<ByteBuf, Journal> CODEC = PacketCodecs.STRING.collect(PacketCodecs.toList()).xmap(Journal::new, Journal::entries);
+
+        @Override
+        public Id<? extends CustomPayload> getId() {
+            return ID;
+        }
+    }
+
+    /** The eight nearest places the player has discovered (name, position), for the delver's compass. */
+    public static java.util.List<net.minecraft.util.Pair<String, BlockPos>> compassTargets(ServerPlayerEntity p) {
+        java.util.List<net.minecraft.util.Pair<String, BlockPos>> out = new java.util.ArrayList<>();
+        ExplorationMap map = p.getWorld() instanceof ServerWorld w ? of(w) : null;
+        if (map == null) {
+            return out;
+        }
+        java.util.List<Site> found = new java.util.ArrayList<>();
+        for (long id : ExplorerData.of(p).sites.keySet()) {
+            Site s = map.byId(id);
+            if (s != null) {
+                found.add(s);
+            }
+        }
+        found.sort((a, b) -> Double.compare(a.dist(p.getX(), p.getZ()), b.dist(p.getX(), p.getZ())));
+        for (Site s : found.subList(0, Math.min(8, found.size()))) {
+            out.add(new net.minecraft.util.Pair<>(s.family().name(), new BlockPos(s.x(), s.y() + 1, s.z())));
+        }
+        return out;
+    }
+
+    public static void sendJournal(ServerPlayerEntity p) {
+        if (!ServerPlayNetworking.canSend(p, Journal.ID) || !(p.getWorld() instanceof ServerWorld w)) {
+            return;
+        }
+        ExplorationMap map = of(w);
+        ExplorerData d = ExplorerData.of(p);
+        java.util.List<String> out = new java.util.ArrayList<>();
+        ExplorationState st = ExplorationState.get(w.getServer());
+        if (map != null) {
+            for (var e : d.sites.entrySet()) {
+                Site s = map.byId(e.getKey());
+                if (s == null) {
+                    continue;
+                }
+                ExploreContent.Family f = s.family();
+                StringBuilder b = new StringBuilder();
+                b.append(f.desc()).append('\n');
+                b.append(switch (f.category()) {
+                    case DUNGEON -> "A sealed complex";
+                    case LANDMARK -> "A landmark";
+                    case SECRET -> "A hidden place";
+                    default -> "An abandoned place";
+                }).append(" in the ").append(s.region().displayName()).append(" (day ").append(e.getValue() / 24000 + 1).append(").\n");
+                b.append("Where: x ").append(s.x()).append(", y ").append(s.y() + 1).append(", z ").append(s.z()).append(" — {at:").append(s.x()).append(',')
+                        .append(s.y() + 1).append(',').append(s.z()).append("}\n");
+                if (d.completed.contains(s.id())) {
+                    b.append("You reached its heart.\n");
+                }
+                ExplorationState.SiteState ss = st.peek(s.id());
+                if (ss != null && ss.discoverers.size() > 1) {
+                    b.append(ss.discoverers.size()).append(" explorers have been here.\n");
+                }
+                for (String k : d.secrets) {
+                    if (k.startsWith(s.id() + ":")) {
+                        ExploreContent.SecretDef def = ExploreContent.SECRETS.get(k.substring(k.indexOf(':') + 1));
+                        if (def != null) {
+                            b.append("Hidden here: ").append(def.name()).append(".\n");
+                        }
+                    }
+                }
+                out.add(String.join("\u0001", "place", Long.toString(s.id(), 36), f.name(), "minecraft:recovery_compass", b.toString().trim()));
+            }
+            for (var e : d.leads.entrySet()) {
+                Site s = map.byId(e.getKey());
+                if (s == null || d.sites.containsKey(s.id())) {
+                    continue;
+                }
+                boolean chart = e.getValue().equals("chart");
+                String from = e.getValue().startsWith("rumour:") ? "Heard from " + e.getValue().substring(7) : chart ? "From a surveyor's chart" : "Lights led this way";
+                String where = chart ? "Where: x " + s.x() + ", z " + s.z() + " — {at:" + s.x() + "," + (s.y() + 1) + "," + s.z() + "}"
+                        : "Roughly: {near:" + (Math.round(s.x() / 50.0) * 50) + "," + (s.y() + 1) + "," + (Math.round(s.z() / 50.0) * 50) + "}";
+                out.add(String.join("\u0001", "lead", Long.toString(s.id(), 36), "Lead: " + s.family().name(), "minecraft:paper", from + ".\n" + where));
+            }
+        }
+        for (String r : d.records) {
+            ExploreContent.Record rec = ExploreContent.RECORDS.get(r);
+            if (rec != null) {
+                out.add(String.join("\u0001", "record", r, rec.title(), "underdeep:lore_fragment", rec.text() + "\n— " + rec.voice()));
+            }
+        }
+        for (String a : d.artifacts) {
+            ExploreContent.Artifact art = ExploreContent.ARTIFACTS.get(a);
+            if (art != null) {
+                out.add(String.join("\u0001", "artifact", a, "", "underdeep:" + a, art.desc() + "\nRarity: " + art.rarity() + "."));
+            }
+        }
+        ServerPlayNetworking.send(p, new Journal(out));
+    }
+
     public static void init() {
         net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents.SERVER_STARTED.register(s -> SERVER = s);
         net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents.SERVER_STOPPED.register(s -> SERVER = null);
@@ -66,6 +171,8 @@ public final class Explorations {
         ExplorerData.init();
         Mechanisms.init();
         PayloadTypeRegistry.playS2C().register(Context.ID, Context.CODEC);
+        PayloadTypeRegistry.playS2C().register(Journal.ID, Journal.CODEC);
+        net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents.JOIN.register((h, sender, server) -> server.execute(() -> sendJournal(h.player)));
         ServerWorldEvents.LOAD.register((server, world) -> {
             if (world.getRegistryKey() != World.OVERWORLD || !UnderdeepWorlds.isUnderdeep(world)) {
                 return;
@@ -110,6 +217,7 @@ public final class Explorations {
             }
         });
         ExploreDialogue.init();
+        net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback.EVENT.register((d, reg, env) -> ExploreCommands.register(d));
     }
 
     /** Test/diagnostic hook: force a map for a terrain. */

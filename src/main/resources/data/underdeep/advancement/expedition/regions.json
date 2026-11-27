@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:filled_map"
+  },
+  "title": {
+   "text": "Far and Wide"
+  },
+  "description": {
+   "text": "Discover old places in 10 different ecosystems"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "explored_region",
+    "distinct": 10
+   }
+  }
+ },
+ "parent": "underdeep:expedition/landmark",
+ "rewards": {
+  "experience": 100
+ }
+}

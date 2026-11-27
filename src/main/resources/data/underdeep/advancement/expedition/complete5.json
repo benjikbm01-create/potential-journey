@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:recovery_compass"
+  },
+  "title": {
+   "text": "Veteran Delver"
+  },
+  "description": {
+   "text": "Complete 5 different expeditions"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "expedition_completed",
+    "distinct": 5
+   }
+  }
+ },
+ "parent": "underdeep:expedition/complete",
+ "rewards": {
+  "experience": 150
+ }
+}

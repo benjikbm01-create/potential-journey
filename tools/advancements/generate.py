@@ -279,6 +279,65 @@ adv("mastery", "provider", "root", "roast_platter", "Provider", "Cook 200 times"
 adv("mastery", "explorer", "root", "delvers_compass", "Hazard-Proof", "Meet every kind of environmental hazard of the caverns", ev("hazard_met", distinct=9),
     "challenge", xp=250)
 
+# ------------------------------------------------------------------------------------------------ Stage 9: expeditions
+tab("expedition", "Expeditions", "minecraft:recovery_compass", "Old places, sealed doors and the things left behind.", "minecraft:textures/block/tuff_bricks.png")
+adv("expedition", "first_ruin", "root", "minecraft:mossy_cobblestone", "Someone Lived Here", "Discover an abandoned place", ev("ruin_discovered"))
+adv("expedition", "ruins10", "first_ruin", "minecraft:cracked_stone_bricks", "Reader of Ruins", "Discover 10 different kinds of abandoned place",
+    ev("ruin_discovered", distinct=10), "goal", xp=40)
+adv("expedition", "landmark", "root", "minecraft:spyglass", "Worth the Walk", "Discover a landmark", ev("landmark_discovered"))
+adv("expedition", "landmarks5", "landmark", "minecraft:recovery_compass", "Sightseer", "Discover 5 different landmarks", ev("landmark_discovered", distinct=5),
+    "goal", xp=50)
+adv("expedition", "regions", "landmark", "minecraft:filled_map", "Far and Wide", "Discover old places in 10 different ecosystems",
+    ev("explored_region", distinct=10), "challenge", xp=100)
+adv("expedition", "dungeon", "first_ruin", "minecraft:iron_door", "Down the Stairs", "Find the entrance to a sealed complex", ev("dungeon_discovered"))
+adv("expedition", "puzzle", "dungeon", "rune_dial", "It Moved", "Open an ancient seal by working its mechanism", ev("puzzle_solved"))
+adv("expedition", "puzzle_types", "puzzle", "keystone", "Mechanist", "Solve 8 different kinds of ancient mechanism", ev("puzzle_solved", distinct=8), "goal", xp=60)
+adv("expedition", "puzzle_all", "puzzle_types", "memory_pillar", "Nothing Stays Shut", "Solve every kind of ancient mechanism",
+    ev("puzzle_solved", distinct=16), "challenge", xp=150)
+adv("expedition", "trap_sprung", "dungeon", "dart_vent", "Should Have Looked Down", "Set off a trap", ev("trap_sprung"))
+adv("expedition", "trap_disarmed", "trap_sprung", "minecraft:stick", "Not Today", "Jam a trap plate with a stick or a pickaxe", ev("trap_disarmed"))
+adv("expedition", "coffer", "dungeon", "expedition_cache", "Your Share", "Open an expedition coffer", ev("coffer_opened"))
+adv("expedition", "complete", "puzzle", "minecraft:lodestone", "Expedition Complete", "Reach the heart of a sealed complex", ev("expedition_completed"),
+    "goal", xp=50)
+adv("expedition", "complete_large", "complete", "minecraft:heavy_core", "Into the Deep Vaults", "Complete a large expedition", ev("expedition_large"),
+    "challenge", xp=120)
+adv("expedition", "together", "complete", "minecraft:bell", "Not Alone Down Here", "Complete an expedition with a friend beside you",
+    ev("expedition_together"), "goal", xp=60)
+adv("expedition", "complete5", "complete", "minecraft:recovery_compass", "Veteran Delver", "Complete 5 different expeditions", ev("expedition_completed", distinct=5),
+    "challenge", xp=150)
+adv("expedition", "secret", "first_ruin", "minecraft:tripwire_hook", "Behind the Wall", "Find a hidden room", ev("secret_found"))
+adv("expedition", "secrets5", "secret", "minecraft:chiseled_bookshelf", "Curiouser", "Find 5 different hidden places", ev("secret_found", distinct=5), "goal", xp=60)
+adv("expedition", "secrets15", "secrets5", "minecraft:echo_shard", "Nothing Is Hidden From You", "Find 15 different hidden places",
+    ev("secret_found", distinct=15), "challenge", xp=150)
+adv("expedition", "record", "first_ruin", "lore_fragment", "Words in Stone", "Read a historical record", ev("record_read"))
+adv("expedition", "records10", "record", "minecraft:writable_book", "Archivist", "Read 10 different historical records", ev("record_read", distinct=10), "goal", xp=40)
+adv("expedition", "cultures", "records10", "minecraft:lectern", "Many Voices", "Read records left by 6 different old peoples", ev("culture_record", distinct=6),
+    "challenge", xp=100)
+adv("expedition", "artifact", "coffer", "encrusted_relic", "Something Under the Crust", "Find an artifact or relic", ev("artifact_found"))
+adv("expedition", "identified", "artifact", "minecraft:brush", "Cleaned Up Nicely", "Have a scholar identify an encrusted relic", ev("relic_identified"))
+adv("expedition", "artifacts10", "artifact", "minecraft:item_frame", "Collector", "Collect 10 different artifacts and relics", ev("artifact_found", distinct=10),
+    "goal", xp=80)
+adv("expedition", "artifact_use", "artifact", "tuning_fork", "It Still Works", "Use an exploration artifact", ev("artifact_used"))
+adv("expedition", "rumour", "root", "minecraft:emerald", "So They Say", "Hear a rumour of an old place from an inhabitant", ev("rumour_heard"))
+adv("expedition", "chart", "rumour", "surveyors_chart", "Mapmaker's Customer", "Buy a surveyor's chart from a cartographer", ev("chart_bought"))
+adv("expedition", "report", "rumour", "minecraft:paper", "Field Report", "Be paid by a scholar for what you found", ev("report_paid"))
+adv("expedition", "encounters", "root", "minecraft:glow_ink_sac", "Things Happen Down Here", "Witness 6 different events on your travels", ev("encounter", distinct=6),
+    "goal", xp=40)
+adv("expedition", "first_find", "first_ruin", "minecraft:white_banner", "First Footsteps", "Be the first in your world to discover a place",
+    ev("first_discoverer"))
+# hidden: rare and exceptional places (titles stay hidden until earned)
+adv("expedition", "unique", "artifacts10", "minecraft:nether_star", "One of a Kind", "???", ev("unique_artifact"), "challenge", hidden=True, xp=150)
+adv("expedition", "heartwood", "complete", "minecraft:oak_sapling", "The Oldest Root", "???", ev("expedition_completed", subject="heartwood"), "challenge",
+    hidden=True, xp=200)
+adv("expedition", "singing", "complete", "minecraft:amethyst_cluster", "Chorus", "???", ev("expedition_completed", subject="singing_hall"), "challenge",
+    hidden=True, xp=150)
+adv("expedition", "archive", "complete", "minecraft:prismarine_crystals", "Dry Pages", "???", ev("expedition_completed", subject="sunken_archive"), "challenge",
+    hidden=True, xp=150)
+adv("expedition", "sanctum", "complete", "minecraft:sculk_shrieker", "Hush", "???", ev("expedition_completed", subject="silent_sanctum"), "challenge",
+    hidden=True, xp=200)
+adv("expedition", "procession", "encounters", "minecraft:soul_lantern", "Lights in the Dark", "???", ev("encounter", subject="ghost_lanterns"), "goal",
+    hidden=True, xp=60)
+
 
 def main():
     shutil.rmtree(OUT, ignore_errors=True)

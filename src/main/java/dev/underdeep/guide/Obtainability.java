@@ -106,6 +106,45 @@ public final class Obtainability {
     }
 
     /** A production rule: outputs appear once every input slot (any alternative) and the gate (any item) are met. */
+    static void exploration(net.minecraft.server.MinecraftServer server, List<Rule> rules) {
+        ServerWorld w = server.getOverworld();
+        var reg = server.getReloadableRegistries();
+        for (var id : reg.getIds(net.minecraft.registry.RegistryKeys.LOOT_TABLE)) {
+            if (!id.getNamespace().equals("underdeep") || !id.getPath().startsWith("exploration/")) {
+                continue;
+            }
+            var table = reg.getLootTable(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.LOOT_TABLE, id));
+            Set<Item> found = new java.util.LinkedHashSet<>();
+            net.minecraft.util.math.random.Random rnd = net.minecraft.util.math.random.Random.create(id.hashCode());
+            for (int i = 0; i < 160; i++) {
+                var params = new net.minecraft.loot.context.LootContextParameterSet.Builder(w)
+                        .add(net.minecraft.loot.context.LootContextParameters.ORIGIN, net.minecraft.util.math.Vec3d.ZERO)
+                        .build(net.minecraft.loot.context.LootContextTypes.CHEST);
+                table.generateLoot(params, rnd.nextLong()).forEach(st -> found.add(st.getItem()));
+            }
+            String where = id.getPath().substring("exploration/".length()).replace('_', ' ');
+            for (Item it : found) {
+                rules.add(new Rule(List.of(it), List.of(), Set.of(), new Source("explore", "found in old places (" + where + ")", List.of(), "")));
+            }
+        }
+        for (var a : dev.underdeep.explore.ExploreContent.ARTIFACTS.values()) {
+            Item it = item("underdeep:" + a.id());
+            if (it == Items.AIR) {
+                continue;
+            }
+            if (a.unique()) {
+                rules.add(new Rule(List.of(it), List.of(), Set.of(), new Source("explore", "rests in one rare, deep place (once per world)", List.of(), "")));
+            } else if (a.weight() > 0) {
+                rules.add(new Rule(List.of(it), List.of(Set.of(item("underdeep:encrusted_relic"))), Set.of(Items.EMERALD),
+                        new Source("trade", "a scholar or cartographer identifies an encrusted relic", List.of(), "emeralds")));
+            }
+        }
+        rules.add(new Rule(List.of(item("underdeep:vault_key")), List.of(), Set.of(), new Source("explore", "taken from a key pedestal in a vault", List.of(), "")));
+        rules.add(new Rule(List.of(item("underdeep:surveyors_chart")), List.of(), Set.of(Items.EMERALD),
+                new Source("trade", "drawn by cartographers and navigators", List.of(), "emeralds")));
+        rules.add(new Rule(List.of(item("underdeep:star_shard")), List.of(), Set.of(), new Source("explore", "falls from starlit ceilings", List.of("starlight_caverns"), "")));
+    }
+
     record Rule(List<Item> outputs, List<Set<Item>> inputs, Set<Item> gate, Source source) {
     }
 
@@ -416,6 +455,8 @@ public final class Obtainability {
                 }
             }
         }
+        // ---- Stage 9: old places (site loot tables sampled), unique pedestals, keys, identification, charts, encounters
+        exploration(server, rules);
         // ---- fixpoint
         Set<Item> reach = new HashSet<>();
         Map<Item, Integer> depth = new HashMap<>();

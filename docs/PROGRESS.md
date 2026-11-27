@@ -228,5 +228,23 @@ See `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md`.
 | 134 advancements in 13 tabs, custom event criterion, counters, quiet migration | done | triggers self-tested with a test player; toasts not seen |
 | Spoilage, combat AI changes, new bosses | not in scope | Stage 9+ |
 
-## Stages 9–12
+## Stage 9 — Exploration, dungeons, ruins, artifacts and secret discoveries: IMPLEMENTED (2026-11-27)
+
+See `docs/EXPLORATION.md` (public) and private design material. Needs a new world (generator v4).
+
+| System | State | Notes |
+|---|---|---|
+| Deterministic site placement on both layers (pure model, overlap resolution, settlement/spawn exclusion) | done | ~780 sites within 2000 blocks (seed 42), all 15 ecosystems; determinism self-tested |
+| 30 ruin, 16 landmark, 20 dungeon, 10 standalone secret designs + 17 hidden rooms, 7 culture palettes | done | static walkability audit 228 layouts / 3 seeds; generated chunks match layouts 99.8 % |
+| Puzzle framework, 16 mechanic types + key locks, seals, break protection | done | every puzzle of all 20 dungeons solved in-world through real interactions; 180/180 seals |
+| 11 trap mechanics, guards, disarming, severity config | done | self-tested; damage feel not hands-on |
+| Reward policies shared / personal / unique / key; claims persisted; unique artifacts once per world | done | self-tested incl. save/load |
+| 38 artifacts/relics + 3 valuables; 54 records; journal in the Handbook; delver's compass targets | done | journal screen not seen in a real client |
+| Inhabitant rumours, surveyor's charts, identification, findings reports (audited treasury payments) | done | self-tested |
+| 18 travel encounters, warding bell | done | encounters run in-world by the self-test; frequency not play-tested |
+| 38 advancements (Expedition tab), +115 Handbook pages, audio context hooks for Stage 11 | done | |
+| `/underdeep explore …` operator commands, config section `exploration` | done | |
+| Combat encounters / bosses in reserved rooms | not in scope | Stage 10 |
+
+## Stages 10–12
 Not started.

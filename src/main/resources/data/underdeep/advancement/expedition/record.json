@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:lore_fragment"
+  },
+  "title": {
+   "text": "Words in Stone"
+  },
+  "description": {
+   "text": "Read a historical record"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "record_read"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/first_ruin"
+}

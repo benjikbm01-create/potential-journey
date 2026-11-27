@@ -782,6 +782,71 @@
    "value": 6.0
   },
   {
+   "item": "underdeep:wright_bust",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:lantern_head",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:choir_conch",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:ember_crown",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:seed_urn",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:star_globe",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:silent_mask",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:gilded_idol",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:league_astrolabe",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:petrified_effigy",
+   "category": "DECORATIVE",
+   "value": 4.0
+  },
+  {
+   "item": "underdeep:ancient_coin",
+   "category": "LUXURY",
+   "value": 0.6
+  },
+  {
+   "item": "underdeep:star_shard",
+   "category": "GEM",
+   "value": 1.5
+  },
+  {
+   "item": "underdeep:encrusted_relic",
+   "category": "SPECIALTY",
+   "value": 2.0
+  },
+  {
    "item": "underdeep:steel_ingot",
    "category": "METAL",
    "value": 0.6

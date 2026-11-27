@@ -22,8 +22,65 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Mob population study | `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server; uses `<run-dir>/selftest/ecosystem_sites.txt` from a self-test) → `<run-dir>/mobstudy/mobstudy.md` |
 | Stage 1.5 matrix | `scripts/test_matrix.sh` (also runs the Stage 1.5 checks; production JAR on the official Fabric server launcher) |
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
+| Stage 9 targeted | `SUITE=stage9 scripts/selftest.sh <seed> <dir> create` (~2–3 min: static design audit, placement, generated-site comparison, in-world mechanics of all 20 dungeons; writes `<dir>/selftest/stage9_layouts.txt` and `layout_<family>.txt` ASCII slices) |
 | Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
+
+## Results — Stage 9 (2026-11-27)
+
+Environment: same container (Java 21, Gradle 8.14.3 offline, headless dedicated server, seed 42). Short targeted
+runs only, as agreed with the user; hands-on play is left to the user. "Static" = computed from layouts/data;
+"in-world" = executed in a running dedicated server with blocks used and stepped on directly by a Fabric fake
+player (or a throwaway non-connected server player where advancements are involved).
+
+### Executed (final state)
+- `./gradlew build` — **45/45 unit tests PASS**, including the new `ExploreContentTest` (family counts per
+  category, unique ids, weights/radii/layers, records, artifact rarities and uniques, encounter cooldowns).
+  `EquipmentContentTest` was updated to exclude Stage 9 artifacts from the Stage 8 brief counts (it failed before
+  that change: 45 accessories > 30). The first run of the new test failed on a deliberately 3-character
+  inscription; the check was relaxed to non-blank text.
+- `SUITE=stage9 scripts/selftest.sh 42 run-tests/s9c create` — **71 passed, 0 failed, 44 informational** (run on
+  the final data; an identical earlier run `s9b` with three higher family weights also passed 71/0). Highlights:
+  - Static: all authored designs pass the audit over 3 seeds each — **228 layouts** (reachability from the entrance
+    to every room and puzzle element, puzzle data, light-beam paths, declared extents). At design seed 0: 37
+    puzzles of 16 mechanic types, 11 trap mechanics, 118 reward containers, 27 hidden rooms.
+  - Placement: **778 sites** within 2000 blocks of spawn over both layers (640 ruins, 30 landmarks, 28 dungeons,
+    80 secret designs), resolved in 1.3 s; sites in **all 15 ecosystems**; 60 of 76 families in that area; overlaps
+    0, inside settlements 0, near spawn 0, dungeons within 220 blocks 0; deterministic across an independent map
+    instance and query order.
+  - Generated chunks (server-generated, 9 nearest sites, all categories) match their layouts: 8714/8734 blocks
+    (99.8 %), 4/4 mechanisms.
+  - In-world mechanics (all 20 dungeon designs placed in a test area): every puzzle solved through the real block
+    interactions — 16 mechanic types, **seals opened 180/180**; coffers (personal shares per player, no second
+    share), relic pedestals (unique once per world), key pedestals; traps fire and can be jammed; guards wake once;
+    reserved rooms are sealed empty space; discovery, hidden-room discovery and expedition completion (once);
+    site state and personal records survive a save/load round trip; records reach the journal; rumours, charts and
+    reports (treasury payments audited); encounters run at safe spots; artifacts register in the collection;
+    warding bell blocks encounters; a fresh player sees no undiscovered place, secret or sensitive artifact.
+- `SUITE=audit scripts/selftest.sh 42 run-tests/s9audit create` — **76 passed, 0 failed**: **708/708** Underdeep
+  items obtainable in survival (exploration loot tables sampled 160× each; unique artifacts, identification,
+  keys, charts and star shards have explicit rules) and every ordinary item has a use; 214 Handbook pages valid;
+  185 advancements in 14 tabs load. `Stage8Equipment` bounds were updated for Stage 9 (advancement count ≤ 220;
+  page requirement keys `site:`, `secret:`, `record:`).
+
+### Earlier iterations (fixed during development)
+- The static audit initially flagged 36 families (rooms overwriting ladders, room walls closing passages,
+  stairwells landing inside rooms, unreachable secret entrances, plates out of reach). Fixed by fixture locks,
+  weak/soft writes, spiral stair wells and per-design fixes; 0 families with problems at the end.
+- No sites appeared in lava-filled ecosystems (the lava flag meant "the region's fluid is lava", not "the floor is
+  lava"); fixed — all 15 ecosystems now have sites.
+- In-world failures fixed: a reward test crashed on a non-pedestal block (cache helpers now force their block);
+  completion failed for a player not in the world's player list (the triggering player is now included); the
+  spoiler test used a player who had legitimately found artifacts (now a fresh player).
+
+### Not tested
+- Hands-on play in a real client: walking the structures, puzzle feel and hints, trap damage, encounter frequency,
+  journal and Handbook pages on screen, toasts, the delver's compass list, textures and models of the new blocks.
+- A `reload` run (real server restart) of a Stage 9 world; persistence was verified by an NBT round trip inside
+  one server run only.
+- Multiplayer with several real clients (fairness verified with several test players in one server).
+- Long-session performance with many players exploring; only placement timing was measured.
+- Old (generator v3) worlds with `inOlderWorlds` enabled.
 
 ## Results — Stage 8 (2026-11-27)
 

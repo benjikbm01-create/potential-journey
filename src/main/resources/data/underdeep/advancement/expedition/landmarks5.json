@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:recovery_compass"
+  },
+  "title": {
+   "text": "Sightseer"
+  },
+  "description": {
+   "text": "Discover 5 different landmarks"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "landmark_discovered",
+    "distinct": 5
+   }
+  }
+ },
+ "parent": "underdeep:expedition/landmark",
+ "rewards": {
+  "experience": 50
+ }
+}

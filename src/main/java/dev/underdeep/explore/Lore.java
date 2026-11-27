@@ -52,6 +52,7 @@ public final class Lore {
             Advancements.event(p, "record_read", id);
             Advancements.event(p, "culture_record", r.culture());
             Handbook.push(p, List.of("record:" + id));
+            Explorations.sendJournal(p);
         }
     }
 

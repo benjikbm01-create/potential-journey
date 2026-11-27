@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:dart_vent"
+  },
+  "title": {
+   "text": "Should Have Looked Down"
+  },
+  "description": {
+   "text": "Set off a trap"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "trap_sprung"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/dungeon"
+}

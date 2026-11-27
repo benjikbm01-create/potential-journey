@@ -296,7 +296,7 @@ final class Stage8Equipment {
                     }
                 }
                 String req = o.get("req").getAsString();
-                if (!req.isEmpty() && !req.matches("(region|civ|species|item):[a-z_:0-9]+")) {
+                if (!req.isEmpty() && !req.matches("(region|civ|species|item|site|secret|record):[a-z_:0-9]+")) {
                     problems.add(pid + ": requirement " + req);
                 }
             }
@@ -347,7 +347,7 @@ final class Stage8Equipment {
         long ours = server.getAdvancementLoader().getAdvancements().stream().filter(a -> a.id().getNamespace().equals(Underdeep.MOD_ID)).count();
         long tabs = server.getAdvancementLoader().getAdvancements().stream().filter(a -> a.id().getNamespace().equals(Underdeep.MOD_ID)
                 && a.value().parent().isEmpty()).count();
-        r.check("100-150 advancements load in their tabs", ours >= 100 && ours <= 160 && tabs >= 10, ours + " advancements, " + tabs + " tabs");
+        r.check("100-220 advancements load in their tabs", ours >= 100 && ours <= 220 && tabs >= 10, ours + " advancements, " + tabs + " tabs");
         AdvancementEntry harvest = server.getAdvancementLoader().get(Identifier.of("underdeep", "agriculture/harvest"));
         AdvancementEntry five = server.getAdvancementLoader().get(Identifier.of("underdeep", "agriculture/crops5"));
         AdvancementEntry relic = server.getAdvancementLoader().get(Identifier.of("underdeep", "adventure/relic"));

@@ -51,16 +51,16 @@ HP, EW, PF, CB, SG, SS, SL = "hollow_peaks", "emerald_wetlands", "petrified_fore
 fam("wayshrine", "ruin", "minor", "Wayside Shrine", "A small shrine by an old path. Someone still remembered it, once.", "wright", ALL, UP, 4, 7, 0, 9)
 fam("lantern_post", "ruin", "minor", "Old Lantern Road", "Copper lantern posts mark a road nobody walks any more.", "lantern", ALL, UP, 7, 7, 0, 8)
 fam("collapsed_hut", "ruin", "minor", "Collapsed Dwelling", "A home, long abandoned. The hearth is cold.", "gardener", [RW, GG, EW, FE, HP], UP, 5, 6, 0, 8)
-fam("miners_camp", "ruin", "minor", "Abandoned Mining Camp", "Rails, a cold fire, and work left half done.", "lantern", [HP, PF, SS, CD, AH], BOTH, 6, 5, 0, 8)
+fam("miners_camp", "ruin", "minor", "Abandoned Mining Camp", "Rails, a cold fire, and work left half done.", "lantern", [HP, PF, SS, CD, AH], BOTH, 6, 5, 0, 5)
 fam("cairn_circle", "ruin", "minor", "Cairn Circle", "Stacked stones in a ring around a carved sign.", "wright", ALL, UP, 5, 5, 0, 6)
 fam("broken_bridge", "ruin", "minor", "Broken Bridge", "Half a bridge, reaching for a far side that fell long ago.", "wright", ALL, UP, 8, 6, 0, 5)
 fam("fallen_statue", "ruin", "minor", "Fallen Colossus Head", "A stone face as tall as a house, lying where it fell.", "wright", ALL, BOTH, 6, 8, 0, 5)
 fam("well_head", "ruin", "minor", "Old Well", "A well shaft with a rotten windlass. Water glints far below.", "gardener", ALL, UP, 8, 5, 18, 5,
     secrets=["well_bottom"])
-fam("watch_niche", "ruin", "minor", "Watch Post", "A sheltered post where someone once kept watch.", "wright", ALL, BOTH, 4, 6, 0, 6)
+fam("watch_niche", "ruin", "minor", "Watch Post", "A sheltered post where someone once kept watch.", "wright", ALL, BOTH, 4, 6, 0, 4)
 fam("grave_garden", "ruin", "minor", "Grave Garden", "Quiet stones among flowers. Someone was loved here.", "gardener", [RW, GG, EW, SG, FE], UP, 5, 4, 0, 6)
 fam("kiln_mound", "ruin", "minor", "Potters' Kiln", "A brick kiln and the pots it never finished firing.", "ember", [AH, CB, HP, PF, EW], UP, 5, 6, 0, 6)
-fam("waystone", "ruin", "minor", "Waystone", "A carved marker stone. Its carvings count distances in lamps.", "lantern", ALL, BOTH, 3, 8, 0, 7)
+fam("waystone", "ruin", "minor", "Waystone", "A carved marker stone. Its carvings count distances in lamps.", "lantern", ALL, BOTH, 3, 8, 0, 5)
 # ---- ruins: regional
 fam("cottage_row", "ruin", "regional", "Abandoned Hamlet", "A row of empty houses. They left in a hurry, or not at all.", "gardener", [RW, GG, EW, FE, HP, PF], UP, 12, 6, 6, 4,
     secrets=["cellar_beneath"])

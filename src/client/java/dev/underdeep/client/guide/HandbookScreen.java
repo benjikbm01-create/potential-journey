@@ -101,7 +101,7 @@ public class HandbookScreen extends Screen {
     // ================================================================== data
 
     static void build() {
-        int stamp = Handbook.CLIENT_ITEMS.size() * 31 + Handbook.CLIENT_DISCOVERED.size();
+        int stamp = Handbook.CLIENT_ITEMS.size() * 31 + Handbook.CLIENT_DISCOVERED.size() * 7 + dev.underdeep.client.explore.ExploreClient.journalVersion * 131;
         if (pages != null && builtFor == stamp) {
             return;
         }
@@ -150,6 +150,20 @@ public class HandbookScreen extends Screen {
             p.cat = categoryOf(item);
             p.req = k == Sensitivity.Kind.SENSITIVE ? "item:" + id : "";
             p.keys = List.of(id.getPath().replace('_', ' '));
+            pages.put(p.id, p);
+        }
+        // personal journal pages (Stage 9)
+        for (String[] e : dev.underdeep.client.explore.ExploreClient.JOURNAL) {
+            if (e.length < 5) {
+                continue;
+            }
+            Page p = new Page();
+            p.id = "journal:" + e[0] + ":" + e[1];
+            p.cat = "journal";
+            p.icon = stack(e[3]);
+            p.title = e[2].isEmpty() ? p.icon.getName().getString() : e[2];
+            p.body = List.of(e[4].split("\n"));
+            p.keys = List.of(e[0], "journal");
             pages.put(p.id, p);
         }
         // creature pages
@@ -458,7 +472,7 @@ public class HandbookScreen extends Screen {
         }
         cy += 8;
         for (String para : p.body) {
-            paragraph(c, para, x, pw, 0xFFE8E0CC);
+            paragraph(c, dev.underdeep.client.explore.ExploreClient.live(para), x, pw, 0xFFE8E0CC);
         }
         if (p.item != null) {
             itemPage(c, mx, my, p.item, x, pw);

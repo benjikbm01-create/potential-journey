@@ -206,6 +206,37 @@ final class Stage9Checks {
         double area = (2.0 * half) * (2.0 * half) / 1e6;
         r.info("sites within 2000 blocks of spawn (both layers)", all.size() + " (" + String.format(Locale.ROOT, "%.1f per km²", all.size() / area) + ", " + cats
                 + "), resolved in " + String.format(Locale.ROOT, "%.1f s", secs));
+        Map<String, Integer> layers = new TreeMap<>();
+        all.forEach(s -> layers.merge(s.layer().id + ":" + s.region().id(), 1, Integer::sum));
+        r.info("sites per layer and ecosystem", layers.toString());
+        List<Site> wide = map.sitesIn(-4000, -4000, 4000, 4000, 0);
+        Map<String, Integer> deepFam = new TreeMap<>();
+        wide.stream().filter(s -> s.layer() == CavernLayer.DEEP).forEach(s -> deepFam.merge(s.family().id(), 1, Integer::sum));
+        r.info("deep-layer sites within 4000 blocks", deepFam.toString());
+        int[] why = new int[5];
+        java.util.Random rr = new java.util.Random(5);
+        double fsum = 0;
+        int fn = 0;
+        for (int i = 0; i < 20000 && fn < 1500; i++) {
+            int x = rr.nextInt(8000) - 4000, z = rr.nextInt(8000) - 4000;
+            if (t.regions(CavernLayer.DEEP).typeAt(x, z) != RegionType.THE_ABYSS) {
+                continue;
+            }
+            var c = t.column(x, z);
+            fn++;
+            fsum += c.deepFloor;
+            if (c.deepLava) {
+                why[0]++;
+            } else if (c.deepFloor < CavernLayer.DEEP.fluidLevel - 0.5) {
+                why[1]++;
+            } else if (c.deepCeiling - c.deepFloor < 10) {
+                why[2]++;
+            } else {
+                why[3]++;
+            }
+        }
+        r.info("abyss deep columns sampled", fn + ": lava " + why[0] + ", below fluid " + why[1] + ", low headroom " + why[2] + ", usable " + why[3]
+                + String.format(Locale.ROOT, ", mean floor %.1f", fsum / Math.max(1, fn)));
         r.info("families placed in that area", fams.size() + " of " + ExploreContent.FAMILIES.size() + ": " + fams);
         r.check("sites never overlap each other, settlements or the starting area; no dungeon within 220 blocks of spawn",
                 overlaps == 0 && inSettlement == 0 && nearSpawn == 0 && dangerNearSpawn == 0,

@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:lectern"
+  },
+  "title": {
+   "text": "Many Voices"
+  },
+  "description": {
+   "text": "Read records left by 6 different old peoples"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "culture_record",
+    "distinct": 6
+   }
+  }
+ },
+ "parent": "underdeep:expedition/records10",
+ "rewards": {
+  "experience": 100
+ }
+}

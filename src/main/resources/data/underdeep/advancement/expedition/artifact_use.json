@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:tuning_fork"
+  },
+  "title": {
+   "text": "It Still Works"
+  },
+  "description": {
+   "text": "Use an exploration artifact"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "artifact_used"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/artifact"
+}

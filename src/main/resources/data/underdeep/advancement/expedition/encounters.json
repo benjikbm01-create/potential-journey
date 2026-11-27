@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:glow_ink_sac"
+  },
+  "title": {
+   "text": "Things Happen Down Here"
+  },
+  "description": {
+   "text": "Witness 6 different events on your travels"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "encounter",
+    "distinct": 6
+   }
+  }
+ },
+ "parent": "underdeep:expedition/root",
+ "rewards": {
+  "experience": 40
+ }
+}

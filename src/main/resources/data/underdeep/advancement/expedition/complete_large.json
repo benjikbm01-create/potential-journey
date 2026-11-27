@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:heavy_core"
+  },
+  "title": {
+   "text": "Into the Deep Vaults"
+  },
+  "description": {
+   "text": "Complete a large expedition"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "expedition_large"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/complete",
+ "rewards": {
+  "experience": 120
+ }
+}

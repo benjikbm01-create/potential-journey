@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:surveyors_chart"
+  },
+  "title": {
+   "text": "Mapmaker's Customer"
+  },
+  "description": {
+   "text": "Buy a surveyor's chart from a cartographer"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "chart_bought"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/rumour"
+}

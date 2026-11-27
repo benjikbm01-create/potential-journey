@@ -20,3 +20,5 @@ Files:
 - `ECONOMY.md` — economy hooks reserved for hidden discoveries.
 - `SURVIVAL.md` — Stage 7 hidden intent.
 - `EQUIPMENT.md` — Stage 8 discovery-sensitive items, hidden advancements, deferred items.
+- `EXPLORATION.md` — Stage 9 history (truth vs records), site identities, puzzle solutions, traps, artifacts,
+  encounters, hidden advancements and Stage 10 reservations.

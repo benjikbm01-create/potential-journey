@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:emerald"
+  },
+  "title": {
+   "text": "So They Say"
+  },
+  "description": {
+   "text": "Hear a rumour of an old place from an inhabitant"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "rumour_heard"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/root"
+}

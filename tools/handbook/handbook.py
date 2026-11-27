@@ -18,7 +18,8 @@ CATS = [
     ("civs", "Civilizations", "minecraft:bell"), ("people", "People & Companions", "minecraft:emerald"),
     ("economy", "Economy", "minecraft:emerald"), ("farming", "Farming", "underdeep:glowgrain"), ("cooking", "Cooking", "underdeep:cooking_pot"),
     ("medicine", "Medicine", "underdeep:bandage"), ("homes", "Camping & Homes", "underdeep:bedroll"),
-    ("equipment", "Equipment", "underdeep:steel_sword"), ("controls", "Controls & Settings", "minecraft:comparator")]
+    ("equipment", "Equipment", "underdeep:steel_sword"), ("explore", "Exploration", "minecraft:recovery_compass"),
+    ("journal", "Your Journal", "underdeep:lore_fragment"), ("controls", "Controls & Settings", "minecraft:comparator")]
 PAGES = []
 
 
@@ -496,6 +497,76 @@ page("packs", "equipment", "Packs", "underdeep:backpack", [
     "A backpack holds 18 stacks, a herb pouch 9 stacks of plants and herbs, an ore satchel 9 stacks of ores and gems. Use one to open it."
     " Packs cannot hold other packs or shulker boxes."], keys=["backpack", "bag", "pouch", "storage", "inventory"], see=["navigation"])
 
+
+# ------------------------------------------------------------------------------------------------ Exploration (Stage 9)
+page("exploring", "explore", "Old places", "minecraft:recovery_compass", [
+    "The Underdeep is old. People lived and worked down here long before today's settlements, and they left a great deal behind:"
+    " roadside remains, abandoned homes and workshops, great landmarks, and sealed complexes that go deep into the rock.",
+    "Most places are small and quick to look around. Some are big enough for a whole evening, and a few are rare enough that you may"
+    " never see them. You discover a place just by walking into it: it goes into your journal (this handbook, 'Your Journal').",
+    "Nothing marks them on a map for you. Look for unusual stone, light where there should be none, carved signs, old roads of copper"
+    " lamp posts, and anything that looks built rather than grown."], keys=["ruin", "ruins", "dungeon", "landmark", "structure", "explore", "discover"],
+     see=["expedition_prep", "old_structures", "journal_help"])
+page("expedition_prep", "explore", "Preparing an expedition", "minecraft:bundle", [
+    "Before you head for something big: food for a few days, plenty of light, bandages and a remedy or two, and clothing for the region"
+    " (warm in the cold, cooling or fire-resistant near heat, spore protection in fungal places, diving gear where it is flooded).",
+    "Rope and a grappling hook help with heights; a bedroll and a few torches make a camp; repair kits keep your tools going."
+    " Bring friends: some mechanisms are easier with two, and expedition coffers give everyone their own share."],
+     keys=["prepare", "supplies", "expedition", "pack", "gear", "travel"], items=["underdeep:bandage", "underdeep:rope_coil", "underdeep:bedroll"],
+     see=["exploring", "hazards", "warding"])
+page("old_structures", "explore", "Exploring old structures", "minecraft:cracked_stone_bricks", [
+    "Old buildings are yours to use: mine them, move in, build on them. Only two things resist you: ancient seals (they open for their"
+    " mechanism, never for tools) and the mechanism parts of a seal that has not been opened yet.",
+    "Large complexes go down by stair wells. Expect several rooms, side passages and a heart at the end. Every complex has a way back"
+    " out that never closes; if you fall somewhere, look for a ladder or a passage up. You can leave and come back: opened seals stay"
+    " open, and the world remembers what you took."], keys=["seal", "door", "dungeon", "complex", "stair", "locked"], see=["mechanisms", "traps"])
+page("mechanisms", "explore", "Ancient mechanisms", "underdeep:rune_dial", [
+    "Seals open when their mechanism is worked the right way. The answer is always nearby: carved signs, marks on the parts themselves,"
+    " shapes, sizes, sounds, the layout of the room, or an old record. Nothing requires guessing a number.",
+    "The old builders used six signs (spiral, eye, wave, flame, star, key); each looks different, so colour never matters."
+    " A wrong step usually just resets with a low note. Mechanisms never eat your things: offerings that are wrong are refused."
+    " Some mechanisms are easier for two people, but every one has a way to do it alone."],
+     keys=["puzzle", "lever", "dial", "plate", "brazier", "mechanism", "seal", "rune", "chime"], see=["old_structures"])
+page("traps", "explore", "Traps", "underdeep:trap_plate", [
+    "Old places defended themselves. Traps always warn you: ash at a dart slit, dust under a loose ceiling, smoke or a hiss before a"
+    " vent breathes, cracks before a floor gives way. Worn floor tiles are worth stepping around.",
+    "Sneak-use a worn tile with a stick or a pickaxe to jam it for good. A block placed on a vent stops it. Crumbling floors drop you"
+    " to the level below; there is always a way back up."], keys=["trap", "dart", "vent", "floor", "danger", "disarm"], see=["hazards"])
+page("treasure", "explore", "Treasure and fair shares", "underdeep:expedition_cache", [
+    "Ordinary chests and pots hold what they hold: whoever opens them first takes it. Expedition coffers are different: each player may"
+    " open each coffer once and gets a share of their own, so a group is rewarded together.",
+    "A few rare places keep something unique on a pedestal: it is there once, for the whole world. Vault keys hang on key pedestals"
+    " (one per person) and open the lock of that vault only."], keys=["loot", "treasure", "chest", "coffer", "reward", "key"], see=["artifacts"])
+page("artifacts", "explore", "Artifacts and relics", "underdeep:encrusted_relic", [
+    "Encrusted relics are something under a crust: a scholar, astronomer or cartographer will clean and identify one for 3 emeralds."
+    " Artifacts are real equipment: rings, amulets and charms (K), weapons, and a few tools with odd powers. They do not burn in lava.",
+    "Relics (busts, urns, masks...) can be placed as decoration, kept in a museum, or sold. Ancient coins and star shards are valuables"
+    " that merchants buy. Everything you find goes into your collection in the journal."], keys=["artifact", "relic", "identify", "coin", "museum", "collection"],
+     see=["treasure", "accessories"])
+page("records", "explore", "Old writings", "underdeep:lore_fragment", [
+    "Inscriptions are carved into old places; loose writings turn up in chests and on the ground. Use one to read it: it is copied into"
+    " your journal. The old peoples did not agree about what happened down here, and neither do their records."],
+     keys=["lore", "history", "book", "inscription", "record", "writing"], see=["journal_help"])
+page("journal_help", "explore", "Your exploration journal", "underdeep:lore_fragment", [
+    "The 'Your Journal' category lists the places you have discovered (with where they are, so you can find them again), leads you"
+    " heard about, the writings you read and the artifacts you collected. It is yours alone; friends keep their own.",
+    "Getting back: the place pages give coordinates and the distance from where you stand. A homing stone remembers one place for you;"
+    " waymarkers and the delver's compass work as before."], keys=["journal", "notes", "return", "coordinates", "find again", "places"],
+     see=["exploring", "rumours"])
+page("rumours", "explore", "Rumours, charts and reports", "underdeep:surveyors_chart", [
+    "Ask inhabitants 'Heard of any old places around here?': they may point you somewhere, roughly, in their own words (once a day each)."
+    " Cartographers and navigators draw surveyor's charts with exact directions (6 emeralds); a chart can be passed to a friend.",
+    "Scholars and astronomers pay for news: tell them about places you found and writings you read, and their settlement pays once for"
+    " each."], keys=["rumour", "rumor", "map", "chart", "cartographer", "scholar", "report"], see=["journal_help"])
+page("encounters", "explore", "On the road", "minecraft:glow_ink_sac", [
+    "Travelling, you will sometimes see things happen: a rockfall, a spring of steam, a drifting boat, an old camp, lights moving in the"
+    " dark. Most are harmless and some are lucky; watch for the warning signs of the others."], keys=["event", "encounter", "travel", "road"],
+     see=["exploring"])
+page("warding", "explore", "Safe camps", "underdeep:warding_bell", [
+    "A warding bell, found in old places, keeps hostile creatures from appearing within 16 blocks of it: perfect for an expedition camp."
+    " Torches and walls help too. Companions follow you through ordinary passages; if one gets stuck, it catches up when it can."],
+     keys=["camp", "safe", "bell", "spawn", "companion"], see=["expedition_prep"])
+
 # ------------------------------------------------------------------------------------------------ Controls
 page("controls", "controls", "Controls", "minecraft:comparator", [
     "H: open this handbook. K: open accessories. L: advancements (vanilla). All keys can be changed in Options > Controls > Underdeep.",
@@ -511,7 +582,22 @@ page("multiplayer", "controls", "Playing together", "minecraft:player_head", [
      keys=["multiplayer", "server", "friends", "together", "coop"], see=["shared_bases"])
 
 
+def places():
+    import sys
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "assets"))
+    import stage9 as s9
+    kinds = {"ruin": "Abandoned place", "landmark": "Landmark", "dungeon": "Sealed complex", "secret": "Hidden place"}
+    icons = {"ruin": "minecraft:mossy_cobblestone", "landmark": "minecraft:recovery_compass", "dungeon": "minecraft:iron_door",
+             "secret": "minecraft:tripwire_hook"}
+    for f in s9.F:
+        page("site_" + f["id"], "journal", f["name"], icons[f["category"]], [f["desc"], kinds[f["category"]] + ". Your journal lists where you found one."],
+             keys=["place", kinds[f["category"]].lower()], req="site:" + f["id"], see=["journal_help"])
+    for sid, name, desc in s9.SECRETS:
+        page("secret_" + sid, "journal", name, "minecraft:tripwire_hook", [desc], keys=["secret", "hidden"], req="secret:" + sid, see=["journal_help"])
+
+
 def main():
+    places()
     ids = [p["id"] for p in PAGES]
     assert len(ids) == len(set(ids)), "duplicate page ids"
     for p in PAGES:

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:encrusted_relic"
+  },
+  "title": {
+   "text": "Something Under the Crust"
+  },
+  "description": {
+   "text": "Find an artifact or relic"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "artifact_found"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/coffer"
+}

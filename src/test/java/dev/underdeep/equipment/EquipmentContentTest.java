@@ -28,16 +28,32 @@ class EquipmentContentTest {
         return e.isJsonArray() ? e.getAsJsonArray().size() : e.getAsJsonObject().size();
     }
 
+    static int stage8(JsonObject o, String key, Set<String> artifacts) {
+        int n = 0;
+        for (JsonElement e : o.getAsJsonArray(key)) {
+            if (!artifacts.contains(e.getAsJsonObject().get("id").getAsString())) {
+                n++;
+            }
+        }
+        return n;
+    }
+
     @Test
     void countsAreWithinTheBrief() throws Exception {
         JsonObject o = json("/data/underdeep/equipment/content.json");
-        int weapons = size(o, "weapons") + size(o, "bows");
+        // Stage 9 artifacts are appended to the same lists; the Stage 8 brief counts exclude them
+        Set<String> artifacts = new HashSet<>();
+        if (o.has("artifacts")) {
+            o.getAsJsonArray("artifacts").forEach(e -> artifacts.add(e.getAsString()));
+        }
+        int weapons = stage8(o, "weapons", artifacts) + size(o, "bows");
         int tools = size(o, "tools") + size(o, "utility");
         assertTrue(size(o, "materials") >= 12 && size(o, "materials") <= 18, "materials");
         assertTrue(weapons >= 35 && weapons <= 50, "weapons " + weapons);
         assertTrue(size(o, "armorSets") >= 12 && size(o, "armorSets") <= 18, "armour sets");
         assertTrue(tools >= 25 && tools <= 40, "tools " + tools);
-        assertTrue(size(o, "accessories") >= 20 && size(o, "accessories") <= 30, "accessories");
+        int acc = stage8(o, "accessories", artifacts);
+        assertTrue(acc >= 20 && acc <= 30, "accessories " + acc);
         assertTrue(size(o, "upgrades") >= 30 && size(o, "upgrades") <= 50, "upgrades");
     }
 

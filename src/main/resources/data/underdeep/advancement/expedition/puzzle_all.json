@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:memory_pillar"
+  },
+  "title": {
+   "text": "Nothing Stays Shut"
+  },
+  "description": {
+   "text": "Solve every kind of ancient mechanism"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "puzzle_solved",
+    "distinct": 16
+   }
+  }
+ },
+ "parent": "underdeep:expedition/puzzle_types",
+ "rewards": {
+  "experience": 150
+ }
+}

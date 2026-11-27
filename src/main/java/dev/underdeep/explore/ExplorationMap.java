@@ -183,7 +183,7 @@ public final class ExplorationMap {
     private Candidate compute(CavernLayer layer, int cx, int cz, long key) {
         int cell = cell(layer);
         long h = Hashing.hash(seed, key);
-        double chance = (layer == CavernLayer.UPPER ? 0.46 : 0.40) * density;
+        double chance = (layer == CavernLayer.UPPER ? 0.40 : 0.30) * density;
         if (Hashing.unit(Hashing.hash(h, 1)) >= chance) {
             return null;
         }
@@ -292,8 +292,12 @@ public final class ExplorationMap {
         return floorY;
     }
 
+    /** A floor under lava: below a lava region's sea level, or under a lava pond. */
     private static boolean lava(TerrainColumn c, boolean upper) {
-        return upper ? c.upperLava || c.pondLava && !Double.isNaN(c.pondLevel) && c.upperFloor < c.pondLevel : c.deepLava;
+        double floor = upper ? c.upperFloor : c.deepFloor;
+        boolean regionLava = upper ? c.upperLava : c.deepLava;
+        int level = upper ? UnderdeepTerrain.SEA_LEVEL : CavernLayer.DEEP.fluidLevel;
+        return regionLava && floor < level + 1.5 || c.pondLava && !Double.isNaN(c.pondLevel) && floor < c.pondLevel + 1;
     }
 
     private static boolean submerged(TerrainColumn c, boolean upper, double floor) {

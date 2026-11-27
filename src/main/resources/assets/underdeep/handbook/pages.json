@@ -61,6 +61,16 @@
    "icon": "underdeep:steel_sword"
   },
   {
+   "id": "explore",
+   "title": "Exploration",
+   "icon": "minecraft:recovery_compass"
+  },
+  {
+   "id": "journal",
+   "title": "Your Journal",
+   "icon": "underdeep:lore_fragment"
+  },
+  {
    "id": "controls",
    "title": "Controls & Settings",
    "icon": "minecraft:comparator"
@@ -2225,6 +2235,293 @@
    "req": ""
   },
   {
+   "id": "exploring",
+   "cat": "explore",
+   "title": "Old places",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "ruin",
+    "ruins",
+    "dungeon",
+    "landmark",
+    "structure",
+    "explore",
+    "discover"
+   ],
+   "body": [
+    "The Underdeep is old. People lived and worked down here long before today's settlements, and they left a great deal behind: roadside remains, abandoned homes and workshops, great landmarks, and sealed complexes that go deep into the rock.",
+    "Most places are small and quick to look around. Some are big enough for a whole evening, and a few are rare enough that you may never see them. You discover a place just by walking into it: it goes into your journal (this handbook, 'Your Journal').",
+    "Nothing marks them on a map for you. Look for unusual stone, light where there should be none, carved signs, old roads of copper lamp posts, and anything that looks built rather than grown."
+   ],
+   "items": [],
+   "see": [
+    "expedition_prep",
+    "old_structures",
+    "journal_help"
+   ],
+   "req": ""
+  },
+  {
+   "id": "expedition_prep",
+   "cat": "explore",
+   "title": "Preparing an expedition",
+   "icon": "minecraft:bundle",
+   "keys": [
+    "prepare",
+    "supplies",
+    "expedition",
+    "pack",
+    "gear",
+    "travel"
+   ],
+   "body": [
+    "Before you head for something big: food for a few days, plenty of light, bandages and a remedy or two, and clothing for the region (warm in the cold, cooling or fire-resistant near heat, spore protection in fungal places, diving gear where it is flooded).",
+    "Rope and a grappling hook help with heights; a bedroll and a few torches make a camp; repair kits keep your tools going. Bring friends: some mechanisms are easier with two, and expedition coffers give everyone their own share."
+   ],
+   "items": [
+    "underdeep:bandage",
+    "underdeep:rope_coil",
+    "underdeep:bedroll"
+   ],
+   "see": [
+    "exploring",
+    "hazards",
+    "warding"
+   ],
+   "req": ""
+  },
+  {
+   "id": "old_structures",
+   "cat": "explore",
+   "title": "Exploring old structures",
+   "icon": "minecraft:cracked_stone_bricks",
+   "keys": [
+    "seal",
+    "door",
+    "dungeon",
+    "complex",
+    "stair",
+    "locked"
+   ],
+   "body": [
+    "Old buildings are yours to use: mine them, move in, build on them. Only two things resist you: ancient seals (they open for their mechanism, never for tools) and the mechanism parts of a seal that has not been opened yet.",
+    "Large complexes go down by stair wells. Expect several rooms, side passages and a heart at the end. Every complex has a way back out that never closes; if you fall somewhere, look for a ladder or a passage up. You can leave and come back: opened seals stay open, and the world remembers what you took."
+   ],
+   "items": [],
+   "see": [
+    "mechanisms",
+    "traps"
+   ],
+   "req": ""
+  },
+  {
+   "id": "mechanisms",
+   "cat": "explore",
+   "title": "Ancient mechanisms",
+   "icon": "underdeep:rune_dial",
+   "keys": [
+    "puzzle",
+    "lever",
+    "dial",
+    "plate",
+    "brazier",
+    "mechanism",
+    "seal",
+    "rune",
+    "chime"
+   ],
+   "body": [
+    "Seals open when their mechanism is worked the right way. The answer is always nearby: carved signs, marks on the parts themselves, shapes, sizes, sounds, the layout of the room, or an old record. Nothing requires guessing a number.",
+    "The old builders used six signs (spiral, eye, wave, flame, star, key); each looks different, so colour never matters. A wrong step usually just resets with a low note. Mechanisms never eat your things: offerings that are wrong are refused. Some mechanisms are easier for two people, but every one has a way to do it alone."
+   ],
+   "items": [],
+   "see": [
+    "old_structures"
+   ],
+   "req": ""
+  },
+  {
+   "id": "traps",
+   "cat": "explore",
+   "title": "Traps",
+   "icon": "underdeep:trap_plate",
+   "keys": [
+    "trap",
+    "dart",
+    "vent",
+    "floor",
+    "danger",
+    "disarm"
+   ],
+   "body": [
+    "Old places defended themselves. Traps always warn you: ash at a dart slit, dust under a loose ceiling, smoke or a hiss before a vent breathes, cracks before a floor gives way. Worn floor tiles are worth stepping around.",
+    "Sneak-use a worn tile with a stick or a pickaxe to jam it for good. A block placed on a vent stops it. Crumbling floors drop you to the level below; there is always a way back up."
+   ],
+   "items": [],
+   "see": [
+    "hazards"
+   ],
+   "req": ""
+  },
+  {
+   "id": "treasure",
+   "cat": "explore",
+   "title": "Treasure and fair shares",
+   "icon": "underdeep:expedition_cache",
+   "keys": [
+    "loot",
+    "treasure",
+    "chest",
+    "coffer",
+    "reward",
+    "key"
+   ],
+   "body": [
+    "Ordinary chests and pots hold what they hold: whoever opens them first takes it. Expedition coffers are different: each player may open each coffer once and gets a share of their own, so a group is rewarded together.",
+    "A few rare places keep something unique on a pedestal: it is there once, for the whole world. Vault keys hang on key pedestals (one per person) and open the lock of that vault only."
+   ],
+   "items": [],
+   "see": [
+    "artifacts"
+   ],
+   "req": ""
+  },
+  {
+   "id": "artifacts",
+   "cat": "explore",
+   "title": "Artifacts and relics",
+   "icon": "underdeep:encrusted_relic",
+   "keys": [
+    "artifact",
+    "relic",
+    "identify",
+    "coin",
+    "museum",
+    "collection"
+   ],
+   "body": [
+    "Encrusted relics are something under a crust: a scholar, astronomer or cartographer will clean and identify one for 3 emeralds. Artifacts are real equipment: rings, amulets and charms (K), weapons, and a few tools with odd powers. They do not burn in lava.",
+    "Relics (busts, urns, masks...) can be placed as decoration, kept in a museum, or sold. Ancient coins and star shards are valuables that merchants buy. Everything you find goes into your collection in the journal."
+   ],
+   "items": [],
+   "see": [
+    "treasure",
+    "accessories"
+   ],
+   "req": ""
+  },
+  {
+   "id": "records",
+   "cat": "explore",
+   "title": "Old writings",
+   "icon": "underdeep:lore_fragment",
+   "keys": [
+    "lore",
+    "history",
+    "book",
+    "inscription",
+    "record",
+    "writing"
+   ],
+   "body": [
+    "Inscriptions are carved into old places; loose writings turn up in chests and on the ground. Use one to read it: it is copied into your journal. The old peoples did not agree about what happened down here, and neither do their records."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": ""
+  },
+  {
+   "id": "journal_help",
+   "cat": "explore",
+   "title": "Your exploration journal",
+   "icon": "underdeep:lore_fragment",
+   "keys": [
+    "journal",
+    "notes",
+    "return",
+    "coordinates",
+    "find again",
+    "places"
+   ],
+   "body": [
+    "The 'Your Journal' category lists the places you have discovered (with where they are, so you can find them again), leads you heard about, the writings you read and the artifacts you collected. It is yours alone; friends keep their own.",
+    "Getting back: the place pages give coordinates and the distance from where you stand. A homing stone remembers one place for you; waymarkers and the delver's compass work as before."
+   ],
+   "items": [],
+   "see": [
+    "exploring",
+    "rumours"
+   ],
+   "req": ""
+  },
+  {
+   "id": "rumours",
+   "cat": "explore",
+   "title": "Rumours, charts and reports",
+   "icon": "underdeep:surveyors_chart",
+   "keys": [
+    "rumour",
+    "rumor",
+    "map",
+    "chart",
+    "cartographer",
+    "scholar",
+    "report"
+   ],
+   "body": [
+    "Ask inhabitants 'Heard of any old places around here?': they may point you somewhere, roughly, in their own words (once a day each). Cartographers and navigators draw surveyor's charts with exact directions (6 emeralds); a chart can be passed to a friend.",
+    "Scholars and astronomers pay for news: tell them about places you found and writings you read, and their settlement pays once for each."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": ""
+  },
+  {
+   "id": "encounters",
+   "cat": "explore",
+   "title": "On the road",
+   "icon": "minecraft:glow_ink_sac",
+   "keys": [
+    "event",
+    "encounter",
+    "travel",
+    "road"
+   ],
+   "body": [
+    "Travelling, you will sometimes see things happen: a rockfall, a spring of steam, a drifting boat, an old camp, lights moving in the dark. Most are harmless and some are lucky; watch for the warning signs of the others."
+   ],
+   "items": [],
+   "see": [
+    "exploring"
+   ],
+   "req": ""
+  },
+  {
+   "id": "warding",
+   "cat": "explore",
+   "title": "Safe camps",
+   "icon": "underdeep:warding_bell",
+   "keys": [
+    "camp",
+    "safe",
+    "bell",
+    "spawn",
+    "companion"
+   ],
+   "body": [
+    "A warding bell, found in old places, keeps hostile creatures from appearing within 16 blocks of it: perfect for an expedition camp. Torches and walls help too. Companions follow you through ordinary passages; if one gets stuck, it catches up when it can."
+   ],
+   "items": [],
+   "see": [
+    "expedition_prep"
+   ],
+   "req": ""
+  },
+  {
    "id": "controls",
    "cat": "controls",
    "title": "Controls",
@@ -2285,6 +2582,1936 @@
     "shared_bases"
    ],
    "req": ""
+  },
+  {
+   "id": "site_wayshrine",
+   "cat": "journal",
+   "title": "Wayside Shrine",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A small shrine by an old path. Someone still remembered it, once.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:wayshrine"
+  },
+  {
+   "id": "site_lantern_post",
+   "cat": "journal",
+   "title": "Old Lantern Road",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Copper lantern posts mark a road nobody walks any more.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:lantern_post"
+  },
+  {
+   "id": "site_collapsed_hut",
+   "cat": "journal",
+   "title": "Collapsed Dwelling",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A home, long abandoned. The hearth is cold.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:collapsed_hut"
+  },
+  {
+   "id": "site_miners_camp",
+   "cat": "journal",
+   "title": "Abandoned Mining Camp",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Rails, a cold fire, and work left half done.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:miners_camp"
+  },
+  {
+   "id": "site_cairn_circle",
+   "cat": "journal",
+   "title": "Cairn Circle",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Stacked stones in a ring around a carved sign.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:cairn_circle"
+  },
+  {
+   "id": "site_broken_bridge",
+   "cat": "journal",
+   "title": "Broken Bridge",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Half a bridge, reaching for a far side that fell long ago.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:broken_bridge"
+  },
+  {
+   "id": "site_fallen_statue",
+   "cat": "journal",
+   "title": "Fallen Colossus Head",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A stone face as tall as a house, lying where it fell.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:fallen_statue"
+  },
+  {
+   "id": "site_well_head",
+   "cat": "journal",
+   "title": "Old Well",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A well shaft with a rotten windlass. Water glints far below.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:well_head"
+  },
+  {
+   "id": "site_watch_niche",
+   "cat": "journal",
+   "title": "Watch Post",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A sheltered post where someone once kept watch.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:watch_niche"
+  },
+  {
+   "id": "site_grave_garden",
+   "cat": "journal",
+   "title": "Grave Garden",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Quiet stones among flowers. Someone was loved here.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:grave_garden"
+  },
+  {
+   "id": "site_kiln_mound",
+   "cat": "journal",
+   "title": "Potters' Kiln",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A brick kiln and the pots it never finished firing.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:kiln_mound"
+  },
+  {
+   "id": "site_waystone",
+   "cat": "journal",
+   "title": "Waystone",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A carved marker stone. Its carvings count distances in lamps.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:waystone"
+  },
+  {
+   "id": "site_cottage_row",
+   "cat": "journal",
+   "title": "Abandoned Hamlet",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A row of empty houses. They left in a hurry, or not at all.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:cottage_row"
+  },
+  {
+   "id": "site_lantern_waystation",
+   "cat": "journal",
+   "title": "League Waystation",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A rest-house of the old lantern roads, with a pump outside.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:lantern_waystation"
+  },
+  {
+   "id": "site_forge_ruin",
+   "cat": "journal",
+   "title": "Cold Forge",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A smithy whose great hearth has been dark for an age.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:forge_ruin"
+  },
+  {
+   "id": "site_tide_shrine",
+   "cat": "journal",
+   "title": "Tide Shrine",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Sea-green pillars around an altar that still glows.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:tide_shrine"
+  },
+  {
+   "id": "site_seed_terrace",
+   "cat": "journal",
+   "title": "Seed Terraces",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Ringed garden terraces, still growing on their own.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:seed_terrace"
+  },
+  {
+   "id": "site_star_dial",
+   "cat": "journal",
+   "title": "Star Dial",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A ring of carved stones around a pointer that aims at the ceiling.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:star_dial"
+  },
+  {
+   "id": "site_fungal_hall",
+   "cat": "journal",
+   "title": "Overgrown Hall",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A great hall that a mushroom has slowly claimed.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:fungal_hall"
+  },
+  {
+   "id": "site_ice_hermitage",
+   "cat": "journal",
+   "title": "Frozen Hermitage",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A hermit's house, half swallowed by ice.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:ice_hermitage"
+  },
+  {
+   "id": "site_stilt_village",
+   "cat": "journal",
+   "title": "Stilt Houses",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Platforms on tall posts above the wet ground. One has fallen.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:stilt_village"
+  },
+  {
+   "id": "site_storm_tower",
+   "cat": "journal",
+   "title": "Lightning Tower",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "A tower crowned with copper, built to call the sparks down.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:storm_tower"
+  },
+  {
+   "id": "site_quarry",
+   "cat": "journal",
+   "title": "Old Quarry",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Terraced cuts in the rock and a crane that still stands.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:quarry"
+  },
+  {
+   "id": "site_silent_ruin",
+   "cat": "journal",
+   "title": "Silent Ruins",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Broken columns furred with a strange growth. The air feels listened to.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:silent_ruin"
+  },
+  {
+   "id": "site_vault_gatehouse",
+   "cat": "journal",
+   "title": "Vault Gatehouse",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Twin towers guard a gate into nothing. What did it keep out, or in?",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:vault_gatehouse"
+  },
+  {
+   "id": "site_aqueduct",
+   "cat": "journal",
+   "title": "Aqueduct",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Arches carry a channel across the cavern. Water still runs in places.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:aqueduct"
+  },
+  {
+   "id": "site_market_square",
+   "cat": "journal",
+   "title": "Lost Market",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Empty stalls around a dry fountain. It must have been loud, once.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:market_square"
+  },
+  {
+   "id": "site_great_library",
+   "cat": "journal",
+   "title": "Great Library",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Shelves upon shelves. Most books are dust, not all.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:great_library"
+  },
+  {
+   "id": "site_amphitheatre",
+   "cat": "journal",
+   "title": "Amphitheatre",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Tiered stone seats facing an empty stage. Your footsteps carry.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:amphitheatre"
+  },
+  {
+   "id": "site_foundry_complex",
+   "cat": "journal",
+   "title": "Ruined Foundry",
+   "icon": "minecraft:mossy_cobblestone",
+   "keys": [
+    "place",
+    "abandoned place"
+   ],
+   "body": [
+    "Furnaces, rails and chimneys. This was a place of work.",
+    "Abandoned place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:foundry_complex"
+  },
+  {
+   "id": "site_colossus",
+   "cat": "journal",
+   "title": "The Seated Colossus",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A giant carved from the rock sits with its hands on its knees, watching.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:colossus"
+  },
+  {
+   "id": "site_great_stair",
+   "cat": "journal",
+   "title": "The Great Stair",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A stair wide enough for a crowd climbs to a landing above the cavern.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:great_stair"
+  },
+  {
+   "id": "site_sky_bridge",
+   "cat": "journal",
+   "title": "The High Bridge",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A slender arch leaps between two pillars, high above the floor.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:sky_bridge"
+  },
+  {
+   "id": "site_lantern_spire",
+   "cat": "journal",
+   "title": "Lantern Spire",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A copper tower, its lamp still burning. You can see it from far away.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:lantern_spire"
+  },
+  {
+   "id": "site_root_arch",
+   "cat": "journal",
+   "title": "The Root Arch",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A root as thick as a house rises out of the ground and dives back in.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:root_arch"
+  },
+  {
+   "id": "site_crystal_cathedral",
+   "cat": "journal",
+   "title": "Crystal Cathedral",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Spires of living crystal hum around a pale nave.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:crystal_cathedral"
+  },
+  {
+   "id": "site_frozen_falls",
+   "cat": "journal",
+   "title": "Frozen Falls",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A waterfall stopped mid-fall, blue and silent.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:frozen_falls"
+  },
+  {
+   "id": "site_ember_caldera",
+   "cat": "journal",
+   "title": "Ember Caldera",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Black monoliths stand around a glowing pool.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:ember_caldera"
+  },
+  {
+   "id": "site_sunken_dome",
+   "cat": "journal",
+   "title": "Sunken Dome",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A great dome of sea-glass, half drowned.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:sunken_dome"
+  },
+  {
+   "id": "site_mushroom_ring",
+   "cat": "journal",
+   "title": "Giants' Ring",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Giant mushrooms stand in a perfect circle around a glowing lawn.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:mushroom_ring"
+  },
+  {
+   "id": "site_petrified_titan",
+   "cat": "journal",
+   "title": "The Stone Titan",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A tree turned to stone, older than any forest.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:petrified_titan"
+  },
+  {
+   "id": "site_star_orrery",
+   "cat": "journal",
+   "title": "The Great Orrery",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Rings within rings, frozen mid-turn around a starstone heart.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:star_orrery"
+  },
+  {
+   "id": "site_storm_pylons",
+   "cat": "journal",
+   "title": "Storm Pylons",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Three pylons strung with copper hum before every flash.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:storm_pylons"
+  },
+  {
+   "id": "site_hanging_gardens",
+   "cat": "journal",
+   "title": "Hanging Gardens",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Terraced gardens step upward, water spilling from each.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:hanging_gardens"
+  },
+  {
+   "id": "site_obelisk_field",
+   "cat": "journal",
+   "title": "Field of Obelisks",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "Leaning stones carved with the same six signs.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:obelisk_field"
+  },
+  {
+   "id": "site_silent_bell",
+   "cat": "journal",
+   "title": "The Silent Bell",
+   "icon": "minecraft:recovery_compass",
+   "keys": [
+    "place",
+    "landmark"
+   ],
+   "body": [
+    "A bell the size of a house hangs over an altar. It has not rung for a long time.",
+    "Landmark. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:silent_bell"
+  },
+  {
+   "id": "site_sealed_cellar",
+   "cat": "journal",
+   "title": "Sealed Cellar",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A ruined house with a cellar door that stuck. Something below is shut tight.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:sealed_cellar"
+  },
+  {
+   "id": "site_smugglers_den",
+   "cat": "journal",
+   "title": "Smugglers' Den",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A hidden cave-mouth with boot-worn steps going down.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:smugglers_den"
+  },
+  {
+   "id": "site_drowned_crypt",
+   "cat": "journal",
+   "title": "Drowned Crypt",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A crypt whose stairs go down into still water.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:drowned_crypt"
+  },
+  {
+   "id": "site_kiln_vault",
+   "cat": "journal",
+   "title": "Kiln Vault",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "Heat rises from a kiln's mouth that leads down, not in.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:kiln_vault"
+  },
+  {
+   "id": "site_spore_warren",
+   "cat": "journal",
+   "title": "Spore Warren",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "Tunnels under a mushroom, breathing spores.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:spore_warren"
+  },
+  {
+   "id": "site_frost_cistern",
+   "cat": "journal",
+   "title": "Frost Cistern",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "An ice-rimmed stair into a cistern that breathes cold.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:frost_cistern"
+  },
+  {
+   "id": "site_echo_vault",
+   "cat": "journal",
+   "title": "Echo Vault",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A stair under a stone ring. Sounds come back changed.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:echo_vault"
+  },
+  {
+   "id": "site_lantern_works",
+   "cat": "journal",
+   "title": "Lantern Works",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A League workshop with a lift shaft into the dark.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:lantern_works"
+  },
+  {
+   "id": "site_warden_barracks",
+   "cat": "journal",
+   "title": "Warden Barracks",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A walled barracks. The gong in the yard is still hung.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:warden_barracks"
+  },
+  {
+   "id": "site_tide_temple",
+   "cat": "journal",
+   "title": "Tide Temple",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A pillared temple whose lower halls lie under water.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:tide_temple"
+  },
+  {
+   "id": "site_seed_vault",
+   "cat": "journal",
+   "title": "Seed Vault",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A domed hatch in a garden. Under it, a vault.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:seed_vault"
+  },
+  {
+   "id": "site_star_observatory",
+   "cat": "journal",
+   "title": "Observatory",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A domed tower with a telescope aimed at the stone sky.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:star_observatory"
+  },
+  {
+   "id": "site_stormworks",
+   "cat": "journal",
+   "title": "Stormworks",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A generator hall over a deep pit. Something here once made lightning.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:stormworks"
+  },
+  {
+   "id": "site_ossuary",
+   "cat": "journal",
+   "title": "Ossuary",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A chapel whose stair leads to the bones of the old dead.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:ossuary"
+  },
+  {
+   "id": "site_wright_vault",
+   "cat": "journal",
+   "title": "The Sealed Vault",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A gate court with statues and a stair into the deep. The great door below is shut.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:wright_vault"
+  },
+  {
+   "id": "site_sunken_archive",
+   "cat": "journal",
+   "title": "Drowned Archive",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A ring of stone above a flooded stair. Shelves sway below the water.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:sunken_archive"
+  },
+  {
+   "id": "site_deep_foundry",
+   "cat": "journal",
+   "title": "Deep Foundry",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A foundry whose works go far below the floor, still warm.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:deep_foundry"
+  },
+  {
+   "id": "site_singing_hall",
+   "cat": "journal",
+   "title": "Singing Hall",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A stair into crystal. The air hums in chords.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:singing_hall"
+  },
+  {
+   "id": "site_heartwood",
+   "cat": "journal",
+   "title": "The Heartwood",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "The greatest root of all goes down into the floor, and so does a stair.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:heartwood"
+  },
+  {
+   "id": "site_silent_sanctum",
+   "cat": "journal",
+   "title": "Silent Sanctum",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "place",
+    "sealed complex"
+   ],
+   "body": [
+    "A court of black pillars at the edge of the deep. Nothing makes a sound here.",
+    "Sealed complex. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:silent_sanctum"
+  },
+  {
+   "id": "site_waterfall_grotto",
+   "cat": "journal",
+   "title": "Hidden Grotto",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "A dry room behind falling water.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:waterfall_grotto"
+  },
+  {
+   "id": "site_hollow_pillar",
+   "cat": "journal",
+   "title": "Hollow Pillar",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "A stone column, hollow all the way up.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:hollow_pillar"
+  },
+  {
+   "id": "site_buried_reliquary",
+   "cat": "journal",
+   "title": "Buried Reliquary",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "Under the cairn, a room of offerings.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:buried_reliquary"
+  },
+  {
+   "id": "site_hermit_cell",
+   "cat": "journal",
+   "title": "Hermit's Cell",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "Someone lived inside the rock itself.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:hermit_cell"
+  },
+  {
+   "id": "site_fungal_heart",
+   "cat": "journal",
+   "title": "Fungal Heart",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "Under the great mushroom, the roots make a room.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:fungal_heart"
+  },
+  {
+   "id": "site_ember_shrine",
+   "cat": "journal",
+   "title": "Ember Shrine",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "A shrine behind a seam of fire.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:ember_shrine"
+  },
+  {
+   "id": "site_star_window",
+   "cat": "journal",
+   "title": "Star Window",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "A room under a floor of stars.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:star_window"
+  },
+  {
+   "id": "site_drowned_bell",
+   "cat": "journal",
+   "title": "Drowned Bell",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "Something rings beneath still water.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:drowned_bell"
+  },
+  {
+   "id": "site_root_hollow",
+   "cat": "journal",
+   "title": "Root Hollow",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "A hollow inside a living root.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:root_hollow"
+  },
+  {
+   "id": "site_crystal_geode",
+   "cat": "journal",
+   "title": "Geode Heart",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "place",
+    "hidden place"
+   ],
+   "body": [
+    "A crystal egg the size of a room.",
+    "Hidden place. Your journal lists where you found one."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "site:crystal_geode"
+  },
+  {
+   "id": "secret_well_bottom",
+   "cat": "journal",
+   "title": "The Well's Hidden Tunnel",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Someone dug sideways at the bottom of the well."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:well_bottom"
+  },
+  {
+   "id": "secret_cellar_beneath",
+   "cat": "journal",
+   "title": "The Hidden Cellar",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Under the floor, the family kept what mattered most."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:cellar_beneath"
+  },
+  {
+   "id": "secret_forge_strongbox",
+   "cat": "journal",
+   "title": "The Smith's Strongbox",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Bricked in beneath the anvil."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:forge_strongbox"
+  },
+  {
+   "id": "secret_pearl_grotto",
+   "cat": "journal",
+   "title": "The Pearl Grotto",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A secret room under the shrine."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:pearl_grotto"
+  },
+  {
+   "id": "secret_gatehouse_armory",
+   "cat": "journal",
+   "title": "The Hidden Armory",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Behind a false wall, the garrison's spare gear."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:gatehouse_armory"
+  },
+  {
+   "id": "secret_aqueduct_channel",
+   "cat": "journal",
+   "title": "The Inner Channel",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Inside the pier, a maintenance shaft."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:aqueduct_channel"
+  },
+  {
+   "id": "secret_library_stacks",
+   "cat": "journal",
+   "title": "The Secret Stacks",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "The books they did not want borrowed."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:library_stacks"
+  },
+  {
+   "id": "secret_colossus_heart",
+   "cat": "journal",
+   "title": "The Colossus' Heart",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A chamber in the giant's chest."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:colossus_heart"
+  },
+  {
+   "id": "secret_stair_landing",
+   "cat": "journal",
+   "title": "The Landing Door",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "At the top of the stair, a room waited for those who could read the signs."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:stair_landing"
+  },
+  {
+   "id": "secret_titan_hollow",
+   "cat": "journal",
+   "title": "The Titan's Crown",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "High in the stone tree, a hidden floor."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:titan_hollow"
+  },
+  {
+   "id": "secret_orrery_core",
+   "cat": "journal",
+   "title": "The Orrery's Core",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Inside the starstone heart."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:orrery_core"
+  },
+  {
+   "id": "secret_bell_chamber",
+   "cat": "journal",
+   "title": "Beneath the Bell",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A chamber under the altar."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:bell_chamber"
+  },
+  {
+   "id": "secret_ice_tomb",
+   "cat": "journal",
+   "title": "The Ice Tomb",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Behind the frozen fall."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:ice_tomb"
+  },
+  {
+   "id": "secret_lantern_vault",
+   "cat": "journal",
+   "title": "The Lamp Vault",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Where the League kept its best lamps."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:lantern_vault"
+  },
+  {
+   "id": "secret_observatory_crypt",
+   "cat": "journal",
+   "title": "The Observers' Crypt",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Under the telescope floor."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:observatory_crypt"
+  },
+  {
+   "id": "secret_ossuary_reliquary",
+   "cat": "journal",
+   "title": "The Reliquary",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Behind the bones."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:ossuary_reliquary"
+  },
+  {
+   "id": "secret_vault_archive",
+   "cat": "journal",
+   "title": "The Vault Archive",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "The record of the vault, kept apart."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:vault_archive"
+  },
+  {
+   "id": "secret_waterfall_grotto",
+   "cat": "journal",
+   "title": "The Hidden Grotto",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A dry room behind falling water."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:waterfall_grotto"
+  },
+  {
+   "id": "secret_hollow_pillar",
+   "cat": "journal",
+   "title": "The Hollow Pillar",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A stone column, hollow all the way up."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:hollow_pillar"
+  },
+  {
+   "id": "secret_buried_reliquary",
+   "cat": "journal",
+   "title": "The Buried Reliquary",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Under the cairn, a room of offerings."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:buried_reliquary"
+  },
+  {
+   "id": "secret_hermit_cell",
+   "cat": "journal",
+   "title": "The Hermit's Cell",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Someone lived inside the rock itself."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:hermit_cell"
+  },
+  {
+   "id": "secret_fungal_heart",
+   "cat": "journal",
+   "title": "The Fungal Heart",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Under the great mushroom, the roots make a room."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:fungal_heart"
+  },
+  {
+   "id": "secret_ember_shrine",
+   "cat": "journal",
+   "title": "The Ember Shrine",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A shrine behind a seam of fire."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:ember_shrine"
+  },
+  {
+   "id": "secret_star_window",
+   "cat": "journal",
+   "title": "The Star Window",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A room under a floor of stars."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:star_window"
+  },
+  {
+   "id": "secret_drowned_bell",
+   "cat": "journal",
+   "title": "The Drowned Bell",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "Something rings beneath still water."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:drowned_bell"
+  },
+  {
+   "id": "secret_root_hollow",
+   "cat": "journal",
+   "title": "The Root Hollow",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A hollow inside a living root."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:root_hollow"
+  },
+  {
+   "id": "secret_crystal_geode",
+   "cat": "journal",
+   "title": "The Geode Heart",
+   "icon": "minecraft:tripwire_hook",
+   "keys": [
+    "secret",
+    "hidden"
+   ],
+   "body": [
+    "A crystal egg the size of a room."
+   ],
+   "items": [],
+   "see": [
+    "journal_help"
+   ],
+   "req": "secret:crystal_geode"
   }
  ]
 }

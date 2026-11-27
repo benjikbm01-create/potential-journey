@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:white_banner"
+  },
+  "title": {
+   "text": "First Footsteps"
+  },
+  "description": {
+   "text": "Be the first in your world to discover a place"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "first_discoverer"
+   }
+  }
+ },
+ "parent": "underdeep:expedition/first_ruin"
+}

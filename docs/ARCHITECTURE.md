@@ -441,6 +441,23 @@ Full descriptions in `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md
   `Companions` gear; `Advancements.event` calls in trade, dialogue, companions, stations, farming, rest, hazards,
   taming, discovery, fishing and recipes.
 
+## 5j. Exploration (Stage 9)
+
+Full description in `docs/EXPLORATION.md`.
+- `explore`: `ExploreContent` (loads `exploration/content.json`), `Site`, `ExplorationMap` (pure placement, layout
+  cache), `Canvas` (layout canvas with locks/weak/soft writes, feature specs), `SiteLayout` (world index of
+  features), `SitePlacer` (chunk-clipped writer, called by `UnderdeepChunkGenerator` after settlements),
+  `ExplorationState` (server `PersistentState`), `ExplorerData` (player attachment), `ExploreBlocks`,
+  `ExploreItems`, `Mechanisms` (puzzles, seals), `Traps`, `Rewards`, `Lore`, `Discovery` (1 Hz),
+  `TravelEncounters`, `ExploreDialogue`, `ExploreCommands`, `LayoutAudit` (static walkability/puzzle audit),
+  `Explorations` (init, payloads, journal, compass targets).
+- `explore/design`: `Kit` (building vocabulary + puzzle/trap helpers), `Style` (culture palettes), `Ruins`,
+  `Landmarks`, `Dungeons`, `Secrets`, `Designs` (registry).
+- Client: `client/explore/ExploreClient` (journal and context receivers); `HandbookScreen` journal pages.
+- Hooks: `Hazards.burst`, `Companions.remark`, `Dialogue` options, `Handbook.discovered`, `Obtainability`
+  exploration rules, `EquipmentTools` compass targets, chunk generator spawn ward.
+- Generator: `UnderdeepTerrain.GENERATOR_VERSION` = 4; sites only in v4+ worlds unless `inOlderWorlds`.
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |
@@ -466,6 +483,9 @@ Full descriptions in `docs/EQUIPMENT.md`, `docs/RESOURCES.md`, `docs/HANDBOOK.md
 | Regional wildlife | `WildlifeManager.get(world).region(regionId)` → `RegionWildlife` (counts, disturbance) | NBT `wildlife` per region; no chunk loads |
 | Settlements | `Settlements.of(world)` → `SettlementMap` (`sitesNear`, `siteAt`, `byId`, `plan`) | pure; ids append-only |
 | Settlement records | `SettlementState.get(world).get(id)` → `SettlementRecord` (inhabitants, deaths, discoveries) | NBT append-only |
+| Exploration sites | `Explorations.of(world)` → `ExplorationMap` (`sitesNear`, `siteAt`, `byId`, `layout`) | pure; family ids append-only |
+| Site state | `ExplorationState.get(server)` (puzzles, claims, uniques, reserved rooms) | NBT append-only |
+| Audio context | `underdeep:explore_context` payload, family `audio` field | Stage 11 soundtrack |
 | Ownership | `UnderdeepCreature.isWild()`, `ownedBy(player)`, `leaveWildAsTamed(owner)` | wild ⇒ region-owned, never saved as entity |
 
 **Extending regions:** add a `RegionType` entry at the end with a `TerrainProfile` and environment,

@@ -131,6 +131,7 @@ public final class Rewards {
             Advancements.event(p, "artifact_found", id);
             Advancements.event(p, "artifact_" + ExploreContent.ARTIFACTS.get(id).rarity(), id);
             dev.underdeep.guide.Handbook.push(p, List.of("item:underdeep:" + id));
+            Explorations.sendJournal(p);
         }
     }
 }

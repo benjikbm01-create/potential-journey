@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:keystone"
+  },
+  "title": {
+   "text": "Mechanist"
+  },
+  "description": {
+   "text": "Solve 8 different kinds of ancient mechanism"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "puzzle_solved",
+    "distinct": 8
+   }
+  }
+ },
+ "parent": "underdeep:expedition/puzzle",
+ "rewards": {
+  "experience": 60
+ }
+}

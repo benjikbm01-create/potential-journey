@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:item_frame"
+  },
+  "title": {
+   "text": "Collector"
+  },
+  "description": {
+   "text": "Collect 10 different artifacts and relics"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "artifact_found",
+    "distinct": 10
+   }
+  }
+ },
+ "parent": "underdeep:expedition/artifact",
+ "rewards": {
+  "experience": 80
+ }
+}

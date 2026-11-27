@@ -441,3 +441,28 @@ completed actions only. Migration from older worlds is one-time, quiet and evide
 ## D-072 Handbook data is server-authoritative and discovery-gated
 The server sends each player only item data and discovery keys they are entitled to; sensitive items appear only
 after being obtained; technical/deferred items never. Bookmarks are client-side.
+
+## D-073 Exploration sites are a pure function of seed and terrain model
+Sites sit on a jittered per-layer grid, fit-checked against the terrain model only, with overlaps resolved by
+priority across neighbouring cells, so placement never depends on chunk order. Generator bumped to v4; older
+worlds get no sites unless `inOlderWorlds` is set (sites at the border of generated land would be cut).
+
+## D-074 Authored layouts in Java with a static audit
+Designs are code (`explore/design`) over a small vocabulary rather than NBT structure files: they vary with the
+seed, rotate, adapt to the culture palette and are audited automatically (walkability, puzzle data, light paths)
+for several seeds in every Stage 9 self-test. Fixtures (ladders, doors, mechanisms) lock their positions so
+later room geometry cannot overwrite them.
+
+## D-075 Mechanisms are indexed by the layout, not stored as block entities
+The layout is recomputed deterministically, so `SiteLayout` maps world positions to puzzle elements, seals, traps,
+caches and inscriptions. Only player-caused state (solved puzzles, claims, jammed traps, woken guards) is stored
+in `ExplorationState`.
+
+## D-076 Reward policies for multiplayer fairness
+Shared containers use vanilla loot; expedition coffers give each player one share; relic pedestals and unique
+artifacts are awarded once per site / once per world; key pedestals give each player one key. Claims are recorded
+before items are given.
+
+## D-077 Spoiler-safe discovery
+Places, hidden rooms and records become visible (Handbook pages, journal, compass targets, advancements) only after
+the player has been there or read them. Operator commands that reveal positions are permission-gated.
