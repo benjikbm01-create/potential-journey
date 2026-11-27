@@ -276,11 +276,17 @@ public final class Mind {
         i.time = now;
         i.source = source;
         i.confidence = confidence;
-        knowledge.add(i);
-        if (knowledge.size() > limit) {
-            knowledge.sort((a, b) -> Long.compare(a.time, b.time));
-            knowledge.remove(0);
+        if (knowledge.size() >= limit && !knowledge.isEmpty()) {
+            // forget the oldest piece of earlier knowledge (never the one just learned, whatever its timestamp)
+            Info oldest = knowledge.get(0);
+            for (Info k : knowledge) {
+                if (k.time < oldest.time) {
+                    oldest = k;
+                }
+            }
+            knowledge.remove(oldest);
         }
+        knowledge.add(i);
         return true;
     }
 

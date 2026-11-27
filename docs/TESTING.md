@@ -62,7 +62,15 @@ as agreed with the user; hands-on play is left to the user.
   geothermal heat stopped by cooling; only a heavy blow wounds; bedroll is a valid bed but does not set spawn;
   comfort 2 → 6 with furniture, a kitchen and warmth; pantry and medicine cabinet filters; supply crate keeps its
   contents when broken with nothing spilled.
-- `SUITE=stage4 scripts/selftest.sh 42 run-tests/s7b reload` (real restart of the same world): running when this was written; result recorded in the next commit.
+- A Stage 6 check then failed on seed 42 in create and reload runs. Diagnosis (with added detail in the check): the
+  test had picked a trade partner with **no inhabitants** (an uninhabited outpost), so nobody could learn of the
+  shortage. The check now picks a pair where both settlements have at least 3 residents, and its setup clears older
+  shortage events in reused worlds. While investigating, `Mind.learn` was made to never forget the fact it has just
+  learned when knowledge is full (it dropped the entry with the oldest timestamp, which can be the new one when the
+  economy clock runs ahead in accelerated runs).
+- Final: `SUITE=stage4 scripts/selftest.sh 42 run-tests/s7c create` — **141 passed, 0 failed**; same world `reload`
+  (real server restart) — **136 passed, 0 failed** (Stage 7 station contents and crate behaviour after reload, money
+  audit exact: 10157.42 = 10157.42). `./gradlew build` — 38/38 unit tests pass.
 
 ### Not executed (user testing)
 - Everything in a real client: station screen layout and the known-recipes panel, drying-rack item rendering,

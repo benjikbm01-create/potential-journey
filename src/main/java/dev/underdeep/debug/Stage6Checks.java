@@ -38,6 +38,10 @@ final class Stage6Checks {
         return String.format(Locale.ROOT, "%.2f", v);
     }
 
+    static boolean inhabited(EconomySim.Ctx c) {
+        return c.rec.inhabitants.stream().filter(SettlementRecord.InhabitantRecord::present).count() >= 3;
+    }
+
     static void run(ServerWorld w, Stage15Checks.Reporter r) {
         r.section("Stage 6 economies, trade and autonomous settlements (accelerated, record level)");
         EconomyManager m = EconomyManager.get(w);
@@ -56,7 +60,15 @@ final class Stage6Checks {
                         st.connections.size()));
         double[] audit0 = st.audit();
         // pick a connected pair
+        // pick a connected pair where both settlements have people (some outposts and ruins are uninhabited)
         EconomyState.Connection k = st.connections.isEmpty() ? null : st.connections.get(0);
+        for (EconomyState.Connection x : st.connections) {
+            EconomySim.Ctx xa = m.ctx(st.economies.get(x.a)), xb = m.ctx(st.economies.get(x.b));
+            if (xa != null && xb != null && inhabited(xa) && inhabited(xb)) {
+                k = x;
+                break;
+            }
+        }
         if (k == null) {
             return;
         }
@@ -129,7 +141,10 @@ final class Stage6Checks {
             }
         }
         boolean leadersKnow = false, knows = false;
+        int present = 0, minds = 0;
         for (SettlementRecord.InhabitantRecord ir : cb.rec.inhabitants) {
+            present += ir.present() ? 1 : 0;
+            minds += ir.present() && ir.mind != null ? 1 : 0;
             // leaders may be re-chosen between the event and this check: anyone who heard of it counts
             knows |= ir.present() && ir.mind != null && ir.mind.knowledge.stream().anyMatch(i -> i.type == Mind.InfoType.ECON);
         }
@@ -141,7 +156,8 @@ final class Stage6Checks {
             leadersKnow |= ir.mind != null && ir.mind.knowledge.stream().anyMatch(i -> i.type == Mind.InfoType.ECON);
         }
         r.check("a food disruption creates a shortage event that inhabitants know about", shortageEvent && knows,
-                "event " + shortageEvent + ", inhabitants informed " + knows + ", current leaders informed " + leadersKnow + "; decisions: " + String.join(" | ", b.decisions.stream().limit(3).toList()));
+                "event " + shortageEvent + ", inhabitants informed " + knows + ", current leaders informed " + leadersKnow + " (" + present + " present, "
+                        + minds + " with minds, " + b.leaders.size() + " leaders, rec " + cb.rec.id + "/" + b.id + "); decisions: " + String.join(" | ", b.decisions.stream().limit(3).toList()));
         r.check("the settlement imports food from a partner with a surplus (cargo leaves the origin, payment escrowed)", s != null && s.escrow > 0,
                 s == null ? "no shipment" : "shipment #" + s.id + " " + s.cargo + " via " + s.method + ", escrow " + f(s.escrow) + ", leader " + s.leader + " (origin crew: " + Trade.crewReport(m.ctx(st.economies.get(s.origin)).rec) + ")");
         if (s != null) {
