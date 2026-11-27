@@ -107,6 +107,8 @@ final class Stage6Checks {
         b.treasuryBalance += 50;
         b.issued += 50; // explicit test funds, counted
         b.lastImport.clear();
+        // test setup: an older shortage (from earlier simulated days in a reused world) would suppress the new event
+        b.events.removeIf(ev -> ev.type().equals("FOOD_SHORTAGE") || ev.type().equals("FOOD_RECOVERED"));
         java.util.Set<Long> before = new java.util.HashSet<>(st.shipments.keySet());
         Daily.run(m, cb);
         boolean shortageEvent = b.recent("FOOD_SHORTAGE", w.getTime());
