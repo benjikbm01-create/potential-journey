@@ -169,6 +169,8 @@ public final class Combat {
     }
 
     public static void init() {
+        CreatureSpit.register();
+        UNPARRYABLE = src -> src.getAttacker() instanceof LivingEntity l && CombatGoal.UNPARRYABLE_NOW.contains(l);
         PayloadTypeRegistry.playC2S().register(Dodge.ID, Dodge.CODEC);
         PayloadTypeRegistry.playC2S().register(Heavy.ID, Heavy.CODEC);
         PayloadTypeRegistry.playS2C().register(Hud.ID, Hud.CODEC);
@@ -477,6 +479,16 @@ public final class Combat {
                 mult *= 1.5;
                 if (behind) {
                     Advancements.event(p, "combat_backstab", "dagger");
+                }
+            }
+        }
+        if (target instanceof dev.underdeep.wildlife.UnderdeepCreature uc && !staggered && Archetype.of(uc) == Archetype.DEFENDER) {
+            Vec3d facing = uc.getRotationVector().multiply(1, 0, 1);
+            Vec3d from = p.getPos().subtract(uc.getPos()).multiply(1, 0, 1);
+            if (facing.lengthSquared() > 0 && from.lengthSquared() > 0 && facing.normalize().dotProduct(from.normalize()) > 0.3) {
+                mult *= 0.5; // armoured front: flank it, or break its guard
+                if (p.getWorld() instanceof ServerWorld w) {
+                    w.playSound(null, uc.getBlockPos(), SoundEvents.ITEM_SHIELD_BLOCK, SoundCategory.HOSTILE, 0.6f, 0.7f);
                 }
             }
         }

@@ -88,7 +88,12 @@ public final class CreatureGoals {
             goals.add(2, new TerritoryGoal(c));
         }
         if (s.attack() > 1) {
-            goals.add(3, new MeleeAttackGoal(c, s.isPredator() ? 1.7 : 1.35, true)); // predators sprint when they charge
+            if (dev.underdeep.config.UnderdeepConfig.get().combat.enabled && dev.underdeep.config.UnderdeepConfig.get().combat.enemyBehaviours) {
+                // Stage 10: telegraphed attacks with recovery windows, by archetype
+                goals.add(3, new dev.underdeep.combat.CombatGoal(c, dev.underdeep.combat.Archetype.of(c), s.isPredator() ? 1.6 : 1.3));
+            } else {
+                goals.add(3, new MeleeAttackGoal(c, s.isPredator() ? 1.7 : 1.35, true)); // predators sprint when they charge
+            }
         }
         if (s.isPredator()) {
             goals.add(3, new HuntGoal(c));

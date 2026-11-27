@@ -211,6 +211,8 @@ public final class UnderdeepConfig {
         public double heavyWindupScale = 1.0;
         /** Combat assistance: wider dodge and parry windows (and longer boss telegraphs). */
         public boolean assist = false;
+        /** Creatures fight with telegraphed, archetype-specific attacks (false: vanilla instant melee). */
+        public boolean enemyBehaviours = true;
         /** Ordinary mobs can be staggered. */
         public boolean mobStagger = true;
     }

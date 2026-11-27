@@ -34,6 +34,8 @@ public final class CombatClient {
     private static long clientTicks;
 
     public static void init() {
+        net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry.register(dev.underdeep.combat.CreatureSpit.TYPE,
+                net.minecraft.client.render.entity.FlyingItemEntityRenderer::new);
         DODGE = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.underdeep.dodge", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_ALT,
                 "key.categories.underdeep"));
         ClientTickEvents.END_CLIENT_TICK.register(mc -> {
