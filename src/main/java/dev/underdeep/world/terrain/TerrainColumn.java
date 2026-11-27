@@ -80,6 +80,25 @@ public final class TerrainColumn {
     /** River channel strength 0..1 (upper layer). */
     public double river;
 
+    /**
+     * Stage 10 descent caves crossing this column: open bands [bandFloor, bandCeil] (count {@link #bandCount}).
+     * A band flagged as ledge crosses open space and stands on a natural rock ledge just below its floor.
+     */
+    public int bandCount;
+    public double[] bandFloor = NO_BANDS;
+    public double[] bandCeil = NO_BANDS;
+    public boolean[] bandLedge;
+    static final double[] NO_BANDS = new double[0];
+
+    /** Index of the descent band containing height y, or -1. */
+    public int bandAt(double y) {
+        for (int i = 0; i < bandCount; i++) {
+            if (y >= bandFloor[i] && y <= bandCeil[i]) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public boolean upperLava;
     public boolean deepLava;
 

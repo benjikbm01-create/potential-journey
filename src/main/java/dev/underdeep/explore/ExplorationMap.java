@@ -289,6 +289,10 @@ public final class ExplorationMap {
         if (upper && settlements != null && settlements.siteAt(x, z, r + 20) != null) {
             return null;
         }
+        // Stage 10: descent caves never cut through an authored site (puzzle rooms, vaults, reserved rooms)
+        if (!terrain.descentsIn(x - r - 6, z - r - 6, x + r + 6, z + r + 6).isEmpty()) {
+            return null;
+        }
         return floorY;
     }
 

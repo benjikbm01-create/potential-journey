@@ -61,8 +61,15 @@ public final class CavernGraph {
     private final int cell;
     private final boolean forceOrigin;
     private final ThreadLocal<Node[]> nodeCache;
+    /** Stage 10 secondary cave network (null in worlds generated before v5). */
+    private final Passages passages;
 
     public CavernGraph(long worldSeed, CavernLayer layer, RegionMap regions) {
+        this(worldSeed, layer, regions, 0);
+    }
+
+    /** @param passageFrequency density of the secondary passage network (0 = none, as in generator v4 and older) */
+    public CavernGraph(long worldSeed, CavernLayer layer, RegionMap regions, double passageFrequency) {
         this.layer = layer;
         this.seed = Hashing.hash(worldSeed, Hashing.salt("cavern_graph"), layer.ordinal());
         this.regions = regions;
@@ -72,6 +79,17 @@ public final class CavernGraph {
         this.shapeNoise = new FractalNoise(Hashing.hash(seed, 3), 3, 1 / 70.0);
         this.forceOrigin = layer == CavernLayer.UPPER;
         this.nodeCache = ThreadLocal.withInitial(() -> new Node[1024]);
+        this.passages = passageFrequency > 0 ? new Passages(seed, layer, passageFrequency) : null;
+    }
+
+    /** Whether this graph has the Stage 10 secondary passage network. */
+    public boolean hasPassages() {
+        return passages != null;
+    }
+
+    /** Passage anchors in a rectangle (x, z, chamber radius, edge count), for diagnostics. */
+    public List<double[]> passageAnchors(int minX, int minZ, int maxX, int maxZ) {
+        return passages == null ? List.of() : passages.anchorsIn(minX, minZ, maxX, maxZ);
     }
 
     public CavernLayer layer() {
@@ -234,6 +252,15 @@ public final class CavernGraph {
                     }
                 }
             }
+        }
+        if (passages != null) {
+            out.height = height;
+            out.tunnel = tunnel;
+            out.chamber = chamber;
+            passages.evaluate(qx, qz, out);
+            height = out.height;
+            tunnel = out.tunnel;
+            chamber = out.chamber;
         }
         if (shafts != null) {
             for (Shaft sh : shafts) {

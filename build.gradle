@@ -101,6 +101,7 @@ java {
 test {
     useJUnitPlatform()
     systemProperty 'underdeep.previews', System.getProperty('underdeep.previews', 'false')
+    systemProperty 'underdeep.bench', System.getProperty('underdeep.bench', 'false')
     systemProperty 'underdeep.distribution', System.getProperty('underdeep.distribution', 'false')
     testLogging.showStandardStreams = true
     maxHeapSize = '2G'

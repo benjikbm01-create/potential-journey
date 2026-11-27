@@ -72,8 +72,8 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
                                                                           NoiseConfig noiseConfig, long seed) {
         // Called once when a world's chunk manager is constructed: the only place vanilla hands a
         // generator both the seed and the world's NoiseConfig.
-        UnderdeepWorlds.bind(noiseConfig, seed);
-        this.spawnTerrain = UnderdeepWorlds.terrainForSeed(seed);
+        UnderdeepWorlds.bind(noiseConfig, seed, generatorVersion);
+        this.spawnTerrain = UnderdeepWorlds.terrainForSeed(seed, generatorVersion);
         return super.createStructurePlacementCalculator(structureSetRegistry, noiseConfig, seed);
     }
 

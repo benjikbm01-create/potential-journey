@@ -179,6 +179,18 @@ public final class SettlementMap {
             }
         }
         long key = SettlementSite.packId(LAYER, cx, cz);
+        // Stage 10: never build a settlement where a descent cave opens or winds below the chamber floor
+        if (key != starterKey) {
+            int r = t.radius + 10;
+            int sx = (int) Math.round(n.x()), sz = (int) Math.round(n.z());
+            for (var d : terrain.descentsIn(sx - r, sz - r, sx + r, sz + r)) {
+                double ex = Math.max(d.minX() - sx, Math.max(0, sx - d.maxX()));
+                double ez = Math.max(d.minZ() - sz, Math.max(0, sz - d.maxZ()));
+                if (ex * ex + ez * ez < r * r) {
+                    return null;
+                }
+            }
+        }
         return new SettlementSite(key, t.civ, t.category, LAYER, t.region, (int) Math.round(n.x()), t.floorY,
                 (int) Math.round(n.z()), t.radius, t.headroom, t.overWater, t.water, key == starterKey);
     }

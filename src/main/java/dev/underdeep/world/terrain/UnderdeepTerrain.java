@@ -35,7 +35,15 @@ public final class UnderdeepTerrain {
     public static final int ROOF_BEDROCK = 315;
     public static final int SEA_LEVEL = CavernLayer.UPPER.fluidLevel;
     /** Bumped whenever terrain output changes incompatibly. Stored in world data. */
-    public static final int GENERATOR_VERSION = 4;
+    public static final int GENERATOR_VERSION = 5;
+    /** First generator version with the Stage 10 cave network (secondary passages, descents, spiral shafts). */
+    public static final int CAVE_NETWORK_VERSION = 5;
+    /**
+     * Cave network settings applied to terrain models created afterwards (set from config {@code caves} at start-up;
+     * changing them changes future terrain, so they are for fresh worlds). Defaults are the designed values.
+     */
+    public static volatile double passageFrequency = 1.0;
+    public static volatile double descentFrequency = 1.0;
     public static final double SHAFT_SPIRAL_PITCH = 22.0;
 
     /** Persistence note: append-only. */
@@ -106,12 +114,27 @@ public final class UnderdeepTerrain {
     private final ThreadLocal<List<Landmarks.Landmark>> landmarkScratch = ThreadLocal.withInitial(ArrayList::new);
     private final ThreadLocal<List<CavernGraph.Shaft>> shaftScratch = ThreadLocal.withInitial(ArrayList::new);
 
+    private final int version;
+    @org.jetbrains.annotations.Nullable
+    private final Descents descents;
+
     public UnderdeepTerrain(long worldSeed) {
+        this(worldSeed, GENERATOR_VERSION);
+    }
+
+    /**
+     * Terrain of a world generated with the given generator version. Worlds created before the Stage 10 cave network
+     * keep producing exactly their original terrain, so newly generated chunks of old saves have no seams.
+     */
+    public UnderdeepTerrain(long worldSeed, int version) {
         this.seed = worldSeed;
+        this.version = version;
+        boolean caves = version >= CAVE_NETWORK_VERSION;
         this.upperRegions = new RegionMap(worldSeed, CavernLayer.UPPER);
         this.deepRegions = new RegionMap(worldSeed, CavernLayer.DEEP);
-        this.upperGraph = new CavernGraph(worldSeed, CavernLayer.UPPER, upperRegions);
-        this.deepGraph = new CavernGraph(worldSeed, CavernLayer.DEEP, deepRegions);
+        this.upperGraph = new CavernGraph(worldSeed, CavernLayer.UPPER, upperRegions, caves ? passageFrequency : 0);
+        this.deepGraph = new CavernGraph(worldSeed, CavernLayer.DEEP, deepRegions, caves ? passageFrequency : 0);
+        this.descents = caves && descentFrequency > 0 ? new Descents(this, worldSeed, descentFrequency) : null;
         long s = Hashing.hash(worldSeed, Hashing.salt("terrain"));
         variantNoise = new FractalNoise(Hashing.hash(s, 40), 2, 1 / 120.0);
         upperFloorNoise = new FractalNoise(Hashing.hash(s, 1), 3, 1 / 520.0);
@@ -154,6 +177,40 @@ public final class UnderdeepTerrain {
             deepRegions.sample(x, z, rs).blendProfile(p);
             return deepBaseFloor(x, z, p);
         });
+    }
+
+    public int version() {
+        return version;
+    }
+
+    /** Whether this terrain has the Stage 10 cave network. */
+    public boolean hasCaveNetwork() {
+        return version >= CAVE_NETWORK_VERSION;
+    }
+
+    /** A descent cave: helix centre and radius, upper mouth and deep mouth (block positions), extent. */
+    public record DescentInfo(double centerX, double centerZ, double radius, int topX, int topY, int topZ,
+                              int bottomX, int bottomY, int bottomZ, double minX, double minZ, double maxX, double maxZ) {
+    }
+
+    /** Descent caves whose extent intersects a block rectangle (pure; for diagnostics and structure protection). */
+    public List<DescentInfo> descentsIn(int minX, int minZ, int maxX, int maxZ) {
+        List<DescentInfo> out = new ArrayList<>();
+        if (descents == null) {
+            return out;
+        }
+        List<Descents.Descent> l = new ArrayList<>();
+        descents.collect(minX, minZ, maxX, maxZ, l);
+        for (Descents.Descent d : l) {
+            out.add(new DescentInfo(d.centerX, d.centerZ, d.radius, d.topX, d.topY, d.topZ, d.bottomX, d.bottomY, d.bottomZ,
+                    d.minX, d.minZ, d.maxX, d.maxZ));
+        }
+        return out;
+    }
+
+    /** The column without descent bands (used to place descents themselves; not cached). */
+    TerrainColumn baseColumn(int x, int z) {
+        return computeColumn(x, z, false);
     }
 
     public long seed() {
@@ -322,7 +379,8 @@ public final class UnderdeepTerrain {
         if (Hashing.unit(h) >= upper.profile().shafts * 3.2) {
             return null;
         }
-        double radius = 5 + 6 * Hashing.unit(Hashing.mix(h));
+        // v5+: wider shafts so every spiral ledge is a walkable gradient
+        double radius = version >= CAVE_NETWORK_VERSION ? 8 + 5 * Hashing.unit(Hashing.mix(h)) : 5 + 6 * Hashing.unit(Hashing.mix(h));
         CavernGraph.Node top = upperGraph.nearestNode(n.x(), n.z());
         return new CavernGraph.Shaft(n.x(), n.z(), radius, top);
     }
@@ -355,6 +413,10 @@ public final class UnderdeepTerrain {
     }
 
     private TerrainColumn computeColumn(int x, int z) {
+        return computeColumn(x, z, true);
+    }
+
+    private TerrainColumn computeColumn(int x, int z, boolean withDescents) {
         TerrainColumn c = new TerrainColumn();
         c.x = x;
         c.z = z;
@@ -504,7 +566,7 @@ public final class UnderdeepTerrain {
                 c.shaftBottom = fd + 1;
                 c.shaftTop = fu + 3;
                 c.shaftAngle = Math.atan2(z - sh.z(), x - sh.x());
-                c.shaftSpiral = Hashing.unit(Hashing.hash(seed, (long) sh.x(), (long) sh.z(), 5)) < 0.65;
+                c.shaftSpiral = version >= CAVE_NETWORK_VERSION || Hashing.unit(Hashing.hash(seed, (long) sh.x(), (long) sh.z(), 5)) < 0.65;
             }
         }
 
@@ -521,6 +583,9 @@ public final class UnderdeepTerrain {
         deepLandmarks.covering(x, z, lm);
         if (!lm.isEmpty()) {
             c.landmarks = lm.toArray(new Landmarks.Landmark[0]);
+        }
+        if (withDescents && descents != null) {
+            descents.apply(c, x, z);
         }
         return c;
     }
@@ -740,6 +805,9 @@ public final class UnderdeepTerrain {
             }
             d = Math.max(d, s);
         }
+        for (int i = 0; i < c.bandCount; i++) {
+            d = Math.max(d, Math.min(y - c.bandFloor[i], c.bandCeil[i] - y));
+        }
         return d;
     }
 
@@ -766,10 +834,24 @@ public final class UnderdeepTerrain {
         if (c.pondGuard > 0) {
             amp *= 1 - c.pondGuard;
         }
+        int band = -1;
+        for (int i = 0; i < c.bandCount; i++) {
+            if (y >= c.bandFloor[i] - 3 && y <= c.bandCeil[i] + 3) {
+                band = i;
+                break;
+            }
+        }
+        if (band >= 0) {
+            // descent caves stay walkable: exact floor, gentle relief on walls and ceiling only
+            amp *= y < c.bandFloor[band] + 1.5 ? 0 : 0.35;
+        }
         double d = baseDensity(c, y);
         d += amp * rough;
-        if (tunnel > d && tunnelsAllowed(c, y)) {
+        if (tunnel > d && tunnelsAllowed(c, y) && (band < 0 || y > c.bandFloor[band] + 1)) {
             d = tunnel;
+        }
+        if (band >= 0 && c.bandLedge[band] && y < c.bandFloor[band] && y >= c.bandFloor[band] - 2.5) {
+            d = Math.min(d, -0.5); // natural rock ledge carrying the descent across open space
         }
         return d;
     }
@@ -893,6 +975,9 @@ public final class UnderdeepTerrain {
         }
         if (openDensity <= 0) {
             return Material.STONE;
+        }
+        if (c.bandCount > 0 && y > CavernLayer.DEEP.fluidLevel && c.bandAt(y) >= 0) {
+            return Material.AIR; // descent caves are validated dry and cut through formations; never fill them
         }
         if (formationDensity <= 0) {
             return Material.FORMATION;

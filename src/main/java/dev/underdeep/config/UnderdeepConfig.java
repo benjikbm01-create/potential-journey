@@ -188,6 +188,16 @@ public final class UnderdeepConfig {
 
     // ---- Stage 9: exploration ----
     public Exploration exploration = new Exploration();
+    public Caves caves = new Caves();
+
+    /** Stage 10 cave network (applies to worlds created with generator v5+; changing it changes future terrain). */
+    public static final class Caves {
+        /** Density of secondary connecting passages, side branches and intermediate chambers (0 = none, 1 = designed). */
+        public double passageFrequency = 1.0;
+        /** Share of deep cells with a walkable spiral descent between the layers (0 = none, 1 = designed). */
+        public double descentFrequency = 1.0;
+    }
+
 
     /** Stage 9 settings (nested object in underdeep.json; missing keys keep their defaults). */
     public static final class Exploration {

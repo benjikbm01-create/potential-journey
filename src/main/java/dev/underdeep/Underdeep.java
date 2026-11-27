@@ -24,6 +24,8 @@ public final class Underdeep implements ModInitializer {
     @Override
     public void onInitialize() {
         UnderdeepConfig.load();
+        UnderdeepTerrain.passageFrequency = Math.max(0, Math.min(3, UnderdeepConfig.get().caves.passageFrequency));
+        UnderdeepTerrain.descentFrequency = Math.max(0, Math.min(1.6, UnderdeepConfig.get().caves.descentFrequency));
         ModBlocks.init();
         dev.underdeep.registry.ModWood.init();
         dev.underdeep.registry.ModPlants.init();
@@ -53,7 +55,8 @@ public final class Underdeep implements ModInitializer {
                 state.initializeIfNew(overworld.getTime());
                 if (state.createdWithGeneratorVersion() != UnderdeepTerrain.GENERATOR_VERSION) {
                     LOGGER.warn("This world was created with Underdeep terrain generator v{} but v{} is running; content added since "
-                                    + "(settlements from v3, exploration sites from v4) only generates in worlds created with that version.",
+                                    + "(settlements from v3, exploration sites from v4, the connected cave network from v5) only generates in worlds "
+                                    + "created with that version; the world keeps generating its original terrain (no seams).",
                             state.createdWithGeneratorVersion(), UnderdeepTerrain.GENERATOR_VERSION);
                 }
                 LOGGER.info("Underdeep world loaded (seed-bound terrain ready, spawn {})", overworld.getSpawnPos().toShortString());

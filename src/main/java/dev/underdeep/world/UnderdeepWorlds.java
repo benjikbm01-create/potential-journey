@@ -33,14 +33,25 @@ public final class UnderdeepWorlds {
 
     /** Shared terrain model for a seed (terrain objects are immutable, so sharing is safe). */
     public static UnderdeepTerrain terrainForSeed(long seed) {
+        return terrainForSeed(seed, UnderdeepTerrain.GENERATOR_VERSION);
+    }
+
+    /** Shared terrain model for a seed and generator version (old worlds keep their original terrain). */
+    public static UnderdeepTerrain terrainForSeed(long seed, int version) {
         if (BY_SEED.size() > 8) {
             BY_SEED.clear();
         }
-        return BY_SEED.computeIfAbsent(seed, UnderdeepTerrain::new);
+        long key = seed * 31 + version;
+        UnderdeepTerrain t = BY_SEED.get(key);
+        if (t == null || t.seed() != seed || t.version() != version) {
+            t = new UnderdeepTerrain(seed, version);
+            BY_SEED.put(key, t);
+        }
+        return t;
     }
 
-    public static void bind(NoiseConfig noiseConfig, long seed) {
-        BY_SAMPLER.put(noiseConfig.getMultiNoiseSampler(), terrainForSeed(seed));
+    public static void bind(NoiseConfig noiseConfig, long seed, int version) {
+        BY_SAMPLER.put(noiseConfig.getMultiNoiseSampler(), terrainForSeed(seed, version));
     }
 
     @Nullable
@@ -70,7 +81,7 @@ public final class UnderdeepWorlds {
         UnderdeepTerrain t = BY_SAMPLER.get(world.getChunkManager().getNoiseConfig().getMultiNoiseSampler());
         if (t == null) {
             Underdeep.LOGGER.warn("Underdeep world {} had no bound terrain; binding from seed", world.getRegistryKey().getValue());
-            bind(world.getChunkManager().getNoiseConfig(), world.getSeed());
+            bind(world.getChunkManager().getNoiseConfig(), world.getSeed(), ((UnderdeepChunkGenerator) gen).generatorVersion());
             t = BY_SAMPLER.get(world.getChunkManager().getNoiseConfig().getMultiNoiseSampler());
         }
         return t;
