@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": {
+    "item": "underdeep:crushed_starsilver"
+  },
+  "result": {
+    "id": "underdeep:starsilver_ingot"
+  },
+  "experience": 0.4,
+  "cookingtime": 100
+}

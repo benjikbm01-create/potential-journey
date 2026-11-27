@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:copper_shovel",
+    "underdeep:steel_shovel",
+    "underdeep:malachite_shovel",
+    "underdeep:umbralite_shovel",
+    "underdeep:steel_excavator"
+  ]
+}

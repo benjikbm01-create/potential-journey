@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "M M",
+    "MMM",
+    "MMM"
+  ],
+  "key": {
+    "M": {
+      "item": "underdeep:silk_cloth"
+    }
+  },
+  "result": {
+    "id": "underdeep:silk_chestplate",
+    "count": 1
+  }
+}

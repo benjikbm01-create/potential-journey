@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/ore_crusher"
+    },
+    "facing=east": {
+      "model": "underdeep:block/ore_crusher",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/ore_crusher",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/ore_crusher",
+      "y": 270
+    }
+  }
+}

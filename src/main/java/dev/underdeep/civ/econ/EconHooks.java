@@ -35,7 +35,12 @@ public final class EconHooks {
             d += Math.max(0, (b.trust + b.affection) / 200.0) * 0.1 * (0.6 + r.mind.trait(Trait.GENEROSITY) / 100.0);
         }
         d += reputation(rec, player) * 0.03;
-        return Math.max(0, Math.min(0.12, d));
+        double cap = 0.12;
+        if (dev.underdeep.equipment.Accessories.TRADERS.contains(player)) { // Stage 8 trader's token
+            d += 0.05;
+            cap = 0.17;
+        }
+        return Math.max(0, Math.min(cap, d));
     }
 
     /** Settlement reputation (−1..1): how the inhabitants who know a player regard them (never omniscient). */

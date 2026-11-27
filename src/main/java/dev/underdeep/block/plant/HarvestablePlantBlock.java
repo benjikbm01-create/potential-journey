@@ -75,6 +75,12 @@ public class HarvestablePlantBlock extends EcoPlantBlock {
         }
         if (!world.isClient) {
             int n = minCount + world.random.nextInt(maxCount - minCount + 1);
+            if (dev.underdeep.equipment.Accessories.flags(player).contains("forager") && world.random.nextFloat() < 0.3f) {
+                n++;
+            }
+            if (player instanceof net.minecraft.server.network.ServerPlayerEntity sp) {
+                dev.underdeep.guide.Advancements.event(sp, "foraged", net.minecraft.registry.Registries.BLOCK.getId(this).getPath());
+            }
             Block.dropStack(world, pos, new ItemStack(produce.get(), n));
             world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f,
                     0.8f + world.random.nextFloat() * 0.4f);

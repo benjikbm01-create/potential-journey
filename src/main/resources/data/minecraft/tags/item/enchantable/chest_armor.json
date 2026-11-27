@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:copper_chestplate",
+    "underdeep:steel_chestplate",
+    "underdeep:embersteel_chestplate",
+    "underdeep:rimesteel_chestplate",
+    "underdeep:galvanic_chestplate",
+    "underdeep:starsilver_chestplate",
+    "underdeep:umbralite_chestplate",
+    "underdeep:nacre_chestplate",
+    "underdeep:fossil_chestplate",
+    "underdeep:fur_chestplate",
+    "underdeep:scale_chestplate",
+    "underdeep:shell_chestplate",
+    "underdeep:silk_chestplate"
+  ]
+}

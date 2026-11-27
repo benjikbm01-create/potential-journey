@@ -105,6 +105,9 @@ public final class Meals {
         if (p.hasStatusEffect(SurvivalEffects.WEARY)) {
             f *= 1.1f;
         }
+        if (p.isSprinting() && dev.underdeep.equipment.Accessories.flags(p).contains("runner")) {
+            f *= 0.7f;
+        }
         return f;
     }
 }

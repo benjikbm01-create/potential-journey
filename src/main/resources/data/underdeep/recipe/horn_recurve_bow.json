@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " HS",
+    "G S",
+    " HS"
+  ],
+  "key": {
+    "H": {
+      "item": "underdeep:horn"
+    },
+    "G": {
+      "item": "underdeep:horn_grip"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "id": "underdeep:horn_recurve_bow",
+    "count": 1
+  }
+}

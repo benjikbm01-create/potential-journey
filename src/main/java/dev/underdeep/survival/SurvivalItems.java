@@ -168,10 +168,11 @@ public final class SurvivalItems {
                 treat(user);
                 if (user instanceof ServerPlayerEntity sp) {
                     Criteria.CONSUME_ITEM.trigger(sp, stack);
+                    dev.underdeep.guide.Advancements.event(sp, "medicine_used", Registries.ITEM.getId(this).getPath());
                 }
             }
             if (user instanceof PlayerEntity p) {
-                p.getItemCooldownManager().set(this, def.cooldownSeconds() * 20);
+                p.getItemCooldownManager().set(this, cooldown(p));
                 if (!p.getAbilities().creativeMode) {
                     stack.decrement(1);
                     if (def.drink()) {
@@ -186,6 +187,11 @@ public final class SurvivalItems {
                 }
             }
             return stack;
+        }
+
+        int cooldown(PlayerEntity p) {
+            int t = def.cooldownSeconds() * 20;
+            return dev.underdeep.equipment.Accessories.flags(p).contains("healer") ? t * 3 / 4 : t;
         }
 
         /** Applies this medicine to a living entity (server side). */
@@ -218,7 +224,7 @@ public final class SurvivalItems {
             }
             if (!user.getWorld().isClient) {
                 treat(entity);
-                user.getItemCooldownManager().set(this, def.cooldownSeconds() * 20);
+                user.getItemCooldownManager().set(this, cooldown(user));
                 if (!user.getAbilities().creativeMode) {
                     stack.decrement(1);
                 }

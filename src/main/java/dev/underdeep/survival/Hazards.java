@@ -217,7 +217,22 @@ public final class Hazards {
             default -> {
             }
         }
+        // Stage 8: worn armour, upgrades and accessories reduce (copper: increase) exposure
+        out.replaceAll((h, v) -> (float) (v * (1 - dev.underdeep.equipment.EquipmentEffects.protection(p, group(h)))));
         out.values().removeIf(v -> v <= 0);
+    }
+
+    /** Equipment protection group of a hazard: heat, cold, spores, fumes, static, pressure. */
+    public static String group(Hazard h) {
+        return switch (h) {
+            case LAVA_HEAT, GEOTHERMAL -> "heat";
+            case EXTREME_COLD, ICY_WATER, BITING_WIND -> "cold";
+            case SPORE_CLOUDS -> "spores";
+            case CHOKING_FUMES -> "fumes";
+            case STATIC_CHARGE -> "static";
+            case DEEP_PRESSURE -> "pressure";
+            default -> "other";
+        };
     }
 
     static float protect(ServerPlayerEntity p, RegistryEntry<StatusEffect> ward, float rate, float extra) {

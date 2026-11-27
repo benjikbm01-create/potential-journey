@@ -49,7 +49,10 @@ public final class SurvivalContent {
     /** Workstation kinds (ids persisted in block entities as strings). */
     public enum Station {
         POT("pot", 6, true, false, 4), OVEN("oven", 6, false, true, 4), PREP("prep", 6, false, false, 8), KETTLE("kettle", 4, true, false, 4),
-        CROCK("crock", 4, false, false, 4), RACK("rack", 1, false, false, 1), HERBAL("herbal", 6, false, false, 8);
+        CROCK("crock", 4, false, false, 4), RACK("rack", 1, false, false, 1), HERBAL("herbal", 6, false, false, 8),
+        // Stage 8 equipment stations (ids append-only)
+        CRUSH("crush", 2, false, false, 4), ALLOY("alloy", 4, false, true, 4), FORGE("forge", 4, false, true, 4), GEMS("gems", 4, false, false, 4),
+        LEATHER("leather", 4, false, false, 4);
 
         public final String id;
         public final int inputs;
@@ -185,26 +188,41 @@ public final class SurvivalContent {
             for (Map.Entry<String, JsonElement> e : root.getAsJsonObject("stations").entrySet()) {
                 STATION_NAMES.put(e.getKey(), e.getValue().getAsString());
             }
-            for (JsonElement el : root.getAsJsonArray("recipes")) {
-                JsonObject o = el.getAsJsonObject();
-                List<Ingredient> ins = new ArrayList<>();
-                for (JsonElement i : o.getAsJsonArray("ingredients")) {
-                    JsonArray a = i.getAsJsonArray();
-                    ins.add(new Ingredient(a.get(0).getAsString(), a.get(1).getAsInt()));
-                }
-                String cont = o.get("container").getAsString();
-                Recipe rec = new Recipe(o.get("id").getAsString(), Station.of(o.get("station").getAsString()), List.copyOf(ins),
-                        Identifier.of(o.get("result").getAsString()), o.get("count").getAsInt(), o.get("seconds").getAsInt(),
-                        cont.isEmpty() ? null : Identifier.of(cont), o.get("basic").getAsBoolean(), o.get("civ").getAsString());
-                RECIPES.add(rec);
-                RECIPE_BY_ID.put(rec.id(), rec);
-                BY_STATION.get(rec.station()).add(rec);
-            }
+            readRecipes(root.getAsJsonArray("recipes"));
         } catch (Exception e) {
             Underdeep.LOGGER.error("Survival: could not load content.json", e);
         }
+        // Stage 8 processing and equipment recipes share the workstation framework
+        try (Reader r = new InputStreamReader(SurvivalContent.class.getResourceAsStream("/data/underdeep/equipment/content.json"),
+                StandardCharsets.UTF_8)) {
+            JsonObject root = JsonParser.parseReader(r).getAsJsonObject();
+            for (Map.Entry<String, JsonElement> e : root.getAsJsonObject("stations").entrySet()) {
+                STATION_NAMES.put(e.getKey(), e.getValue().getAsString());
+            }
+            readRecipes(root.getAsJsonArray("recipes"));
+        } catch (Exception e) {
+            Underdeep.LOGGER.error("Survival: could not load equipment recipes", e);
+        }
         Underdeep.LOGGER.info("Survival: {} foods/drinks, {} medicines, {} materials, {} station recipes", FOODS.size(), MEDICINES.size(),
                 MATERIALS.size(), RECIPES.size());
+    }
+
+    private static void readRecipes(JsonArray arr) {
+        for (JsonElement el : arr) {
+            JsonObject o = el.getAsJsonObject();
+            List<Ingredient> ins = new ArrayList<>();
+            for (JsonElement i : o.getAsJsonArray("ingredients")) {
+                JsonArray a = i.getAsJsonArray();
+                ins.add(new Ingredient(a.get(0).getAsString(), a.get(1).getAsInt()));
+            }
+            String cont = o.get("container").getAsString();
+            Recipe rec = new Recipe(o.get("id").getAsString(), Station.of(o.get("station").getAsString()), List.copyOf(ins),
+                    Identifier.of(o.get("result").getAsString()), o.get("count").getAsInt(), o.get("seconds").getAsInt(),
+                    cont.isEmpty() ? null : Identifier.of(cont), o.get("basic").getAsBoolean(), o.get("civ").getAsString());
+            RECIPES.add(rec);
+            RECIPE_BY_ID.put(rec.id(), rec);
+            BY_STATION.get(rec.station()).add(rec);
+        }
     }
 
     private static List<Buff> buffs(JsonArray a) {
@@ -303,7 +321,8 @@ public final class SurvivalContent {
 
     private static final Map<String, String> STATION_ITEMS = Map.ofEntries(Map.entry("pot", "cooking_pot"), Map.entry("oven", "clay_oven"),
             Map.entry("prep", "preparation_table"), Map.entry("kettle", "kettle"), Map.entry("crock", "fermentation_crock"),
-            Map.entry("rack", "drying_rack"), Map.entry("herbal", "herbalist_table"));
+            Map.entry("rack", "drying_rack"), Map.entry("herbal", "herbalist_table"), Map.entry("crush", "ore_crusher"),
+            Map.entry("alloy", "alloy_furnace"), Map.entry("forge", "forge"), Map.entry("gems", "gem_cutter"), Map.entry("leather", "leatherworker_bench"));
 
     /** Display name of an ingredient key (group keys shown as "any fruit" etc). */
     public static String ingredientName(Ingredient ing) {

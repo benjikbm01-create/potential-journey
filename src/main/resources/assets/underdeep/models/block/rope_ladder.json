@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/ladder",
+  "textures": {
+    "particle": "underdeep:block/rope_ladder",
+    "texture": "underdeep:block/rope_ladder"
+  }
+}

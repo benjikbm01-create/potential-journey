@@ -1,0 +1,6 @@
+{
+  "parent": "underdeep:item/lumenwood_shortbow",
+  "textures": {
+    "layer0": "underdeep:item/lumenwood_shortbow_pulling_2"
+  }
+}

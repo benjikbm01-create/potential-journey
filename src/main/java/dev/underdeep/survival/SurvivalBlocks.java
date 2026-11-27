@@ -106,8 +106,12 @@ public final class SurvivalBlocks {
         SUPPLY_CRATE = furniture("supply_crate", new ContainerBlock(wood(), ContainerBlock.Kind.CRATE, VoxelShapes.fullCube()));
         KITCHEN_COUNTER = furniture("kitchen_counter", new ContainerBlock(wood(), ContainerBlock.Kind.COUNTER, VoxelShapes.fullCube()));
 
+        List<Block> stationBlocks = new ArrayList<>(List.of(COOKING_POT, CLAY_OVEN, PREPARATION_TABLE, KETTLE, FERMENTATION_CROCK, HERBALIST_TABLE));
+        List<Block> equipmentStations = dev.underdeep.equipment.EquipmentItems.registerStationBlocks();
+        stationBlocks.addAll(equipmentStations);
+        STATIONS.addAll(equipmentStations);
         STATION_BE = Registry.register(Registries.BLOCK_ENTITY_TYPE, Reg.id("station"), BlockEntityType.Builder.create(StationBlockEntity::new,
-                COOKING_POT, CLAY_OVEN, PREPARATION_TABLE, KETTLE, FERMENTATION_CROCK, HERBALIST_TABLE).build(null));
+                stationBlocks.toArray(new Block[0])).build(null));
         RACK_BE = Registry.register(Registries.BLOCK_ENTITY_TYPE, Reg.id("drying_rack"),
                 BlockEntityType.Builder.create(DryingRackBlockEntity::new, DRYING_RACK).build(null));
         CONTAINER_BE = Registry.register(Registries.BLOCK_ENTITY_TYPE, Reg.id("container"), BlockEntityType.Builder.create(ContainerBlockEntity::new,

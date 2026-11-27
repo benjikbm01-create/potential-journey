@@ -1,0 +1,6 @@
+{
+  "parent": "underdeep:item/horn_recurve_bow",
+  "textures": {
+    "layer0": "underdeep:item/horn_recurve_bow_pulling_1"
+  }
+}

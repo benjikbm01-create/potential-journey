@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " LS",
+    "L S",
+    " LS"
+  ],
+  "key": {
+    "L": {
+      "item": "underdeep:spirebark_log"
+    },
+    "S": {
+      "item": "underdeep:silk_cloth"
+    }
+  },
+  "result": {
+    "id": "underdeep:spirebark_longbow",
+    "count": 1
+  }
+}

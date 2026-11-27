@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NNN",
+    "NGN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "G": {
+      "item": "underdeep:glimmer_lens"
+    }
+  },
+  "result": {
+    "id": "underdeep:glimmer_lantern",
+    "count": 1
+  }
+}

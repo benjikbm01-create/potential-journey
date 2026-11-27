@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "MMM",
+    "MS ",
+    " S "
+  ],
+  "key": {
+    "M": {
+      "item": "underdeep:fossil_fragment"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "underdeep:fossil_battleaxe",
+    "count": 1
+  }
+}

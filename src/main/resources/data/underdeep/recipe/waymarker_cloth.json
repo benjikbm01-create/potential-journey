@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "G",
+    "W",
+    "S"
+  ],
+  "key": {
+    "G": {
+      "item": "underdeep:glimmer_shard"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "underdeep:waymarker",
+    "count": 1
+  }
+}

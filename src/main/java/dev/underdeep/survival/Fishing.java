@@ -115,7 +115,7 @@ public final class Fishing {
         }
         ItemStack off = angler.getStackInHand(Hand.OFF_HAND);
         boolean bait = off.isOf(SurvivalItems.get("fishing_bait"));
-        double regional = bait ? 0.85 : 0.65;
+        double regional = (bait ? 0.85 : 0.65) + (dev.underdeep.equipment.Accessories.flags(angler).contains("angler") ? 0.05 : 0);
         if (world.random.nextDouble() >= regional) {
             return vanilla;
         }
@@ -123,8 +123,12 @@ public final class Fishing {
         if (c.isEmpty()) {
             return vanilla;
         }
-        if (bait && !angler.getAbilities().creativeMode) {
+        boolean anglerCharm = dev.underdeep.equipment.Accessories.flags(angler).contains("angler");
+        if (bait && !angler.getAbilities().creativeMode && !(anglerCharm && world.random.nextBoolean())) {
             off.decrement(1);
+        }
+        if (angler instanceof net.minecraft.server.network.ServerPlayerEntity sp) {
+            dev.underdeep.guide.Advancements.event(sp, "fished_regional", net.minecraft.registry.Registries.ITEM.getId(c.getItem()).getPath());
         }
         ObjectArrayList<ItemStack> out = new ObjectArrayList<>();
         out.add(c);

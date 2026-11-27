@@ -147,6 +147,11 @@
     "underdeep:medicine_cabinet",
     "underdeep:supply_crate",
     "underdeep:kitchen_counter",
-    "underdeep:planter_box"
+    "underdeep:planter_box",
+    "underdeep:gem_cutter",
+    "underdeep:leatherworker_bench",
+    "underdeep:artisan_bench",
+    "underdeep:waymarker",
+    "underdeep:rope_ladder"
   ]
 }

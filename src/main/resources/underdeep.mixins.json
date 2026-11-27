@@ -10,7 +10,9 @@
     "FishingBobberEntityMixin",
     "PlayerEntityMixin",
     "SmithingTransformRecipeAccessor",
-    "AxeItemAccessor"
+    "AxeItemAccessor",
+    "LivingEntityEquipmentMixin",
+    "BlockDropsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

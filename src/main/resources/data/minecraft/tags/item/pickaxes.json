@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:copper_pickaxe",
+    "underdeep:steel_pickaxe",
+    "underdeep:malachite_pickaxe",
+    "underdeep:starsilver_pickaxe",
+    "underdeep:galvanic_pickaxe",
+    "underdeep:embersteel_pickaxe",
+    "underdeep:nacre_pickaxe",
+    "underdeep:umbralite_pickaxe",
+    "underdeep:steel_hammer",
+    "underdeep:umbralite_hammer",
+    "underdeep:prospectors_pick"
+  ]
+}

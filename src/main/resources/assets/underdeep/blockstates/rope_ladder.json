@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/rope_ladder"
+    },
+    "facing=east": {
+      "model": "underdeep:block/rope_ladder",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/rope_ladder",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/rope_ladder",
+      "y": 270
+    }
+  }
+}

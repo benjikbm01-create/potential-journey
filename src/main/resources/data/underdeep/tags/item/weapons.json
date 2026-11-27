@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:copper_spear",
+    "underdeep:steel_battleaxe",
+    "underdeep:steel_spear",
+    "underdeep:steel_warhammer",
+    "underdeep:steel_mace",
+    "underdeep:embersteel_warhammer",
+    "underdeep:rimesteel_spear",
+    "underdeep:galvanic_spear",
+    "underdeep:starsilver_glaive",
+    "underdeep:umbralite_battleaxe",
+    "underdeep:umbralite_warhammer",
+    "underdeep:nacre_harpoon",
+    "underdeep:fossil_club",
+    "underdeep:fossil_battleaxe",
+    "underdeep:malachite_maul",
+    "underdeep:iron_spear",
+    "underdeep:iron_warhammer",
+    "underdeep:iron_battleaxe",
+    "underdeep:iron_mace",
+    "underdeep:diamond_spear",
+    "underdeep:diamond_warhammer"
+  ]
+}

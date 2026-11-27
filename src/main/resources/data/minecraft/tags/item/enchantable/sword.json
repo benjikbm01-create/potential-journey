@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:copper_sword",
+    "underdeep:copper_dagger",
+    "underdeep:steel_sword",
+    "underdeep:steel_dagger",
+    "underdeep:steel_greatsword",
+    "underdeep:embersteel_sword",
+    "underdeep:embersteel_greatsword",
+    "underdeep:rimesteel_sword",
+    "underdeep:rimesteel_dagger",
+    "underdeep:galvanic_sword",
+    "underdeep:galvanic_dagger",
+    "underdeep:starsilver_sword",
+    "underdeep:starsilver_dagger",
+    "underdeep:umbralite_sword",
+    "underdeep:umbralite_greatsword",
+    "underdeep:nacre_cutlass",
+    "underdeep:glimmer_stiletto",
+    "underdeep:iron_dagger",
+    "underdeep:iron_greatsword",
+    "underdeep:diamond_greatsword"
+  ]
+}

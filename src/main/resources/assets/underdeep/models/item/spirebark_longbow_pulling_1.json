@@ -1,0 +1,6 @@
+{
+  "parent": "underdeep:item/spirebark_longbow",
+  "textures": {
+    "layer0": "underdeep:item/spirebark_longbow_pulling_1"
+  }
+}

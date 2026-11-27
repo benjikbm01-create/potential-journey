@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "underdeep:block/forge"
+    },
+    "facing=east": {
+      "model": "underdeep:block/forge",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "underdeep:block/forge",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "underdeep:block/forge",
+      "y": 270
+    }
+  }
+}

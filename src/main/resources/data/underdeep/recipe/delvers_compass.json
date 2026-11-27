@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "GCG",
+    " S "
+  ],
+  "key": {
+    "G": {
+      "item": "underdeep:galvanite"
+    },
+    "C": {
+      "item": "minecraft:compass"
+    },
+    "S": {
+      "item": "underdeep:starsilver_ingot"
+    }
+  },
+  "result": {
+    "id": "underdeep:delvers_compass",
+    "count": 1
+  }
+}

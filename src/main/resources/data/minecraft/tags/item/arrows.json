@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:heavy_arrow",
+    "underdeep:frost_arrow",
+    "underdeep:venom_arrow",
+    "underdeep:ember_arrow"
+  ]
+}

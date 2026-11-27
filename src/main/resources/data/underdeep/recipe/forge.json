@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SSS",
+    "SFS",
+    "BBB"
+  ],
+  "key": {
+    "S": {
+      "item": "underdeep:steel_ingot"
+    },
+    "F": {
+      "item": "minecraft:blast_furnace"
+    },
+    "B": {
+      "item": "minecraft:bricks"
+    }
+  },
+  "result": {
+    "id": "underdeep:forge",
+    "count": 1
+  }
+}

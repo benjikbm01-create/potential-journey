@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "underdeep:copper_helmet",
+    "underdeep:steel_helmet",
+    "underdeep:embersteel_helmet",
+    "underdeep:rimesteel_helmet",
+    "underdeep:galvanic_helmet",
+    "underdeep:starsilver_helmet",
+    "underdeep:umbralite_helmet",
+    "underdeep:nacre_helmet",
+    "underdeep:fossil_helmet",
+    "underdeep:fur_helmet",
+    "underdeep:scale_helmet",
+    "underdeep:shell_helmet",
+    "underdeep:silk_helmet"
+  ]
+}
