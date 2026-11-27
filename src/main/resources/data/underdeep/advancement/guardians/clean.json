@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:golden_chestplate"
+  },
+  "title": {
+   "text": "Without a Scratch"
+  },
+  "description": {
+   "text": "Defeat a guardian without anyone falling"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_clean"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/first",
+ "rewards": {
+  "experience": 80
+ }
+}

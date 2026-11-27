@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:heartwood_resin"
+  },
+  "title": {
+   "text": "The Root of It All"
+  },
+  "description": {
+   "text": "???"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": true
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_defeated",
+    "subject": "rootsovereign"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/first",
+ "rewards": {
+  "experience": 200
+ }
+}

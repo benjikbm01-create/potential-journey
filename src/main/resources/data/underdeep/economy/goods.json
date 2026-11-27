@@ -847,6 +847,71 @@
    "value": 2.0
   },
   {
+   "item": "underdeep:thunderhide",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:mycelial_heart",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:choir_nacre",
+   "category": "LUXURY",
+   "value": 3.0
+  },
+  {
+   "item": "underdeep:rimefang_pelt",
+   "category": "LUXURY",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:galvanic_core",
+   "category": "LUXURY",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:cinder_scale",
+   "category": "LUXURY",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:everlit_wick",
+   "category": "LUXURY",
+   "value": 4.5
+  },
+  {
+   "item": "underdeep:resonant_crystal",
+   "category": "LUXURY",
+   "value": 6.0
+  },
+  {
+   "item": "underdeep:abyssal_pearl",
+   "category": "LUXURY",
+   "value": 6.0
+  },
+  {
+   "item": "underdeep:silent_bellmetal",
+   "category": "LUXURY",
+   "value": 6.0
+  },
+  {
+   "item": "underdeep:heartwood_resin",
+   "category": "LUXURY",
+   "value": 9.0
+  },
+  {
+   "item": "underdeep:seamglass",
+   "category": "LUXURY",
+   "value": 9.0
+  },
+  {
+   "item": "underdeep:somnal_ember",
+   "category": "LUXURY",
+   "value": 12.0
+  },
+  {
    "item": "underdeep:steel_ingot",
    "category": "METAL",
    "value": 0.6

@@ -379,3 +379,24 @@ robe, armor, farmer, vest, coat).
 - Config: section `exploration` (`enabled`, `inOlderWorlds`, `density`, `dungeonDensity`, `encounterFrequency`,
   `trapSeverity`, `minorDiscoveryMessages`, `guardians`).
 - Generator version 4.
+
+## Stage 10 — Caves, combat, guardians (ids are data/strings; see docs/CAVES.md, docs/COMBAT.md)
+- Terrain: generator version 5 (`UnderdeepTerrain.CAVE_NETWORK_VERSION`); secondary passages and descents (no new
+  blocks or biomes). Config `caves` (passageFrequency, descentFrequency).
+- Combat: payloads `underdeep:combat_dodge`, `underdeep:combat_heavy` (C2S), `underdeep:combat_hud`,
+  `underdeep:combat_windup` (S2C); entity `underdeep:creature_spit`; keybind `key.underdeep.dodge` (Left Alt);
+  mixins `MobStaggerMixin` (common), `HeavyAttackMixin`, `WindupPoseMixin` (client, `underdeep.client.mixins.json`).
+  Weapon styles (10) and enemy archetypes (15) are Java enums (`WeaponStyle`, `Archetype`).
+- Guardians: 13 entity types `underdeep:boss_<id>` and `underdeep:boss_projectile` (ids and identities: private
+  material); damage types `underdeep:boss_strike|boss_sweep|boss_crush|boss_spell|boss_aura` (crush/aura bypass shields);
+  payload `underdeep:boss_audio` (S2C); persistent state `underdeep_encounters` (append-only keys).
+- Lair site families: 13 (category `lair`, weight 0, placed by the lair planner), loot tables `bosses/<id>` and
+  `bosses/<id>_echo`, models `assets/underdeep/bosses/<id>.json`, textures `textures/entity/boss/<id>(_glow).png`.
+- Blocks (9, unbreakable lair blocks): `guardian_altar`, `engine_door`, `engine_stone`, `conductor_pylon`,
+  `warding_brazier`, `lamplighter_post`, `engine_coil`, `silent_bell`, `root_heart` (property `lit`).
+- Items: 6 Sign-stones (`sign_spiral`, `sign_eye`, `sign_wave`, `sign_flame`, `sign_star`, `sign_key`), the keystone
+  (`keystone_silence`), 13 guardian materials, 13 heirlooms (9 accessories + 4 weapons, in `equipment/content.json`
+  `artifacts`), 10 guardian upgrade kits (`<upgrade>_kit`, recipes `s10_kit_*`).
+- Economy: 13 goods (guardian materials) → 509 goods. Advancements: tabs `combat` (11) and `guardians` (19) → 16 tabs,
+  217 files. Handbook: categories `combat`, `progress`; page keys `boss:<id>`, `boss_won:<id>`, `progress:<step>`.
+- Config: sections `combat`, `bosses`.

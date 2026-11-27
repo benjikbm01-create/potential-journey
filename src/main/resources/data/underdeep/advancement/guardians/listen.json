@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:keystone_silence"
+  },
+  "title": {
+   "text": "It Hums"
+  },
+  "description": {
+   "text": "Listen to the keystone"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "keystone_listened"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/keystone"
+}

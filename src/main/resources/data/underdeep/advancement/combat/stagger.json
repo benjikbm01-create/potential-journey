@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:mace"
+  },
+  "title": {
+   "text": "Off Balance"
+  },
+  "description": {
+   "text": "Stagger a foe"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_stagger"
+   }
+  }
+ },
+ "parent": "underdeep:combat/heavy"
+}

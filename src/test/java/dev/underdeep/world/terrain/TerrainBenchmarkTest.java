@@ -51,7 +51,8 @@ class TerrainBenchmarkTest {
     @Test
     void descentsAreWalkable() {
         UnderdeepTerrain t = new UnderdeepTerrain(42L, 5);
-        var list = t.descentsIn(-900, -900, 900, 900);
+        var list = new java.util.ArrayList<>(t.descentsIn(-900, -900, 900, 900));
+        list.sort((a, b) -> Double.compare(Math.hypot(a.centerX(), a.centerZ()), Math.hypot(b.centerX(), b.centerZ())));
         int ok = 0, back = 0, n = 0;
         for (var d : list) {
             if (n >= (Boolean.getBoolean("underdeep.bench") ? 16 : 5)) {

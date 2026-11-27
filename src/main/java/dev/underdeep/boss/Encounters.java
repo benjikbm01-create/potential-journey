@@ -97,6 +97,8 @@ public final class Encounters {
         long emptySince = -1;
         ServerBossBar bar;
         final Map<String, Object> data = new HashMap<>();
+        /** Self-test hook: fake players that count as fighters (never used in play). */
+        public final List<ServerPlayerEntity> testFighters = new ArrayList<>();
 
         Active(BossDef def, ServerWorld world, long siteId, BlockPos center, int radius) {
             this.def = def;
@@ -117,6 +119,11 @@ public final class Encounters {
             List<ServerPlayerEntity> l = new ArrayList<>();
             for (ServerPlayerEntity p : world.getPlayers()) {
                 if (p.isAlive() && !p.isSpectator() && inArena(p.getBlockPos())) {
+                    l.add(p);
+                }
+            }
+            for (ServerPlayerEntity p : testFighters) {
+                if (p.isAlive() && inArena(p.getBlockPos()) && !l.contains(p)) {
                     l.add(p);
                 }
             }
@@ -187,7 +194,9 @@ public final class Encounters {
             return;
         }
         for (ServerPlayerEntity p : a.fighters()) {
-            ServerPlayNetworking.send(p, new Audio(event, a.def.id(), arg));
+            if (!a.testFighters.contains(p)) {
+                ServerPlayNetworking.send(p, new Audio(event, a.def.id(), arg));
+            }
         }
     }
 
@@ -335,11 +344,17 @@ public final class Encounters {
     }
 
     public static Active awaken(ServerWorld w, Site site, BossDef def) {
+        return awaken(w, site, def, List.of());
+    }
+
+    /** Awakening; {@code test} adds self-test fake players as fighters (empty in play). */
+    public static Active awaken(ServerWorld w, Site site, BossDef def, List<ServerPlayerEntity> test) {
         SiteLayout l = Explorations.of(w).layout(site);
         List<BlockPos> centre = l.marks("center");
         List<BlockPos> spawn = l.marks("spawn");
         BlockPos c = centre.isEmpty() ? new BlockPos(site.x(), site.y() + 1, site.z()) : centre.get(0);
         Active a = new Active(def, w, site.id(), c, Math.max(10, site.radius() - 2));
+        a.testFighters.addAll(test);
         List<ServerPlayerEntity> f = a.fighters();
         a.count = Math.max(1, f.size());
         applyScale(a);
@@ -363,6 +378,9 @@ public final class Encounters {
         }, def.tier() == Tier.FINAL ? BossBar.Style.NOTCHED_10 : BossBar.Style.PROGRESS);
         for (ServerPlayerEntity p : f) {
             a.participants.computeIfAbsent(p.getUuid(), k -> new int[2]);
+            if (a.testFighters.contains(p)) {
+                continue;
+            }
             p.networkHandler.sendPacket(new TitleS2CPacket(Text.literal(def.title()).formatted(Formatting.BOLD, tierColor(def.tier()))));
             p.networkHandler.sendPacket(new SubtitleS2CPacket(Text.literal(tierLine(def.tier())).formatted(Formatting.GRAY)));
             Advancements.event(p, "boss_awakened", def.id());
@@ -402,7 +420,7 @@ public final class Encounters {
 
     // ------------------------------------------------------------------------------------- tick
 
-    static void tick(MinecraftServer server) {
+    public static void tick(MinecraftServer server) {
         Ending.tick(server);
         if (ACTIVE.isEmpty()) {
             return;
@@ -427,7 +445,9 @@ public final class Encounters {
                             a.boss.rescale(a.healthScale);
                         }
                     }
-                    ServerPlayNetworking.send(p, new Audio("activate", a.def.id(), a.def.tier().ordinal()));
+                    if (!a.testFighters.contains(p)) {
+                        ServerPlayNetworking.send(p, new Audio("activate", a.def.id(), a.def.tier().ordinal()));
+                    }
                 }
                 r[1]++;
             }
@@ -461,7 +481,7 @@ public final class Encounters {
 
     // ------------------------------------------------------------------------------------- downed and revival
 
-    static boolean tryDown(ServerPlayerEntity p, DamageSource src, float amount) {
+    public static boolean tryDown(ServerPlayerEntity p, DamageSource src, float amount) {
         if (!cfg().revive || p.getHealth() - amount > 0 || src.isOf(net.minecraft.entity.damage.DamageTypes.OUT_OF_WORLD)
                 || src.isOf(net.minecraft.entity.damage.DamageTypes.GENERIC_KILL)) {
             return false;
@@ -492,6 +512,9 @@ public final class Encounters {
         for (var it = a.downed.entrySet().iterator(); it.hasNext(); ) {
             var e = it.next();
             ServerPlayerEntity p = a.world.getServer().getPlayerManager().getPlayer(e.getKey());
+            if (p == null) {
+                p = a.testFighters.stream().filter(t -> t.getUuid().equals(e.getKey())).findFirst().orElse(null);
+            }
             long[] d = e.getValue();
             if (p == null || !p.isAlive()) {
                 it.remove();
@@ -530,7 +553,7 @@ public final class Encounters {
     // ------------------------------------------------------------------------------------- end of a fight
 
     /** The fight ended without a victory: the guardian sleeps again and the arena is restored. */
-    static void lost(Active a, String reason) {
+    public static void lost(Active a, String reason) {
         if (a.ended) {
             return;
         }
@@ -598,6 +621,9 @@ public final class Encounters {
         List<ServerPlayerEntity> credited = new ArrayList<>();
         for (var e : a.participants.entrySet()) {
             ServerPlayerEntity p = a.world.getServer().getPlayerManager().getPlayer(e.getKey());
+            if (p == null) {
+                p = a.testFighters.stream().filter(t -> t.getUuid().equals(e.getKey())).findFirst().orElse(null);
+            }
             int[] r = e.getValue();
             if (p != null && (r[0] > 0 || r[1] >= 600)) {
                 credited.add(p);
@@ -618,8 +644,10 @@ public final class Encounters {
             if (f && a.def.sign() != null && !st.doorSigns.contains(signKey(a.def.sign()))) {
                 give(p, new ItemStack(Registries.ITEM.get(Identifier.of(a.def.sign()))));
             }
-            p.networkHandler.sendPacket(new TitleS2CPacket(Text.literal(f ? "Victory" : "Victory again").formatted(Formatting.GOLD, Formatting.BOLD)));
-            p.networkHandler.sendPacket(new SubtitleS2CPacket(Text.literal(a.def.title() + " is defeated").formatted(Formatting.GRAY)));
+            if (!a.testFighters.contains(p)) {
+                p.networkHandler.sendPacket(new TitleS2CPacket(Text.literal(f ? "Victory" : "Victory again").formatted(Formatting.GOLD, Formatting.BOLD)));
+                p.networkHandler.sendPacket(new SubtitleS2CPacket(Text.literal(a.def.title() + " is defeated").formatted(Formatting.GRAY)));
+            }
             Advancements.event(p, "boss_defeated", a.def.id());
             Advancements.event(p, "boss_tier_" + a.def.tier().name().toLowerCase(), a.def.id());
             if (credited.size() >= 2) {

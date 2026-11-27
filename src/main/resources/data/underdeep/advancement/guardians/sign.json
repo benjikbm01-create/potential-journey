@@ -1,0 +1,45 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:sign_spiral"
+  },
+  "title": {
+   "text": "A Sign"
+  },
+  "description": {
+   "text": "Win one of the six Signs"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:sign_spiral",
+       "underdeep:sign_eye",
+       "underdeep:sign_wave",
+       "underdeep:sign_flame",
+       "underdeep:sign_star",
+       "underdeep:sign_key"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:guardians/first",
+ "requirements": [
+  [
+   "done"
+  ]
+ ],
+ "rewards": {
+  "experience": 60
+ }
+}

@@ -77,6 +77,29 @@ public final class CaveSurfacePlacement extends PlacementModifier {
 
     @Override
     public Stream<BlockPos> getPositions(FeaturePlacementContext ctx, Random random, BlockPos pos) {
+        return find(ctx, random, pos).filter(p -> clearOfDescents(ctx, p));
+    }
+
+    /** Stage 10: nothing grows inside a descent cave (trees, fungi or spires would block the walkway). */
+    static boolean clearOfDescents(FeaturePlacementContext ctx, BlockPos p) {
+        dev.underdeep.world.terrain.UnderdeepTerrain t = dev.underdeep.world.UnderdeepWorlds.terrain(ctx.getWorld().toServerWorld());
+        if (t == null || !t.hasCaveNetwork()) {
+            return true;
+        }
+        for (int dx = -2; dx <= 2; dx += 2) {
+            for (int dz = -2; dz <= 2; dz += 2) {
+                dev.underdeep.world.terrain.TerrainColumn c = t.column(p.getX() + dx, p.getZ() + dz);
+                for (int i = 0; i < c.bandCount; i++) {
+                    if (p.getY() >= c.bandFloor[i] - 2 && p.getY() <= c.bandCeil[i] + 2) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    private Stream<BlockPos> find(FeaturePlacementContext ctx, Random random, BlockPos pos) {
         // Stage 4: no natural decoration on settlement footprints (roads, plazas, buildings + margin), so
         // features of neighbouring chunks can never grow into buildings regardless of generation order
         dev.underdeep.civ.settlement.SettlementMap settlements = dev.underdeep.civ.settlement.Settlements.of(ctx.getWorld());

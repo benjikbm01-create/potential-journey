@@ -71,6 +71,16 @@
    "icon": "underdeep:lore_fragment"
   },
   {
+   "id": "combat",
+   "title": "Combat",
+   "icon": "minecraft:iron_sword"
+  },
+  {
+   "id": "progress",
+   "title": "Beating Underdeep",
+   "icon": "minecraft:nether_star"
+  },
+  {
    "id": "controls",
    "title": "Controls & Settings",
    "icon": "minecraft:comparator"
@@ -2522,6 +2532,320 @@
    "req": ""
   },
   {
+   "id": "combat_basics",
+   "cat": "combat",
+   "title": "Fighting well",
+   "icon": "minecraft:iron_sword",
+   "keys": [
+    "combat",
+    "fight",
+    "dodge",
+    "heavy",
+    "parry",
+    "stamina",
+    "controls"
+   ],
+   "body": [
+    "Ordinary attacks work as always. On top of them: DODGE (Left Alt) dashes in the direction you are moving (backwards if standing still) and for a moment blows cannot touch you. HEAVY ATTACK: sneak and attack with a melee weapon when it is fully charged \u2014 a slower, committed blow whose shape depends on the weapon. PARRY: raise your shield just as a blow lands, or right-click with a melee weapon when you have no shield in your off hand.",
+    "Stamina (the gold bar above your hunger, shown when not full) is spent only by dodging, heavy attacks, weapon parries and blocking hits with a shield. Walking, sprinting, mining and building never use it, and it refills quickly when you pause. Being well fed refills it faster; going hungry slows it."
+   ],
+   "items": [],
+   "see": [
+    "weapon_styles",
+    "defence",
+    "counters"
+   ],
+   "req": ""
+  },
+  {
+   "id": "weapon_styles",
+   "cat": "combat",
+   "title": "Weapon styles",
+   "icon": "underdeep:steel_greatsword",
+   "keys": [
+    "sword",
+    "dagger",
+    "greatsword",
+    "spear",
+    "warhammer",
+    "battleaxe",
+    "mace",
+    "bow",
+    "crossbow",
+    "style"
+   ],
+   "body": [
+    "Sword: balanced; the longest parry window and the strongest riposte. Dagger: fast; +50% from behind or against a staggered foe; its heavy is a quick lunge. Greatsword: slow, wide heavy cleave that sweeps up to four foes. Spear: long reach; the heavy thrust lunges forward through two foes in a line. Warhammer: the heavy blow is a ground slam all around you, the best at breaking guard. Battleaxe: disables shields, bites through armour. Mace: crushing \u2014 bonus stagger and more damage against armoured foes.",
+    "Bows: fully drawn shots stagger. Crossbows: bolts stagger hard. Shield: the defensive style \u2014 block at a stamina cost, parry by raising it in time. Heavy attacks cost stamina and leave you briefly open afterwards: they are strong, not free. Taking a solid hit while winding one up interrupts it."
+   ],
+   "items": [],
+   "see": [
+    "combat_basics"
+   ],
+   "req": ""
+  },
+  {
+   "id": "defence",
+   "cat": "combat",
+   "title": "Dodging, blocking and parrying",
+   "icon": "minecraft:shield",
+   "keys": [
+    "dodge",
+    "block",
+    "parry",
+    "shield",
+    "telegraph",
+    "guard"
+   ],
+   "body": [
+    "Every dangerous attack is announced: a crouch, a raised arm, a roar, a glow, marks on the ground. Watch for them.",
+    "Ordinary blows can be blocked or parried. Wide sweeping blows can be blocked but not parried. Grabs, charges and crushing slams go through shields \u2014 dodge or get out of the way; a red glow means exactly this. Rings and lines marked on the ground are hazard zones: step out of them (a dodge does not help inside one). Ground waves can be jumped. Projectiles can be blocked, and a shield raised at the right moment deflects them.",
+    "Blocking with a shield costs stamina for every blow it stops; when stamina runs out your guard breaks for a few seconds."
+   ],
+   "items": [],
+   "see": [
+    "counters"
+   ],
+   "req": ""
+  },
+  {
+   "id": "counters",
+   "cat": "combat",
+   "title": "Openings, counters and stagger",
+   "icon": "minecraft:golden_sword",
+   "keys": [
+    "counter",
+    "riposte",
+    "stagger",
+    "opening",
+    "poise"
+   ],
+   "body": [
+    "A successful parry, or dodging a blow at the last moment, gives you an OPENING (shown on the stamina bar): your next hit is a counter for much more damage, and it staggers the foe.",
+    "Hits also wear down a foe's balance: when it breaks, the foe is STAGGERED \u2014 dazed for a moment and taking extra damage. Heavy attacks, hammers, maces and crossbows break balance fastest. A foe that just recovered cannot be staggered again at once. After a big attack most creatures need a moment to recover: that is your chance."
+   ],
+   "items": [],
+   "see": [
+    "defence",
+    "enemies"
+   ],
+   "req": ""
+  },
+  {
+   "id": "enemies",
+   "cat": "combat",
+   "title": "Reading creatures",
+   "icon": "minecraft:bone",
+   "keys": [
+    "enemy",
+    "creature",
+    "behaviour",
+    "pack",
+    "charge",
+    "spit"
+   ],
+   "body": [
+    "Creatures that fight do so in their own way. Some bite and back away; stalkers circle before they pounce; ambushers strike first and fast; packs work around your sides while one holds your attention, and a pack leader's howl spurs the rest. Chargers paw the ground and rush in a straight line \u2014 step aside, and they may daze themselves on a wall. Heavy brutes telegraph slow ground slams. Armoured creatures turn their hard front to you: go round them. Spitters keep their distance. Divers swoop from above.",
+    "Most peaceful animals never fight at all."
+   ],
+   "items": [],
+   "see": [
+    "counters"
+   ],
+   "req": ""
+  },
+  {
+   "id": "combat_prep",
+   "cat": "combat",
+   "title": "Preparing for a fight",
+   "icon": "underdeep:bandage",
+   "keys": [
+    "prepare",
+    "food",
+    "medicine",
+    "armour",
+    "expedition"
+   ],
+   "body": [
+    "Repair your gear, bring food that keeps you well fed (faster stamina), bandages and medicine, and armour suited to the place: cold, heat, spores and lightning are as dangerous as claws. Upgrades and accessories help without making you invulnerable.",
+    "Companions fight beside you but are no match for the great guardians on their own; keep them out of the worst of it."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": ""
+  },
+  {
+   "id": "guardians",
+   "cat": "combat",
+   "title": "Guardians",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "boss",
+    "guardian",
+    "altar",
+    "lair",
+    "revive",
+    "downed",
+    "reward"
+   ],
+   "body": [
+    "Some lairs hold a sleeping guardian. Use its altar to wake it (you will be asked twice: once awake, it fights until it or you are done). Everyone inside the lair takes part; the guardian grows stronger with the number of fighters when it wakes, and a little more for friends who join in the first moments \u2014 never less.",
+    "If you fall while a friend is still fighting, you are knocked down instead of killed (at most once a minute): a friend crouching beside you for a few seconds helps you up. If everyone falls or leaves, the guardian goes back to sleep after half a minute and the lair is restored \u2014 try again whenever you like. While it is awake nobody can dig or build in its lair.",
+    "Victory rewards everyone who fought: each takes their own share, and some things are given once to each player. A pedestal in the lair holds a single heirloom for the whole world. A defeated guardian can be challenged again for smaller rewards."
+   ],
+   "items": [],
+   "see": [
+    "combat_prep",
+    "underdeep_goal"
+   ],
+   "req": ""
+  },
+  {
+   "id": "combat_settings",
+   "cat": "combat",
+   "title": "Difficulty and assistance",
+   "icon": "minecraft:redstone",
+   "keys": [
+    "difficulty",
+    "assist",
+    "config",
+    "easy",
+    "hard"
+   ],
+   "body": [
+    "Operators can tune combat in config/underdeep.json: sections 'combat' (dodge, heavy attacks, parry window, stamina, combat assist \u2014 wider dodge and parry windows and longer warnings \u2014 and creature behaviour) and 'bosses' (health, damage, per-player scaling, warning length, revival, arena protection, reset time)."
+   ],
+   "items": [],
+   "see": [
+    "settings"
+   ],
+   "req": ""
+  },
+  {
+   "id": "underdeep_goal",
+   "cat": "progress",
+   "title": "Beating Underdeep",
+   "icon": "minecraft:nether_star",
+   "keys": [
+    "goal",
+    "end",
+    "boss",
+    "final",
+    "win",
+    "progress"
+   ],
+   "body": [
+    "Underdeep has an end, if you want one. Deep in the world, the old peoples left guardians to keep something they feared. The way runs roughly like this: grow strong enough to face what sleeps in the old lairs; find the guardians and learn what they keep; gather what is needed to open a door that has been shut for an age; then go through it together.",
+    "You do not need to defeat every guardian, finish every advancement or befriend anyone. Inhabitants, old writings and this book will tell you more as you discover it. And after the end, the world is still yours."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": ""
+  },
+  {
+   "id": "progress_guardians",
+   "cat": "progress",
+   "title": "The guardians",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "sign",
+    "lair",
+    "altar"
+   ],
+   "body": [
+    "Lairs are marked by an altar. Gentler guardians sleep in the nearer ecosystems; the greater ones lie further out and deeper. Some of the greater guardians keep a Sign \u2014 a stone of the old six-sign script \u2014 and give one to everyone who defeats them.",
+    "Lost a Sign? Crouch and use the guardian's altar with an empty hand: it remembers who defeated it."
+   ],
+   "items": [],
+   "see": [
+    "progress_signs"
+   ],
+   "req": "progress:guardians"
+  },
+  {
+   "id": "progress_signs",
+   "cat": "progress",
+   "title": "The Signs",
+   "icon": "underdeep:sign_spiral",
+   "keys": [
+    "sign",
+    "door",
+    "keystone"
+   ],
+   "body": [
+    "Spiral, eye, wave, flame, star, key: the six Signs belong in a door. You do not need all six. The door's middle socket waits for a different stone, one that hums with silence; it is said to be kept where the deep is quietest."
+   ],
+   "items": [],
+   "see": [
+    "progress_keystone"
+   ],
+   "req": "progress:signs"
+  },
+  {
+   "id": "progress_keystone",
+   "cat": "progress",
+   "title": "The keystone",
+   "icon": "underdeep:keystone_silence",
+   "keys": [
+    "keystone",
+    "door",
+    "direction",
+    "final"
+   ],
+   "body": [
+    "Hold the keystone and use it: it hums towards the place it belongs, with a rough distance. The door there takes the keystone and any three Signs. Each Sign set into it stays for the whole world, so friends can pool what they carry.",
+    "What lies beyond is the hardest fight in Underdeep. Go together, well fed, repaired, with medicine and light."
+   ],
+   "items": [],
+   "see": [
+    "progress_door"
+   ],
+   "req": "progress:keystone"
+  },
+  {
+   "id": "progress_door",
+   "cat": "progress",
+   "title": "Before the last door",
+   "icon": "minecraft:iron_door",
+   "keys": [
+    "expedition",
+    "prepare",
+    "final"
+   ],
+   "body": [
+    "Plan an expedition: a camp near the door (a warding bell helps), spare food and medicine, repair kits, and everyone's best gear. Inside, listen and watch: the place itself is part of the fight."
+   ],
+   "items": [],
+   "see": [
+    "combat_prep"
+   ],
+   "req": "progress:door"
+  },
+  {
+   "id": "progress_beaten",
+   "cat": "progress",
+   "title": "After the end",
+   "icon": "minecraft:nether_star",
+   "keys": [
+    "postgame",
+    "after",
+    "victory"
+   ],
+   "body": [
+    "You have beaten Underdeep. Nothing else needs doing \u2014 but the caverns, the settlements, the guardians you have not met, and the places you have not found are all still there. Your world remembers who did it."
+   ],
+   "items": [],
+   "see": [
+    "underdeep_goal"
+   ],
+   "req": "progress:beaten"
+  },
+  {
    "id": "controls",
    "cat": "controls",
    "title": "Controls",
@@ -2533,7 +2857,7 @@
     "hotkey"
    ],
    "body": [
-    "H: open this handbook. K: open accessories. L: advancements (vanilla). All keys can be changed in Options > Controls > Underdeep.",
+    "H: open this handbook. K: open accessories. Left Alt: dodge. Sneak + attack: heavy attack. L: advancements (vanilla). All keys can be changed in Options > Controls > Underdeep.",
     "Sneak + right-click: quick trade with a merchant, open a pack animal's pack, set a bedroll as your respawn point. Right-click an empty-handed crop: harvest and replant."
    ],
    "items": [],
@@ -4026,6 +4350,500 @@
     "journal_help"
    ],
    "req": "site:crystal_geode"
+  },
+  {
+   "id": "site_lair_mossback",
+   "cat": "journal",
+   "title": "Thunder Hollow",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Hoof-scarred roots and a smell of wet earth. Something heavy beds down here.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_mossback"
+  },
+  {
+   "id": "site_lair_sporemother",
+   "cat": "journal",
+   "title": "The Spore Grove",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Pale caps the size of houses, and the air is thick enough to taste.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_sporemother"
+  },
+  {
+   "id": "site_lair_choirwarden",
+   "cat": "journal",
+   "title": "The Drowned Choir",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "A temple of nacre, half under water. Someone still keeps watch.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_choirwarden"
+  },
+  {
+   "id": "site_lair_rimefang",
+   "cat": "journal",
+   "title": "The Frozen Howl",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "A ring of cold braziers around a frozen lake, and tracks everywhere.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_rimefang"
+  },
+  {
+   "id": "site_lair_galvanic",
+   "cat": "journal",
+   "title": "The Pylon Yard",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Copper pylons stand around a sleeping shape that hums.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_galvanic"
+  },
+  {
+   "id": "site_lair_cinderwurm",
+   "cat": "journal",
+   "title": "The Ash Pit",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Basalt broken from below; the ground is warm and restless.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_cinderwurm"
+  },
+  {
+   "id": "site_lair_lamplighter",
+   "cat": "journal",
+   "title": "The Hall of Lanterns",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Old League lantern posts, still lit, though nobody has tended them for an age.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_lamplighter"
+  },
+  {
+   "id": "site_lair_resonant",
+   "cat": "journal",
+   "title": "The Singing Vault",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Crystal grows here in chords. Your footsteps ring.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_resonant"
+  },
+  {
+   "id": "site_lair_tidemother",
+   "cat": "journal",
+   "title": "The Island Ring",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Stone islands over black water. The water is too still.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_tidemother"
+  },
+  {
+   "id": "site_lair_silentwarden",
+   "cat": "journal",
+   "title": "The Silent Cathedral",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "Pillars, bells that make no sound, and a hush that presses on your ears.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_silentwarden"
+  },
+  {
+   "id": "site_lair_rootsovereign",
+   "cat": "journal",
+   "title": "The Heartwood Chamber",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "The oldest root you have ever seen, and it is breathing.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_rootsovereign"
+  },
+  {
+   "id": "site_lair_seamwatcher",
+   "cat": "journal",
+   "title": "The Seam Chamber",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "High under the roof of the world the stone hums like a struck bell.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_seamwatcher"
+  },
+  {
+   "id": "site_lair_somnarch",
+   "cat": "journal",
+   "title": "The Heart Engine",
+   "icon": "minecraft:lodestone",
+   "keys": [
+    "place",
+    "lair"
+   ],
+   "body": [
+    "A sealed hall at the bottom of everything. The walls are warm, and they beat.",
+    "A guardian's lair. Your journal lists where it is."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "site:lair_somnarch"
+  },
+  {
+   "id": "boss_mossback",
+   "cat": "progress",
+   "title": "The Mossback Thunderer",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It charges in straight lines and does not stop easily. The pillars of its hollow are not only decoration.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:mossback"
+  },
+  {
+   "id": "boss_sporemother",
+   "cat": "progress",
+   "title": "The Spore Mother",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "She hardly moves, but the ground around her does. Something about her opens after her greatest breath.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:sporemother"
+  },
+  {
+   "id": "boss_choirwarden",
+   "cat": "progress",
+   "title": "The Drowned Choirwarden",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "A disciplined blade: its blows come in sets that can be turned aside. Not every thrust can.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:choirwarden"
+  },
+  {
+   "id": "boss_rimefang",
+   "cat": "progress",
+   "title": "Rimefang, Lord of the Pack",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "Never alone. The cold is part of its hunt; fire may be a friend here.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:rimefang"
+  },
+  {
+   "id": "boss_galvanic",
+   "cat": "progress",
+   "title": "The Galvanic Colossus",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It does not feel blows while its pylons hum. Copper on your body is a poor idea near it.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:galvanic"
+  },
+  {
+   "id": "boss_cinderwurm",
+   "cat": "progress",
+   "title": "The Cinder Wurm",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It travels under the floor. When it surfaces to breathe, it is exposed.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:cinderwurm"
+  },
+  {
+   "id": "boss_lamplighter",
+   "cat": "progress",
+   "title": "The Last Lamplighter",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It walks the light of its lanterns. Darkness may serve you better than it does.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:lamplighter"
+  },
+  {
+   "id": "boss_resonant",
+   "cat": "progress",
+   "title": "The Resonant Colossus",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "Crystal sings in it. Some of that crystal is weaker than the rest \u2014 watch for a glow.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:resonant"
+  },
+  {
+   "id": "boss_tidemother",
+   "cat": "progress",
+   "title": "The Tide-Mother",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "In the water she is hard to hurt; out of it, less so.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:tidemother"
+  },
+  {
+   "id": "boss_silentwarden",
+   "cat": "progress",
+   "title": "The Silent Warden",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It does not see. It listens. So should you, and so should the bells.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:silentwarden"
+  },
+  {
+   "id": "boss_rootsovereign",
+   "cat": "progress",
+   "title": "The Root Sovereign",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It is not alone in its chamber: something there keeps it whole.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:rootsovereign"
+  },
+  {
+   "id": "boss_seamwatcher",
+   "cat": "progress",
+   "title": "The Seam Watcher",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "It tires of holding itself up.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:seamwatcher"
+  },
+  {
+   "id": "boss_somnarch",
+   "cat": "progress",
+   "title": "The Somnarch",
+   "icon": "minecraft:wither_skeleton_skull",
+   "keys": [
+    "guardian",
+    "boss"
+   ],
+   "body": [
+    "A dream with the strength of the deep. The hall around it matters as much as your blade.",
+    "What you have seen of it is all this page knows."
+   ],
+   "items": [],
+   "see": [
+    "guardians"
+   ],
+   "req": "boss:somnarch"
   },
   {
    "id": "secret_well_bottom",

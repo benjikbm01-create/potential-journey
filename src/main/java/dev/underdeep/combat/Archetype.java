@@ -53,7 +53,14 @@ public enum Archetype {
 
     /** Archetype of a creature (species data plus a stable per-individual role for packs). */
     public static Archetype of(UnderdeepCreature c) {
-        CreatureSpecies s = c.species();
+        return of(c, c.species());
+    }
+
+    /** As {@link #of(UnderdeepCreature)}, with the species given (goals are installed before the entity is fully built). */
+    public static Archetype of(UnderdeepCreature c, CreatureSpecies s) {
+        if (s == null) {
+            return BRAWLER;
+        }
         if (s.social() == CreatureSpecies.Social.SWARM && s.sizeClass() <= 1) {
             return SWARM;
         }

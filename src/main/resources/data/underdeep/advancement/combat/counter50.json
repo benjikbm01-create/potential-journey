@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:diamond_sword"
+  },
+  "title": {
+   "text": "Every Opening"
+  },
+  "description": {
+   "text": "Land 50 counters"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_counter",
+    "min": 50
+   }
+  }
+ },
+ "parent": "underdeep:combat/counter",
+ "rewards": {
+  "experience": 80
+ }
+}

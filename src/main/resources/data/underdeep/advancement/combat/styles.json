@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_greatsword"
+  },
+  "title": {
+   "text": "Weapon Master"
+  },
+  "description": {
+   "text": "Land heavy attacks with 6 different kinds of weapon"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_heavy",
+    "distinct": 6
+   }
+  }
+ },
+ "parent": "underdeep:combat/heavy",
+ "rewards": {
+  "experience": 80
+ }
+}

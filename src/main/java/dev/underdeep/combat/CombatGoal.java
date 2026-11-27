@@ -31,6 +31,8 @@ import java.util.WeakHashMap;
  */
 public final class CombatGoal extends Goal {
     /** Mobs whose current strike cannot be parried (heavy or charge): read by {@link Combat#UNPARRYABLE}. */
+    /** Diagnostics: strikes resolved (self-test). */
+    public static int STRIKES;
     static final Set<LivingEntity> UNPARRYABLE_NOW = Collections.newSetFromMap(new WeakHashMap<>());
 
     private final UnderdeepCreature c;
@@ -211,6 +213,7 @@ public final class CombatGoal extends Goal {
     }
 
     private void strike(LivingEntity t, double d) {
+        STRIKES++;
         c.setState(UnderdeepCreature.ATTACK);
         Vec3d to = t.getPos().subtract(c.getPos());
         Vec3d flat = new Vec3d(to.x, 0, to.z);

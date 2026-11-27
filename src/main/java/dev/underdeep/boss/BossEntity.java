@@ -63,6 +63,8 @@ public class BossEntity extends HostileEntity implements Poise.Staggerable {
     private int idleGap = 10;
     private final Map<UUID, Double> threat = new HashMap<>();
     private Vec3d lockedDir;
+    /** Health beyond vanilla's 1024 cap is represented by dividing incoming damage (keeps the fight length right). */
+    private double healthFactor = 1;
     final List<Entity> minions = new ArrayList<>();
     /** Client-side animation clock of the current stage. */
     public int clientStageAge;
@@ -415,7 +417,7 @@ public class BossEntity extends HostileEntity implements Poise.Staggerable {
         if (isStaggered()) {
             mult *= 1.35;
         }
-        float dealt = (float) (amount * mult);
+        float dealt = (float) (amount * mult / healthFactor);
         if (getHealth() - dealt <= 1) {
             // defeat sequence instead of an instant death (the final blow is still credited)
             super.damage(source, Math.max(0, getHealth() - 1));
@@ -470,8 +472,10 @@ public class BossEntity extends HostileEntity implements Poise.Staggerable {
     /** Starts a new fight at full health (called by the encounter on awakening). */
     void begin(double healthScale) {
         var h = getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH);
+        double want = def.health() * healthScale;
+        healthFactor = Math.max(1, want / 1000);
         if (h != null) {
-            h.setBaseValue(def.health() * healthScale);
+            h.setBaseValue(want / healthFactor);
         }
         setHealth(getMaxHealth());
         poiseMax = def.poise() * (0.8 + 0.2 * healthScale);
@@ -490,10 +494,11 @@ public class BossEntity extends HostileEntity implements Poise.Staggerable {
             return;
         }
         double frac = getHealth() / getMaxHealth();
-        double nv = def.health() * healthScale;
-        if (nv > h.getBaseValue()) {
-            h.setBaseValue(nv);
-            setHealth((float) (nv * frac));
+        double want = def.health() * healthScale;
+        if (want > h.getBaseValue() * healthFactor) {
+            healthFactor = Math.max(1, want / 1000);
+            h.setBaseValue(want / healthFactor);
+            setHealth((float) (getMaxHealth() * frac));
         }
     }
 
@@ -588,9 +593,18 @@ public class BossEntity extends HostileEntity implements Poise.Staggerable {
 
     /** All living targets (players and their creatures) in the arena near a point. */
     public List<LivingEntity> victims(Vec3d c, double r) {
-        return getWorld().getEntitiesByClass(LivingEntity.class, new net.minecraft.util.math.Box(c, c).expand(r, r * 0.75 + 3, r),
+        net.minecraft.util.math.Box box = new net.minecraft.util.math.Box(c, c).expand(r, r * 0.75 + 3, r);
+        List<LivingEntity> out = new ArrayList<>(getWorld().getEntitiesByClass(LivingEntity.class, box,
                 e -> e != this && e.isAlive() && !(e instanceof BossEntity) && !minions.contains(e)
-                        && (e instanceof PlayerEntity p && !p.isSpectator() && !p.isCreative() || e instanceof MobEntity m && m.getTarget() == this));
+                        && (e instanceof PlayerEntity p && !p.isSpectator() && !p.isCreative() || e instanceof MobEntity m && m.getTarget() == this)));
+        if (enc != null) {
+            for (ServerPlayerEntity p : enc.fighters()) {
+                if (!out.contains(p) && box.intersects(p.getBoundingBox()) && !p.isCreative()) {
+                    out.add(p);
+                }
+            }
+        }
+        return out;
     }
 
     /** Cone in front of the boss (or its locked direction). */
@@ -767,6 +781,11 @@ public class BossEntity extends HostileEntity implements Poise.Staggerable {
             }
         }
         minions.clear();
+    }
+
+    /** Effective health including the part beyond the vanilla cap (diagnostics). */
+    public double effectiveMaxHealth() {
+        return getMaxHealth() * healthFactor;
     }
 
     public Encounters.Active encounter() {

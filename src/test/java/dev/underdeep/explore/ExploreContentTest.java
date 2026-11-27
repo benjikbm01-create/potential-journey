@@ -32,13 +32,15 @@ class ExploreContentTest {
             JsonObject f = e.getAsJsonObject();
             assertTrue(ids.add(f.get("id").getAsString()), "duplicate family " + f.get("id"));
             byCat.merge(f.get("category").getAsString(), 1, Integer::sum);
-            assertTrue(f.get("weight").getAsDouble() > 0, "weight " + f.get("id"));
+            boolean lair = f.get("category").getAsString().equals("lair");
+            assertTrue(lair ? f.get("weight").getAsDouble() == 0 : f.get("weight").getAsDouble() > 0, "weight " + f.get("id"));
             assertTrue(f.get("radius").getAsInt() >= 2 && f.get("radius").getAsInt() <= 40, "radius " + f.get("id"));
             assertTrue(f.getAsJsonArray("layers").size() > 0, "layers " + f.get("id"));
         }
         assertTrue(byCat.getOrDefault("dungeon", 0) >= 20, "dungeons " + byCat);
         assertTrue(byCat.getOrDefault("ruin", 0) >= 30, "ruins " + byCat);
         assertTrue(byCat.getOrDefault("landmark", 0) >= 15, "landmarks " + byCat);
+        assertEquals(13, byCat.getOrDefault("lair", 0), "one lair family per guardian " + byCat);
     }
 
     @Test

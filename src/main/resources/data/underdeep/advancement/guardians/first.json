@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:wither_skeleton_skull"
+  },
+  "title": {
+   "text": "Guardian Slayer"
+  },
+  "description": {
+   "text": "Defeat a guardian"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_defeated"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/awaken",
+ "rewards": {
+  "experience": 50
+ }
+}

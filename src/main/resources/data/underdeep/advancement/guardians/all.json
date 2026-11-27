@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:somnal_ember"
+  },
+  "title": {
+   "text": "Last of the Old Guard"
+  },
+  "description": {
+   "text": "???"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": true
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_defeated",
+    "distinct": 13
+   }
+  }
+ },
+ "parent": "underdeep:guardians/beaten",
+ "rewards": {
+  "experience": 400
+ }
+}

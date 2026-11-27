@@ -99,6 +99,10 @@ public final class Combat {
     }
 
     private static final Map<UUID, State> STATES = new HashMap<>();
+    /** Self-test hook: fake players ticked like connected ones (never used in play). */
+    public static final List<ServerPlayerEntity> TEST_PLAYERS = new ArrayList<>();
+    /** Diagnostics: targets found by the last heavy attack. */
+    public static int LAST_HEAVY_HITS;
 
     public static State of(PlayerEntity p) {
         return STATES.computeIfAbsent(p.getUuid(), k -> new State());
@@ -214,7 +218,7 @@ public final class Combat {
         return new Vec3d(x * speed, onGround ? 0.16 : 0.02, z * speed);
     }
 
-    static void dodge(ServerPlayerEntity p, float forward, float sideways) {
+    public static void dodge(ServerPlayerEntity p, float forward, float sideways) {
         if (!canAct(p) || !cfg().dodge) {
             return;
         }
@@ -234,7 +238,7 @@ public final class Combat {
         w.playSound(null, p.getBlockPos(), SoundEvents.ENTITY_GOAT_LONG_JUMP, SoundCategory.PLAYERS, 0.5f, 1.4f);
     }
 
-    static void heavy(ServerPlayerEntity p) {
+    public static void heavy(ServerPlayerEntity p) {
         if (!canAct(p) || !cfg().heavyAttacks) {
             return;
         }
@@ -301,6 +305,7 @@ public final class Combat {
             hits.add(l);
         }
         hits.sort((a, b) -> Double.compare(a.squaredDistanceTo(p), b.squaredDistanceTo(p)));
+        LAST_HEAVY_HITS = hits.size();
         ServerWorld w = p.getServerWorld();
         int n = 0;
         for (LivingEntity l : hits) {
@@ -356,7 +361,7 @@ public final class Combat {
         return hit == null ? null : hit.getEntity();
     }
 
-    static TypedActionResult<ItemStack> useItem(PlayerEntity player, net.minecraft.world.World world, Hand hand) {
+    public static TypedActionResult<ItemStack> useItem(PlayerEntity player, net.minecraft.world.World world, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
         if (hand != Hand.MAIN_HAND || !cfg().enabled || !cfg().weaponParry) {
             return TypedActionResult.pass(stack);
@@ -383,7 +388,7 @@ public final class Combat {
     }
 
     static void openParry(ServerPlayerEntity p, State s, long now, boolean shield, int bonus) {
-        int lag = cfg().latencyCompensation ? Math.min(4, p.networkHandler.getLatency() / 50) : 0;
+        int lag = cfg().latencyCompensation && p.networkHandler != null ? Math.min(4, p.networkHandler.getLatency() / 50) : 0;
         s.parryUntil = now + cfg().parryWindowTicks + bonus + lag + (cfg().assist ? 3 : 0);
         s.parryShield = shield;
     }
@@ -548,11 +553,13 @@ public final class Combat {
 
     // ---------------------------------------------------------------------------------------------- tick
 
-    static void tick(MinecraftServer server) {
+    public static void tick(MinecraftServer server) {
         if (!cfg().enabled) {
             return;
         }
-        for (ServerPlayerEntity p : server.getPlayerManager().getPlayerList()) {
+        List<ServerPlayerEntity> players = new ArrayList<>(server.getPlayerManager().getPlayerList());
+        players.addAll(TEST_PLAYERS);
+        for (ServerPlayerEntity p : players) {
             State s = of(p);
             long now = p.getWorld().getTime();
             if (p.isOnGround()) {
@@ -592,12 +599,17 @@ public final class Combat {
                     && (now % 2 == 0 || flags != s.sentFlags)) {
                 s.sentStamina = s.stamina;
                 s.sentFlags = flags;
-                ServerPlayNetworking.send(p, new Hud(s.stamina, flags));
+                if (!TEST_PLAYERS.contains(p)) {
+                    ServerPlayNetworking.send(p, new Hud(s.stamina, flags));
+                }
             }
         }
     }
 
     static void broadcast(ServerPlayerEntity p, CustomPayload payload) {
+        if (TEST_PLAYERS.contains(p)) {
+            return;
+        }
         ServerPlayNetworking.send(p, payload);
         for (ServerPlayerEntity o : PlayerLookup.tracking(p)) {
             if (o != p) {

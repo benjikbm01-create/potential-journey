@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:resonant_crystal"
+  },
+  "title": {
+   "text": "The Greater Guardians"
+  },
+  "description": {
+   "text": "Defeat the three greatest Sign keepers"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_tier_late",
+    "distinct": 3
+   }
+  }
+ },
+ "parent": "underdeep:guardians/keepers",
+ "rewards": {
+  "experience": 150
+ }
+}

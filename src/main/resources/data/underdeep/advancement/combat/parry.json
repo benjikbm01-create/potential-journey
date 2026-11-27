@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:shield"
+  },
+  "title": {
+   "text": "Not Today"
+  },
+  "description": {
+   "text": "Parry a blow: raise a shield just in time, or right-click with a weapon"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_parry"
+   }
+  }
+ },
+ "parent": "underdeep:combat/root"
+}

@@ -19,7 +19,8 @@ CATS = [
     ("economy", "Economy", "minecraft:emerald"), ("farming", "Farming", "underdeep:glowgrain"), ("cooking", "Cooking", "underdeep:cooking_pot"),
     ("medicine", "Medicine", "underdeep:bandage"), ("homes", "Camping & Homes", "underdeep:bedroll"),
     ("equipment", "Equipment", "underdeep:steel_sword"), ("explore", "Exploration", "minecraft:recovery_compass"),
-    ("journal", "Your Journal", "underdeep:lore_fragment"), ("controls", "Controls & Settings", "minecraft:comparator")]
+    ("journal", "Your Journal", "underdeep:lore_fragment"), ("combat", "Combat", "minecraft:iron_sword"),
+    ("progress", "Beating Underdeep", "minecraft:nether_star"), ("controls", "Controls & Settings", "minecraft:comparator")]
 PAGES = []
 
 
@@ -567,9 +568,100 @@ page("warding", "explore", "Safe camps", "underdeep:warding_bell", [
     " Torches and walls help too. Companions follow you through ordinary passages; if one gets stuck, it catches up when it can."],
      keys=["camp", "safe", "bell", "spawn", "companion"], see=["expedition_prep"])
 
+# ------------------------------------------------------------------------------------------------ Combat (Stage 10)
+page("combat_basics", "combat", "Fighting well", "minecraft:iron_sword", [
+    "Ordinary attacks work as always. On top of them: DODGE (Left Alt) dashes in the direction you are moving (backwards if standing"
+    " still) and for a moment blows cannot touch you. HEAVY ATTACK: sneak and attack with a melee weapon when it is fully charged — a"
+    " slower, committed blow whose shape depends on the weapon. PARRY: raise your shield just as a blow lands, or right-click with a melee"
+    " weapon when you have no shield in your off hand.",
+    "Stamina (the gold bar above your hunger, shown when not full) is spent only by dodging, heavy attacks, weapon parries and blocking"
+    " hits with a shield. Walking, sprinting, mining and building never use it, and it refills quickly when you pause. Being well fed"
+    " refills it faster; going hungry slows it."], keys=["combat", "fight", "dodge", "heavy", "parry", "stamina", "controls"],
+     see=["weapon_styles", "defence", "counters"])
+page("weapon_styles", "combat", "Weapon styles", "underdeep:steel_greatsword", [
+    "Sword: balanced; the longest parry window and the strongest riposte. Dagger: fast; +50% from behind or against a staggered foe;"
+    " its heavy is a quick lunge. Greatsword: slow, wide heavy cleave that sweeps up to four foes. Spear: long reach; the heavy thrust"
+    " lunges forward through two foes in a line. Warhammer: the heavy blow is a ground slam all around you, the best at breaking guard."
+    " Battleaxe: disables shields, bites through armour. Mace: crushing — bonus stagger and more damage against armoured foes.",
+    "Bows: fully drawn shots stagger. Crossbows: bolts stagger hard. Shield: the defensive style — block at a stamina cost, parry by"
+    " raising it in time. Heavy attacks cost stamina and leave you briefly open afterwards: they are strong, not free. Taking a solid hit"
+    " while winding one up interrupts it."], keys=["sword", "dagger", "greatsword", "spear", "warhammer", "battleaxe", "mace", "bow", "crossbow", "style"],
+     see=["combat_basics"])
+page("defence", "combat", "Dodging, blocking and parrying", "minecraft:shield", [
+    "Every dangerous attack is announced: a crouch, a raised arm, a roar, a glow, marks on the ground. Watch for them.",
+    "Ordinary blows can be blocked or parried. Wide sweeping blows can be blocked but not parried. Grabs, charges and crushing slams"
+    " go through shields — dodge or get out of the way; a red glow means exactly this. Rings and lines marked on the ground are hazard"
+    " zones: step out of them (a dodge does not help inside one). Ground waves can be jumped. Projectiles can be blocked, and a shield"
+    " raised at the right moment deflects them.",
+    "Blocking with a shield costs stamina for every blow it stops; when stamina runs out your guard breaks for a few seconds."],
+     keys=["dodge", "block", "parry", "shield", "telegraph", "guard"], see=["counters"])
+page("counters", "combat", "Openings, counters and stagger", "minecraft:golden_sword", [
+    "A successful parry, or dodging a blow at the last moment, gives you an OPENING (shown on the stamina bar): your next hit is a"
+    " counter for much more damage, and it staggers the foe.",
+    "Hits also wear down a foe's balance: when it breaks, the foe is STAGGERED — dazed for a moment and taking extra damage. Heavy"
+    " attacks, hammers, maces and crossbows break balance fastest. A foe that just recovered cannot be staggered again at once."
+    " After a big attack most creatures need a moment to recover: that is your chance."], keys=["counter", "riposte", "stagger", "opening", "poise"],
+     see=["defence", "enemies"])
+page("enemies", "combat", "Reading creatures", "minecraft:bone", [
+    "Creatures that fight do so in their own way. Some bite and back away; stalkers circle before they pounce; ambushers strike first and"
+    " fast; packs work around your sides while one holds your attention, and a pack leader's howl spurs the rest. Chargers paw the ground"
+    " and rush in a straight line — step aside, and they may daze themselves on a wall. Heavy brutes telegraph slow ground slams."
+    " Armoured creatures turn their hard front to you: go round them. Spitters keep their distance. Divers swoop from above.",
+    "Most peaceful animals never fight at all."], keys=["enemy", "creature", "behaviour", "pack", "charge", "spit"], see=["counters"])
+page("combat_prep", "combat", "Preparing for a fight", "underdeep:bandage", [
+    "Repair your gear, bring food that keeps you well fed (faster stamina), bandages and medicine, and armour suited to the place: cold,"
+    " heat, spores and lightning are as dangerous as claws. Upgrades and accessories help without making you invulnerable.",
+    "Companions fight beside you but are no match for the great guardians on their own; keep them out of the worst of it."],
+     keys=["prepare", "food", "medicine", "armour", "expedition"], see=["guardians"])
+page("guardians", "combat", "Guardians", "minecraft:wither_skeleton_skull", [
+    "Some lairs hold a sleeping guardian. Use its altar to wake it (you will be asked twice: once awake, it fights until it or you are"
+    " done). Everyone inside the lair takes part; the guardian grows stronger with the number of fighters when it wakes, and a little more"
+    " for friends who join in the first moments — never less.",
+    "If you fall while a friend is still fighting, you are knocked down instead of killed (at most once a minute): a friend crouching"
+    " beside you for a few seconds helps you up. If everyone falls or leaves, the guardian goes back to sleep after half a minute and the"
+    " lair is restored — try again whenever you like. While it is awake nobody can dig or build in its lair.",
+    "Victory rewards everyone who fought: each takes their own share, and some things are given once to each player. A pedestal in the"
+    " lair holds a single heirloom for the whole world. A defeated guardian can be challenged again for smaller rewards."],
+     keys=["boss", "guardian", "altar", "lair", "revive", "downed", "reward"], see=["combat_prep", "underdeep_goal"])
+page("combat_settings", "combat", "Difficulty and assistance", "minecraft:redstone", [
+    "Operators can tune combat in config/underdeep.json: sections 'combat' (dodge, heavy attacks, parry window, stamina, combat assist —"
+    " wider dodge and parry windows and longer warnings — and creature behaviour) and 'bosses' (health, damage, per-player scaling,"
+    " warning length, revival, arena protection, reset time)."], keys=["difficulty", "assist", "config", "easy", "hard"], see=["settings"])
+
+# ------------------------------------------------------------------------------------------------ Beating Underdeep (Stage 10)
+page("underdeep_goal", "progress", "Beating Underdeep", "minecraft:nether_star", [
+    "Underdeep has an end, if you want one. Deep in the world, the old peoples left guardians to keep something they feared. The way"
+    " runs roughly like this: grow strong enough to face what sleeps in the old lairs; find the guardians and learn what they keep;"
+    " gather what is needed to open a door that has been shut for an age; then go through it together.",
+    "You do not need to defeat every guardian, finish every advancement or befriend anyone. Inhabitants, old writings and this book"
+    " will tell you more as you discover it. And after the end, the world is still yours."], keys=["goal", "end", "boss", "final", "win", "progress"],
+     see=["guardians"])
+page("progress_guardians", "progress", "The guardians", "minecraft:wither_skeleton_skull", [
+    "Lairs are marked by an altar. Gentler guardians sleep in the nearer ecosystems; the greater ones lie further out and deeper."
+    " Some of the greater guardians keep a Sign — a stone of the old six-sign script — and give one to everyone who defeats them.",
+    "Lost a Sign? Crouch and use the guardian's altar with an empty hand: it remembers who defeated it."], keys=["guardian", "sign", "lair", "altar"],
+     req="progress:guardians", see=["progress_signs"])
+page("progress_signs", "progress", "The Signs", "underdeep:sign_spiral", [
+    "Spiral, eye, wave, flame, star, key: the six Signs belong in a door. You do not need all six. The door's middle socket waits for a"
+    " different stone, one that hums with silence; it is said to be kept where the deep is quietest."], keys=["sign", "door", "keystone"],
+     req="progress:signs", see=["progress_keystone"])
+page("progress_keystone", "progress", "The keystone", "underdeep:keystone_silence", [
+    "Hold the keystone and use it: it hums towards the place it belongs, with a rough distance. The door there takes the keystone and"
+    " any three Signs. Each Sign set into it stays for the whole world, so friends can pool what they carry.",
+    "What lies beyond is the hardest fight in Underdeep. Go together, well fed, repaired, with medicine and light."],
+     keys=["keystone", "door", "direction", "final"], req="progress:keystone", see=["progress_door"])
+page("progress_door", "progress", "Before the last door", "minecraft:iron_door", [
+    "Plan an expedition: a camp near the door (a warding bell helps), spare food and medicine, repair kits, and everyone's best gear."
+    " Inside, listen and watch: the place itself is part of the fight."], keys=["expedition", "prepare", "final"], req="progress:door",
+     see=["combat_prep"])
+page("progress_beaten", "progress", "After the end", "minecraft:nether_star", [
+    "You have beaten Underdeep. Nothing else needs doing — but the caverns, the settlements, the guardians you have not met, and the"
+    " places you have not found are all still there. Your world remembers who did it."], keys=["postgame", "after", "victory"],
+     req="progress:beaten", see=["underdeep_goal"])
+
 # ------------------------------------------------------------------------------------------------ Controls
 page("controls", "controls", "Controls", "minecraft:comparator", [
-    "H: open this handbook. K: open accessories. L: advancements (vanilla). All keys can be changed in Options > Controls > Underdeep.",
+    "H: open this handbook. K: open accessories. Left Alt: dodge. Sneak + attack: heavy attack. L: advancements (vanilla). All keys can be changed in Options > Controls > Underdeep.",
     "Sneak + right-click: quick trade with a merchant, open a pack animal's pack, set a bedroll as your respawn point. Right-click an"
     " empty-handed crop: harvest and replant."], keys=["keys", "keybind", "controls", "hotkey"], see=["settings"])
 page("settings", "controls", "Settings", "minecraft:redstone", [
@@ -592,6 +684,28 @@ def places():
     for f in s9.F:
         page("site_" + f["id"], "journal", f["name"], icons[f["category"]], [f["desc"], kinds[f["category"]] + ". Your journal lists where you found one."],
              keys=["place", kinds[f["category"]].lower()], req="site:" + f["id"], see=["journal_help"])
+    import stage10 as s10
+    for f in s10.lair_families():
+        page("site_" + f["id"], "journal", f["name"], "minecraft:lodestone", [f["desc"], "A guardian's lair. Your journal lists where it is."],
+             keys=["place", "lair"], req="site:" + f["id"], see=["guardians"])
+    notes = {
+        "mossback": "It charges in straight lines and does not stop easily. The pillars of its hollow are not only decoration.",
+        "sporemother": "She hardly moves, but the ground around her does. Something about her opens after her greatest breath.",
+        "choirwarden": "A disciplined blade: its blows come in sets that can be turned aside. Not every thrust can.",
+        "rimefang": "Never alone. The cold is part of its hunt; fire may be a friend here.",
+        "galvanic": "It does not feel blows while its pylons hum. Copper on your body is a poor idea near it.",
+        "cinderwurm": "It travels under the floor. When it surfaces to breathe, it is exposed.",
+        "lamplighter": "It walks the light of its lanterns. Darkness may serve you better than it does.",
+        "resonant": "Crystal sings in it. Some of that crystal is weaker than the rest — watch for a glow.",
+        "tidemother": "In the water she is hard to hurt; out of it, less so.",
+        "silentwarden": "It does not see. It listens. So should you, and so should the bells.",
+        "rootsovereign": "It is not alone in its chamber: something there keeps it whole.",
+        "seamwatcher": "It tires of holding itself up.",
+        "somnarch": "A dream with the strength of the deep. The hall around it matters as much as your blade.",
+    }
+    for b in s10.BOSSES:
+        page("boss_" + b, "progress", s10.TITLES[b], "minecraft:wither_skeleton_skull", [notes[b], "What you have seen of it is all this page knows."],
+             keys=["guardian", "boss"], req="boss:" + b, see=["guardians"])
     for sid, name, desc in s9.SECRETS:
         page("secret_" + sid, "journal", name, "minecraft:tripwire_hook", [desc], keys=["secret", "hidden"], req="secret:" + sid, see=["journal_help"])
 

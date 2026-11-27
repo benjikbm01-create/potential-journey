@@ -246,5 +246,22 @@ See `docs/EXPLORATION.md` (public) and private design material. Needs a new worl
 | `/underdeep explore …` operator commands, config section `exploration` | done | |
 | Combat encounters / bosses in reserved rooms | not in scope | Stage 10 |
 
-## Stages 10–12
+## Stage 10 — Advanced combat, guardians, the endgame and connected caverns: IMPLEMENTED (2026-11-27)
+
+See `docs/CAVES.md`, `docs/COMBAT.md` (public) and private design material. Needs a new world (generator v5).
+
+| System | State | Notes |
+|---|---|---|
+| Secondary passages (3 size classes), intermediate chambers, side branches; spiral descent caves; spiral shafts | done | model + generated-block survival walks; +2 % chunk fill cost |
+| Version-aware terrain (old worlds keep their terrain) | done | |
+| Combat: stamina, dodge, heavy attacks, shield/weapon parry, counters, stagger, 10 weapon styles, HUD | done | server paths self-tested; feel not hands-on |
+| 15 creature behaviour archetypes with telegraphs and recovery | done | self-tested (accelerated) |
+| Guardian framework, 13 guardians (3 early, 4 mid, 3 late, 2 secret, 1 final), lairs, arenas, rigs | done | all 13 fought to defeat by the harness |
+| Encounters: awakening, scaling, downed/revive, reset, arena protection, persistent claims | done | self-tested |
+| Main progression (Signs, keystone, door), ending, postgame, recovery | done | self-tested with fixtures |
+| Rewards: heirlooms (13), guardian materials (13), upgrade kits (10), economy goods | done | audit 751/751 |
+| Handbook: Combat + Beating Underdeep categories, guardian pages; 30 advancements (2 tabs) | done | |
+| Companion boss behaviour, real multiplayer, balance, profiling | not done | Stage 12–13 |
+
+## Stages 11–12
 Not started.

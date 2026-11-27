@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:engine_door"
+  },
+  "title": {
+   "text": "Set in Stone"
+  },
+  "description": {
+   "text": "Set a Sign into the old door"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "sign_set"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/listen",
+ "rewards": {
+  "experience": 50
+ }
+}

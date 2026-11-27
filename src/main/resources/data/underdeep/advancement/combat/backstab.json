@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_dagger"
+  },
+  "title": {
+   "text": "From Behind"
+  },
+  "description": {
+   "text": "Strike a foe from behind with a dagger"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_backstab"
+   }
+  }
+ },
+ "parent": "underdeep:combat/stagger"
+}

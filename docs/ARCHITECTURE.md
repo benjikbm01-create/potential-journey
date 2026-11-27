@@ -458,6 +458,22 @@ Full description in `docs/EXPLORATION.md`.
   exploration rules, `EquipmentTools` compass targets, chunk generator spawn ward.
 - Generator: `UnderdeepTerrain.GENERATOR_VERSION` = 4; sites only in v4+ worlds unless `inOlderWorlds`.
 
+## 5k. Caves, combat, guardians and the endgame (Stage 10)
+
+Full descriptions in `docs/CAVES.md` and `docs/COMBAT.md` (private design in `docs/private/BOSSES.md`).
+- `world/terrain`: `Passages` (secondary network, used by `CavernGraph.evaluate`), `Descents` (helical caves, bands in
+  `TerrainColumn.bandFloor/bandCeil/bandLedge`, applied at the end of the full column), `UnderdeepTerrain(seed, version)`;
+  `world/analysis`: `CaveNetwork` (union-find model connectivity), `VoxelWalk` (survival movement over blocks).
+- `combat`: `Combat` (state, payloads, damage hooks, tick), `WeaponStyle`, `Poise` (+ `MobStaggerMixin`), `CombatGoal`,
+  `Archetype`, `CreatureSpit`. Client: `client/combat/CombatClient`, mixins `HeavyAttackMixin`, `WindupPoseMixin`
+  (`underdeep.client.mixins.json`).
+- `boss`: `BossEntity`, `Brain`, `Move`, `Brains` (13), `BossDef`, `Bosses` (registry), `Tier`, `BossDamage`,
+  `BossProjectile`, `Encounters` (+ `Audio` payload), `EncounterState` (PersistentState `underdeep_encounters`),
+  `Lairs` (planner + arenas, integrated in `ExplorationMap.resolve`), `BossBlocks`, `BossItems`, `Ending`.
+  Client: `client/boss/BossModel`, `BossRenderers`.
+- Hooks: `Rewards` (lair pedestal gated on defeat), `Handbook.discovered` (boss:, boss_won:, progress: keys),
+  `Obtainability.guardians`, `Canvas.marks`/`SiteLayout.marks`, `ExploreContent.Category.LAIR`.
+
 ## 6. Contracts for future stages
 
 | Need | Contract | Notes |

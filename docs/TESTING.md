@@ -22,9 +22,71 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Mob population study | `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server; uses `<run-dir>/selftest/ecosystem_sites.txt` from a self-test) → `<run-dir>/mobstudy/mobstudy.md` |
 | Stage 1.5 matrix | `scripts/test_matrix.sh` (also runs the Stage 1.5 checks; production JAR on the official Fabric server launcher) |
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
+| Stage 10 targeted | `SUITE=stage10 scripts/selftest.sh <seed> <dir> create` (~4 min: cave network on generated blocks, generation cost v4/v5, combat, creature archetypes, all 13 guardians, encounter rules, final progression); slow terrain measurements: `./gradlew test --tests '*TerrainBenchmarkTest*' -Dunderdeep.bench=true` |
 | Stage 9 targeted | `SUITE=stage9 scripts/selftest.sh <seed> <dir> create` (~2–3 min: static design audit, placement, generated-site comparison, in-world mechanics of all 20 dungeons; writes `<dir>/selftest/stage9_layouts.txt` and `layout_<family>.txt` ASCII slices) |
 | Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
+
+## Results — Stage 10 (2026-11-27)
+
+Environment: same container (Java 21, Gradle 8.14.3 offline, headless dedicated server, seed 42, fresh generator-v5
+worlds). Short targeted runs only, as agreed with the user. "Model" = terrain model in a unit test; "generated" = real
+chunks in a running server; fights use **test players driven by the harness with accelerated ticking** — they prove the
+mechanics run end to end, not balance or fun. Not one real client or real multiplayer session was run.
+
+### Executed (final state)
+- `./gradlew build` — **51 unit tests, 0 failed** (4 slow measurements skipped unless `-Dunderdeep.bench=true`), incl.
+  `TerrainBenchmarkTest.descentsAreWalkable` (5 nearest descents, voxel survival walk on the model: 5/5 down, 5/5 up)
+  and the updated `ExploreContentTest` (13 lair families, weight 0).
+- Bench runs (`-Dunderdeep.bench=true`, earlier in the session, model level):
+  - v4 → v5 connectivity, seeds 42 / 12345 / 2024 (2400 × 2400 blocks): largest walkable network upper 82→85 % /
+    89→90 % / 94→94 %; great chambers reachable 95→96 % / 96→97 % / 99→99 %; layer links 16→24 / 24→43 / 19→28.
+  - Column cost 8.3 → 9.2 µs (contiguous), 8.5 → 9.4 µs (strided, after fixing a descent cache thrash that first gave
+    30 µs).
+  - Descents (16 nearest, seed 42, model): 16/16 walkable both ways after fixing a band-capacity bug, floor noise and
+    overlapping neighbour descents (initially 5/8 and 4/8).
+  - Neighbouring great chambers (12 pairs, model voxel walk): 10/12 walkable in v4 and in v5 (steep floors / lake shore).
+- `SUITE=stage10 scripts/selftest.sh 42 run-tests/s10g create` — **64 passed, 0 failed**. Highlights:
+  - Generated blocks: descent caves walkable both ways 3/3 (0.6–0.7 k steps each); lairs for 13/13 guardians at
+    540–2250 blocks; model connectivity 85 % / 88 % upper / deep, 96 % of great chambers, 26 descents, 46 layer links.
+  - Terrain-stage fill (64 chunks, same JVM): v4 12.67 ms, v5 12.93 ms per chunk (+2 %); full benchmark 13.3 ms per
+    chunk single-threaded, 230 chunks/s with 3 threads.
+  - Combat (test player, server paths): dodge costs stamina, avoids an attack, not a fall; stamina 40 → 100 in 4 s;
+    weapon parry negates the blow, staggers the attacker, opens a counter; the counter deals 4 → 7.5; heavy attack:
+    15-tick server wind-up, 2.2× a light hit, stamina spent.
+  - Creatures: 27 fighting species in 10 archetypes, 33 peaceful species without a fighting goal; a creature warned at
+    tick 59 and struck at tick 66 (telegraph precedes the hit).
+  - Guardians: every guardian has a ranged answer; **13/13 awakened, attacked, changed phase and were defeated** with
+    rewards credited (Sign or material in the test player's inventory), 590–1960 ticks each with scripted damage; all
+    13 lairs placed and fought in a test area; the final arena's door opened with the keystone and three Signs.
+    Hits on the test player stay low (0–2) because an unticked test player keeps its hurt cooldown — not a difficulty
+    measure.
+  - Scaling 3 fighters → ×2.10 effective health; downed instead of killed and revived by a crouching friend; reset
+    after everyone left; encounter state NBT round trip; world completion recorded; secret guardians' advancements hidden.
+- `SUITE=audit scripts/selftest.sh 42 run-tests/s10audit create` — **76 passed, 0 failed**: 751/751 items obtainable
+  and used; 254 Handbook pages valid; 217 advancements in 16 tabs load.
+- `SUITE=stage9 scripts/selftest.sh 42 run-tests/s10s9 create` — **71 passed, 0 failed** (267 static layouts incl. the
+  13 lairs; regression of all Stage 9 mechanics with lairs in the exploration map).
+
+### Defects found and fixed by these runs
+- Creature archetype lookup read the species before the entity was built: every fighting creature would have crashed
+  on spawn (fixed; found by the first stage10 run).
+- Vanilla caps max health at 1024: scaled guardians and the final guardian were clamped (now the excess is applied as
+  damage reduction; effective health verified).
+- Decoration (trees, fungi, spires) grew inside descent caves on generated blocks (1/3 walkable): cave-surface
+  features now skip descent bands (3/3).
+- The Heart Engine door opened the world's lair instead of the one being used; descents previously thrashed a 256-slot
+  per-thread cache; static audit treated the sealed door as a wall (marked as an opening).
+- Harness issues (not mod bugs): fake players are invulnerable, keep join invulnerability and never tick; world time
+  does not move while the self-test holds the server; test-area chunks far away are not entity-ticking. The harness now
+  uses a damageable test player, advances world time per simulated tick and runs combat tests in the spawn chunks.
+
+### Not tested
+- Anything in a real client: controls, HUD, animations, boss models and presentation, keybinds, feel, difficulty.
+- Real multiplayer with 4–6 players; latency; dedicated-server performance with players fighting; lag profiling
+  (Spark/JFR not run); chunk pregeneration with Chunky; a `reload` (restart) of a Stage 10 world (state round trip only).
+- A legitimate end-to-end survival playthrough (components were tested in isolation with fixtures).
+- Companion behaviour in guardian fights; cooperative scaling with real latecomers; reward balance.
 
 ## Results — Stage 9 (2026-11-27)
 

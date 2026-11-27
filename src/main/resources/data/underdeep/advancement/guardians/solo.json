@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:iron_sword"
+  },
+  "title": {
+   "text": "Alone in the Dark"
+  },
+  "description": {
+   "text": "Defeat a guardian on your own"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_solo"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/first",
+ "rewards": {
+  "experience": 80
+ }
+}

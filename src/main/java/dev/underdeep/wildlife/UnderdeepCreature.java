@@ -152,6 +152,11 @@ public class UnderdeepCreature extends TameableEntity {
         builder.add(SHEARED, false);
     }
 
+    /** The goal selector (diagnostics: archetype checks). */
+    public net.minecraft.entity.ai.goal.GoalSelector goals() {
+        return goalSelector;
+    }
+
     public byte state() {
         return dataTracker.get(STATE);
     }

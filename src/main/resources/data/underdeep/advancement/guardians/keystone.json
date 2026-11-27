@@ -1,0 +1,35 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:keystone_silence"
+  },
+  "title": {
+   "text": "A Stone of Silence"
+  },
+  "description": {
+   "text": "Win the keystone"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "minecraft:inventory_changed",
+   "conditions": {
+    "items": [
+     {
+      "items": [
+       "underdeep:keystone_silence"
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "parent": "underdeep:guardians/sign",
+ "rewards": {
+  "experience": 120
+ }
+}

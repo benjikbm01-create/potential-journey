@@ -45,6 +45,13 @@ public final class BossItems {
         for (String m : MATERIALS) {
             ITEMS.put(m, Reg.item(m, new Item(new Item.Settings().rarity(Rarity.UNCOMMON).fireproof())));
         }
+        for (String sgn : SIGNS) {
+            dev.underdeep.guide.Uses.add(ITEMS.get(sgn), "belongs in an old door with seven sockets");
+        }
+        dev.underdeep.guide.Uses.add(ITEMS.get(KEYSTONE), "use it to hear where it belongs; it opens an old door together with three Signs");
+        for (String m : new String[]{"heartwood_resin", "seamglass", "somnal_ember"}) {
+            dev.underdeep.guide.Uses.add(ITEMS.get(m), "rare material: merchants and scholars pay well for it; a trophy of a great fight");
+        }
     }
 
     public static class SignItem extends Item {

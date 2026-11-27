@@ -75,7 +75,8 @@ public final class Ending {
 
     static void open(ServerWorld w, ServerPlayerEntity p, EncounterState st) {
         ExplorationMap map = Explorations.of(w);
-        Site s = Lairs.site(map, "somnarch");
+        Site at = map == null ? null : map.siteAt(p.getBlockPos(), 12);
+        Site s = at != null && at.family().id().equals("lair_somnarch") ? at : Lairs.site(map, "somnarch");
         if (s == null) {
             return;
         }

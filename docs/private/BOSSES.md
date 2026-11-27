@@ -107,3 +107,15 @@ Final | somnarch | The Somnarch | the Heart Engine | The Abyss, deep, 1800–260
 
 ## 6. Hidden advancements
 Secret bosses, the final destination, the final victory and "the Sleeper dreams no more" text are hidden until done.
+
+## 7. As implemented (v0.11.0)
+- All 13 brains in `boss/Brains.java`; lairs and arenas in `boss/Lairs.java`; final door/ending in `boss/Ending.java`.
+- Seed 42 lair distances: mossback 628, sporemother 542, choirwarden 649, rimefang 872, galvanic 1099 (deep),
+  cinderwurm 1149 (deep), lamplighter 1117, resonant 1631 (deep), tidemother 1764, silentwarden 1654 (deep),
+  rootsovereign 1950, seamwatcher 2250, somnarch 1848 (deep).
+- Deviations from §3/§4: the Tide-Mother is upper-layer only (no wet deep regions); the Rimefang pack uses rimefox,
+  spore minions are pufflings that burst into spore rings, root spirits are shadecats, the Lamplighter's wisps are
+  vanilla vexes (limited life). The Somnarch's dream echoes are its own moves (charge, spore rings, sonic line, wave).
+- Not implemented from the design: the Root Sovereign "regrows unless root hearts are cut" works as regeneration while
+  any root heart is lit (cutting them also staggers it); the Seam Watcher's phase-2 inversion is the push instead of
+  pull of its gravity move.

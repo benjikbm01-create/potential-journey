@@ -295,6 +295,25 @@ public final class Handbook {
         xd.secrets.forEach(k -> out.add("secret:" + k.substring(k.indexOf(':') + 1)));
         xd.records.forEach(r -> out.add("record:" + r));
         xd.artifacts.forEach(a -> out.add("item:underdeep:" + a));
+        // Stage 10: guardians fought / defeated, and the main progression steps reached (personal)
+        st.subjects.getOrDefault("boss_awakened", Set.of()).forEach(b -> out.add("boss:" + b));
+        st.subjects.getOrDefault("boss_defeated", Set.of()).forEach(b -> out.add("boss_won:" + b));
+        Set<String> got = st.subjects.getOrDefault("obtained", Set.of());
+        if (!st.subjects.getOrDefault("lair_found", Set.of()).isEmpty() || !st.subjects.getOrDefault("boss_awakened", Set.of()).isEmpty()) {
+            out.add("progress:guardians");
+        }
+        if (got.stream().anyMatch(i -> i.startsWith("underdeep:sign_")) || !st.subjects.getOrDefault("sign_set", Set.of()).isEmpty()) {
+            out.add("progress:signs");
+        }
+        if (got.contains("underdeep:keystone_silence") || !st.subjects.getOrDefault("keystone_listened", Set.of()).isEmpty()) {
+            out.add("progress:keystone");
+        }
+        if (!st.subjects.getOrDefault("sign_set", Set.of()).isEmpty() || !st.subjects.getOrDefault("engine_door_opened", Set.of()).isEmpty()) {
+            out.add("progress:door");
+        }
+        if (!st.subjects.getOrDefault("underdeep_beaten", Set.of()).isEmpty()) {
+            out.add("progress:beaten");
+        }
         return out;
     }
 

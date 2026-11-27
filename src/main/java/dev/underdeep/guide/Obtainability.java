@@ -145,6 +145,37 @@ public final class Obtainability {
         rules.add(new Rule(List.of(item("underdeep:star_shard")), List.of(), Set.of(), new Source("explore", "falls from starlit ceilings", List.of("starlight_caverns"), "")));
     }
 
+    /** Stage 10: guardian rewards (loot tables sampled), Signs and keystone, and once-per-world heirlooms. */
+    static void guardians(net.minecraft.server.MinecraftServer server, List<Rule> rules) {
+        ServerWorld w = server.getOverworld();
+        var reg = server.getReloadableRegistries();
+        for (var d : dev.underdeep.boss.Bosses.DEFS.values()) {
+            for (String suffix : new String[]{"", "_echo"}) {
+                var id = net.minecraft.util.Identifier.of("underdeep", "bosses/" + d.id() + suffix);
+                var table = reg.getLootTable(net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.LOOT_TABLE, id));
+                Set<Item> found = new java.util.LinkedHashSet<>();
+                net.minecraft.util.math.random.Random rnd = net.minecraft.util.math.random.Random.create(id.hashCode());
+                for (int i = 0; i < 60; i++) {
+                    var params = new net.minecraft.loot.context.LootContextParameterSet.Builder(w)
+                            .add(net.minecraft.loot.context.LootContextParameters.ORIGIN, net.minecraft.util.math.Vec3d.ZERO)
+                            .build(net.minecraft.loot.context.LootContextTypes.CHEST);
+                    table.generateLoot(params, rnd.nextLong()).forEach(st -> found.add(st.getItem()));
+                }
+                for (Item it : found) {
+                    rules.add(new Rule(List.of(it), List.of(), Set.of(), new Source("guardian", "a guardian's reward for those who defeat it", List.of(), "")));
+                }
+            }
+            if (d.sign() != null) {
+                rules.add(new Rule(List.of(item(d.sign())), List.of(), Set.of(), new Source("guardian",
+                        "given by a great guardian to everyone who defeats it (lost ones can be reclaimed at its altar)", List.of(), "")));
+            }
+            if (d.heirloom() != null) {
+                rules.add(new Rule(List.of(item(d.heirloom())), List.of(), Set.of(), new Source("guardian",
+                        "rests on a pedestal in a guardian's lair once it is defeated (once per world)", List.of(), "")));
+            }
+        }
+    }
+
     record Rule(List<Item> outputs, List<Set<Item>> inputs, Set<Item> gate, Source source) {
     }
 
@@ -457,6 +488,7 @@ public final class Obtainability {
         }
         // ---- Stage 9: old places (site loot tables sampled), unique pedestals, keys, identification, charts, encounters
         exploration(server, rules);
+        guardians(server, rules);
         // ---- fixpoint
         Set<Item> reach = new HashSet<>();
         Map<Item, Integer> depth = new HashMap<>();

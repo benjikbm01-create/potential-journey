@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:nether_star"
+  },
+  "title": {
+   "text": "The End of the Deep"
+  },
+  "description": {
+   "text": "Defeat what waits beyond the old door"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "underdeep_beaten"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/open",
+ "rewards": {
+  "experience": 500
+ }
+}

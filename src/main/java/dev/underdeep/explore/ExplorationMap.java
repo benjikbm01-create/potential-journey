@@ -211,6 +211,9 @@ public final class ExplorationMap {
             List<ExploreContent.Family> pool = new ArrayList<>();
             double total = 0;
             for (ExploreContent.Family f : ExploreContent.FAMILIES.values()) {
+                if (f.category() == ExploreContent.Category.LAIR) {
+                    continue; // guardian lairs are placed by their own guaranteed planner
+                }
                 if (!f.layers().contains(layer) || !f.fits(region) || fromSpawn < f.minSpawn() || f.category() == ExploreContent.Category.SECRET
                         && f.minSpawn() == 0 && fromSpawn < SPAWN_CLEAR) {
                     continue;

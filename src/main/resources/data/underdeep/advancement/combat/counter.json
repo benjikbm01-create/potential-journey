@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:golden_sword"
+  },
+  "title": {
+   "text": "Riposte"
+  },
+  "description": {
+   "text": "Strike back during an opening"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_counter"
+   }
+  }
+ },
+ "parent": "underdeep:combat/parry"
+}

@@ -443,6 +443,8 @@ public final class Lairs {
                 k.c.fixed(x, y, z + 1, BossBlocks.ENGINE_DOOR.getDefaultState());
                 k.c.mark("door", x, y, z);
                 k.c.mark("door", x, y, z + 1);
+                k.c.breakable.add(Canvas.key(x, y, z)); // opens with the Signs: passable for the layout audit
+                k.c.breakable.add(Canvas.key(x, y, z + 1));
             }
             for (int z = Math.max(0, m - r - 6); z < m - r - 1; z++) { // approach
                 k.c.set(x, 0, z, Blocks.POLISHED_DEEPSLATE.getDefaultState());

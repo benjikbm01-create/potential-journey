@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_warhammer"
+  },
+  "title": {
+   "text": "Put Your Back Into It"
+  },
+  "description": {
+   "text": "Land a heavy attack (sneak + attack)"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_heavy"
+   }
+  }
+ },
+ "parent": "underdeep:combat/root"
+}

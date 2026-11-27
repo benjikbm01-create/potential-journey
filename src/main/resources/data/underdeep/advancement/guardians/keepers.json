@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:sign_star"
+  },
+  "title": {
+   "text": "Keepers of the Signs"
+  },
+  "description": {
+   "text": "Defeat the four lesser Sign keepers"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_tier_mid",
+    "distinct": 4
+   }
+  }
+ },
+ "parent": "underdeep:guardians/sign",
+ "rewards": {
+  "experience": 100
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:shield"
+  },
+  "title": {
+   "text": "Steady Hands"
+  },
+  "description": {
+   "text": "Parry 25 blows"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_parry",
+    "min": 25
+   }
+  }
+ },
+ "parent": "underdeep:combat/parry",
+ "rewards": {
+  "experience": 40
+ }
+}

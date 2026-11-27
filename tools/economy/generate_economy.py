@@ -403,6 +403,16 @@ def stage8():
     return n
 
 
+def stage10():
+    """Stage 10 guardian materials: rare goods merchants and scholars buy (never sold back cheaper than bought)."""
+    have = {g[0] for g in GOODS}
+    for i, v in (("thunderhide", 3.0), ("mycelial_heart", 3.0), ("choir_nacre", 3.0), ("rimefang_pelt", 4.5), ("galvanic_core", 4.5),
+                 ("cinder_scale", 4.5), ("everlit_wick", 4.5), ("resonant_crystal", 6.0), ("abyssal_pearl", 6.0), ("silent_bellmetal", 6.0),
+                 ("heartwood_resin", 9.0), ("seamglass", 9.0), ("somnal_ember", 12.0)):
+        if "underdeep:" + i not in have:
+            GOODS.append(("underdeep:" + i, "LUXURY", v))
+
+
 def stage9():
     """Stage 9 exploration valuables: relics, ancient coins, star shards and encrusted relics are goods that merchants and
     scholars buy (real stock; resale is always dearer than purchase, so no loops). Artifacts are not goods."""
@@ -420,6 +430,7 @@ def stage9():
 
 def main():
     stage9()
+    stage10()
     n8 = stage8()
     print("stage 8:", n8, "settlement recipes")
     n7 = stage7()

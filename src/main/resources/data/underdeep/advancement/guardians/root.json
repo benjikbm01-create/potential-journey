@@ -1,0 +1,23 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:wither_skeleton_skull"
+  },
+  "title": {
+   "text": "Guardians"
+  },
+  "description": {
+   "text": "Old guardians, old Signs, and a door shut for an age."
+  },
+  "frame": "task",
+  "show_toast": false,
+  "announce_to_chat": false,
+  "hidden": false,
+  "background": "minecraft:textures/block/chiseled_deepslate.png"
+ },
+ "criteria": {
+  "arrive": {
+   "trigger": "minecraft:tick"
+  }
+ }
+}

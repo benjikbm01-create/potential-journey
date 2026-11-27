@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:engine_door"
+  },
+  "title": {
+   "text": "Shut for an Age"
+  },
+  "description": {
+   "text": "Open the old door"
+  },
+  "frame": "challenge",
+  "show_toast": true,
+  "announce_to_chat": true,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "engine_door_opened"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/door",
+ "rewards": {
+  "experience": 150
+ }
+}

@@ -1,0 +1,29 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:steel_greatsword"
+  },
+  "title": {
+   "text": "Clear the Floor"
+  },
+  "description": {
+   "text": "Hit three foes with one heavy attack"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_multi_hit"
+   }
+  }
+ },
+ "parent": "underdeep:combat/heavy",
+ "rewards": {
+  "experience": 30
+ }
+}

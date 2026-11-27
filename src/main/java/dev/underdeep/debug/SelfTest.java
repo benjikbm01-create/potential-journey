@@ -338,7 +338,8 @@ public final class SelfTest {
         section("Connectivity (ground truth flood fill of generated blocks)");
         connectivity(world, t, spawn.getX() >> 4, spawn.getZ() >> 4, 10, "spawn area");
         String suite = System.getProperty("underdeep.selftest.suite", "full");
-        boolean full = !"stage2".equals(suite) && !"stage4".equals(suite) && !"stage8".equals(suite) && !"stage9".equals(suite);
+        boolean full = !"stage2".equals(suite) && !"stage4".equals(suite) && !"stage8".equals(suite) && !"stage9".equals(suite)
+                && !"stage10".equals(suite);
         boolean only4 = "stage4".equals(suite) || "stage8".equals(suite); // quick iteration on settlements: skips Stage 1.5-3 measurements
         if (full) {
             connectivity(world, t, 140, -90, 10, "remote area (2240,-1440)");
@@ -350,6 +351,11 @@ public final class SelfTest {
         if ("audit".equals(suite)) {
             // fast iteration on the Stage 8 resource audit (no other checks)
             Stage8Checks.run(server, world, t, reps, dir, rep, false);
+            return;
+        }
+        if ("stage10".equals(suite)) {
+            // Stage 10: caves on generated blocks, combat, enemy behaviours, every guardian, final progression
+            Stage10Checks.run(server, world, t, dir, rep);
             return;
         }
         if ("stage9".equals(suite)) {

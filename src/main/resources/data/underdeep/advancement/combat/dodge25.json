@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "minecraft:phantom_membrane"
+  },
+  "title": {
+   "text": "Untouchable"
+  },
+  "description": {
+   "text": "Dodge 25 attacks at the last moment"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "combat_perfect_dodge",
+    "min": 25
+   }
+  }
+ },
+ "parent": "underdeep:combat/dodge",
+ "rewards": {
+  "experience": 40
+ }
+}

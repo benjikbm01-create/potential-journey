@@ -1,0 +1,30 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:thunderhide"
+  },
+  "title": {
+   "text": "Old Ways"
+  },
+  "description": {
+   "text": "Defeat the three guardians of the old ways"
+  },
+  "frame": "goal",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "boss_tier_early",
+    "distinct": 3
+   }
+  }
+ },
+ "parent": "underdeep:guardians/first",
+ "rewards": {
+  "experience": 80
+ }
+}

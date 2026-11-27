@@ -339,6 +339,51 @@ adv("expedition", "procession", "encounters", "minecraft:soul_lantern", "Lights 
     hidden=True, xp=60)
 
 
+# ------------------------------------------------------------------------------------------------ Stage 10: combat
+tab("combat", "Combat", "minecraft:iron_sword", "Read the blow, answer it, strike back.", "minecraft:textures/block/polished_blackstone_bricks.png")
+adv("combat", "parry", "root", "minecraft:shield", "Not Today", "Parry a blow: raise a shield just in time, or right-click with a weapon", ev("combat_parry"))
+adv("combat", "parry25", "parry", "minecraft:shield", "Steady Hands", "Parry 25 blows", ev("combat_parry", min=25), "goal", xp=40)
+adv("combat", "dodge", "root", "minecraft:feather", "Too Slow", "Dodge an attack at the last moment", ev("combat_perfect_dodge"))
+adv("combat", "dodge25", "dodge", "minecraft:phantom_membrane", "Untouchable", "Dodge 25 attacks at the last moment", ev("combat_perfect_dodge", min=25), "goal", xp=40)
+adv("combat", "heavy", "root", "underdeep:steel_warhammer", "Put Your Back Into It", "Land a heavy attack (sneak + attack)", ev("combat_heavy"))
+adv("combat", "styles", "heavy", "underdeep:steel_greatsword", "Weapon Master", "Land heavy attacks with 6 different kinds of weapon",
+    ev("combat_heavy", distinct=6), "challenge", xp=80)
+adv("combat", "multi", "heavy", "underdeep:steel_greatsword", "Clear the Floor", "Hit three foes with one heavy attack", ev("combat_multi_hit"), "goal", xp=30)
+adv("combat", "counter", "parry", "minecraft:golden_sword", "Riposte", "Strike back during an opening", ev("combat_counter"))
+adv("combat", "counter50", "counter", "minecraft:diamond_sword", "Every Opening", "Land 50 counters", ev("combat_counter", min=50), "challenge", xp=80)
+adv("combat", "stagger", "heavy", "minecraft:mace", "Off Balance", "Stagger a foe", ev("combat_stagger"))
+adv("combat", "backstab", "stagger", "underdeep:steel_dagger", "From Behind", "Strike a foe from behind with a dagger", ev("combat_backstab"))
+
+# ------------------------------------------------------------------------------------------------ Stage 10: guardians and the way to the end
+tab("guardians", "Guardians", "minecraft:wither_skeleton_skull", "Old guardians, old Signs, and a door shut for an age.",
+    "minecraft:textures/block/chiseled_deepslate.png")
+adv("guardians", "lair", "root", "guardian_altar", "Something Sleeps Here", "Find a guardian's altar", ev("lair_found"))
+adv("guardians", "awaken", "lair", "minecraft:bell", "No Turning Back", "Wake a guardian", ev("boss_awakened"))
+adv("guardians", "first", "awaken", "minecraft:wither_skeleton_skull", "Guardian Slayer", "Defeat a guardian", ev("boss_defeated"), "goal", xp=50)
+adv("guardians", "early", "first", "thunderhide", "Old Ways", "Defeat the three guardians of the old ways", ev("boss_tier_early", distinct=3), "goal", xp=80)
+adv("guardians", "sign", "first", "sign_spiral", "A Sign", "Win one of the six Signs", item("sign_spiral", "sign_eye", "sign_wave", "sign_flame", "sign_star", "sign_key"),
+    "goal", xp=60, any_of=True)
+adv("guardians", "keepers", "sign", "sign_star", "Keepers of the Signs", "Defeat the four lesser Sign keepers", ev("boss_tier_mid", distinct=4), "goal", xp=100)
+adv("guardians", "keystone", "sign", "keystone_silence", "A Stone of Silence", "Win the keystone", item("keystone_silence"), "goal", xp=120)
+adv("guardians", "listen", "keystone", "keystone_silence", "It Hums", "Listen to the keystone", ev("keystone_listened"))
+adv("guardians", "door", "listen", "engine_door", "Set in Stone", "Set a Sign into the old door", ev("sign_set"), "goal", xp=50)
+adv("guardians", "open", "door", "engine_door", "Shut for an Age", "Open the old door", ev("engine_door_opened"), "challenge", xp=150)
+adv("guardians", "beaten", "open", "minecraft:nether_star", "The End of the Deep", "Defeat what waits beyond the old door", ev("underdeep_beaten"),
+    "challenge", xp=500)
+adv("guardians", "together", "first", "minecraft:cake", "Shoulder to Shoulder", "Defeat a guardian with friends", ev("boss_together"), "goal", xp=40)
+adv("guardians", "revive", "together", "minecraft:golden_apple", "Not On My Watch", "Help a fallen friend back up during a guardian fight",
+    ev("boss_revive"), "goal", xp=40)
+adv("guardians", "solo", "first", "minecraft:iron_sword", "Alone in the Dark", "Defeat a guardian on your own", ev("boss_solo"), "challenge", xp=80)
+adv("guardians", "clean", "first", "minecraft:golden_chestplate", "Without a Scratch", "Defeat a guardian without anyone falling", ev("boss_clean"),
+    "challenge", xp=80)
+adv("guardians", "late", "keepers", "resonant_crystal", "The Greater Guardians", "Defeat the three greatest Sign keepers", ev("boss_tier_late", distinct=3),
+    "challenge", xp=150)
+adv("guardians", "sovereign", "first", "heartwood_resin", "The Root of It All", "???", ev("boss_defeated", subject="rootsovereign"), "challenge",
+    hidden=True, xp=200)
+adv("guardians", "watcher", "first", "seamglass", "What Was Kept Out", "???", ev("boss_defeated", subject="seamwatcher"), "challenge", hidden=True, xp=200)
+adv("guardians", "all", "beaten", "somnal_ember", "Last of the Old Guard", "???", ev("boss_defeated", distinct=13), "challenge", hidden=True, xp=400)
+
+
 def main():
     shutil.rmtree(OUT, ignore_errors=True)
     n = 0

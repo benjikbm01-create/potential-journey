@@ -157,7 +157,7 @@ from connected systems, not scripted.
 7. Survival, farming and resource acquisition
 8. Equipment, crafting and progression
 9. Exploration, ruins and adventure content — **implemented (Stage 9)**
-10. Combat, bosses and endgame
+10. Combat, bosses and endgame — **implemented (Stage 10)**
 11. Immersion, sounds, animations and polish
 12. Final multiplayer testing, performance optimisation and balancing
 
@@ -202,3 +202,14 @@ Underdeep needs a continuous soundtrack, not vanilla's sparse music: about 60–
 ecosystem, both layers, settlements of each civilization, exploration contexts (ruin, landmark, dungeon by scale,
 secret), danger and calm, with crossfades on context changes. A client option must offer vanilla-style gaps for
 players who prefer silence between tracks. Stage 9 already sends the exploration context to the client.
+
+## Stage 10 status (connected caves, combat, guardians, endgame)
+Caverns are linked by winding secondary passages, intermediate chambers and walkable spiral descents between the
+layers (new worlds). Combat has stamina, dodging, heavy attacks, parries, counters and stagger with ten weapon styles;
+fighting creatures telegraph their attacks in fifteen behaviour archetypes. Thirteen guardians (3 early, 4 midgame,
+3 late, 2 secret, 1 final) live in authored lairs; defeating Sign keepers and the final encounter beats Underdeep, after
+which the world goes on. See `docs/CAVES.md`, `docs/COMBAT.md`; secrets are private.
+
+## Permanent requirement: model quality (Stage 11)
+The owner considers the current models poor. Stage 11 rebuilds every relevant model category with handcrafted,
+articulated geometry and natural animation, verified visually model by model (see CLAUDE.md).

@@ -1,0 +1,26 @@
+{
+ "display": {
+  "icon": {
+   "id": "underdeep:guardian_altar"
+  },
+  "title": {
+   "text": "Something Sleeps Here"
+  },
+  "description": {
+   "text": "Find a guardian's altar"
+  },
+  "frame": "task",
+  "show_toast": true,
+  "announce_to_chat": false,
+  "hidden": false
+ },
+ "criteria": {
+  "done": {
+   "trigger": "underdeep:event",
+   "conditions": {
+    "event": "lair_found"
+   }
+  }
+ },
+ "parent": "underdeep:guardians/root"
+}
