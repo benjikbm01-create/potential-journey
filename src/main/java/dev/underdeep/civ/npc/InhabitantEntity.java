@@ -543,6 +543,12 @@ public class InhabitantEntity extends MerchantEntity {
 
     @Override
     protected void afterUsing(TradeOffer offer) {
+        if (getCustomer() instanceof net.minecraft.server.network.ServerPlayerEntity sp) {
+            boolean selling = offer.getSellItem().isOf(net.minecraft.item.Items.EMERALD);
+            dev.underdeep.guide.Advancements.event(sp, selling ? "sold" : "bought", net.minecraft.registry.Registries.ITEM.getId(
+                    selling ? offer.getOriginalFirstBuyItem().getItem() : offer.getSellItem().getItem()).getPath());
+            dev.underdeep.guide.Advancements.event(sp, "traded_with", String.valueOf(settlementId));
+        }
         if (!dev.underdeep.civ.econ.EconHooks.traded(this, offer)) {
             InhabitantManager.recordTrade(this, offer);
         }

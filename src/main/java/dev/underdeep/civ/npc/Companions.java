@@ -213,6 +213,7 @@ public final class Companions {
                     : t.kin(Bond.Kin.CHILD) >= 0 ? "I can't leave my family. Not now." : "Not today. Ask me again some other time.";
         }
         m.companionOf = p.getUuid();
+        dev.underdeep.guide.Advancements.event(p, "companion_recruited", t.r.name);
         m.companionMode = 0;
         set(m, Mode.FOLLOW);
         set(m, Stance.SELF);

@@ -230,6 +230,9 @@ public final class SurvivalItems {
                 }
                 user.getWorld().playSound(null, entity.getBlockPos(), SoundEvents.ITEM_BUNDLE_INSERT, SoundCategory.PLAYERS, 0.8f, 1.2f);
                 user.sendMessage(Text.literal("You treat " + entity.getDisplayName().getString() + ".").formatted(Formatting.GREEN), true);
+                if (user instanceof ServerPlayerEntity sp) {
+                    dev.underdeep.guide.Advancements.event(sp, "treated_other", entity instanceof PlayerEntity ? "player" : "creature");
+                }
                 if (entity instanceof PlayerEntity other && other != user) {
                     other.sendMessage(Text.literal(user.getName().getString() + " treats you.").formatted(Formatting.GREEN), true);
                 }

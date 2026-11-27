@@ -39,6 +39,8 @@ public class CompostBinBlock extends ComposterBlock {
     public static void empty(World world, BlockPos pos, BlockState state) {
         if (!world.isClient) {
             ItemEntity e = new ItemEntity(world, pos.getX() + 0.5, pos.getY() + 1.01, pos.getZ() + 0.5, output());
+            world.getPlayers().stream().filter(pl -> pl.squaredDistanceTo(pos.toCenterPos()) < 36)
+                    .forEach(pl -> dev.underdeep.guide.Advancements.event((net.minecraft.server.network.ServerPlayerEntity) pl, "composted", ""));
             e.setToDefaultPickupDelay();
             world.spawnEntity(e);
         }

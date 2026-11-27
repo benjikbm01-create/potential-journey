@@ -296,6 +296,25 @@ public class StationBlockEntity extends BlockEntity implements SidedInventory, E
         world.playSound(null, pos, SoundEvents.BLOCK_BREWING_STAND_BREW, SoundCategory.BLOCKS, 0.5f, 1.3f);
         if (lastUser != null && world.getPlayerByUuid(lastUser) instanceof ServerPlayerEntity sp && sp.squaredDistanceTo(pos.toCenterPos()) < 64 * 64) {
             Recipes.learn(sp, r, "cooking it");
+            String res = net.minecraft.registry.Registries.ITEM.getId(r.resultItem()).getPath();
+            String ev = switch (station) {
+                case CRUSH -> "crushed";
+                case ALLOY -> "alloyed";
+                case FORGE -> "forged";
+                case GEMS -> "cut_gems";
+                case LEATHER -> "leatherwork";
+                case HERBAL -> "medicine_made";
+                case CROCK, RACK -> "preserved";
+                default -> "cooked";
+            };
+            dev.underdeep.guide.Advancements.event(sp, ev, res);
+            dev.underdeep.guide.Advancements.event(sp, "station_used", station.id);
+            if (m.batches() >= 4) {
+                dev.underdeep.guide.Advancements.event(sp, "batch_cooked", res);
+            }
+            if (!r.civ().isEmpty()) {
+                dev.underdeep.guide.Advancements.event(sp, "regional_dish", r.civ());
+            }
         }
         crafted += m.batches();
         markDirty();

@@ -76,6 +76,13 @@ public final class Comfort {
         p.removeStatusEffect(SurvivalEffects.WEARY);
         int minutes = Math.min(20, 2 + 2 * s);
         Meals.apply(p, SurvivalEffects.RESTED, minutes * 20 * 60, 0, false);
+        dev.underdeep.guide.Advancements.event(p, "rested", String.valueOf(s));
+        if (s >= 8) {
+            dev.underdeep.guide.Advancements.event(p, "comfortable_rest", "");
+        }
+        if (w.getBlockState(bedPos).getBlock() instanceof dev.underdeep.survival.home.BedrollBlock) {
+            dev.underdeep.guide.Advancements.event(p, "bedroll_slept", "");
+        }
         String word = s >= 8 ? "very comfortable" : s >= 5 ? "comfortable" : s >= 2 ? "a fair rest" : "a rough night";
         p.sendMessage(Text.translatable("message.underdeep.rested", word + ", comfort " + s + "/" + MAX).formatted(Formatting.AQUA), true);
     }

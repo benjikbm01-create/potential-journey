@@ -136,20 +136,36 @@ public final class EconDialogue {
                 if (k == null || c == null || k.settlement != e.id) {
                     return "That's no longer needed.";
                 }
-                return Participation.handIn(p, k, c);
+                String res = Participation.handIn(p, k, c);
+                if (k.status == EconomyState.Contract.Status.DONE) {
+                    dev.underdeep.guide.Advancements.event(p, "contract_completed", k.good);
+                }
+                return res;
             }
             case "e_buy", "e_rent" -> {
                 EconomyState.Property pr = st.properties.get(id);
                 if (pr == null || pr.settlement != e.id || !speaksForTown(e, t)) {
                     return "That's not for sale.";
                 }
-                return Participation.buy(p, pr, parts[0].equals("e_rent"));
+                String res = Participation.buy(p, pr, parts[0].equals("e_rent"));
+                if (p.getUuid().equals(pr.owner)) {
+                    dev.underdeep.guide.Advancements.event(p, "property_bought", String.valueOf(pr.id));
+                }
+                return res;
             }
             case "e_open" -> {
-                return Participation.openBusiness(p, e);
+                String res = Participation.openBusiness(p, e);
+                if (Participation.businessOf(st, p.getUuid(), e.id) != null) {
+                    dev.underdeep.guide.Advancements.event(p, "business_opened", String.valueOf(e.id));
+                }
+                return res;
             }
             case "e_hire" -> {
-                return Participation.hire(p, t.rec, t.r);
+                String res = Participation.hire(p, t.rec, t.r);
+                if (p.getUuid().equals(t.m.employer)) {
+                    dev.underdeep.guide.Advancements.event(p, "hired", t.r.name);
+                }
+                return res;
             }
             case "e_fire" -> {
                 if (p.getUuid().equals(t.m.employer)) {

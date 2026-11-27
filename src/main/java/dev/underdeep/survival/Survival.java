@@ -109,6 +109,9 @@ public final class Survival {
             return null;
         }
         world.setBlockState(pos, crop.withAge(0), Block.NOTIFY_ALL);
+        if (player instanceof ServerPlayerEntity sp) {
+            dev.underdeep.guide.Advancements.event(sp, "harvested", net.minecraft.registry.Registries.BLOCK.getId(crop).getPath());
+        }
         for (ItemStack d : drops) {
             if (!d.isEmpty()) {
                 Block.dropStack(world, pos, d);

@@ -244,6 +244,9 @@ public final class Accessories {
             super.markDirty();
             Data d = of(p);
             for (int i = 0; i < SIZE; i++) {
+                if (!getStack(i).isEmpty() && !ItemStack.areItemsEqual(getStack(i), d.stacks[i])) {
+                    dev.underdeep.guide.Advancements.event(p, "accessory_equipped", Registries.ITEM.getId(getStack(i).getItem()).getPath());
+                }
                 d.stacks[i] = getStack(i);
             }
             refresh(p);

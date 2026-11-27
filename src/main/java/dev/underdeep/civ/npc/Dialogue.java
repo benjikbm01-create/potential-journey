@@ -64,6 +64,11 @@ public final class Dialogue {
         s.index = r.index;
         SESSIONS.put(p.getUuid(), s);
         Topics.Talk t = talk(p, e, rec, r);
+        dev.underdeep.guide.Advancements.event(p, "talked", rec.id + ":" + r.index);
+        if (t.bond != null && t.bond.label().ordinal() >= dev.underdeep.civ.mind.Bond.Label.FRIEND.ordinal()
+                && t.bond.label().ordinal() <= dev.underdeep.civ.mind.Bond.Label.TRUSTED_ASSOCIATE.ordinal()) {
+            dev.underdeep.guide.Advancements.event(p, "friend_made", rec.id + ":" + r.index);
+        }
         long now = t.now;
         dev.underdeep.civ.econ.EconDialogue.opened(p, rec, r);
         boolean first = t.bond.familiarity == 0 && !r.mind.memories.has(Memory.Type.FIRST_MEETING, "p:" + p.getUuid());
@@ -212,9 +217,17 @@ public final class Dialogue {
                     return;
                 }
             }
-            case "gift" -> text = gift(p, e, t);
+            case "gift" -> {
+                text = gift(p, e, t);
+                dev.underdeep.guide.Advancements.event(p, "gift_given", t.r.name);
+            }
             case "ask_help" -> text = describeRequest(t);
-            case "give_help" -> text = help(p, e, t);
+            case "give_help" -> {
+                text = help(p, e, t);
+                if (t.m.request == null) {
+                    dev.underdeep.guide.Advancements.event(p, "helped", t.r.name);
+                }
+            }
             case "back" -> {
                 s.menu = "";
                 text = "Anything else?";

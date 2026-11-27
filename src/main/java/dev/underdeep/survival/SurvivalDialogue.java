@@ -105,6 +105,7 @@ public final class SurvivalDialogue {
                     }
                 }
                 p.heal(8);
+                dev.underdeep.guide.Advancements.event(p, "service", "healer");
                 Meals.apply(p, net.minecraft.entity.effect.StatusEffects.REGENERATION, 200, 0, false);
                 return "Hold still... there. Keep it clean and you'll mend.";
             }
@@ -139,6 +140,7 @@ public final class SurvivalDialogue {
                 use(e, meal.id());
                 p.getHungerManager().add(Math.max(6, meal.nutrition()), 0.8f);
                 Meals.onEat(p, meal.stack(1));
+                dev.underdeep.guide.Advancements.event(p, "service", "inn_meal");
                 return "Here - " + meal.name() + ", still hot.";
             }
             case "s_bed" -> {
@@ -148,6 +150,7 @@ public final class SurvivalDialogue {
                 SurvivalData.of(p).lastRest = now;
                 p.removeStatusEffect(SurvivalEffects.WEARY);
                 Meals.apply(p, SurvivalEffects.RESTED, 20 * 60 * 20, 0, false);
+                dev.underdeep.guide.Advancements.event(p, "service", "inn_bed");
                 return "Your room's upstairs. Sleep well - you'll feel the better for it.";
             }
             default -> {

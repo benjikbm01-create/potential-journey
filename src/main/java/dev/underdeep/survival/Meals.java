@@ -47,6 +47,7 @@ public final class Meals {
             if (v >= 3) {
                 int amp = v >= 5 ? 1 : 0;
                 apply(p, SurvivalEffects.WELL_FED, 20 * 60 * 10, amp, true);
+                dev.underdeep.guide.Advancements.event(p, v >= 5 ? "well_fed_2" : "well_fed", "");
                 if (v > before && (v == 3 || v == 5)) {
                     p.sendMessage(Text.literal(v == 5 ? "A varied diet: you feel very well fed." : "A varied diet: you feel well fed.")
                             .formatted(Formatting.GOLD), true);

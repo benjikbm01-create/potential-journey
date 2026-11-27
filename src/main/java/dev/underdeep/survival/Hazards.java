@@ -151,6 +151,9 @@ public final class Hazards {
     }
 
     static void seen(ServerPlayerEntity p, Hazard h) {
+        if (!SurvivalData.of(p).hazardsSeen.contains(h.id())) {
+            dev.underdeep.guide.Advancements.event(p, "hazard_met", h.id());
+        }
         SurvivalData.of(p).hazardsSeen.add(h.id());
     }
 
@@ -390,6 +393,7 @@ public final class Hazards {
                 int score = Comfort.score(p.getServerWorld(), p.getBlockPos(), p);
                 Meals.apply(p, SurvivalEffects.RESTED, 20 * 60 * Math.min(6, 1 + score / 2), 0, false);
                 p.sendMessage(Text.literal("You rest a while.").formatted(Formatting.AQUA), true);
+                dev.underdeep.guide.Advancements.event(p, "sat", "");
             }
         } else {
             m.sitSeconds = 0;

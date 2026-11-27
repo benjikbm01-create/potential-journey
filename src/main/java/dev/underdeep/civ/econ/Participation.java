@@ -577,6 +577,9 @@ public final class Participation {
                         h.foodSecurity = Math.min(1, h.foodSecurity + units * g.nutrition() / 40.0);
                     }
                     b.history.addFirst("day " + c.now / 24000 + ": sold " + units + " " + g.name() + String.format(Locale.ROOT, " for %.1f", pay));
+                    if (c.world != null && c.world.getServer().getPlayerManager().getPlayer(b.owner) instanceof ServerPlayerEntity owner) {
+                        dev.underdeep.guide.Advancements.event(owner, "business_sale", g.id());
+                    }
                     while (b.history.size() > 12) {
                         b.history.removeLast();
                     }

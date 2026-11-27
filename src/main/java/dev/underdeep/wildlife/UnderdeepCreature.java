@@ -510,6 +510,9 @@ public class UnderdeepCreature extends TameableEntity {
                 if (!w.isClient) {
                     setSitting(false);
                     player.startRiding(this);
+                    if (player instanceof net.minecraft.server.network.ServerPlayerEntity sp) {
+                        dev.underdeep.guide.Advancements.event(sp, "rode", species.id);
+                    }
                 }
                 return ActionResult.success(w.isClient);
             }
