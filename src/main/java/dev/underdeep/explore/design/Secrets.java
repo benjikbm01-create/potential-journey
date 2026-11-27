@@ -47,16 +47,15 @@ final class Secrets {
             k.disc(m, m, 2.6, y, Blocks.STONE, null);
         }
         // a single cracked stone at the foot is the clue; behind it a ladder climbs inside
-        k.c.set(m, 1, m + 2, Blocks.CRACKED_STONE_BRICKS);
-        k.c.lock(m, 1, m + 2);
+        k.c.breakable(m, 1, m + 2, Blocks.CRACKED_STONE_BRICKS.getDefaultState());
         for (int y = 1; y <= h - 2; y++) {
             k.c.set(m, y, m, Canvas.AIR);
             k.c.set(m, y, m + 1, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, N));
             k.c.lock(m, y, m + 1);
         }
-        k.c.set(m, 2, m + 2, Blocks.STONE);
+        k.c.breakable(m, 2, m + 2, Blocks.CRACKED_STONE_BRICKS.getDefaultState());
         k.air(m - 1, h - 3, m - 1, m + 1, h - 1, m + 1);
-        k.c.set(m, h - 3, m, Blocks.SPRUCE_PLANKS);
+        k.c.set(m - 1, h - 4, m - 1, Blocks.SPRUCE_PLANKS);
         k.coffer(m - 1, h - 2, m - 1, S, "underdeep:exploration/secret_stash");
         k.c.set(m + 1, h - 1, m - 1, Blocks.LANTERN);
         k.c.secret("hollow_pillar", m - 1, h - 3, m - 1, m + 1, h - 1, m + 1);
@@ -91,8 +90,8 @@ final class Secrets {
                 k.c.set(x, y, m + 4, Blocks.STONE);
             }
         }
-        k.c.set(m, 1, m + 3, Blocks.MOSSY_COBBLESTONE);
-        k.c.set(m, 2, m + 3, Blocks.MOSSY_COBBLESTONE);
+        k.c.breakable(m, 1, m + 3, Blocks.MOSSY_COBBLESTONE.getDefaultState());
+        k.c.breakable(m, 2, m + 3, Blocks.MOSSY_COBBLESTONE.getDefaultState());
         k.c.set(m, 1, m + 4, Blocks.AIR.getDefaultState());
         k.c.set(m, 2, m + 4, Blocks.AIR.getDefaultState());
         k.c.lockBox(m, 1, m + 4, m, 2, m + 4);
@@ -186,7 +185,7 @@ final class Secrets {
         k.c.set(m, 0, m, Canvas.AIR);
         k.c.set(m, 0, m, Blocks.WATER);
         k.c.lock(m, 0, m);
-        k.c.set(m, -1, m, Blocks.BELL.getDefaultState().with(Properties.ATTACHMENT, net.minecraft.block.enums.Attachment.CEILING));
+        k.c.set(m + 1, -1, m, Blocks.BELL.getDefaultState().with(Properties.ATTACHMENT, net.minecraft.block.enums.Attachment.CEILING));
         k.c.set(m, -5, m - 2, Blocks.SEA_LANTERN);
         k.coffer(m + 2, -5, m + 2, W, "underdeep:exploration/tide");
         k.c.secret("drowned_bell", m - 2, -5, m - 2, m + 2, -2, m + 2);

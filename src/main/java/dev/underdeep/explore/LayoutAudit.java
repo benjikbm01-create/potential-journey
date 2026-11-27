@@ -192,7 +192,13 @@ public final class LayoutAudit {
         return y >= 1 ? Blocks.AIR.getDefaultState() : Blocks.STONE.getDefaultState();
     }
 
+    static final ThreadLocal<Canvas> CURRENT = new ThreadLocal<>();
+
     static boolean passable(BlockState s, boolean sealsOpen, long k, Set<Long> closed) {
+        Canvas cur = CURRENT.get();
+        if (cur != null && cur.breakable.contains(k)) {
+            return true;
+        }
         if (s.isOf(ExploreBlocks.ANCIENT_SEAL) || s.isOf(ExploreBlocks.SEAL_BARS) || s.isOf(ExploreBlocks.KEY_LOCK)) {
             return sealsOpen && !closed.contains(k);
         }
@@ -221,6 +227,7 @@ public final class LayoutAudit {
 
     /** Flood fill of standing positions from the footprint edge (y in [1, 4]) with the given seals kept closed. */
     static LongOpenHashSet flood(Canvas c, Set<Long> closed) {
+        CURRENT.set(c);
         LongOpenHashSet seen = new LongOpenHashSet();
         LongArrayFIFOQueue q = new LongArrayFIFOQueue();
         int n = c.n;
@@ -286,6 +293,20 @@ public final class LayoutAudit {
                     if (seen.add(nk)) {
                         q.enqueue(nk);
                     }
+                } else if (can && dy == -1) {
+                    // falling straight down through an opening (up to four blocks)
+                    for (int f = 2; f <= 5 && y - f >= minY; f++) {
+                        if (!passable(at(c, x, y - f + 1, z), true, Canvas.key(x, y - f + 1, z), closed)) {
+                            break;
+                        }
+                        if (stand(c, x, y - f, z, closed)) {
+                            long nk = Canvas.key(x, y - f, z);
+                            if (seen.add(nk)) {
+                                q.enqueue(nk);
+                            }
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -318,6 +339,46 @@ public final class LayoutAudit {
             }
         }
         return false;
+    }
+
+    /** ASCII slices of a layout (development diagnostics): o = reachable standing spot. */
+    public static String render(Canvas c) {
+        LongOpenHashSet open = flood(c, Set.of());
+        StringBuilder b = new StringBuilder();
+        for (int y = c.maxY(); y >= c.minY(); y--) {
+            b.append("y=").append(y).append('\n');
+            for (int z = 0; z < c.n; z++) {
+                for (int x = 0; x < c.n; x++) {
+                    long k = Canvas.key(x, y, z);
+                    BlockState s = c.blocks().get(k);
+                    char ch;
+                    if (open.contains(k)) {
+                        ch = 'o';
+                    } else if (s == null) {
+                        ch = y >= 1 ? ' ' : ',';
+                    } else if (s.isAir()) {
+                        ch = '.';
+                    } else if (s.isOf(ExploreBlocks.ANCIENT_SEAL) || s.isOf(ExploreBlocks.SEAL_BARS) || s.isOf(ExploreBlocks.KEY_LOCK)) {
+                        ch = 'S';
+                    } else if (!s.getFluidState().isEmpty()) {
+                        ch = '~';
+                    } else if (s.getBlock() instanceof LadderBlock) {
+                        ch = 'H';
+                    } else if (s.getBlock() instanceof net.minecraft.block.StairsBlock) {
+                        ch = '=';
+                    } else if (s.getBlock() instanceof ExploreBlocks.Mechanism || s.getBlock() instanceof ExploreBlocks.CacheBlock) {
+                        ch = 'M';
+                    } else if (passable(s, true, k, Set.of())) {
+                        ch = '_';
+                    } else {
+                        ch = '#';
+                    }
+                    b.append(ch);
+                }
+                b.append('\n');
+            }
+        }
+        return b.toString();
     }
 
     static String str(long k) {

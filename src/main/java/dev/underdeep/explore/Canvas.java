@@ -78,7 +78,16 @@ public final class Canvas {
 
     // ------------------------------------------------------------------ raw writes
 
+    /** Writes a block unless the position is locked (fixtures placed earlier win over later carving). */
     public void set(int x, int y, int z, BlockState s) {
+        if (locked.contains(key(x, y, z))) {
+            return;
+        }
+        force(x, y, z, s);
+    }
+
+    /** Writes a block even over a locked position. */
+    public void force(int x, int y, int z, BlockState s) {
         if (s == null || x < 0 || z < 0 || x >= n || z >= n) {
             return;
         }
@@ -97,6 +106,13 @@ public final class Canvas {
     public void soft(int x, int y, int z, BlockState s) {
         BlockState c = get(x, y, z);
         if (c == null || c.isAir()) {
+            set(x, y, z, s);
+        }
+    }
+
+    /** Writes only where nothing at all was written (never closes carved passages). */
+    public void weak(int x, int y, int z, BlockState s) {
+        if (get(x, y, z) == null) {
             set(x, y, z, s);
         }
     }
@@ -132,6 +148,15 @@ public final class Canvas {
         fill(x1, y1, z1, x2, y2, z2, AIR);
     }
 
+    /** Blocks meant to be broken by players to enter a hidden place (a fair, visible clue: cracked, mossy, bones). */
+    public final LongOpenHashSet breakable = new LongOpenHashSet();
+
+    public void breakable(int x, int y, int z, BlockState s) {
+        force(x, y, z, s);
+        lock(x, y, z);
+        breakable.add(key(x, y, z));
+    }
+
     /** Marks positions so weathering, rubble and plants never change them. */
     public void lock(int x, int y, int z) {
         locked.add(key(x, y, z));
@@ -153,7 +178,7 @@ public final class Canvas {
 
     /** Sets and locks a block (mechanisms, seals, caches). */
     public void fixed(int x, int y, int z, BlockState s) {
-        set(x, y, z, s);
+        force(x, y, z, s);
         lock(x, y, z);
     }
 

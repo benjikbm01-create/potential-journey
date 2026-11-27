@@ -26,29 +26,51 @@ final class Dungeons {
 
     static final Direction N = Direction.NORTH, S = Direction.SOUTH, E = Direction.EAST, W = Direction.WEST;
 
-    /** A stairwell from the surface (y = 0, at x,z) down to floor level toY, descending toward dir. Returns the bottom. */
+    /**
+     * A spiral stair well (5x5) at the surface entrance (x,z) down to feet level toY, with a two-wide exit toward dir
+     * at the bottom. Returns the cell just outside the exit (rooms start beyond it). Corner posts and a lintel mark the
+     * mouth on the surface; the top is open, so the well is visible.
+     */
     static int[] descend(Kit k, int x, int z, int toY, Direction dir) {
-        int steps = -toY;
-        Direction back = dir.getOpposite();
-        // stairs() climbs toward its direction: start at the bottom and climb back toward the surface
-        int bx = x + dir.getOffsetX() * (steps - 1), bz = z + dir.getOffsetZ() * (steps - 1);
-        k.stairs(bx, toY + 1, bz, back, steps, 2, k.s.brickStairs, k.s.brick);
-        Direction side = back.rotateYClockwise();
-        for (int i = -1; i <= steps; i++) {
-            for (int sd = -1; sd <= 2; sd++) {
-                int px = x + dir.getOffsetX() * i + side.getOffsetX() * sd, pz = z + dir.getOffsetZ() * i + side.getOffsetZ() * sd;
-                for (int y = toY; y <= Math.min(4, -i + 4); y++) {
-                    if (sd == -1 || sd == 2) {
-                        k.c.soft(px, y, pz, k.s.brick.getDefaultState());
-                    }
+        k.spiral(x, z, toY + 1, -1);
+        for (int dx = -2; dx <= 2; dx++) {
+            for (int dz = -2; dz <= 2; dz++) {
+                k.c.weak(x + dx, toY - 1, z + dz, k.s.floor.getDefaultState());
+                boolean edge = Math.abs(dx) == 2 || Math.abs(dz) == 2;
+                if (edge) {
+                    k.c.weak(x + dx, toY, z + dz, k.s.brick.getDefaultState());
+                } else if (dx != 0 || dz != 0) {
+                    k.c.set(x + dx, toY, z + dz, Canvas.AIR);
                 }
-                int ceil = Math.max(toY + 4, -i + 4);
-                if (i >= 0 && ceil <= 0) {
-                    k.c.soft(px, ceil + 1, pz, k.s.block.getDefaultState());
+                // above the cavern floor only corner posts remain: the well's mouth is open on every side
+                for (int y = 1; y <= 3; y++) {
+                    if (edge && !(Math.abs(dx) == 2 && Math.abs(dz) == 2)) {
+                        k.c.force(x + dx, y, z + dz, Canvas.AIR);
+                    }
                 }
             }
         }
-        return new int[]{x + dir.getOffsetX() * steps, toY, z + dir.getOffsetZ() * steps};
+        for (int[] c : new int[][]{{-2, -2}, {2, -2}, {-2, 2}, {2, 2}}) {
+            k.c.force(x + c[0], 3, z + c[1], k.s.chiseled.getDefaultState());
+        }
+        k.c.force(x, 1, z, Canvas.AIR);
+        k.c.force(x, 2, z, Canvas.AIR);
+        k.c.force(x, 3, z, Canvas.AIR);
+        k.c.force(x, 0, z, Style.axis(k.s.pillar, Direction.Axis.Y));
+        // the exit at the bottom
+        Direction side = dir.rotateYClockwise();
+        int sx = side.getOffsetX() < 0 ? -1 : 0, sz = side.getOffsetZ() < 0 ? -1 : 0;
+        for (int step = 2; step <= 3; step++) {
+            for (int w = 0; w <= 1; w++) {
+                int px = x + dir.getOffsetX() * step + Math.abs(side.getOffsetX()) * (w + sx), pz = z + dir.getOffsetZ() * step + Math.abs(side.getOffsetZ()) * (w + sz);
+                for (int y = toY; y <= toY + 2; y++) {
+                    k.c.force(px, y, pz, Canvas.AIR);
+                    k.c.lock(px, y, pz);
+                }
+                k.c.weak(px, toY - 1, pz, k.s.floor.getDefaultState());
+            }
+        }
+        return new int[]{x + dir.getOffsetX() * 3, toY, z + dir.getOffsetZ() * 3};
     }
 
     /** A small gatehouse portal around a stair mouth at the surface (x,z facing dir). */
@@ -99,7 +121,7 @@ final class Dungeons {
         k.barrelLoot(m - 2, -6, m + 3, "underdeep:exploration/ruin_common");
         k.shelf(m - 2, -6, m + 2, false);
         // dart trap in the antechamber
-        k.trap("darts", new int[][]{{m, -7, m + 1}}, new int[][]{{m - 3, -5, m + 1}});
+        k.trap("darts", new int[][]{{m, -6, m + 1}}, new int[][]{{m - 3, -5, m + 1}});
         k.dartVent(m - 3, -5, m + 1, E);
         // the sealed vault
         long[] seal = k.sealDoor(m, -6, m - 1, true, 2);
@@ -137,7 +159,7 @@ final class Dungeons {
         k.chest(m - 7, -6, m - 2, E, "underdeep:exploration/smuggler");
         k.barrel(m - 7, -6, m - 4);
         k.barrel(m - 7, -5, m - 4);
-        k.trap("rockfall", new int[][]{{m - 2, -7, m - 5}}, new int[][]{{m - 2, -2, m - 5}, {m - 3, -2, m - 5}});
+        k.trap("rockfall", new int[][]{{m - 2, -6, m - 5}}, new int[][]{{m - 2, -2, m - 5}, {m - 3, -2, m - 5}});
         k.c.fixed(m - 2, -2, m - 5, ExploreBlocks.LOOSE_CEILING.getDefaultState());
         k.c.fixed(m - 3, -2, m - 5, ExploreBlocks.LOOSE_CEILING.getDefaultState());
         // the hoist: a counterweight lifts the stash gate
@@ -255,8 +277,8 @@ final class Dungeons {
         k.c.trap("frost", List.of(), List.of(k.at(m - 3, -9, m + 1), k.at(m + 1, -9, m - 4)));
         long[] seal = k.sealDoor(m - 1, -8, m - 9, true, 2);
         k.basins(new int[][]{{m - 5, -8, m - 7}, {m - 1, -8, m - 3}, {m + 5, -8, m - 7}}, seal, true);
-        k.chest(m - 6, -8, m + 2, E, "underdeep:exploration/dungeon_small");
-        k.c.set(m - 6, -8, m + 3, Blocks.CAULDRON);
+        k.chest(m - 6, -8, m - 2, E, "underdeep:exploration/dungeon_small");
+        k.c.set(m - 6, -8, m - 1, Blocks.CAULDRON);
         k.room(m - 3, -9, m - 14, m + 3, -3, m - 9);
         k.coffer(m, -8, m - 12, S, "underdeep:exploration/coffer_small");
         k.inscription(m + 3, -6, m - 11, W, Designs.carved(k, site));
@@ -275,10 +297,10 @@ final class Dungeons {
         k.air(b[0], -7, b[2] - 1, b[0] + 1, -5, b[2] - 1);
         long[] seal = k.sealDoor(m - 1, -7, m - 8, true, 2);
         k.chimes(new int[][]{{m - 4, -7, m - 3}, {m, -7, m - 5}, {m + 4, -7, m - 3}}, seal, true);
-        k.memory(new int[]{m, -7, m - 1}, new int[][]{{m - 5, -6, m - 6}, {m - 5, -6, m - 4}, {m + 5, -6, m - 6}, {m + 5, -6, m - 4}},
-                k.sealDoor(m + 6, -7, m - 1, false, 1), false);
-        k.room(m + 6, -8, m - 3, m + 10 < k.n ? m + 9 : k.n - 1, -3, m + 1);
-        k.chest(m + 8, -7, m - 1, W, "underdeep:exploration/dungeon_small");
+        k.memory(new int[]{m, -7, m - 1}, new int[][]{{m - 5, -6, m - 6}, {m - 5, -6, m - 4}, {m + 5, -6, m - 6}, {m + 5, -6, m - 2}},
+                k.sealDoor(m + 6, -7, m - 4, false, 1), false);
+        k.room(m + 6, -8, m - 7, Math.min(k.n - 1, m + 10), -3, m - 2);
+        k.chest(m + 8, -7, m - 4, W, "underdeep:exploration/dungeon_small");
         k.room(m - 3, -8, m - 13, m + 3, -2, m - 8);
         k.coffer(m, -7, m - 11, S, "underdeep:exploration/coffer_small");
         k.inscription(m - 3, -5, m - 10, E, Designs.carved(k, site));
@@ -302,7 +324,7 @@ final class Dungeons {
         for (int[] l : lamps) {
             k.c.fixed(l[0], l[1], l[2], ExploreBlocks.ANCIENT_LAMP.getDefaultState().with(ExploreBlocks.LIT, true));
         }
-        k.trap("darkness", new int[][]{{m, -9, m - 1}}, lamps);
+        k.trap("darkness", new int[][]{{m, -8, m - 1}}, lamps);
         // the engine restores the lift doors to the works below
         long[] liftSeal = k.sealDoor(m - 1, -8, m - 6, true, 2);
         k.engine(new int[]{m + 6, -8, m - 5}, liftSeal, true);
@@ -348,7 +370,7 @@ final class Dungeons {
         // the alarm gong in the yard
         k.c.fixed(m, 1, m - 3, ExploreBlocks.ALARM_GONG.getDefaultState());
         guard(k, "restless", 4, m - 4, 1, m - 9, m + 4, 4, m - 4);
-        k.trap("alarm:0", new int[][]{{m, 0, m + 4}, {m - 1, 0, m + 4}}, new int[][]{{m, 1, m - 3}});
+        k.trap("alarm:0", new int[][]{{m, 1, m + 4}, {m - 1, 1, m + 4}}, new int[][]{{m, 1, m - 3}});
         // captain's quarters with the vault key (guarded)
         k.shell(m - 9, m - 9, m - 3, m - 4, 0, 4, true, 0);
         k.air(m - 3, 1, m - 7, m - 3, 2, m - 7);
@@ -414,7 +436,7 @@ final class Dungeons {
         int[] b = descend(k, m, m + 2, -8, N);
         k.room(m - 8, -9, m - 8, m + 8, -2, b[2] - 1);
         k.air(b[0], -8, b[2] - 1, b[0] + 1, -6, b[2] - 1);
-        k.plates(new int[][]{{m - 5, -9, m - 5}, {m - 2, -9, m - 3}, {m + 2, -9, m - 5}, {m + 5, -9, m - 3}}, k.sealDoor(m - 1, -8, m - 8, true, 2), true);
+        k.plates(new int[][]{{m - 5, -8, m - 5}, {m - 2, -8, m - 3}, {m + 2, -8, m - 5}, {m + 5, -8, m - 3}}, k.sealDoor(m - 1, -8, m - 8, true, 2), true);
         // planters with dead and living seeds
         for (int x = m - 7; x <= m + 7; x += 2) {
             k.c.set(x, -8, b[2] - 2, Blocks.ROOTED_DIRT);
@@ -513,7 +535,7 @@ final class Dungeons {
         }
         k.c.set(m - 6, -8, m - 8, Blocks.REDSTONE_TORCH.getDefaultState().getBlock() == null ? k.s.brick : Blocks.LEVER);
         k.dartVent(m - 9, -7, m - 8, E);
-        k.trap("darts", new int[][]{{m - 4, -9, m - 8}}, new int[][]{{m - 9, -7, m - 8}});
+        k.trap("darts", new int[][]{{m - 4, -8, m - 8}}, new int[][]{{m - 9, -7, m - 8}});
         k.room(m - 4, -9, m - 15 < 0 ? 0 : m - 15, m + 4, -2, m - 10);
         k.coffer(m, -8, m - 13, S, "underdeep:exploration/coffer_medium");
         k.chest(m + 2, -8, m - 13, S, "underdeep:exploration/storm");
@@ -535,7 +557,7 @@ final class Dungeons {
         }
         k.c.fixed(b[0], -4, m + 1, ExploreBlocks.LOOSE_CEILING.getDefaultState());
         k.c.fixed(b[0] + 1, -4, m + 1, ExploreBlocks.LOOSE_CEILING.getDefaultState());
-        k.trap("rockfall", new int[][]{{b[0], -9, m + 1}, {b[0] + 1, -9, m + 1}}, new int[][]{{b[0], -4, m + 1}, {b[0] + 1, -4, m + 1}});
+        k.trap("rockfall", new int[][]{{b[0], -7, m + 1}, {b[0] + 1, -7, m + 1}}, new int[][]{{b[0], -4, m + 1}, {b[0] + 1, -4, m + 1}});
         k.room(m - 8, -9, m - 10, m + 8, -2, m - 2);
         k.memory(new int[]{m, -8, m - 4}, new int[][]{{m - 6, -7, m - 9}, {m - 2, -7, m - 9}, {m + 2, -7, m - 9}, {m + 6, -7, m - 9}},
                 k.sealDoor(m - 1, -8, m - 10, true, 2), true);
@@ -548,9 +570,8 @@ final class Dungeons {
         k.chest(m + 3, -8, m - 13, W, "underdeep:exploration/silent");
         // the reliquary: behind the bones of the west niche
         k.room(m - 12 < 0 ? 0 : m - 12, -9, m - 9, m - 8, -5, m - 5);
-        k.c.set(m - 8, -8, m - 7, Canvas.AIR);
-        k.c.set(m - 8, -7, m - 7, Blocks.BONE_BLOCK);
-        k.c.lock(m - 8, -8, m - 7);
+        k.c.breakable(m - 8, -8, m - 7, Blocks.BONE_BLOCK.getDefaultState());
+        k.c.breakable(m - 8, -7, m - 7, Blocks.BONE_BLOCK.getDefaultState());
         k.coffer(m - 10, -8, m - 7, E, "underdeep:exploration/secret_stash");
         k.c.secret("ossuary_reliquary", m - 11, -8, m - 8, m - 9, -6, m - 6);
         k.inscription(m - 4, -6, m - 12, E, Designs.carved(k, site));
@@ -593,7 +614,7 @@ final class Dungeons {
         k.chest(m + 17, -10, hubZ2 - 1, W, "underdeep:exploration/dungeon_large");
         // the crumbling causeway on the way to the inner vault
         int innerZ2 = hubZ1 - 1, innerZ1 = Math.max(1, hubZ1 - 18);
-        k.room(m - 8, -19, innerZ1, m + 8, -3, innerZ2);
+        k.room(m - 8, -19, innerZ1, m + 8, -3, hubZ1);
         for (int x = m - 7; x <= m + 7; x++) {
             for (int z = innerZ1 + 1; z <= innerZ2 - 1; z++) {
                 for (int y = -18; y <= -11; y++) {
@@ -602,14 +623,14 @@ final class Dungeons {
                 k.c.set(x, -19, z, Blocks.WATER);
             }
         }
-        k.crumbling(m - 1, innerZ1 + 5, m + 1, innerZ2 - 1, -11);
+        k.crumbling(m - 1, innerZ1 + 5, m + 1, innerZ2, -11);
         k.floor(m - 3, innerZ1 + 1, m + 3, innerZ1 + 4, -11, k.s.floor, k.s.floorAlt);
+        // a fall is not the end: a ladder climbs out of the pool to a ledge on the vault side
+        k.floor(m + 4, innerZ1 + 1, m + 7, innerZ1 + 4, -11, k.s.floor, null);
         for (int y = -18; y <= -11; y++) {
-            k.c.set(m + 7, y, innerZ2 - 2, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, W));
-            k.c.lock(m + 7, y, innerZ2 - 2);
+            k.c.fixed(m + 7, y, innerZ1 + 5, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, W));
         }
-        k.floor(m + 5, innerZ2 - 3, m + 7, innerZ2 - 1, -11, k.s.floor, null);
-        k.trap("darts", new int[][]{{m, -11, innerZ2 - 3}}, new int[][]{{m - 8, -9, innerZ2 - 3}});
+        k.trap("darts", new int[][]{{m, -10, innerZ2 - 3}}, new int[][]{{m - 8, -9, innerZ2 - 3}});
         k.dartVent(m - 8, -9, innerZ2 - 3, E);
         // inner vault
         k.coffer(m - 1, -10, innerZ1 + 2, S, "underdeep:exploration/coffer_large");
@@ -617,13 +638,15 @@ final class Dungeons {
         k.chest(m + 3, -10, innerZ1 + 1, S, "underdeep:exploration/dungeon_large");
         k.inscription(m - 3, -9, innerZ1 + 1, S, Designs.carved(k, site));
         heart(k, m - 3, -10, innerZ1 + 1, m + 3, -7, innerZ1 + 4);
-        // shortcut: a timed gate from the inner vault ledge back up to the court
-        k.timedGate(new int[][]{{m + 5, -10, innerZ1 + 2}}, N, new int[][]{{m + 6, -10, innerZ1 + 1}, {m + 6, -9, innerZ1 + 1}});
+        // shortcut: barred passage from the vault ledge back to the east wing (a lever on each side)
+        k.corridor(m + 8, innerZ1 + 3, m + 13, innerZ1 + 3, -11, 1, 3);
+        k.corridor(m + 13, innerZ1 + 3, m + 13, hubZ1 + 1, -11, 1, 3);
+        k.timedGate(new int[][]{{m + 6, -10, innerZ1 + 3}, {m + 11, -10, innerZ1 + 3}}, N,
+                new int[][]{{m + 8, -10, innerZ1 + 3}, {m + 8, -9, innerZ1 + 3}});
         // the archive (secret) behind the west wing's cracked course
         k.room(m - 18, -11, innerZ1 + 2, m - 9, -6, hubZ1);
-        k.c.set(m - 13, -10, hubZ1, Canvas.AIR);
-        k.c.set(m - 13, -9, hubZ1, k.s.cracked);
-        k.c.lock(m - 13, -10, hubZ1);
+        k.c.breakable(m - 15, -10, hubZ1, k.s.cracked.getDefaultState());
+        k.c.breakable(m - 15, -9, hubZ1, k.s.cracked.getDefaultState());
         for (int x = m - 17; x <= m - 10; x += 2) {
             k.c.set(x, -10, innerZ1 + 3, Blocks.CHISELED_BOOKSHELF);
         }
@@ -775,25 +798,26 @@ final class Dungeons {
         long[] gate1 = k.sealDoor(m - 1, -12, m - 6, true, 2);
         k.c.puzzles.set(k.c.puzzles.size() - 1, new Canvas.PuzzleSpec(bz.type(), bz.elements(), bz.solution(), Kit.seals(gate1), true));
         // the seed hall: offerings and the twin plates
-        k.room(m - 12, -13, m - 18 < 0 ? 0 : m - 18, m + 12, -2, m - 6);
-        k.offerings(new int[][]{{m - 10, -12, m - 12}, {m + 10, -12, m - 12}, {m, -12, m - 15}}, null, false);
+        k.room(m - 12, -13, m - 14, m + 12, -2, m - 6);
+        k.offerings(new int[][]{{m - 10, -12, m - 12}, {m + 10, -12, m - 12}, {m, -12, m - 10}}, null, false);
         var of = k.c.puzzles.get(k.c.puzzles.size() - 1);
-        k.twinPlates(new int[]{m - 9, -13, m - 8}, new int[]{m + 9, -13, m - 8}, null, true);
-        long[] heartDoor = k.sealDoor(m - 1, -12, Math.max(1, m - 18), true, 2);
+        k.twinPlates(new int[]{m - 9, -12, m - 8}, new int[]{m + 9, -12, m - 8}, null, true);
+        long[] heartDoor = k.sealDoor(m - 1, -12, m - 14, true, 2);
         // both puzzles open the heart door: each holds half of the seal
         long[] half1 = {heartDoor[0], heartDoor[1], heartDoor[2]}, half2 = {heartDoor[3], heartDoor[4], heartDoor[5]};
         k.c.puzzles.set(k.c.puzzles.size() - 2, new Canvas.PuzzleSpec(of.type(), of.elements(), of.solution(), Kit.seals(half1), true));
         var tw = k.c.puzzles.get(k.c.puzzles.size() - 1);
         k.c.puzzles.set(k.c.puzzles.size() - 1, new Canvas.PuzzleSpec(tw.type(), tw.elements(), tw.solution(), Kit.seals(half2), true));
-        k.room(m - 5, -13, 0, m + 5, -3, Math.max(1, m - 18));
+        // the heart
+        k.room(m - 5, -13, 0, m + 5, -3, m - 14);
         k.pedestal(m, -12, 2, "underdeep:heartwood_heart");
-        k.coffer(m - 3, -12, 1, S, "underdeep:exploration/coffer_exceptional");
-        k.coffer(m + 3, -12, 1, S, "underdeep:exploration/coffer_exceptional");
+        k.coffer(m - 3, -12, 2, S, "underdeep:exploration/coffer_exceptional");
+        k.coffer(m + 3, -12, 2, S, "underdeep:exploration/coffer_exceptional");
         k.coffer(m, -12, 4, S, "underdeep:exploration/seed_vault");
         k.inscription(m - 5, -10, 3, E, Designs.carved(k, site));
         k.inscription(m + 5, -10, 3, W, Designs.loose(k, site));
-        guard(k, "spider", 3, m - 12, -12, m - 18 < 0 ? 0 : m - 17, m + 12, -8, m - 7);
-        heart(k, m - 4, -12, 1, m + 4, -8, Math.max(2, m - 19));
+        guard(k, "spider", 3, m - 12, -12, m - 13, m + 12, -8, m - 7);
+        heart(k, m - 4, -12, 1, m + 4, -8, 5);
         k.weather(0.3, true);
     }
 
@@ -815,7 +839,7 @@ final class Dungeons {
             k.c.set(x, -10, m + 1, Blocks.SCULK_SENSOR);
         }
         k.room(m - 10, -11, m - 14 < 0 ? 0 : m - 14, m + 10, -2, m - 4);
-        k.plates(new int[][]{{m - 8, -11, m - 8}, {m - 3, -11, m - 11}, {m + 3, -11, m - 11}, {m + 8, -11, m - 8}}, k.sealDoor(m + 10, -10, m - 9, false, 2),
+        k.plates(new int[][]{{m - 8, -10, m - 8}, {m - 3, -10, m - 11}, {m + 3, -10, m - 11}, {m + 8, -10, m - 8}}, k.sealDoor(m + 10, -10, m - 9, false, 2),
                 true);
         k.room(m + 10, -11, m - 12, k.n - 1, -4, m - 5);
         k.coffer(m + 13, -10, m - 9, W, "underdeep:exploration/coffer_exceptional");

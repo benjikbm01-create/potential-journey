@@ -68,7 +68,7 @@ public final class Discovery {
                 }
             }
             if (l.heartBox != null && Canvas.inBox(l.heartBox, p.getX(), p.getY(), p.getZ()) && !d.completed.contains(s.id()) && requiredSolved(l, ss)) {
-                complete(w, s, l, st);
+                complete(w, s, l, st, p);
             }
             senses(w, p, l, ss);
         }
@@ -150,13 +150,17 @@ public final class Discovery {
     }
 
     /** Completion: every nearby participant who has discovered the site gets the credit once. */
-    static void complete(ServerWorld w, Site s, SiteLayout l, ExplorationState st) {
+    static void complete(ServerWorld w, Site s, SiteLayout l, ExplorationState st, ServerPlayerEntity trigger) {
         ExplorationState.SiteState ss = st.site(s.id());
         if (ss.completedAt < 0) {
             ss.completedAt = w.getTime();
         }
         BlockPos c = BlockPos.ofFloored((l.heartBox[0] + l.heartBox[3]) / 2.0, l.heartBox[1], (l.heartBox[2] + l.heartBox[5]) / 2.0);
-        for (ServerPlayerEntity p : w.getPlayers(pl -> pl.squaredDistanceTo(c.toCenterPos()) < 40 * 40 && !pl.isSpectator())) {
+        List<ServerPlayerEntity> party = new java.util.ArrayList<>(w.getPlayers(pl -> pl.squaredDistanceTo(c.toCenterPos()) < 40 * 40 && !pl.isSpectator()));
+        if (!party.contains(trigger)) {
+            party.add(trigger);
+        }
+        for (ServerPlayerEntity p : party) {
             ExplorerData d = ExplorerData.of(p);
             if (!d.sites.containsKey(s.id()) || !d.completed.add(s.id())) {
                 continue;
@@ -166,8 +170,7 @@ public final class Discovery {
             p.playSoundToPlayer(SoundEvents.UI_TOAST_CHALLENGE_COMPLETE, SoundCategory.PLAYERS, 0.7f, 1f);
             Advancements.event(p, "expedition_completed", s.family().id());
             Advancements.event(p, "expedition_" + s.family().scale().name().toLowerCase(), s.family().id());
-            int party = w.getPlayers(pl -> pl.squaredDistanceTo(c.toCenterPos()) < 40 * 40 && !pl.isSpectator()).size();
-            if (party >= 2) {
+            if (party.size() >= 2) {
                 Advancements.event(p, "expedition_together", s.family().id());
             }
         }

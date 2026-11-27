@@ -76,7 +76,7 @@ final class Stage9Checks {
     static void run(MinecraftServer server, ServerWorld w, UnderdeepTerrain t, Path dir, Stage15Checks.Reporter r) {
         r.section("Stage 9 exploration: designs (static), placement (pure map), generation and mechanics (in-world, accelerated)");
         long t0 = System.nanoTime();
-        designs(r);
+        designs(r, dir);
         ExplorationMap map = Explorations.of(w);
         if (map == null) {
             map = Explorations.enableFor(t);
@@ -90,7 +90,7 @@ final class Stage9Checks {
 
     // ------------------------------------------------------------------ static designs
 
-    static void designs(Stage15Checks.Reporter r) {
+    static void designs(Stage15Checks.Reporter r, Path dir) {
         List<String> reg = Designs.problems();
         r.check("every site family has an authored design and every design a family", reg.isEmpty(), reg.toString());
         Map<String, List<String>> problems = new TreeMap<>();
@@ -131,6 +131,20 @@ final class Stage9Checks {
                     c.traps.forEach(x -> trapTypes.add(x.type().replaceAll(":.*", "")));
                 }
             }
+        }
+        try {
+            StringBuilder sb = new StringBuilder();
+            problems.forEach((k, v) -> sb.append(k).append('\n').append("  ").append(String.join("\n  ", v)).append('\n'));
+            Files.writeString(dir.resolve("stage9_layouts.txt"), sb.toString());
+            for (String fid : problems.keySet()) {
+                ExploreContent.Family f = ExploreContent.FAMILIES.get(fid);
+                RegionType region = f.regions().isEmpty() ? RegionType.ROOTWILD : f.regions().iterator().next();
+                Site s0 = new Site(Site.packId(f.layers().iterator().next(), 9000, 9000), f, f.layers().iterator().next(), region, 0, 100, 0, f.radius(),
+                        BlockRotation.NONE, f.id().hashCode());
+                Files.writeString(dir.resolve("layout_" + fid + ".txt"), LayoutAudit.render(Designs.build(s0)));
+            }
+        } catch (Exception ignored) {
+            // diagnostics file only
         }
         r.check("all authored designs pass the static audit (3 seeds each; reachability, puzzle data, light paths, declared extents)", problems.isEmpty(),
                 problems.isEmpty() ? built + " layouts" : problems.size() + " families with problems: " + abbreviate(problems));
@@ -746,7 +760,7 @@ final class Stage9Checks {
         }
         var items = Handbook.itemsForTest(server);
         long leaked = items.stream().filter(i -> i.id().startsWith("underdeep:") && (i.id().contains("rune_dial") || i.id().contains("ancient_seal"))).count();
-        Set<String> keysB = Handbook.discovered(b);
+        Set<String> keysB = Handbook.discovered(player(w, "newcomer"));
         boolean noArtifactKeys = keysB.stream().noneMatch(k -> k.startsWith("item:underdeep:") && ExploreContent.ARTIFACTS.containsKey(k.substring(15)));
         r.check("spoiler protection: mechanisms never appear in the Handbook; artifacts appear only after the player obtains them",
                 tech == 5 && sens == ExploreContent.ARTIFACTS.size() && leaked == 0 && noArtifactKeys,

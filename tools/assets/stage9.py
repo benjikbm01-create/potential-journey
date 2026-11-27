@@ -94,7 +94,7 @@ fam("great_stair", "landmark", "landmark", "The Great Stair", "A stair wide enou
     min_spawn=300, secrets=["stair_landing"])
 fam("sky_bridge", "landmark", "landmark", "The High Bridge", "A slender arch leaps between two pillars, high above the floor.", "wright", ALL, BOTH, 18, 22, 0, 0.7, min_spawn=200)
 fam("lantern_spire", "landmark", "landmark", "Lantern Spire", "A copper tower, its lamp still burning. You can see it from far away.", "lantern", ALL, BOTH, 6, 34, 0, 0.8, min_spawn=200)
-fam("root_arch", "landmark", "landmark", "The Root Arch", "A root as thick as a house rises out of the ground and dives back in.", "gardener", [RW, GG], UP, 13, 14, 0, 1.0, min_spawn=200)
+fam("root_arch", "landmark", "landmark", "The Root Arch", "A root as thick as a house rises out of the ground and dives back in.", "gardener", [RW, GG], UP, 13, 14, 3, 1.0, min_spawn=200)
 fam("crystal_cathedral", "landmark", "landmark", "Crystal Cathedral", "Spires of living crystal hum around a pale nave.", "star", [CD], BOTH, 14, 22, 0, 1.0, min_spawn=200)
 fam("frozen_falls", "landmark", "landmark", "Frozen Falls", "A waterfall stopped mid-fall, blue and silent.", "tide", [EF], UP, 9, 20, 0, 1.0, min_spawn=200, secrets=["ice_tomb"])
 fam("ember_caldera", "landmark", "landmark", "Ember Caldera", "Black monoliths stand around a glowing pool.", "ember", [AH, CB], BOTH, 12, 18, 0, 1.0, min_spawn=200)

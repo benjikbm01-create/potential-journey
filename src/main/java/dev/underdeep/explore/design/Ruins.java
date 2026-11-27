@@ -284,8 +284,7 @@ final class Ruins {
             k.c.set(x + 1, 1, h % 2 == 0 ? z1 + 4 : z1 + 1, Blocks.FURNACE.getDefaultState());
             if (h == 1) {
                 // the middle house hides a cellar under a loose floor tile (secret)
-                k.c.set(x + 2, 0, z1 + 3, Blocks.SPRUCE_TRAPDOOR.getDefaultState().with(Properties.HORIZONTAL_FACING, N));
-                k.c.lock(x + 2, 0, z1 + 3);
+                k.c.fixed(x + 2, 0, z1 + 2, Blocks.SPRUCE_TRAPDOOR.getDefaultState().with(Properties.HORIZONTAL_FACING, N));
                 k.room(x, -5, z1, x + w, -1, z1 + 5);
                 for (int y = -4; y <= -1; y++) {
                     k.c.set(x + 2, y, z1 + 2, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
@@ -356,10 +355,9 @@ final class Ruins {
         // under the cold anvil a strongbox was bricked in (secret)
         k.c.set(m - 3, 0, m - 1, k.s.cracked);
         k.room(m - 5, -4, m - 3, m - 1, -1, m + 1);
-        k.c.set(m - 3, 0, m - 2, Blocks.AIR.getDefaultState());
-        k.c.lock(m - 3, 0, m - 2);
-        k.c.set(m - 3, -1, m - 2, Blocks.SCAFFOLDING.getDefaultState());
-        k.c.lock(m - 3, -1, m - 2);
+        for (int y = -3; y <= 0; y++) {
+            k.c.fixed(m - 3, y, m - 2, Blocks.SCAFFOLDING.getDefaultState());
+        }
         k.coffer(m - 4, -3, m, E, "underdeep:exploration/strongbox");
         k.c.secret("forge_strongbox", m - 4, -3, m - 2, m - 2, -2, m);
         k.inscription(m + 6, 2, m + 2, W, Designs.carved(k, site));
@@ -381,13 +379,13 @@ final class Ruins {
         k.chest(m - 2, 2, m, E, "underdeep:exploration/tide");
         // a pearl grotto under the shrine floor, reached through a gap behind the altar (secret)
         k.air(m, 1, m - 3, m, 1, m - 3);
-        k.c.set(m, 0, m - 3, Blocks.AIR.getDefaultState());
-        k.c.lock(m, 0, m - 3);
-        k.room(m - 3, -5, m - 6, m + 3, -1, m - 2);
-        k.air(m, -1, m - 3, m, -1, m - 3);
-        k.coffer(m + 2, -4, m - 5, W, "underdeep:exploration/pearl");
-        k.c.set(m - 2, -4, m - 5, Blocks.SEA_LANTERN);
-        k.c.secret("pearl_grotto", m - 2, -4, m - 5, m + 2, -2, m - 3);
+        for (int y = -3; y <= 0; y++) {
+            k.c.fixed(m, y, m - 3, Blocks.SCAFFOLDING.getDefaultState());
+        }
+        k.room(m - 3, -4, m - 6, m + 3, -1, m - 2);
+        k.coffer(m + 2, -3, m - 5, W, "underdeep:exploration/pearl");
+        k.c.set(m - 2, -3, m - 5, Blocks.SEA_LANTERN);
+        k.c.secret("pearl_grotto", m - 2, -3, m - 5, m + 2, -2, m - 3);
         k.weather(0.35, false);
     }
 
@@ -480,6 +478,12 @@ final class Ruins {
                 }
             }
             boolean collapsed = h == 2;
+            if (!collapsed) {
+                for (int y = 1; y <= deck; y++) {
+                    k.c.fixed(cx + 3, y, cz, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, E));
+                }
+                k.c.fixed(cx + 2, deck, cz, k.s.wood.getDefaultState());
+            }
             for (int x = cx - 2; x <= cx + 2; x++) {
                 for (int z = cz - 2; z <= cz + 2; z++) {
                     if (!collapsed || k.chance(0.4)) {
@@ -606,19 +610,14 @@ final class Ruins {
         k.c.set(m + 5, 1, m - 4, k.s.bars);
         k.chest(m + 5, 1, m + 3, W, "underdeep:exploration/gatehouse");
         k.inscription(m - 6, 2, m, E, Designs.carved(k, site));
-        // the armory behind a false wall in the west tower (a cracked course is the clue)
+        // the armory: a sealed room south of the west tower; a cracked course facing the court is the way in
         int ax = m - 9;
-        k.c.set(ax - 3, 1, m + 2, k.s.cracked);
-        k.c.set(ax - 3, 2, m + 2, k.s.cracked);
-        k.room(ax - 8, 0, m, ax - 3, 4, m + 4);
-        k.c.set(ax - 3, 1, m + 2, Canvas.AIR);
-        k.c.set(ax - 3, 2, m + 2, k.s.cracked);
-        k.c.set(ax - 3, 1, m + 2, k.s.cracked);
-        k.c.lock(ax - 3, 1, m + 2);
-        k.c.lock(ax - 3, 2, m + 2);
-        k.coffer(ax - 7, 1, m + 2, E, "underdeep:exploration/armory");
-        k.c.set(ax - 7, 1, m + 3, k.s.bars);
-        k.c.secret("gatehouse_armory", ax - 7, 1, m + 1, ax - 4, 3, m + 3);
+        k.room(ax - 3, 0, m + 4, ax + 3, 4, m + 8);
+        k.c.breakable(ax + 3, 1, m + 6, k.s.cracked.getDefaultState());
+        k.c.breakable(ax + 3, 2, m + 6, k.s.cracked.getDefaultState());
+        k.coffer(ax - 2, 1, m + 6, E, "underdeep:exploration/armory");
+        k.c.set(ax - 2, 1, m + 7, k.s.bars);
+        k.c.secret("gatehouse_armory", ax - 2, 1, m + 5, ax + 2, 3, m + 7);
         k.weather(0.35, true);
     }
 
@@ -665,7 +664,7 @@ final class Ruins {
         k.c.lock(px, 1, m + 1);
         k.c.lock(px, 2, m + 1);
         k.coffer(px, top - 1, m, S, "underdeep:exploration/secret_stash");
-        k.c.secret("aqueduct_channel", px, top - 3, m, px, top - 1, m);
+        k.c.secret("aqueduct_channel", px, top - 3, m - 1, px, top - 1, m);
         k.inscription(px - 1, 2, m + 2, S, Designs.carved(k, site));
         k.weather(0.3, false);
     }

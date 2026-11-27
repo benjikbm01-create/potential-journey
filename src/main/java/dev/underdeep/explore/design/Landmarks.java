@@ -97,14 +97,14 @@ final class Landmarks {
         // the heart chamber: reached by a narrow stair cut into the throne's back (secret)
         k.room(m - 3, 11, m - 6, m + 3, 16, m - 2);
         k.c.set(m, 13, m - 2, k.s.glass);
-        for (int y = 1; y <= 11; y++) {
-            k.c.set(m, y, m - 7, Canvas.AIR);
-            k.c.set(m, y + 1, m - 7, Canvas.AIR);
-            k.c.set(m, y, m - 8, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
-            k.c.lock(m, y, m - 8);
-            k.c.lock(m, y, m - 7);
+        for (int y = 1; y <= 12; y++) {
+            k.c.fixed(m, y, m - 8, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, N));
+            k.c.force(m, y, m - 9, Canvas.AIR);
         }
-        k.c.set(m, 12, m - 7, Canvas.AIR);
+        k.c.force(m, 11, m - 7, k.s.block.getDefaultState());
+        k.c.force(m, 12, m - 7, Canvas.AIR);
+        k.c.force(m, 13, m - 7, Canvas.AIR);
+        k.c.lock(m, 13, m - 7);
         k.c.set(m, 12, m - 6, Canvas.AIR);
         k.c.set(m, 13, m - 6, Canvas.AIR);
         k.c.lock(m, 12, m - 6);
@@ -152,7 +152,7 @@ final class Landmarks {
         // the landing door: a dial seal with its clue mural carved on the landing floor's edge
         long[] seal = k.sealDoor(m - 1, top + 1, lz - 5, true, 3);
         k.room(m - 3, top, lz - 11, m + 3, top + 5, lz - 5);
-        k.dials(new int[][]{{m - 3, top + 2, lz - 4}, {m + 3, top + 2, lz - 4}, {m, top + 4, lz - 4}}, S,
+        k.dials(new int[][]{{m - 3, top + 2, lz - 4}, {m + 3, top + 2, lz - 4}, {m, top + 3, lz - 3}}, S,
                 new int[][]{{m - 2, top, lz}, {m, top, lz}, {m + 2, top, lz}}, N, seal, false);
         k.coffer(m, top + 1, lz - 9, S, "underdeep:exploration/stair");
         k.inscription(m + 2, top + 2, lz - 10, W, Designs.carved(k, site));
@@ -214,10 +214,9 @@ final class Landmarks {
             k.ring(m, m, r, y, y, y % 6 == 0 ? Blocks.OXIDIZED_CUT_COPPER : k.s.brick);
         }
         k.air(m - 1, 1, m - 1, m + 1, h, m + 1);
-        k.air(m, 1, m + 3, m, 2, m + 3);
-        for (int y = 1; y < h - 3; y++) {
-            k.c.set(m, y, m - 1, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
-            k.c.lock(m, y, m - 1);
+        k.air(m, 1, m + 2, m, 2, m + 4);
+        for (int y = 1; y < h; y++) {
+            k.c.fixed(m, y, m - 1, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
         }
         // lantern room
         for (int y = h + 1; y <= h + 5; y++) {
@@ -431,14 +430,17 @@ final class Landmarks {
                 k.c.set(x, h - 4 + i / 2, z, wood);
             }
         }
-        k.air(m, 1, m + 4, m, 3, m + 4);
+        // the way in is a split between two roots
+        k.air(m + 3, 1, m + 3, m + 3, 3, m + 3);
+        k.air(m + 2, 1, m + 3, m + 2, 3, m + 3);
+        k.c.lockBox(m + 2, 1, m + 3, m + 3, 3, m + 3);
         for (int y = 1; y < h - 4; y++) {
             k.c.set(m, y, m - 2, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
             k.c.lock(m, y, m - 2);
         }
+        k.air(m - 2, h - 3, m - 2, m + 2, h - 1, m + 2);
         k.floor(m - 2, m - 2, m + 2, m + 2, h - 4, Blocks.SPRUCE_PLANKS, null);
-        k.c.set(m, h - 4, m - 1, Canvas.AIR);
-        k.c.lock(m, h - 4, m - 1);
+        k.c.fixed(m, h - 4, m - 2, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
         k.coffer(m + 1, h - 3, m + 1, W, "underdeep:exploration/secret_stash");
         k.inscription(m - 2, h - 2, m, E, Designs.loose(k, site));
         k.c.secret("titan_hollow", m - 2, h - 3, m - 2, m + 2, h - 1, m + 2);
@@ -450,8 +452,9 @@ final class Landmarks {
         int m = k.mid;
         int cy = 12;
         k.disc(m, m, 6, 0, k.s.floor, k.s.trim);
-        for (int y = 1; y < cy - 6; y++) {
+        for (int y = 1; y < cy - 1; y++) {
             k.c.set(m, y, m, Blocks.QUARTZ_PILLAR);
+            k.c.fixed(m, y, m + 1, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
         }
         for (int ring = 0; ring < 3; ring++) {
             double r = 6 + ring * 3, tilt = 0.4 + ring * 0.5;
@@ -467,15 +470,18 @@ final class Landmarks {
             }
         }
         k.disc(m, m, 2.2, cy - 1, ModBlocks.STARSTONE, null);
-        k.disc(m, m, 2.2, cy + 1, ModBlocks.STARSTONE, null);
-        k.ring(m, m, 2.2, cy, cy, ModBlocks.STARSTONE);
-        k.c.set(m, cy, m, Canvas.AIR);
-        k.c.set(m, cy, m - 1, Canvas.AIR);
-        k.c.lockBox(m - 1, cy, m - 1, m + 1, cy, m + 1);
-        k.c.set(m, cy, m + 2, Canvas.AIR);
-        k.c.lock(m, cy, m + 2);
+        k.disc(m, m, 2.2, cy + 2, ModBlocks.STARSTONE, null);
+        k.ring(m, m, 2.2, cy, cy + 1, ModBlocks.STARSTONE);
+        k.c.fixed(m, cy - 1, m + 1, Blocks.LADDER.getDefaultState().with(Properties.HORIZONTAL_FACING, S));
+        for (int x = m - 1; x <= m + 1; x++) {
+            for (int z = m - 1; z <= m + 1; z++) {
+                k.c.force(x, cy, z, Canvas.AIR);
+                k.c.force(x, cy + 1, z, Canvas.AIR);
+            }
+        }
+        k.c.lockBox(m - 1, cy, m - 1, m + 1, cy + 1, m + 1);
         k.coffer(m, cy, m - 1, S, "underdeep:exploration/star");
-        k.c.secret("orrery_core", m - 1, cy, m - 1, m + 1, cy, m + 1);
+        k.c.secret("orrery_core", m - 1, cy, m - 1, m + 1, cy + 1, m + 1);
         k.inscription(m + 3, 1, m, W, Designs.carved(k, site));
         k.weather(0.05, false);
     }
@@ -531,6 +537,10 @@ final class Landmarks {
             for (int x = m - r; x <= m + r; x += 3) {
                 k.c.set(x, y + 1, m - r, Blocks.FLOWERING_AZALEA);
             }
+        }
+        for (int t = 0; t < 3; t++) {
+            int r = k.mid - 2 - t * 3;
+            k.stairs(m, t * 4 + 1, m + r - 1, N, 4, 1, k.s.brickStairs, k.s.brick);
         }
         k.c.set(m, 13, m, Blocks.LANTERN);
         k.inscription(m, 1, m + k.mid - 2, S, Designs.carved(k, site));

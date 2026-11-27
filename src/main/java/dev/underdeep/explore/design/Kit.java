@@ -136,7 +136,7 @@ public final class Kit {
                 for (int z = z1; z <= z2; z++) {
                     boolean edge = x == x1 || x == x2 || y == y1 || y == y2 || z == z1 || z == z2;
                     if (edge) {
-                        c.soft(x, y, z, (y == y1 ? (((x + z) & 1) == 0 ? s.floor : s.floorAlt) : y == y2 ? s.block : chance(0.15) ? s.cracked : s.brick)
+                        c.weak(x, y, z, (y == y1 ? (((x + z) & 1) == 0 ? s.floor : s.floorAlt) : y == y2 ? s.block : chance(0.15) ? s.cracked : s.brick)
                                 .getDefaultState());
                     } else {
                         c.set(x, y, z, Canvas.AIR);
@@ -157,7 +157,7 @@ public final class Kit {
                 boolean side = k == -(w / 2) - 1 || k == w - w / 2;
                 for (int dy = 0; dy <= h + 1; dy++) {
                     if (side || dy == 0 || dy == h + 1) {
-                        c.soft(px, y + dy, pz, (dy == 0 ? s.floor : dy == h + 1 ? s.block : s.brick).getDefaultState());
+                        c.weak(px, y + dy, pz, (dy == 0 ? s.floor : dy == h + 1 ? s.block : s.brick).getDefaultState());
                     } else {
                         c.set(px, y + dy, pz, Canvas.AIR);
                     }
@@ -194,7 +194,7 @@ public final class Kit {
                 for (int dz = -2; dz <= 2; dz++) {
                     boolean edge = Math.abs(dx) == 2 || Math.abs(dz) == 2;
                     if (edge) {
-                        c.soft(cx + dx, y, cz + dz, s.brick.getDefaultState());
+                        c.weak(cx + dx, y, cz + dz, s.brick.getDefaultState());
                     } else if (dx != 0 || dz != 0) {
                         c.set(cx + dx, y, cz + dz, Canvas.AIR);
                     }
@@ -277,17 +277,17 @@ public final class Kit {
 
     /** A shared container with a site loot table (rolled once). */
     public void chest(int x, int y, int z, Direction facing, String loot) {
-        c.set(x, y, z, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, facing));
+        c.force(x, y, z, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, facing));
         c.cache(x, y, z, Canvas.Policy.SHARED, loot);
     }
 
     public void barrelLoot(int x, int y, int z, String loot) {
-        c.set(x, y, z, Style.facing(Blocks.BARREL, Direction.UP));
+        c.force(x, y, z, Style.facing(Blocks.BARREL, Direction.UP));
         c.cache(x, y, z, Canvas.Policy.SHARED, loot);
     }
 
     public void pot(int x, int y, int z, String loot) {
-        c.set(x, y, z, Blocks.DECORATED_POT.getDefaultState());
+        c.force(x, y, z, Blocks.DECORATED_POT.getDefaultState());
         if (loot != null) {
             c.cache(x, y, z, Canvas.Policy.SHARED, loot);
         }
@@ -295,22 +295,22 @@ public final class Kit {
 
     /** Per-player coffer (fair group rewards). */
     public void coffer(int x, int y, int z, Direction facing, String loot) {
-        c.set(x, y, z, Style.facing(ExploreBlocks.EXPEDITION_CACHE, facing));
+        c.force(x, y, z, Style.facing(ExploreBlocks.EXPEDITION_CACHE, facing));
         c.cache(x, y, z, Canvas.Policy.PERSONAL, loot);
     }
 
     public void pedestal(int x, int y, int z, String artifact) {
-        c.set(x, y, z, ExploreBlocks.RELIC_PEDESTAL.getDefaultState());
+        c.force(x, y, z, ExploreBlocks.RELIC_PEDESTAL.getDefaultState());
         c.cache(x, y, z, Canvas.Policy.UNIQUE, "artifact:" + artifact);
     }
 
     public void keyPedestal(int x, int y, int z) {
-        c.set(x, y, z, ExploreBlocks.KEY_PEDESTAL.getDefaultState());
+        c.force(x, y, z, ExploreBlocks.KEY_PEDESTAL.getDefaultState());
         c.cache(x, y, z, Canvas.Policy.KEY, "");
     }
 
     public void inscription(int x, int y, int z, Direction facing, String record) {
-        c.set(x, y, z, Style.facing(ExploreBlocks.INSCRIPTION, facing));
+        c.force(x, y, z, Style.facing(ExploreBlocks.INSCRIPTION, facing));
         c.inscription(x, y, z, record);
     }
 
@@ -385,7 +385,8 @@ public final class Kit {
                     // fallen stone lands at the foot of the wall
                     int fx = x + ri(3) - 1, fz = z + ri(3) - 1;
                     for (int fy = y - 1; fy >= 0; fy--) {
-                        if (c.solid(fx, fy, fz) && c.get(fx, fy + 1, fz) != null && c.get(fx, fy + 1, fz).isAir() && !c.locked(fx, fy + 1, fz)) {
+                        if (c.solid(fx, fy, fz) && c.get(fx, fy + 1, fz) != null && c.get(fx, fy + 1, fz).isAir() && !c.locked(fx, fy + 1, fz)
+                                && open(fx, fy + 1, fz)) {
                             c.set(fx, fy + 1, fz, s.rubble.getDefaultState());
                             break;
                         }
@@ -394,6 +395,17 @@ public final class Kit {
             }
         }
         overgrow(amount, webs);
+    }
+
+    /** Rubble only lands in open floor (all four neighbours empty), so it never blocks a passage. */
+    boolean open(int x, int y, int z) {
+        for (Direction d : Direction.Type.HORIZONTAL) {
+            BlockState n = c.get(x + d.getOffsetX(), y, z + d.getOffsetZ());
+            if (n == null || !n.isAir() || c.locked(x + d.getOffsetX(), y, z + d.getOffsetZ())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     void overgrow(double amount, boolean webs) {
