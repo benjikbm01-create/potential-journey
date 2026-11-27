@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "slant=false": {
+   "model": "underdeep:block/light_mirror"
+  },
+  "slant=true": {
+   "model": "underdeep:block/light_mirror_b"
+  }
+ }
+}

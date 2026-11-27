@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/mosaic_frame",
+  "north": "underdeep:block/mosaic_frame",
+  "south": "underdeep:block/mosaic_frame",
+  "east": "underdeep:block/mosaic_frame",
+  "west": "underdeep:block/mosaic_frame",
+  "up": "underdeep:block/mosaic_frame",
+  "down": "underdeep:block/mosaic_frame"
+ }
+}

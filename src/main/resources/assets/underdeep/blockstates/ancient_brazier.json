@@ -1,0 +1,34 @@
+{
+ "variants": {
+  "lit=false,tally=0": {
+   "model": "underdeep:block/ancient_brazier_0"
+  },
+  "lit=false,tally=1": {
+   "model": "underdeep:block/ancient_brazier_1"
+  },
+  "lit=false,tally=2": {
+   "model": "underdeep:block/ancient_brazier_2"
+  },
+  "lit=false,tally=3": {
+   "model": "underdeep:block/ancient_brazier_3"
+  },
+  "lit=false,tally=4": {
+   "model": "underdeep:block/ancient_brazier_4"
+  },
+  "lit=true,tally=0": {
+   "model": "underdeep:block/ancient_brazier_0_lit"
+  },
+  "lit=true,tally=1": {
+   "model": "underdeep:block/ancient_brazier_1_lit"
+  },
+  "lit=true,tally=2": {
+   "model": "underdeep:block/ancient_brazier_2_lit"
+  },
+  "lit=true,tally=3": {
+   "model": "underdeep:block/ancient_brazier_3_lit"
+  },
+  "lit=true,tally=4": {
+   "model": "underdeep:block/ancient_brazier_4_lit"
+  }
+ }
+}

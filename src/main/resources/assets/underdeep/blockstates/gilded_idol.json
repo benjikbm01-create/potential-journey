@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "underdeep:block/gilded_idol"
+  },
+  "facing=east": {
+   "model": "underdeep:block/gilded_idol",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "underdeep:block/gilded_idol",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "underdeep:block/gilded_idol",
+   "y": 270
+  }
+ }
+}

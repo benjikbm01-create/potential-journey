@@ -35,7 +35,7 @@ public final class UnderdeepTerrain {
     public static final int ROOF_BEDROCK = 315;
     public static final int SEA_LEVEL = CavernLayer.UPPER.fluidLevel;
     /** Bumped whenever terrain output changes incompatibly. Stored in world data. */
-    public static final int GENERATOR_VERSION = 3;
+    public static final int GENERATOR_VERSION = 4;
     public static final double SHAFT_SPIRAL_PITCH = 22.0;
 
     /** Persistence note: append-only. */

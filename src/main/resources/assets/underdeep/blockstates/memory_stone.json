@@ -1,0 +1,40 @@
+{
+ "variants": {
+  "lit=false,symbol=0": {
+   "model": "underdeep:block/memory_stone_0"
+  },
+  "lit=false,symbol=1": {
+   "model": "underdeep:block/memory_stone_1"
+  },
+  "lit=false,symbol=2": {
+   "model": "underdeep:block/memory_stone_2"
+  },
+  "lit=false,symbol=3": {
+   "model": "underdeep:block/memory_stone_3"
+  },
+  "lit=false,symbol=4": {
+   "model": "underdeep:block/memory_stone_4"
+  },
+  "lit=false,symbol=5": {
+   "model": "underdeep:block/memory_stone_5"
+  },
+  "lit=true,symbol=0": {
+   "model": "underdeep:block/memory_stone_0_lit"
+  },
+  "lit=true,symbol=1": {
+   "model": "underdeep:block/memory_stone_1_lit"
+  },
+  "lit=true,symbol=2": {
+   "model": "underdeep:block/memory_stone_2_lit"
+  },
+  "lit=true,symbol=3": {
+   "model": "underdeep:block/memory_stone_3_lit"
+  },
+  "lit=true,symbol=4": {
+   "model": "underdeep:block/memory_stone_4_lit"
+  },
+  "lit=true,symbol=5": {
+   "model": "underdeep:block/memory_stone_5_lit"
+  }
+ }
+}

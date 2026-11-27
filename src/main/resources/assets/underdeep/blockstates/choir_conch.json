@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "underdeep:block/choir_conch"
+  },
+  "facing=east": {
+   "model": "underdeep:block/choir_conch",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "underdeep:block/choir_conch",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "underdeep:block/choir_conch",
+   "y": 270
+  }
+ }
+}

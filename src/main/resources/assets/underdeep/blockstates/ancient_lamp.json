@@ -1,0 +1,28 @@
+{
+ "variants": {
+  "facing=north,lit=false": {
+   "model": "underdeep:block/ancient_lamp"
+  },
+  "facing=north,lit=true": {
+   "model": "underdeep:block/ancient_lamp_lit"
+  },
+  "facing=east,lit=false": {
+   "model": "underdeep:block/ancient_lamp"
+  },
+  "facing=east,lit=true": {
+   "model": "underdeep:block/ancient_lamp_lit"
+  },
+  "facing=south,lit=false": {
+   "model": "underdeep:block/ancient_lamp"
+  },
+  "facing=south,lit=true": {
+   "model": "underdeep:block/ancient_lamp_lit"
+  },
+  "facing=west,lit=false": {
+   "model": "underdeep:block/ancient_lamp"
+  },
+  "facing=west,lit=true": {
+   "model": "underdeep:block/ancient_lamp_lit"
+  }
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "variants": {
+  "facing=north,full=false": {
+   "model": "underdeep:block/expedition_cache"
+  },
+  "facing=north,full=true": {
+   "model": "underdeep:block/expedition_cache"
+  },
+  "facing=east,full=false": {
+   "model": "underdeep:block/expedition_cache",
+   "y": 90
+  },
+  "facing=east,full=true": {
+   "model": "underdeep:block/expedition_cache",
+   "y": 90
+  },
+  "facing=south,full=false": {
+   "model": "underdeep:block/expedition_cache",
+   "y": 180
+  },
+  "facing=south,full=true": {
+   "model": "underdeep:block/expedition_cache",
+   "y": 180
+  },
+  "facing=west,full=false": {
+   "model": "underdeep:block/expedition_cache",
+   "y": 270
+  },
+  "facing=west,full=true": {
+   "model": "underdeep:block/expedition_cache",
+   "y": 270
+  }
+ }
+}

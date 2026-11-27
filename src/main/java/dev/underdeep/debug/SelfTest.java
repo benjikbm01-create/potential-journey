@@ -352,6 +352,11 @@ public final class SelfTest {
             Stage8Checks.run(server, world, t, reps, dir, rep, false);
             return;
         }
+        if ("stage9".equals(suite)) {
+            // fast iteration on Stage 9 exploration (designs, placement, generation, mechanics)
+            Stage9Checks.run(server, world, t, dir, rep);
+            return;
+        }
         if (full) {
             Stage15Checks.accessibility(t, spawn, rep);
             Stage15Checks.landmarks(t, rep);
@@ -396,6 +401,12 @@ public final class SelfTest {
         } catch (RuntimeException e) {
             Underdeep.LOGGER.error("Stage 8 checks crashed", e);
             check("stage 8 checks completed without exceptions", false, e.toString());
+        }
+        try {
+            Stage9Checks.run(server, world, t, dir, rep);
+        } catch (RuntimeException e) {
+            Underdeep.LOGGER.error("Stage 9 checks crashed", e);
+            check("stage 9 checks completed without exceptions", false, e.toString());
         }
         try {
             Stage7Checks.run(world, rep);

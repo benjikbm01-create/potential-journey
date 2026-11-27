@@ -1,0 +1,34 @@
+{
+ "variants": {
+  "notches=0,powered=false": {
+   "model": "underdeep:block/rune_plate_0"
+  },
+  "notches=0,powered=true": {
+   "model": "underdeep:block/rune_plate_0_down"
+  },
+  "notches=1,powered=false": {
+   "model": "underdeep:block/rune_plate_1"
+  },
+  "notches=1,powered=true": {
+   "model": "underdeep:block/rune_plate_1_down"
+  },
+  "notches=2,powered=false": {
+   "model": "underdeep:block/rune_plate_2"
+  },
+  "notches=2,powered=true": {
+   "model": "underdeep:block/rune_plate_2_down"
+  },
+  "notches=3,powered=false": {
+   "model": "underdeep:block/rune_plate_3"
+  },
+  "notches=3,powered=true": {
+   "model": "underdeep:block/rune_plate_3_down"
+  },
+  "notches=4,powered=false": {
+   "model": "underdeep:block/rune_plate_4"
+  },
+  "notches=4,powered=true": {
+   "model": "underdeep:block/rune_plate_4_down"
+  }
+ }
+}

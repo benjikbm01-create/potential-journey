@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/memory_stone_0",
+  "north": "underdeep:block/memory_stone_0",
+  "south": "underdeep:block/memory_stone_0",
+  "east": "underdeep:block/memory_stone_0",
+  "west": "underdeep:block/memory_stone_0",
+  "up": "underdeep:block/memory_stone_0",
+  "down": "underdeep:block/memory_stone_0"
+ }
+}

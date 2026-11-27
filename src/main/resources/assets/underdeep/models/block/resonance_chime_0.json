@@ -1,0 +1,75 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "c": "underdeep:block/chime_crystal",
+  "base": "underdeep:block/ancient_top",
+  "particle": "underdeep:block/chime_crystal"
+ },
+ "elements": [
+  {
+   "from": [
+    4,
+    0,
+    4
+   ],
+   "to": [
+    12,
+    1,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#base"
+    },
+    "south": {
+     "texture": "#base"
+    },
+    "east": {
+     "texture": "#base"
+    },
+    "west": {
+     "texture": "#base"
+    },
+    "up": {
+     "texture": "#base"
+    },
+    "down": {
+     "texture": "#base"
+    }
+   }
+  },
+  {
+   "from": [
+    6,
+    1,
+    6
+   ],
+   "to": [
+    10,
+    6,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#c"
+    },
+    "south": {
+     "texture": "#c"
+    },
+    "east": {
+     "texture": "#c"
+    },
+    "west": {
+     "texture": "#c"
+    },
+    "up": {
+     "texture": "#c"
+    },
+    "down": {
+     "texture": "#c"
+    }
+   }
+  }
+ ],
+ "ambientocclusion": false
+}

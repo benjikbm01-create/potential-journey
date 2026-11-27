@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/light_lens",
+  "north": "underdeep:block/light_lens",
+  "south": "underdeep:block/light_lens",
+  "east": "underdeep:block/light_lens",
+  "west": "underdeep:block/light_lens",
+  "up": "underdeep:block/light_lens",
+  "down": "underdeep:block/light_lens"
+ }
+}

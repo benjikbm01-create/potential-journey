@@ -186,6 +186,29 @@ public final class UnderdeepConfig {
     /** Recognise accomplishments from earlier versions once (quietly) when a player first joins with Stage 8. */
     public boolean advancementMigration = true;
 
+    // ---- Stage 9: exploration ----
+    public Exploration exploration = new Exploration();
+
+    /** Stage 9 settings (nested object in underdeep.json; missing keys keep their defaults). */
+    public static final class Exploration {
+        /** Master switch: exploration sites generate in new chunks of Underdeep worlds created with generator v4+. */
+        public boolean enabled = true;
+        /** Also generate sites in new chunks of older worlds (sites at the border of explored areas may be cut). */
+        public boolean inOlderWorlds = false;
+        /** Share of grid cells holding a site (1.0 = default). Changing it changes future placement: use for fresh worlds. */
+        public double density = 1.0;
+        /** Relative weight of dungeons among sites (1.0 = default). Same caveat. */
+        public double dungeonDensity = 1.0;
+        /** Encounter frequency multiplier (0 disables travel encounters). */
+        public double encounterFrequency = 1.0;
+        /** Trap damage and hazard multiplier (0 = harmless warnings only, 1 = default, 2 = harsh). */
+        public double trapSeverity = 1.0;
+        /** Chat lines for minor discoveries (significant discoveries always announce themselves to the finder). */
+        public boolean minorDiscoveryMessages = true;
+        /** Undead guardians wake in guarded rooms. */
+        public boolean guardians = true;
+    }
+
     // ---- Stage 7: survival, farming, cooking, medicine and homesteading ----
     public Survival survival = new Survival();
 

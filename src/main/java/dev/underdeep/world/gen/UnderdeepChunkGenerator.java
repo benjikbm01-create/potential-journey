@@ -237,6 +237,21 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
                 dev.underdeep.Underdeep.LOGGER.error("Settlement generation failed in chunk {}", chunk.getPos(), e);
             }
         }
+        // Stage 9: exploration sites (ruins, landmarks, dungeons, secrets) after settlements
+        dev.underdeep.explore.ExplorationMap sites = dev.underdeep.explore.Explorations.of(world);
+        if (sites != null) {
+            try {
+                dev.underdeep.explore.SitePlacer.generate(world, chunk, sites);
+            } catch (RuntimeException e) {
+                dev.underdeep.Underdeep.LOGGER.error("Exploration site generation failed in chunk {}", chunk.getPos(), e);
+            }
+        }
+    }
+
+    /** Stage 9: warding bells keep natural hostile spawns away (16 blocks). */
+    private static boolean wardedSpawn(BlockPos pos) {
+        net.minecraft.server.MinecraftServer server = dev.underdeep.explore.Explorations.serverRef();
+        return server != null && server.isOnThread() && server.getOverworld() != null && dev.underdeep.explore.Explorations.warded(server.getOverworld(), pos);
     }
 
     @Override
@@ -252,7 +267,7 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
             net.minecraft.entity.SpawnGroup group, BlockPos pos) {
         var base = super.getEntitySpawnList(biome, accessor, group, pos);
         if (group == net.minecraft.entity.SpawnGroup.MONSTER && !base.isEmpty()
-                && !dev.underdeep.world.spawn.SpawnRules.allowMonster(spawnTerrain, biome, pos)) {
+                && (!dev.underdeep.world.spawn.SpawnRules.allowMonster(spawnTerrain, biome, pos) || wardedSpawn(pos))) {
             return net.minecraft.util.collection.Pool.empty();
         }
         if (group != net.minecraft.entity.SpawnGroup.MONSTER && group != net.minecraft.entity.SpawnGroup.MISC

@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "open=false": {
+   "model": "underdeep:block/seal_bars"
+  },
+  "open=true": {
+   "model": "underdeep:block/seal_bars_open"
+  }
+ }
+}

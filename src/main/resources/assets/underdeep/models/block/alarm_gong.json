@@ -1,0 +1,139 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "f": "underdeep:block/alarm_gong_frame",
+  "d": "underdeep:block/alarm_gong_disc",
+  "particle": "underdeep:block/alarm_gong_disc"
+ },
+ "elements": [
+  {
+   "from": [
+    1,
+    0,
+    6
+   ],
+   "to": [
+    3,
+    16,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#f"
+    },
+    "south": {
+     "texture": "#f"
+    },
+    "east": {
+     "texture": "#f"
+    },
+    "west": {
+     "texture": "#f"
+    },
+    "up": {
+     "texture": "#f"
+    },
+    "down": {
+     "texture": "#f"
+    }
+   }
+  },
+  {
+   "from": [
+    13,
+    0,
+    6
+   ],
+   "to": [
+    15,
+    16,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#f"
+    },
+    "south": {
+     "texture": "#f"
+    },
+    "east": {
+     "texture": "#f"
+    },
+    "west": {
+     "texture": "#f"
+    },
+    "up": {
+     "texture": "#f"
+    },
+    "down": {
+     "texture": "#f"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    14,
+    6
+   ],
+   "to": [
+    15,
+    16,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#f"
+    },
+    "south": {
+     "texture": "#f"
+    },
+    "east": {
+     "texture": "#f"
+    },
+    "west": {
+     "texture": "#f"
+    },
+    "up": {
+     "texture": "#f"
+    },
+    "down": {
+     "texture": "#f"
+    }
+   }
+  },
+  {
+   "from": [
+    3,
+    2,
+    7.5
+   ],
+   "to": [
+    13,
+    13,
+    8.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#d"
+    },
+    "south": {
+     "texture": "#d"
+    },
+    "east": {
+     "texture": "#d"
+    },
+    "west": {
+     "texture": "#d"
+    },
+    "up": {
+     "texture": "#d"
+    },
+    "down": {
+     "texture": "#d"
+    }
+   }
+  }
+ ],
+ "ambientocclusion": false
+}

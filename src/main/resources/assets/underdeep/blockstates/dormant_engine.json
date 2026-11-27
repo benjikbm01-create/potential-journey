@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "underdeep:block/dormant_engine"
+  },
+  "lit=true": {
+   "model": "underdeep:block/dormant_engine_lit"
+  }
+ }
+}

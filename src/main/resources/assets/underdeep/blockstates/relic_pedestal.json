@@ -1,0 +1,28 @@
+{
+ "variants": {
+  "facing=north,full=false": {
+   "model": "underdeep:block/relic_pedestal"
+  },
+  "facing=north,full=true": {
+   "model": "underdeep:block/relic_pedestal_full"
+  },
+  "facing=east,full=false": {
+   "model": "underdeep:block/relic_pedestal"
+  },
+  "facing=east,full=true": {
+   "model": "underdeep:block/relic_pedestal_full"
+  },
+  "facing=south,full=false": {
+   "model": "underdeep:block/relic_pedestal"
+  },
+  "facing=south,full=true": {
+   "model": "underdeep:block/relic_pedestal_full"
+  },
+  "facing=west,full=false": {
+   "model": "underdeep:block/relic_pedestal"
+  },
+  "facing=west,full=true": {
+   "model": "underdeep:block/relic_pedestal_full"
+  }
+ }
+}

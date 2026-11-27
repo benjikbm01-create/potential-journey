@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/keystone",
+  "north": "underdeep:block/keystone",
+  "south": "underdeep:block/keystone",
+  "east": "underdeep:block/keystone",
+  "west": "underdeep:block/keystone",
+  "up": "underdeep:block/keystone",
+  "down": "underdeep:block/keystone"
+ }
+}

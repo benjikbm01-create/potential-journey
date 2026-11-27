@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/ancient_lamp",
+  "north": "underdeep:block/ancient_lamp",
+  "south": "underdeep:block/ancient_lamp",
+  "east": "underdeep:block/ancient_lamp",
+  "west": "underdeep:block/ancient_lamp",
+  "up": "underdeep:block/ancient_lamp",
+  "down": "underdeep:block/ancient_lamp"
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/light_receiver_lit",
+  "north": "underdeep:block/light_receiver_lit",
+  "south": "underdeep:block/light_receiver_lit",
+  "east": "underdeep:block/light_receiver_lit",
+  "west": "underdeep:block/light_receiver_lit",
+  "up": "underdeep:block/light_receiver_lit",
+  "down": "underdeep:block/light_receiver_lit"
+ }
+}

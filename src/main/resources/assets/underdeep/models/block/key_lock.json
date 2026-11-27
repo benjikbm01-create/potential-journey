@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/key_lock",
+  "north": "underdeep:block/key_lock",
+  "south": "underdeep:block/key_lock",
+  "east": "underdeep:block/key_lock",
+  "west": "underdeep:block/key_lock",
+  "up": "underdeep:block/key_lock",
+  "down": "underdeep:block/key_lock"
+ }
+}

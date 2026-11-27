@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/counterweight",
+  "north": "underdeep:block/counterweight",
+  "south": "underdeep:block/counterweight",
+  "east": "underdeep:block/counterweight",
+  "west": "underdeep:block/counterweight",
+  "up": "underdeep:block/counterweight",
+  "down": "underdeep:block/counterweight"
+ }
+}

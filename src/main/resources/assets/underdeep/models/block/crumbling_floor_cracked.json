@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/crumbling_floor_cracked",
+  "north": "underdeep:block/crumbling_floor_cracked",
+  "south": "underdeep:block/crumbling_floor_cracked",
+  "east": "underdeep:block/crumbling_floor_cracked",
+  "west": "underdeep:block/crumbling_floor_cracked",
+  "up": "underdeep:block/crumbling_floor_cracked",
+  "down": "underdeep:block/crumbling_floor_cracked"
+ }
+}

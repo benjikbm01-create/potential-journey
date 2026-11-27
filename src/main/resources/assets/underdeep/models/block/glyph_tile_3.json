@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/ancient_side",
+  "north": "underdeep:block/glyph_tile_3",
+  "south": "underdeep:block/ancient_side",
+  "east": "underdeep:block/ancient_side",
+  "west": "underdeep:block/ancient_side",
+  "up": "underdeep:block/ancient_top",
+  "down": "underdeep:block/ancient_top"
+ }
+}

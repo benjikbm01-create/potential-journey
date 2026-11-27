@@ -130,6 +130,9 @@ public final class EquipmentItems {
         for (EquipmentContent.Weapon w : EquipmentContent.WEAPONS) {
             Mat m = mat(w.material());
             Item.Settings s = new Item.Settings().maxDamage(w.durability()).attributeModifiers(weaponAttrs(w));
+            if (EquipmentContent.ARTIFACTS.contains(w.id())) {
+                s.rarity(net.minecraft.util.Rarity.EPIC).fireproof();
+            }
             if (EquipmentContent.MATERIALS.get(w.material()).id().equals("umbralite")) {
                 s.fireproof();
             }
@@ -189,7 +192,11 @@ public final class EquipmentItems {
         }
         // accessories and upgrade kits
         for (EquipmentContent.Accessory a : EquipmentContent.ACCESSORIES.values()) {
-            reg(a.id(), new Accessories.AccessoryItem(a, new Item.Settings().maxCount(1)));
+            Item.Settings as = new Item.Settings().maxCount(1);
+            if (EquipmentContent.ARTIFACTS.contains(a.id())) {
+                as.rarity(net.minecraft.util.Rarity.EPIC).fireproof();
+            }
+            reg(a.id(), new Accessories.AccessoryItem(a, as));
         }
         for (EquipmentContent.Upgrade u : EquipmentContent.UPGRADES.values()) {
             reg(u.kit(), new Upgrades.KitItem(u, new Item.Settings().maxCount(16)));

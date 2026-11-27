@@ -88,6 +88,29 @@ public final class Hazards {
         return m == null ? 0 : m.level.getOrDefault(h, 0f);
     }
 
+    /**
+     * Stage 9 trap vents: a sudden burst of exposure (protection from equipment applies; never above the full meter).
+     * The ordinary per-second rules then decide warnings and effects, so vents and ambient hazards share one meter.
+     */
+    public static void burst(ServerPlayerEntity p, Hazard h, float amount) {
+        UnderdeepConfig.Survival cfg = UnderdeepConfig.get().survival;
+        if (!cfg.enabled || !cfg.hazards || p.isCreative() || p.isSpectator()) {
+            return;
+        }
+        float prot = (float) dev.underdeep.equipment.EquipmentEffects.protection(p, group(h));
+        Meter m = METERS.computeIfAbsent(p.getUuid(), k -> new Meter());
+        float cur = m.level.getOrDefault(h, 0f);
+        float next = Math.min(FULL, cur + amount * (1 - prot));
+        m.level.put(h, next);
+        if (next >= WARN && cur < WARN) {
+            p.sendMessage(Text.literal(h.title + ": " + h.advice).formatted(Formatting.GOLD), false);
+            seen(p, h);
+        }
+        if (next >= FULL) {
+            apply(p, p.getServerWorld(), h, cfg.hazardDamage);
+        }
+    }
+
     public static void reset(ServerPlayerEntity p) {
         METERS.remove(p.getUuid());
     }

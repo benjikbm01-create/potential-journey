@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/light_mirror_b",
+  "north": "underdeep:block/light_mirror_b",
+  "south": "underdeep:block/light_mirror_b",
+  "east": "underdeep:block/light_mirror_b",
+  "west": "underdeep:block/light_mirror_b",
+  "up": "underdeep:block/light_mirror_b",
+  "down": "underdeep:block/light_mirror_b"
+ }
+}

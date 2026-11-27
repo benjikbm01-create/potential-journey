@@ -283,6 +283,18 @@ public final class Handbook {
         Advancements.Stats st = Advancements.stats(p);
         st.subjects.getOrDefault("region_visited", Set.of()).forEach(r -> out.add("region:" + r));
         st.subjects.getOrDefault("obtained", Set.of()).forEach(i -> out.add("item:" + i));
+        // Stage 9: discovered site families, hidden rooms, records and collected artifacts (personal)
+        dev.underdeep.explore.ExplorerData xd = dev.underdeep.explore.ExplorerData.of(p);
+        dev.underdeep.explore.ExplorationMap xm = p.getWorld() instanceof ServerWorld sw ? dev.underdeep.explore.Explorations.of(sw) : null;
+        for (long id : xd.sites.keySet()) {
+            dev.underdeep.explore.Site s = xm == null ? null : xm.byId(id);
+            if (s != null) {
+                out.add("site:" + s.family().id());
+            }
+        }
+        xd.secrets.forEach(k -> out.add("secret:" + k.substring(k.indexOf(':') + 1)));
+        xd.records.forEach(r -> out.add("record:" + r));
+        xd.artifacts.forEach(a -> out.add("item:underdeep:" + a));
         return out;
     }
 

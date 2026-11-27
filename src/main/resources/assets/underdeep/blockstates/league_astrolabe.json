@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "underdeep:block/league_astrolabe"
+  },
+  "facing=east": {
+   "model": "underdeep:block/league_astrolabe",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "underdeep:block/league_astrolabe",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "underdeep:block/league_astrolabe",
+   "y": 270
+  }
+ }
+}

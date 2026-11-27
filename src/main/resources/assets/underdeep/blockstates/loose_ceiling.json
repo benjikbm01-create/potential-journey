@@ -1,0 +1,28 @@
+{
+ "variants": {
+  "facing=north,lit=false": {
+   "model": "underdeep:block/loose_ceiling"
+  },
+  "facing=north,lit=true": {
+   "model": "underdeep:block/loose_ceiling_lit"
+  },
+  "facing=east,lit=false": {
+   "model": "underdeep:block/loose_ceiling"
+  },
+  "facing=east,lit=true": {
+   "model": "underdeep:block/loose_ceiling_lit"
+  },
+  "facing=south,lit=false": {
+   "model": "underdeep:block/loose_ceiling"
+  },
+  "facing=south,lit=true": {
+   "model": "underdeep:block/loose_ceiling_lit"
+  },
+  "facing=west,lit=false": {
+   "model": "underdeep:block/loose_ceiling"
+  },
+  "facing=west,lit=true": {
+   "model": "underdeep:block/loose_ceiling_lit"
+  }
+ }
+}

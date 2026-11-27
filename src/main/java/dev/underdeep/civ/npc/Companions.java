@@ -477,6 +477,19 @@ public final class Companions {
         return fallback;
     }
 
+    /** Stage 9: a travelling companion near the player comments on something (speech bubble, never a secret). */
+    public static void remark(ServerPlayerEntity p, String line) {
+        ServerWorld w = p.getServerWorld();
+        InhabitantManager mgr = InhabitantManager.get(w);
+        if (mgr == null) {
+            return;
+        }
+        for (InhabitantEntity e : w.getEntitiesByClass(InhabitantEntity.class, p.getBoundingBox().expand(24), x -> x.companionOwner == p)) {
+            mgr.society.say(e, line, 20);
+            return;
+        }
+    }
+
     public static boolean safe(ServerWorld w, BlockPos pos) {
         BlockState below = w.getBlockState(pos.down());
         BlockState feet = w.getBlockState(pos), head = w.getBlockState(pos.up());

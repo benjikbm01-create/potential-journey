@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "lit=false": {
+   "model": "underdeep:block/light_receiver"
+  },
+  "lit=true": {
+   "model": "underdeep:block/light_receiver_lit"
+  }
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "variants": {
+  "facing=north,lit=false": {
+   "model": "underdeep:block/flame_vent"
+  },
+  "facing=north,lit=true": {
+   "model": "underdeep:block/flame_vent_lit"
+  },
+  "facing=east,lit=false": {
+   "model": "underdeep:block/flame_vent"
+  },
+  "facing=east,lit=true": {
+   "model": "underdeep:block/flame_vent_lit"
+  },
+  "facing=south,lit=false": {
+   "model": "underdeep:block/flame_vent"
+  },
+  "facing=south,lit=true": {
+   "model": "underdeep:block/flame_vent_lit"
+  },
+  "facing=west,lit=false": {
+   "model": "underdeep:block/flame_vent"
+  },
+  "facing=west,lit=true": {
+   "model": "underdeep:block/flame_vent_lit"
+  }
+ }
+}

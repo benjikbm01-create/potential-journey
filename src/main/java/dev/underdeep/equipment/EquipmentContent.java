@@ -79,6 +79,8 @@ public final class EquipmentContent {
     public static final List<String> COMPONENTS = new ArrayList<>();
     public static final Map<String, String> UTILITY = new LinkedHashMap<>();
     public static final Map<String, String> BLOCKS = new LinkedHashMap<>();
+    /** Stage 9: exploration artifacts among the weapons and accessories (no recipes; rarity shown; ids from stage9.py). */
+    public static final java.util.Set<String> ARTIFACTS = new java.util.LinkedHashSet<>();
 
     public static synchronized void load() {
         if (!MATERIALS.isEmpty()) {
@@ -109,6 +111,9 @@ public final class EquipmentContent {
                 }
                 MATERIALS.put(e.getKey(), new Material(e.getKey(), o.get("name").getAsString(), o.get("special").getAsString(), o.get("role").getAsString(),
                         o.get("ingot").getAsString(), ts, as));
+            }
+            if (root.has("artifacts")) {
+                root.getAsJsonArray("artifacts").forEach(x -> ARTIFACTS.add(x.getAsString()));
             }
             for (JsonElement e : root.getAsJsonArray("weapons")) {
                 JsonObject o = e.getAsJsonObject();

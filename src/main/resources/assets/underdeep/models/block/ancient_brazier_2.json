@@ -1,0 +1,77 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "side": "underdeep:block/brazier_side_2",
+  "bowl": "underdeep:block/brazier_bowl",
+  "coals": "underdeep:block/brazier_coals",
+  "fire": "underdeep:block/brazier_fire",
+  "particle": "underdeep:block/brazier_bowl"
+ },
+ "elements": [
+  {
+   "from": [
+    3,
+    0,
+    3
+   ],
+   "to": [
+    13,
+    9,
+    13
+   ],
+   "faces": {
+    "north": {
+     "texture": "#side"
+    },
+    "south": {
+     "texture": "#side"
+    },
+    "east": {
+     "texture": "#side"
+    },
+    "west": {
+     "texture": "#side"
+    },
+    "down": {
+     "texture": "#bowl"
+    },
+    "up": {
+     "texture": "#bowl"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    9,
+    1
+   ],
+   "to": [
+    15,
+    12,
+    15
+   ],
+   "faces": {
+    "north": {
+     "texture": "#bowl"
+    },
+    "south": {
+     "texture": "#bowl"
+    },
+    "east": {
+     "texture": "#bowl"
+    },
+    "west": {
+     "texture": "#bowl"
+    },
+    "down": {
+     "texture": "#bowl"
+    },
+    "up": {
+     "texture": "#coals"
+    }
+   }
+  }
+ ],
+ "ambientocclusion": false
+}

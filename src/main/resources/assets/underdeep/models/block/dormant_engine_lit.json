@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/dormant_engine_lit",
+  "north": "underdeep:block/dormant_engine_lit",
+  "south": "underdeep:block/dormant_engine_lit",
+  "east": "underdeep:block/dormant_engine_lit",
+  "west": "underdeep:block/dormant_engine_lit",
+  "up": "underdeep:block/dormant_engine_lit",
+  "down": "underdeep:block/dormant_engine_lit"
+ }
+}

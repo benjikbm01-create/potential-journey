@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "underdeep:block/lantern_head"
+  },
+  "facing=east": {
+   "model": "underdeep:block/lantern_head",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "underdeep:block/lantern_head",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "underdeep:block/lantern_head",
+   "y": 270
+  }
+ }
+}

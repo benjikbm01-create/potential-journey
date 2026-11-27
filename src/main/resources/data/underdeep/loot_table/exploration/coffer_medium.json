@@ -1,0 +1,332 @@
+{
+ "type": "minecraft:chest",
+ "pools": [
+  {
+   "rolls": {
+    "type": "minecraft:uniform",
+    "min": 2,
+    "max": 4
+   },
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:iron_ingot",
+     "weight": 5,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 4
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:steel_ingot",
+     "weight": 3,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 3
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:copper_ingot",
+     "weight": 4,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 6
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:gold_ingot",
+     "weight": 2,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 2
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:diamond",
+     "weight": 1
+    }
+   ]
+  },
+  {
+   "rolls": {
+    "type": "minecraft:uniform",
+    "min": 1,
+    "max": 2
+   },
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:ancient_coin",
+     "weight": 8,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 4
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:emerald",
+     "weight": 4,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 3
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "minecraft:gold_nugget",
+     "weight": 5,
+     "functions": [
+      {
+       "function": "minecraft:set_count",
+       "count": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 8
+       }
+      }
+     ]
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:encrusted_relic",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:lore_fragment",
+     "weight": 3
+    }
+   ]
+  },
+  {
+   "rolls": 1,
+   "entries": [
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:encrusted_relic",
+     "weight": 6
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:wright_bust",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:lantern_head",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:choir_conch",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:ember_crown",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:seed_urn",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:star_globe",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:silent_mask",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:gilded_idol",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:league_astrolabe",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:petrified_effigy",
+     "weight": 1
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:wright_signet",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:lamplighters_ring",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:choir_pendant",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:oath_band",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:gardeners_locket",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:readers_lens",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:hush_charm",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:compass_rose",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:warden_seal",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:echo_stone",
+     "weight": 4
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:hearth_ring",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:stormcaller_band",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:frostbound_torc",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:ashwalker_anklet",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:sporeward_mask",
+     "weight": 10
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:wright_glaive",
+     "weight": 5
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:lamplighter_hook",
+     "weight": 5
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:oathkeeper_hammer",
+     "weight": 5
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:choir_harpoon",
+     "weight": 5
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:silent_edge",
+     "weight": 5
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:tuning_fork",
+     "weight": 4
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:breath_shell",
+     "weight": 4
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:homing_stone",
+     "weight": 4
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:sounding_horn",
+     "weight": 4
+    },
+    {
+     "type": "minecraft:item",
+     "name": "underdeep:warding_bell",
+     "weight": 3
+    },
+    {
+     "type": "minecraft:empty",
+     "weight": 10
+    }
+   ]
+  }
+ ]
+}

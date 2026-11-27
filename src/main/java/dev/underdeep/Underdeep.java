@@ -37,6 +37,7 @@ public final class Underdeep implements ModInitializer {
         dev.underdeep.civ.npc.InhabitantManager.init();
         dev.underdeep.survival.Survival.registerContent();
         dev.underdeep.equipment.EquipmentItems.init();
+        dev.underdeep.explore.Explorations.init();
         dev.underdeep.guide.Advancements.init();
         dev.underdeep.civ.econ.EconomyManager.init();
         dev.underdeep.survival.Survival.init();
@@ -51,8 +52,8 @@ public final class Underdeep implements ModInitializer {
                 UnderdeepWorldState state = UnderdeepWorldState.get(overworld);
                 state.initializeIfNew(overworld.getTime());
                 if (state.createdWithGeneratorVersion() != UnderdeepTerrain.GENERATOR_VERSION) {
-                    LOGGER.warn("This world was created with Underdeep terrain generator v{} but v{} is running; "
-                                    + "settlements (Stage 4) are disabled for it unless settlementsInExistingWorlds is set.",
+                    LOGGER.warn("This world was created with Underdeep terrain generator v{} but v{} is running; content added since "
+                                    + "(settlements from v3, exploration sites from v4) only generates in worlds created with that version.",
                             state.createdWithGeneratorVersion(), UnderdeepTerrain.GENERATOR_VERSION);
                 }
                 LOGGER.info("Underdeep world loaded (seed-bound terrain ready, spawn {})", overworld.getSpawnPos().toShortString());

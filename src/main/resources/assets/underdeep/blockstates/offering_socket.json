@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "full=false": {
+   "model": "underdeep:block/offering_socket"
+  },
+  "full=true": {
+   "model": "underdeep:block/offering_socket_full"
+  }
+ }
+}

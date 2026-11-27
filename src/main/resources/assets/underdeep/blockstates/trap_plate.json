@@ -1,0 +1,16 @@
+{
+ "variants": {
+  "disarmed=false,powered=false": {
+   "model": "underdeep:block/trap_plate"
+  },
+  "disarmed=false,powered=true": {
+   "model": "underdeep:block/trap_plate"
+  },
+  "disarmed=true,powered=false": {
+   "model": "underdeep:block/trap_plate_jammed"
+  },
+  "disarmed=true,powered=true": {
+   "model": "underdeep:block/trap_plate_jammed"
+  }
+ }
+}

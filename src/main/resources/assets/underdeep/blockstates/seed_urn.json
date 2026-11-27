@@ -1,0 +1,19 @@
+{
+ "variants": {
+  "facing=north": {
+   "model": "underdeep:block/seed_urn"
+  },
+  "facing=east": {
+   "model": "underdeep:block/seed_urn",
+   "y": 90
+  },
+  "facing=south": {
+   "model": "underdeep:block/seed_urn",
+   "y": 180
+  },
+  "facing=west": {
+   "model": "underdeep:block/seed_urn",
+   "y": 270
+  }
+ }
+}

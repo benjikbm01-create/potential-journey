@@ -1,0 +1,12 @@
+{
+ "parent": "minecraft:block/cube",
+ "textures": {
+  "particle": "underdeep:block/loose_ceiling",
+  "north": "underdeep:block/loose_ceiling",
+  "south": "underdeep:block/loose_ceiling",
+  "east": "underdeep:block/loose_ceiling",
+  "west": "underdeep:block/loose_ceiling",
+  "up": "underdeep:block/loose_ceiling",
+  "down": "underdeep:block/loose_ceiling"
+ }
+}

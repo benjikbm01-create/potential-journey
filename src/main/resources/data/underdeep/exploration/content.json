@@ -1,0 +1,2984 @@
+{
+ "families": [
+  {
+   "id": "wayshrine",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Wayside Shrine",
+   "desc": "A small shrine by an old path. Someone still remembered it, once.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 4,
+   "height": 7,
+   "below": 0,
+   "weight": 9,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "lantern_post",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Old Lantern Road",
+   "desc": "Copper lantern posts mark a road nobody walks any more.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 7,
+   "height": 7,
+   "below": 0,
+   "weight": 8,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "collapsed_hut",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Collapsed Dwelling",
+   "desc": "A home, long abandoned. The hearth is cold.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "emerald_wetlands",
+    "fungal_expanse",
+    "hollow_peaks"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 6,
+   "below": 0,
+   "weight": 8,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "miners_camp",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Abandoned Mining Camp",
+   "desc": "Rails, a cold fire, and work left half done.",
+   "culture": "lantern",
+   "regions": [
+    "hollow_peaks",
+    "petrified_forest",
+    "stormstone_caverns",
+    "crystal_deep",
+    "ashen_hollows"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 6,
+   "height": 5,
+   "below": 0,
+   "weight": 8,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "cairn_circle",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Cairn Circle",
+   "desc": "Stacked stones in a ring around a carved sign.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 5,
+   "below": 0,
+   "weight": 6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "broken_bridge",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Broken Bridge",
+   "desc": "Half a bridge, reaching for a far side that fell long ago.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 8,
+   "height": 6,
+   "below": 0,
+   "weight": 5,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "fallen_statue",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Fallen Colossus Head",
+   "desc": "A stone face as tall as a house, lying where it fell.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 6,
+   "height": 8,
+   "below": 0,
+   "weight": 5,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "well_head",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Old Well",
+   "desc": "A well shaft with a rotten windlass. Water glints far below.",
+   "culture": "gardener",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 8,
+   "height": 5,
+   "below": 18,
+   "weight": 5,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "well_bottom"
+   ],
+   "audio": "ruin"
+  },
+  {
+   "id": "watch_niche",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Watch Post",
+   "desc": "A sheltered post where someone once kept watch.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 4,
+   "height": 6,
+   "below": 0,
+   "weight": 6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "grave_garden",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Grave Garden",
+   "desc": "Quiet stones among flowers. Someone was loved here.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "emerald_wetlands",
+    "sunken_gardens",
+    "fungal_expanse"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 4,
+   "below": 0,
+   "weight": 6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "kiln_mound",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Potters' Kiln",
+   "desc": "A brick kiln and the pots it never finished firing.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin",
+    "hollow_peaks",
+    "petrified_forest",
+    "emerald_wetlands"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 6,
+   "below": 0,
+   "weight": 6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "waystone",
+   "category": "ruin",
+   "scale": "minor",
+   "name": "Waystone",
+   "desc": "A carved marker stone. Its carvings count distances in lamps.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 3,
+   "height": 8,
+   "below": 0,
+   "weight": 7,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "cottage_row",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Abandoned Hamlet",
+   "desc": "A row of empty houses. They left in a hurry, or not at all.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "emerald_wetlands",
+    "fungal_expanse",
+    "hollow_peaks",
+    "petrified_forest"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 12,
+   "height": 6,
+   "below": 6,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "cellar_beneath"
+   ],
+   "audio": "ruin"
+  },
+  {
+   "id": "lantern_waystation",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "League Waystation",
+   "desc": "A rest-house of the old lantern roads, with a pump outside.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 10,
+   "height": 7,
+   "below": 0,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "forge_ruin",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Cold Forge",
+   "desc": "A smithy whose great hearth has been dark for an age.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin",
+    "stormstone_caverns",
+    "hollow_peaks"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 8,
+   "height": 7,
+   "below": 5,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "forge_strongbox"
+   ],
+   "audio": "ruin"
+  },
+  {
+   "id": "tide_shrine",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Tide Shrine",
+   "desc": "Sea-green pillars around an altar that still glows.",
+   "culture": "tide",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 8,
+   "height": 8,
+   "below": 6,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "pearl_grotto"
+   ],
+   "audio": "ruin"
+  },
+  {
+   "id": "seed_terrace",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Seed Terraces",
+   "desc": "Ringed garden terraces, still growing on their own.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "emerald_wetlands",
+    "sunken_gardens"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 10,
+   "height": 4,
+   "below": 0,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "star_dial",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Star Dial",
+   "desc": "A ring of carved stones around a pointer that aims at the ceiling.",
+   "culture": "star",
+   "regions": [
+    "starlight_caverns",
+    "crystal_deep"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 8,
+   "height": 9,
+   "below": 0,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "fungal_hall",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Overgrown Hall",
+   "desc": "A great hall that a mushroom has slowly claimed.",
+   "culture": "gardener",
+   "regions": [
+    "fungal_expanse",
+    "rootwild"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 9,
+   "height": 13,
+   "below": 0,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "ice_hermitage",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Frozen Hermitage",
+   "desc": "A hermit's house, half swallowed by ice.",
+   "culture": "lantern",
+   "regions": [
+    "everfrost"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 7,
+   "height": 7,
+   "below": 0,
+   "weight": 5,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "stilt_village",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Stilt Houses",
+   "desc": "Platforms on tall posts above the wet ground. One has fallen.",
+   "culture": "tide",
+   "regions": [
+    "emerald_wetlands",
+    "flooded_depths",
+    "sunken_gardens"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 11,
+   "height": 6,
+   "below": 2,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "storm_tower",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Lightning Tower",
+   "desc": "A tower crowned with copper, built to call the sparks down.",
+   "culture": "lantern",
+   "regions": [
+    "stormstone_caverns"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 6,
+   "height": 20,
+   "below": 0,
+   "weight": 5,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "quarry",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Old Quarry",
+   "desc": "Terraced cuts in the rock and a crane that still stands.",
+   "culture": "wright",
+   "regions": [
+    "hollow_peaks",
+    "petrified_forest",
+    "stormstone_caverns",
+    "crystal_deep"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 11,
+   "height": 9,
+   "below": 5,
+   "weight": 4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "silent_ruin",
+   "category": "ruin",
+   "scale": "regional",
+   "name": "Silent Ruins",
+   "desc": "Broken columns furred with a strange growth. The air feels listened to.",
+   "culture": "silent",
+   "regions": [
+    "the_abyss"
+   ],
+   "layers": [
+    "deep"
+   ],
+   "radius": 9,
+   "height": 8,
+   "below": 0,
+   "weight": 6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin"
+  },
+  {
+   "id": "vault_gatehouse",
+   "category": "ruin",
+   "scale": "significant",
+   "name": "Vault Gatehouse",
+   "desc": "Twin towers guard a gate into nothing. What did it keep out, or in?",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 20,
+   "height": 15,
+   "below": 0,
+   "weight": 1.6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "gatehouse_armory"
+   ],
+   "audio": "ruin_major"
+  },
+  {
+   "id": "aqueduct",
+   "category": "ruin",
+   "scale": "significant",
+   "name": "Aqueduct",
+   "desc": "Arches carry a channel across the cavern. Water still runs in places.",
+   "culture": "wright",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "flooded_depths",
+    "emerald_wetlands",
+    "sunken_gardens",
+    "hollow_peaks"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 20,
+   "height": 13,
+   "below": 0,
+   "weight": 1.4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "aqueduct_channel"
+   ],
+   "audio": "ruin_major"
+  },
+  {
+   "id": "market_square",
+   "category": "ruin",
+   "scale": "significant",
+   "name": "Lost Market",
+   "desc": "Empty stalls around a dry fountain. It must have been loud, once.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 14,
+   "height": 7,
+   "below": 0,
+   "weight": 1.6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin_major"
+  },
+  {
+   "id": "great_library",
+   "category": "ruin",
+   "scale": "significant",
+   "name": "Great Library",
+   "desc": "Shelves upon shelves. Most books are dust, not all.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 16,
+   "height": 12,
+   "below": 0,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [
+    "library_stacks"
+   ],
+   "audio": "ruin_major"
+  },
+  {
+   "id": "amphitheatre",
+   "category": "ruin",
+   "scale": "significant",
+   "name": "Amphitheatre",
+   "desc": "Tiered stone seats facing an empty stage. Your footsteps carry.",
+   "culture": "star",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 17,
+   "height": 9,
+   "below": 0,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin_major"
+  },
+  {
+   "id": "foundry_complex",
+   "category": "ruin",
+   "scale": "significant",
+   "name": "Ruined Foundry",
+   "desc": "Furnaces, rails and chimneys. This was a place of work.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin",
+    "stormstone_caverns",
+    "hollow_peaks",
+    "petrified_forest"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 15,
+   "height": 14,
+   "below": 0,
+   "weight": 1.4,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "ruin_major"
+  },
+  {
+   "id": "colossus",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The Seated Colossus",
+   "desc": "A giant carved from the rock sits with its hands on its knees, watching.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 11,
+   "height": 32,
+   "below": 0,
+   "weight": 0.7,
+   "aquatic": false,
+   "minSpawn": 300,
+   "secrets": [
+    "colossus_heart"
+   ],
+   "audio": "landmark"
+  },
+  {
+   "id": "great_stair",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The Great Stair",
+   "desc": "A stair wide enough for a crowd climbs to a landing above the cavern.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 20,
+   "height": 32,
+   "below": 0,
+   "weight": 0.6,
+   "aquatic": false,
+   "minSpawn": 300,
+   "secrets": [
+    "stair_landing"
+   ],
+   "audio": "landmark"
+  },
+  {
+   "id": "sky_bridge",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The High Bridge",
+   "desc": "A slender arch leaps between two pillars, high above the floor.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 18,
+   "height": 22,
+   "below": 0,
+   "weight": 0.7,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "lantern_spire",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Lantern Spire",
+   "desc": "A copper tower, its lamp still burning. You can see it from far away.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 6,
+   "height": 34,
+   "below": 0,
+   "weight": 0.8,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "root_arch",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The Root Arch",
+   "desc": "A root as thick as a house rises out of the ground and dives back in.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 13,
+   "height": 14,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "crystal_cathedral",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Crystal Cathedral",
+   "desc": "Spires of living crystal hum around a pale nave.",
+   "culture": "star",
+   "regions": [
+    "crystal_deep"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 14,
+   "height": 22,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "frozen_falls",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Frozen Falls",
+   "desc": "A waterfall stopped mid-fall, blue and silent.",
+   "culture": "tide",
+   "regions": [
+    "everfrost"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 9,
+   "height": 20,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [
+    "ice_tomb"
+   ],
+   "audio": "landmark"
+  },
+  {
+   "id": "ember_caldera",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Ember Caldera",
+   "desc": "Black monoliths stand around a glowing pool.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 12,
+   "height": 18,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "sunken_dome",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Sunken Dome",
+   "desc": "A great dome of sea-glass, half drowned.",
+   "culture": "tide",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 10,
+   "height": 10,
+   "below": 4,
+   "weight": 1.0,
+   "aquatic": true,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "mushroom_ring",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Giants' Ring",
+   "desc": "Giant mushrooms stand in a perfect circle around a glowing lawn.",
+   "culture": "gardener",
+   "regions": [
+    "fungal_expanse"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 13,
+   "height": 16,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "petrified_titan",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The Stone Titan",
+   "desc": "A tree turned to stone, older than any forest.",
+   "culture": "gardener",
+   "regions": [
+    "petrified_forest"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 10,
+   "height": 30,
+   "below": 0,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [
+    "titan_hollow"
+   ],
+   "audio": "landmark"
+  },
+  {
+   "id": "star_orrery",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The Great Orrery",
+   "desc": "Rings within rings, frozen mid-turn around a starstone heart.",
+   "culture": "star",
+   "regions": [
+    "starlight_caverns"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 16,
+   "height": 28,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [
+    "orrery_core"
+   ],
+   "audio": "landmark"
+  },
+  {
+   "id": "storm_pylons",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Storm Pylons",
+   "desc": "Three pylons strung with copper hum before every flash.",
+   "culture": "lantern",
+   "regions": [
+    "stormstone_caverns"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 12,
+   "height": 26,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "hanging_gardens",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Hanging Gardens",
+   "desc": "Terraced gardens step upward, water spilling from each.",
+   "culture": "gardener",
+   "regions": [
+    "golden_grove",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 13,
+   "height": 16,
+   "below": 0,
+   "weight": 1.0,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "obelisk_field",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "Field of Obelisks",
+   "desc": "Leaning stones carved with the same six signs.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 14,
+   "height": 16,
+   "below": 0,
+   "weight": 0.6,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [],
+   "audio": "landmark"
+  },
+  {
+   "id": "silent_bell",
+   "category": "landmark",
+   "scale": "landmark",
+   "name": "The Silent Bell",
+   "desc": "A bell the size of a house hangs over an altar. It has not rung for a long time.",
+   "culture": "silent",
+   "regions": [
+    "the_abyss"
+   ],
+   "layers": [
+    "deep"
+   ],
+   "radius": 10,
+   "height": 28,
+   "below": 8,
+   "weight": 1.4,
+   "aquatic": false,
+   "minSpawn": 200,
+   "secrets": [
+    "bell_chamber"
+   ],
+   "audio": "landmark"
+  },
+  {
+   "id": "sealed_cellar",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Sealed Cellar",
+   "desc": "A ruined house with a cellar door that stuck. Something below is shut tight.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 7,
+   "height": 6,
+   "below": 9,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "smugglers_den",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Smugglers' Den",
+   "desc": "A hidden cave-mouth with boot-worn steps going down.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 12,
+   "height": 6,
+   "below": 9,
+   "weight": 1.8,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "drowned_crypt",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Drowned Crypt",
+   "desc": "A crypt whose stairs go down into still water.",
+   "culture": "tide",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 12,
+   "height": 6,
+   "below": 10,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "kiln_vault",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Kiln Vault",
+   "desc": "Heat rises from a kiln's mouth that leads down, not in.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 14,
+   "height": 7,
+   "below": 10,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "spore_warren",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Spore Warren",
+   "desc": "Tunnels under a mushroom, breathing spores.",
+   "culture": "gardener",
+   "regions": [
+    "fungal_expanse",
+    "rootwild"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 12,
+   "height": 9,
+   "below": 9,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "frost_cistern",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Frost Cistern",
+   "desc": "An ice-rimmed stair into a cistern that breathes cold.",
+   "culture": "lantern",
+   "regions": [
+    "everfrost"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 14,
+   "height": 5,
+   "below": 11,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "echo_vault",
+   "category": "dungeon",
+   "scale": "small",
+   "name": "Echo Vault",
+   "desc": "A stair under a stone ring. Sounds come back changed.",
+   "culture": "wright",
+   "regions": [
+    "crystal_deep",
+    "starlight_caverns",
+    "hollow_peaks"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 13,
+   "height": 7,
+   "below": 10,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 220,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "lantern_works",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Lantern Works",
+   "desc": "A League workshop with a lift shaft into the dark.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 15,
+   "height": 8,
+   "below": 18,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "warden_barracks",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Warden Barracks",
+   "desc": "A walled barracks. The gong in the yard is still hung.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 13,
+   "height": 8,
+   "below": 10,
+   "weight": 1.1,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "tide_temple",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Tide Temple",
+   "desc": "A pillared temple whose lower halls lie under water.",
+   "culture": "tide",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 14,
+   "height": 9,
+   "below": 18,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "seed_vault",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Seed Vault",
+   "desc": "A domed hatch in a garden. Under it, a vault.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "emerald_wetlands",
+    "fungal_expanse",
+    "sunken_gardens"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 15,
+   "height": 5,
+   "below": 11,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "star_observatory",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Observatory",
+   "desc": "A domed tower with a telescope aimed at the stone sky.",
+   "culture": "star",
+   "regions": [
+    "starlight_caverns",
+    "crystal_deep",
+    "hollow_peaks"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 8,
+   "height": 21,
+   "below": 8,
+   "weight": 1.2,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "stormworks",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Stormworks",
+   "desc": "A generator hall over a deep pit. Something here once made lightning.",
+   "culture": "lantern",
+   "regions": [
+    "stormstone_caverns"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 15,
+   "height": 8,
+   "below": 18,
+   "weight": 1.4,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "ossuary",
+   "category": "dungeon",
+   "scale": "medium",
+   "name": "Ossuary",
+   "desc": "A chapel whose stair leads to the bones of the old dead.",
+   "culture": "silent",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 15,
+   "height": 7,
+   "below": 10,
+   "weight": 1.1,
+   "aquatic": false,
+   "minSpawn": 260,
+   "secrets": [],
+   "audio": "dungeon"
+  },
+  {
+   "id": "wright_vault",
+   "category": "dungeon",
+   "scale": "large",
+   "name": "The Sealed Vault",
+   "desc": "A gate court with statues and a stair into the deep. The great door below is shut.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 20,
+   "height": 12,
+   "below": 20,
+   "weight": 0.45,
+   "aquatic": false,
+   "minSpawn": 500,
+   "secrets": [],
+   "audio": "dungeon_major"
+  },
+  {
+   "id": "sunken_archive",
+   "category": "dungeon",
+   "scale": "large",
+   "name": "Drowned Archive",
+   "desc": "A ring of stone above a flooded stair. Shelves sway below the water.",
+   "culture": "tide",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 16,
+   "height": 4,
+   "below": 12,
+   "weight": 0.6,
+   "aquatic": false,
+   "minSpawn": 500,
+   "secrets": [],
+   "audio": "dungeon_major"
+  },
+  {
+   "id": "deep_foundry",
+   "category": "dungeon",
+   "scale": "large",
+   "name": "Deep Foundry",
+   "desc": "A foundry whose works go far below the floor, still warm.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 17,
+   "height": 20,
+   "below": 12,
+   "weight": 0.6,
+   "aquatic": false,
+   "minSpawn": 500,
+   "secrets": [],
+   "audio": "dungeon_major"
+  },
+  {
+   "id": "singing_hall",
+   "category": "dungeon",
+   "scale": "large",
+   "name": "Singing Hall",
+   "desc": "A stair into crystal. The air hums in chords.",
+   "culture": "star",
+   "regions": [
+    "crystal_deep"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 16,
+   "height": 8,
+   "below": 12,
+   "weight": 0.6,
+   "aquatic": false,
+   "minSpawn": 500,
+   "secrets": [],
+   "audio": "dungeon_major"
+  },
+  {
+   "id": "heartwood",
+   "category": "dungeon",
+   "scale": "exceptional",
+   "name": "The Heartwood",
+   "desc": "The greatest root of all goes down into the floor, and so does a stair.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 20,
+   "height": 20,
+   "below": 14,
+   "weight": 0.25,
+   "aquatic": false,
+   "minSpawn": 1500,
+   "secrets": [],
+   "audio": "dungeon_exceptional"
+  },
+  {
+   "id": "silent_sanctum",
+   "category": "dungeon",
+   "scale": "exceptional",
+   "name": "Silent Sanctum",
+   "desc": "A court of black pillars at the edge of the deep. Nothing makes a sound here.",
+   "culture": "silent",
+   "regions": [
+    "the_abyss"
+   ],
+   "layers": [
+    "deep"
+   ],
+   "radius": 20,
+   "height": 13,
+   "below": 14,
+   "weight": 0.25,
+   "aquatic": false,
+   "minSpawn": 900,
+   "secrets": [],
+   "audio": "dungeon_exceptional"
+  },
+  {
+   "id": "waterfall_grotto",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Hidden Grotto",
+   "desc": "A dry room behind falling water.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "emerald_wetlands",
+    "flooded_depths",
+    "sunken_gardens",
+    "hollow_peaks"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 8,
+   "below": 0,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "hollow_pillar",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Hollow Pillar",
+   "desc": "A stone column, hollow all the way up.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 4,
+   "height": 17,
+   "below": 0,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "buried_reliquary",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Buried Reliquary",
+   "desc": "Under the cairn, a room of offerings.",
+   "culture": "wright",
+   "regions": [],
+   "layers": [
+    "upper"
+   ],
+   "radius": 6,
+   "height": 5,
+   "below": 5,
+   "weight": 1.6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "hermit_cell",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Hermit's Cell",
+   "desc": "Someone lived inside the rock itself.",
+   "culture": "lantern",
+   "regions": [],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 5,
+   "height": 7,
+   "below": 0,
+   "weight": 1.6,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "fungal_heart",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Fungal Heart",
+   "desc": "Under the great mushroom, the roots make a room.",
+   "culture": "gardener",
+   "regions": [
+    "fungal_expanse"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 12,
+   "below": 7,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "ember_shrine",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Ember Shrine",
+   "desc": "A shrine behind a seam of fire.",
+   "culture": "ember",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 5,
+   "height": 7,
+   "below": 0,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "star_window",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Star Window",
+   "desc": "A room under a floor of stars.",
+   "culture": "star",
+   "regions": [
+    "starlight_caverns"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 5,
+   "height": 2,
+   "below": 7,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "drowned_bell",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Drowned Bell",
+   "desc": "Something rings beneath still water.",
+   "culture": "tide",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 4,
+   "height": 2,
+   "below": 7,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "root_hollow",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Root Hollow",
+   "desc": "A hollow inside a living root.",
+   "culture": "gardener",
+   "regions": [
+    "rootwild",
+    "golden_grove"
+   ],
+   "layers": [
+    "upper"
+   ],
+   "radius": 5,
+   "height": 11,
+   "below": 0,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  },
+  {
+   "id": "crystal_geode",
+   "category": "secret",
+   "scale": "minor",
+   "name": "Geode Heart",
+   "desc": "A crystal egg the size of a room.",
+   "culture": "star",
+   "regions": [
+    "crystal_deep"
+   ],
+   "layers": [
+    "upper",
+    "deep"
+   ],
+   "radius": 7,
+   "height": 11,
+   "below": 2,
+   "weight": 2.0,
+   "aquatic": false,
+   "minSpawn": 0,
+   "secrets": [],
+   "audio": "secret"
+  }
+ ],
+ "secrets": [
+  {
+   "id": "well_bottom",
+   "name": "The Well's Hidden Tunnel",
+   "desc": "Someone dug sideways at the bottom of the well."
+  },
+  {
+   "id": "cellar_beneath",
+   "name": "The Hidden Cellar",
+   "desc": "Under the floor, the family kept what mattered most."
+  },
+  {
+   "id": "forge_strongbox",
+   "name": "The Smith's Strongbox",
+   "desc": "Bricked in beneath the anvil."
+  },
+  {
+   "id": "pearl_grotto",
+   "name": "The Pearl Grotto",
+   "desc": "A secret room under the shrine."
+  },
+  {
+   "id": "gatehouse_armory",
+   "name": "The Hidden Armory",
+   "desc": "Behind a false wall, the garrison's spare gear."
+  },
+  {
+   "id": "aqueduct_channel",
+   "name": "The Inner Channel",
+   "desc": "Inside the pier, a maintenance shaft."
+  },
+  {
+   "id": "library_stacks",
+   "name": "The Secret Stacks",
+   "desc": "The books they did not want borrowed."
+  },
+  {
+   "id": "colossus_heart",
+   "name": "The Colossus' Heart",
+   "desc": "A chamber in the giant's chest."
+  },
+  {
+   "id": "stair_landing",
+   "name": "The Landing Door",
+   "desc": "At the top of the stair, a room waited for those who could read the signs."
+  },
+  {
+   "id": "titan_hollow",
+   "name": "The Titan's Crown",
+   "desc": "High in the stone tree, a hidden floor."
+  },
+  {
+   "id": "orrery_core",
+   "name": "The Orrery's Core",
+   "desc": "Inside the starstone heart."
+  },
+  {
+   "id": "bell_chamber",
+   "name": "Beneath the Bell",
+   "desc": "A chamber under the altar."
+  },
+  {
+   "id": "ice_tomb",
+   "name": "The Ice Tomb",
+   "desc": "Behind the frozen fall."
+  },
+  {
+   "id": "lantern_vault",
+   "name": "The Lamp Vault",
+   "desc": "Where the League kept its best lamps."
+  },
+  {
+   "id": "observatory_crypt",
+   "name": "The Observers' Crypt",
+   "desc": "Under the telescope floor."
+  },
+  {
+   "id": "ossuary_reliquary",
+   "name": "The Reliquary",
+   "desc": "Behind the bones."
+  },
+  {
+   "id": "vault_archive",
+   "name": "The Vault Archive",
+   "desc": "The record of the vault, kept apart."
+  },
+  {
+   "id": "waterfall_grotto",
+   "name": "The Hidden Grotto",
+   "desc": "A dry room behind falling water."
+  },
+  {
+   "id": "hollow_pillar",
+   "name": "The Hollow Pillar",
+   "desc": "A stone column, hollow all the way up."
+  },
+  {
+   "id": "buried_reliquary",
+   "name": "The Buried Reliquary",
+   "desc": "Under the cairn, a room of offerings."
+  },
+  {
+   "id": "hermit_cell",
+   "name": "The Hermit's Cell",
+   "desc": "Someone lived inside the rock itself."
+  },
+  {
+   "id": "fungal_heart",
+   "name": "The Fungal Heart",
+   "desc": "Under the great mushroom, the roots make a room."
+  },
+  {
+   "id": "ember_shrine",
+   "name": "The Ember Shrine",
+   "desc": "A shrine behind a seam of fire."
+  },
+  {
+   "id": "star_window",
+   "name": "The Star Window",
+   "desc": "A room under a floor of stars."
+  },
+  {
+   "id": "drowned_bell",
+   "name": "The Drowned Bell",
+   "desc": "Something rings beneath still water."
+  },
+  {
+   "id": "root_hollow",
+   "name": "The Root Hollow",
+   "desc": "A hollow inside a living root."
+  },
+  {
+   "id": "crystal_geode",
+   "name": "The Geode Heart",
+   "desc": "A crystal egg the size of a room."
+  }
+ ],
+ "records": [
+  {
+   "id": "inscription_wright_1",
+   "title": "Carved Lintel",
+   "culture": "wright",
+   "voice": "a carving in the six signs",
+   "text": "WHAT IS SEALED IS KEPT. WHAT IS KEPT IS NOT LOST.",
+   "regions": []
+  },
+  {
+   "id": "inscription_wright_2",
+   "title": "Carved Plinth",
+   "culture": "wright",
+   "voice": "a carving in the six signs",
+   "text": "Six signs to open, six to close. Spiral, eye, wave, flame, star, key.",
+   "regions": []
+  },
+  {
+   "id": "inscription_wright_3",
+   "title": "Worn Relief",
+   "culture": "wright",
+   "voice": "a carving in the six signs",
+   "text": "We closed the sky so the deep could breathe. Do not open what we closed.",
+   "regions": []
+  },
+  {
+   "id": "inscription_wright_4",
+   "title": "Step Inscription",
+   "culture": "wright",
+   "voice": "a carving in the six signs",
+   "text": "Count the steps. Each was cut by a hand that knew why.",
+   "regions": []
+  },
+  {
+   "id": "inscription_wright_5",
+   "title": "Door Frame",
+   "culture": "wright",
+   "voice": "a carving in the six signs",
+   "text": "The door listens. Speak to it in signs, not in force.",
+   "regions": []
+  },
+  {
+   "id": "inscription_wright_6",
+   "title": "Cracked Tablet",
+   "culture": "wright",
+   "voice": "a carving in the six signs",
+   "text": "When the engines falter, the light goes from the stone. Wait. It returns.",
+   "regions": []
+  },
+  {
+   "id": "inscription_lantern_1",
+   "title": "Road Marker",
+   "culture": "lantern",
+   "voice": "a League road-marker",
+   "text": "Waystation: 6 lamps north. Water at the pump. Lamp oil: none. Sorry.",
+   "regions": []
+  },
+  {
+   "id": "inscription_lantern_2",
+   "title": "Road Marker",
+   "culture": "lantern",
+   "voice": "a League road-marker",
+   "text": "THIS ROAD KEPT BY THE LEAGUE. Leave the posts lit for the next walker.",
+   "regions": []
+  },
+  {
+   "id": "inscription_lantern_3",
+   "title": "Road Marker",
+   "culture": "lantern",
+   "voice": "a League road-marker",
+   "text": "Old vault 11 lamps east. CLOSED BY ORDER. Do not reopen.",
+   "regions": []
+  },
+  {
+   "id": "inscription_lantern_4",
+   "title": "Scratched Plate",
+   "culture": "lantern",
+   "voice": "a League road-marker",
+   "text": "Lamps dark again. Third time this season. Walk in pairs.",
+   "regions": []
+  },
+  {
+   "id": "inscription_lantern_5",
+   "title": "Road Marker",
+   "culture": "lantern",
+   "voice": "a League road-marker",
+   "text": "From here the crystal country. Lamps burn brighter. Mind your eyes.",
+   "regions": []
+  },
+  {
+   "id": "inscription_tide_1",
+   "title": "Shell Carving",
+   "culture": "tide",
+   "voice": "words sung into stone",
+   "text": "The water remembers every voice. Sing softly, so it remembers you kindly.",
+   "regions": []
+  },
+  {
+   "id": "inscription_tide_2",
+   "title": "Shell Carving",
+   "culture": "tide",
+   "voice": "words sung into stone",
+   "text": "Here we gave the shrine to the water, so it would never be forgotten.",
+   "regions": []
+  },
+  {
+   "id": "inscription_tide_3",
+   "title": "Shell Carving",
+   "culture": "tide",
+   "voice": "words sung into stone",
+   "text": "The old ones went down into the deep water and did not come back. We sing for them.",
+   "regions": []
+  },
+  {
+   "id": "inscription_tide_4",
+   "title": "Shell Carving",
+   "culture": "tide",
+   "voice": "words sung into stone",
+   "text": "Offer what the water gives you, and it will give again.",
+   "regions": []
+  },
+  {
+   "id": "inscription_ember_1",
+   "title": "Oath Plate",
+   "culture": "ember",
+   "voice": "an oath cut into iron",
+   "text": "KEEP THE FIRES LIT. SEVEN LINKS, ONE CHAIN, NO BREAK.",
+   "regions": []
+  },
+  {
+   "id": "inscription_ember_2",
+   "title": "Oath Plate",
+   "culture": "ember",
+   "voice": "an oath cut into iron",
+   "text": "When the forge goes dark, the world goes cold. So we were told. So we tell.",
+   "regions": []
+  },
+  {
+   "id": "inscription_ember_3",
+   "title": "Oath Plate",
+   "culture": "ember",
+   "voice": "an oath cut into iron",
+   "text": "The first smiths found these fires already burning. We have only fed them.",
+   "regions": []
+  },
+  {
+   "id": "inscription_ember_4",
+   "title": "Oath Plate",
+   "culture": "ember",
+   "voice": "an oath cut into iron",
+   "text": "Light the hearths in the order of the tally, or not at all.",
+   "regions": []
+  },
+  {
+   "id": "inscription_gardener_1",
+   "title": "Garden Stone",
+   "culture": "gardener",
+   "voice": "a garden stone",
+   "text": "Every seed is a door. Plant it, and wait for it to open.",
+   "regions": []
+  },
+  {
+   "id": "inscription_gardener_2",
+   "title": "Garden Stone",
+   "culture": "gardener",
+   "voice": "a garden stone",
+   "text": "These seeds came down from the great tree. Keep them dry and keep them dark.",
+   "regions": []
+  },
+  {
+   "id": "inscription_gardener_3",
+   "title": "Garden Stone",
+   "culture": "gardener",
+   "voice": "a garden stone",
+   "text": "We buried our dead with seeds in their hands, so they would have something to do.",
+   "regions": []
+  },
+  {
+   "id": "inscription_gardener_4",
+   "title": "Garden Stone",
+   "culture": "gardener",
+   "voice": "a garden stone",
+   "text": "A winter without seasons came. The gardens slept. They will wake.",
+   "regions": []
+  },
+  {
+   "id": "inscription_star_1",
+   "title": "Star Notation",
+   "culture": "star",
+   "voice": "a star-reader's notation",
+   "text": "The ceiling is a lens. Behind it, the true sky. We have measured its stars.",
+   "regions": []
+  },
+  {
+   "id": "inscription_star_2",
+   "title": "Star Notation",
+   "culture": "star",
+   "voice": "a star-reader's notation",
+   "text": "Point the eye at the brightest stone and wait for it to move. (It has not moved.)",
+   "regions": []
+  },
+  {
+   "id": "inscription_star_3",
+   "title": "Star Notation",
+   "culture": "star",
+   "voice": "a star-reader's notation",
+   "text": "Light bends. Turn the mirrors and the light will go where you ask.",
+   "regions": []
+  },
+  {
+   "id": "inscription_star_4",
+   "title": "Star Notation",
+   "culture": "star",
+   "voice": "a star-reader's notation",
+   "text": "The lens clouded in the year of the Dimming. We kept counting anyway.",
+   "regions": []
+  },
+  {
+   "id": "inscription_silent_1",
+   "title": "Silent Marks",
+   "culture": "silent",
+   "voice": "marks that make no sound",
+   "text": "...",
+   "regions": []
+  },
+  {
+   "id": "inscription_silent_2",
+   "title": "Silent Marks",
+   "culture": "silent",
+   "voice": "marks that make no sound",
+   "text": "Below us it sleeps. Above us they forget. Between, we keep quiet.",
+   "regions": []
+  },
+  {
+   "id": "inscription_silent_3",
+   "title": "Silent Marks",
+   "culture": "silent",
+   "voice": "marks that make no sound",
+   "text": "Put out every flame. In the dark, the signs will show the way.",
+   "regions": []
+  },
+  {
+   "id": "inscription_silent_4",
+   "title": "Silent Marks",
+   "culture": "silent",
+   "voice": "marks that make no sound",
+   "text": "Not yet. Not yet. Not yet.",
+   "regions": []
+  },
+  {
+   "id": "league_journal_1",
+   "title": "Lamplighter's Journal",
+   "culture": "lantern",
+   "voice": "Oda, lamplighter of the eastern road",
+   "text": "Day 41. The lamps went dark again between the third and fourth posts. I walked it with a hand on the wall. Something breathed in the dark, or I did.",
+   "regions": []
+  },
+  {
+   "id": "league_journal_2",
+   "title": "Lamplighter's Journal",
+   "culture": "lantern",
+   "voice": "Oda, lamplighter of the eastern road",
+   "text": "The Guild says the luminite is failing because we opened the old vaults. I say the luminite is failing and we opened the vaults. Not the same thing.",
+   "regions": []
+  },
+  {
+   "id": "league_ledger",
+   "title": "Waystation Ledger",
+   "culture": "lantern",
+   "voice": "the keeper of a waystation",
+   "text": "Lamp oil: 0. Bread: 4 loaves. Travellers this week: 2. Travellers last week: 11. If no one comes by the turn of the month I will close the station.",
+   "regions": []
+  },
+  {
+   "id": "league_letter",
+   "title": "Unsent Letter",
+   "culture": "lantern",
+   "voice": "someone signing only 'your brother'",
+   "text": "I will come home when the road is lit again. Tell mother the crystal country is beautiful. Do not tell her about the dark.",
+   "regions": []
+  },
+  {
+   "id": "league_order",
+   "title": "Guild Order",
+   "culture": "lantern",
+   "voice": "the Lantern League council",
+   "text": "By order of the council, the vault at the end of the eleventh road is to be sealed and its records burned. The council regrets the deaths.",
+   "regions": []
+  },
+  {
+   "id": "wright_fragment_1",
+   "title": "Vault Record",
+   "culture": "wright",
+   "voice": "a vault-keeper",
+   "text": "Cycle 9. The engines hum lower. We have closed the outer doors. The sleepers are counted: all present.",
+   "regions": []
+  },
+  {
+   "id": "wright_fragment_2",
+   "title": "Vault Record",
+   "culture": "wright",
+   "voice": "a vault-keeper",
+   "text": "To whoever opens this: we are not gone. We are waiting. Do not wake us without reason.",
+   "regions": []
+  },
+  {
+   "id": "wright_fragment_3",
+   "title": "Builder's Note",
+   "culture": "wright",
+   "voice": "a stone-cutter",
+   "text": "The colossus took four generations. The face is my grandmother's. Nobody else knows that, and now you do.",
+   "regions": []
+  },
+  {
+   "id": "tide_song",
+   "title": "Drowned Hymn",
+   "culture": "tide",
+   "voice": "a Tide Choir singer",
+   "text": "Water over stone, water over bone, carry us home. Water over gate, water over grate, we will wait.",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens"
+   ]
+  },
+  {
+   "id": "tide_letter",
+   "title": "Note in a Bottle",
+   "culture": "tide",
+   "voice": "a young chorister",
+   "text": "They are flooding the temple tomorrow. I hid my pearl in the grotto under the altar. If you find it, it was mine.",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ]
+  },
+  {
+   "id": "ember_log",
+   "title": "Furnace Log",
+   "culture": "ember",
+   "voice": "a furnace-warden",
+   "text": "The deep furnace burns without fuel. I have fed it nothing for a week. It burns. I asked the elders why. They told me to keep feeding it.",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin"
+   ]
+  },
+  {
+   "id": "ember_complaint",
+   "title": "Complaint",
+   "culture": "ember",
+   "voice": "a junior smith",
+   "text": "Seven links, one chain. Seven hearths, no rest. When I asked what would happen if a hearth went out, they made me tend it alone for a month.",
+   "regions": []
+  },
+  {
+   "id": "gardener_almanac",
+   "title": "Seed Almanac",
+   "culture": "gardener",
+   "voice": "a seed-keeper",
+   "text": "Ancient seed: plant on mineral ground. Patience. Patience. More patience. It will fruit. It always fruits.",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "petrified_forest"
+   ]
+  },
+  {
+   "id": "gardener_letter",
+   "title": "Letter to a Daughter",
+   "culture": "gardener",
+   "voice": "a gardener",
+   "text": "I planted the terraces in rings so you could find your way to the middle with your eyes closed. Count the rings. You'll find me there.",
+   "regions": []
+  },
+  {
+   "id": "star_log_1",
+   "title": "Observation Log",
+   "culture": "star",
+   "voice": "an observer",
+   "text": "Night 3,112 (by our count, there are no nights). The bright stone in the north ceiling has dimmed by a hair. We recorded it. No one cares.",
+   "regions": [
+    "starlight_caverns"
+   ]
+  },
+  {
+   "id": "star_log_2",
+   "title": "Observation Log",
+   "culture": "star",
+   "voice": "an observer",
+   "text": "Mirror test: the beam reached the receiver on the fourth try. The lens is not a lens. It is a lock. Do not tell the others yet.",
+   "regions": []
+  },
+  {
+   "id": "silent_tablet",
+   "title": "Clay Tablet",
+   "culture": "silent",
+   "voice": "no name, only a pressed handprint",
+   "text": "We learned to walk without sound. We learned to speak without sound. It still dreams. We are the quiet around its dreams.",
+   "regions": [
+    "the_abyss"
+   ]
+  },
+  {
+   "id": "hermit_diary",
+   "title": "Hermit's Diary",
+   "culture": "lantern",
+   "voice": "a hermit",
+   "text": "Third winter alone. The ice sings at night. I have stopped answering it.",
+   "regions": [
+    "everfrost"
+   ]
+  },
+  {
+   "id": "smuggler_note",
+   "title": "Crumpled Note",
+   "culture": "lantern",
+   "voice": "a smuggler",
+   "text": "Hoist needs the right weight or the gate won't lift. Count the notches. Don't be greedy, it tips.",
+   "regions": []
+  },
+  {
+   "id": "explorer_page_1",
+   "title": "Explorer's Page",
+   "culture": "lantern",
+   "voice": "an explorer who did not sign",
+   "text": "Food for three days, light for two. If you read this, I went on without enough light. Bring more than you think.",
+   "regions": []
+  },
+  {
+   "id": "explorer_page_2",
+   "title": "Explorer's Page",
+   "culture": "lantern",
+   "voice": "an explorer who did not sign",
+   "text": "Rule one: the seals don't break. Don't waste your pick. Rule two: everything else does.",
+   "regions": []
+  },
+  {
+   "id": "explorer_page_3",
+   "title": "Explorer's Page",
+   "culture": "lantern",
+   "voice": "an explorer who did not sign",
+   "text": "The plates that look worn are worn for a reason. Step around them, or jam them with a stick.",
+   "regions": []
+  },
+  {
+   "id": "scholar_letter",
+   "title": "Scholar's Letter",
+   "culture": "star",
+   "voice": "a scholar of a later age",
+   "text": "Every people down here tells the story differently. The Vaultwrights fled, or slept, or became fire, or water, or seeds. Perhaps they are all right.",
+   "regions": []
+  }
+ ],
+ "artifacts": [
+  {
+   "id": "wright_signet",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "You sense armed trap plates near you. +1 armour toughness."
+  },
+  {
+   "id": "lamplighters_ring",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Lets you see in darkness; +0.5 Luck."
+  },
+  {
+   "id": "choir_pendant",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Hold your breath much longer and swim faster."
+  },
+  {
+   "id": "oath_band",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "+1 attack damage; burn for half as long."
+  },
+  {
+   "id": "gardeners_locket",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "+2 maximum health; you sometimes gather extra from plants."
+  },
+  {
+   "id": "readers_lens",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "You notice places from further away, and your journal records more."
+  },
+  {
+   "id": "hush_charm",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "You move quietly and quickly while sneaking."
+  },
+  {
+   "id": "compass_rose",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Step up full blocks and fall 3 blocks further unharmed."
+  },
+  {
+   "id": "warden_seal",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "+2 armour, resist knockback, but 3% slower."
+  },
+  {
+   "id": "echo_stone",
+   "kind": "accessory",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 4,
+   "desc": "Sealed doors and hidden rooms nearby glimmer for you."
+  },
+  {
+   "id": "hearth_ring",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "+2 maximum health."
+  },
+  {
+   "id": "stormcaller_band",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Static builds 50% slower; swing 8% faster."
+  },
+  {
+   "id": "frostbound_torc",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Cold builds 50% slower."
+  },
+  {
+   "id": "ashwalker_anklet",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Heat builds 40% slower; move 3% faster."
+  },
+  {
+   "id": "sporeward_mask",
+   "kind": "accessory",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 10,
+   "desc": "Spores and fumes build 50% slower."
+  },
+  {
+   "id": "drowned_crown",
+   "kind": "accessory",
+   "rarity": "legendary",
+   "unique": true,
+   "weight": 0,
+   "desc": "Breathe long underwater, swim swiftly and mine as if on land."
+  },
+  {
+   "id": "resonant_core",
+   "kind": "accessory",
+   "rarity": "legendary",
+   "unique": true,
+   "weight": 0,
+   "desc": "Hidden things glimmer, traps reveal themselves, and darkness parts for you."
+  },
+  {
+   "id": "heartwood_heart",
+   "kind": "accessory",
+   "rarity": "legendary",
+   "unique": true,
+   "weight": 0,
+   "desc": "+4 maximum health and +1 Luck. It is warm, like something alive."
+  },
+  {
+   "id": "wright_glaive",
+   "kind": "weapon",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 5,
+   "desc": "A Vaultwright guard's glaive. Long reach; bites the restless dead."
+  },
+  {
+   "id": "lamplighter_hook",
+   "kind": "weapon",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 5,
+   "desc": "A lamplighter's hook, sharpened. Marks what it strikes."
+  },
+  {
+   "id": "oathkeeper_hammer",
+   "kind": "weapon",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 5,
+   "desc": "A Concord oath-hammer. Every blow is a small fire."
+  },
+  {
+   "id": "choir_harpoon",
+   "kind": "weapon",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 5,
+   "desc": "A Choir harpoon, made to sing through water."
+  },
+  {
+   "id": "silent_edge",
+   "kind": "weapon",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 5,
+   "desc": "A blade that makes no sound, even when it strikes armour."
+  },
+  {
+   "id": "tuning_fork",
+   "kind": "utility",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 4,
+   "desc": "Rings toward sealed doors and hidden rooms within 24 blocks (cooldown)."
+  },
+  {
+   "id": "breath_shell",
+   "kind": "utility",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 4,
+   "desc": "Breathe underwater for 90 seconds (cooldown 3 minutes)."
+  },
+  {
+   "id": "homing_stone",
+   "kind": "utility",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 4,
+   "desc": "Sneak-use to remember a place; use to learn the way back to it."
+  },
+  {
+   "id": "sounding_horn",
+   "kind": "utility",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 4,
+   "desc": "Its echo reveals lurking hostile creatures for 10 seconds (cooldown)."
+  },
+  {
+   "id": "warding_bell",
+   "kind": "utility",
+   "rarity": "epic",
+   "unique": false,
+   "weight": 3,
+   "desc": "Place it: hostile creatures do not spawn naturally within 16 blocks. A safe camp."
+  },
+  {
+   "id": "wright_bust",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A stone bust of a Vaultwright face, calm and old."
+  },
+  {
+   "id": "lantern_head",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "The glass head of a League road lamp."
+  },
+  {
+   "id": "choir_conch",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A conch that hums when held near water."
+  },
+  {
+   "id": "ember_crown",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A blackened circlet from an oath-keeper's grave."
+  },
+  {
+   "id": "seed_urn",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A sealed urn. Something rattles inside: seeds?"
+  },
+  {
+   "id": "star_globe",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A sphere engraved with stars that are not ours."
+  },
+  {
+   "id": "silent_mask",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A mask without a mouth."
+  },
+  {
+   "id": "gilded_idol",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A small gilded figure, rubbed smooth by hands."
+  },
+  {
+   "id": "league_astrolabe",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A League surveying instrument, its dials stuck."
+  },
+  {
+   "id": "petrified_effigy",
+   "kind": "relic",
+   "rarity": "rare",
+   "unique": false,
+   "weight": 6,
+   "desc": "A figure carved from petrified wood."
+  }
+ ],
+ "rumors": [
+  {
+   "culture": "any",
+   "kind": "ruin",
+   "text": "There's an old {name} out there, {where}. Nobody goes. You might."
+  },
+  {
+   "culture": "any",
+   "kind": "ruin",
+   "text": "My grandmother used to talk about a {name}, {where}. I never went."
+  },
+  {
+   "culture": "any",
+   "kind": "landmark",
+   "text": "If you go {where}, you'll see something. Can't miss it. A {name}. Take a friend, it's a long way."
+  },
+  {
+   "culture": "any",
+   "kind": "dungeon",
+   "text": "Folk say there's a {name} {where}. Folk also say don't go there. I'd listen to the second part."
+  },
+  {
+   "culture": "any",
+   "kind": "dungeon",
+   "text": "A trader told me about a {name}, {where}. He said it was shut. He also said he heard it breathing."
+  },
+  {
+   "culture": "any",
+   "kind": "exceptional",
+   "text": "The scholars won't say it aloud, but I've seen the old maps. There's something called the {name}, {where}. Go prepared."
+  },
+  {
+   "culture": "any",
+   "kind": "none",
+   "text": "Old places? Down here everything's old. But nothing I'd send you to, not near here."
+  },
+  {
+   "culture": "any",
+   "kind": "none",
+   "text": "Not round here. Try asking a cartographer, or walking further than sensible people do."
+  },
+  {
+   "culture": "rootfolk",
+   "kind": "ruin",
+   "text": "Beyond the roots, {where}, there's a {name}. The leaves grow funny around it."
+  },
+  {
+   "culture": "rootfolk",
+   "kind": "landmark",
+   "text": "The elders say the ribs of the sky come down somewhere {where}. Look for a {name}."
+  },
+  {
+   "culture": "rootfolk",
+   "kind": "dungeon",
+   "text": "There's a {name} {where}. My uncle went in. He came out quieter."
+  },
+  {
+   "culture": "forgekin",
+   "kind": "ruin",
+   "text": "There's a cold forge, or what's left of one, {where}. A {name}. Shameful, letting a fire die."
+  },
+  {
+   "culture": "forgekin",
+   "kind": "dungeon",
+   "text": "The oath says keep the fires lit. Whoever built the {name} {where} kept them lit underground. Strange people."
+  },
+  {
+   "culture": "tide_dwellers",
+   "kind": "ruin",
+   "text": "The water remembers a {name}, {where}. Sing as you walk, it helps."
+  },
+  {
+   "culture": "tide_dwellers",
+   "kind": "dungeon",
+   "text": "They say the old ones went into the deep water. There's a {name}, {where}. Bring air."
+  },
+  {
+   "culture": "sporefolk",
+   "kind": "ruin",
+   "text": "The spores remember a {name}, {where}. Breathe slow there."
+  },
+  {
+   "culture": "glimmerkin",
+   "kind": "landmark",
+   "text": "If you want to see something that sings, go {where}. A {name}."
+  },
+  {
+   "culture": "stoneborn",
+   "kind": "ruin",
+   "text": "Good stone in the {name}, {where}. Shame about whoever left it."
+  },
+  {
+   "culture": "amberfolk",
+   "kind": "ruin",
+   "text": "There's an old {name}, {where}, with gardens nobody tends. They're growing anyway."
+  },
+  {
+   "culture": "astrals",
+   "kind": "landmark",
+   "text": "The ceiling lies, you know. Go {where} and look at the {name}, and tell me I'm wrong."
+  },
+  {
+   "culture": "astrals",
+   "kind": "dungeon",
+   "text": "The {name}, {where}. The old observers left their best work behind a door that only answers light."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...keep the lamps lit..."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...count the signs..."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...not yet..."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...the water remembers..."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...we are only waiting..."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...walk in pairs..."
+  },
+  {
+   "culture": "any",
+   "kind": "echo",
+   "text": "...put out the flames..."
+  }
+ ],
+ "encounters": [
+  {
+   "id": "echo_whisper",
+   "regions": [],
+   "weight": 1.0,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "A whisper near old ruins."
+  },
+  {
+   "id": "glowmoth_swarm",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "fungal_expanse",
+    "starlight_caverns",
+    "crystal_deep",
+    "sunken_gardens"
+   ],
+   "weight": 1.2,
+   "cooldown": 15,
+   "rare": false,
+   "desc": "Glowing moths."
+  },
+  {
+   "id": "rockfall",
+   "regions": [
+    "hollow_peaks",
+    "petrified_forest",
+    "stormstone_caverns",
+    "crystal_deep",
+    "ashen_hollows",
+    "crimson_basin"
+   ],
+   "weight": 0.8,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "Falling rock with a warning."
+  },
+  {
+   "id": "ore_reveal",
+   "regions": [],
+   "weight": 0.7,
+   "cooldown": 30,
+   "rare": false,
+   "desc": "A wall sloughs off and bares ore."
+  },
+  {
+   "id": "lost_pack",
+   "regions": [],
+   "weight": 0.6,
+   "cooldown": 40,
+   "rare": false,
+   "desc": "Remains of an earlier explorer."
+  },
+  {
+   "id": "abandoned_camp",
+   "regions": [],
+   "weight": 0.6,
+   "cooldown": 40,
+   "rare": false,
+   "desc": "A cold camp with supplies."
+  },
+  {
+   "id": "will_o_light",
+   "regions": [
+    "rootwild",
+    "golden_grove",
+    "fungal_expanse",
+    "starlight_caverns",
+    "crystal_deep",
+    "emerald_wetlands",
+    "sunken_gardens"
+   ],
+   "weight": 0.6,
+   "cooldown": 30,
+   "rare": false,
+   "desc": "A light leads toward something."
+  },
+  {
+   "id": "ghost_lanterns",
+   "regions": [],
+   "weight": 0.15,
+   "cooldown": 90,
+   "rare": true,
+   "desc": "A rare procession of lights."
+  },
+  {
+   "id": "spore_bloom",
+   "regions": [
+    "fungal_expanse"
+   ],
+   "weight": 1.0,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "Fungi release spores and new caps grow."
+  },
+  {
+   "id": "geyser",
+   "regions": [
+    "ashen_hollows",
+    "crimson_basin"
+   ],
+   "weight": 1.0,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "Steam bursts from the floor."
+  },
+  {
+   "id": "crystal_song",
+   "regions": [
+    "crystal_deep",
+    "starlight_caverns"
+   ],
+   "weight": 1.0,
+   "cooldown": 25,
+   "rare": false,
+   "desc": "Crystals chime and grow."
+  },
+  {
+   "id": "ice_crack",
+   "regions": [
+    "everfrost"
+   ],
+   "weight": 1.0,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "The ice groans."
+  },
+  {
+   "id": "falling_star",
+   "regions": [
+    "starlight_caverns"
+   ],
+   "weight": 0.8,
+   "cooldown": 30,
+   "rare": false,
+   "desc": "A shard of light falls."
+  },
+  {
+   "id": "static_storm",
+   "regions": [
+    "stormstone_caverns"
+   ],
+   "weight": 1.0,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "Sparks crawl over the stone."
+  },
+  {
+   "id": "drifting_raft",
+   "regions": [
+    "flooded_depths",
+    "sunken_gardens",
+    "emerald_wetlands"
+   ],
+   "weight": 0.6,
+   "cooldown": 45,
+   "rare": false,
+   "desc": "A drifting boat with cargo."
+  },
+  {
+   "id": "tremor",
+   "regions": [],
+   "weight": 0.6,
+   "cooldown": 20,
+   "rare": false,
+   "desc": "The ground trembles."
+  },
+  {
+   "id": "distant_bell",
+   "regions": [
+    "the_abyss"
+   ],
+   "weight": 0.6,
+   "cooldown": 40,
+   "rare": true,
+   "desc": "A bell tolls far away."
+  },
+  {
+   "id": "lost_page",
+   "regions": [],
+   "weight": 0.7,
+   "cooldown": 30,
+   "rare": false,
+   "desc": "A scrap of old writing."
+  }
+ ]
+}

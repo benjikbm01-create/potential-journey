@@ -1,0 +1,10 @@
+{
+ "variants": {
+  "powered=false": {
+   "model": "underdeep:block/crumbling_floor"
+  },
+  "powered=true": {
+   "model": "underdeep:block/crumbling_floor_cracked"
+  }
+ }
+}
