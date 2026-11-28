@@ -274,6 +274,34 @@ def plants_batch():
         write("plant", "block/" + n, plants.paint(n))
 
 
+# ================================================================================ batch 3: weapons, tools, armour
+
+def equipment_batch():
+    import equipment as E
+    kinds = sorted(E.SIL, key=len, reverse=True)
+    for f in sorted(os.listdir(os.path.join(TEX, "item"))):
+        n = f[:-4]
+        kind = next((k for k in kinds if n.endswith("_" + k)), None)
+        if not kind:
+            continue
+        mat = n[:-len(kind) - 1]
+        mat = {"steel_lumber": "steel"}.get(mat, mat)
+        if mat not in E.MAT:
+            continue        # unique/named weapons keep their own art (later batch)
+        write("equipment", "item/" + n, E.weapon(kind, mat))
+    for name in E.SETS:
+        icons, _ = E.armour_icons(name, S.ARMOUR_ICONS)
+        for piece, img in icons.items():
+            if os.path.exists(os.path.join(TEX, "item", f"{name}_{piece}.png")):
+                write("equipment", f"item/{name}_{piece}", img)
+
+        def painter(style, m, t, st, ac):
+            return S.armour_layers(style, m, t, st, ac)
+        l1, l2 = E.armour_layers(name, painter)
+        write("armour_layer", f"models/armor/{name}_layer_1", l1)
+        write("armour_layer", f"models/armor/{name}_layer_2", l2)
+
+
 # ================================================================================ contact sheets
 
 def sheet(batch):
@@ -307,6 +335,7 @@ def main():
     ores_and_minerals()
     wood_sets()
     plants_batch()
+    equipment_batch()
     for b in list(WRITTEN):
         sheet(b)
     print("texture remake: " + ", ".join(f"{b} {len(v)}" for b, v in WRITTEN.items()))
