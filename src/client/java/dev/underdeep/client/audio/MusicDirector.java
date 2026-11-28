@@ -101,9 +101,30 @@ public final class MusicDirector {
 
     // ------------------------------------------------------------------------------------------ context
 
-    private static boolean inUnderdeep(MinecraftClient mc) {
+    private static Object knownWorld;
+    private static boolean underdeepWorld;
+    private static String lastEco = "";
+
+    /** Whether the biome under the player is an Underdeep biome (false while its chunk is still loading). */
+    private static boolean underdeepBiome(MinecraftClient mc) {
         return mc.player != null && mc.world.getBiome(mc.player.getBlockPos()).getKey().map(k -> k.getValue().getNamespace().equals(Underdeep.MOD_ID))
                 .orElse(false);
+    }
+
+    /**
+     * Whether this client world is an Underdeep world. Sticky per world: once an Underdeep biome has been seen, unloaded
+     * chunks (teleports, fast travel, joining) never stop the music; a different world object resets it.
+     */
+    private static boolean inUnderdeep(MinecraftClient mc) {
+        if (mc.world != knownWorld) {
+            knownWorld = mc.world;
+            underdeepWorld = false;
+            lastEco = "";
+        }
+        if (!underdeepWorld && underdeepBiome(mc)) {
+            underdeepWorld = true;
+        }
+        return underdeepWorld;
     }
 
     /** The highest-priority context that applies now (before hysteresis). */
@@ -141,8 +162,10 @@ public final class MusicDirector {
         if (p.hasVehicle()) {
             return "travel";
         }
-        String biome = mc.world.getBiome(p.getBlockPos()).getKey().map(k -> k.getValue().getPath()).orElse("");
-        return "eco:" + biome.replace("_", "");
+        if (underdeepBiome(mc)) {
+            lastEco = mc.world.getBiome(p.getBlockPos()).getKey().map(k -> k.getValue().getPath()).orElse("").replace("_", "");
+        }
+        return lastEco.isEmpty() ? "fallback" : "eco:" + lastEco; // keep the last region while chunks load
     }
 
     private static boolean inCombat(MinecraftClient mc, ClientPlayerEntity p) {
@@ -330,6 +353,9 @@ public final class MusicDirector {
             MinecraftClient.getInstance().getSoundManager().stop(fading);
         }
         current = fading = null;
+        knownWorld = null;
+        underdeepWorld = false;
+        lastEco = "";
         context = candidate = serverContext = "";
         victoryTicks = combatTicks = gapTicks = 0;
         lastBossEvent = BossRenderers.audioEvent = "none";

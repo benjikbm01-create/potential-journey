@@ -275,7 +275,7 @@ See `docs/ART_DIRECTION.md`, `docs/ASSET_QUALITY.md` (quality registry), `docs/S
 | Preview renderer (front/3-4/side/rear, player scale, contact sheets) | done | `tools/preview/render_models.py` |
 | Guardian models: detail pass + structured textures | partial | still blocky; redesign needed (private previews) |
 | Original soundtrack: 73 tracks, 135 min, synthesized + composed by code, OGG streamed | done | validated by analysis only, not by ear |
-| Music director: contexts, priority, hysteresis, history, crossfades, gaps option, volume, vanilla suppression, lifecycle | done, not heard in game | server `music_context` payload for settlement/home |
+| Music director: contexts, priority, hysteresis, history, crossfades, gaps option, volume, vanilla suppression, lifecycle | done | in-game audio capture: 5 region switches, continuous with crossfades (1 bug found and fixed); combat/guardian/settlement contexts not exercised in-game |
 | NPC appearance, equipment/item icons, plants/blocks, furniture, architecture, lighting/particles, UI/Handbook/HUD, SFX/ambience | not done | registry marks them not verified / missing |
 
 ## Stage 12

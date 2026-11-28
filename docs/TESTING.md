@@ -22,10 +22,39 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Mob population study | `scripts/mob_study.sh <run-dir>` (real client joins the dedicated server; uses `<run-dir>/selftest/ecosystem_sites.txt` from a self-test) → `<run-dir>/mobstudy/mobstudy.md` |
 | Stage 1.5 matrix | `scripts/test_matrix.sh` (also runs the Stage 1.5 checks; production JAR on the official Fabric server launcher) |
 | Stage 3 targeted | `SUITE=stage2 scripts/selftest.sh …` (includes `Stage3Checks`); `scripts/stage3_matrix.sh` (3 seeds, reload, vanilla, production JAR); `ZOO=true` + `scripts/visual_tour.sh <dir>/world <dir>/selftest/tour_zoo.txt` (close-up of every creature); `scripts/mob_study.sh <dir> <secs>` (real client; wildlife per ecosystem) |
+| Stage 11 targeted | Model previews: `python3 tools/preview/render_models.py creature <id>` / `views <out> <ids>` / `sheet creatures <out>`; quality registry: `python3 tools/preview/asset_audit.py --from-screenshots`; music analysis: `tools/music/out/manifest.json`, `python3 tools/music/spectrogram.py <ogg> <png>`; in-game audio capture: write an OpenAL Soft config with `[general] drivers = wave` and `[wave] file = <out.wav>`, set the master volume above 0 in `run-client/options.txt`, then run `ALSOFT_CONF=<conf> scripts/visual_tour.sh <world> <tour>` |
 | Stage 10 targeted | `SUITE=stage10 scripts/selftest.sh <seed> <dir> create` (~4 min: cave network on generated blocks, generation cost v4/v5, combat, creature archetypes, all 13 guardians, encounter rules, final progression); slow terrain measurements: `./gradlew test --tests '*TerrainBenchmarkTest*' -Dunderdeep.bench=true` |
 | Stage 9 targeted | `SUITE=stage9 scripts/selftest.sh <seed> <dir> create` (~2–3 min: static design audit, placement, generated-site comparison, in-world mechanics of all 20 dungeons; writes `<dir>/selftest/stage9_layouts.txt` and `layout_<family>.txt` ASCII slices) |
 | Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
+
+## Results — Stage 11 (2026-11-28)
+Environment: as in Stage 1 (4 vCPU container, software OpenGL under Xvfb). There is no audio device. For the audio test,
+the client's OpenAL ran on the OpenAL Soft "Wave File Writer" backend (`ALSOFT_CONF` with `drivers = wave`), so
+everything the game played was recorded to a WAV file and analysed.
+
+| Test | Command | Result |
+|---|---|---|
+| Build + unit tests | `./gradlew build --offline` | PASS: 51 tests, 4 skipped (benchmarks), 0 failed |
+| Model previews | `python3 tools/preview/render_models.py views/sheet …` | All 60 creatures inspected in 4 views; problems found and fixed: rotation sign conventions (antlers, horns, ears, antennae, spines), the capstalker hood size, arthropod leg slabs, frog tilt, a jelly below ground, wing rest pose |
+| In-game creatures | `ZOO=true SUITE=stage2 scripts/selftest.sh 42 run-tests/s11zoo create`, then `scripts/visual_tour.sh run-tests/s11zoo/world …/tour_zoo.txt` | 60/60 species rendered in a real client (rest pose); close-ups checked for mossbuck, shadecat, capback, capstalker, tuskbriar, lanternbeetle; geometry matches the previews |
+| Walk cycle (offline) | render_models pose frames | Leg swing/knee-flex directions correct; the quadruped stride was narrowed after review |
+| Soundtrack analysis | `python3 tools/music/compose.py` (manifest) + `tools/music/spectrogram.py` | 73/73 decode; peak ≤ −1.99 dBFS; 0 clipped samples; no internal silence > 2 s; RMS −22.4 … −17.0 dBFS; octave-band balance checked (sub-bass fixed) |
+| In-game music (audio capture) | `ALSOFT_CONF=<wave conf> scripts/visual_tour.sh run-tests/s11zoo/world <5-region tour>` | Run 1 FOUND A BUG: about 4 s of silence at each teleport (biome unloaded → director stopped). Fixed with sticky world detection plus the last region. Run 2: 5 context switches (rootwild → fungal → flooded → ashen → crystal), each a new track; 0 silent half-seconds between 11.5 s and 179 s (175 s continuous); crossfades visible in the spectrogram; vanilla music absent |
+| Dedicated server, Stage 10 suite | `SUITE=stage10 scripts/selftest.sh 42 run-tests/s11_s10 create` | PASS 64/64 (server loads with `MusicContext`; no client classes) |
+| Dedicated server, audit suite | `SUITE=audit scripts/selftest.sh 42 run-tests/s11_audit create` | PASS 76/76 |
+| Stage 2/3 suite (zoo build) | `SUITE=stage2 …` | 303 passed, **3 failed**. These are stale checks not touched by Stage 11 code: missing loot tables for Stage 9/10 technical blocks; "predator hunts suitable prey" (no kill in the window); `ArrayIndexOutOfBoundsException` in `RegionId.fromLong` via `WildlifeManager.typeOf` from `Stage3Checks.behaviour`. Recorded for Stage 12 |
+
+Not tested:
+- Nobody has listened to the music.
+- Nobody has watched the creature animation in motion. Only rest poses were seen in-game; the gait was checked in
+  offline frames.
+- Combat, guardian, settlement, home and travel music contexts were not exercised in-game. Their code paths were
+  reviewed but are untested.
+- Multiplayer.
+- Real hardware performance.
+- The `/underdeep_music` command in game.
+- The gaps mode.
 
 ## Results — Stage 10 (2026-11-27)
 

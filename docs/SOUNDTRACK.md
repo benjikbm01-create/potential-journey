@@ -52,6 +52,11 @@ analysis instead (results are in `tools/music/out/manifest.json`):
   fixed by raising the taiko pitch, reducing its level, and moving the high-pass to 38 Hz.
 - Log-frequency spectrograms were checked (`tools/music/spectrogram.py <ogg> <png>`).
 
+- **In-game playback was recorded.** The client ran with OpenAL Soft's wave-file backend, so the real game mix went
+  to a WAV file. Over a 5-region tour the director switched context 5 times, and every switch crossfaded. The music
+  was continuous for 175 s with no gap. One bug was found this way and fixed: unloaded chunks after a teleport used to
+  stop the music.
+
 What still needs human ears: whether the melodies are memorable, and whether any synthesized timbre is unpleasant.
 Expect to tune per track. Each track's parameters are a single line in `TRACKS`.
 

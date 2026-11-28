@@ -40,7 +40,7 @@ def main(ingame_verified=()):
         ("Block textures", count(os.path.join(A, "textures", "block"), ".png"), "unchanged in Stage 11", "not verified"),
         ("Block / item models", count(os.path.join(A, "models"), ".json"), "unchanged in Stage 11", "not verified"),
         ("Music tracks", len(tracks), "new: original synthesized soundtrack",
-         "acceptable by analysis (decode, loudness, spectra, no gaps) — not listened to by a human"),
+         "acceptable by analysis (decode, loudness, spectra, no gaps; in-game capture continuous with crossfades) — not listened to by a human"),
         ("Sound effects / ambience", 0, "none of our own (vanilla sounds are used)", "missing"),
         ("UI / Handbook / HUD art", 0, "unchanged in Stage 11", "not verified"),
     ]

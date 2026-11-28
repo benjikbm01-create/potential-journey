@@ -51,3 +51,8 @@ every client.
 Stage 10 (`underdeep-0.11.0-stage10.jar`) **needs a new world** for the connected caves and the guardians' lairs
 (generator v5). Older worlds still open and keep their terrain exactly (no seams) and get the new combat and creature
 behaviour, but no lairs — Underdeep can only be beaten in a v5 world. Install on the server and every client.
+
+- `underdeep-0.12.0-stage11.jar` (Stage 11):
+  - rebuilt creature models and textures, new creature animation, guardian detail pass;
+  - an original 73-track soundtrack with a context-aware music director (`/underdeep_music`).
+  - About 36 MB, because the soundtrack is bundled. No new world needed.
