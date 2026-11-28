@@ -1,0 +1,25 @@
+sleep 100
+spark tps
+spark health --memory
+chunky world minecraft:overworld
+chunky center 0 0
+chunky radius 400
+chunky start
+spark profiler start --thread *
+sleep 60
+chunky progress
+spark tps
+sleep 120
+chunky progress
+spark profiler stop --save-to-file
+spark tps
+spark health --memory
+sleep 240
+chunky progress
+spark tps
+spark health --memory
+sleep 120
+chunky progress
+save-all flush
+sleep 20
+spark health --memory

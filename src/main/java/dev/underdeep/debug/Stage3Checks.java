@@ -311,6 +311,10 @@ final class Stage3Checks {
         BlockPos rb = Stage2Checks.plot(w, Stage2Checks.plotOrigin(t, RegionType.GOLDEN_GROVE, reps, 0), 6, 6, Blocks.GRASS_BLOCK.getDefaultState(), true, false);
         UnderdeepCreature a = make(w, "goldfleece", rb, true);
         UnderdeepCreature b = make(w, "goldfleece", rb.add(1, 0, 0), true);
+        if (a.homeRegion == Long.MIN_VALUE) { // fixture creatures may not have been adopted by a population yet
+            a.homeRegion = dev.underdeep.world.analysis.RegionReport.at(t, a.getBlockX(), a.getBlockY(), a.getBlockZ()).regionId().asLong();
+            b.homeRegion = a.homeRegion;
+        }
         long region = a.homeRegion;
         int capNow = RegionWildlife.capacity(a.species(), m.typeOf(region), region, UnderdeepConfig.get().wildlifeDensity,
                 UnderdeepConfig.get().rareCreatureFrequency, m.region(region).disturbance);

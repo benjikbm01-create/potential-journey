@@ -104,7 +104,9 @@ final class Stage2Checks {
                     checkModel(model, checkedModels, missingTexture);
                 }
             }
-            if (b.getLootTableKey() != null && server.getReloadableRegistries().getLootTable(b.getLootTableKey()) == LootTable.EMPTY) {
+            // blocks declared dropsNothing() (unbreakable/technical mechanisms) intentionally have no table
+            if (b.getLootTableKey() != null && b.getLootTableKey() != net.minecraft.loot.LootTables.EMPTY
+                    && server.getReloadableRegistries().getLootTable(b.getLootTableKey()) == LootTable.EMPTY) {
                 missingLoot.add(id.getPath());
             }
             if (lang == null || !lang.has(b.getTranslationKey())) {

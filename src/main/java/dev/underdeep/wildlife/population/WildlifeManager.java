@@ -141,6 +141,9 @@ public final class WildlifeManager {
     }
 
     public RegionType typeOf(long id) {
+        if (id == Long.MIN_VALUE) {
+            return null; // creature without a home region yet (not wild, or not loaded by the manager)
+        }
         RegionId rid = RegionId.fromLong(id);
         return terrain.regions(rid.layer()).typeOf(rid.cellX(), rid.cellZ());
     }
