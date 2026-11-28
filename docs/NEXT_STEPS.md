@@ -1,6 +1,27 @@
 # Underdeep — Next Steps
 
-## Immediate: user play-testing of Stage 11 (and Stage 10), then finish Stage 11 or start Stage 12
+## Stage 12 continuation (checkpoint reached 2026-11-28)
+
+Remaining, in priority order:
+1. **UD-008 (private):** audit every mandatory puzzle for recovery when an element is mined. Either make required
+   elements unbreakable or reset them from `SiteLayout`.
+2. **Real multiplayer:**
+   - 2–6 production clients joining the production server (`scripts/prod_client.sh` can launch several clients;
+     `--join-server` needs a dedicated server running);
+   - simultaneous trading and crafting;
+   - disconnects during guardian fights.
+3. **Soak:** a 1–2 hour production server run with a client walking a long tour. Watch heap, MSPT, entity counts and
+   save growth.
+4. **Exploration density:** the owner had trouble finding dungeons. Options:
+   - raise `exploration.dungeonDensity` for fresh worlds (it changes placement, so existing worlds would show partial
+     sites at the edge of explored land);
+   - more rumours and charts.
+5. **Handbook and advancement walk-through** in the production client; **EMI spoiler exposure** decision (documented in
+   MODPACK).
+6. **Worldgen CPU** (UD-006): profile `SurfacePainter.paint`, `CavernGraph.node`, `RegionMap.cellAt`, and
+   `generateFeatures`.
+
+## Previous: user play-testing of Stage 11 (and Stage 10)
 
 Do not start Stage 12 until the user assigns it. Stage 11 needs no new world. Stage 10 content still needs a generator v5 world.
 

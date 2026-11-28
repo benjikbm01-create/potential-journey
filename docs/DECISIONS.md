@@ -523,3 +523,14 @@ context, crossfades are 1.5–4 s, and vanilla music is suppressed by a mixin wh
 - Most cavern walls are vanilla blocks. Option A was chosen: a built-in resource pack, on by default and switchable, that
   restyles those blocks. This needs no worldgen change and no new world.
 - Puzzle and symbol blocks keep their exact pixels: they are remastered, never redrawn.
+
+## D-090 Settlement planning runs on a background thread (Stage 12)
+Site resolution and town plans are pure functions of the seed and terrain model, with concurrent caches.
+`EconomyManager` computes them on one daemon, low-priority planner thread and creates records on the server thread
+only once a plan is ready. This removed 0.5 s ticks; settlements appear a few seconds later than before.
+
+## D-091 Compatibility is tested on production launchers (Stage 12)
+- Mod compatibility uses the official Fabric server launcher and a portablemc-installed Fabric client running the
+  production JAR (`scripts/server_compat.sh`, `scripts/prod_client.sh`).
+- Loom's development client remaps mod mixins differently: Sodium fails there, but not in production. Its results are
+  not used for compatibility.

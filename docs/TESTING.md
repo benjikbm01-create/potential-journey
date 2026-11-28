@@ -28,7 +28,7 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
-## Results — Stage 12 (2026-11-28, in progress)
+## Results — Stage 12 (2026-11-28, partial: checkpoint)
 
 Environment:
 - Container with 4 vCPUs, 15 GB RAM, no GPU; software OpenGL under Xvfb; no audio device.
@@ -51,6 +51,7 @@ Environment:
 | Combat/guardian regression | `SUITE=stage10` | 64/64 |
 | Client mods on dev client | `scripts/client_compat.sh` | Invalid: Sodium mixins fail under Loom's dev remapping. Superseded by the production client |
 | Production client baseline | `scripts/prod_client.sh base …` | Loads, 6/6 screenshots, 0 errors |
+| Production client mod groups B–F | `scripts/prod_client.sh <g> … <mods>` | All load and render (6/6 screenshots each); only expected audio-device errors (voice chat) and optional-integration warnings (Jade/JEI). Details in `docs/MODPACK.md` |
 
 Not performed:
 - Real multiplayer with 4–6 clients.

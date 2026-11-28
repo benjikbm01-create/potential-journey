@@ -124,6 +124,12 @@ independently of the players. Players are inhabitants, not chosen heroes.
   - Follow `docs/TEXTURE_STANDARDS.md` and inspect `build/texture_sheets/`.
   - Never redraw puzzle symbol blocks; remaster them pixel for pixel.
   - Vanilla cave stone is restyled by the built-in `underdeep_caverns` pack.
+- Stage 12 tooling:
+  - Server and client mod-compatibility scripts: `scripts/server_compat.sh` (production server) and
+    `scripts/prod_client.sh` (production client). Mods are cached in `run-tests/mods-cache` from Modrinth.
+  - Profile with JFR (`JFR=1`) or Spark plus the Chunky benchmark (`scripts/chunky_bench.cmds`).
+  - Settlement planning must stay off the server thread (D-090).
+  - Track defects in `docs/BUGS.md`.
 - **Permanent requirement: model quality (Stage 11, top priority).** The owner considers the current models poor. Stage
   11 must rebuild creatures, bosses, NPCs, armour, weapons, tools, plants, furniture, workstations and decorative models
   with handcrafted Blockbench-style geometry (distinctive silhouettes, believable anatomy, articulation, natural

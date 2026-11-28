@@ -44,10 +44,30 @@ Observations:
 | Ping Wheel | 1.12.2 | `Ping-Wheel-1.12.2-fabric-1.21.1.jar` | Fabric API | both (server relays pings) | Group D: loads; Underdeep audit 76/76; no errors |
 | Distant Horizons | 3.3.3-1.21.1 | `DistantHorizons-3.3.3-1.21.1-fabric-neoforge.jar` | — | client (server optional) | Group F: loads; Underdeep audit 76/76; no errors |
 
-## Client-side status
-- Client mods (Sodium, Entity Culling, EMI and Jade overlays, AppleSkin HUD, Better Advancements, Mouse Tweaks, Sound
-  Physics, Ping Wheel UI, Distant Horizons) are covered in TESTING (Stage 12, client groups), with exactly what was and
-  wasn't checked.
+## Production client results
+- **Setup:** Minecraft 1.21.1 + Fabric Loader 0.17.3 installed with portablemc (`scripts/prod_client.sh`), running the
+  production Underdeep JAR under Xvfb with software OpenGL.
+- **Tour:** three cavern views plus three creature exhibits (`tour_mix`).
+- **What each group checks:** startup, resource loading, world join, rendering of terrain, vegetation and creatures in
+  screenshots, and errors in the log.
+
+| Group | Mods | Result |
+|---|---|---|
+| Baseline | Underdeep + Fabric API | 6/6 screenshots, 0 errors |
+| B | Sodium, Entity Culling, FerriteCore, ModernFix, Lithium | 6/6, 0 errors. Creatures (mossbuck, shadecat, sky drifter) and terrain render correctly; Entity Culling did not hide creatures that were in view |
+| C | EMI, Jade, AppleSkin, Better Advancements, Mouse Tweaks | 6/6. Two harmless warnings: Jade probes for optional JEI classes |
+| D | Simple Voice Chat, Sound Physics Remastered, Ping Wheel | 6/6. Voice chat's sound manager and microphone fail because the container has no audio device (expected here) |
+| E | All of the above + Spark (14 mods) | 6/6. Only the expected audio-device errors |
+| F | Distant Horizons | 6/6, 0 errors. DH warns that its distant generation may be unstable |
+
+Not driven in these runs:
+- The EMI, Jade and AppleSkin overlays themselves, Better Advancements screens, and Mouse Tweaks inventory drags (the
+  tour opens no GUIs).
+- Ping Wheel pings.
+- Sound Physics effects (no audio device).
+
+**Distant Horizons:** if used, set Generation Mode to `PRE_EXISTING_ONLY`, so it never runs Underdeep's expensive
+generator far from players.
 - **Not testable here:**
   - real voice (no microphones or second client);
   - Distant Horizons rendering quality on real GPUs;

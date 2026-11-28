@@ -293,5 +293,23 @@ Not done:
 - Armour worn in game (not viewed).
 - Block and item models (geometry) are unchanged.
 
-## Stage 12
-Started and then stopped at the owner's request (only read-only baseline checks were run).
+## Stage 12 — Testing, debugging, optimization, compatibility: PARTIAL (checkpoint 2026-11-28)
+See `docs/VERIFICATION_MATRIX.md`, `docs/BUGS.md`, `docs/MODPACK.md`, `docs/SERVER_GUIDE.md` and TESTING (Stage 12).
+
+Done:
+- Production-server and production-client compatibility for all 16 requested mods (groups A–F).
+- Chunky pregeneration measurements.
+- JFR/Spark profiling of the lag.
+- Fixed the settlement-planning tick spikes (UD-005, max tick 581 → 108 ms).
+- Generator palette cache (UD-006).
+- Fixed predators never catching prey (UD-003).
+- Fixed several stale test failures (UD-001, UD-002, UD-007).
+- Settlement/economy, Stage 2/3, combat/guardian and audit suites re-run.
+
+Not done:
+- Real multiplayer with players.
+- A multi-hour soak with players.
+- Full material/progression re-audit beyond the `audit` suite (751/751).
+- Private dungeon and guardian re-audit (UD-008).
+- Handbook UI walk-through.
+- Exploration density decision.
