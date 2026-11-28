@@ -62,3 +62,9 @@ behaviour, but no lairs — Underdeep can only be beaten in a v5 world. Install 
   - Includes the built-in "Underdeep Caverns" pack, which restyles vanilla cave stone; you can turn it off under
     Options → Resource Packs.
   - No new world needed.
+
+- `underdeep-0.12.2-stage12-checkpoint.jar` (Stage 12 checkpoint, not a release candidate):
+  - fixes the 0.5 s lag spikes when settlements come into range;
+  - predators hunt prey again;
+  - test fixes, and documented compatibility with 16 Fabric mods (`docs/MODPACK.md`).
+  - No new world needed.
