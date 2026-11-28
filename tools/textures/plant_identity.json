@@ -1,0 +1,1290 @@
+{
+"amberbloom": [
+[
+255,
+190,
+60
+],
+[
+80,
+120,
+40
+]
+],
+"ashgrass": [
+null,
+null
+],
+"bloodcap": [
+[
+110,
+75,
+72
+],
+null
+],
+"bloodthorn_leaves": [
+[
+131,
+41,
+54
+],
+null
+],
+"bloodthorn_sapling": [
+[
+150,
+30,
+40
+],
+null
+],
+"bogbloom": [
+[
+152,
+84,
+114
+],
+[
+48,
+78,
+48
+]
+],
+"bogbloom_bloom": [
+[
+152,
+87,
+119
+],
+[
+48,
+78,
+48
+]
+],
+"bogwort_stage0": [
+null,
+[
+53,
+85,
+53
+]
+],
+"bogwort_stage1": [
+null,
+[
+53,
+85,
+53
+]
+],
+"bogwort_stage2": [
+null,
+[
+53,
+85,
+53
+]
+],
+"calcicap": [
+null,
+null
+],
+"cave_truffles_stage0": [
+[
+70,
+55,
+34
+],
+null
+],
+"cave_truffles_stage1": [
+[
+70,
+55,
+34
+],
+null
+],
+"cave_truffles_stage2": [
+[
+70,
+55,
+34
+],
+null
+],
+"cave_truffles_stage3": [
+[
+70,
+55,
+34
+],
+null
+],
+"cinderbark_sapling": [
+[
+149,
+80,
+36
+],
+null
+],
+"cliffberry_bush_stage0": [
+null,
+[
+50,
+80,
+50
+]
+],
+"cliffberry_bush_stage1": [
+null,
+[
+45,
+72,
+45
+]
+],
+"cliffberry_bush_stage2": [
+[
+200,
+40,
+50
+],
+[
+40,
+64,
+40
+]
+],
+"cragpine_leaves": [
+null,
+[
+40,
+90,
+60
+]
+],
+"cragpine_sapling": [
+null,
+[
+34,
+66,
+47
+]
+],
+"deathbell": [
+[
+115,
+49,
+139
+],
+null
+],
+"duskberry_bush_stage0": [
+null,
+[
+40,
+70,
+47
+]
+],
+"duskberry_bush_stage1": [
+null,
+[
+40,
+70,
+47
+]
+],
+"duskberry_bush_stage2": [
+[
+68,
+47,
+98
+],
+[
+40,
+70,
+47
+]
+],
+"duskoak_leaves": [
+null,
+[
+47,
+83,
+46
+]
+],
+"duskoak_sapling": [
+null,
+[
+46,
+92,
+70
+]
+],
+"duskroots_stage0": [
+null,
+[
+42,
+72,
+40
+]
+],
+"duskroots_stage1": [
+null,
+[
+45,
+78,
+43
+]
+],
+"duskroots_stage2": [
+null,
+[
+45,
+78,
+43
+]
+],
+"duskroots_stage3": [
+[
+82,
+51,
+99
+],
+[
+42,
+72,
+40
+]
+],
+"emberbloom": [
+[
+230,
+50,
+40
+],
+null
+],
+"embercap": [
+[
+196,
+94,
+34
+],
+null
+],
+"emberpeppers_stage0": [
+null,
+[
+48,
+72,
+29
+]
+],
+"emberpeppers_stage1": [
+null,
+[
+48,
+72,
+29
+]
+],
+"emberpeppers_stage2": [
+null,
+[
+48,
+72,
+29
+]
+],
+"emberpeppers_stage3": [
+[
+136,
+39,
+23
+],
+[
+48,
+72,
+29
+]
+],
+"emberwort_stage0": [
+[
+120,
+40,
+30
+],
+null
+],
+"emberwort_stage1": [
+[
+120,
+40,
+30
+],
+null
+],
+"emberwort_stage2": [
+[
+120,
+40,
+30
+],
+null
+],
+"frost_turnips_stage0": [
+null,
+[
+59,
+94,
+78
+]
+],
+"frost_turnips_stage1": [
+null,
+[
+63,
+102,
+85
+]
+],
+"frost_turnips_stage2": [
+null,
+[
+63,
+102,
+85
+]
+],
+"frost_turnips_stage3": [
+null,
+[
+59,
+94,
+78
+]
+],
+"frostbell": [
+[
+54,
+78,
+84
+],
+null
+],
+"frostbell_bloom": [
+[
+110,
+132,
+152
+],
+null
+],
+"frostfir_leaves": [
+[
+61,
+96,
+95
+],
+[
+92,
+137,
+129
+]
+],
+"frostfir_sapling": [
+[
+77,
+132,
+132
+],
+null
+],
+"ghostfern": [
+null,
+null
+],
+"glimmer_bud": [
+[
+180,
+172,
+112
+],
+null
+],
+"glimmer_cluster": [
+[
+240,
+230,
+150
+],
+null
+],
+"gloomcap": [
+[
+32,
+74,
+84
+],
+null
+],
+"glowcap": [
+[
+70,
+200,
+230
+],
+null
+],
+"glowfern": [
+null,
+[
+60,
+128,
+60
+]
+],
+"glowgrain_crop_stage0": [
+null,
+[
+87,
+95,
+38
+]
+],
+"glowgrain_crop_stage1": [
+null,
+[
+85,
+92,
+37
+]
+],
+"glowgrain_crop_stage2": [
+null,
+[
+90,
+98,
+39
+]
+],
+"glowgrain_crop_stage3": [
+[
+149,
+138,
+73
+],
+[
+86,
+94,
+38
+]
+],
+"glowkelp": [
+[
+34,
+128,
+128
+],
+[
+170,
+255,
+240
+]
+],
+"glowkelp_plant": [
+[
+34,
+128,
+128
+],
+[
+170,
+255,
+240
+]
+],
+"glowreed_bottom": [
+null,
+[
+60,
+140,
+70
+]
+],
+"glowreed_top": [
+null,
+[
+70,
+160,
+80
+]
+],
+"goldgrass": [
+[
+197,
+167,
+59
+],
+null
+],
+"goldwood_sapling": [
+[
+214,
+164,
+46
+],
+null
+],
+"honeyfruit_bush_stage0": [
+[
+104,
+102,
+40
+],
+null
+],
+"honeyfruit_bush_stage1": [
+[
+104,
+102,
+40
+],
+null
+],
+"honeyfruit_bush_stage2": [
+[
+141,
+113,
+31
+],
+null
+],
+"inkcap": [
+null,
+null
+],
+"lake_chestnuts_stage0": [
+null,
+[
+34,
+81,
+45
+]
+],
+"lake_chestnuts_stage1": [
+null,
+[
+34,
+81,
+45
+]
+],
+"lake_chestnuts_stage2": [
+null,
+[
+34,
+81,
+45
+]
+],
+"lake_chestnuts_stage3": [
+[
+70,
+50,
+29
+],
+[
+34,
+81,
+45
+]
+],
+"lakebloom": [
+[
+152,
+94,
+125
+],
+[
+35,
+72,
+48
+]
+],
+"lanterncap": [
+[
+102,
+178,
+217
+],
+null
+],
+"lanterncap_0": [
+[
+63,
+103,
+123
+],
+null
+],
+"lanterncap_fading": [
+null,
+null
+],
+"lanterncoral_fan": [
+[
+173,
+94,
+47
+],
+null
+],
+"ledgevine": [
+null,
+[
+60,
+120,
+50
+]
+],
+"ledgevine_plant": [
+null,
+[
+60,
+120,
+50
+]
+],
+"lumen_seagrass": [
+[
+40,
+150,
+150
+],
+[
+150,
+255,
+240
+]
+],
+"lumenwood_leaves": [
+[
+68,
+140,
+188
+],
+null
+],
+"lumenwood_sapling": [
+[
+66,
+104,
+148
+],
+null
+],
+"luminite_cluster": [
+[
+60,
+190,
+200
+],
+null
+],
+"marsh_fern": [
+null,
+[
+51,
+102,
+51
+]
+],
+"mendleaf_stage0": [
+null,
+[
+48,
+90,
+48
+]
+],
+"mendleaf_stage1": [
+null,
+[
+48,
+90,
+48
+]
+],
+"mendleaf_stage2": [
+null,
+[
+48,
+90,
+48
+]
+],
+"mire_rice_crop_stage0": [
+null,
+[
+72,
+100,
+54
+]
+],
+"mire_rice_crop_stage1": [
+null,
+[
+72,
+100,
+54
+]
+],
+"mire_rice_crop_stage2": [
+null,
+[
+73,
+102,
+55
+]
+],
+"mire_rice_crop_stage3": [
+[
+136,
+132,
+100
+],
+[
+70,
+97,
+52
+]
+],
+"mirewillow_leaves": [
+null,
+[
+67,
+96,
+45
+]
+],
+"mirewillow_sapling": [
+null,
+[
+60,
+92,
+49
+]
+],
+"moonpetal_stage0": [
+null,
+null
+],
+"moonpetal_stage1": [
+null,
+null
+],
+"moonpetal_stage2": [
+null,
+null
+],
+"peakstar": [
+null,
+[
+60,
+78,
+54
+]
+],
+"peakstar_bloom": [
+[
+149,
+132,
+61
+],
+[
+60,
+78,
+54
+]
+],
+"plaguebloom": [
+[
+77,
+33,
+88
+],
+[
+105,
+132,
+44
+]
+],
+"prism_lily": [
+[
+84,
+102,
+114
+],
+null
+],
+"prism_lily_bloom": [
+[
+121,
+105,
+152
+],
+null
+],
+"puffcap": [
+null,
+null
+],
+"pyrelily": [
+[
+131,
+68,
+32
+],
+null
+],
+"pyrelily_bloom": [
+[
+152,
+87,
+37
+],
+null
+],
+"relic_sprout_stage0": [
+[
+47,
+106,
+101
+],
+null
+],
+"relic_sprout_stage1": [
+[
+47,
+106,
+101
+],
+null
+],
+"relic_sprout_stage2": [
+[
+47,
+106,
+101
+],
+null
+],
+"relic_sprout_stage3": [
+[
+47,
+106,
+101
+],
+[
+80,
+152,
+133
+]
+],
+"ribbonweed": [
+null,
+[
+42,
+102,
+51
+]
+],
+"ribbonweed_plant": [
+null,
+[
+42,
+102,
+51
+]
+],
+"rime_crystal": [
+null,
+null
+],
+"rimecap": [
+[
+90,
+112,
+123
+],
+null
+],
+"sagecap": [
+null,
+null
+],
+"sea_grape_bush_stage0": [
+null,
+[
+31,
+80,
+48
+]
+],
+"sea_grape_bush_stage1": [
+null,
+[
+31,
+80,
+48
+]
+],
+"sea_grape_bush_stage2": [
+null,
+[
+40,
+120,
+70
+]
+],
+"shardgrass": [
+[
+80,
+178,
+187
+],
+null
+],
+"siltwort_stage0": [
+null,
+[
+64,
+74,
+48
+]
+],
+"siltwort_stage1": [
+null,
+[
+80,
+88,
+56
+]
+],
+"siltwort_stage2": [
+null,
+[
+64,
+74,
+48
+]
+],
+"silvergrass": [
+[
+135,
+153,
+180
+],
+null
+],
+"snapjaw": [
+[
+112,
+21,
+26
+],
+[
+80,
+110,
+40
+]
+],
+"snapjaw_closed": [
+[
+114,
+29,
+35
+],
+[
+60,
+78,
+35
+]
+],
+"snowberry_bush_stage0": [
+null,
+[
+53,
+80,
+70
+]
+],
+"snowberry_bush_stage1": [
+null,
+[
+53,
+80,
+70
+]
+],
+"snowberry_bush_stage2": [
+null,
+[
+53,
+80,
+70
+]
+],
+"spirebark_leaves": [
+null,
+[
+57,
+96,
+59
+]
+],
+"spirebark_sapling": [
+[
+62,
+132,
+128
+],
+null
+],
+"spirecoral": [
+[
+150,
+80,
+200
+],
+null
+],
+"sporepuff": [
+null,
+null
+],
+"sporepuff_spent": [
+null,
+null
+],
+"starbloom": [
+[
+170,
+210,
+255
+],
+[
+60,
+120,
+90
+]
+],
+"starstrand": [
+[
+110,
+170,
+240
+],
+null
+],
+"starstrand_plant": [
+[
+110,
+170,
+240
+],
+null
+],
+"static_grass": [
+[
+58,
+78,
+185
+],
+null
+],
+"steamfern": [
+null,
+[
+68,
+110,
+76
+]
+],
+"stoneroot": [
+[
+130,
+115,
+95
+],
+null
+],
+"storm_crystal": [
+[
+130,
+90,
+230
+],
+null
+],
+"sunbeans_stage0": [
+null,
+[
+49,
+73,
+29
+]
+],
+"sunbeans_stage1": [
+null,
+[
+49,
+73,
+29
+]
+],
+"sunbeans_stage2": [
+null,
+[
+49,
+73,
+29
+]
+],
+"sunbeans_stage3": [
+[
+141,
+127,
+40
+],
+[
+49,
+73,
+29
+]
+],
+"sunleaf_stage0": [
+null,
+[
+92,
+107,
+42
+]
+],
+"sunleaf_stage1": [
+null,
+[
+92,
+107,
+42
+]
+],
+"sunleaf_stage2": [
+[
+149,
+134,
+53
+],
+[
+92,
+107,
+42
+]
+],
+"thornbriar_stage0": [
+[
+108,
+27,
+27
+],
+null
+],
+"thornbriar_stage1": [
+[
+85,
+32,
+28
+],
+null
+],
+"thornbriar_stage2": [
+[
+85,
+32,
+28
+],
+null
+],
+"tidebloom": [
+[
+138,
+55,
+121
+],
+[
+35,
+78,
+66
+]
+],
+"tidecap": [
+[
+51,
+170,
+178
+],
+null
+],
+"umbral_bloom": [
+[
+78,
+42,
+108
+],
+null
+],
+"umbral_bloom_bloom": [
+[
+110,
+50,
+160
+],
+null
+],
+"voidroot": [
+[
+120,
+60,
+160
+],
+null
+],
+"voidroot_plant": [
+null,
+null
+],
+"voltbloom": [
+[
+82,
+56,
+116
+],
+null
+],
+"voltbloom_bloom": [
+[
+105,
+72,
+152
+],
+null
+]
+}

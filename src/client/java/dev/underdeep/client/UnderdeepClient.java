@@ -40,6 +40,12 @@ public final class UnderdeepClient implements ClientModInitializer {
         dev.underdeep.client.boss.BossRenderers.init();
         dev.underdeep.client.audio.MusicDirector.init();
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
+        // Stage 11.5: cave stone (vanilla stone, deepslate, tuff, basalt...) restyled to match Underdeep; on by default,
+        // players can disable it in the Resource Packs screen
+        net.fabricmc.loader.api.FabricLoader.getInstance().getModContainer(Underdeep.MOD_ID).ifPresent(mod ->
+                net.fabricmc.fabric.api.resource.ResourceManagerHelper.registerBuiltinResourcePack(Identifier.of(Underdeep.MOD_ID, "underdeep_caverns"),
+                        mod, net.minecraft.text.Text.literal("Underdeep Caverns"),
+                        net.fabricmc.fabric.api.resource.ResourcePackActivationType.DEFAULT_ENABLED));
         ScreenshotTour.init();
         CreateWorldTest.init();
     }

@@ -1430,6 +1430,10 @@ def main():
     for path, vals in ctags.items():
         tag(path, *vals)
     merge_outputs()
+    # Stage 11.5: the art-directed texture remake replaces generated placeholder art (must run last)
+    sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "textures"))
+    import remake
+    remake.main()
     print(f"stage 2 assets: {len(LANG)} names, {len(TOOLTIPS)} hints, {len(TAGS)} tag files")
 
 

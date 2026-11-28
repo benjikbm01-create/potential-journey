@@ -282,12 +282,11 @@ def log_top(wood, bark, seed, rings=3):
                 t = 1 + (1 if h01(seed, x, y) > 0.5 else 0)
                 c = bark[t]
             else:
-                rr = r + 0.35 * math.sin(math.atan2(dy, dx) * 2 + seed)   # slightly irregular growth rings
-                c = wood[len(wood) - 2] if int(rr * 1.4) % 2 == 0 else wood[len(wood) - 3]
-                if int(rr * 1.4) % 4 == 3:
-                    c = wood[len(wood) - 4]
+                rr = r + 0.25 * math.sin(math.atan2(dy, dx) * 2 + seed)   # gently irregular growth rings
+                band = int(rr + 0.5) % 3
+                c = wood[len(wood) - 2] if band == 0 else wood[len(wood) - 3]
                 if r < 1.0:
-                    c = wood[1]
+                    c = wood[2]
                 elif r > 6.0:
                     c = wood[len(wood) - 4]
             put(img, x, y, c)
