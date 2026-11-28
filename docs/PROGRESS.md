@@ -278,5 +278,20 @@ See `docs/ART_DIRECTION.md`, `docs/ASSET_QUALITY.md` (quality registry), `docs/S
 | Music director: contexts, priority, hysteresis, history, crossfades, gaps option, volume, vanilla suppression, lifecycle | done | in-game audio capture: 5 region switches, continuous with crossfades (1 bug found and fixed); combat/guardian/settlement contexts not exercised in-game |
 | NPC appearance, equipment/item icons, plants/blocks, furniture, architecture, lighting/particles, UI/Handbook/HUD, SFX/ambience | not done | registry marks them not verified / missing |
 
+## Stage 11.5 — Texture quality remake: IMPLEMENTED (2026-11-28)
+See `docs/TEXTURE_STANDARDS.md`. The owner approved the sample direction; then every block and item texture was
+processed in five batches.
+- Redrawn: stones (plus a bundled pack restyling vanilla cave stone), 14 ores, 8 mineral blocks, 8 wood sets, 149
+  plants, weapons and tools, 13 armour sets with their model layers, and common items (dishes, drinks, ingots, gems,
+  rings, amulets, arrows).
+- Rebuilt or remastered: 210 workstation, furniture and mechanism blocks; 222 unique items.
+- Verified: contact sheets for every batch, in-game terrain views, and asset-pipeline determinism.
+
+Not done:
+- NPC skins and outfits.
+- GUI textures.
+- Armour worn in game (not viewed).
+- Block and item models (geometry) are unchanged.
+
 ## Stage 12
-Not started.
+Started and then stopped at the owner's request (only read-only baseline checks were run).

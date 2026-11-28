@@ -56,3 +56,9 @@ behaviour, but no lairs — Underdeep can only be beaten in a v5 world. Install 
   - rebuilt creature models and textures, new creature animation, guardian detail pass;
   - an original 73-track soundtrack with a context-aware music director (`/underdeep_music`).
   - About 36 MB, because the soundtrack is bundled. No new world needed.
+
+- `underdeep-0.12.1-stage11.5.jar` (Stage 11.5): the texture remake.
+  - All block and item textures redone.
+  - Includes the built-in "Underdeep Caverns" pack, which restyles vanilla cave stone; you can turn it off under
+    Options → Resource Packs.
+  - No new world needed.

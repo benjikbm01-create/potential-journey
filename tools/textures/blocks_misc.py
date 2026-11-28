@@ -178,10 +178,13 @@ def mushroom_block(col, seed, spots=True):
             t = 3 if (x + y // 2) % 4 else 2
             put(img, x, y, p[t])
     bevel_block(img, p, light=4, dark=1)
-    if spots:
-        for x, y in ((3, 3), (10, 4), (6, 10), (12, 12)):
-            for dx, dy in ((0, 0), (1, 0), (0, 1), (1, 1)):
-                put(img, x + dx, y + dy, hx("f0e8dc") if (dx, dy) != (1, 1) else hx("c8c0b4"))
+    if spots:   # two spots of different sizes, off-grid, so a wall of caps does not read as polka dots
+        for x, y, r in ((4, 4, 2), (11, 10, 1)):
+            for dy in range(r):
+                for dx in range(r + 1):
+                    put(img, x + dx, y + dy, hx("f0e8dc"))
+            put(img, x + r, y + r, hx("c8c0b4"))
+        put(img, 12, 3, hx("e0d8cc"))
     return img
 
 

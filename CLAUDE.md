@@ -119,6 +119,11 @@ independently of the players. Players are inhabitants, not chosen heroes.
     `MusicDirector` picks music by context; the server only hints settlement and home (`audio/MusicContext`).
   - Never claim audio was listened to, or animation watched, unless it was. Update `docs/ASSET_QUALITY.md` (run
     `tools/preview/asset_audit.py --from-screenshots`). See `docs/ART_DIRECTION.md` and `docs/SOUNDTRACK.md`.
+- Textures (Stage 11.5):
+  - Art-directed code in `tools/textures`. `remake.py` runs last in `stage2_assets.py`.
+  - Follow `docs/TEXTURE_STANDARDS.md` and inspect `build/texture_sheets/`.
+  - Never redraw puzzle symbol blocks; remaster them pixel for pixel.
+  - Vanilla cave stone is restyled by the built-in `underdeep_caverns` pack.
 - **Permanent requirement: model quality (Stage 11, top priority).** The owner considers the current models poor. Stage
   11 must rebuild creatures, bosses, NPCs, armour, weapons, tools, plants, furniture, workstations and decorative models
   with handcrafted Blockbench-style geometry (distinctive silhouettes, believable anatomy, articulation, natural

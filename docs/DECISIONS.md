@@ -516,3 +516,10 @@ The client already knows the biome, nearby combat, riding and the boss and explo
 need the server (`music_context`, sent on change and checked every 2 s, using the pure SettlementMap). Priority order:
 victory > guardian > combat > dungeon > settlement > home > travel > ecosystem > fallback. Hysteresis is 0–8 s by
 context, crossfades are 1.5–4 s, and vanilla music is suppressed by a mixin while the director owns the music.
+
+## D-089 Textures are art-directed code, and vanilla cave stone is restyled through a built-in pack (Stage 11.5)
+- All textures come from `tools/textures` (ramps, structured materials, hand-drawn sprites) and are inspected batch by
+  batch.
+- Most cavern walls are vanilla blocks. Option A was chosen: a built-in resource pack, on by default and switchable, that
+  restyles those blocks. This needs no worldgen change and no new world.
+- Puzzle and symbol blocks keep their exact pixels: they are remastered, never redrawn.

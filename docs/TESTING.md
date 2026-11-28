@@ -28,6 +28,22 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
+## Results — Stage 11.5 textures (2026-11-28)
+
+| Test | Result |
+|---|---|
+| Sample sheets (native 1×/2×, enlarged with old vs new, tiled walls, isometric diorama) | Generated and inspected; shown to the owner, who approved |
+| Batch contact sheets (`build/texture_sheets/*.png`) | All batches inspected and revised. Problems found and fixed: cobble-like cave stone, starstone glare, striped charged stormstone, malformed log rings, noisy leaves, thin flowers and crops, blob axes and hammers, headband helmets, washed-out nacre. Also: puzzle symbols became unreadable under feature extraction (switched to a pixel-preserving remaster and verified old vs new), identical bowls, rings and kits, and a polka-dot mushroom block |
+| In-game client (`scripts/visual_tour.sh`, 17 natural views + 4 night-vision views) | The built-in pack `underdeep:underdeep_caverns` loads; new terrain, plant and leaf textures render. Inspected rootwild, stormstone, crystal deep and fungal views |
+| Asset pipeline determinism (`stage2_assets.py` twice) | Identical output |
+| Build | `./gradlew build` passes |
+
+Not tested in game:
+- Armour worn by a player.
+- Item icons in the inventory.
+- Furniture and workstation blocks placed.
+- Doors and trapdoors.
+
 ## Results — Stage 11 (2026-11-28)
 Environment: as in Stage 1 (4 vCPU container, software OpenGL under Xvfb). There is no audio device. For the audio test,
 the client's OpenAL ran on the OpenAL Soft "Wave File Writer" backend (`ALSOFT_CONF` with `drivers = wave`), so

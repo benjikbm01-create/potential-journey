@@ -11,6 +11,13 @@ Do not start Stage 12 until the user assigns it. Stage 11 needs no new world. St
   its title (shown by `/underdeep_music`). Each track is one line in `tools/music/compose.py`.
 - Creatures: watch them walk, run, eat, sleep, fly and swim. The animation has never been watched in motion.
 
+### Stage 11.5 textures: done
+See `docs/TEXTURE_STANDARDS.md`. Remaining texture work:
+- NPC skins and outfits.
+- GUI textures.
+- Check armour worn in game.
+- Optionally redraw the 222 remastered unique item icons.
+
 ### Stage 11 work remaining (in priority order; see docs/ASSET_QUALITY.md)
 1. Guardian models: full redesign (private previews in docs/private/previews/after/). Keep part names and poses, or
    update the poses together with the rig.
