@@ -321,6 +321,20 @@ def misc_blocks_batch():
             write("misc", "block/" + n, img)
 
 
+# ================================================================================ batch 5: item icons
+
+def items_batch():
+    import items
+    done = {rel for b, its in WRITTEN.items() for rel, _ in its}
+    for f in sorted(os.listdir(os.path.join(TEX, "item"))):
+        n = f[:-4]
+        if not f.endswith(".png") or n in done:
+            continue
+        img = items.paint(n)
+        if img is not None:
+            write("items_" + (items.kind_of(n) or "remaster"), "item/" + n, img)
+
+
 # ================================================================================ contact sheets
 
 def sheet(batch):
@@ -356,6 +370,7 @@ def main():
     plants_batch()
     equipment_batch()
     misc_blocks_batch()
+    items_batch()
     for b in list(WRITTEN):
         sheet(b)
     print("texture remake: " + ", ".join(f"{b} {len(v)}" for b, v in WRITTEN.items()))
