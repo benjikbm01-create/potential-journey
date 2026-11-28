@@ -28,6 +28,37 @@ Only tests that were actually executed are recorded as passing. Dates are UTC.
 | Stage 8 targeted | `SUITE=audit scripts/selftest.sh <seed> <dir>` (audit + equipment/handbook/advancement checks, ~1.5 min); `SUITE=stage8 …` (Stages 4–8 incl. the census, which writes `<dir>/selftest/natural_blocks.json` — copy it to `src/main/resources/data/underdeep/guide/` when natural blocks change) |
 | Stage 2 targeted | `SUITE=stage2 scripts/selftest.sh <seed> <dir> [create\|reload]`; `scripts/stage2_matrix.sh` (3 seeds, reload, vanilla, production JAR); tour views of Stage 2 flora in `<dir>/selftest/tour_stage2.txt` |
 
+## Results — Stage 12 (2026-11-28, in progress)
+
+Environment:
+- Container with 4 vCPUs, 15 GB RAM, no GPU; software OpenGL under Xvfb; no audio device.
+- **P (production server):** the official Fabric server launcher with the production JAR.
+- **PC (production client):** Minecraft 1.21.1 + Fabric Loader 0.17.3 installed with portablemc, with the production
+  JAR.
+- **Dev client:** Loom `runClient`.
+- Third-party mods are the newest Modrinth 1.21.1 Fabric releases (versions in `docs/MODPACK.md`).
+
+| Test | Command | Result |
+|---|---|---|
+| Server mod groups A–F | `scripts/server_compat.sh <g> audit <mods>` | All six groups pass the `audit` suite, 76/76, with 0 unexpected errors (43–62 mods loaded). Warning: ModernFix/Lithium `removeIf` overwrite conflict |
+| Chunky pregeneration (P, groups E/B) | `CMDS=scripts/chunky_spark.cmds` or `chunky_bench.cmds` | Radius 400 square = 2,601 chunks in 46–54 s (about 48–56 chunks/s), 47 MB on disk (about 18 KB per chunk). TPS 20. GC: 40 young pauses, max 100 ms, p95 69 ms (6 GB G1) |
+| Lag investigation, singleplayer (dev client + JFR) | `JFR=1 scripts/client_compat.sh baseline …` (6 pregenerated + 6 fresh viewpoints, 320 s) | CPU samples: worldgen workers 83%, server thread 10%, client main 5%. Underdeep code is about 15% of server-thread samples. Integrated server average tick 2.4–19.7 ms per viewpoint; software-GL FPS 10–15 |
+| Server spike source (P + JFR) | Chunky benchmark with JFR | Ticks of 527–581 ms caused by settlement planning on the server thread (UD-005). **After the fix: max 108 ms**, planner samples on the server thread 26 → 0. Throughput unchanged |
+| Generator optimization A/B (P) | Chunky benchmark | Rock palette cache: 48 s → 46 s for 2,601 chunks (about 4%; small). Rock output identical: world diff shows no rock-type changes |
+| Determinism caveat | world diff of two identical builds | Test-area chunk hashes vary between self-test runs (fixtures, decoration); terrain-level differences of 54–99 per 35M blocks occur even between identical builds. Use rock-type diffs for generator A/B |
+| Settlements/economy suite | `SUITE=stage4` | 193/193 |
+| Stage 2/3 suite | `SUITE=stage2` | Before fixes: 3 failures (crash, loot tables, predator). After: 326 passed, 1 failed (breeding, blocked by the test world's global wildlife cap; now reported as not exercised when the cap blocks it) |
+| Combat/guardian regression | `SUITE=stage10` | 64/64 |
+| Client mods on dev client | `scripts/client_compat.sh` | Invalid: Sodium mixins fail under Loom's dev remapping. Superseded by the production client |
+| Production client baseline | `scripts/prod_client.sh base …` | Loads, 6/6 screenshots, 0 errors |
+
+Not performed:
+- Real multiplayer with 4–6 clients.
+- Real voice chat.
+- Real-GPU FPS.
+- Multi-hour soak with players.
+- Human gameplay.
+
 ## Results — Stage 11.5 textures (2026-11-28)
 
 | Test | Result |

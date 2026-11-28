@@ -246,6 +246,10 @@ public final class WildlifeManager {
     }
 
     /** Whether a wild pair may produce offspring now (population and local density caps). */
+    public int loadedCount() {
+        return loaded.size();
+    }
+
     public boolean allowBirth(UnderdeepCreature parent) {
         if (!parent.isWild()) {
             return true; // livestock and companions breed like vanilla animals (player-managed)
