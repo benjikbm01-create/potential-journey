@@ -564,3 +564,18 @@ Tick: `EconomyManager` (END_WORLD_TICK) — every 40 ticks bring one settlement 
 every 20 ticks move shipments; caravans and construction placement; round-robin economy steps within budget;
 daily diplomacy. Hooks: `Society.EXTRAS` adds constructed buildings, sites and celebrations to `Places`;
 `InhabitantEntity.fillRecipes/afterUsing` → `EconHooks`; `Dialogue` → `EconDialogue`.
+
+## 5l. Presentation: models, animation, music (Stage 11)
+- Creature assets (Python): `creature_kit.Rig` holds parts in y-up authoring space, converted to Minecraft model space
+  by `to_json`. `paint()` packs the UV nets and paints them by rule. `creature_designs.DESIGNS` maps each species to its
+  build function, and `creatures.build_design` writes the JSON and textures.
+- Client: `CreatureModel.build` turns the JSON into ModelParts. `setAngles` animates by role, using per-entity blend
+  weights (a WeakHashMap keyed by entity).
+- Guardians: Stage 10 rigs plus `boss_refine.refine` (detail parts only), animated by `BossModel` from synced move
+  stages.
+- Music: `tools/music` produces the OGG files plus `sounds.json` and `music_tracks.json`.
+  - Client: `client/audio/MusicDirector` (detection, hysteresis, pools, history, crossfading `MovingSoundInstance`s,
+    settings, the `/underdeep_music` command) and `MusicTrackerMixin` (silences vanilla music).
+  - Server: `audio/MusicContext` (settlement and home hint).
+- Validation tools: `tools/preview/render_models.py` (offscreen model previews), `tools/preview/asset_audit.py` (quality
+  registry) and `tools/music/spectrogram.py`.

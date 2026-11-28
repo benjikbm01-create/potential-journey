@@ -213,3 +213,9 @@ which the world goes on. See `docs/CAVES.md`, `docs/COMBAT.md`; secrets are priv
 ## Permanent requirement: model quality (Stage 11)
 The owner considers the current models poor. Stage 11 rebuilds every relevant model category with handcrafted,
 articulated geometry and natural animation, verified visually model by model (see CLAUDE.md).
+
+## Stage 11 status (presentation)
+- Wildlife: rebuilt anatomies and repainted textures for all 60 species, plus a new animation system.
+- Soundtrack: an original 73-track score that follows the player's context continuously.
+- Still to do: guardians need a full redesign. NPCs, equipment, blocks, UI and sound effects are still at their
+  Stage 3–10 look (see docs/ASSET_QUALITY.md and docs/NEXT_STEPS.md).

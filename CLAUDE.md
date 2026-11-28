@@ -110,6 +110,15 @@ independently of the players. Players are inhabitants, not chosen heroes.
   guardian a ranged answer. Identities, mechanics and the ending are private (`docs/private/BOSSES.md`); public docs
   give counts and architecture only. Self-test: `SUITE=stage10 scripts/selftest.sh <seed> <dir> create`. See
   `docs/COMBAT.md`.
+- Visuals and audio (Stage 11):
+  - Creatures are hand-authored designs (`tools/assets/creature_designs.py`) on the anatomy kit (`creature_kit.py`),
+    animated by role in `client/creature/CreatureModel`.
+  - Inspect every model change with `tools/preview/render_models.py` and the zoo tour. Guardian previews stay in
+    `docs/private/previews/`.
+  - The soundtrack is code: run `tools/music/compose.py` (73 tracks, analysis in `tools/music/out/manifest.json`).
+    `MusicDirector` picks music by context; the server only hints settlement and home (`audio/MusicContext`).
+  - Never claim audio was listened to, or animation watched, unless it was. Update `docs/ASSET_QUALITY.md` (run
+    `tools/preview/asset_audit.py --from-screenshots`). See `docs/ART_DIRECTION.md` and `docs/SOUNDTRACK.md`.
 - **Permanent requirement: model quality (Stage 11, top priority).** The owner considers the current models poor. Stage
   11 must rebuild creatures, bosses, NPCs, armour, weapons, tools, plants, furniture, workstations and decorative models
   with handcrafted Blockbench-style geometry (distinctive silhouettes, believable anatomy, articulation, natural

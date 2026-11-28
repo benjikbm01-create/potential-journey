@@ -1,0 +1,586 @@
+{
+ "music.ashenhollows_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/ashenhollows_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.ashenhollows_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/ashenhollows_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_choirwarden": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_choirwarden",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_cinderwurm": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_cinderwurm",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_galvanic": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_galvanic",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_lamplighter": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_lamplighter",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_mossback": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_mossback",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_resonant": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_resonant",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_rimefang": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_rimefang",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_rootsovereign": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_rootsovereign",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_seamwatcher": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_seamwatcher",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_silentwarden": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_silentwarden",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_somnarch": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_somnarch",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_sporemother": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_sporemother",
+    "stream": true
+   }
+  ]
+ },
+ "music.boss_tidemother": {
+  "sounds": [
+   {
+    "name": "underdeep:music/boss/boss_tidemother",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_amberfolk": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_amberfolk",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_astrals": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_astrals",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_forgekin": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_forgekin",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_glimmerkin": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_glimmerkin",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_rootfolk": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_rootfolk",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_sporefolk": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_sporefolk",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_stoneborn": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_stoneborn",
+    "stream": true
+   }
+  ]
+ },
+ "music.civ_tide_dwellers": {
+  "sounds": [
+   {
+    "name": "underdeep:music/civilization/civ_tide_dwellers",
+    "stream": true
+   }
+  ]
+ },
+ "music.combat_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/combat/combat_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.combat_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/combat/combat_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.combat_c": {
+  "sounds": [
+   {
+    "name": "underdeep:music/combat/combat_c",
+    "stream": true
+   }
+  ]
+ },
+ "music.combat_d": {
+  "sounds": [
+   {
+    "name": "underdeep:music/combat/combat_d",
+    "stream": true
+   }
+  ]
+ },
+ "music.combat_e": {
+  "sounds": [
+   {
+    "name": "underdeep:music/combat/combat_e",
+    "stream": true
+   }
+  ]
+ },
+ "music.crimsonbasin_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/crimsonbasin_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.crimsonbasin_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/crimsonbasin_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.crystaldeep_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/crystaldeep_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.crystaldeep_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/crystaldeep_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.dungeon_depths": {
+  "sounds": [
+   {
+    "name": "underdeep:music/dungeon/dungeon_depths",
+    "stream": true
+   }
+  ]
+ },
+ "music.dungeon_secret": {
+  "sounds": [
+   {
+    "name": "underdeep:music/dungeon/dungeon_secret",
+    "stream": true
+   }
+  ]
+ },
+ "music.dungeon_traps": {
+  "sounds": [
+   {
+    "name": "underdeep:music/dungeon/dungeon_traps",
+    "stream": true
+   }
+  ]
+ },
+ "music.dungeon_vault": {
+  "sounds": [
+   {
+    "name": "underdeep:music/dungeon/dungeon_vault",
+    "stream": true
+   }
+  ]
+ },
+ "music.emeraldwetlands_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/emeraldwetlands_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.emeraldwetlands_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/emeraldwetlands_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.everfrost_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/everfrost_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.everfrost_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/everfrost_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.floodeddepths_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/floodeddepths_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.floodeddepths_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/floodeddepths_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.fungalexpanse_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/fungalexpanse_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.fungalexpanse_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/fungalexpanse_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.goldengrove_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/goldengrove_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.goldengrove_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/goldengrove_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.hollowpeaks_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/hollowpeaks_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.hollowpeaks_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/hollowpeaks_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.home_friends": {
+  "sounds": [
+   {
+    "name": "underdeep:music/home/home_friends",
+    "stream": true
+   }
+  ]
+ },
+ "music.home_hearth": {
+  "sounds": [
+   {
+    "name": "underdeep:music/home/home_hearth",
+    "stream": true
+   }
+  ]
+ },
+ "music.home_lantern": {
+  "sounds": [
+   {
+    "name": "underdeep:music/home/home_lantern",
+    "stream": true
+   }
+  ]
+ },
+ "music.home_rest": {
+  "sounds": [
+   {
+    "name": "underdeep:music/home/home_rest",
+    "stream": true
+   }
+  ]
+ },
+ "music.home_workbench": {
+  "sounds": [
+   {
+    "name": "underdeep:music/home/home_workbench",
+    "stream": true
+   }
+  ]
+ },
+ "music.petrifiedforest_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/petrifiedforest_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.petrifiedforest_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/petrifiedforest_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.rootwild_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/rootwild_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.rootwild_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/rootwild_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.ruins_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/dungeon/ruins_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.ruins_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/dungeon/ruins_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.starlightcaverns_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/starlightcaverns_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.starlightcaverns_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/starlightcaverns_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.stormstonecaverns_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/stormstonecaverns_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.stormstonecaverns_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/stormstonecaverns_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.sunkengardens_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/sunkengardens_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.sunkengardens_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/sunkengardens_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.theabyss_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/theabyss_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.theabyss_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/ecosystem/theabyss_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.travel_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/travel/travel_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.travel_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/travel/travel_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.travel_c": {
+  "sounds": [
+   {
+    "name": "underdeep:music/travel/travel_c",
+    "stream": true
+   }
+  ]
+ },
+ "music.victory_a": {
+  "sounds": [
+   {
+    "name": "underdeep:music/victory/victory_a",
+    "stream": true
+   }
+  ]
+ },
+ "music.victory_b": {
+  "sounds": [
+   {
+    "name": "underdeep:music/victory/victory_b",
+    "stream": true
+   }
+  ]
+ },
+ "music.victory_c": {
+  "sounds": [
+   {
+    "name": "underdeep:music/victory/victory_c",
+    "stream": true
+   }
+  ]
+ }
+}

@@ -1,31 +1,26 @@
 # Underdeep — Next Steps
 
-## Immediate: user play-testing of Stage 10, then Stage 11
+## Immediate: user play-testing of Stage 11 (and Stage 10), then finish Stage 11 or start Stage 12
 
-Do not start Stage 11 until the user assigns it. **Stage 10 needs a new world** (generator v5): the connected cave
-network and the guardian lairs exist only in worlds created with it. Older worlds keep their terrain and still get the
-new combat, creature behaviour, items and Handbook pages, but no lairs (so the game cannot be beaten there).
+Do not start Stage 12 until the user assigns it. Stage 11 needs no new world. Stage 10 content still needs a generator v5 world.
 
-### Prerequisites (verify first)
-1. `./gradlew build` (unit tests incl. the descent walk check; slow measurements with `-Dunderdeep.bench=true`).
-2. `SUITE=stage10 scripts/selftest.sh 42 runs/s10 create` (~3–5 min), `SUITE=audit …`, `SUITE=stage9 …`.
-3. Read `docs/CAVES.md`, `docs/COMBAT.md`, ARCHITECTURE §5k; private design in `docs/private/BOSSES.md`.
+### Listen and look (the user, spoiler-free)
+- Music: walk between regions, enter a settlement, stand near your bed, start a fight, ride, enter a ruin. The music
+  should change after a few seconds with crossfades, never stop, and never play vanilla music. Try `/underdeep_music`,
+  `/underdeep_music gaps`, `/underdeep_music next`, `/underdeep_music volume 60`. Report any track that sounds bad by
+  its title (shown by `/underdeep_music`). Each track is one line in `tools/music/compose.py`.
+- Creatures: watch them walk, run, eat, sleep, fly and swim. The animation has never been watched in motion.
 
-### Manual test checklist (spoiler-free)
-- Caves: walk out from spawn through side passages; find a spiral descent to the deep layer and walk back up.
-- Combat: dodge (Left Alt), heavy attacks with several weapon kinds (sneak + attack), parry with a shield and with a
-  sword, counters after a parry, stamina bar, staggering creatures; creature fights (packs, chargers, spitters).
-- Guardians: find an altar, wake an early guardian with friends and alone; downed/revive; retreat and retry; rewards.
-- Progression: Handbook "Beating Underdeep"; Signs; keystone direction; the door; the final encounter; the ending.
-
-### Stage 11 handoff (visual and audio — model quality is the top priority)
-See docs/COMBAT.md §5 and CLAUDE.md. In order: (1) rebuild all models with handcrafted articulated geometry, verified
-in-game one by one (creatures, bosses, NPCs, armour, weapons, tools, plants, furniture, workstations, decorations);
-(2) creature anatomy and identity; (3) boss models (rigs in assets/underdeep/bosses, poses per move — mechanics do not
-depend on them); (4) humanoid NPCs; (5) natural animation; (6) combat animation incl. first person; (7) textures;
-(8) equipment models; (9) furniture/workstations; (10) environments; (11) structures; (12) UI; (13) environmental
-sound; (14) continuous original soundtrack (60–80 tracks, crossfades, vanilla-gap option; hooks:
-`underdeep:explore_context`, `underdeep:boss_audio`); (15) unique guardian music; (16) final encounter presentation.
+### Stage 11 work remaining (in priority order; see docs/ASSET_QUALITY.md)
+1. Guardian models: full redesign (private previews in docs/private/previews/after/). Keep part names and poses, or
+   update the poses together with the rig.
+2. Animation verification in motion: a recorded client run (or the user's report); tune gait speeds and amplitudes per
+   species.
+3. NPC appearance: civilization clothing silhouettes (hoods, aprons, robes), profession props, stable variation.
+4. Sound effects and ambience: none of our own yet (creatures use vanilla sounds). The synthesizer in
+   `tools/music/synth.py` can produce them.
+5. Equipment and item icons, plants and blocks, furniture and workstations, UI/Handbook/HUD: not audited in Stage 11.
+6. An in-game music settings screen (the command exists).
 
 ### Stage 12 handoff (testing, optimisation, balance)
 - Lag: the user reported singleplayer spikes; not yet profiled with Spark/JFR. Measured: terrain-stage fill ≈13 ms per
@@ -35,6 +30,17 @@ sound; (14) continuous original soundtrack (60–80 tracks, crossfades, vanilla-
 - Guardian balance and fun (only mechanics are tested), real multiplayer (4–6 players), scaling numbers, reward
   values, pregeneration with Chunky, memory over long sessions, save growth, Handbook accuracy, obtainability and
   progression integrity in a real playthrough.
+
+### Known issues / limitations of Stage 11
+- The music was never listened to by a person. It was validated only by analysis (decode, loudness, spectra, no gaps).
+- Creature animation is not verified in motion. Rest poses are verified in a real client.
+- Guardians are still blocky. NPCs, items, blocks and UI are unchanged.
+- The Stage 2/3 self-test suite (`SUITE=stage2`) shows 3 stale failures that predate Stage 11:
+  - loot tables for Stage 9/10 technical blocks;
+  - one predator-hunt check;
+  - an ArrayIndexOutOfBounds in a Stage 3 check, from `RegionId.fromLong` via `WildlifeManager.typeOf`.
+
+  These need fixing in Stage 12.
 
 ### Known issues / limitations of Stage 10
 - Not hands-on tested in a real client: all combat feel, animations, boss presentation, HUD, keybinds.

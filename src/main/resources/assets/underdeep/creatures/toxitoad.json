@@ -9,7 +9,7 @@
    "parent": "root",
    "pivot": [
     0,
-    19.5,
+    20.4,
     0
    ],
    "role": "body",
@@ -17,170 +17,64 @@
     {
      "from": [
       -3.5,
-      -2.5,
-      -3.5
+      -2.3999999999999995,
+      -3
      ],
      "size": [
       7,
-      5,
-      7
+      4.6,
+      6.5
      ],
      "mirror": false,
      "uv": [
       0,
       0
      ]
+    },
+    {
+     "from": [
+      -2.5,
+      -3.2,
+      -2
+     ],
+     "size": [
+      5,
+      1,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      14,
+      12
+     ]
     }
+   ],
+   "rot": [
+    -0.15,
+    0,
+    0
    ]
-  },
-  {
-   "name": "leg0",
-   "parent": "root",
-   "pivot": [
-    2.5,
-    22,
-    -2.0
-   ],
-   "role": "leg",
-   "boxes": [
-    {
-     "from": [
-      -1.0,
-      0,
-      -1.0
-     ],
-     "size": [
-      2,
-      2,
-      2
-     ],
-     "mirror": false,
-     "uv": [
-      0,
-      12
-     ]
-    }
-   ],
-   "phase": 0,
-   "index": 0,
-   "side": 0
-  },
-  {
-   "name": "leg1",
-   "parent": "root",
-   "pivot": [
-    -2.5,
-    22,
-    -2.0
-   ],
-   "role": "leg",
-   "boxes": [
-    {
-     "from": [
-      -1.0,
-      0,
-      -1.0
-     ],
-     "size": [
-      2,
-      2,
-      2
-     ],
-     "mirror": false,
-     "uv": [
-      8,
-      12
-     ]
-    }
-   ],
-   "phase": 1,
-   "index": 0,
-   "side": 1
-  },
-  {
-   "name": "leg2",
-   "parent": "root",
-   "pivot": [
-    2.5,
-    22,
-    2.0
-   ],
-   "role": "leg",
-   "boxes": [
-    {
-     "from": [
-      -1.0,
-      0,
-      -1.0
-     ],
-     "size": [
-      2,
-      2,
-      2
-     ],
-     "mirror": false,
-     "uv": [
-      16,
-      12
-     ]
-    }
-   ],
-   "phase": 1,
-   "index": 1,
-   "side": 0
-  },
-  {
-   "name": "leg3",
-   "parent": "root",
-   "pivot": [
-    -2.5,
-    22,
-    2.0
-   ],
-   "role": "leg",
-   "boxes": [
-    {
-     "from": [
-      -1.0,
-      0,
-      -1.0
-     ],
-     "size": [
-      2,
-      2,
-      2
-     ],
-     "mirror": false,
-     "uv": [
-      24,
-      12
-     ]
-    }
-   ],
-   "phase": 0,
-   "index": 1,
-   "side": 1
   },
   {
    "name": "head",
    "parent": "body",
    "pivot": [
     0,
-    -1.5,
-    -3.5
+    -0.9,
+    -3
    ],
    "role": "head",
    "boxes": [
     {
      "from": [
-      -3.0,
-      -2.0,
-      -4
+      -3,
+      -1.5999999999999999,
+      -3
      ],
      "size": [
       6,
-      4,
-      4
+      2.8,
+      3.2
      ],
      "mirror": false,
      "uv": [
@@ -195,38 +89,347 @@
    "parent": "head",
    "pivot": [
     0,
-    1.0,
-    -1
+    1.2,
+    -0.2
    ],
    "role": "jaw",
    "boxes": [
     {
      "from": [
-      -2.5,
+      -2.9,
       0,
-      -3
+      -2.8
      ],
      "size": [
-      5,
-      1.5,
+      5.8,
+      1,
       3
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      19
+     ]
+    }
+   ]
+  },
+  {
+   "name": "eyebump0",
+   "parent": "head",
+   "pivot": [
+    1.9,
+    -1.4,
+    -2
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      -1.3,
+      -0.9
+     ],
+     "size": [
+      1.8,
+      1.3,
+      1.8
+     ],
+     "mirror": false,
+     "uv": [
+      26,
+      19
+     ]
+    }
+   ]
+  },
+  {
+   "name": "gland0",
+   "parent": "body",
+   "pivot": [
+    2.6,
+    -2.4,
+    -2.4
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      -1.2,
+      -0.5
+     ],
+     "size": [
+      1.8,
+      1.2,
+      2.5
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg0",
+   "parent": "body",
+   "pivot": [
+    2.5,
+    1.4,
+    -2
+   ],
+   "role": "leg_upper",
+   "boxes": [
+    {
+     "from": [
+      -0.6,
+      -0.19999999999999973,
+      -0.6
+     ],
+     "size": [
+      1.2,
+      2.4,
+      1.2
+     ],
+     "mirror": false,
+     "uv": [
+      42,
+      12
+     ]
+    },
+    {
+     "from": [
+      -1,
+      1.8000000000000003,
+      -1.4
+     ],
+     "size": [
+      2,
+      0.4,
+      1.8
+     ],
+     "mirror": false,
+     "uv": [
+      12,
+      24
+     ]
+    }
+   ],
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "haunch0",
+   "parent": "body",
+   "pivot": [
+    3.2,
+    1.3,
+    2
+   ],
+   "role": "leg_upper",
+   "boxes": [
+    {
+     "from": [
+      -1.2,
+      -1.2000000000000002,
+      -2.5
+     ],
+     "size": [
+      2.4,
+      2.6,
+      4
      ],
      "mirror": false,
      "uv": [
       48,
       0
      ]
+    },
+    {
+     "from": [
+      -1.2,
+      1.6999999999999997,
+      -3.6
+     ],
+     "size": [
+      2.4,
+      0.6,
+      2.4
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      19
+     ]
+    }
+   ],
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "eyebump1",
+   "parent": "head",
+   "pivot": [
+    -1.9,
+    -1.4,
+    -2
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      -1.3,
+      -0.9
+     ],
+     "size": [
+      1.8,
+      1.3,
+      1.8
+     ],
+     "mirror": false,
+     "uv": [
+      46,
+      19
+     ]
     }
    ]
+  },
+  {
+   "name": "gland1",
+   "parent": "body",
+   "pivot": [
+    -2.6,
+    -2.4,
+    -2.4
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      -1.2,
+      -0.5
+     ],
+     "size": [
+      1.8,
+      1.2,
+      2.5
+     ],
+     "mirror": false,
+     "uv": [
+      50,
+      12
+     ]
+    }
+   ]
+  },
+  {
+   "name": "leg1",
+   "parent": "body",
+   "pivot": [
+    -2.5,
+    1.4,
+    -2
+   ],
+   "role": "leg_upper",
+   "boxes": [
+    {
+     "from": [
+      -0.6,
+      -0.19999999999999973,
+      -0.6
+     ],
+     "size": [
+      1.2,
+      2.4,
+      1.2
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      19
+     ]
+    },
+    {
+     "from": [
+      -1,
+      1.8000000000000003,
+      -1.4
+     ],
+     "size": [
+      2,
+      0.4,
+      1.8
+     ],
+     "mirror": false,
+     "uv": [
+      20,
+      24
+     ]
+    }
+   ],
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "haunch1",
+   "parent": "body",
+   "pivot": [
+    -3.2,
+    1.3,
+    2
+   ],
+   "role": "leg_upper",
+   "boxes": [
+    {
+     "from": [
+      -1.2,
+      -1.2000000000000002,
+      -2.5
+     ],
+     "size": [
+      2.4,
+      2.6,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      12
+     ]
+    },
+    {
+     "from": [
+      -1.2,
+      1.6999999999999997,
+      -3.6
+     ],
+     "size": [
+      2.4,
+      0.6,
+      2.4
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      24
+     ]
+    }
+   ],
+   "index": 1,
+   "side": 1
   }
  ],
  "glow": false,
  "egg": [
-  9881660,
-  7874700
+  9881664,
+  8531094
  ],
  "scale": 1.0,
  "shadow": 0.35,
  "gait": "quad",
- "legLength": 2
+ "legLength": 2,
+ "rig": 2
 }

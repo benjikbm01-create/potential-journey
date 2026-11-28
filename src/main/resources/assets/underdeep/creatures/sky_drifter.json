@@ -1,7 +1,7 @@
 {
  "texture": [
   128,
-  32
+  128
  ],
  "parts": [
   {
@@ -9,339 +9,1006 @@
    "parent": "root",
    "pivot": [
     0,
-    -4,
+    7,
     0
    ],
-   "role": "float",
+   "role": "body",
    "boxes": [
     {
      "from": [
-      -10,
+      -9,
+      -4.95,
+      -9
+     ],
+     "size": [
+      18,
+      4.95,
+      18
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      0
+     ]
+    },
+    {
+     "from": [
       -8,
-      -10
+      -7.65,
+      -8
      ],
      "size": [
-      20,
-      8,
-      20
+      16,
+      2.6999999999999997,
+      16
      ],
      "mirror": false,
      "uv": [
       0,
-      0
+      43
+     ]
+    },
+    {
+     "from": [
+      -6.5,
+      -9.0,
+      -6.5
+     ],
+     "size": [
+      13,
+      1.3499999999999999,
+      13
+     ],
+     "mirror": false,
+     "uv": [
+      64,
+      43
+     ]
+    },
+    {
+     "from": [
+      -9.5,
+      -0.0,
+      -9.5
+     ],
+     "size": [
+      19,
+      0.8,
+      19
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      23
      ]
     }
-   ],
-   "index": 0
+   ]
   },
   {
-   "name": "tent0",
+   "name": "tentacle0",
    "parent": "body",
    "pivot": [
-    9.0,
-    0,
+    7.8,
+    0.5,
     0.0
    ],
-   "role": "float",
+   "role": "tentacle",
    "boxes": [
     {
      "from": [
-      -0.5,
-      0,
-      -0.5
+      -0.4,
+      -0.0,
+      -0.4
      ],
      "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      80,
-      0
-     ]
-    }
-   ],
-   "index": 1
-  },
-  {
-   "name": "tent1",
-   "parent": "body",
-   "pivot": [
-    7.281,
-    0,
-    5.29
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      84,
-      0
-     ]
-    }
-   ],
-   "index": 2
-  },
-  {
-   "name": "tent2",
-   "parent": "body",
-   "pivot": [
-    2.781,
-    0,
-    8.56
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      88,
-      0
-     ]
-    }
-   ],
-   "index": 3
-  },
-  {
-   "name": "tent3",
-   "parent": "body",
-   "pivot": [
-    -2.781,
-    0,
-    8.56
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      92,
-      0
-     ]
-    }
-   ],
-   "index": 4
-  },
-  {
-   "name": "tent4",
-   "parent": "body",
-   "pivot": [
-    -7.281,
-    0,
-    5.29
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      96,
-      0
-     ]
-    }
-   ],
-   "index": 5
-  },
-  {
-   "name": "tent5",
-   "parent": "body",
-   "pivot": [
-    -9.0,
-    0,
-    0.0
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      100,
-      0
-     ]
-    }
-   ],
-   "index": 6
-  },
-  {
-   "name": "tent6",
-   "parent": "body",
-   "pivot": [
-    -7.281,
-    0,
-    -5.29
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      104,
-      0
-     ]
-    }
-   ],
-   "index": 7
-  },
-  {
-   "name": "tent7",
-   "parent": "body",
-   "pivot": [
-    -2.781,
-    0,
-    -8.56
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      108,
-      0
-     ]
-    }
-   ],
-   "index": 8
-  },
-  {
-   "name": "tent8",
-   "parent": "body",
-   "pivot": [
-    2.781,
-    0,
-    -8.56
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      112,
-      0
-     ]
-    }
-   ],
-   "index": 9
-  },
-  {
-   "name": "tent9",
-   "parent": "body",
-   "pivot": [
-    7.281,
-    0,
-    -5.29
-   ],
-   "role": "float",
-   "boxes": [
-    {
-     "from": [
-      -0.5,
-      0,
-      -0.5
-     ],
-     "size": [
-      1,
-      14,
-      1
+      0.8,
+      8.0,
+      0.8
      ],
      "mirror": false,
      "uv": [
       116,
-      0
+      43
      ]
     }
    ],
-   "index": 10
+   "phase": 0,
+   "index": 0,
+   "chain": 0
+  },
+  {
+   "name": "tentacle0b",
+   "parent": "tentacle0",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      120,
+      43
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "chain": 1
+  },
+  {
+   "name": "tentacle1",
+   "parent": "body",
+   "pivot": [
+    6.31,
+    0.5,
+    4.585
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      124,
+      43
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "chain": 0
+  },
+  {
+   "name": "tentacle1b",
+   "parent": "tentacle1",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "chain": 1
+  },
+  {
+   "name": "tentacle2",
+   "parent": "body",
+   "pivot": [
+    2.41,
+    0.5,
+    7.418
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      4,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 2,
+   "chain": 0
+  },
+  {
+   "name": "tentacle2b",
+   "parent": "tentacle2",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 2,
+   "chain": 1
+  },
+  {
+   "name": "tentacle3",
+   "parent": "body",
+   "pivot": [
+    -2.41,
+    0.5,
+    7.418
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      12,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 3,
+   "chain": 0
+  },
+  {
+   "name": "tentacle3b",
+   "parent": "tentacle3",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 3,
+   "chain": 1
+  },
+  {
+   "name": "tentacle4",
+   "parent": "body",
+   "pivot": [
+    -6.31,
+    0.5,
+    4.585
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      20,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 4,
+   "chain": 0
+  },
+  {
+   "name": "tentacle4b",
+   "parent": "tentacle4",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 4,
+   "chain": 1
+  },
+  {
+   "name": "tentacle5",
+   "parent": "body",
+   "pivot": [
+    -7.8,
+    0.5,
+    0.0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 5,
+   "chain": 0
+  },
+  {
+   "name": "tentacle5b",
+   "parent": "tentacle5",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 5,
+   "chain": 1
+  },
+  {
+   "name": "tentacle6",
+   "parent": "body",
+   "pivot": [
+    -6.31,
+    0.5,
+    -4.585
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      36,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 6,
+   "chain": 0
+  },
+  {
+   "name": "tentacle6b",
+   "parent": "tentacle6",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      40,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 6,
+   "chain": 1
+  },
+  {
+   "name": "tentacle7",
+   "parent": "body",
+   "pivot": [
+    -2.41,
+    0.5,
+    -7.418
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      44,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 7,
+   "chain": 0
+  },
+  {
+   "name": "tentacle7b",
+   "parent": "tentacle7",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      48,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 7,
+   "chain": 1
+  },
+  {
+   "name": "tentacle8",
+   "parent": "body",
+   "pivot": [
+    2.41,
+    0.5,
+    -7.418
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      52,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 8,
+   "chain": 0
+  },
+  {
+   "name": "tentacle8b",
+   "parent": "tentacle8",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      56,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 8,
+   "chain": 1
+  },
+  {
+   "name": "tentacle9",
+   "parent": "body",
+   "pivot": [
+    6.31,
+    0.5,
+    -4.585
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.4,
+      -0.0,
+      -0.4
+     ],
+     "size": [
+      0.8,
+      8.0,
+      0.8
+     ],
+     "mirror": false,
+     "uv": [
+      60,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 9,
+   "chain": 0
+  },
+  {
+   "name": "tentacle9b",
+   "parent": "tentacle9",
+   "pivot": [
+    0,
+    8.0,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.3,
+      -0.0,
+      -0.3
+     ],
+     "size": [
+      0.6,
+      8.0,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      64,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 9,
+   "chain": 1
+  },
+  {
+   "name": "oral0",
+   "parent": "body",
+   "pivot": [
+    1.061,
+    0.5,
+    1.061
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      0,
+      -0.3
+     ],
+     "size": [
+      1.8,
+      6,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      68,
+      62
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0.7854,
+    0
+   ],
+   "phase": 0,
+   "index": 0,
+   "chain": 0
+  },
+  {
+   "name": "oral0b",
+   "parent": "oral0",
+   "pivot": [
+    0,
+    6,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.7,
+      0,
+      -0.25
+     ],
+     "size": [
+      1.4,
+      6,
+      0.5
+     ],
+     "mirror": false,
+     "uv": [
+      74,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "chain": 1
+  },
+  {
+   "name": "oral1",
+   "parent": "body",
+   "pivot": [
+    -1.061,
+    0.5,
+    1.061
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      0,
+      -0.3
+     ],
+     "size": [
+      1.8,
+      6,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      80,
+      62
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    2.3562,
+    0
+   ],
+   "phase": 1,
+   "index": 1,
+   "chain": 0
+  },
+  {
+   "name": "oral1b",
+   "parent": "oral1",
+   "pivot": [
+    0,
+    6,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.7,
+      0,
+      -0.25
+     ],
+     "size": [
+      1.4,
+      6,
+      0.5
+     ],
+     "mirror": false,
+     "uv": [
+      86,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "chain": 1
+  },
+  {
+   "name": "oral2",
+   "parent": "body",
+   "pivot": [
+    -1.061,
+    0.5,
+    -1.061
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      0,
+      -0.3
+     ],
+     "size": [
+      1.8,
+      6,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      92,
+      62
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    3.927,
+    0
+   ],
+   "phase": 0,
+   "index": 2,
+   "chain": 0
+  },
+  {
+   "name": "oral2b",
+   "parent": "oral2",
+   "pivot": [
+    0,
+    6,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.7,
+      0,
+      -0.25
+     ],
+     "size": [
+      1.4,
+      6,
+      0.5
+     ],
+     "mirror": false,
+     "uv": [
+      98,
+      62
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 2,
+   "chain": 1
+  },
+  {
+   "name": "oral3",
+   "parent": "body",
+   "pivot": [
+    1.061,
+    0.5,
+    -1.061
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.9,
+      0,
+      -0.3
+     ],
+     "size": [
+      1.8,
+      6,
+      0.6
+     ],
+     "mirror": false,
+     "uv": [
+      104,
+      62
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    5.4978,
+    0
+   ],
+   "phase": 1,
+   "index": 3,
+   "chain": 0
+  },
+  {
+   "name": "oral3b",
+   "parent": "oral3",
+   "pivot": [
+    0,
+    6,
+    0
+   ],
+   "role": "tentacle",
+   "boxes": [
+    {
+     "from": [
+      -0.7,
+      0,
+      -0.25
+     ],
+     "size": [
+      1.4,
+      6,
+      0.5
+     ],
+     "mirror": false,
+     "uv": [
+      110,
+      62
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 3,
+   "chain": 1
   }
  ],
  "glow": true,
  "egg": [
-  7900380,
-  13166335
+  8295136,
+  13161210
  ],
  "scale": 2.0,
  "shadow": 1.5,
  "gait": "none",
- "legLength": 0
+ "legLength": 0,
+ "rig": 2
 }

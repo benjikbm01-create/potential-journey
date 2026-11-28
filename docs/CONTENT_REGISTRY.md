@@ -400,3 +400,13 @@ robe, armor, farmer, vest, coat).
 - Economy: 13 goods (guardian materials) → 509 goods. Advancements: tabs `combat` (11) and `guardians` (19) → 16 tabs,
   217 files. Handbook: categories `combat`, `progress`; page keys `boss:<id>`, `boss_won:<id>`, `progress:<step>`.
 - Config: sections `combat`, `bosses`.
+
+## Stage 11 — Presentation (ids are data/strings; see docs/SOUNDTRACK.md, docs/ART_DIRECTION.md)
+- Sound events: `underdeep:music.<track id>` (73, streamed; listed in `assets/underdeep/music_tracks.json`). Track ids
+  are append-only: renaming one breaks resource packs that replace it.
+- Payload (S2C): `underdeep:music_context` (string: `settlement:<civ>`, `home` or empty).
+- Creature spec field `"rig": 2` (Stage 11 anatomy). New part roles: `leg_upper`, `leg_lower`, `foot`, `ear`,
+  `wing_outer`, `fin_outer`, `fluke`, `tentacle`. New part keys: `chain`, `unfold`.
+- Client settings file: `config/underdeep-client.properties` (`music.enabled`, `music.volume`, `music.gaps`).
+  Client command: `/underdeep_music`.
+- Language keys: `music.underdeep.<track id>` (track titles), `message.underdeep.music.*`.

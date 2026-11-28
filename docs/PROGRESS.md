@@ -263,5 +263,20 @@ See `docs/CAVES.md`, `docs/COMBAT.md` (public) and private design material. Need
 | Handbook: Combat + Beating Underdeep categories, guardian pages; 30 advancements (2 tabs) | done | |
 | Companion boss behaviour, real multiplayer, balance, profiling | not done | Stage 12–13 |
 
-## Stages 11–12
+## Stage 11 — Models, textures, animation, soundtrack: PARTIALLY IMPLEMENTED (2026-11-28)
+
+See `docs/ART_DIRECTION.md`, `docs/ASSET_QUALITY.md` (quality registry), `docs/SOUNDTRACK.md`. No world regeneration needed.
+
+| System | State | Notes |
+|---|---|---|
+| 60 creature models rebuilt from scratch (anatomy kit + one hand-authored design per species) | done | 4-view previews inspected; all 60 rendered in a real client (zoo tour) |
+| Creature textures repainted (structured painter: countershading, markings, painted eyes, selective glow) | done | |
+| Creature animation rewritten (two-segment legs, chains, hinged/folding wings, fins, flukes, ears, blended states, juvenile heads) | done, unverified in motion | built and code-reviewed; screenshots show rest poses only |
+| Preview renderer (front/3-4/side/rear, player scale, contact sheets) | done | `tools/preview/render_models.py` |
+| Guardian models: detail pass + structured textures | partial | still blocky; redesign needed (private previews) |
+| Original soundtrack: 73 tracks, 135 min, synthesized + composed by code, OGG streamed | done | validated by analysis only, not by ear |
+| Music director: contexts, priority, hysteresis, history, crossfades, gaps option, volume, vanilla suppression, lifecycle | done, not heard in game | server `music_context` payload for settlement/home |
+| NPC appearance, equipment/item icons, plants/blocks, furniture, architecture, lighting/particles, UI/Handbook/HUD, SFX/ambience | not done | registry marks them not verified / missing |
+
+## Stage 12
 Not started.

@@ -18,6 +18,8 @@ import zlib
 
 sys.path.insert(0, os.path.dirname(__file__))
 import art  # noqa: E402
+import creature_designs  # noqa: E402
+import creature_kit  # noqa: E402
 
 ROOT = os.path.join(os.path.dirname(__file__), "..", "..", "src", "main", "resources")
 ASSETS = os.path.join(ROOT, "assets", "underdeep")
@@ -429,6 +431,25 @@ def build_assets(sid, m, glows, egg):
     return {"texture": [tw, th], "parts": parts, "glow": has_glow, "egg": egg}
 
 
+def build_design(sid, egg):
+    """Stage 11: hand-authored anatomy (creature_designs) -> creature JSON + painted texture (+ glow layer)."""
+    d = creature_designs.DESIGNS[sid]
+    r = creature_kit.Rig(sid, {"base": (128, 128, 128)}, zlib.crc32(sid.encode()) & 0xFFFF)
+    d["build"](r)
+    img, glow, (tw, th) = creature_kit.paint(r)
+    tex_dir = os.path.join(ASSETS, "textures", "entity", "creature")
+    os.makedirs(tex_dir, exist_ok=True)
+    img.save(os.path.join(tex_dir, sid + ".png"))
+    has_glow = d["glows"] and glow.getbbox() is not None
+    if has_glow:
+        glow.save(os.path.join(tex_dir, sid + "_glow.png"))
+    elif os.path.exists(os.path.join(tex_dir, sid + "_glow.png")):
+        os.remove(os.path.join(tex_dir, sid + "_glow.png"))
+    egg = [rgb_int(r.pal["base"]), rgb_int(r.pal.get("mark", r.pal.get("belly", r.pal["base"])))]
+    return {"texture": [tw, th], "parts": r.to_json(), "glow": has_glow, "egg": egg, "scale": d["scale"], "shadow": d["shadow"],
+            "gait": d["gait"], "legLength": d["leg"], "rig": 2}
+
+
 def rgb_int(c):
     return (c[0] << 16) | (c[1] << 8) | c[2]
 
@@ -824,11 +845,14 @@ def main():
     cdir = os.path.join(ASSETS, "creatures")
     os.makedirs(cdir, exist_ok=True)
     for sid, d in SPECIES.items():
-        m = Model(sid, d["pal"])
-        d["plan"](m)
         egg = [rgb_int(d["pal"]["base"]), rgb_int(d["pal"].get("glow", d["pal"]["accent"]))]
-        spec = build_assets(sid, m, d["glows"], egg)
-        spec.update({"scale": d["scale"], "shadow": d["shadow"], "gait": d["gait"], "legLength": d["leg"]})
+        if sid in creature_designs.DESIGNS:
+            spec = build_design(sid, egg)
+        else:
+            m = Model(sid, d["pal"])
+            d["plan"](m)
+            spec = build_assets(sid, m, d["glows"], egg)
+            spec.update({"scale": d["scale"], "shadow": d["shadow"], "gait": d["gait"], "legLength": d["leg"]})
         wjson(os.path.join(cdir, sid + ".json"), spec)
         LANG[f"entity.{NS}.{sid}"] = d["name"]
         LANG[f"item.{NS}.{sid}_spawn_egg"] = d["name"] + " Spawn Egg"

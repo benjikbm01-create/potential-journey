@@ -38,6 +38,7 @@ public final class UnderdeepClient implements ClientModInitializer {
         dev.underdeep.client.explore.ExploreClient.init();
         dev.underdeep.client.combat.CombatClient.init();
         dev.underdeep.client.boss.BossRenderers.init();
+        dev.underdeep.client.audio.MusicDirector.init();
         DimensionRenderingRegistry.registerDimensionEffects(Identifier.of(Underdeep.MOD_ID, "underdeep"), new UnderdeepEffects());
         ScreenshotTour.init();
         CreateWorldTest.init();

@@ -1,7 +1,7 @@
 {
  "texture": [
-  128,
-  64
+  64,
+  128
  ],
  "parts": [
   {
@@ -9,55 +9,167 @@
    "parent": "root",
    "pivot": [
     0,
-    12.0,
+    12,
     0
    ],
    "role": "body",
    "boxes": [
     {
      "from": [
-      -5.5,
       -5.0,
-      -8.0
+      -4.5,
+      -7.5
      ],
      "size": [
-      11,
       10,
-      16
+      9,
+      8.25
      ],
      "mirror": false,
      "uv": [
       0,
+      22
+     ]
+    },
+    {
+     "from": [
+      -4.5,
+      -4.12,
+      0.0
+     ],
+     "size": [
+      9,
+      8,
+      7.5
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      40
+     ]
+    },
+    {
+     "from": [
+      -4.5,
+      -0.20000000000000018,
+      -3.75
+     ],
+     "size": [
+      9.0,
+      4.8,
+      7.5
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      56
+     ]
+    }
+   ]
+  },
+  {
+   "name": "hump",
+   "parent": "body",
+   "pivot": [
+    0,
+    -4.0,
+    -6.5
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -4.0,
+      -2.6,
       0
+     ],
+     "size": [
+      8,
+      2.6,
+      7
+     ],
+     "mirror": false,
+     "uv": [
+      34,
+      56
      ]
     }
    ]
   },
   {
    "name": "leg0",
-   "parent": "root",
+   "parent": "body",
    "pivot": [
     3.5,
-    17,
-    -5.5
+    3.0,
+    -5.0
    ],
-   "role": "leg",
+   "role": "leg_upper",
    "boxes": [
     {
      "from": [
-      -2.0,
-      0,
-      -2.0
+      -1.5,
+      -0.5,
+      -1.5
      ],
      "size": [
-      4,
-      7,
-      4
+      3,
+      4.5,
+      3
      ],
      "mirror": false,
      "uv": [
-      26,
-      26
+      20,
+      69
+     ]
+    }
+   ],
+   "phase": 0,
+   "index": 0,
+   "side": 0
+  },
+  {
+   "name": "leg0_lower",
+   "parent": "leg0",
+   "pivot": [
+    0,
+    4.0,
+    0
+   ],
+   "role": "leg_lower",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      -0.2999999999999998,
+      -1.0
+     ],
+     "size": [
+      2,
+      4.3,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      12,
+      79
+     ]
+    },
+    {
+     "from": [
+      -1.25,
+      4.0,
+      -1.2
+     ],
+     "size": [
+      2.5,
+      1,
+      2.2
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      94
      ]
     }
    ],
@@ -67,29 +179,78 @@
   },
   {
    "name": "leg1",
-   "parent": "root",
+   "parent": "body",
    "pivot": [
     -3.5,
-    17,
-    -5.5
+    3.0,
+    -5.0
    ],
-   "role": "leg",
+   "role": "leg_upper",
    "boxes": [
     {
      "from": [
-      -2.0,
-      0,
-      -2.0
+      -1.5,
+      -0.5,
+      -1.5
      ],
      "size": [
-      4,
-      7,
-      4
+      3,
+      4.5,
+      3
+     ],
+     "mirror": true,
+     "uv": [
+      32,
+      69
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 0,
+   "side": 1
+  },
+  {
+   "name": "leg1_lower",
+   "parent": "leg1",
+   "pivot": [
+    0,
+    4.0,
+    0
+   ],
+   "role": "leg_lower",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      -0.2999999999999998,
+      -1.0
+     ],
+     "size": [
+      2,
+      4.3,
+      2
+     ],
+     "mirror": true,
+     "uv": [
+      20,
+      79
+     ]
+    },
+    {
+     "from": [
+      -1.25,
+      4.0,
+      -1.2
+     ],
+     "size": [
+      2.5,
+      1,
+      2.2
      ],
      "mirror": false,
      "uv": [
-      42,
-      26
+      44,
+      94
      ]
     }
    ],
@@ -99,29 +260,78 @@
   },
   {
    "name": "leg2",
-   "parent": "root",
+   "parent": "body",
    "pivot": [
-    3.5,
-    17,
-    5.5
+    3.0,
+    3.0,
+    5.0
    ],
-   "role": "leg",
+   "role": "leg_upper",
    "boxes": [
     {
      "from": [
-      -2.0,
-      0,
-      -2.0
+      -1.5,
+      -0.5,
+      -1.5
      ],
      "size": [
-      4,
-      7,
-      4
+      3,
+      4.5,
+      3
      ],
      "mirror": false,
      "uv": [
-      58,
-      26
+      44,
+      69
+     ]
+    }
+   ],
+   "phase": 1,
+   "index": 1,
+   "side": 0
+  },
+  {
+   "name": "leg2_lower",
+   "parent": "leg2",
+   "pivot": [
+    0,
+    4.0,
+    0
+   ],
+   "role": "leg_lower",
+   "boxes": [
+    {
+     "from": [
+      -1.0,
+      -0.2999999999999998,
+      -1.0
+     ],
+     "size": [
+      2,
+      4.3,
+      2
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      79
+     ]
+    },
+    {
+     "from": [
+      -1.25,
+      4.0,
+      -1.2
+     ],
+     "size": [
+      2.5,
+      1,
+      2.2
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      99
      ]
     }
    ],
@@ -131,29 +341,29 @@
   },
   {
    "name": "leg3",
-   "parent": "root",
+   "parent": "body",
    "pivot": [
-    -3.5,
-    17,
-    5.5
+    -3.0,
+    3.0,
+    5.0
    ],
-   "role": "leg",
+   "role": "leg_upper",
    "boxes": [
     {
      "from": [
-      -2.0,
-      0,
-      -2.0
+      -1.5,
+      -0.5,
+      -1.5
      ],
      "size": [
-      4,
-      7,
-      4
+      3,
+      4.5,
+      3
      ],
-     "mirror": false,
+     "mirror": true,
      "uv": [
-      74,
-      26
+      0,
+      79
      ]
     }
    ],
@@ -162,98 +372,125 @@
    "side": 1
   },
   {
-   "name": "neck",
-   "parent": "body",
+   "name": "leg3_lower",
+   "parent": "leg3",
    "pivot": [
     0,
-    -2.0,
-    -7.0
+    4.0,
+    0
    ],
-   "role": "neck",
+   "role": "leg_lower",
    "boxes": [
     {
      "from": [
-      -3.0,
-      -3.0,
-      -2
+      -1.0,
+      -0.2999999999999998,
+      -1.0
      ],
      "size": [
-      6,
-      6,
+      2,
+      4.3,
       2
+     ],
+     "mirror": true,
+     "uv": [
+      36,
+      79
+     ]
+    },
+    {
+     "from": [
+      -1.25,
+      4.0,
+      -1.2
+     ],
+     "size": [
+      2.5,
+      1,
+      2.2
      ],
      "mirror": false,
      "uv": [
-      90,
-      26
+      12,
+      99
      ]
     }
    ],
-   "rot": [
-    -0.6,
-    0,
-    0
-   ]
+   "phase": 0,
+   "index": 1,
+   "side": 1
   },
   {
    "name": "head",
-   "parent": "neck",
+   "parent": "body",
    "pivot": [
     0,
-    0,
-    -1
+    -1.35,
+    -7.5
    ],
    "role": "head",
    "boxes": [
     {
      "from": [
-      -3.5,
-      -3.5,
-      -6
+      -3.0,
+      -2.75,
+      -4
      ],
      "size": [
-      7,
-      7,
-      6
+      6,
+      5.5,
+      4
      ],
      "mirror": false,
      "uv": [
       0,
-      26
+      69
      ]
-    }
-   ],
-   "rot": [
-    0.48,
-    0,
-    0
-   ]
-  },
-  {
-   "name": "snout",
-   "parent": "head",
-   "pivot": [
-    0,
-    0,
-    -6
-   ],
-   "role": "decor",
-   "boxes": [
+    },
     {
      "from": [
-      -2.5,
-      -1.05,
-      -1
+      -2.0,
+      -0.75,
+      -6.5
      ],
      "size": [
-      5,
-      3.85,
-      1
+      4,
+      3.5,
+      2.7
      ],
      "mirror": false,
      "uv": [
-      106,
-      26
+      44,
+      79
+     ]
+    }
+   ]
+  },
+  {
+   "name": "jaw",
+   "parent": "head",
+   "pivot": [
+    0,
+    2.55,
+    -1.6
+   ],
+   "role": "jaw",
+   "boxes": [
+    {
+     "from": [
+      -1.7,
+      -0.0,
+      -2.9
+     ],
+     "size": [
+      3.4,
+      1.2,
+      4.3
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      87
      ]
     }
    ]
@@ -263,209 +500,342 @@
    "parent": "body",
    "pivot": [
     0,
-    -3.5,
-    8.0
+    -1.6,
+    7.0
    ],
    "role": "tail",
    "boxes": [
     {
      "from": [
-      -1.0,
-      -1.0,
+      -0.8,
+      -0.8,
       0
      ],
      "size": [
-      2,
-      2,
-      2
+      1.6,
+      1.6,
+      2.3
      ],
      "mirror": false,
      "uv": [
-      8,
-      39
+      32,
+      87
      ]
     }
    ],
    "rot": [
-    -0.5,
+    -1.1,
     0,
     0
    ],
-   "index": 0
+   "chain": 0
   },
   {
-   "name": "mane",
+   "name": "skirt",
    "parent": "body",
    "pivot": [
     0,
-    -5,
-    -8
-   ],
-   "role": "crest",
-   "boxes": [
-    {
-     "from": [
-      -6.0,
-      -3,
-      0
-     ],
-     "size": [
-      12,
-      3,
-      14
-     ],
-     "mirror": false,
-     "uv": [
-      54,
-      0
-     ]
-    }
-   ]
-  },
-  {
-   "name": "horn0",
-   "parent": "head",
-   "pivot": [
-    1.5,
-    -3,
-    -3
-   ],
-   "role": "crest",
-   "boxes": [
-    {
-     "from": [
-      -0.75,
-      -3,
-      -0.75
-     ],
-     "size": [
-      1.5,
-      3,
-      1.5
-     ],
-     "mirror": false,
-     "uv": [
-      118,
-      26
-     ]
-    }
-   ],
-   "rot": [
-    0.4,
     0,
-    0.3
-   ]
-  },
-  {
-   "name": "hornb0",
-   "parent": "horn0",
-   "pivot": [
-    0,
-    -3,
     0
    ],
    "role": "decor",
    "boxes": [
     {
      "from": [
-      -0.5,
-      -2.1,
-      -0.5
+      -5.4,
+      0.2999999999999998,
+      -7
      ],
      "size": [
-      1,
-      2.1,
-      1
-     ],
-     "mirror": false,
-     "uv": [
-      16,
-      39
-     ]
-    }
-   ],
-   "rot": [
-    -1.4,
-    0,
-    0
-   ]
-  },
-  {
-   "name": "horn1",
-   "parent": "head",
-   "pivot": [
-    -1.5,
-    -3,
-    -3
-   ],
-   "role": "crest",
-   "boxes": [
-    {
-     "from": [
-      -0.75,
-      -3,
-      -0.75
-     ],
-     "size": [
-      1.5,
-      3,
-      1.5
+      10.8,
+      7.2,
+      13.5
      ],
      "mirror": false,
      "uv": [
       0,
-      39
+      0
      ]
     }
-   ],
-   "rot": [
-    0.4,
-    0,
-    -0.3
    ]
   },
   {
-   "name": "hornb1",
-   "parent": "horn1",
+   "name": "boss",
+   "parent": "head",
    "pivot": [
     0,
-    -3,
-    0
+    -2.5,
+    -1.5
    ],
    "role": "decor",
    "boxes": [
     {
      "from": [
-      -0.5,
-      -2.1,
-      -0.5
+      -3.5,
+      -1.4,
+      -2.5
      ],
      "size": [
-      1,
-      2.1,
-      1
+      7,
+      1.4,
+      3
      ],
      "mirror": false,
      "uv": [
-      20,
-      39
+      42,
+      87
+     ]
+    }
+   ]
+  },
+  {
+   "name": "horn0_0",
+   "parent": "head",
+   "pivot": [
+    3.2,
+    -3,
+    -2.5
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.8,
+      -3,
+      -0.8
+     ],
+     "size": [
+      1.6,
+      3,
+      1.6
+     ],
+     "mirror": false,
+     "uv": [
+      0,
+      94
      ]
     }
    ],
    "rot": [
-    -1.4,
     0,
+    0,
+    1.9
+   ],
+   "side": 0
+  },
+  {
+   "name": "horn0_1",
+   "parent": "horn0_0",
+   "pivot": [
+    0,
+    -2.7,
     0
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.65,
+      -2.5,
+      -0.65
+     ],
+     "size": [
+      1.3,
+      2.5,
+      1.3
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      94
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.9
+   ],
+   "side": 0
+  },
+  {
+   "name": "horn0_2",
+   "parent": "horn0_1",
+   "pivot": [
+    0,
+    -2.2,
+    0
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      99
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -0.9
+   ],
+   "side": 0
+  },
+  {
+   "name": "horn1_0",
+   "parent": "head",
+   "pivot": [
+    -3.2,
+    -3,
+    -2.5
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.8,
+      -3,
+      -0.8
+     ],
+     "size": [
+      1.6,
+      3,
+      1.6
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      94
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    -1.9
+   ],
+   "side": 1
+  },
+  {
+   "name": "horn1_1",
+   "parent": "horn1_0",
+   "pivot": [
+    0,
+    -2.7,
+    0
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.65,
+      -2.5,
+      -0.65
+     ],
+     "size": [
+      1.3,
+      2.5,
+      1.3
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      94
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.9
+   ],
+   "side": 1
+  },
+  {
+   "name": "horn1_2",
+   "parent": "horn1_1",
+   "pivot": [
+    0,
+    -2.2,
+    0
+   ],
+   "role": "crest",
+   "boxes": [
+    {
+     "from": [
+      -0.5,
+      -2,
+      -0.5
+     ],
+     "size": [
+      1,
+      2,
+      1
+     ],
+     "mirror": false,
+     "uv": [
+      28,
+      99
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    0,
+    0.9
+   ],
+   "side": 1
+  },
+  {
+   "name": "beardfur",
+   "parent": "head",
+   "pivot": [
+    0,
+    2.75,
+    -3
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -2,
+      0,
+      -1
+     ],
+     "size": [
+      4,
+      3,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      18,
+      87
+     ]
+    }
    ]
   }
  ],
  "glow": false,
  "egg": [
-  11186105,
-  15791610
+  11580606,
+  14080736
  ],
  "scale": 1.15,
  "shadow": 0.9,
  "gait": "quad",
- "legLength": 7
+ "legLength": 7,
+ "rig": 2
 }

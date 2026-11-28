@@ -381,35 +381,76 @@ def build_texture(rig, rnd):
     H = max(H, 64)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    for p, b, u, v, w, h, d in layout:
+    # Stage 11: structured painting instead of per-texel noise — face lighting, top highlight / bottom rim, low-frequency
+    # tonal variation and material patterns drawn as shapes (moss clumps, scale rows, bands, facets, crack lines, spots).
+    def hsh(*xs):
+        v = 2166136261
+        for x_ in xs:
+            v = ((v ^ (int(x_) & 0xFFFFFFFF)) * 16777619) & 0xFFFFFFFF
+        return (v >> 8) / float(1 << 24)
+
+    seed = sum(map(ord, rig.bid))
+    for bi, (p, b, u, v, w, h, d) in enumerate(layout):
         c = rig.pal[p["mat"]]
         pat = rig.pal.get(p["mat"] + "_pattern", "")
-        faces = [(u + d, v, w, d, 1.18), (u + d + w, v, w, d, 0.62), (u, v + d, d, h, 0.86), (u + d, v + d, w, h, 1.0),
-                 (u + d + w, v + d, d, h, 0.86), (u + 2 * d + w, v + d, w, h, 0.94)]
-        for fx, fy, fw, fh, light in faces:
+        crack = rig.pal.get("crack", (255, 140, 40))
+        faces = [("up", u + d, v, w, d, 1.16), ("down", u + d + w, v, w, d, 0.64), ("e", u, v + d, d, h, 0.86), ("n", u + d, v + d, w, h, 1.0),
+                 ("w", u + d + w, v + d, d, h, 0.86), ("s", u + 2 * d + w, v + d, w, h, 0.94)]
+        for fname, fx, fy, fw, fh, light in faces:
+            side = fname not in ("up", "down")
+            # crack lines: a few random walks per side face
+            crack_px = set()
+            if pat == "cracks" and fname != "down":
+                for k in range(max(1, (fw * fh) // 90)):
+                    cx, cy = int(hsh(seed, bi, fx, k) * fw), int(hsh(seed, bi, fy, k, 7) * fh)
+                    for step in range(max(3, (fw + fh) // 3)):
+                        crack_px.add((cx, cy))
+                        r_ = hsh(seed, bi, k, step)
+                        cx += 1 if r_ < 0.4 else -1 if r_ < 0.6 else 0
+                        cy += 1 if r_ > 0.3 else 0
             for i in range(fw):
                 for j in range(fh):
-                    edge = i == 0 or j == 0 or i == fw - 1 or j == fh - 1
-                    n = 0.9 + 0.2 * rnd.random()
                     col = c
-                    if pat == "spots" and rnd.random() < 0.08:
-                        col = rig.pal.get("spot", (240, 240, 230))
-                    elif pat == "stripes" and (j // 2) % 3 == 0:
-                        col = art.shade(c, 0.8)
-                    elif pat == "scales" and (i + (j // 2) % 2) % 3 == 0:
-                        col = art.shade(c, 0.82)
-                    elif pat == "facets" and (i + j) % 5 == 0:
-                        col = art.shade(c, 1.3)
-                    elif pat == "cracks" and rnd.random() < 0.06:
-                        col = rig.pal.get("crack", (255, 140, 40))
-                    elif pat == "moss" and rnd.random() < 0.18:
-                        col = rig.pal.get("moss", (90, 140, 60))
-                    elif pat == "stars" and rnd.random() < 0.04:
-                        col = (255, 255, 240)
-                    shade = light * n * (0.78 if edge else 1.0)
+                    tone = 0.96 + 0.08 * hsh(seed, bi, fx + i // 3, fy + j // 3)
+                    if pat == "moss":
+                        clump = hsh(seed, fx + i // 3, fy + j // 2) > (0.55 if fname == "up" else 0.75 if j < fh * 0.4 else 0.95)
+                        if clump and hsh(seed + 1, fx + i, fy + j) > 0.25:
+                            col = art.shade(rig.pal.get("moss", (90, 140, 60)), 0.9 + 0.2 * hsh(seed + 2, fx + i, fy + j))
+                    elif pat == "stripes" and side and j % 4 == 0 and hsh(seed, bi, fx + i // 4, j) > 0.3:
+                        col = art.shade(c, 0.88)
+                    elif pat == "scales" and fname != "down":
+                        row, off = j // 2, (j // 2) % 2
+                        if (i + off * 2) % 4 == 0 or j % 2 == 1 and (i + off * 2) % 4 == 3:
+                            col = art.shade(c, 0.8)
+                        elif j % 2 == 0 and (i + off * 2) % 4 == 2:
+                            col = art.shade(c, 1.12)
+                    elif pat == "facets" and fname != "down":
+                        if (i + j) % 5 == 0:
+                            col = art.shade(c, 1.3)
+                        elif (i - j) % 7 == 0:
+                            col = art.shade(c, 0.85)
+                    elif pat == "cracks" and (i, j) in crack_px:
+                        col = crack
+                    elif pat == "spots" and fname != "down":
+                        gx_, gy_ = (fx + i) // 4, (fy + j) // 4
+                        ox, oy = int(hsh(seed, gx_, gy_) * 3), int(hsh(seed, gy_, gx_) * 3)
+                        if (fx + i) % 4 in (ox, ox + 1) and (fy + j) % 4 in (oy, oy + 1) and hsh(seed, gx_, gy_, 3) > 0.5:
+                            col = rig.pal.get("spot", (240, 240, 230))
+                    elif pat == "stars":
+                        gx_, gy_ = (fx + i) // 5, (fy + j) // 5
+                        if (fx + i) % 5 == int(hsh(seed, gx_, gy_) * 5) and (fy + j) % 5 == int(hsh(seed, gy_, gx_) * 5) and hsh(gx_, gy_) > 0.55:
+                            col = (255, 255, 240)
+                    shade = light * tone
+                    if side and fh > 2:
+                        if j == fh - 1:
+                            shade *= 0.74
+                        elif j == 0:
+                            shade *= 1.1
+                    elif not side and (i == 0 or i == fw - 1):
+                        shade *= 0.9
                     if 0 <= fx + i < W and 0 <= fy + j < H:
                         img.putpixel((fx + i, fy + j), (*art.shade(col, shade), 255))
-                        if p["glow"] or (pat == "cracks" and col == rig.pal.get("crack")):
+                        if p["glow"] or (pat == "cracks" and col == crack):
                             gc = rig.pal.get("glow", (255, 220, 120)) if p["glow"] else col
                             glow.putpixel((fx + i, fy + j), (*gc, 255))
     return img, glow, W, H
@@ -845,7 +886,9 @@ def main(lang_in=None):
     heirloom_art(lang, acc, weap, ups)
     blocks = block_art(lang)
     parts = 0
+    import boss_refine
     for rig in rigs():
+        boss_refine.refine(rig)  # Stage 11 detail pass (no animated part changes)
         parts += save_rig(rig)
     # visibility: lair blocks are technical; boss rewards and signs appear after being obtained
     vp = os.path.join(DATA, NS, "guide", "visibility.json")

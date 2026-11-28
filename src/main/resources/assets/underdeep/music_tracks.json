@@ -1,0 +1,440 @@
+[
+ {
+  "id": "rootwild_a",
+  "context": "ecosystem",
+  "title": "Under Old Roots",
+  "seconds": 126
+ },
+ {
+  "id": "rootwild_b",
+  "context": "ecosystem",
+  "title": "Rootlight Path",
+  "seconds": 120
+ },
+ {
+  "id": "goldengrove_a",
+  "context": "ecosystem",
+  "title": "Honey in the Dark",
+  "seconds": 118
+ },
+ {
+  "id": "goldengrove_b",
+  "context": "ecosystem",
+  "title": "Amber Afternoon",
+  "seconds": 124
+ },
+ {
+  "id": "fungalexpanse_a",
+  "context": "ecosystem",
+  "title": "Spore Lanterns",
+  "seconds": 128
+ },
+ {
+  "id": "fungalexpanse_b",
+  "context": "ecosystem",
+  "title": "The Mycelium Hums",
+  "seconds": 120
+ },
+ {
+  "id": "floodeddepths_a",
+  "context": "ecosystem",
+  "title": "Still Water Cathedral",
+  "seconds": 132
+ },
+ {
+  "id": "floodeddepths_b",
+  "context": "ecosystem",
+  "title": "Drowned Bells",
+  "seconds": 124
+ },
+ {
+  "id": "emeraldwetlands_a",
+  "context": "ecosystem",
+  "title": "Reed and Mist",
+  "seconds": 122
+ },
+ {
+  "id": "emeraldwetlands_b",
+  "context": "ecosystem",
+  "title": "Frogsong Evening",
+  "seconds": 126
+ },
+ {
+  "id": "ashenhollows_a",
+  "context": "ecosystem",
+  "title": "Ember Fields",
+  "seconds": 124
+ },
+ {
+  "id": "ashenhollows_b",
+  "context": "ecosystem",
+  "title": "Cinders Drifting",
+  "seconds": 118
+ },
+ {
+  "id": "petrifiedforest_a",
+  "context": "ecosystem",
+  "title": "Stone That Was Wood",
+  "seconds": 126
+ },
+ {
+  "id": "petrifiedforest_b",
+  "context": "ecosystem",
+  "title": "Rings of Ages",
+  "seconds": 120
+ },
+ {
+  "id": "crystaldeep_a",
+  "context": "ecosystem",
+  "title": "Facets",
+  "seconds": 128
+ },
+ {
+  "id": "crystaldeep_b",
+  "context": "ecosystem",
+  "title": "Resonance",
+  "seconds": 122
+ },
+ {
+  "id": "stormstonecaverns_a",
+  "context": "ecosystem",
+  "title": "Static in the Stone",
+  "seconds": 116
+ },
+ {
+  "id": "stormstonecaverns_b",
+  "context": "ecosystem",
+  "title": "Conductor Rain",
+  "seconds": 120
+ },
+ {
+  "id": "theabyss_a",
+  "context": "ecosystem",
+  "title": "Where the Light Ends",
+  "seconds": 136
+ },
+ {
+  "id": "theabyss_b",
+  "context": "ecosystem",
+  "title": "Echoes Below",
+  "seconds": 128
+ },
+ {
+  "id": "everfrost_a",
+  "context": "ecosystem",
+  "title": "Rime",
+  "seconds": 128
+ },
+ {
+  "id": "everfrost_b",
+  "context": "ecosystem",
+  "title": "Breath on the Ice",
+  "seconds": 122
+ },
+ {
+  "id": "hollowpeaks_a",
+  "context": "ecosystem",
+  "title": "High Ledges",
+  "seconds": 124
+ },
+ {
+  "id": "hollowpeaks_b",
+  "context": "ecosystem",
+  "title": "Wind Through the Peaks",
+  "seconds": 126
+ },
+ {
+  "id": "crimsonbasin_a",
+  "context": "ecosystem",
+  "title": "Red Basin",
+  "seconds": 122
+ },
+ {
+  "id": "crimsonbasin_b",
+  "context": "ecosystem",
+  "title": "Thorn and Bloom",
+  "seconds": 118
+ },
+ {
+  "id": "sunkengardens_a",
+  "context": "ecosystem",
+  "title": "Garden Under Glass",
+  "seconds": 126
+ },
+ {
+  "id": "sunkengardens_b",
+  "context": "ecosystem",
+  "title": "Coral Lullaby",
+  "seconds": 124
+ },
+ {
+  "id": "starlightcaverns_a",
+  "context": "ecosystem",
+  "title": "Starlight",
+  "seconds": 130
+ },
+ {
+  "id": "starlightcaverns_b",
+  "context": "ecosystem",
+  "title": "The Sky-Seal",
+  "seconds": 124
+ },
+ {
+  "id": "civ_rootfolk",
+  "context": "civilization",
+  "title": "Hearths of the Rootfolk",
+  "seconds": 108
+ },
+ {
+  "id": "civ_forgekin",
+  "context": "civilization",
+  "title": "Anvils and Ale",
+  "seconds": 104
+ },
+ {
+  "id": "civ_tide_dwellers",
+  "context": "civilization",
+  "title": "Tidehouse",
+  "seconds": 110
+ },
+ {
+  "id": "civ_sporefolk",
+  "context": "civilization",
+  "title": "Market of Caps",
+  "seconds": 106
+ },
+ {
+  "id": "civ_glimmerkin",
+  "context": "civilization",
+  "title": "Lantern Workshops",
+  "seconds": 108
+ },
+ {
+  "id": "civ_stoneborn",
+  "context": "civilization",
+  "title": "Halls of the Stoneborn",
+  "seconds": 110
+ },
+ {
+  "id": "civ_amberfolk",
+  "context": "civilization",
+  "title": "Amber Fair",
+  "seconds": 104
+ },
+ {
+  "id": "civ_astrals",
+  "context": "civilization",
+  "title": "Observatory",
+  "seconds": 112
+ },
+ {
+  "id": "home_hearth",
+  "context": "home",
+  "title": "Hearthlight",
+  "seconds": 110
+ },
+ {
+  "id": "home_rest",
+  "context": "home",
+  "title": "A Place to Rest",
+  "seconds": 112
+ },
+ {
+  "id": "home_lantern",
+  "context": "home",
+  "title": "Lantern by the Bed",
+  "seconds": 108
+ },
+ {
+  "id": "home_workbench",
+  "context": "home",
+  "title": "At the Workbench",
+  "seconds": 104
+ },
+ {
+  "id": "home_friends",
+  "context": "home",
+  "title": "Friends Underground",
+  "seconds": 110
+ },
+ {
+  "id": "dungeon_depths",
+  "context": "dungeon",
+  "title": "Forgotten Halls",
+  "seconds": 104
+ },
+ {
+  "id": "dungeon_traps",
+  "context": "dungeon",
+  "title": "Mechanisms",
+  "seconds": 100
+ },
+ {
+  "id": "dungeon_vault",
+  "context": "dungeon",
+  "title": "Sealed Vault",
+  "seconds": 104
+ },
+ {
+  "id": "dungeon_secret",
+  "context": "dungeon",
+  "title": "Something Hidden",
+  "seconds": 100
+ },
+ {
+  "id": "ruins_a",
+  "context": "dungeon",
+  "title": "Old Stones Remember",
+  "seconds": 104
+ },
+ {
+  "id": "ruins_b",
+  "context": "dungeon",
+  "title": "Names Worn Away",
+  "seconds": 104
+ },
+ {
+  "id": "combat_a",
+  "context": "combat",
+  "title": "Blades in the Dark",
+  "seconds": 84
+ },
+ {
+  "id": "combat_b",
+  "context": "combat",
+  "title": "Teeth and Claws",
+  "seconds": 80
+ },
+ {
+  "id": "combat_c",
+  "context": "combat",
+  "title": "Hold the Line",
+  "seconds": 84
+ },
+ {
+  "id": "combat_d",
+  "context": "combat",
+  "title": "Ambush",
+  "seconds": 78
+ },
+ {
+  "id": "combat_e",
+  "context": "combat",
+  "title": "Back to Back",
+  "seconds": 82
+ },
+ {
+  "id": "boss_mossback",
+  "context": "boss",
+  "title": "Guardian 01",
+  "seconds": 112
+ },
+ {
+  "id": "boss_sporemother",
+  "context": "boss",
+  "title": "Guardian 02",
+  "seconds": 112
+ },
+ {
+  "id": "boss_choirwarden",
+  "context": "boss",
+  "title": "Guardian 03",
+  "seconds": 112
+ },
+ {
+  "id": "boss_rimefang",
+  "context": "boss",
+  "title": "Guardian 04",
+  "seconds": 112
+ },
+ {
+  "id": "boss_galvanic",
+  "context": "boss",
+  "title": "Guardian 05",
+  "seconds": 112
+ },
+ {
+  "id": "boss_cinderwurm",
+  "context": "boss",
+  "title": "Guardian 06",
+  "seconds": 112
+ },
+ {
+  "id": "boss_lamplighter",
+  "context": "boss",
+  "title": "Guardian 07",
+  "seconds": 112
+ },
+ {
+  "id": "boss_resonant",
+  "context": "boss",
+  "title": "Guardian 08",
+  "seconds": 112
+ },
+ {
+  "id": "boss_tidemother",
+  "context": "boss",
+  "title": "Guardian 09",
+  "seconds": 112
+ },
+ {
+  "id": "boss_silentwarden",
+  "context": "boss",
+  "title": "Guardian 10",
+  "seconds": 112
+ },
+ {
+  "id": "boss_rootsovereign",
+  "context": "boss",
+  "title": "Guardian 11",
+  "seconds": 112
+ },
+ {
+  "id": "boss_seamwatcher",
+  "context": "boss",
+  "title": "Guardian 12",
+  "seconds": 112
+ },
+ {
+  "id": "boss_somnarch",
+  "context": "boss",
+  "title": "Guardian 13",
+  "seconds": 140
+ },
+ {
+  "id": "travel_a",
+  "context": "travel",
+  "title": "The Long Passage",
+  "seconds": 100
+ },
+ {
+  "id": "travel_b",
+  "context": "travel",
+  "title": "Descending",
+  "seconds": 104
+ },
+ {
+  "id": "travel_c",
+  "context": "travel",
+  "title": "Caravan Road",
+  "seconds": 100
+ },
+ {
+  "id": "victory_a",
+  "context": "victory",
+  "title": "The Guardian Falls",
+  "seconds": 52
+ },
+ {
+  "id": "victory_b",
+  "context": "victory",
+  "title": "Spoils of the Deep",
+  "seconds": 48
+ },
+ {
+  "id": "victory_c",
+  "context": "victory",
+  "title": "Kindled",
+  "seconds": 64
+ }
+]

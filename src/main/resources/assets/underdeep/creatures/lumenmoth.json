@@ -9,21 +9,50 @@
    "parent": "root",
    "pivot": [
     0,
-    23.0,
+    15,
     0
    ],
    "role": "body",
    "boxes": [
     {
      "from": [
-      -1.0,
-      -1.0,
-      -2.0
+      -1.25,
+      -1.25,
+      -1.5
+     ],
+     "size": [
+      2.5,
+      2.5,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      14,
+      0
+     ]
+    }
+   ]
+  },
+  {
+   "name": "abdomen",
+   "parent": "body",
+   "pivot": [
+    0,
+    0,
+    1.5
+   ],
+   "role": "tail",
+   "boxes": [
+    {
+     "from": [
+      -1,
+      -1,
+      0
      ],
      "size": [
       2,
       2,
-      4
+      4.5
      ],
      "mirror": false,
      "uv": [
@@ -31,105 +60,354 @@
       0
      ]
     }
-   ]
+   ],
+   "rot": [
+    -0.15,
+    0,
+    0
+   ],
+   "chain": 0
   },
   {
    "name": "head",
    "parent": "body",
    "pivot": [
     0,
-    -1.0,
-    -1.0
+    -0.2,
+    -1.5
    ],
    "role": "head",
    "boxes": [
     {
      "from": [
-      -1.0,
-      -2,
-      -1
+      -1,
+      -1,
+      -1.6
      ],
      "size": [
       2,
       2,
-      1
+      1.6
      ],
      "mirror": false,
      "uv": [
-      48,
-      0
+      0,
+      13
      ]
     }
    ]
   },
   {
+   "name": "antenna0",
+   "parent": "head",
+   "pivot": [
+    0.6,
+    -0.8,
+    -1.4
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.25,
+      -0.2,
+      -3
+     ],
+     "size": [
+      0.5,
+      0.2,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      8,
+      13
+     ]
+    },
+    {
+     "from": [
+      -0.8,
+      -0.2,
+      -3
+     ],
+     "size": [
+      1,
+      0.2,
+      2.4
+     ],
+     "mirror": false,
+     "uv": [
+      16,
+      13
+     ]
+    }
+   ],
+   "rot": [
+    -0.6,
+    -0.3,
+    0
+   ],
+   "side": 0
+  },
+  {
    "name": "wing0",
    "parent": "body",
    "pivot": [
-    1.0,
-    -0.5,
-    -1.0
+    1.2,
+    -1,
+    -1.2
    ],
    "role": "wing",
    "boxes": [
     {
      "from": [
       0,
-      0,
-      0
+      -0.25,
+      -1
      ],
      "size": [
-      5,
-      0,
-      4
+      6,
+      0.25,
+      5
      ],
      "mirror": false,
      "uv": [
-      12,
+      26,
       0
      ]
     }
    ],
+   "rot": [
+    0,
+    0.2,
+    0
+   ],
    "side": 0
+  },
+  {
+   "name": "wing0_outer",
+   "parent": "body",
+   "pivot": [
+    1.2,
+    -0.9,
+    1
+   ],
+   "role": "wing",
+   "boxes": [
+    {
+     "from": [
+      0,
+      -0.25,
+      0
+     ],
+     "size": [
+      4.5,
+      0.25,
+      4
+     ],
+     "mirror": false,
+     "uv": [
+      22,
+      7
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    -0.25,
+    0
+   ],
+   "side": 0
+  },
+  {
+   "name": "spot0",
+   "parent": "wing0",
+   "pivot": [
+    3.5,
+    -0.26,
+    1.5
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -0.05,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      0.05,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      40,
+      13
+     ]
+    }
+   ]
+  },
+  {
+   "name": "antenna1",
+   "parent": "head",
+   "pivot": [
+    -0.6,
+    -0.8,
+    -1.4
+   ],
+   "role": "antenna",
+   "boxes": [
+    {
+     "from": [
+      -0.25,
+      -0.2,
+      -3
+     ],
+     "size": [
+      0.5,
+      0.2,
+      3
+     ],
+     "mirror": false,
+     "uv": [
+      24,
+      13
+     ]
+    },
+    {
+     "from": [
+      -0.2,
+      -0.2,
+      -3
+     ],
+     "size": [
+      1,
+      0.2,
+      2.4
+     ],
+     "mirror": false,
+     "uv": [
+      32,
+      13
+     ]
+    }
+   ],
+   "rot": [
+    -0.6,
+    0.3,
+    0
+   ],
+   "side": 1
   },
   {
    "name": "wing1",
    "parent": "body",
    "pivot": [
-    -1.0,
-    -0.5,
-    -1.0
+    -1.2,
+    -1,
+    -1.2
    ],
    "role": "wing",
    "boxes": [
     {
      "from": [
-      -5,
+      -6,
+      -0.25,
+      -1
+     ],
+     "size": [
+      6,
+      0.25,
+      5
+     ],
+     "mirror": false,
+     "uv": [
       0,
+      7
+     ]
+    }
+   ],
+   "rot": [
+    0,
+    -0.2,
+    0
+   ],
+   "side": 1
+  },
+  {
+   "name": "wing1_outer",
+   "parent": "body",
+   "pivot": [
+    -1.2,
+    -0.9,
+    1
+   ],
+   "role": "wing",
+   "boxes": [
+    {
+     "from": [
+      -4.5,
+      -0.25,
       0
      ],
      "size": [
-      5,
-      0,
+      4.5,
+      0.25,
       4
      ],
      "mirror": false,
      "uv": [
-      30,
-      0
+      40,
+      7
      ]
     }
    ],
+   "rot": [
+    0,
+    0.25,
+    0
+   ],
    "side": 1
+  },
+  {
+   "name": "spot1",
+   "parent": "wing1",
+   "pivot": [
+    -3.5,
+    -0.26,
+    1.5
+   ],
+   "role": "decor",
+   "boxes": [
+    {
+     "from": [
+      -0.75,
+      -0.05,
+      -0.75
+     ],
+     "size": [
+      1.5,
+      0.05,
+      1.5
+     ],
+     "mirror": false,
+     "uv": [
+      48,
+      13
+     ]
+    }
+   ]
   }
  ],
  "glow": true,
  "egg": [
-  5923960,
-  11861990
+  7237760,
+  10526896
  ],
  "scale": 1.0,
  "shadow": 0.2,
  "gait": "none",
- "legLength": 0
+ "legLength": 0,
+ "rig": 2
 }

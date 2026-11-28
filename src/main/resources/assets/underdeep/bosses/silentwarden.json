@@ -332,6 +332,174 @@
       ],
       "mat": "a",
       "glow": false
+    },
+    {
+      "name": "spine_ridge",
+      "parent": "torso",
+      "pivot": [
+        0,
+        6,
+        4
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -1,
+          -10,
+          0,
+          2,
+          14,
+          2,
+          88,
+          45
+        ]
+      ],
+      "mat": "c",
+      "glow": true
+    },
+    {
+      "name": "head_brow",
+      "parent": "head",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -6.5,
+          6.2,
+          -6.6,
+          13,
+          1.6,
+          2.2,
+          97,
+          45
+        ]
+      ],
+      "mat": "a",
+      "glow": false
+    },
+    {
+      "name": "arm_l_guard",
+      "parent": "arm_l",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -3.7,
+          -1.5,
+          -3.7,
+          7.4,
+          3.5,
+          7.4,
+          130,
+          45
+        ]
+      ],
+      "mat": "c",
+      "glow": false
+    },
+    {
+      "name": "leg_l_foot",
+      "parent": "leg_l",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -4,
+          -38.5,
+          -5.5,
+          8,
+          2.2,
+          9.5,
+          163,
+          45
+        ]
+      ],
+      "mat": "f",
+      "glow": false
+    },
+    {
+      "name": "arm_r_guard",
+      "parent": "arm_r",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -3.7,
+          -1.5,
+          -3.7,
+          7.4,
+          3.5,
+          7.4,
+          200,
+          45
+        ]
+      ],
+      "mat": "c",
+      "glow": false
+    },
+    {
+      "name": "leg_r_foot",
+      "parent": "leg_r",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "boxes": [
+        [
+          -4,
+          -38.5,
+          -5.5,
+          8,
+          2.2,
+          9.5,
+          0,
+          90
+        ]
+      ],
+      "mat": "f",
+      "glow": false
     }
   ],
   "idle": [
