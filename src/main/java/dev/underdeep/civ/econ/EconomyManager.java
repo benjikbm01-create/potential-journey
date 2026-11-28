@@ -239,42 +239,79 @@ public final class EconomyManager {
         return made;
     }
 
-    /** Settlements within the economy radius of players (and spawn) get records and economies (a few per call). */
+    /** Background planner: settlement site resolution and town plans are pure functions of the seed and terrain model,
+     *  so they are computed off the server thread (Stage 12: these caused 0.3-0.6 s ticks when a settlement came into
+     *  range). Daemon, low priority, one at a time. */
+    private static final java.util.concurrent.ExecutorService PLANNER = java.util.concurrent.Executors.newSingleThreadExecutor(r -> {
+        Thread t = new Thread(r, "Underdeep settlement planner");
+        t.setDaemon(true);
+        t.setPriority(Thread.MIN_PRIORITY);
+        return t;
+    });
+    private java.util.concurrent.CompletableFuture<List<SettlementSite>> pendingScan;
+
+    /** Settlements within the economy radius of players (and spawn) get records and economies (one per call). The site
+     *  scan and plan run on the planner thread; only record/economy creation happens here, once the plan is cached. */
     private void ensureSettlements(UnderdeepConfig cfg, EconomyState st) {
         SettlementMap map = Settlements.of(world);
         if (map == null) {
             return;
         }
-        List<int[]> centres = new ArrayList<>();
-        BlockPos spawn = world.getSpawnPos();
-        centres.add(new int[]{spawn.getX(), spawn.getZ()});
-        for (ServerPlayerEntity p : world.getPlayers(p -> !p.isSpectator())) {
-            centres.add(new int[]{p.getBlockX(), p.getBlockZ()});
-        }
-        SettlementState ss = SettlementState.get(world);
-        int created = 0;
-        for (int[] c : centres) {
-            for (SettlementSite s : map.sitesNear(c[0], c[1], cfg.economyRadius)) {
-                if (created >= 1) {
-                    return;
-                }
-                SettlementRecord rec = ss.get(s.id());
-                if (rec == null) {
-                    rec = ss.getOrCreate(map.plan(s), world.getSeed(), world.getTime());
-                    created++;
-                }
-                if (!st.economies.containsKey(s.id())) {
-                    EconomySim.Ctx ctx = ctx(null, rec, map.plan(s), s);
-                    Economy e = EconomySim.create(ctx);
-                    st.economies.put(e.id, e);
-                    Daily.leadership(ctx);
-                    Trade.connect(this, st, e);
-                    st.markDirty();
-                    created++;
-                    Underdeep.LOGGER.info("Economy: {} ({} {}) joins the regional economy: {} people, treasury {}", e.name, e.civ.id(),
-                            s.category().id(), rec.alive(), String.format(java.util.Locale.ROOT, "%.0f", e.treasuryBalance));
-                }
+        if (pendingScan == null) {
+            List<int[]> centres = new ArrayList<>();
+            BlockPos spawn = world.getSpawnPos();
+            centres.add(new int[]{spawn.getX(), spawn.getZ()});
+            for (ServerPlayerEntity p : world.getPlayers(p -> !p.isSpectator())) {
+                centres.add(new int[]{p.getBlockX(), p.getBlockZ()});
             }
+            java.util.Set<Long> have = new java.util.HashSet<>(st.economies.keySet());
+            int radius = cfg.economyRadius;
+            pendingScan = java.util.concurrent.CompletableFuture.supplyAsync(() -> {
+                List<SettlementSite> ready = new ArrayList<>();
+                for (int[] c : centres) {
+                    for (SettlementSite s : map.sitesNear(c[0], c[1], radius)) {
+                        if (!have.contains(s.id()) && !ready.contains(s)) {
+                            map.plan(s); // cached in the map's concurrent plan cache
+                            ready.add(s);
+                            if (ready.size() >= 2) {
+                                return ready;
+                            }
+                        }
+                    }
+                }
+                return ready;
+            }, PLANNER);
+            return;
+        }
+        if (!pendingScan.isDone()) {
+            return;
+        }
+        List<SettlementSite> ready;
+        try {
+            ready = pendingScan.join();
+        } catch (Exception ex) {
+            Underdeep.LOGGER.warn("Settlement planning failed: {}", ex.toString());
+            ready = List.of();
+        }
+        pendingScan = null;
+        SettlementState ss = SettlementState.get(world);
+        for (SettlementSite s : ready) {
+            if (st.economies.containsKey(s.id())) {
+                continue;
+            }
+            SettlementRecord rec = ss.get(s.id());
+            if (rec == null) {
+                rec = ss.getOrCreate(map.plan(s), world.getSeed(), world.getTime());
+            }
+            EconomySim.Ctx ctx = ctx(null, rec, map.plan(s), s);
+            Economy e = EconomySim.create(ctx);
+            st.economies.put(e.id, e);
+            Daily.leadership(ctx);
+            Trade.connect(this, st, e);
+            st.markDirty();
+            Underdeep.LOGGER.info("Economy: {} ({} {}) joins the regional economy: {} people, treasury {}", e.name, e.civ.id(),
+                    s.category().id(), rec.alive(), String.format(java.util.Locale.ROOT, "%.0f", e.treasuryBalance));
+            return; // one settlement per call keeps the cost of a call bounded
         }
     }
 }

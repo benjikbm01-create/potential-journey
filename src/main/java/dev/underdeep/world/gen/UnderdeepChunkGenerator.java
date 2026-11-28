@@ -153,6 +153,11 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
                 int i10 = ((gx + 1) * g + gz) * GRID_Y;
                 int i01 = (gx * g + gz + 1) * GRID_Y;
                 int i11 = ((gx + 1) * g + gz + 1) * GRID_Y;
+                // per-column rock cache: the palette only changes with the strata band (identical output, Stage 12)
+                int lastBand = Integer.MIN_VALUE;
+                boolean lastDeep = false;
+                RegionType lastRegion = null;
+                BlockState lastRock = null;
                 for (int y = UnderdeepTerrain.MIN_Y; y < UnderdeepTerrain.TOP_Y; y++) {
                     int gy = (y - UnderdeepTerrain.MIN_Y) / GRID;
                     double fy = ((y - UnderdeepTerrain.MIN_Y) % GRID) / (double) GRID;
@@ -190,7 +195,14 @@ public final class UnderdeepChunkGenerator extends ChunkGenerator {
                         default -> {
                             boolean deep = y < c.separation - 2 + strataOff * 0.4;
                             RegionType region = deep ? c.deepRegion.primary : c.upperRegion.primary;
-                            state = BlockPalette.rock(seed, region, deep, y, strataOff);
+                            int band = BlockPalette.band(y, strataOff);
+                            if (band != lastBand || deep != lastDeep || region != lastRegion) {
+                                lastRock = BlockPalette.rockOfBand(seed, region, deep, band);
+                                lastBand = band;
+                                lastDeep = deep;
+                                lastRegion = region;
+                            }
+                            state = lastRock;
                         }
                     }
                     int si = (y >> 4) - bottomSectionCoord;

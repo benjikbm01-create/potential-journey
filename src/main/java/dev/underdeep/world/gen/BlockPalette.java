@@ -100,7 +100,15 @@ public final class BlockPalette {
      */
     public static BlockState rock(long seed, RegionType region, boolean deep, int y, double strataOffset) {
         // Thick bands; the dominant stone repeats often so walls read as stone with occasional seams.
-        int band = Math.floorDiv((int) Math.floor(y + strataOffset), 11);
+        return rockOfBand(seed, region, deep, band(y, strataOffset));
+    }
+
+    /** The strata band of a height (bands change every 11 blocks, so callers can cache per band). */
+    public static int band(int y, double strataOffset) {
+        return Math.floorDiv((int) Math.floor(y + strataOffset), 11);
+    }
+
+    public static BlockState rockOfBand(long seed, RegionType region, boolean deep, int band) {
         double u = Hashing.unit(Hashing.hash(seed, band, region.ordinal(), deep ? 0x0DEE : 0x0A11));
         return (deep ? DEEP : UPPER).get(region).pick(u);
     }

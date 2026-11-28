@@ -1,0 +1,8 @@
+sleep 20
+chunky world minecraft:overworld
+chunky center 0 0
+chunky radius 400
+chunky start
+sleep 75
+chunky progress
+spark tps
