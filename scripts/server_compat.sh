@@ -18,6 +18,7 @@ cp "$ROOT/run-tests/prod/fabric-server-launch.jar" "$P/"
 cp -r "$ROOT/run-tests/prod/libraries" "$ROOT/run-tests/prod/server.jar" "$ROOT/run-tests/prod/.fabric" "$P/" 2>/dev/null || true
 echo "eula=true" > "$P/eula.txt"
 printf 'level-type=underdeep\\:underdeep\nlevel-seed=%s\nonline-mode=false\nmax-tick-time=-1\nview-distance=8\nsimulation-distance=5\nsync-chunk-writes=false\nspawn-protection=0\n' "${SEED:-2024}" > "$P/server.properties"
+CMDS="$(cd "$(dirname "${CMDS:-/dev/null}")" && pwd)/$(basename "${CMDS:-null}")"
 cd "$P"
 if [ "$MODE" = audit ]; then
   timeout 2400 java -Xmx6G -Dunderdeep.selftest="$P/selftest" -Dunderdeep.selftest.suite="${SUITE:-audit}" -jar fabric-server-launch.jar nogui > console.log 2>&1 || true
