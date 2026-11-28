@@ -88,7 +88,7 @@ public final class ExploreBlocks {
 
     public static void init() {
         RUNE_DIAL = reg("rune_dial", new RuneDialBlock(stone()));
-        GLYPH_TILE = reg("glyph_tile", new GlyphBlock(stone()));
+        GLYPH_TILE = reg("glyph_tile", new GlyphBlock(stone().dropsNothing()));
         RUNE_PLATE = reg("rune_plate", new RunePlateBlock(stone().noCollision(), false));
         HEAVY_PLATE = reg("heavy_plate", new RunePlateBlock(stone().noCollision(), true));
         BRAZIER = reg("ancient_brazier", new BrazierBlock(stone().nonOpaque().luminance(s -> s.get(LIT) ? 15 : 0)));
@@ -102,7 +102,7 @@ public final class ExploreBlocks {
         MEMORY_PILLAR = reg("memory_pillar", new MemoryPillarBlock(stone()));
         MEMORY_STONE = reg("memory_stone", new MemoryStoneBlock(stone().luminance(s -> s.get(LIT) ? 10 : 0)));
         KEYSTONE = reg("keystone", new KeystoneBlock(stone()));
-        MOSAIC_SLOT = reg("mosaic_frame", new Block(stone()));
+        MOSAIC_SLOT = reg("mosaic_frame", new Block(stone().dropsNothing()));
         ANCIENT_SEAL = reg("ancient_seal", new SealBlock(sealed()));
         SEAL_BARS = reg("seal_bars", new SealBarsBlock(sealed().nonOpaque()));
         DORMANT_ENGINE = reg("dormant_engine", new EngineBlock(stone().luminance(s -> s.get(LIT) ? 13 : 0)));
@@ -121,7 +121,7 @@ public final class ExploreBlocks {
         EXPEDITION_CACHE = reg("expedition_cache", new CacheBlock(sealed().nonOpaque(), "cache"));
         RELIC_PEDESTAL = reg("relic_pedestal", new CacheBlock(sealed().nonOpaque().luminance(s -> s.get(FULL) ? 9 : 0), "pedestal"));
         KEY_PEDESTAL = reg("key_pedestal", new CacheBlock(sealed().nonOpaque(), "key"));
-        INSCRIPTION = reg("inscription_stone", new InscriptionBlock(stone()));
+        INSCRIPTION = reg("inscription_stone", new InscriptionBlock(stone().dropsNothing()));
         for (Block b : List.of(BRAZIER, CHIME, STONE_BASIN, LIGHT_MIRROR, SEAL_BARS, ANCIENT_LEVER, EXPEDITION_CACHE, RELIC_PEDESTAL, KEY_PEDESTAL,
                 RUNE_PLATE, HEAVY_PLATE, TRAP_PLATE, COUNTERWEIGHT, ALARM_GONG)) {
             Reg.CUTOUT.add(b);
