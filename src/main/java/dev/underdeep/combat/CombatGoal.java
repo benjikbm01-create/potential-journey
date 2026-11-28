@@ -72,8 +72,10 @@ public final class CombatGoal extends Goal {
 
     @Override
     public void start() {
-        phase = a.circle > 0 ? 1 : 0;
-        timer = a.circle > 0 ? a.circle + c.getRandom().nextInt(Math.max(1, a.circle)) : 0;
+        // circling before committing is a duel telegraph for players; against fleeing prey a predator closes in directly
+        boolean duel = a.circle > 0 && c.getTarget() instanceof PlayerEntity;
+        phase = duel ? 1 : 0;
+        timer = duel ? a.circle + c.getRandom().nextInt(Math.max(1, a.circle)) : 0;
         repath = 0;
         c.setAttacking(true);
     }
