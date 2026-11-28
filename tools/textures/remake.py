@@ -302,6 +302,25 @@ def equipment_batch():
         write("armour_layer", f"models/armor/{name}_layer_2", l2)
 
 
+# ================================================================================ batch 4: stations, furniture, mechanisms
+
+def misc_blocks_batch():
+    import blocks_misc
+    done = {rel for b, items in WRITTEN.items() for rel, _ in items}
+    S.T.clear()
+    S.workstations()
+    for tid in ("forge_front", "forge_top", "forge_side", "alloy_furnace_front", "ore_crusher_front"):
+        write("misc", "block/" + tid, S.T[tid][1])
+    done |= {"forge_front", "forge_top", "forge_side", "alloy_furnace_front", "ore_crusher_front"}
+    for f in sorted(os.listdir(os.path.join(TEX, "block"))):
+        n = f[:-4]
+        if n in done or not f.endswith(".png"):
+            continue
+        img = blocks_misc.paint(n, sum(map(ord, n)))
+        if img is not None:
+            write("misc", "block/" + n, img)
+
+
 # ================================================================================ contact sheets
 
 def sheet(batch):
@@ -336,6 +355,7 @@ def main():
     wood_sets()
     plants_batch()
     equipment_batch()
+    misc_blocks_batch()
     for b in list(WRITTEN):
         sheet(b)
     print("texture remake: " + ", ".join(f"{b} {len(v)}" for b, v in WRITTEN.items()))
